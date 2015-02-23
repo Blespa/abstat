@@ -81,6 +81,8 @@ rm -rf ${TmpDatasetFileResult}* #Rimuovo tutti i file Tmp_Data_For_Computation
 #}
 #End comment1
 rm -f "log/log.txt" #Rimuovo tutti i file di log
+mkdir -p log
+touch "log/log.txt"
 
 #comment1 ()
 #{

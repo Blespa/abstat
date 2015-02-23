@@ -78,6 +78,7 @@ rm -f "Reports/dt_dataset.xls"
 rm -f "Reports/obj_dataset.xls"
 
 rm -rf ${TmpDatasetFileResult}* #Rimuovo tutti i file Tmp_Data_For_Computation
+mkdir -p $TmpDatasetFileResult
 #}
 #End comment1
 rm -f "log/log.txt" #Rimuovo tutti i file di log

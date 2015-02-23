@@ -70,8 +70,7 @@ function checkqueue {
 		fi
 	done
 }
-#comment1 ()
-#{
+
 #Rimuovo tutti i report
 rm -f "Reports/ontology.xls"
 rm -f "Reports/dt_dataset.xls"
@@ -79,16 +78,14 @@ rm -f "Reports/obj_dataset.xls"
 
 rm -rf ${TmpDatasetFileResult}* #Rimuovo tutti i file Tmp_Data_For_Computation
 mkdir -p $TmpDatasetFileResult
-#}
-#End comment1
+
 rm -f "log/log.txt" #Rimuovo tutti i file di log
 mkdir -p log
 touch "log/log.txt"
 
-#comment1 ()
-#{
 #TODO: Se diviene pesante, al cambiare delle ontologie, si può parallelizzar con l'organizzazione del dataset
-{ #ONTOLOGY REPORT COMPUTATION
+{ 
+#ONTOLOGY REPORT COMPUTATION
 #Computo il report e le informazioni a partire dall'ontologia
 echo "---Start: Ontology Report---"
 
@@ -109,12 +106,9 @@ echo "---End: Ontology Report---"
 echo ""
 
 } &>> "log/log.txt"
-#}
-#End comment1
 
-#comment1 ()
-#{
-{ #ORGANIZATION, SPLITTING AND DEDUPLICATION OF FILE
+{ 
+#ORGANIZATION, SPLITTING AND DEDUPLICATION OF FILE
 #Organizzo e splitto i file
 echo "---Start: Organize and Split files---"
 
@@ -377,12 +371,9 @@ echo "---End: Deduplication of files---"
 echo ""
 
 } &>> "log/log.txt"
-#}
-#End comment1
 
-#comment1 ()
-#{
-{ #MINTYPE COMPUTATION
+{ 
+#MINTYPE COMPUTATION
 echo "---Start: MinType---"
 	
 	startBlock=$SECONDS	
@@ -449,11 +440,10 @@ echo "---End: MinType---"
 echo ""
 
 } &>> "log/log.txt"
-#}
-#End comment1
 
-{ #PATTERNS COMPUTATION
-echo "---Start: Pattern---"
+{ 
+#PATTERNS COMPUTATION
+	echo "---Start: Pattern---"
 	
 	startBlock=$SECONDS	
 	#comment1 ()
@@ -528,14 +518,14 @@ echo "---Start: Pattern---"
 		echo ""
 	fi
 
-echo "---End: Pattern---"
-
-echo ""
+	echo "---End: Pattern---"
+	echo ""
 
 } &>> "log/log.txt"
 
-{ #MERGE DATA
-echo "---Start: Merge Data---"
+{ 
+	#MERGE DATA
+	echo "---Start: Merge Data---"
 
 	#Definisco gli script/comandi che si occupano di unire tutte le informazioni e i conteggi
 	numMergeCmd=0
@@ -1129,9 +1119,8 @@ echo "---Start: Merge Data---"
 		echo ""
 	fi
 
-echo "---End: Merge Data---"
-
-echo ""
+	echo "---End: Merge Data---"
+	echo ""
 
 } &>> "log/log.txt"
 
@@ -1144,4 +1133,5 @@ echo ""
 	fi
 
 } &>> "log/log.txt"
+
 exit #Termino l'esecuzione

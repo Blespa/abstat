@@ -13,26 +13,30 @@ else
 fi
 
 DataDirectory=$1
+ResultsDirectory=$2
+
+rm -rf $ResultsDirectory
+mkdir -p $ResultsDirectory
 
 #Variabili per il calcolo del report dell'ontologia
 OntologyFile="$DataDirectory/ontology/"
-ReportDirectory="Reports/"
-TmpDatasetFileResult="Reports/Tmp_Data_For_Computation/"
+ReportDirectory="$ResultsDirectory/reports/"
+TmpDatasetFileResult="$ResultsDirectory/reports/tmp-data-for-computation/"
 
 #Variabili per il calcolo del report del dataset
 DatasetFile="$DataDirectory/triples"
-tmpDatasetFile="$DataDirectory/Organized_Splitted_Deduplicated_TmpFile"
-orgDatasetFile="$DataDirectory/Organized_Splitted_Deduplicated"
+tmpDatasetFile="$DataDirectory/organized-splitted-deduplicated-tmp-file"
+orgDatasetFile="$DataDirectory/organized-splitted-deduplicated"
 
 #MinType
-minTypeDataForComp="MinTypes/Data_For_Computation"
-minTypeResult="MinTypes/Min_Type_Results"
+minTypeDataForComp="$ResultsDirectory/min-types/data-for-computation"
+minTypeResult="$ResultsDirectory/min-types/min-types-results"
 
 #Pattern
-patternDataForComp="Patterns/Data_For_Computation"
-patternObjResult="Patterns/Obj_Patterns"
-patternDtResult="Patterns/Dt_Patterns"
-patternTmpFiles="Patterns/Tmp_Files"
+patternDataForComp="$ResultsDirectory/patterns/data-for-computation"
+patternObjResult="$ResultsDirectory/patterns/obj-patterns"
+patternDtResult="$ResultsDirectory/patterns/dt-patterns"
+patternTmpFiles="$ResultsDirectory/patterns/tmp-files"
 
 #Variabili per la parallelizzazione
 #Lettere con cui splitto i file per la parallelizzazione

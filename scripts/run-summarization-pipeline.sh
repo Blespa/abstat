@@ -5,7 +5,7 @@ relative_path=`dirname $0`
 current_directory=`cd $relative_path;pwd`
 root=$current_directory/..
 
-cd "$root/summarization/Utility/"
+cd "$root/summarization/utility/"
 
-./extract_info.sh $root/test-data
+./extract_info.sh $root/test-data $root/summarization-results
 

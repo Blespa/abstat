@@ -1,4 +1,4 @@
- Dataset Analysis Output:
+Dataset Analysis Output:
 
  - The Awk output is in "MinTypes/Min_Type_Results" and "Patterns".
  - The column separator is ##. We can not use the , and the ; because they can be part of the RDF triple.

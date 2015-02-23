@@ -14,6 +14,8 @@ fi
 
 DataDirectory=$1
 ResultsDirectory=$2
+AwkScriptsDirectory=awk_scripts
+JavaBinDirectory=java_programs
 
 rm -rf $ResultsDirectory
 mkdir -p $ResultsDirectory
@@ -99,7 +101,7 @@ echo "---Start: Ontology Report---"
 	export ReportDirectory
 	export TmpDatasetFileResult
 
-	eval ${dbgCmd}""$JAVA_HOME/bin/java -jar software/java_programs/ontology_summarization.jar "$OntologyFile" "$ReportDirectory" "$TmpDatasetFileResult"
+	eval ${dbgCmd}""$JAVA_HOME/bin/java -jar $JavaBinDirectory/ontology_summarization.jar "$OntologyFile" "$ReportDirectory" "$TmpDatasetFileResult"
 	#Verifico eventuali errori nell'esecuzione in modo da verificare la possibilità di procedere
 	if [ $? -ne 0 ]
 	then
@@ -210,10 +212,10 @@ echo ""
 	#TODO: Rendere flessibile la lettura per non essere vincolati a NProc
 
 	#Processi da eseguire per l'organizzazione (Assumo che le stringhe di file abbiano almeno un file, TODO: Generalizzare a tutti i dataset)
-	orgFile[0]="gawk -f software/awk_scripts/organize_data.awk -v prefix=1 -v destinatioDirectory=\"${orgDatasetFile}\" ${filePartCom[0]}"
-	orgFile[1]="gawk -f software/awk_scripts/organize_data.awk -v prefix=2 -v destinatioDirectory=\"${orgDatasetFile}\" ${filePartCom[1]}"
-	orgFile[2]="gawk -f software/awk_scripts/organize_data.awk -v prefix=3 -v destinatioDirectory=\"${orgDatasetFile}\" ${filePartCom[2]}"
-	orgFile[3]="gawk -f software/awk_scripts/organize_data.awk -v prefix=4 -v destinatioDirectory=\"${orgDatasetFile}\" ${filePartCom[3]}"
+	orgFile[0]="gawk -f $AwkScriptsDirectory/organize_data.awk -v prefix=1 -v destinatioDirectory=\"${orgDatasetFile}\" ${filePartCom[0]}"
+	orgFile[1]="gawk -f $AwkScriptsDirectory/organize_data.awk -v prefix=2 -v destinatioDirectory=\"${orgDatasetFile}\" ${filePartCom[1]}"
+	orgFile[2]="gawk -f $AwkScriptsDirectory/organize_data.awk -v prefix=3 -v destinatioDirectory=\"${orgDatasetFile}\" ${filePartCom[2]}"
+	orgFile[3]="gawk -f $AwkScriptsDirectory/organize_data.awk -v prefix=4 -v destinatioDirectory=\"${orgDatasetFile}\" ${filePartCom[3]}"
 
 	#Rinizializzo le variabili della parallelizzazione, per sicurezza
 	NUM=0
@@ -391,7 +393,7 @@ echo ""
 	do
 	   if [ -f ${orgDatasetFile}/${element}_types.nt ];
 	   then
-		   minTypeComp[$numMinType]="gawk -f software/awk_scripts/calculate_mintype.awk -v lett=${element} -v directoryDataForComp=\"${minTypeDataForComp}\" -v destinatioDirectory=\"${minTypeResult}\" ${orgDatasetFile}/${element}_types.nt"
+		   minTypeComp[$numMinType]="gawk -f $AwkScriptsDirectory/calculate_mintype.awk -v lett=${element} -v directoryDataForComp=\"${minTypeDataForComp}\" -v destinatioDirectory=\"${minTypeResult}\" ${orgDatasetFile}/${element}_types.nt"
 		   numMinType=$(($numMinType+1))
 	   fi
 	done
@@ -462,15 +464,15 @@ echo ""
 	do
 	   if [[ -f ${orgDatasetFile}/${element}_obj_properties.nt && -f ${orgDatasetFile}/${element}_dt_properties.nt ]]
 	   then
-		   patternComp[$numPattern]="gawk -f software/awk_scripts/calculate_relation.awk -v lett=${element} -v minTypeResultsDirectory=\"${minTypeResult}\" -v directoryDataForComp=\"${patternDataForComp}\" -v directoryTempFile=\"${patternTmpFiles}\" -v destinatioDirectory=\"${patternObjResult}\" -v destinatioDirectoryDt=\"${patternDtResult}\" ${orgDatasetFile}/${element}_obj_properties.nt ${orgDatasetFile}/${element}_dt_properties.nt"
+		   patternComp[$numPattern]="gawk -f $AwkScriptsDirectory/calculate_relation.awk -v lett=${element} -v minTypeResultsDirectory=\"${minTypeResult}\" -v directoryDataForComp=\"${patternDataForComp}\" -v directoryTempFile=\"${patternTmpFiles}\" -v destinatioDirectory=\"${patternObjResult}\" -v destinatioDirectoryDt=\"${patternDtResult}\" ${orgDatasetFile}/${element}_obj_properties.nt ${orgDatasetFile}/${element}_dt_properties.nt"
 		   numPattern=$(($numPattern+1))
 	   elif [ -f ${orgDatasetFile}/${element}_obj_properties.nt ]
 	   then
-		   patternComp[$numPattern]="gawk -f software/awk_scripts/calculate_relation.awk -v lett=${element} -v minTypeResultsDirectory=\"${minTypeResult}\" -v directoryDataForComp=\"${patternDataForComp}\" -v directoryTempFile=\"${patternTmpFiles}\" -v destinatioDirectory=\"${patternObjResult}\" -v destinatioDirectoryDt=\"${patternDtResult}\" ${orgDatasetFile}/${element}_obj_properties.nt"
+		   patternComp[$numPattern]="gawk -f $AwkScriptsDirectory/calculate_relation.awk -v lett=${element} -v minTypeResultsDirectory=\"${minTypeResult}\" -v directoryDataForComp=\"${patternDataForComp}\" -v directoryTempFile=\"${patternTmpFiles}\" -v destinatioDirectory=\"${patternObjResult}\" -v destinatioDirectoryDt=\"${patternDtResult}\" ${orgDatasetFile}/${element}_obj_properties.nt"
 		   numPattern=$(($numPattern+1))
 	   elif [ -f ${orgDatasetFile}/${element}_dt_properties.nt ]
 	   then
-		   patternComp[$numPattern]="gawk -f software/awk_scripts/calculate_relation.awk -v lett=${element} -v minTypeResultsDirectory=\"${minTypeResult}\" -v directoryDataForComp=\"${patternDataForComp}\" -v directoryTempFile=\"${patternTmpFiles}\" -v destinatioDirectory=\"${patternObjResult}\" -v destinatioDirectoryDt=\"${patternDtResult}\" ${orgDatasetFile}/${element}_dt_properties.nt"
+		   patternComp[$numPattern]="gawk -f $AwkScriptsDirectory/calculate_relation.awk -v lett=${element} -v minTypeResultsDirectory=\"${minTypeResult}\" -v directoryDataForComp=\"${patternDataForComp}\" -v directoryTempFile=\"${patternTmpFiles}\" -v destinatioDirectory=\"${patternObjResult}\" -v destinatioDirectoryDt=\"${patternDtResult}\" ${orgDatasetFile}/${element}_dt_properties.nt"
 		   numPattern=$(($numPattern+1))
 	   fi
 	done
@@ -615,7 +617,7 @@ echo ""
 	done
 	
 	#Salvo il comando
-	mergeCmd[$numMergeCmd]="gawk -f software/awk_scripts/merge_info/mergeNewConcepts.awk -v destinatioDirectory=\"${minTypeResult}\" ${newConcepts}"
+	mergeCmd[$numMergeCmd]="gawk -f $AwkScriptsDirectory/merge_info/mergeNewConcepts.awk -v destinatioDirectory=\"${minTypeResult}\" ${newConcepts}"
 	numMergeCmd=$(($numMergeCmd+1))
 
 	#OBJECT PROPERTIES
@@ -639,7 +641,7 @@ echo ""
 	done
 	
 	#Salvo il comando
-	mergeCmd[$numMergeCmd]="gawk -f software/awk_scripts/merge_info/mergeCountConcepts.awk -v destinatioDirectory=\"${patternObjResult}\" ${countConcepts}"
+	mergeCmd[$numMergeCmd]="gawk -f $AwkScriptsDirectory/merge_info/mergeCountConcepts.awk -v destinatioDirectory=\"${patternObjResult}\" ${countConcepts}"
 	numMergeCmd=$(($numMergeCmd+1))	
 
 	#countClassSubj
@@ -661,7 +663,7 @@ echo ""
 	done
 	
 	#Salvo il comando
-	mergeCmd1[$numMergeCmd1]="gawk -f software/awk_scripts/merge_info/mergeCountClass.awk -v dataForCompDirectory=\"${patternObjResult}\" -v destinatioDirectory=\"${patternObjResult}\" -v destinationFile=\"countClassSUBJ.txt\" ${countClassSubj}"
+	mergeCmd1[$numMergeCmd1]="gawk -f $AwkScriptsDirectory/merge_info/mergeCountClass.awk -v dataForCompDirectory=\"${patternObjResult}\" -v destinatioDirectory=\"${patternObjResult}\" -v destinationFile=\"countClassSUBJ.txt\" ${countClassSubj}"
 	numMergeCmd1=$(($numMergeCmd1+1))
 
 	#countClassObj
@@ -683,7 +685,7 @@ echo ""
 	done
 	
 	#Salvo il comando
-	mergeCmd1[$numMergeCmd1]="gawk -f software/awk_scripts/merge_info/mergeCountClass.awk -v dataForCompDirectory=\"${patternObjResult}\" -v destinatioDirectory=\"${patternObjResult}\" -v destinationFile=\"countClassOBJ.txt\" ${countClassObj}"
+	mergeCmd1[$numMergeCmd1]="gawk -f $AwkScriptsDirectory/merge_info/mergeCountClass.awk -v dataForCompDirectory=\"${patternObjResult}\" -v destinatioDirectory=\"${patternObjResult}\" -v destinationFile=\"countClassOBJ.txt\" ${countClassObj}"
 	numMergeCmd1=$(($numMergeCmd1+1))
 
 	#countSubj
@@ -705,7 +707,7 @@ echo ""
 	done
 	
 	#Salvo il comando
-	mergeCmd1[$numMergeCmd1]="gawk -f software/awk_scripts/merge_info/mergeCount.awk -v dataForCompDirectory=\"${patternObjResult}\" -v fileForComputation=\"countConcepts.txt\" -v destinatioDirectory=\"${patternObjResult}\" -v destinationFile=\"countSUBJ.txt\" ${countSubj}"
+	mergeCmd1[$numMergeCmd1]="gawk -f $AwkScriptsDirectory/merge_info/mergeCount.awk -v dataForCompDirectory=\"${patternObjResult}\" -v fileForComputation=\"countConcepts.txt\" -v destinatioDirectory=\"${patternObjResult}\" -v destinationFile=\"countSUBJ.txt\" ${countSubj}"
 	numMergeCmd1=$(($numMergeCmd1+1))	
 
 	#countObj
@@ -727,7 +729,7 @@ echo ""
 	done
 	
 	#Salvo il comando
-	mergeCmd1[$numMergeCmd1]="gawk -f software/awk_scripts/merge_info/mergeCount.awk -v dataForCompDirectory=\"${patternObjResult}\" -v fileForComputation=\"countConcepts.txt\" -v destinatioDirectory=\"${patternObjResult}\" -v destinationFile=\"countOBJ.txt\" ${countObj}"
+	mergeCmd1[$numMergeCmd1]="gawk -f $AwkScriptsDirectory/merge_info/mergeCount.awk -v dataForCompDirectory=\"${patternObjResult}\" -v fileForComputation=\"countConcepts.txt\" -v destinatioDirectory=\"${patternObjResult}\" -v destinationFile=\"countOBJ.txt\" ${countObj}"
 	numMergeCmd1=$(($numMergeCmd1+1))	
 
 	#countPropSubj
@@ -749,7 +751,7 @@ echo ""
 	done
 	
 	#Salvo il comando
-	mergeCmd1[$numMergeCmd1]="gawk -f software/awk_scripts/merge_info/mergeCountConcProp.awk -v dataForCompDirectory=\"${patternObjResult}\" -v fileForComputation=\"countConcepts.txt\" -v destinatioDirectory=\"${patternObjResult}\" -v destinationFile=\"concPropSUBJ.txt\" ${countPropSubj}"
+	mergeCmd1[$numMergeCmd1]="gawk -f $AwkScriptsDirectory/merge_info/mergeCountConcProp.awk -v dataForCompDirectory=\"${patternObjResult}\" -v fileForComputation=\"countConcepts.txt\" -v destinatioDirectory=\"${patternObjResult}\" -v destinationFile=\"concPropSUBJ.txt\" ${countPropSubj}"
 	numMergeCmd1=$(($numMergeCmd1+1))	
 
 	#countPropObj
@@ -771,7 +773,7 @@ echo ""
 	done
 	
 	#Salvo il comando
-	mergeCmd1[$numMergeCmd1]="gawk -f software/awk_scripts/merge_info/mergeCountConcProp.awk -v dataForCompDirectory=\"${patternObjResult}\" -v fileForComputation=\"countConcepts.txt\" -v destinatioDirectory=\"${patternObjResult}\" -v destinationFile=\"concPropOBJ.txt\" ${countPropObj}"
+	mergeCmd1[$numMergeCmd1]="gawk -f $AwkScriptsDirectory/merge_info/mergeCountConcProp.awk -v dataForCompDirectory=\"${patternObjResult}\" -v fileForComputation=\"countConcepts.txt\" -v destinatioDirectory=\"${patternObjResult}\" -v destinationFile=\"concPropOBJ.txt\" ${countPropObj}"
 	numMergeCmd1=$(($numMergeCmd1+1))	
 
 	#countProp
@@ -793,7 +795,7 @@ echo ""
 	done
 	
 	#Salvo il comando
-	mergeCmd2[$numMergeCmd2]="gawk -f software/awk_scripts/merge_info/mergeCountProp.awk -v dataForCompDirectory=\"${patternObjResult}\" -v destinatioDirectory=\"${patternObjResult}\" -v destinationFile=\"countProp.txt\" ${countProp}"
+	mergeCmd2[$numMergeCmd2]="gawk -f $AwkScriptsDirectory/merge_info/mergeCountProp.awk -v dataForCompDirectory=\"${patternObjResult}\" -v destinatioDirectory=\"${patternObjResult}\" -v destinationFile=\"countProp.txt\" ${countProp}"
 	numMergeCmd2=$(($numMergeCmd2+1))	
 
 	#Pattern
@@ -815,7 +817,7 @@ echo ""
 	done
 	
 	#Salvo il comando
-	mergeCmd[$numMergeCmd]="gawk -f software/awk_scripts/merge_info/mergeRelation.awk -v destinatioDirectory=\"${patternObjResult}\" -v destinationFile=\"relationCount.txt\" ${countPattern}"
+	mergeCmd[$numMergeCmd]="gawk -f $AwkScriptsDirectory/merge_info/mergeRelation.awk -v destinatioDirectory=\"${patternObjResult}\" -v destinationFile=\"relationCount.txt\" ${countPattern}"
 	numMergeCmd=$(($numMergeCmd+1))
 
 	#DATATYPE PROPERTIES
@@ -839,7 +841,7 @@ echo ""
 	done
 	
 	#Salvo il comando
-	mergeCmd[$numMergeCmd]="gawk -f software/awk_scripts/merge_info/mergeCountDataType.awk -v destinatioDirectory=\"${patternDtResult}\" ${countDataType}"
+	mergeCmd[$numMergeCmd]="gawk -f $AwkScriptsDirectory/merge_info/mergeCountDataType.awk -v destinatioDirectory=\"${patternDtResult}\" ${countDataType}"
 	numMergeCmd=$(($numMergeCmd+1))	
 
 	#countClassDtSubj
@@ -861,7 +863,7 @@ echo ""
 	done
 	
 	#Salvo il comando
-	mergeCmd1[$numMergeCmd1]="gawk -f software/awk_scripts/merge_info/mergeCountClass.awk -v dataForCompDirectory=\"${patternObjResult}\" -v destinatioDirectory=\"${patternDtResult}\" -v destinationFile=\"countClassDTSUBJ.txt\" ${countClassDtSubj}"
+	mergeCmd1[$numMergeCmd1]="gawk -f $AwkScriptsDirectory/merge_info/mergeCountClass.awk -v dataForCompDirectory=\"${patternObjResult}\" -v destinatioDirectory=\"${patternDtResult}\" -v destinationFile=\"countClassDTSUBJ.txt\" ${countClassDtSubj}"
 	numMergeCmd1=$(($numMergeCmd1+1))
 
 	#countDataTypeObj
@@ -883,7 +885,7 @@ echo ""
 	done
 	
 	#Salvo il comando
-	mergeCmd1[$numMergeCmd1]="gawk -f software/awk_scripts/merge_info/mergeCountDt.awk -v dataForCompDirectory=\"${patternDtResult}\" -v destinatioDirectory=\"${patternDtResult}\" -v destinationFile=\"countClassDTOBJ.txt\" ${countDataTypeObj}"
+	mergeCmd1[$numMergeCmd1]="gawk -f $AwkScriptsDirectory/merge_info/mergeCountDt.awk -v dataForCompDirectory=\"${patternDtResult}\" -v destinatioDirectory=\"${patternDtResult}\" -v destinationFile=\"countClassDTOBJ.txt\" ${countDataTypeObj}"
 	numMergeCmd1=$(($numMergeCmd1+1))
 
 	#countDtSubj
@@ -905,7 +907,7 @@ echo ""
 	done
 	
 	#Salvo il comando
-	mergeCmd1[$numMergeCmd1]="gawk -f software/awk_scripts/merge_info/mergeCount.awk -v dataForCompDirectory=\"${patternObjResult}\" -v fileForComputation=\"countConcepts.txt\" -v destinatioDirectory=\"${patternDtResult}\" -v destinationFile=\"countDTSUBJ.txt\" ${countDtSubj}"
+	mergeCmd1[$numMergeCmd1]="gawk -f $AwkScriptsDirectory/merge_info/mergeCount.awk -v dataForCompDirectory=\"${patternObjResult}\" -v fileForComputation=\"countConcepts.txt\" -v destinatioDirectory=\"${patternDtResult}\" -v destinationFile=\"countDTSUBJ.txt\" ${countDtSubj}"
 	numMergeCmd1=$(($numMergeCmd1+1))	
 
 	#countDtObj
@@ -927,7 +929,7 @@ echo ""
 	done
 	
 	#Salvo il comando
-	mergeCmd1[$numMergeCmd1]="gawk -f software/awk_scripts/merge_info/mergeCount.awk -v dataForCompDirectory=\"${patternDtResult}\" -v fileForComputation=\"countDataType.txt\" -v destinatioDirectory=\"${patternDtResult}\" -v destinationFile=\"countDTOBJ.txt\" ${countDtObj}"
+	mergeCmd1[$numMergeCmd1]="gawk -f $AwkScriptsDirectory/merge_info/mergeCount.awk -v dataForCompDirectory=\"${patternDtResult}\" -v fileForComputation=\"countDataType.txt\" -v destinatioDirectory=\"${patternDtResult}\" -v destinationFile=\"countDTOBJ.txt\" ${countDtObj}"
 	numMergeCmd1=$(($numMergeCmd1+1))	
 
 	#countPropDtSubj
@@ -949,7 +951,7 @@ echo ""
 	done
 	
 	#Salvo il comando
-	mergeCmd1[$numMergeCmd1]="gawk -f software/awk_scripts/merge_info/mergeCountConcProp.awk -v dataForCompDirectory=\"${patternObjResult}\" -v fileForComputation=\"countConcepts.txt\" -v destinatioDirectory=\"${patternDtResult}\" -v destinationFile=\"concPropDTSUBJ.txt\" ${countPropDtSubj}"
+	mergeCmd1[$numMergeCmd1]="gawk -f $AwkScriptsDirectory/merge_info/mergeCountConcProp.awk -v dataForCompDirectory=\"${patternObjResult}\" -v fileForComputation=\"countConcepts.txt\" -v destinatioDirectory=\"${patternDtResult}\" -v destinationFile=\"concPropDTSUBJ.txt\" ${countPropDtSubj}"
 	numMergeCmd1=$(($numMergeCmd1+1))	
 
 	#countPropDtObj
@@ -971,7 +973,7 @@ echo ""
 	done
 	
 	#Salvo il comando
-	mergeCmd1[$numMergeCmd1]="gawk -f software/awk_scripts/merge_info/mergeCountConcProp.awk -v dataForCompDirectory=\"${patternDtResult}\" -v fileForComputation=\"countDataType.txt\" -v destinatioDirectory=\"${patternDtResult}\" -v destinationFile=\"concPropDTOBJ.txt\" ${countPropDtObj}"
+	mergeCmd1[$numMergeCmd1]="gawk -f $AwkScriptsDirectory/merge_info/mergeCountConcProp.awk -v dataForCompDirectory=\"${patternDtResult}\" -v fileForComputation=\"countDataType.txt\" -v destinatioDirectory=\"${patternDtResult}\" -v destinationFile=\"concPropDTOBJ.txt\" ${countPropDtObj}"
 	numMergeCmd1=$(($numMergeCmd1+1))	
 
 	#countDtProp
@@ -993,7 +995,7 @@ echo ""
 	done
 	
 	#Salvo il comando
-	mergeCmd2[$numMergeCmd2]="gawk -f software/awk_scripts/merge_info/mergeCountDtProp.awk -v dataForCompDirectory=\"${patternDtResult}\" -v destinatioDirectory=\"${patternDtResult}\" -v destinationFile=\"countDTProp.txt\" ${countDtProp}"
+	mergeCmd2[$numMergeCmd2]="gawk -f $AwkScriptsDirectory/merge_info/mergeCountDtProp.awk -v dataForCompDirectory=\"${patternDtResult}\" -v destinatioDirectory=\"${patternDtResult}\" -v destinationFile=\"countDTProp.txt\" ${countDtProp}"
 	numMergeCmd2=$(($numMergeCmd2+1))	
 
 	#Pattern
@@ -1015,7 +1017,7 @@ echo ""
 	done
 	
 	#Salvo il comando
-	mergeCmd[$numMergeCmd]="gawk -f software/awk_scripts/merge_info/mergeRelation.awk -v destinatioDirectory=\"${patternDtResult}\" -v destinationFile=\"relationDTCount.txt\" ${countDtPattern}"
+	mergeCmd[$numMergeCmd]="gawk -f $AwkScriptsDirectory/merge_info/mergeRelation.awk -v destinatioDirectory=\"${patternDtResult}\" -v destinationFile=\"relationDTCount.txt\" ${countDtPattern}"
 	numMergeCmd=$(($numMergeCmd+1))
 
 	#Richiamo gli script/comandi che si occupano di unire tutte le informazioni e i conteggi, prestando attenzione a richiamare gli script dipendenti in blocchi paralleli di esecuzione sequenziali

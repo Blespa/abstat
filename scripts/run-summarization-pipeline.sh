@@ -2,8 +2,10 @@
 
 set -e
 relative_path=`dirname $0`
-root=`cd $relative_path;pwd`
+current_directory=`cd $relative_path;pwd`
+root=$current_directory/..
 
-cd "$root/../summarization/Utility/"
-./extract_info.sh
+cd "$root/summarization/Utility/"
+
+./extract_info.sh $root/test-data
 

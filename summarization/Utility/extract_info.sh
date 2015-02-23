@@ -12,13 +12,15 @@ else
 	dbgCmd=""
 fi
 
+DataDirectory=$1
+
 #Variabili per il calcolo del report dell'ontologia
-OntologyFile="Dataset/Downloaded/Ontology/3.7/"
+OntologyFile="$DataDirectory/ontology/"
 ReportDirectory="Reports/"
 TmpDatasetFileResult="Reports/Tmp_Data_For_Computation/"
 
 #Variabili per il calcolo del report del dataset
-DatasetFile="Dataset/Downloaded/LOD/3.7"
+DatasetFile="$DataDirectory/triples"
 tmpDatasetFile="Dataset/Organized_Splitted_Deduplicated_TmpFile"
 orgDatasetFile="Dataset/Organized_Splitted_Deduplicated"
 

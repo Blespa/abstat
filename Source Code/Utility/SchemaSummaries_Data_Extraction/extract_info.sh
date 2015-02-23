@@ -108,15 +108,15 @@ echo ""
 } &>> "log/log.txt"
 
 { 
-#ORGANIZATION, SPLITTING AND DEDUPLICATION OF FILE
-#Organizzo e splitto i file
-echo "---Start: Organize and Split files---"
+	#ORGANIZATION, SPLITTING AND DEDUPLICATION OF FILE
+	#Organizzo e splitto i file
+	echo "---Start: Organize and Split files---"
 
 	startBlock=$SECONDS
 
 	#Divido i file da organizzare in NProc parti uguali l'uno così da parallelizzare l'organizzazione
-	rm -R $tmpDatasetFile #Rimuovo la directory che conterrà i file temporanei
-	mkdir $tmpDatasetFile #Creo la directory che conterrà i file temporanei
+	rm -rf $tmpDatasetFile #Rimuovo la directory che conterrà i file temporanei
+	mkdir -p $tmpDatasetFile #Creo la directory che conterrà i file temporanei
 
 	#Calcolo la dimensione dei file da splittare
 	dataSize1=$(stat --printf="%s" $DatasetFile/instance_types_en.nt) 
@@ -207,6 +207,7 @@ echo "---Start: Organize and Split files---"
 
 
 	rm -f $orgDatasetFile/*.nt  2>/dev/null #Rimuovo i file generati nell'esecuzione precedente
+	mkdir -p $orgDatasetFile
 
 	#TODO: Rendere flessibile la lettura per non essere vincolati a NProc
 
@@ -254,11 +255,9 @@ echo "---Start: Organize and Split files---"
 		echo ""
 	fi
 
-echo "---End: Organize and Split files---"
-
-echo ""
-
-echo "---Start: Deduplication of files---"
+	echo "---End: Organize and Split files---"
+	echo ""
+	echo "---Start: Deduplication of files---"
 	
 	startBlock=$SECONDS
 	
@@ -366,21 +365,21 @@ echo "---Start: Deduplication of files---"
 		echo ""
 	fi
 
-echo "---End: Deduplication of files---"
-
-echo ""
+	echo "---End: Deduplication of files---"
+	echo ""
 
 } &>> "log/log.txt"
 
 { 
 #MINTYPE COMPUTATION
-echo "---Start: MinType---"
+	echo "---Start: MinType---"
 	
 	startBlock=$SECONDS	
 
 	#Rimuovo i file del calcolo precedente
-	rm -rf $minTypeDataForComp/*
-	rm -rf $minTypeResult/*
+	rm -rf $minTypeDataForComp/* $minTypeResult/*
+	mkdir -p $minTypeDataForComp $minTypeResult
+
 	#Sposto i file generati dall'ontologia, utili per il calcolo dei tipi minimi
 	mv ${TmpDatasetFileResult}Concepts.txt $minTypeDataForComp/Concepts.txt
 	mv ${TmpDatasetFileResult}EquConcepts.txt $minTypeDataForComp/EquConcepts.txt
@@ -442,17 +441,15 @@ echo ""
 } &>> "log/log.txt"
 
 { 
-#PATTERNS COMPUTATION
+	#PATTERNS COMPUTATION
 	echo "---Start: Pattern---"
 	
 	startBlock=$SECONDS	
-	#comment1 ()
-	#{
+
 	#Rimuovo i file del calcolo precedente
-	rm -rf $patternDataForComp/*
-	rm -rf $patternObjResult/*
-	rm -rf $patternDtResult/*
-	rm -rf $patternTmpFiles/*
+	rm -rf $patternDataForComp/* $patternObjResult/* $patternDtResult/* $patternTmpFiles/*
+	mkdir -p $patternDataForComp $patternObjResult $patternDtResult $patternTmpFiles
+
 	#Sposto i file generati dall'ontologia, utili per il calcolo dei tipi minimi
 	mv ${TmpDatasetFileResult}DR.txt $patternDataForComp/DR.txt
 	mv ${TmpDatasetFileResult}DTProperties.txt $patternDataForComp/DTProperties.txt

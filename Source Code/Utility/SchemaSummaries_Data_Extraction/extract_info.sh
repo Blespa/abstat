@@ -120,19 +120,11 @@ echo ""
 
 	#Calcolo la dimensione dei file da splittare
 	dataSize1=$(stat --printf="%s" $DatasetFile/instance_types_en.nt) 
-	dataSize2=$(stat --printf="%s" $DatasetFile/mappingbased_properties_en.nt) 
-	dataSize3=$(stat --printf="%s" $DatasetFile/persondata_en.nt) 
-	dataSize4=$(stat --printf="%s" $DatasetFile/specific_mappingbased_properties_en.nt) 
+ 
 	let "dataBlockSize1=($dataSize1/$NProc)+10000000" #Aggiungo 10000000 così da assicurarmi di salvare tutte le informazioni nel passo successivo
-	let "dataBlockSize2=($dataSize2/$NProc)+10000000" #Aggiungo 10000000 così da assicurarmi di salvare tutte le informazioni nel passo successivo
-	let "dataBlockSize3=($dataSize3/$NProc)+10000000" #Aggiungo 10000000 così da assicurarmi di salvare tutte le informazioni nel passo successivo
-	let "dataBlockSize4=($dataSize4/$NProc)+10000000" #Aggiungo 10000000 così da assicurarmi di salvare tutte le informazioni nel passo successivo
 
 	#Processi da eseguire per lo splittaggio
 	splitFile[0]="split -u -C $dataBlockSize1 $DatasetFile/instance_types_en.nt $tmpDatasetFile/1_lod_part_" #-u per scrittura diretta senza bufferizzazione
-	splitFile[1]="split -u -C $dataBlockSize2 $DatasetFile/mappingbased_properties_en.nt $tmpDatasetFile/2_lod_part_" #-u per scrittura diretta senza bufferizzazione
-	splitFile[2]="split -u -C $dataBlockSize3 $DatasetFile/persondata_en.nt $tmpDatasetFile/3_lod_part_" #-u per scrittura diretta senza bufferizzazione
-	splitFile[3]="split -u -C $dataBlockSize4 $DatasetFile/specific_mappingbased_properties_en.nt $tmpDatasetFile/4_lod_part_" #-u per scrittura diretta senza bufferizzazione
 
 	#Splitto il file utilizzando dataBlockSize
 	#Avvio l'esecuzione parallela dei processi

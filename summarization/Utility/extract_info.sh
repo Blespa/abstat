@@ -21,8 +21,8 @@ TmpDatasetFileResult="Reports/Tmp_Data_For_Computation/"
 
 #Variabili per il calcolo del report del dataset
 DatasetFile="$DataDirectory/triples"
-tmpDatasetFile="Dataset/Organized_Splitted_Deduplicated_TmpFile"
-orgDatasetFile="Dataset/Organized_Splitted_Deduplicated"
+tmpDatasetFile="$DataDirectory/Organized_Splitted_Deduplicated_TmpFile"
+orgDatasetFile="$DataDirectory/Organized_Splitted_Deduplicated"
 
 #MinType
 minTypeDataForComp="MinTypes/Data_For_Computation"

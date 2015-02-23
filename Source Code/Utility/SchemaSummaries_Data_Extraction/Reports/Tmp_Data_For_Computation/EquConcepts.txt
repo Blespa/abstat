@@ -1,1 +1,0 @@
-http://purl.org/ontology/af/ChordSegment##http://purl.org/ontology/chord/ChordEvent

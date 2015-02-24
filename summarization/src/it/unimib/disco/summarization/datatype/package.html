@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<body>
+  Provides classes that represent datatype used in order to manage classes and properties from Ontology and relative infos
+  <p>
+  Concept - Counter
+  <table border="1" bordercolor="#000">
+		<thead>
+			<tr>
+				<td style="width: 169px; ">Relazione Conteggiata</td>
+				<td>Significato</td>
+			</tr>
+			<tr>
+				<td>Direct</td><td>Individuata direttamente interrogando il modello utilizzando le JENA API</td></tr>
+				<tr>
+				<td>Equivalent Class</td>
+				<td>Numero delle equivalent Class della classe</td>
+			<tr>
+				<td>SubClassOf (# Of Subclasses)</td><td>Quante volte il concetto appare come sopraclasse in una relazione SubClassOf. Si conteggia il totale delle sottoclassi dirette del concetto.</td></tr><tr><td>SubClassOf (# Of Superclasses)</td><td>Quante volte il concetto appare come sottoclasse in una relazione SubClassOf. Si conteggia il totale delle sopraclassi dirette del concetto.</td></tr><tr>
+				<td>SomeValueFrom - Subj</td>
+				<td>Quante volte il concetto compare come soggetto di una relazione SomeValueFrom</td>
+			</tr>
+			<tr>
+			<td>SomeValueFrom - Subj (Literal)</td>
+				<td>Quante volte il concetto compare come soggetto di una relazione SomeValueFrom verso Literal</td>
+			</tr>
+			<tr>
+				<td>SomeValueFrom - Obj</td>
+				<td>Quante volte il concetto compare come oggetto di una relazione SomeValueFrom</td>
+			</tr>
+			<tr>
+				<td>AllValueFrom - Subj</td>
+				<td>Quante volte il concetto compare come soggetto di una relazione AllValueFrom</td>
+			</tr>
+			<tr>
+				<td>AllValueFrom - Subj (Literal)</td>
+				<td>Quante volte il concetto compare come soggetto di una relazione AllValueFrom verso Literal</td>
+			</tr>
+			<tr>
+				<td>AllValueFrom - Obj</td>
+				<td>Quante volte il concetto compare come oggetto di una relazione AllValueFrom</td>
+			</tr>
+			<tr>
+				<td>MinCardinality - Subj</td>
+				<td>Quante volte il concetto compare come soggetto di una relazione MinCardinality</td>
+			</tr>
+			<tr>
+				<td>MinCardinality - Subj (Literal)</td>
+				<td>Quante volte il concetto compare come soggetto di una relazione MinCardinality verso Literal</td>
+			</tr>
+			<tr>
+				<td>MinCardinality - Obj</td>
+				<td>Quante volte il concetto compare come oggetto di una relazione MinCardinality</td>
+			</tr>
+			<tr>
+				<td>Domain</td>
+				<td>Quante volte il concetto compare come Dominio di una relazione</td>
+			</tr>
+			<tr>
+				<td>Range</td>
+				<td>Quante volte il concetto compare come Range di una relazione</td>
+			</tr>
+			<tr>
+				<td>Domain - Sub</td>
+				<td>Quante volte il concetto compare come Dominio di una relazione, propagando l'informazione alle sottoproprietà</td>
+			</tr>
+			<tr>
+				<td>Range - Sub</td>
+				<td>Quante volte il concetto compare come Range di una relazione, propagando l'informazione alle sottoproprietà</td>
+			</tr>
+			<tr>
+				<td>Domain - Inv</td>
+				<td>Quante volte il concetto compare come Dominio di una relazione, propagando l'informazione alle proprietà inverse</td>
+			</tr>
+			<tr>
+				<td>Range - Inv</td>
+				<td>Quante volte il concetto compare come Range di una relazione, propagando l'informazione alle proprietà inverse</td>
+			</tr>
+		</thead>
+		<tbody>
+	</table>
+	<br>
+	Il totale esclude il conteggio di SubClassOf (# Of Superclasses) perchè già parte di quello di SubClassOf (# Of Subclasses),
+  
+    MinCardinality (Literal) - D, AllValueFrom (Literal) - D, SomeValueFrom (Literal) - D,  e Equivalent Class.<p>
+  Property - Counter
+  
+	
+	
+	<table border="1" bordercolor="#000">
+		<thead>
+			<tr>
+				<td>Relazione Conteggiata</td>
+				<td>Significato</td>
+			</tr>
+			<tr>
+				<td>Direct</td>
+				<td>Individuata direttamente interrogando il modello
+					utilizzando le JENA API</td>
+			</tr>
+			<tr>
+				<td>SubProperty</td>
+				<td>Numero di sottoproprietà della proprietà</td>
+			</tr>
+
+			<tr>
+				<td>InvProperty</td>
+				<td>Numero di proprietà inverse della proprietà</td>
+			</tr>
+		</thead>
+		<tbody>
+	</table>
+	</p>
+</body>
+</html>

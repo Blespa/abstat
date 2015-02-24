@@ -11,13 +11,12 @@ current_directory=$(as_absolute $relative_path)
 echo "building the java summarization module"
 
 cd "$current_directory"
-./build.sh
+./build-java-summarization-module.sh
 
 echo "done"
 
 echo "running the summarization pipeline"
 
-cd "$current_directory/../summarization"
 root=$(as_absolute $current_directory/../)
 data=$root/test-data
 results=$root/summarization-results
@@ -25,7 +24,7 @@ results=$root/summarization-results
 echo "with data from $data"
 echo "saving results in $results"
 
-./extract_info.sh $data $results
+./run-summarization.sh $data $results
 
 echo "done"
 

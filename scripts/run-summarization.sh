@@ -1,7 +1,11 @@
 #!/bin/bash
 
-#Setto le variabili
+relative_path=`dirname $0`
+root=`cd $relative_path;pwd`
 
+cd $root/../summarization
+
+#Setto le variabili
 JAVA_HOME="/usr" #Server: /usr/lib/jvm/java-6-sun
 debug=1 #0: Disabled, 1:Enabled
 #Setto opportunamente il comando di debug
@@ -78,11 +82,6 @@ function checkqueue {
 		fi
 	done
 }
-
-#Rimuovo tutti i report
-rm -f "Reports/ontology.xls"
-rm -f "Reports/dt_dataset.xls"
-rm -f "Reports/obj_dataset.xls"
 
 rm -rf ${TmpDatasetFileResult}* #Rimuovo tutti i file Tmp_Data_For_Computation
 mkdir -p $TmpDatasetFileResult

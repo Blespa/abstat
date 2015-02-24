@@ -17,9 +17,8 @@ echo "done"
 
 echo "running the summarization pipeline"
 
-root=$(as_absolute $current_directory/../)
-data=$root/test-data
-results=$root/summarization-results
+data=$1
+results=$2
 
 echo "with data from $data"
 echo "saving results in $results"

@@ -1,11 +1,15 @@
 #!/bin/bash
 
+function as_absolute(){
+	echo `cd $1; pwd`
+}
+
 set -e
 relative_path=`dirname $0`
-current_directory=`cd $relative_path;pwd`
-root=$current_directory/..
+current_directory=$(as_absolute $relative_path)
 
-cd "$root/summarization/"
+cd "$current_directory/../summarization"
 
-./extract_info.sh $root/test-data $root/summarization-results
+root=$(as_absolute $current_directory/../)
+./extract_info.sh $root/test-data/ $root/summarization-results/
 

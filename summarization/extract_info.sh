@@ -101,7 +101,7 @@ echo "---Start: Ontology Report---"
 	export ReportDirectory
 	export TmpDatasetFileResult
 
-	eval ${dbgCmd}""$JAVA_HOME/bin/java -jar $JavaBinDirectory/ontology_summarization.jar "$OntologyFile" "$ReportDirectory" "$TmpDatasetFileResult"
+	eval ${dbgCmd}""$JAVA_HOME/bin/java -cp $JavaBinDirectory/ontology_summarization.jar it.unimib.disco.summarization.starter.Starter "$OntologyFile" "$ReportDirectory" "$TmpDatasetFileResult"
 	#Verifico eventuali errori nell'esecuzione in modo da verificare la possibilità di procedere
 	if [ $? -ne 0 ]
 	then

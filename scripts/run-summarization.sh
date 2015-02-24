@@ -20,6 +20,7 @@ DataDirectory=$1
 ResultsDirectory=$2
 AwkScriptsDirectory=awk-scripts
 JavaBinDirectory=bin
+TripleFile=dataset.nt
 
 rm -rf $ResultsDirectory
 mkdir -p $ResultsDirectory
@@ -126,12 +127,12 @@ echo ""
 	mkdir -p $tmpDatasetFile #Creo la directory che conterrà i file temporanei
 
 	#Calcolo la dimensione dei file da splittare
-	dataSize1=$(stat --printf="%s" $DatasetFile/instance_types_en.nt) 
+	dataSize1=$(stat --printf="%s" $DatasetFile/$TripleFile) 
  
 	let "dataBlockSize1=($dataSize1/$NProc)+10000000" #Aggiungo 10000000 così da assicurarmi di salvare tutte le informazioni nel passo successivo
 
 	#Processi da eseguire per lo splittaggio
-	splitFile[0]="split -u -C $dataBlockSize1 $DatasetFile/instance_types_en.nt $tmpDatasetFile/1_lod_part_" #-u per scrittura diretta senza bufferizzazione
+	splitFile[0]="split -u -C $dataBlockSize1 $DatasetFile/$TripleFile $tmpDatasetFile/1_lod_part_" #-u per scrittura diretta senza bufferizzazione
 
 	#Splitto il file utilizzando dataBlockSize
 	#Avvio l'esecuzione parallela dei processi

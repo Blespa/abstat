@@ -49,6 +49,7 @@ To configure a production machine do the following steps. First login into the m
 #!bash
 $ cd
 $ git clone https://bitbucket.org/rporrini/schema-summaries.git
+$ cd schema-summaries
 $ git remote set-url origin git@bitbucket.org:rporrini/schema-summaries.git
 $ chmod 700 scripts/deploy_rsa
 ```

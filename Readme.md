@@ -26,12 +26,12 @@ Total Time: 62 secs
 
 Building the java summarization module:
 ```
-scripts/build-java-summarization-module.sh
+$ scripts/build-java-summarization-module.sh
 ```
 
 Running the summarization module:
 ```
-scripts/build-java-summarization-module.sh
+$ scripts/build-java-summarization-module.sh
 ```
 
 Running the whole summarization pipeline:

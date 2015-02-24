@@ -5,6 +5,12 @@ set -e
 target_directory=$1
 dbpedia_downloads="http://downloads.dbpedia.org/3.9"
 
+if [[ $target_directory == '' ]]
+then
+	echo "No directory passed as argument. Please specify the directory were the data have to be saved."
+	exit 1
+fi
+
 rm -rf $target_directory
 mkdir -p $target_directory
 

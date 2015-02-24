@@ -4,7 +4,7 @@ set -e
 relative_path=`dirname $0`
 root=`cd $relative_path;pwd`
 project=$root/../summarization
-build_directory=$project/build
+build_directory=$project/bin
 classes_directory=$build_directory/classes
 
 cd $project

@@ -15,7 +15,7 @@ fi
 DataDirectory=$1
 ResultsDirectory=$2
 AwkScriptsDirectory=awk-scripts
-JavaBinDirectory=build
+JavaBinDirectory=bin
 
 rm -rf $ResultsDirectory
 mkdir -p $ResultsDirectory

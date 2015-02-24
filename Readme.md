@@ -40,3 +40,22 @@ $ scripts/run-summarization-pipeline.sh DATA RESULTS
 ```
 
 Where both DATA and RESULTS are directories. The scripts expects to find an ontology in ```DATA/ontology``` and a ntriple file in ```DATA/triples/dataset.nt```
+
+## Production machine Configuration and Deployment
+
+To configure a production machine do the following steps. First login into the machine, install all the dependencies listed above and then:
+
+```
+#!bash
+$ cd
+$ git clone https://bitbucket.org/rporrini/schema-summaries.git
+$ git remote set-url origin git@bitbucket.org:rporrini/schema-summaries.git
+$ chmod 700 scripts/deploy_rsa
+```
+
+To deploy the latest version of the code, from your development machine:
+
+```
+$ scripts/deploy.sh USER@HOST
+```
+

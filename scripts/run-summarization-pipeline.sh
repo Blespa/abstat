@@ -8,8 +8,24 @@ set -e
 relative_path=`dirname $0`
 current_directory=$(as_absolute $relative_path)
 
-cd "$current_directory/../summarization"
+echo "building the java summarization module"
 
+cd "$current_directory"
+./build.sh
+
+echo "done"
+
+echo "running the summarization pipeline"
+
+cd "$current_directory/../summarization"
 root=$(as_absolute $current_directory/../)
-./extract_info.sh $root/test-data/ $root/summarization-results/
+data=$root/test-data
+results=$root/summarization-results
+
+echo "with data from $data"
+echo "saving results in $results"
+
+./extract_info.sh $data $results
+
+echo "done"
 

@@ -2,4 +2,4 @@
 
 set -e
 
-ssh -i ~/schema-summaries/scripts/deploy_rsa "@"
+ssh -i ~/schema-summaries/scripts/deploy_rsa $1 $2

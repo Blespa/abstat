@@ -3,8 +3,10 @@
 ## System Requirements
 
 * linux (tested on Linux Mint 17 Qiana)
-* git
 * java
+* git
+* wget
+* bzip2
 
 ## Checking out the repository and configuring your local machine
 ```

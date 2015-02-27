@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head></head>
+<body>
+  Extract information from Ontology and Data (Relation and Info [Label and Comment])
+  <p>
+  Concept "Explanation - Extraction Rule"
+  
+	
+	
+	<table border="1" bordercolor="#000">
+		<thead>
+			<tr>
+				<td style="width: 147px; ">Explanation - Extraction Rule</td>
+				<td>Significato</td>
+			</tr>
+			<tr>
+				<td>Direct</td>
+				<td>Ottenuta direttamente dal modello, utilizzando le Jena API,
+					in particolare il metodo listClasses()</td>
+			</tr>
+				<td>C - SubClassOf </td>
+				<td>La classe viene aggiunta all'elenco delle Classi valutando
+					le sopraclassi di C</td>
+			</tr>
+			<tr>
+				<td>SomeValueFrom - D</td>
+				<td>La classe viene aggiunta all'elenco delle Classi
+					individuando la relazione SomeValueFrom tra la classe aggiunta e D.
+					La classe è quindi il soggetto della relazione.</td>
+			</tr>
+			<tr>
+				<td>SomeValueFrom - D (Literal)</td>
+				<td>La classe viene aggiunta all'elenco delle Classi
+					individuando la relazione SomeValueFrom verso Literal tra la classe aggiunta e D (Literal).
+					La classe è quindi il soggetto della relazione.</td>
+			</tr>
+			<tr>
+				<td>C - SomeValueFrom</td>
+				<td>La classe viene aggiunta all'elenco delle Classi
+					individuando la relazione SomeValueFrom tra la classe aggiunta e C.
+					La classe è quindi l'oggetto della relazione.</td>
+			</tr>
+			<tr>
+				<td>AllValueFrom - D</td>
+				<td>La classe viene aggiunta all'elenco delle Classi
+					individuando la relazione AllValueFrom tra la classe aggiunta e D.
+					La classe è quindi il soggetto della relazione.</td>
+			</tr>
+			<tr>
+				<td>AllValueFrom - D (Literal)</td>
+				<td>La classe viene aggiunta all'elenco delle Classi
+					individuando la relazione AllValueFrom verso Literal tra la classe aggiunta e D (Literal).
+					La classe è quindi il soggetto della relazione.</td>
+			</tr>
+			<tr>
+				<td>C - AllValueFrom</td>
+				<td>La classe viene aggiunta all'elenco delle Classi
+					individuando la relazione AllValueFrom tra la classe aggiunta e C.
+					La classe è quindi l'oggetto della relazione.</td>
+			</tr>
+			<tr>
+				<td>MinCardinality - D</td>
+				<td>La classe viene aggiunta all'elenco delle Classi
+					individuando la relazione MinCardinality tra la classe aggiunta e D.
+					La classe è quindi il soggetto della relazione.</td>
+			</tr>
+			<tr>
+				<td>MinCardinality (Literal) - D</td>
+				<td>La classe viene aggiunta all'elenco delle Classi
+					individuando la relazione MinCardinality verso Literal tra la classe aggiunta e D (Literal).
+					La classe è quindi il soggetto della relazione.</td>
+			</tr>
+			<tr>
+				<td>C - MinCardinality</td>
+				<td>La classe viene aggiunta all'elenco delle Classi
+					individuando la relazione MinCardinality tra la classe aggiunta e C.
+					La classe è quindi l'oggetto della relazione.</td>
+			</tr>
+			<tr>
+				<td>Domain - P (Tipo Proprietà)</td>
+				<td>La classe viene aggiunta all'elenco delle Classi
+					valutando il dominio della proprietà P</td>
+			</tr>
+			<tr>
+				<td>Range - P (Tipo Proprietà)</td>
+				<td>La classe viene aggiunta all'elenco delle Classi
+					valutando il range della proprietà P</td>
+			</tr>
+		</thead>
+		<tbody>
+	</table>
+	</p>
+</body>
+</html>

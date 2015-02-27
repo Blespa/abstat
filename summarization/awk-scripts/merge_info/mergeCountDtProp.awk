@@ -51,7 +51,7 @@ END {
 	
 	system("touch "destDir"/"destFile); #Creo il file così da averlo, anche se vuoto
 
-	print "Property##How many times is used##Number of Subject Resources##Number of Object Resources##Number of minimum type class that are subject of the property##Num$
+	print "Property##How many times is used##Number of Subject Resources##Number of Object Resources##Number of minimum type class that are subject of the property##Num"
 
 	for (prop in CountResProp)
 	{

@@ -15,14 +15,7 @@ $ git clone https://bitbucket.org/rporrini/schema-summaries.git
 $ cd schema-summaries
 $ scripts/test-summarization-pipeline.sh
 ```
-
-Now open the file located in ```summarization/log/log.txt```. If everything went fine the last lines should be something like
-
-```
-End: Merge Data
-
-Total Time: 62 secs
-```
+If everything goes as expected the script will print "TEST PASSED".
 
 ## Useful scripts
 

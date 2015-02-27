@@ -3,7 +3,8 @@
 set -e
 
 target_directory=$1
-dbpedia_downloads="http://downloads.dbpedia.org/3.9"
+version=$2
+dbpedia_downloads="http://downloads.dbpedia.org/${version}"
 
 if [[ $target_directory == '' ]]
 then
@@ -16,8 +17,8 @@ mkdir -p $target_directory
 
 ontology_directory=$target_directory/ontology
 mkdir $ontology_directory
-wget "$dbpedia_downloads/dbpedia_3.9.owl.bz2" -P $ontology_directory
-bunzip2 $ontology_directory/dbpedia_3.9.owl.bz2
+wget "$dbpedia_downloads/dbpedia_$version.owl.bz2" -P $ontology_directory
+bunzip2 "$ontology_directory/dbpedia_$version.owl.bz2"
 
 triples_directory=$target_directory/triples
 wget "$dbpedia_downloads/en/instance_types_en.nt.bz2" -P $triples_directory

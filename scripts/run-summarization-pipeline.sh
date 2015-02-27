@@ -17,8 +17,8 @@ echo "done"
 
 echo "running the summarization pipeline"
 
-data=$1
-results=$2
+data=$(as_absolute $1)
+results=$(as_absolute $2)
 
 echo "with data from $data"
 echo "saving results in $results"

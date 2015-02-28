@@ -55,7 +55,6 @@ cd $current_directory
 echo
 assert_no_errors_on ../summarization/log/log.txt
 assert_results_are_compliant $expected_results $results
-echo
 
 
 

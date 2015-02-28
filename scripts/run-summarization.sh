@@ -34,7 +34,7 @@ orgDatasetFile="$DataDirectory/organized-splitted-deduplicated"
 
 #MinType
 minTypeDataForComp="$ResultsDirectory/min-types/data-for-computation"
-minTypeResult="$ResultsDirectory/min-types/min-types-results"
+minTypeResult="$ResultsDirectory/min-types/min-type-results"
 
 #Pattern
 patternDataForComp="$ResultsDirectory/patterns/data-for-computation"

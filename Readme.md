@@ -15,26 +15,21 @@ $ git clone https://bitbucket.org/rporrini/schema-summaries.git
 $ cd schema-summaries
 $ scripts/test-summarization-pipeline.sh
 ```
-If everything goes as expected the script will print "TEST PASSED".
+If everything goes as expected the script will print "OK".
 
 ## Useful scripts
-
-Building the java summarization module:
-```
-$ scripts/build-java-summarization-module.sh
-```
-
-Running the summarization module:
-```
-$ scripts/build-java-summarization-module.sh
-```
 
 Running the whole summarization pipeline:
 ```
 $ scripts/run-summarization-pipeline.sh DATA RESULTS
 ```
-
 Where both DATA and RESULTS are directories. The scripts expects to find an ontology in ```DATA/ontology``` and a ntriple file in ```DATA/triples/dataset.nt```
+
+Preparing the dbpedia dataset
+```
+$ scripts/prepare-dbpedia-dataset.sh TARGET-DIRECTORY VERSION
+```
+Where VERSION is the dbpedia version that you want to download (e.g., 3.9 or 2014)
 
 ## Production machine Configuration and Deployment
 

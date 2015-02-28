@@ -4,6 +4,7 @@ set -e
 
 target_directory=$1
 version=$2
+include_raw=$3
 dbpedia_downloads="http://downloads.dbpedia.org/${version}"
 
 if [[ $target_directory == '' ]]
@@ -29,6 +30,11 @@ wget "$dbpedia_downloads/en/persondata_en.nt.bz2" -P $triples_directory
 bunzip2 $triples_directory/persondata_en.nt.bz2
 wget "$dbpedia_downloads/en/specific_mappingbased_properties_en.nt.bz2" -P $triples_directory
 bunzip2 $triples_directory/specific_mappingbased_properties_en.nt.bz2
+if [[ $include_raw != --raw-properties ]]
+then
+	wget "$dbpedia_downloads/en/raw_infobox_properties_en.nt.bz2"
+	bunzip2 $triples_directory/raw_infobox_properties_en.nt.bz2
+fi
 
 cat $triples_directory/*.nt | grep -v "# started" > $triples_directory/dataset
 rm $triples_directory/*.nt

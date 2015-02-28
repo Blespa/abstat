@@ -1,3 +1,11 @@
+http://dbpedia.org/ontology/Town##1
+http://dbpedia.org/ontology/Village##1
+http://dbpedia.org/ontology/Artwork##1
+http://dbpedia.org/ontology/Organisation##1
+http://dbpedia.org/ontology/PopulatedPlace##2
+http://dbpedia.org/ontology/Airport##1
+http://dbpedia.org/ontology/Place##3
+http://dbpedia.org/ontology/Work##1
 http://dbpedia.org/ontology/Museum##0
 http://dbpedia.org/ontology/Artist##0
 http://dbpedia.org/ontology/OldTerritory##0
@@ -326,7 +334,6 @@ http://dbpedia.org/ontology/RadioProgram##0
 http://dbpedia.org/ontology/Unknown##0
 http://dbpedia.org/ontology/Swarm##0
 http://dbpedia.org/ontology/MultiVolumePublication##0
-http://dbpedia.org/ontology/PopulatedPlace##0
 http://dbpedia.org/ontology/Parliament##0
 http://dbpedia.org/ontology/Sales##0
 http://dbpedia.org/ontology/GreenAlga##0
@@ -485,7 +492,6 @@ http://dbpedia.org/ontology/SupremeCourtOfTheUnitedStatesCase##0
 http://dbpedia.org/ontology/Fencer##0
 http://dbpedia.org/ontology/School##0
 http://dbpedia.org/ontology/SoapCharacter##0
-http://dbpedia.org/ontology/Work##0
 http://dbpedia.org/ontology/Legislature##0
 http://dbpedia.org/datatype/valvetrain##0
 http://dbpedia.org/ontology/Municipality##0
@@ -589,7 +595,6 @@ http://dbpedia.org/ontology/Gate##0
 http://dbpedia.org/ontology/Bridge##0
 http://dbpedia.org/datatype/millimetre##0
 http://dbpedia.org/ontology/Decoration##0
-http://dbpedia.org/ontology/Place##0
 http://dbpedia.org/ontology/SportCompetitionResult##0
 http://dbpedia.org/ontology/SpeedwayLeague##0
 http://dbpedia.org/ontology/TelevisionSeason##0
@@ -612,11 +617,9 @@ http://dbpedia.org/ontology/NorwaySettlement##0
 http://dbpedia.org/ontology/HistoricBuilding##0
 http://dbpedia.org/ontology/BusinessPerson##0
 http://dbpedia.org/ontology/Surname##0
-http://dbpedia.org/ontology/Town##0
 http://dbpedia.org/ontology/Imdb##0
 http://dbpedia.org/ontology/Lock##0
 http://dbpedia.org/ontology/MountainRange##0
-http://dbpedia.org/ontology/Organisation##0
 http://dbpedia.org/ontology/Amphibian##0
 http://dbpedia.org/ontology/RomaniaSettlement##0
 http://dbpedia.org/ontology/Community##0
@@ -751,16 +754,13 @@ http://dbpedia.org/ontology/HistoricalProvince##0
 http://dbpedia.org/ontology/Area##0
 http://dbpedia.org/ontology/Single##0
 http://dbpedia.org/ontology/MeanOfTransportation##0
-http://dbpedia.org/ontology/Artwork##0
 http://dbpedia.org/ontology/Deanery##0
-http://dbpedia.org/ontology/Airport##0
 http://dbpedia.org/ontology/CultivatedVariety##0
 http://dbpedia.org/ontology/Sound##0
 http://dbpedia.org/ontology/SoccerLeagueSeason##0
 http://dbpedia.org/ontology/SkiResort##0
 http://dbpedia.org/ontology/AmericanFootballLeague##0
 http://dbpedia.org/ontology/NobleFamily##0
-http://dbpedia.org/ontology/Village##0
 http://dbpedia.org/ontology/TimePeriod##0
 http://dbpedia.org/ontology/Intercommunality##0
 http://dbpedia.org/ontology/WomensTennisAssociationTournament##0

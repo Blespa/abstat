@@ -1,3 +1,19 @@
+http://dbpedia.org/ontology/Building##1
+http://dbpedia.org/ontology/College##1
+http://schema.org/Organization##1
+http://dbpedia.org/ontology/SportsTeamMember##1
+http://dbpedia.org/ontology/Village##1
+http://dbpedia.org/ontology/University##1
+http://dbpedia.org/ontology/Agent##2
+http://dbpedia.org/ontology/VoiceActor##1
+http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Situation##1
+http://dbpedia.org/ontology/CareerStation##3
+http://dbpedia.org/ontology/SoccerPlayer##2
+http://dbpedia.org/ontology/Place##1
+http://www.opengis.net/gml/_Feature##1
+http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson##1
+http://dbpedia.org/ontology/Work##1
+http://dbpedia.org/ontology/Person##12
 http://dbpedia.org/ontology/Museum##0
 http://dbpedia.org/ontology/Artist##0
 http://dbpedia.org/ontology/OldTerritory##0
@@ -19,7 +35,6 @@ http://dbpedia.org/ontology/GeopoliticalOrganisation##0
 http://dbpedia.org/ontology/Nerve##0
 http://dbpedia.org/ontology/CollectionOfValuables##0
 http://dbpedia.org/ontology/SolarEclipse##0
-http://dbpedia.org/ontology/Person##0
 http://dbpedia.org/ontology/TennisTournament##0
 http://dbpedia.org/ontology/WaterRide##0
 http://www.ontologydesignpatterns.org/ont/d0.owl#Location##0
@@ -52,7 +67,6 @@ http://dbpedia.org/ontology/Event##0
 http://www.w3.org/1999/02/22-rdf-syntax-ns#langString##0
 http://dbpedia.org/ontology/Shrine##0
 http://dbpedia.org/ontology/HumanDevelopmentIndex##0
-http://dbpedia.org/ontology/Building##0
 http://dbpedia.org/ontology/Comic##0
 http://dbpedia.org/ontology/SystemOfLaw##0
 http://dbpedia.org/ontology/Media##0
@@ -125,7 +139,6 @@ http://dbpedia.org/ontology/ChemicalSubstance##0
 http://dbpedia.org/ontology/Architect##0
 http://dbpedia.org/ontology/VicePrimeMinister##0
 http://dbpedia.org/ontology/Star##0
-http://dbpedia.org/ontology/SportsTeamMember##0
 http://dbpedia.org/ontology/Software##0
 http://dbpedia.org/ontology/Treadmill##0
 http://dbpedia.org/ontology/openswarm##0
@@ -159,7 +172,6 @@ http://dbpedia.org/ontology/GolfPlayer##0
 http://dbpedia.org/ontology/SpaceShuttle##0
 http://dbpedia.org/ontology/SoftballLeague##0
 http://dbpedia.org/ontology/Band##0
-http://schema.org/Organization##0
 http://dbpedia.org/ontology/SpaceStation##0
 http://dbpedia.org/ontology/Insect##0
 http://dbpedia.org/ontology/Crustacean##0
@@ -214,7 +226,6 @@ http://dbpedia.org/ontology/Reference##0
 http://dbpedia.org/ontology/BoxingLeague##0
 http://dbpedia.org/ontology/RugbyClub##0
 http://dbpedia.org/ontology/Population##0
-http://dbpedia.org/ontology/SoccerPlayer##0
 http://dbpedia.org/ontology/PaintballLeague##0
 http://dbpedia.org/ontology/List##0
 http://dbpedia.org/ontology/RailwayTunnel##0
@@ -285,7 +296,6 @@ http://www.w3.org/2001/XMLSchema#date##0
 http://dbpedia.org/ontology/AmericanFootballCoach##0
 http://dbpedia.org/ontology/Mountain##0
 http://dbpedia.org/datatype/gramPerKilometre##0
-http://dbpedia.org/ontology/Agent##0
 http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Event##0
 http://dbpedia.org/ontology/RollerCoaster##0
 http://dbpedia.org/ontology/Enzyme##0
@@ -368,7 +378,6 @@ http://dbpedia.org/ontology/Church##0
 http://dbpedia.org/ontology/Instrumentalist##0
 http://dbpedia.org/ontology/PoloLeague##0
 http://dbpedia.org/ontology/ComedyGroup##0
-http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson##0
 http://dbpedia.org/ontology/LunarCrater##0
 http://dbpedia.org/ontology/ProtohistoricalPeriod##0
 http://dbpedia.org/ontology/Murderer##0
@@ -437,7 +446,6 @@ http://dbpedia.org/ontology/MotorcycleRacingLeague##0
 http://dbpedia.org/ontology/Colour##0
 http://dbpedia.org/ontology/PlayboyPlaymate##0
 http://dbpedia.org/ontology/Curler##0
-http://dbpedia.org/ontology/CareerStation##0
 http://www.w3.org/2001/XMLSchema#boolean##0
 http://dbpedia.org/ontology/AutomobileEngine##0
 http://dbpedia.org/ontology/Play##0
@@ -485,7 +493,6 @@ http://dbpedia.org/ontology/SupremeCourtOfTheUnitedStatesCase##0
 http://dbpedia.org/ontology/Fencer##0
 http://dbpedia.org/ontology/School##0
 http://dbpedia.org/ontology/SoapCharacter##0
-http://dbpedia.org/ontology/Work##0
 http://dbpedia.org/ontology/Legislature##0
 http://dbpedia.org/datatype/valvetrain##0
 http://dbpedia.org/ontology/Municipality##0
@@ -508,7 +515,6 @@ http://www.w3.org/2001/XMLSchema#nonNegativeInteger##0
 http://dbpedia.org/ontology/GrossDomesticProduct##0
 http://dbpedia.org/ontology/MovieGenre##0
 http://dbpedia.org/ontology/FormulaOneTeam##0
-http://dbpedia.org/ontology/University##0
 http://dbpedia.org/ontology/SnookerPlayer##0
 http://dbpedia.org/ontology/Fern##0
 http://dbpedia.org/ontology/MotocycleRacer##0
@@ -528,7 +534,6 @@ http://dbpedia.org/ontology/CurlingLeague##0
 http://dbpedia.org/ontology/Hospital##0
 http://dbpedia.org/ontology/Memorial##0
 http://dbpedia.org/ontology/Athlete##0
-http://dbpedia.org/ontology/College##0
 http://dbpedia.org/ontology/EthnicGroup##0
 http://dbpedia.org/ontology/MetroStation##0
 http://dbpedia.org/ontology/Host##0
@@ -589,7 +594,6 @@ http://dbpedia.org/ontology/Gate##0
 http://dbpedia.org/ontology/Bridge##0
 http://dbpedia.org/datatype/millimetre##0
 http://dbpedia.org/ontology/Decoration##0
-http://dbpedia.org/ontology/Place##0
 http://dbpedia.org/ontology/SportCompetitionResult##0
 http://dbpedia.org/ontology/SpeedwayLeague##0
 http://dbpedia.org/ontology/TelevisionSeason##0
@@ -623,7 +627,6 @@ http://dbpedia.org/ontology/Community##0
 http://dbpedia.org/ontology/FieldHockeyLeague##0
 http://dbpedia.org/ontology/SerialKiller##0
 http://dbpedia.org/ontology/MovingImage##0
-http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Situation##0
 http://dbpedia.org/ontology/Cheese##0
 http://dbpedia.org/ontology/VolleyballPlayer##0
 http://dbpedia.org/ontology/Department##0
@@ -695,7 +698,6 @@ http://dbpedia.org/ontology/Bird##0
 http://dbpedia.org/ontology/SoccerClubSeason##0
 http://dbpedia.org/ontology/Stream##0
 http://dbpedia.org/ontology/Priest##0
-http://dbpedia.org/ontology/VoiceActor##0
 http://dbpedia.org/datatype/litre##0
 http://dbpedia.org/ontology/RadioStation##0
 http://dbpedia.org/ontology/Street##0
@@ -760,7 +762,6 @@ http://dbpedia.org/ontology/SoccerLeagueSeason##0
 http://dbpedia.org/ontology/SkiResort##0
 http://dbpedia.org/ontology/AmericanFootballLeague##0
 http://dbpedia.org/ontology/NobleFamily##0
-http://dbpedia.org/ontology/Village##0
 http://dbpedia.org/ontology/TimePeriod##0
 http://dbpedia.org/ontology/Intercommunality##0
 http://dbpedia.org/ontology/WomensTennisAssociationTournament##0

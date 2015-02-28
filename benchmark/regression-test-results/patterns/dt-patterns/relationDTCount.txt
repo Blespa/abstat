@@ -1,5 +1,82 @@
 URI Subject##URI Property##URI Object##Number of instances##..
-Total##0
-Unresolved Subject##0
-Unresolved Object##0
-Unresolved Total##0
+http://dbpedia.org/ontology/School##http://dbpedia.org/ontology/lowerAge##http://www.w3.org/2001/XMLSchema#nonNegativeInteger##1##0##0##1##0##1##0##0##0
+http://www.w3.org/2002/07/owl#Thing##http://dbpedia.org/ontology/number##http://www.w3.org/2001/XMLSchema#integer##1##0##1##0##0##1##0##0##0
+http://www.w3.org/2002/07/owl#Thing##http://purl.org/dc/elements/1.1/description##Ukn_Type##31##0##31##0##0##0##31##0##0
+http://dbpedia.org/ontology/Book##http://dbpedia.org/ontology/isbn##http://www.w3.org/2001/XMLSchema#string##2##0##0##2##0##0##0##2##0
+http://dbpedia.org/ontology/Person##http://dbpedia.org/ontology/Person/height##http://dbpedia.org/datatype/centimetre##1##0##0##1##0##1##0##0##0
+http://www.w3.org/2002/07/owl#Thing##http://dbpedia.org/ontology/office##Ukn_Type##3##0##3##0##0##0##3##0##0
+http://dbpedia.org/ontology/Person##http://purl.org/dc/elements/1.1/description##Ukn_Type##1##1##0##0##0##0##1##0##0
+http://dbpedia.org/ontology/Airport##http://dbpedia.org/ontology/icaoLocationIdentifier##http://www.w3.org/2001/XMLSchema#string##1##0##0##1##0##0##0##1##0
+http://dbpedia.org/ontology/Person##http://dbpedia.org/ontology/deathYear##http://www.w3.org/2001/XMLSchema#gYear##9##0##0##9##0##9##0##0##0
+http://dbpedia.org/ontology/ArchitecturalStructure##http://dbpedia.org/ontology/rebuildingYear##http://www.w3.org/2001/XMLSchema#gYear##1##0##0##1##0##1##0##0##0
+http://dbpedia.org/ontology/MeanOfTransportation##http://dbpedia.org/ontology/MeanOfTransportation/length##http://dbpedia.org/datatype/millimetre##1##0##0##1##0##1##0##0##0
+http://www.w3.org/2002/07/owl#Thing##http://dbpedia.org/ontology/alias##Ukn_Type##1##0##1##0##0##0##1##0##0
+http://dbpedia.org/ontology/Person##http://dbpedia.org/ontology/deathDate##http://www.w3.org/2001/XMLSchema#date##10##0##0##10##0##10##0##0##0
+http://dbpedia.org/ontology/PopulatedPlace##http://dbpedia.org/ontology/PopulatedPlace/populationDensity##http://dbpedia.org/datatype/inhabitantsPerSquareKilometre##2##0##0##2##0##2##0##0##0
+http://dbpedia.org/ontology/Species##http://dbpedia.org/ontology/conservationStatus##http://www.w3.org/2001/XMLSchema#string##1##0##0##1##0##0##0##1##0
+http://dbpedia.org/ontology/SoccerPlayer##http://dbpedia.org/ontology/years##http://www.w3.org/2001/XMLSchema#gYear##11##0##0##11##0##11##0##0##0
+http://dbpedia.org/ontology/Work##http://dbpedia.org/ontology/releaseDate##http://www.w3.org/2001/XMLSchema#date##1##0##0##1##0##1##0##0##0
+http://dbpedia.org/ontology/Place##http://dbpedia.org/ontology/utcOffset##http://www.w3.org/2001/XMLSchema#string##2##0##0##2##0##0##0##2##0
+http://www.w3.org/2002/07/owl#Thing##http://dbpedia.org/ontology/length##http://www.w3.org/2001/XMLSchema#double##1##0##1##0##0##1##0##0##0
+http://www.w3.org/2002/07/owl#Thing##http://dbpedia.org/ontology/depictionDescription##Ukn_Type##1##0##1##0##0##0##1##0##0
+http://dbpedia.org/ontology/PeriodicalLiterature##http://dbpedia.org/ontology/issn##http://www.w3.org/2001/XMLSchema#string##1##0##0##1##0##0##0##1##0
+http://www.w3.org/2002/07/owl#Thing##http://dbpedia.org/ontology/synonym##Ukn_Type##2##0##2##0##0##0##2##0##0
+http://www.w3.org/2002/07/owl#Thing##http://dbpedia.org/ontology/title##Ukn_Type##3##0##3##0##0##0##3##0##0
+http://dbpedia.org/ontology/Work##http://dbpedia.org/ontology/runtime##http://www.w3.org/2001/XMLSchema#double##5##0##0##5##0##5##0##0##0
+http://dbpedia.org/ontology/Person##http://xmlns.com/foaf/0.1/surname##Ukn_Type##1##1##0##0##0##0##1##0##0
+http://www.w3.org/2002/07/owl#Thing##http://dbpedia.org/ontology/topSpeed##http://www.w3.org/2001/XMLSchema#double##1##0##1##0##0##1##0##0##0
+http://dbpedia.org/ontology/Automobile##http://dbpedia.org/ontology/transmission##http://www.w3.org/2001/XMLSchema#string##1##0##0##1##0##0##0##1##0
+http://dbpedia.org/ontology/Ship##http://dbpedia.org/ontology/commissioningDate##http://www.w3.org/2001/XMLSchema#date##1##0##0##1##0##1##0##0##0
+http://www.w3.org/2002/07/owl#Thing##http://xmlns.com/foaf/0.1/name##Ukn_Type##79##0##79##0##0##0##79##0##0
+http://dbpedia.org/ontology/SportCompetitionResult##http://dbpedia.org/ontology/numberOfGoldMedalsWon##http://www.w3.org/2001/XMLSchema#nonNegativeInteger##1##0##0##1##0##1##0##0##0
+http://dbpedia.org/ontology/PopulatedPlace##http://dbpedia.org/ontology/postalCode##http://www.w3.org/2001/XMLSchema#string##1##0##0##1##0##0##0##1##0
+http://dbpedia.org/ontology/School##http://dbpedia.org/ontology/teamName##http://www.w3.org/1999/02/22-rdf-syntax-ns#langString##1##0##0##1##0##0##0##1##0
+http://dbpedia.org/ontology/Place##http://dbpedia.org/ontology/areaWater##http://www.w3.org/2001/XMLSchema#double##1##0##0##1##0##1##0##0##0
+http://dbpedia.org/ontology/MilitaryPerson##http://dbpedia.org/ontology/serviceStartYear##http://www.w3.org/2001/XMLSchema#gYear##2##0##0##2##0##2##0##0##0
+http://dbpedia.org/ontology/Ship##http://dbpedia.org/ontology/shipLaunch##http://www.w3.org/2001/XMLSchema#date##1##0##0##1##0##1##0##0##0
+http://dbpedia.org/ontology/PopulatedPlace##http://dbpedia.org/ontology/PopulatedPlace/areaTotal##http://dbpedia.org/datatype/squareKilometre##2##0##0##2##0##2##0##0##0
+http://dbpedia.org/ontology/CareerStation##http://dbpedia.org/ontology/numberOfGoals##http://www.w3.org/2001/XMLSchema#string##9##0##0##9##0##0##0##9##0
+http://dbpedia.org/ontology/Person##http://dbpedia.org/ontology/birthDate##http://www.w3.org/2001/XMLSchema#date##31##0##0##31##0##31##0##0##0
+http://www.w3.org/2002/07/owl#Thing##http://dbpedia.org/ontology/year##http://www.w3.org/2001/XMLSchema#gYear##1##0##1##0##0##1##0##0##0
+http://dbpedia.org/ontology/Agent##http://dbpedia.org/ontology/viafId##http://www.w3.org/2001/XMLSchema#string##2##0##0##2##0##0##0##2##0
+http://dbpedia.org/ontology/Person##http://dbpedia.org/ontology/birthName##http://www.w3.org/1999/02/22-rdf-syntax-ns#langString##2##0##0##2##0##0##0##2##0
+http://dbpedia.org/ontology/PopulatedPlace##http://dbpedia.org/ontology/leaderTitle##http://www.w3.org/1999/02/22-rdf-syntax-ns#langString##1##0##0##1##0##0##0##1##0
+http://www.w3.org/2002/07/owl#Thing##http://dbpedia.org/ontology/activeYearsEndDate##http://www.w3.org/2001/XMLSchema#date##1##0##1##0##0##1##0##0##0
+http://www.w3.org/2002/07/owl#Thing##http://dbpedia.org/ontology/weight##http://www.w3.org/2001/XMLSchema#double##2##0##2##0##0##2##0##0##0
+http://dbpedia.org/ontology/Airline##http://dbpedia.org/ontology/icaoAirlineCode##http://www.w3.org/2001/XMLSchema#string##1##0##0##1##0##0##0##1##0
+http://dbpedia.org/ontology/SportsTeamMember##http://dbpedia.org/ontology/squadNumber##http://www.w3.org/2001/XMLSchema#nonNegativeInteger##4##0##0##4##0##4##0##0##0
+http://www.w3.org/2002/07/owl#Thing##http://www.w3.org/2003/01/geo/wgs84_pos#long##http://www.w3.org/2001/XMLSchema#float##4##0##4##0##0##4##0##0##0
+http://www.w3.org/2002/07/owl#Thing##http://www.georss.org/georss/point##Ukn_Type##3##0##3##0##0##0##3##0##0
+http://dbpedia.org/ontology/PeriodicalLiterature##http://dbpedia.org/ontology/firstPublicationYear##http://www.w3.org/2001/XMLSchema#gYear##1##0##0##1##0##1##0##0##0
+http://dbpedia.org/ontology/Place##http://dbpedia.org/ontology/elevation##http://www.w3.org/2001/XMLSchema#double##3##0##0##3##0##3##0##0##0
+http://www.w3.org/2002/07/owl#Thing##http://dbpedia.org/ontology/numberOfVisitors##http://www.w3.org/2001/XMLSchema#nonNegativeInteger##1##0##1##0##0##1##0##0##0
+http://www.w3.org/2002/07/owl#Thing##http://xmlns.com/foaf/0.1/surname##Ukn_Type##17##0##17##0##0##0##17##0##0
+http://dbpedia.org/ontology/Place##http://dbpedia.org/ontology/minimumElevation##http://www.w3.org/2001/XMLSchema#double##1##0##0##1##0##1##0##0##0
+http://dbpedia.org/ontology/Person##http://dbpedia.org/ontology/birthYear##http://www.w3.org/2001/XMLSchema#gYear##5##0##0##5##0##5##0##0##0
+http://dbpedia.org/ontology/Work##http://dbpedia.org/ontology/completionDate##http://www.w3.org/2001/XMLSchema#date##2##0##0##2##0##2##0##0##0
+http://dbpedia.org/ontology/Work##http://dbpedia.org/ontology/Work/runtime##http://dbpedia.org/datatype/minute##2##0##0##2##0##2##0##0##0
+http://dbpedia.org/ontology/Disease##http://dbpedia.org/ontology/icd10##http://www.w3.org/2001/XMLSchema#string##1##0##0##1##0##0##0##1##0
+http://dbpedia.org/ontology/Place##http://dbpedia.org/ontology/areaTotal##http://www.w3.org/2001/XMLSchema#double##3##0##0##3##0##3##0##0##0
+http://www.w3.org/2002/07/owl#Thing##http://dbpedia.org/ontology/formerName##Ukn_Type##1##0##1##0##0##0##1##0##0
+http://www.w3.org/2002/07/owl#Thing##http://dbpedia.org/ontology/activeYearsStartYear##http://www.w3.org/2001/XMLSchema#gYear##1##0##1##0##0##1##0##0##0
+http://dbpedia.org/ontology/PopulatedPlace##http://dbpedia.org/ontology/populationDensity##http://www.w3.org/2001/XMLSchema#double##2##0##0##2##0##2##0##0##0
+http://dbpedia.org/ontology/Person##http://dbpedia.org/ontology/deathDate##http://www.w3.org/2001/XMLSchema#gYear##5##0##0##5##0##5##0##0##0
+http://www.w3.org/2002/07/owl#Thing##http://xmlns.com/foaf/0.1/givenName##Ukn_Type##21##0##21##0##0##0##21##0##0
+http://dbpedia.org/ontology/Protein##http://dbpedia.org/ontology/band##http://www.w3.org/2001/XMLSchema#string##1##0##0##1##0##0##0##1##0
+http://dbpedia.org/ontology/Animal##http://xmlns.com/foaf/0.1/name##Ukn_Type##1##1##0##0##0##0##1##0##0
+http://dbpedia.org/ontology/AutomobileEngine##http://dbpedia.org/ontology/configuration##http://dbpedia.org/datatype/engineConfiguration##1##0##0##1##0##1##0##0##0
+http://www.w3.org/2002/07/owl#Thing##http://dbpedia.org/ontology/mascot##Ukn_Type##1##0##1##0##0##0##1##0##0
+http://dbpedia.org/ontology/MilitaryUnit##http://dbpedia.org/ontology/battleHonours##http://www.w3.org/2001/XMLSchema#string##1##0##0##1##0##0##0##1##0
+http://www.w3.org/2002/07/owl#Thing##http://dbpedia.org/ontology/height##http://www.w3.org/2001/XMLSchema#double##3##0##3##0##0##3##0##0##0
+http://dbpedia.org/ontology/Settlement##http://dbpedia.org/ontology/inseeCode##http://www.w3.org/2001/XMLSchema#nonNegativeInteger##1##0##0##1##0##1##0##0##0
+http://www.w3.org/2002/07/owl#Thing##http://dbpedia.org/ontology/populationTotal##http://www.w3.org/2001/XMLSchema#nonNegativeInteger##2##0##2##0##0##2##0##0##0
+http://www.w3.org/2002/07/owl#Thing##http://www.w3.org/2003/01/geo/wgs84_pos#lat##http://www.w3.org/2001/XMLSchema#float##8##0##8##0##0##8##0##0##0
+http://dbpedia.org/ontology/Software##http://dbpedia.org/ontology/latestReleaseVersion##http://www.w3.org/2001/XMLSchema#string##1##0##0##1##0##0##0##1##0
+http://dbpedia.org/ontology/MilitaryPerson##http://dbpedia.org/ontology/serviceEndYear##http://www.w3.org/2001/XMLSchema#gYear##2##0##0##2##0##2##0##0##0
+http://www.w3.org/2002/07/owl#Thing##http://dbpedia.org/ontology/activeYearsEndYear##http://www.w3.org/2001/XMLSchema#gYear##2##0##2##0##0##2##0##0##0
+http://dbpedia.org/ontology/PopulatedPlace##http://dbpedia.org/ontology/areaCode##http://www.w3.org/2001/XMLSchema#string##3##0##0##3##0##0##0##3##0
+http://www.w3.org/2002/07/owl#Thing##http://dbpedia.org/ontology/activeYearsStartDate##http://www.w3.org/2001/XMLSchema#date##1##0##1##0##0##1##0##0##0
+Total##340
+Unresolved Subject##192
+Unresolved Object##3
+Unresolved Total##195

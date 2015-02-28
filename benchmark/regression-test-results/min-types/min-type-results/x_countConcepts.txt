@@ -1,3 +1,9 @@
+http://dbpedia.org/ontology/Agent##1
+http://dbpedia.org/ontology/Village##1
+http://dbpedia.org/ontology/Animal##1
+http://dbpedia.org/ontology/Place##1
+http://dbpedia.org/ontology/Eukaryote##1
+http://dbpedia.org/ontology/MilitaryPerson##1
 http://dbpedia.org/ontology/Museum##0
 http://dbpedia.org/ontology/Artist##0
 http://dbpedia.org/ontology/OldTerritory##0
@@ -27,7 +33,6 @@ http://dbpedia.org/ontology/YearInSpaceflight##0
 http://dbpedia.org/ontology/MilitaryStructure##0
 http://dbpedia.org/ontology/Ginkgo##0
 http://dbpedia.org/ontology/Prison##0
-http://dbpedia.org/ontology/Eukaryote##0
 http://dbpedia.org/ontology/ClubMoss##0
 http://dbpedia.org/ontology/Square##0
 http://dbpedia.org/ontology/Non-ProfitOrganisation##0
@@ -174,7 +179,6 @@ http://dbpedia.org/ontology/BeautyQueen##0
 http://dbpedia.org/ontology/Fish##0
 http://dbpedia.org/ontology/SportsSeason##0
 http://dbpedia.org/ontology/ProgrammingLanguage##0
-http://dbpedia.org/ontology/Animal##0
 http://dbpedia.org/ontology/HistoricPlace##0
 http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalBody##0
 http://dbpedia.org/ontology/Award##0
@@ -249,7 +253,6 @@ http://dbpedia.org/ontology/Referee##0
 http://dbpedia.org/datatype/squareMetre##0
 http://dbpedia.org/ontology/BoxingStyle##0
 http://dbpedia.org/ontology/Image##0
-http://dbpedia.org/ontology/MilitaryPerson##0
 http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Configuration##0
 http://dbpedia.org/ontology/Family##0
 http://dbpedia.org/ontology/Monarch##0
@@ -285,7 +288,6 @@ http://www.w3.org/2001/XMLSchema#date##0
 http://dbpedia.org/ontology/AmericanFootballCoach##0
 http://dbpedia.org/ontology/Mountain##0
 http://dbpedia.org/datatype/gramPerKilometre##0
-http://dbpedia.org/ontology/Agent##0
 http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Event##0
 http://dbpedia.org/ontology/RollerCoaster##0
 http://dbpedia.org/ontology/Enzyme##0
@@ -589,7 +591,6 @@ http://dbpedia.org/ontology/Gate##0
 http://dbpedia.org/ontology/Bridge##0
 http://dbpedia.org/datatype/millimetre##0
 http://dbpedia.org/ontology/Decoration##0
-http://dbpedia.org/ontology/Place##0
 http://dbpedia.org/ontology/SportCompetitionResult##0
 http://dbpedia.org/ontology/SpeedwayLeague##0
 http://dbpedia.org/ontology/TelevisionSeason##0
@@ -760,7 +761,6 @@ http://dbpedia.org/ontology/SoccerLeagueSeason##0
 http://dbpedia.org/ontology/SkiResort##0
 http://dbpedia.org/ontology/AmericanFootballLeague##0
 http://dbpedia.org/ontology/NobleFamily##0
-http://dbpedia.org/ontology/Village##0
 http://dbpedia.org/ontology/TimePeriod##0
 http://dbpedia.org/ontology/Intercommunality##0
 http://dbpedia.org/ontology/WomensTennisAssociationTournament##0

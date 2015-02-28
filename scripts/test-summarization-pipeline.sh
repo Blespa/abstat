@@ -38,16 +38,16 @@ function as_absolute(){
 }
 
 echo
-echo "RUNNING INTEGRATION TEST"
+echo "REGRESSION TEST"
 echo
 
 set -e
 relative_path=`dirname $0`
 current_directory=$(as_absolute $relative_path)
 root=$(as_absolute $current_directory/../)
-data=$root/benchmark/integration-test
+data=$root/benchmark/regression-test
 results=$root/benchmark/tmp
-expected_results=$root/benchmark/integration-test-results
+expected_results=$root/benchmark/regression-test-results
 
 cd $current_directory
 ./run-summarization-pipeline.sh $data $results

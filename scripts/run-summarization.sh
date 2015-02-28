@@ -22,9 +22,6 @@ AwkScriptsDirectory=awk-scripts
 JavaBinDirectory=bin
 TripleFile=dataset.nt
 
-rm -rf $ResultsDirectory
-mkdir -p $ResultsDirectory
-
 #Variabili per il calcolo del report dell'ontologia
 OntologyFile="$DataDirectory/ontology/"
 ReportDirectory="$ResultsDirectory/reports/"

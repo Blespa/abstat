@@ -28,15 +28,12 @@ echo
 set -e
 relative_path=`dirname $0`
 current_directory=$(as_absolute $relative_path)
-
-cd $current_directory
-
 root=$(as_absolute $current_directory/../)
 data=$root/test-data
 results=$root/summarization-results
 
+cd $current_directory
 ./run-summarization-pipeline.sh $data $results
-
 assert_no_errors_on ../summarization/log/log.txt
 
 

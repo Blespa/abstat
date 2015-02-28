@@ -30,7 +30,7 @@ wget "$dbpedia_downloads/en/persondata_en.nt.bz2" -P $triples_directory
 bunzip2 $triples_directory/persondata_en.nt.bz2
 wget "$dbpedia_downloads/en/specific_mappingbased_properties_en.nt.bz2" -P $triples_directory
 bunzip2 $triples_directory/specific_mappingbased_properties_en.nt.bz2
-if [[ $include_raw != --infobox ]]
+if [[ $include_raw == --infobox ]]
 then
 	wget "$dbpedia_downloads/en/raw_infobox_properties_en.nt.bz2"
 	bunzip2 "$triples_directory/raw_infobox_properties_en.nt.bz2"

@@ -29,8 +29,8 @@ set -e
 relative_path=`dirname $0`
 current_directory=$(as_absolute $relative_path)
 root=$(as_absolute $current_directory/../)
-data=$root/test-data
-results=$root/summarization-results
+data=$root/benchmark/integration-test
+results=$root/benchmark/integration-test-results
 
 cd $current_directory
 ./run-summarization-pipeline.sh $data $results

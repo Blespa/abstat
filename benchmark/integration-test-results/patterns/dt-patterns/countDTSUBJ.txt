@@ -1,0 +1,1 @@
+Property##How Common is (%)##Number of resources (that have|are object of) the property

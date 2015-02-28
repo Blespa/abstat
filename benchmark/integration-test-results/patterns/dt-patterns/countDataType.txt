@@ -1,0 +1,2 @@
+Property##Number of resources (that have|are object of) the property##% Respect to the total Number of Resources
+##0

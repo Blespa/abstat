@@ -1,0 +1,1 @@
+Property##How many times is used##Number of Subject Resources##Number of Object Resources##Number of minimum type class that are subject of the property##Number of minimum type class that are subject of the property

@@ -1,0 +1,1 @@
+Datatype##Property##How complete is (%)##Number of resources of the Datatype##Total Number of Datatype Resources

@@ -19,7 +19,7 @@ wget --header='Accept:application/rdf+xml' http://musicontology.com/specificatio
 
 triples_directory=$target_directory/triples
 mkdir -p $triples_directory
-wget -r -nd --no-parent -A gz http://linkedbrainz.org/rdf/dumps/20140313/area.nt.gz -P $triples_directory
+wget -r -nd --no-parent -A gz http://linkedbrainz.org/rdf/dumps/20140313 -P $triples_directory
 ls $triples_directory | while read aaa
 do
 	gunzip -d $triples_directory/$aaa

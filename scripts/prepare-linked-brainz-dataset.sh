@@ -19,10 +19,10 @@ wget --header='Accept:application/rdf+xml' http://musicontology.com/specificatio
 
 triples_directory=$target_directory/triples
 mkdir -p $triples_directory
-wget -r -nd --no-parent -A gz http://linkedbrainz.org/rdf/dumps/20140313 -P $triples_directory
-ls $triples_directory | while read aaa
+wget -r -nd --no-parent -A gz http://linkedbrainz.org/rdf/dumps/20140831/ -P $triples_directory
+ls $triples_directory | while read file
 do
-	gunzip -d $triples_directory/$aaa
+	gunzip -d $triples_directory/$file
 done
 
 cat $triples_directory/*.nt | grep -v "# started" > $triples_directory/dataset

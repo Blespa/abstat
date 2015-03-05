@@ -53,9 +53,7 @@ public class RDFLoader {
         {
 	        // prepare the model
 	        Model tmpModel = ModelFactory.createDefaultModel();
-	        System.out.println("FILE: " + RDF_FILE.getPath());
 			FileManager.get().readModel(tmpModel,RDF_FILE.getPath(),"N3");
-	        System.out.println("Loading: " + tmpModel.size() + " triple...\n");
 	        
 	        // add the model into the dataset
 	        dataset.getDefaultModel().add(tmpModel);
@@ -72,9 +70,7 @@ public class RDFLoader {
     	
     	// prepare the model
     	Model tmpModel = ModelFactory.createDefaultModel();
-    	System.out.println("FILE: " + RDF_FILE.getPath());
     	FileManager.get().readModel(tmpModel,RDF_FILE.getPath(),"N3");
-    	System.out.println("Loading: " + tmpModel.size() + " triple...\n");
     	
     	return tmpModel;
     }

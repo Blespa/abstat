@@ -45,7 +45,6 @@ public class Concept {
 	//Pulisco i concetti da eventuali null e Thing
 	public void deleteThing(){
 		Iterator<String> cIter = Concepts.keySet().iterator();
-		System.out.println(Concepts.size());
 		while (cIter.hasNext()) {
 			String key = cIter.next().toString();
 			String value = Concepts.get(key).toString();
@@ -78,7 +77,6 @@ public class Concept {
 	}
 
 	public void setObtainedBy(HashMap<String,String> obtainedBy) {
-		System.out.println(obtainedBy.size());
 		ObtainedBy = obtainedBy;
 	}
 	

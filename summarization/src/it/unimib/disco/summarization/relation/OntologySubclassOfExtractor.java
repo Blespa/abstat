@@ -112,15 +112,6 @@ public class OntologySubclassOfExtractor {
 								  Concepts.getConcepts().put(URIObj,conceptSup.getLocalName());
 								  Concepts.setNewObtainedBy(URIObj, concept.getLocalName() + " - SubClassOf");
 								  AddConcepts.add(conceptSup);
-								  //TODO: Rimuovere
-								  /*
-								  System.out.println(ConceptsSubclassOf.get(ConceptsSubclassOf.lastIndexOf(subRelation)));
-								  System.out.println("CLASS ADDED - SPARQL");
-								  System.out.println(conceptSup.getURI());
-								  System.out.println(conceptSup.getLocalName());
-								  System.out.println("----------------------------------");
-								   */
-								  //TODO: Rimuovere
 							  }
 
 							  //Count Presence of Class as SubClassOf (# Of Subclasses)
@@ -139,45 +130,6 @@ public class OntologySubclassOfExtractor {
 		}
 		
 		Concepts.getExtractedConcepts().addAll(AddConcepts);
-		
-		//TODO: Rimuovere o riposizionare in metodo dedicato
-		//SPARQL SubClass
-		/*
-		String queryString = "PREFIX rdfs:<" + RDFS.getURI() + ">" + 
-				"SELECT ?subj ?obj " +
-				"WHERE {" +
-				"      ?subj rdfs:subClassOf ?obj" +
-				"      }";
-
-		System.out.println(queryString);
-
-		Query query = QueryFactory.create(queryString) ;
-		QueryExecution qexec = QueryExecutionFactory.create(query, ontologyModel) ;
-		try {
-			ResultSet results = qexec.execSelect();
-			//System.out.println(results.getResultVars());
-			//ResultSetFormatter.out(System.out, results, query);
-
-			for ( ; results.hasNext() ; )
-			{
-				QuerySolution soln = results.nextSolution() ;
-
-				Resource subj = soln.getResource("subj");
-				Resource obj = soln.getResource("obj");
-				String URISubj = subj.getURI();
-				String URIObj = obj.getURI();
-
-				//TODO: Prendere solo i concetti dell'ontologia o citati dall'ontologia
-
-				if( URISubj!=null && URIObj!=null && URISubj!=URIObj && subj.getNameSpace().compareTo(nameSpace)==0 && obj.getNameSpace().compareTo(nameSpace)==0 ){
-					System.out.println("(" + subj.getLocalName() + ", " + obj.getLocalName() + ")");
-				}
-
-			}
-
-		} finally { qexec.close() ; }
-		*/
-
 	}
 	
 	public SubClassOf getConceptsSubclassOf(){

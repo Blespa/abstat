@@ -50,6 +50,8 @@ results=$root/benchmark/tmp
 expected_results=$root/benchmark/regression-test-results
 
 cd $current_directory
+./build-java-summarization-module.sh
+./test-java-summarization-module.sh
 ./run-summarization-pipeline.sh $data $results
 
 echo

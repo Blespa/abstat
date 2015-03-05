@@ -19,3 +19,4 @@ done
 jar cvfe ../ontology_summarization.jar -C . > /dev/null
 chmod 777 ../ontology_summarization.jar
 
+

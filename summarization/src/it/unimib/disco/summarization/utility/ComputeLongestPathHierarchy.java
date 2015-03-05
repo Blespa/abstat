@@ -14,7 +14,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 import java.util.Stack;
 import java.util.TreeSet;
@@ -23,9 +22,7 @@ import org.jgraph.graph.DefaultEdge;
 import org.jgrapht.DirectedGraph;
 import org.jgrapht.graph.DefaultDirectedGraph;
 
-import com.hp.hpl.jena.ontology.OntClass;
-
-//TODO: Rivedere e sistemare perch� pu� essere ottimizzato ( se serve ), ma sicuramente evitate alcune strutture
+//TODO: Rivedere e sistemare perchè può essere ottimizzato ( se serve ), ma sicuramente evitate alcune strutture
 
 public class ComputeLongestPathHierarchy {
 

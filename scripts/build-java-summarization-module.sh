@@ -8,7 +8,7 @@ build_directory=$project/bin
 classes_directory=$build_directory/classes
 
 cd $project
-rm -rf $build_directory
+rm -rf $classes_directory
 mkdir -p $classes_directory
 javac -encoding utf8 -cp .:'lib/*' $(find ./* | grep '\.java') -d $classes_directory
 cd $classes_directory

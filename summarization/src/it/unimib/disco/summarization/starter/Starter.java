@@ -52,8 +52,6 @@ public class Starter {
 	 */
 	public static void main(String[] args) {
 		new Events();
-		// Load File (Ontology or Dataset)
-		// TODO: S - Read from directory or receive as command line input and Call extractor based on file type
 		
 		//Parametri
 		String owlBaseFileArg = null;
@@ -73,7 +71,6 @@ public class Starter {
 		}
 
 		//ONTOLOGY
-		
 		//Ottengo il nome del file che rappresenta l'ontologia, con path assoluto per poter caricare il Model di Jena
 		File folder = new File(owlBaseFileArg);
 		Collection<File> listOfFiles = FileUtils.listFiles(folder, new String[]{"owl"}, false);
@@ -93,15 +90,6 @@ public class Starter {
 		//Model
 		Model OntModel = new Model(null,owlBaseFile,"RDF/XML");
 		OntModel ontologyModel = OntModel.getOntologyModel();
-		
-		//Extract Concept from Ontology Model
-		ConceptExtractor cExtract = new ConceptExtractor();
-		cExtract.setConcepts(ontologyModel);
-		
-		Concept Concepts = new Concept();
-		Concepts.setConcepts(cExtract.getConcepts());
-		Concepts.setExtractedConcepts(cExtract.getExtractedConcepts());
-		Concepts.setObtainedBy(cExtract.getObtainedBy());
 		
 		//Extract Property from Ontology Model
 		PropertyExtractor pExtract = new PropertyExtractor();
@@ -137,19 +125,26 @@ public class Starter {
 		equProperties.setCounter(epExtract.getCounter());
 		
 
+		//Extract Concept from Ontology Model
+		ConceptExtractor cExtract = new ConceptExtractor();
+		cExtract.setConcepts(ontologyModel);
+		
+		Concept Concepts = new Concept();
+		Concepts.setConcepts(cExtract.getConcepts());
+		Concepts.setExtractedConcepts(cExtract.getExtractedConcepts());
+		Concepts.setObtainedBy(cExtract.getObtainedBy());
+		
 		//Extract SubClassOf Relation from OntologyModel
 		OntologySubclassOfExtractor SbExtractor = new OntologySubclassOfExtractor();
 		//The Set of Concepts will be Updated if Superclasses are not in It
 		SbExtractor.setConceptsSubclassOf(Concepts, ontologyModel);
 		SubClassOf SubClassOfRelation = SbExtractor.getConceptsSubclassOf();
-			
 		
 		//Extract Domain & Range Relation
 		OntologyDomainRangeExtractor DRExtractor = new OntologyDomainRangeExtractor();
 		//The Set of Concepts will be Updated if Domain or Range are not in It
 		DRExtractor.setConceptsDomainRange(Concepts, Properties);
 		DomainRange DRRelation = DRExtractor.getPropertyDomainRange();
-		
 		
 		//Extract Axioms from OntologyModel
 		OntologyAxiomExtractor SVFExtractor = new OntologyAxiomExtractor();
@@ -163,7 +158,6 @@ public class Starter {
 		LiteralAxiom MinCardinalityLiteralRelation = SVFExtractor.getConceptsMinCardinalityLiteral();
 		LiteralAxiom SomeValueFromLiteralRelation = SVFExtractor.getConceptsSomeValueFromLiteral();
 		LiteralAxiom AllValueFromLiteralRelation = SVFExtractor.getConceptsAllValueFromLiteral();
-		
 		
 		//Extract EquivalentClass from Ontology Model - Qui per considerare tutti i concetti
 		EqConceptExtractor equConcepts = new EqConceptExtractor();
@@ -189,17 +183,10 @@ public class Starter {
 		//Pulisco le relazioni di sottoclasse di Thing
 		SubClassOfRelation.deleteThing();
 		
-		//TODO: Vedere se serve pulire anche gli altri elementi
-		//
-		// SomeValueFromRelation
-		// AllValueFromRelation
-		// MinCardinalityRelation
-		// DRRelation
-		
 		//Write and Excel Report
 		CreateExcel report = new CreateExcel();
 		//report.setOutputFile("OutputTest/University/report.xls");
-		report.setOutputFile(reportDirectory + "ontology.xls");
+		report.setOutputFile(reportDirectory + "/ontology.xls");
 		
 		//Write Down File
 		
@@ -237,29 +224,6 @@ public class Starter {
 			e.printStackTrace();
 		}	
 	
-		//DATASET - Il calcolo � fatto in awk
-		
-		//Load Triple into Datastore
-		
-		/* LOAD FROM DIRECTORY TO DATASTORE
-		String dataset = "Dataset/DBPedia/en/"; //Le directory e I file non devono avere spazi nel nome
-		String className = "com.mysql.jdbc.Driver";   
-	    String DB_URL = "jdbc:mysql://127.0.0.1:3306/DBPedia";  
-	    String DB_USER = "root";                          
-	    String DB_PASSWD = "";
-	    
-		RDFLoader sd = new RDFLoader();
-        sd.loadRDFtoSDB(dataset,className,DB_URL,DB_USER,DB_PASSWD,true,true);
-		*/
-		
-		/*
-		// LOAD RDF TO MODEL (ONE PER FILE) E ELABORA UN FILE ALLA VOLTA
-		String dataset = "Dataset/DBPedia/en/"; //Le directory e I file non devono avere spazi nel nome
-		RDFLoader sd = new RDFLoader();
-        int numberOfFiles = sd.getListOfFileSize(dataset);
-        
-        */
-        
         //Salvo le informazioni utilizzate per il calcolo dei percorsi nella gerarchia
         FileDataSupport writeFileSupp = new FileDataSupport(SubClassOfRelation, datasetSupportFileDirectory + "SubclassOf.txt", datasetSupportFileDirectory + "Concepts.txt", datasetSupportFileDirectory + "EquConcepts.txt", datasetSupportFileDirectory + "EquProperties.txt", datasetSupportFileDirectory + "DR.txt", datasetSupportFileDirectory + "Properties.txt", datasetSupportFileDirectory + "DTProperties.txt");
         writeFileSupp.writeSubclass(equConcept);

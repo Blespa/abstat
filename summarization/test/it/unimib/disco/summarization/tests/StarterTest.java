@@ -32,6 +32,6 @@ public class StarterTest {
 	public void shouldBeAbleToProcessTheMusicOntology() {
 		String ontologyDirectory = new File("test/it/unimib/disco/summarization/tests/").getAbsolutePath();
 		
-		Starter.main(new String[]{ontologyDirectory, temporary.getAbsolutePath(), temporary.getAbsolutePath()});
+		Starter.main(new String[]{ontologyDirectory, temporary.getAbsolutePath() + "/", temporary.getAbsolutePath() + "/"});
 	}
 }

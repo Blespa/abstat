@@ -17,6 +17,10 @@ public class Events{
 		logger().debug(message);
 	}
 	
+	public void info(Object message){
+		logger().info(message);
+	}
+	
 	private Logger logger() {
 		return Logger.getLogger("");
 	}

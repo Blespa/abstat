@@ -10,8 +10,8 @@ import it.unimib.disco.summarization.datatype.LiteralAxiom;
 import it.unimib.disco.summarization.datatype.Property;
 import it.unimib.disco.summarization.datatype.SubClassOf;
 import it.unimib.disco.summarization.datatype.SubProperty;
-import it.unimib.disco.summarization.extraction.EqConceptExtractor;
 import it.unimib.disco.summarization.info.InfoExtractor;
+import it.unimib.disco.summarization.starter.Events;
 
 import java.io.File;
 import java.io.IOException;
@@ -489,13 +489,15 @@ public class CreateExcel {
 			
 			while (ePropTypeIt.hasNext()) {
 				OntProperty prop = ePropTypeIt.next();
-
 				if(prop.getRDFType(true).getLocalName().toString().equals(currType)){
 					currTypeProp.put(prop.getURI(), prop.getLocalName());
 					
 					if(currType.equals("DatatypeProperty")) //Save Range
 					{
-						dataTypePropRange.put(prop.getURI(), prop.getRange().getLocalName() + ": " + prop.getRange().getURI());
+						OntResource range = prop.getRange();
+						String description = "";
+						if(range != null) description = range.getLocalName() + ": " + range.getURI();
+						dataTypePropRange.put(prop.getURI(), description);
 					}
 				}
 			}
@@ -1494,7 +1496,7 @@ public class CreateExcel {
 	 * 
 	 * @throws WriteException 
 	 */
-	public int generateDomainRangeSheet(DomainRange DRRelation, Property AllProperty, int NumSheet) throws WriteException
+	public int generateDomainRangeSheet(DomainRange DRRelation, Property allProperty, int NumSheet) throws WriteException
 	{
 		//Determino il numero di fogli da inserire per le propriet�
 		HashMap<String, String> extractedProp = DRRelation.getPropertyType();
@@ -1522,14 +1524,14 @@ public class CreateExcel {
 			//Filtro le propriet� in base al tipo corrente
 			HashMap<String, ArrayList<OntResource>> extractedPropType = DRRelation.getDRRelation();
 			Iterator<String> ePropTypeIt = extractedPropType.keySet().iterator();
-			HashMap<String,ArrayList<OntResource>> currTypeProp = new HashMap<String,ArrayList<OntResource>>();
+			HashMap<String,ArrayList<OntResource>> typesForProperties = new HashMap<String,ArrayList<OntResource>>();
 
 			while (ePropTypeIt.hasNext()) {
 				String key = ePropTypeIt.next().toString();
 				ArrayList<OntResource> value = DRRelation.getDRRelation().get(key);
-
+				
 				if(DRRelation.getPropertyType().get(key).toString().equals(currType)){
-					currTypeProp.put(key, value);
+					typesForProperties.put(key, value);
 				}
 			}
 
@@ -1537,32 +1539,32 @@ public class CreateExcel {
 			String [] Labels = {"Property", "Subject", "Relation", "Object", "URIProperty", "URISubject", "URIObject", "Explanation - Extraction Rule"};
 			createLabel(excelSheet, Labels);
 
-			Iterator<String> iterator = currTypeProp.keySet().iterator();
-
 			int i = 1; //Start write ad second line, after Labels
 			int maxLenght[] = new int[Labels.length]; //Max length of content per cell
 
-			while (iterator.hasNext()) {
-				String key = iterator.next().toString();
-				ArrayList<OntResource> value = currTypeProp.get(key);
+			for(String property : typesForProperties.keySet()) {
+				ArrayList<OntResource> types = typesForProperties.get(property);
 
-
+				if(types.get(0).isAnon() || types.get(1).isAnon()) continue;
+				
+				new Events().info(property + " - " + types);
+				
 				// First column
-				addLabel(excelSheet, 0, i, AllProperty.getProperty().get(key));
+				addLabel(excelSheet, 0, i, allProperty.getProperty().get(property));
 				// Second column
-				addLabel(excelSheet, 1, i, value.get(0).getLocalName());
+				addLabel(excelSheet, 1, i, types.get(0).getLocalName());
 				// Third column
-				addLabel(excelSheet, 2, i, AllProperty.getProperty().get(key));
+				addLabel(excelSheet, 2, i, allProperty.getProperty().get(property));
 				// Fourth column
-				addLabel(excelSheet, 3, i, value.get(1).getLocalName());
+				addLabel(excelSheet, 3, i, types.get(1).getLocalName());
 				// Fifth column
-				addLabel(excelSheet, 4, i, key);
+				addLabel(excelSheet, 4, i, property);
 				// Sixth column
-				addLabel(excelSheet, 5, i, value.get(0).getURI());
+				addLabel(excelSheet, 5, i, types.get(0).getURI());
 				// Seventh column
-				addLabel(excelSheet, 6, i, value.get(1).getURI());
+				addLabel(excelSheet, 6, i, types.get(1).getURI());
 				// Eighth column
-				String ObtainedBy = DRRelation.getObtainedBy().get(key); //Get ObtainedBy info for Current Property
+				String ObtainedBy = DRRelation.getObtainedBy().get(property); //Get ObtainedBy info for Current Property
 				if(ObtainedBy!=null && ObtainedBy.length()>0 && !ObtainedBy.equals("null"))
 					addLabel(excelSheet, 7, i, ObtainedBy);
 				else
@@ -1570,26 +1572,26 @@ public class CreateExcel {
 
 				//Update Max Length
 
-				if( AllProperty.getProperty().get(key).length()>maxLenght[0] )
-					maxLenght[0] = AllProperty.getProperty().get(key).length();
+				if( allProperty.getProperty().get(property).length()>maxLenght[0] )
+					maxLenght[0] = allProperty.getProperty().get(property).length();
 
-				if( value.get(0).getLocalName().length()>maxLenght[1] )
-					maxLenght[1] = value.get(0).getLocalName().length();
+				if( types.get(0).getLocalName().length()>maxLenght[1] )
+					maxLenght[1] = types.get(0).getLocalName().length();
 
-				if( AllProperty.getProperty().get(key).length()>maxLenght[2] )
-					maxLenght[2] = AllProperty.getProperty().get(key).length();
+				if( allProperty.getProperty().get(property).length()>maxLenght[2] )
+					maxLenght[2] = allProperty.getProperty().get(property).length();
 
-				if( value.get(1).getLocalName().length()>maxLenght[3] )
-					maxLenght[3] = value.get(1).getLocalName().length();
+				if( types.get(1).getLocalName().length()>maxLenght[3] )
+					maxLenght[3] = types.get(1).getLocalName().length();
 
-				if( key.length()>maxLenght[4] )
-					maxLenght[4] = key.length();
+				if( property.length()>maxLenght[4] )
+					maxLenght[4] = property.length();
 
-				if( value.get(0).getURI().length()>maxLenght[5] )
-					maxLenght[5] = value.get(0).getURI().length();
+				if( types.get(0).getURI().length()>maxLenght[5] )
+					maxLenght[5] = types.get(0).getURI().length();
 
-				if( value.get(1).getURI().length()>maxLenght[6] )
-					maxLenght[6] = value.get(1).getURI().length();
+				if( types.get(1).getURI().length()>maxLenght[6] )
+					maxLenght[6] = types.get(1).getURI().length();
 
 				if( ObtainedBy!=null && ObtainedBy.length()>maxLenght[7] )
 					maxLenght[7] = ObtainedBy.length();
@@ -1659,8 +1661,6 @@ public class CreateExcel {
 	//Set Width of Cells based on String Lenght
 	private void setWidthForCell(WritableSheet excelSheet, int [] maxLenght, String [] Labels){
 		for(int column=0; column<maxLenght.length; column++){
-			CellView cv = excelSheet.getColumnView(column);
-//			cv.setAutosize(true);
 			//If size of content is 0, set width based on Label
 			if(maxLenght[column]==0)
 				maxLenght[column] = Labels[column].length();

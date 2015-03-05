@@ -20,14 +20,16 @@ import com.hp.hpl.jena.util.iterator.ExtendedIterator;
  */
 public class OntologyDomainRangeExtractor {
 
-	private DomainRange PropertyDomainRange = new DomainRange();
+	private DomainRange propertyDomainRange = new DomainRange();
 
-	public void setConceptsDomainRange(Concept Concepts, Property Properties) {
+	public void setConceptsDomainRange(Concept concepts, Property properties) {
+		
+		
 		
 		//Used for Dynamic Computation of Domain And Range
 		HashMap<String, ArrayList<OntResource>> DRProperty = new HashMap<String, ArrayList<OntResource>>();
 		
-		List<OntResource> AddConcepts = new ArrayList<OntResource>();
+		List<OntResource> conceptsToAdd = new ArrayList<OntResource>();
 		
 		//Last size of DRProperty Set 
 		int lastSize = 0;
@@ -37,7 +39,7 @@ public class OntologyDomainRangeExtractor {
 
 		while(lastSize==0 || DRProperty.size()>lastSize){ //Finch� nuovi elementi vengono aggiunti
 
-			Iterator<OntProperty> itP = Properties.getExtractedProperty().iterator();
+			Iterator<OntProperty> itP = properties.getExtractedProperty().iterator();
 
 			lastSize = DRProperty.size();
 
@@ -46,114 +48,65 @@ public class OntologyDomainRangeExtractor {
 				String URIP = property.getURI();
 				
 				//Inizializzo Domain e Range
-				OntResource clsD = null;
-				OntResource clsR = null;
+				OntResource domain = null;
+				OntResource range = null;
 				
-				//TODO: Rimuovere
-				/*
-				System.out.println("--------------- " + property.getLocalName() +" ---------------");
-				
-				Iterator iterator = DRProperty.keySet().iterator();
-
-				while (iterator.hasNext()) {
-					String key = iterator.next().toString();
-					String value = DRProperty.get(key).toString();
-
-					System.out.println(key + " " + value);
-				}
-
-				System.out.println("--------------------------------------------------");
-				*/
-				//TODO: Rimuovere
-
 				//Se non ho gi� salvato dominio e range da precedenti propagazioni
 				if( DRProperty.get(property.getURI())!=null )
 				{
 					ArrayList<OntResource> data = DRProperty.get(property.getURI());
-					clsD = data.get(0);
-					clsR = data.get(1);
-					
-					//TODO: Rimuovere
-					/*
-					System.out.println("DOMAIN: " + clsD);
-					System.out.println("RANGE: " + clsR);
-					System.out.println("----------------------------------");
-					*/
-					//TODO: Rimuovere
-
+					domain = data.get(0);
+					range = data.get(1);
 				}
 				else
 				{
-					clsD = property.getDomain();
-					clsR = property.getRange();
+					domain = property.getDomain();
+					range = property.getRange();
 				}
 
-				//Se la propriet� � --, il suo URI e quello di Domain e Range sono diversi da null e sia Dominio che Range sono --
-				if( URIP!=null && property.getDomain()!=null && property.getRange()!=null && clsD.isClass()){ //TODO: && cls1.getNameSpace().compareTo(nameSpace)==0 && cls1.getDomain().getNameSpace().compareTo(nameSpace)==0 && cls1.getRange().getNameSpace().compareTo(nameSpace)==0
+				//Se la proprieta' e' --, il suo URI e quello di Domain e Range sono diversi da null e sia Dominio che Range sono --
+				if( URIP!=null && property.getDomain()!=null && property.getRange()!=null && domain.isClass()){ 
+					//TODO: && cls1.getNameSpace().compareTo(nameSpace)==0 && cls1.getDomain().getNameSpace().compareTo(nameSpace)==0 && cls1.getRange().getNameSpace().compareTo(nameSpace)==0
 
-					//Se non ho gi� salvato dominio e range da precedenti propagazioni
+					//Se non ho gia salvato dominio e range da precedenti propagazioni
 					if( DRProperty.get(property.getURI())==null ){
-						//TODO: Rimuovere
-						//System.out.println(property.getLocalName() + ": (" + clsD.getLocalName() + ", " + clsR.getLocalName() + ")"); //- DataType: " + cls1.isDatatypeProperty() + " - ObjectProperty: " + cls1.isObjectProperty()
-						//TODO: Rimuovere
-						
+
 						//Salvo le informazioni
 						ArrayList<OntResource> data = new ArrayList<OntResource>();
-						data.add(clsD);
-						data.add(clsR);
+						data.add(domain);
+						data.add(range);
 						DRProperty.put(property.getURI(), data);
-						PropertyDomainRange.setNewObtainedBy(property.getURI(), "DomainRange: " + property.getLocalName());
+						propertyDomainRange.setNewObtainedBy(property.getURI(), "DomainRange: " + property.getLocalName());
 						
 						//Salvo il tipo della propriet�
-						PropertyDomainRange.setPropertyType(property.getURI(), property.getRDFType(true).getLocalName());
+						propertyDomainRange.setPropertyType(property.getURI(), property.getRDFType(true).getLocalName());
 						
 						//Aggiorno l'elenco dei concetti se ne compaiono di nuovi
-						if(Concepts.getConcepts().get(clsD.getURI()) == null)  {//If Domain is a New Concept save It
-							Concepts.getConcepts().put(clsD.getURI(),clsD.getLocalName());
-							Concepts.setNewObtainedBy(clsD.getURI(), "Domain - " + property.getLocalName() + " (" + property.getRDFType(true).getLocalName() + ")");
-							AddConcepts.add(clsD);
-							//TODO: Rimuovere
-							/*
-							System.out.println("CLASS ADDED - DOMAIN & RANGE");
-							System.out.println(clsD.getURI());
-							System.out.println(clsD.getLocalName());
-							System.out.println("----------------------------------");
-							*/
-							//TODO: Rimuovere
+						if(!domain.isAnon() && concepts.getConcepts().get(domain.getURI()) == null)  {//If Domain is a New Concept save It
+							concepts.getConcepts().put(domain.getURI(),domain.getLocalName());
+							concepts.setNewObtainedBy(domain.getURI(), "Domain - " + property.getLocalName() + " (" + property.getRDFType(true).getLocalName() + ")");
+							conceptsToAdd.add(domain);
+							
 						}
 						
 						//Count Presence of Class as Domain
-						Concepts.updateCounter(clsD.getURI(), "Domain");
+						concepts.updateCounter(domain.getURI(), "Domain");
 						
 						//TODO: Decidere, && clsR.getRDFType(true)!=null esclude tutte quelle esterne in pratica
-
-						if(clsR.isClass() && Concepts.getConcepts().get(clsR.getURI()) == null)  {//If Range is a New Concept save It
-							Concepts.getConcepts().put(clsR.getURI(),clsR.getLocalName());
-							Concepts.setNewObtainedBy(clsR.getURI(), "Range - " + property.getLocalName() + " (" + property.getRDFType(true).getLocalName() + ")");
-							AddConcepts.add(clsR);
-							
-							//TODO: Rimuovere
-							/*
-							System.out.println("CLASS ADDED - DOMAIN & RANGE");
-							System.out.println(clsR.getURI());
-							System.out.println(clsR.getLocalName());
-							System.out.println("----------------------------------");
-							*/
-							//TODO: Rimuovere
+						if(!range.isAnon() && range.isClass() && concepts.getConcepts().get(range.getURI()) == null)  {//If Range is a New Concept save It
+							concepts.getConcepts().put(range.getURI(),range.getLocalName());
+							concepts.setNewObtainedBy(range.getURI(), "Range - " + property.getLocalName() + " (" + property.getRDFType(true).getLocalName() + ")");
+							conceptsToAdd.add(range);
 						}
 						
 						//Count Presence of Class as Range
-						if (clsR.isClass()) 
-							Concepts.updateCounter(clsR.getURI(), "Range");
+						if (range.isClass()) concepts.updateCounter(range.getURI(), "Range");
 						
 					}
 				}
 				
-				
-				//TODO: Sistemare i nomi delle variabili
-				
 				//Se ho Dominio e Range, Propago l'informazione alle sottopropriet� e alle propriet� inverse
-				if( clsD!=null && clsR!=null ){
+				if( domain!=null && range!=null ){
 					//Ottengo le Sottopropriet�
 					ExtendedIterator<? extends OntProperty> itSP = property.listSubProperties();
 
@@ -162,29 +115,26 @@ public class OntologyDomainRangeExtractor {
 						String URI11 = cls11.getURI();
 						
 						//Se la sottopropriet� ha un URI, � un -- e sia Dominio che Range sono --
-						if( URI11!=null && clsD.isClass() ){ //TODO: && cls1.getNameSpace().compareTo(nameSpace)==0 && cls1.getDomain().getNameSpace().compareTo(nameSpace)==0 && cls1.getRange().getNameSpace().compareTo(nameSpace)==0
+						if( URI11!=null && domain.isClass() ){ //TODO: && cls1.getNameSpace().compareTo(nameSpace)==0 && cls1.getDomain().getNameSpace().compareTo(nameSpace)==0 && cls1.getRange().getNameSpace().compareTo(nameSpace)==0
 
 							//Se non ho gi� salvato dominio e range da precedenti propagazioni
 							if( DRProperty.get(cls11.getURI())==null ){
-								//TODO: Rimuovere
-								//System.out.println(cls11.getLocalName() + ": (" + clsD.getLocalName() + ", " + clsR.getLocalName() + ")"); //- DataType: " + cls1.isDatatypeProperty() + " - ObjectProperty: " + cls1.isObjectProperty()
-								//TODO: Rimuovere
 								
 								//Salvo le informazioni
 								ArrayList<OntResource> data = new ArrayList<OntResource>();
-								data.add(clsD);
-								data.add(clsR);
+								data.add(domain);
+								data.add(range);
 								DRProperty.put(cls11.getURI(), data);
-								PropertyDomainRange.setNewObtainedBy(cls11.getURI(), "DomainRange: " + cls11.getLocalName() + " - SubPropertyOf: "+ property.getLocalName());
+								propertyDomainRange.setNewObtainedBy(cls11.getURI(), "DomainRange: " + cls11.getLocalName() + " - SubPropertyOf: "+ property.getLocalName());
 								
 								//Salvo il tipo della propriet�
-								PropertyDomainRange.setPropertyType(cls11.getURI(), cls11.getRDFType(true).getLocalName());
+								propertyDomainRange.setPropertyType(cls11.getURI(), cls11.getRDFType(true).getLocalName());
 								
 								//Count Presence of Class as Domain
-								Concepts.updateCounter(clsD.getURI(), "Domain - Sub");
+								concepts.updateCounter(domain.getURI(), "Domain - Sub");
 								//Count Presence of Class as Range
-								if(clsR.isClass())
-									Concepts.updateCounter(clsR.getURI(), "Range - Sub");
+								if(range.isClass())
+									concepts.updateCounter(range.getURI(), "Range - Sub");
 							}
 							
 						}
@@ -198,48 +148,39 @@ public class OntologyDomainRangeExtractor {
 						String URI11 = cls11.getURI();
 						
 						//Se la propriet� inversa ha un URI, � un -- e sia Dominio che Range sono --
-						if( URI11!=null && clsD.isClass() ){ //TODO: && cls1.getNameSpace().compareTo(nameSpace)==0 && cls1.getDomain().getNameSpace().compareTo(nameSpace)==0 && cls1.getRange().getNameSpace().compareTo(nameSpace)==0
+						if( URI11!=null && domain.isClass() ){ //TODO: && cls1.getNameSpace().compareTo(nameSpace)==0 && cls1.getDomain().getNameSpace().compareTo(nameSpace)==0 && cls1.getRange().getNameSpace().compareTo(nameSpace)==0
 
 							//Se non ho gi� salvato dominio e range da precedenti propagazioni
 							if( DRProperty.get(cls11.getURI())==null ){
-								//TODO: Rimuovere
-								//System.out.println(cls11.getLocalName() + ": (" + clsR.getLocalName() + ", " + clsD.getLocalName() + ")"); //- DataType: " + cls1.isDatatypeProperty() + " - ObjectProperty: " + cls1.isObjectProperty()
-								//TODO: Rimuovere
 
 								//Salvo le informazioni
 								ArrayList<OntResource> data = new ArrayList<OntResource>();
-								data.add(clsR);
-								data.add(clsD);
+								data.add(range);
+								data.add(domain);
 								DRProperty.put(cls11.getURI(), data);
-								PropertyDomainRange.setNewObtainedBy(cls11.getURI(), "DomainRange: " + cls11.getLocalName() + " - InvPropertyOf: "+ property.getLocalName());
+								propertyDomainRange.setNewObtainedBy(cls11.getURI(), "DomainRange: " + cls11.getLocalName() + " - InvPropertyOf: "+ property.getLocalName());
 								
 								//Salvo il tipo della propriet�
-								PropertyDomainRange.setPropertyType(cls11.getURI(), cls11.getRDFType(true).getLocalName());
+								propertyDomainRange.setPropertyType(cls11.getURI(), cls11.getRDFType(true).getLocalName());
 								
 								//Count Presence of Class as Domain
-								if(clsR.isClass())
-									Concepts.updateCounter(clsR.getURI(), "Domain - Inv");
+								if(range.isClass())
+									concepts.updateCounter(range.getURI(), "Domain - Inv");
 								//Count Presence of Class as Range
-								Concepts.updateCounter(clsD.getURI(), "Range - Inv");
+								concepts.updateCounter(domain.getURI(), "Range - Inv");
 							}
 							
 						}
 					}
 				}
-				//TODO: Rimuovere
-				//System.out.println("----------------------------------");
-				//TODO: Rimuovere
 			}
 		}
-		
-		Concepts.getExtractedConcepts().addAll(AddConcepts);
-		
-		PropertyDomainRange.setDRRelation(DRProperty);
-
+		concepts.getExtractedConcepts().addAll(conceptsToAdd);
+		propertyDomainRange.setDRRelation(DRProperty);
 	}
 
 	public DomainRange getPropertyDomainRange() {
-		return PropertyDomainRange;
+		return propertyDomainRange;
 	}
 
 

@@ -287,16 +287,10 @@ public class FileDataSupport {
 			OntResource key = pIter.next();
 			List<OntResource> value = ExtractedEquConcept.get(key);
 			
-			//if( equClass.getURI().contains("schema.org"))
-				//System.out.println("ANALIZZO: " + key.getURI());
-
 			if( value.size()>0 ) //Il dato concetto ha concetti equivalenti
 			{
 
 				for( OntResource subP : value){
-					
-					//if( equClass.getURI().contains("schema.org"))
-						//System.out.println(">>EQUIVALENTE: " + subP.getURI() + " ATTUALE DA CERCARE: " + equClass.getURI());
 					
 					//Ho trovato un concetto equivalente
 					if(subP.getURI().equals(equClass.getURI())){

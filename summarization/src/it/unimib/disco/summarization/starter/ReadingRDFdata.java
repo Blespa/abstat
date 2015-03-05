@@ -10,23 +10,17 @@ import it.unimib.disco.summarization.utility.ComputeLongestPathHierarchy;
 import it.unimib.disco.summarization.utility.FileDataSupport;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.ResIterator;
-import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.util.FileManager;
-import com.hp.hpl.jena.vocabulary.OWL;
-import com.hp.hpl.jena.vocabulary.RDFS;
 
 public class ReadingRDFdata{
 	public static void main (String args[]){
 		//Parametri
-		String owlBaseFileArg = null;
-		String reportDirectory = null;
+		String owlBaseFileArg;
+		String reportDirectory;
 		String datasetSupportFileDirectory = null;
 				
 		if (args.length == 3) {

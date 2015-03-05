@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
-import java.util.Set;
 
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntProperty;
@@ -23,21 +22,14 @@ public class UsedOntology {
 	
 	public static List<String> getUsedOntology(OntModel ontologyModel, Concept concepts, Property properties, EquProperty equProperties){
 		
-		Set<String> tempimpOnt;
-		
 		//Get Explicit Imported Ontology
-		tempimpOnt = ontologyModel.listImportedOntologyURIs();
-		
-		for(String Ont : tempimpOnt){
-			impOnt.add(Ont);
-		}
+		impOnt.addAll(ontologyModel.listImportedOntologyURIs());
 		
 		//Read Used Ontology From Concept and Property
 		Iterator<OntResource> cIter = concepts.getExtractedConcepts().iterator();
 		
 		while (cIter.hasNext()) {
 			OntResource key = cIter.next();
-
 			String ontUri = key.getURI().replace(key.getLocalName(), "").replace("#", "");
 			int isSub = isSubstring(impOnt, ontUri); //Check if string is substring of another
 

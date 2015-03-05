@@ -14,7 +14,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 import java.util.Stack;
 import java.util.TreeSet;
@@ -23,9 +22,7 @@ import org.jgraph.graph.DefaultEdge;
 import org.jgrapht.DirectedGraph;
 import org.jgrapht.graph.DefaultDirectedGraph;
 
-import com.hp.hpl.jena.ontology.OntClass;
-
-//TODO: Rivedere e sistemare perch� pu� essere ottimizzato ( se serve ), ma sicuramente evitate alcune strutture
+//TODO: Rivedere e sistemare perchè può essere ottimizzato ( se serve ), ma sicuramente evitate alcune strutture
 
 public class ComputeLongestPathHierarchy {
 
@@ -57,46 +54,6 @@ public class ComputeLongestPathHierarchy {
 		listOfLeef = cloneList(getListOfConcept()); //Inizialmente assumo che tutti i concetti siano foglie
 		computeGraph();
 		
-		/*
-		System.out.println("TOP ORDER"); // Probabilmente ottimizza le prestazioni: http://en.wikipedia.org/wiki/Longest_path_problem#Weighted_directed_acyclic_graphs
-		
-		TopologicalOrderIterator<String, DefaultEdge> topOder = new TopologicalOrderIterator<String, DefaultEdge>(completeGraph);
-		ArrayList<String> topOderNoRoot = new ArrayList<String>();
-		
-		while(topOder.hasNext()){
-			String succ = topOder.next();
-			
-			if(!listOfRoot.contains(succ)){
-				topOderNoRoot.add(succ.toString());
-				System.out.println("AGGIUNGO:");
-			}
-			
-			System.out.println(succ);
-		}
-		*/
-		
-		/*
-		System.out.println("ROOT");
-		
-		Iterator<String> rootClassesTest = listOfRoot.iterator();
-		
-		while(rootClassesTest.hasNext()){
-			
-			System.out.println(rootClassesTest.next());
-
-		}
-
-		System.out.println("FOGLIE");
-
-		Iterator<String> leefClassesTest = listOfLeef.iterator();
-
-		while(leefClassesTest.hasNext()){
-
-			System.out.println(leefClassesTest.next());
-
-		}
-		*/
-		
 		//Calcolo tutti i percorsi pi� lunghi tra i concetti nella gerarchia
 
 		Iterator<String> rootClasses = listOfRoot.iterator();
@@ -118,8 +75,6 @@ public class ComputeLongestPathHierarchy {
 			
 			int depth = 0; //Profondit� della navigazione del grafo
 			
-			//System.out.println("CURR ROOT: " + curRoot);
-			
 			LinkedList<String> queue = new LinkedList<String>();
 			
 			//Inizializzo la coda con la radice
@@ -135,11 +90,7 @@ public class ComputeLongestPathHierarchy {
 				//Setto il vertice corrente di analisi
 				String CurNode = queue.pollFirst();
 				
-				//System.out.println("CURR VERT - TOP SCORR: " + CurNode);
-				
 				int depth_add = posVertex.get(CurNode)+1;
-				
-				//System.out.println("DEPTH: " + depth_add);
 				
 				//Scorro tutti i vertici adiacenti a questo
 				Iterator<DefaultEdge> adjCurrVertexOutgoing = completeGraph.outgoingEdgesOf(CurNode).iterator();
@@ -150,21 +101,15 @@ public class ComputeLongestPathHierarchy {
 						leefHier.add(CurNode);
 				}
 				
-				//System.out.println(completeGraph.outgoingEdgesOf(CurNode));
-				
 				while(adjCurrVertexOutgoing.hasNext()){
 					
 					String adjCurrVertex = completeGraph.getEdgeTarget(adjCurrVertexOutgoing.next());
 					
-					//if(posVertex.get(adjCurrVertex)==null)
-						queue.push(adjCurrVertex); //Salvo il nodo per l'iterazione successiva, se non l'ho gi� visitato
+					queue.push(adjCurrVertex); //Salvo il nodo per l'iterazione successiva, se non l'ho gi� visitato
 
-					//System.out.println("VERIFICO L'ARCO: " + CurNode + " - " + adjCurrVertex + " -NODO: " + adjCurrVertex);
 
 					if(posVertex.get(adjCurrVertex)!=null){
 						
-						//System.out.println("Gi� c'� con depth: " + posVertex.get(adjCurrVertex) + " - Depth Attuale: " + depth_add);
-
 						if( posVertex.get(adjCurrVertex) < depth_add){ //Rimuovo il percorso pi� breve e aggiorno a quello pi� lungo
 
 							posVertex.put(adjCurrVertex, depth_add);
@@ -175,7 +120,6 @@ public class ComputeLongestPathHierarchy {
 							while(provVert.hasNext()){
 								String toRem = provVert.next();
 								hierarchyGraph.removeEdge(toRem, adjCurrVertex);
-								//System.out.println("RIMUOVO L'ARCO: " + toRem  + " - " + adjCurrVertex);
 							}
 							
 							hierarchyGraph.addVertex(adjCurrVertex);
@@ -184,7 +128,6 @@ public class ComputeLongestPathHierarchy {
 							prov.add(CurNode);
 							
 							provVertex.put(adjCurrVertex, prov);
-							//System.out.println("SALVO LA PROVENIENZA DI: " + adjCurrVertex  + " - IN " + CurNode);
 							hierarchyGraph.addEdge(CurNode, adjCurrVertex);
 						}
 						else if( posVertex.get(adjCurrVertex) == depth_add){ //Aggiungo il nuovo percorso della stessa lunghezza
@@ -194,7 +137,6 @@ public class ComputeLongestPathHierarchy {
 							prov.add(CurNode);
 							
 							provVertex.put(adjCurrVertex, prov);
-							//System.out.println("SALVO LA PROVENIENZA DI: " + adjCurrVertex  + " - IN " + CurNode);
 							hierarchyGraph.addEdge(CurNode, adjCurrVertex);
 							
 						}
@@ -208,7 +150,6 @@ public class ComputeLongestPathHierarchy {
 						
 						provVertex.put(adjCurrVertex, prov);
 
-						//System.out.println("SALVO LA PROVENIENZA DI: " + adjCurrVertex  + " - IN " + CurNode);
 						hierarchyGraph.addVertex(adjCurrVertex);
 						hierarchyGraph.addEdge(CurNode, adjCurrVertex);
 					}
@@ -225,13 +166,6 @@ public class ComputeLongestPathHierarchy {
 			
 		}
 		
-		//TODO: salvare su file con una struttura comoda per successive analisi e utilizzi
-		
-		/*
-		System.out.println("");
-		System.out.println("PERCORSI");
-		*/
-		
 		Iterator<String> hierFromRoot = listOfRoot.iterator();
 		
 		try{
@@ -239,9 +173,6 @@ public class ComputeLongestPathHierarchy {
 			FileWriter fstream = new FileWriter(file);
 			BufferedWriter out = new BufferedWriter(fstream);
 			
-			//FileWriter fstreamConc = new FileWriter(fileAllSubConcept);
-			//BufferedWriter outConc = new BufferedWriter(fstreamConc);
-
 			while (hierFromRoot.hasNext()){
 				
 				String currRoot = hierFromRoot.next();
@@ -252,28 +183,10 @@ public class ComputeLongestPathHierarchy {
 				
 				while(leefCurr.hasNext()){ 
 					String foglia = leefCurr.next();
-					//System.out.println("RADICE-FOGLIA CORRENTE: " + currRoot + " - " + foglia);
 					
 					AllPaths(longestPathHierarchy.get(currRoot), currRoot, foglia, out, pathConc);
 				}
 				
-				/*
-				Object[] listPathConc = pathConc.toArray();
-				
-				int iter=0;
-				
-				for(Object pConc : listPathConc){
-					if(iter==0)
-						outConc.write("" + pConc);
-					else
-						outConc.write("##" + pConc);
-					
-					iter++;
-				}
-				
-				outConc.write("\n");
-				*/
-
 			}
 			
 			//Close the output stream

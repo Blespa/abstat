@@ -23,12 +23,13 @@ public class ConceptExtractor {
 		//Get Concept from Model
 		ExtendedIterator<OntClass> TempExtractedConcepts = ontologyModel.listClasses();
 		
+		
 		//Save Useful Info About Concepts
 		while(TempExtractedConcepts.hasNext()) {
 			OntClass concept = TempExtractedConcepts.next();
+			
 			String URI = concept.getURI();
-			if( URI!=null ){
-				
+			if(URI != null){
 				ExtractedConcepts.add(concept);
 				Concepts.put(URI,concept.getLocalName());	
 				getObtainedBy().put(URI, "Direct");

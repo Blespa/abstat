@@ -21,15 +21,20 @@ If everything goes as expected the script will print "OK".
 
 Running the whole summarization pipeline:
 ```
-$ scripts/run-summarization-pipeline.sh DATA RESULTS
+$ scripts/run-summarization-pipeline.sh $DATA $RESULTS
 ```
-Where both DATA and RESULTS are directories. The scripts expects to find an ontology in ```DATA/ontology``` and a ntriple file in ```DATA/triples/dataset.nt```
+Where the arguments $DATA and $RESULTS are directories. The scripts expects to find an ontology in ```$DATA/ontology``` and a ntriple file in ```$DATA/triples/dataset.nt```
 
 Preparing the dbpedia dataset
 ```
-$ scripts/prepare-dbpedia-dataset.sh TARGET-DIRECTORY VERSION
+$ scripts/prepare-dbpedia-dataset.sh $TARGET-DIRECTORY $VERSION
 ```
-Where VERSION is the dbpedia version that you want to download (e.g., 3.9 or 2014)
+Where $VERSION is the dbpedia version that you want to download (e.g., 3.9 or 2014)
+
+Preparing the linked-brainz dataset
+```
+$ scripts/prepare-linked-brainz-dataset.sh $TARGET-DIRECTORY
+```
 
 ## Production machine Configuration and Deployment
 

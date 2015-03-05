@@ -1,10 +1,10 @@
 package it.unimib.disco.summarization.database;
 
-import java.util.Vector;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

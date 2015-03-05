@@ -13,14 +13,7 @@ import it.unimib.disco.summarization.utility.Model;
 
 import java.io.File;
 
-
-
-import com.hp.hpl.jena.n3.turtle.TurtleParseException;
 import com.hp.hpl.jena.ontology.OntModel;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.shared.JenaException;
-import com.hp.hpl.jena.shared.NotFoundException;
-import com.hp.hpl.jena.util.FileManager;
 
 
 

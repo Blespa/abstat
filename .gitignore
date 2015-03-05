@@ -2,3 +2,5 @@ log
 bin
 tmp
 organized-splitted-deduplicated
+.metadata
+RemoteSystemsTempFiles

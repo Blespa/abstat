@@ -7,15 +7,12 @@ import it.unimib.disco.summarization.datatype.Concept;
 import it.unimib.disco.summarization.datatype.EquConcept;
 import it.unimib.disco.summarization.datatype.EquProperty;
 import it.unimib.disco.summarization.datatype.Row;
-import it.unimib.disco.summarization.datatype.SubClassOf;
 import it.unimib.disco.summarization.utility.RDFLoader;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 import com.hp.hpl.jena.ontology.ConversionException;
 import com.hp.hpl.jena.ontology.OntClass;
@@ -33,7 +30,6 @@ import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
-import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 import com.hp.hpl.jena.util.iterator.Filter;
 import com.hp.hpl.jena.vocabulary.RDF;
 import com.hp.hpl.jena.vocabulary.RDFS;

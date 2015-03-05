@@ -28,7 +28,10 @@ import it.unimib.disco.summarization.utility.UsedOntology;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Collection;
 import java.util.List;
+
+import org.apache.commons.io.FileUtils;
 
 import jxl.write.WriteException;
 
@@ -72,26 +75,8 @@ public class Starter {
 		
 		//Ottengo il nome del file che rappresenta l'ontologia, con path assoluto per poter caricare il Model di Jena
 		File folder = new File(owlBaseFileArg);
-		File[] listOfFiles = folder.listFiles();
-		String fileName = null;
-
-		for (File file : listOfFiles) {
-		    if (file.isFile()) {
-		    	fileName = file.getName();
-		  
-			    String extension = "";
-	
-			    int i = fileName.lastIndexOf('.');
-			    int p = Math.max(fileName.lastIndexOf('/'), fileName.lastIndexOf('\\'));
-	
-			    if (i > p) {
-			        extension = fileName.substring(i+1);
-			        
-			        if(extension=="owl") //Ho trovato il file di mio interesse
-			        	break;
-			    }
-		    }
-		}
+		Collection<File> listOfFiles = FileUtils.listFiles(folder, new String[]{"owl"}, false);
+		String fileName = listOfFiles.iterator().next().getName();
 		
 		if(fileName==null){ //L'ontologia non � presente, o non � nel formato corretto
 			
@@ -101,7 +86,7 @@ public class Starter {
 		}
 		
 		//Base File
-		String owlBaseFile = "file://" + owlBaseFileArg + fileName;
+		String owlBaseFile = "file://" + owlBaseFileArg + "/" + fileName;
 		//String owlBaseFile = "File:Ontology/university.owl";
 
 		//Model

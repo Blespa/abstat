@@ -1,4 +1,4 @@
-package it.disco.unimib.summarization.tests;
+package it.unimib.disco.summarization.tests;
 
 import org.junit.extensions.cpsuite.ClasspathSuite;
 import org.junit.extensions.cpsuite.ClasspathSuite.ClassnameFilters;

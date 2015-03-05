@@ -10,6 +10,6 @@ cd $root
 ./build-java-summarization-module.sh
 
 cd $project/bin
-java -Xms256m -Xmx1g -cp .:'ontology_summarization.jar' org.junit.runner.JUnitCore it.disco.unimib.summarization.tests.TestSuite
+java -Xms256m -Xmx1g -cp .:'ontology_summarization.jar' org.junit.runner.JUnitCore it.unimib.disco.summarization.tests.TestSuite
 cd $root
 

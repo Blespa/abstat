@@ -152,9 +152,6 @@ public class OntologyDomainRangeExtractor {
 
 							//Se non ho gi� salvato dominio e range da precedenti propagazioni
 							if( DRProperty.get(cls11.getURI())==null ){
-								//TODO: Rimuovere
-								//System.out.println(cls11.getLocalName() + ": (" + clsR.getLocalName() + ", " + clsD.getLocalName() + ")"); //- DataType: " + cls1.isDatatypeProperty() + " - ObjectProperty: " + cls1.isObjectProperty()
-								//TODO: Rimuovere
 
 								//Salvo le informazioni
 								ArrayList<OntResource> data = new ArrayList<OntResource>();

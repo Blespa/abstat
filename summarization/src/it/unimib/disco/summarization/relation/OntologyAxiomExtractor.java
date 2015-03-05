@@ -110,14 +110,6 @@ public class OntologyAxiomExtractor {
 							Concepts.getConcepts().put(URISUBJ,conceptSubj.getLocalName());
 							Concepts.setNewObtainedBy(URISUBJ, "SomeValuesFrom  - " + conceptObj.getLocalName());
 							AddConcepts.add(conceptSubj);
-							//TODO: Rimuovere
-
-							System.out.println("CLASS ADDED - SOMEVALUESFROM");
-							System.out.println(conceptSubj.getURI());
-							System.out.println(conceptSubj.getLocalName());
-							System.out.println("----------------------------------");
-
-							//TODO: Rimuovere
 						}
 						
 						//Count Presence of Class as SomeValueFrom
@@ -127,14 +119,7 @@ public class OntologyAxiomExtractor {
 							Concepts.getConcepts().put(URIOBJ,conceptObj.getLocalName());
 							Concepts.setNewObtainedBy(URIOBJ, conceptSubj.getLocalName() + " - SomeValuesFrom");
 							AddConcepts.add(conceptObj);
-							//TODO: Rimuovere
-
-							System.out.println("CLASS ADDED - SOMEVALUEFROM");
-							System.out.println(conceptObj.getURI());
-							System.out.println(conceptObj.getLocalName());
-							System.out.println("----------------------------------");
-
-							//TODO: Rimuovere
+							
 						}
 						
 						//Count Presence of Class as SomeValueFrom
@@ -196,14 +181,6 @@ public class OntologyAxiomExtractor {
 							Concepts.getConcepts().put(URISUBJ,conceptSubj.getLocalName());
 							Concepts.setNewObtainedBy(URISUBJ, "SomeValuesFrom (Literal) - " + conceptLiteral.toString());
 							AddConcepts.add(conceptSubj);
-							//TODO: Rimuovere
-
-							System.out.println("CLASS ADDED - SOMEVALUEFROM (LITERAL)");
-							System.out.println(conceptSubj.getURI());
-							System.out.println(conceptSubj.getLocalName());
-							System.out.println("----------------------------------");
-
-							//TODO: Rimuovere
 						}
 
 						//Count Presence of Class as SomeValueFrom
@@ -284,14 +261,6 @@ public class OntologyAxiomExtractor {
 							Concepts.getConcepts().put(URISUBJ,conceptSubj.getLocalName());
 							Concepts.setNewObtainedBy(URISUBJ, "AllValuesFrom  - " + conceptObj.getLocalName());
 							AddConcepts.add(conceptSubj);
-							//TODO: Rimuovere
-
-							System.out.println("CLASS ADDED - ALLVALUEFROM");
-							System.out.println(conceptSubj.getURI());
-							System.out.println(conceptSubj.getLocalName());
-							System.out.println("----------------------------------");
-
-							//TODO: Rimuovere
 						}
 						
 						//Count Presence of Class as AllValueFrom
@@ -301,14 +270,6 @@ public class OntologyAxiomExtractor {
 							Concepts.getConcepts().put(URIOBJ,conceptObj.getLocalName());
 							Concepts.setNewObtainedBy(URIOBJ, conceptSubj.getLocalName() + " - AllValuesFrom");
 							AddConcepts.add(conceptObj);
-							//TODO: Rimuovere
-
-							System.out.println("CLASS ADDED - ALLVALUEFROM");
-							System.out.println(conceptObj.getURI());
-							System.out.println(conceptObj.getLocalName());
-							System.out.println("----------------------------------");
-
-							//TODO: Rimuovere
 						}
 						
 						//Count Presence of Class as AllValueFrom
@@ -369,14 +330,6 @@ public class OntologyAxiomExtractor {
 							Concepts.getConcepts().put(URISUBJ,conceptSubj.getLocalName());
 							Concepts.setNewObtainedBy(URISUBJ, "AllValuesFrom (Literal) - " + conceptLiteral.toString());
 							AddConcepts.add(conceptSubj);
-							//TODO: Rimuovere
-
-							System.out.println("CLASS ADDED - ALLVALUEFROM (LITERAL)");
-							System.out.println(conceptSubj.getURI());
-							System.out.println(conceptSubj.getLocalName());
-							System.out.println("----------------------------------");
-
-							//TODO: Rimuovere
 						}
 
 						//Count Presence of Class as AllValueFrom
@@ -457,14 +410,6 @@ public class OntologyAxiomExtractor {
 							Concepts.getConcepts().put(URISUBJ,conceptSubj.getLocalName());
 							Concepts.setNewObtainedBy(URISUBJ, "MinCardinality  - " + conceptObj.getLocalName());
 							AddConcepts.add(conceptSubj);
-							//TODO: Rimuovere
-
-							System.out.println("CLASS ADDED - MINCARDINALITY");
-							System.out.println(conceptSubj.getURI());
-							System.out.println(conceptSubj.getLocalName());
-							System.out.println("----------------------------------");
-
-							//TODO: Rimuovere
 						}
 						
 						//Count Presence of Class as MinCardinality
@@ -474,14 +419,6 @@ public class OntologyAxiomExtractor {
 							Concepts.getConcepts().put(URIOBJ,conceptObj.getLocalName());
 							Concepts.setNewObtainedBy(URIOBJ, conceptSubj.getLocalName() + " - MinCardinality");
 							AddConcepts.add(conceptObj);
-							//TODO: Rimuovere
-
-							System.out.println("CLASS ADDED - MINCARDINALITY");
-							System.out.println(conceptObj.getURI());
-							System.out.println(conceptObj.getLocalName());
-							System.out.println("----------------------------------");
-
-							//TODO: Rimuovere
 						}
 						
 						//Count Presence of Class as MinCardinality
@@ -542,14 +479,6 @@ public class OntologyAxiomExtractor {
 							Concepts.getConcepts().put(URISUBJ,conceptSubj.getLocalName());
 							Concepts.setNewObtainedBy(URISUBJ, "MinCardinality (Literal) - " + conceptLiteral.toString());
 							AddConcepts.add(conceptSubj);
-							//TODO: Rimuovere
-
-							System.out.println("CLASS ADDED - MINCARDINALITY (LITERAL)");
-							System.out.println(conceptSubj.getURI());
-							System.out.println(conceptSubj.getLocalName());
-							System.out.println("----------------------------------");
-
-							//TODO: Rimuovere
 						}
 
 						//Count Presence of Class as MinCardinality

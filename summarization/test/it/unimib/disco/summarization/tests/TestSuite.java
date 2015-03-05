@@ -7,5 +7,5 @@ import org.junit.runner.RunWith;
 
 @RunWith(ClasspathSuite.class)
 @IncludeJars(true)
-@ClassnameFilters({"it.disco.unimib.summarization.*Test"})
+@ClassnameFilters({"it.unimib.disco.summarization.*Test"})
 public class TestSuite {}

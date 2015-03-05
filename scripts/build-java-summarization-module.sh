@@ -16,7 +16,7 @@ for file in $(find ../../lib/* | grep .jar)
 do
 	jar xf $file
 done
-jar cvfe ../ontology_summarization.jar -C . > /dev/null
-chmod 777 ../ontology_summarization.jar
+jar cvfe ../../ontology_summarization.jar -C . > /dev/null
+chmod 777 ../../ontology_summarization.jar
 
 

@@ -9,7 +9,7 @@ echo unit testing the java summarization module
 cd $root
 ./build-java-summarization-module.sh
 
-cd $project/bin
+cd $project
 java -Xms256m -Xmx1g -cp .:'ontology_summarization.jar' org.junit.runner.JUnitCore it.unimib.disco.summarization.tests.TestSuite
 cd $root
 

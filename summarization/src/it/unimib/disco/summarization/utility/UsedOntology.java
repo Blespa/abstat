@@ -3,6 +3,7 @@ package it.unimib.disco.summarization.utility;
 import it.unimib.disco.summarization.datatype.Concept;
 import it.unimib.disco.summarization.datatype.EquProperty;
 import it.unimib.disco.summarization.datatype.Property;
+import it.unimib.disco.summarization.starter.Events;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -37,6 +38,8 @@ public class UsedOntology {
 		
 		while (cIter.hasNext()) {
 			OntResource key = cIter.next();
+			
+			new Events().debug(key);
 
 			String ontUri = key.getURI().replace(key.getLocalName(), "").replace("#", "");
 			int isSub = isSubstring(impOnt, ontUri); //Check if string is substring of another

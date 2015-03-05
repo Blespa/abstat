@@ -7,7 +7,6 @@ import java.io.File;
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.contrib.java.lang.system.ExpectedSystemExit;
@@ -30,7 +29,6 @@ public class StarterTest {
 	}
 	
 	@Test
-	@Ignore
 	public void shouldBeAbleToProcessTheMusicOntology() {
 		String ontologyDirectory = new File("test/it/unimib/disco/summarization/tests/").getAbsolutePath();
 		

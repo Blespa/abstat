@@ -1,3 +1,5 @@
+<http://dbpedia.org/resource/MALFORMED>RESOURCE> <http://xmlns.com/foaf/0.1/name> "any".
+<malformed> <malformed> <malformed> <malformed> .
 <http://dbpedia.org/resource/Japanese_community_of_S%C3%A3o_Paulo> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Thing> .
 <http://dbpedia.org/resource/Dr%C5%BEkov> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Place> .
 <http://dbpedia.org/resource/Richard_Kolitsch> <http://xmlns.com/foaf/0.1/surname> "Kolitsch"@en .

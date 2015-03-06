@@ -1,0 +1,1 @@
+1##http://dbpedia.org/resource/6527_Takashiito##http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalBody

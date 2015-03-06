@@ -1,5 +1,4 @@
-http://dbpedia.org/ontology/Album##1
-http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalBody##2
+http://dbpedia.org/ontology/Planet##1
 http://dbpedia.org/ontology/Museum##0
 http://dbpedia.org/ontology/Artist##0
 http://dbpedia.org/ontology/OldTerritory##0
@@ -178,6 +177,7 @@ http://dbpedia.org/ontology/SportsSeason##0
 http://dbpedia.org/ontology/ProgrammingLanguage##0
 http://dbpedia.org/ontology/Animal##0
 http://dbpedia.org/ontology/HistoricPlace##0
+http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalBody##0
 http://dbpedia.org/ontology/Award##0
 http://dbpedia.org/ontology/BoxingCategory##0
 http://dbpedia.org/ontology/CountrySeat##0
@@ -393,6 +393,7 @@ http://dbpedia.org/ontology/Instrument##0
 http://dbpedia.org/ontology/Year##0
 http://dbpedia.org/ontology/Song##0
 http://dbpedia.org/ontology/Sport##0
+http://dbpedia.org/ontology/Album##0
 http://dbpedia.org/ontology/NationalFootballLeagueEvent##0
 http://dbpedia.org/ontology/Aircraft##0
 http://dbpedia.org/ontology/MotorcycleRider##0
@@ -645,7 +646,6 @@ http://dbpedia.org/ontology/HorseRider##0
 http://dbpedia.org/ontology/ResearchProject##0
 http://dbpedia.org/ontology/Diocese##0
 http://dbpedia.org/ontology/Atoll##0
-http://dbpedia.org/ontology/Planet##0
 http://dbpedia.org/ontology/Manhwa##0
 http://dbpedia.org/ontology/AmericanFootballPlayer##0
 http://dbpedia.org/ontology/AustralianFootballLeague##0

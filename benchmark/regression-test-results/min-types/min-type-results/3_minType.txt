@@ -1,0 +1,3 @@
+1##http://dbpedia.org/resource/369##http://dbpedia.org/ontology/TimePeriod
+1##http://dbpedia.org/resource/300_Miles_to_Heaven##http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity
+1##http://dbpedia.org/resource/3-keto-steroid_reductase##http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#BiologicalObject

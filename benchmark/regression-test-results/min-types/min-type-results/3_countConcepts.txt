@@ -1,5 +1,6 @@
-http://dbpedia.org/ontology/Album##1
-http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalBody##2
+http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity##1
+http://dbpedia.org/ontology/TimePeriod##1
+http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#BiologicalObject##1
 http://dbpedia.org/ontology/Museum##0
 http://dbpedia.org/ontology/Artist##0
 http://dbpedia.org/ontology/OldTerritory##0
@@ -178,6 +179,7 @@ http://dbpedia.org/ontology/SportsSeason##0
 http://dbpedia.org/ontology/ProgrammingLanguage##0
 http://dbpedia.org/ontology/Animal##0
 http://dbpedia.org/ontology/HistoricPlace##0
+http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalBody##0
 http://dbpedia.org/ontology/Award##0
 http://dbpedia.org/ontology/BoxingCategory##0
 http://dbpedia.org/ontology/CountrySeat##0
@@ -393,6 +395,7 @@ http://dbpedia.org/ontology/Instrument##0
 http://dbpedia.org/ontology/Year##0
 http://dbpedia.org/ontology/Song##0
 http://dbpedia.org/ontology/Sport##0
+http://dbpedia.org/ontology/Album##0
 http://dbpedia.org/ontology/NationalFootballLeagueEvent##0
 http://dbpedia.org/ontology/Aircraft##0
 http://dbpedia.org/ontology/MotorcycleRider##0
@@ -660,8 +663,6 @@ http://dbpedia.org/ontology/Judge##0
 http://dbpedia.org/ontology/Divorce##0
 http://dbpedia.org/ontology/RecordOffice##0
 http://dbpedia.org/ontology/FootballLeagueSeason##0
-http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#BiologicalObject##0
-http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity##0
 http://dbpedia.org/ontology/TelevisionHost##0
 http://dbpedia.org/ontology/State##0
 http://dbpedia.org/ontology/Archive##0
@@ -761,7 +762,6 @@ http://dbpedia.org/ontology/SkiResort##0
 http://dbpedia.org/ontology/AmericanFootballLeague##0
 http://dbpedia.org/ontology/NobleFamily##0
 http://dbpedia.org/ontology/Village##0
-http://dbpedia.org/ontology/TimePeriod##0
 http://dbpedia.org/ontology/Intercommunality##0
 http://dbpedia.org/ontology/WomensTennisAssociationTournament##0
 http://dbpedia.org/ontology/VicePresident##0

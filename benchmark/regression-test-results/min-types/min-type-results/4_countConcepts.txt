@@ -1,5 +1,4 @@
-http://dbpedia.org/ontology/Album##1
-http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalBody##2
+http://dbpedia.org/ontology/Asteroid##1
 http://dbpedia.org/ontology/Museum##0
 http://dbpedia.org/ontology/Artist##0
 http://dbpedia.org/ontology/OldTerritory##0
@@ -58,7 +57,6 @@ http://dbpedia.org/ontology/Building##0
 http://dbpedia.org/ontology/Comic##0
 http://dbpedia.org/ontology/SystemOfLaw##0
 http://dbpedia.org/ontology/Media##0
-http://dbpedia.org/ontology/Asteroid##0
 http://dbpedia.org/ontology/Medician##0
 http://dbpedia.org/ontology/Chef##0
 http://dbpedia.org/ontology/LineOfFashion##0
@@ -178,6 +176,7 @@ http://dbpedia.org/ontology/SportsSeason##0
 http://dbpedia.org/ontology/ProgrammingLanguage##0
 http://dbpedia.org/ontology/Animal##0
 http://dbpedia.org/ontology/HistoricPlace##0
+http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalBody##0
 http://dbpedia.org/ontology/Award##0
 http://dbpedia.org/ontology/BoxingCategory##0
 http://dbpedia.org/ontology/CountrySeat##0
@@ -393,6 +392,7 @@ http://dbpedia.org/ontology/Instrument##0
 http://dbpedia.org/ontology/Year##0
 http://dbpedia.org/ontology/Song##0
 http://dbpedia.org/ontology/Sport##0
+http://dbpedia.org/ontology/Album##0
 http://dbpedia.org/ontology/NationalFootballLeagueEvent##0
 http://dbpedia.org/ontology/Aircraft##0
 http://dbpedia.org/ontology/MotorcycleRider##0

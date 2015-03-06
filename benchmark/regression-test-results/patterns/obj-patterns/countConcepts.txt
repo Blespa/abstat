@@ -334,8 +334,8 @@ http://dbpedia.org/ontology/GreenAlga##0##0
 http://dbpedia.org/ontology/TheatreDirector##0##0
 http://dbpedia.org/ontology/BodyOfWater##12##0.183993
 http://dbpedia.org/ontology/Death##0##0
-http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Role##22##0.33732
 http://dbpedia.org/ontology/Arena##0##0
+http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Role##22##0.33732
 http://dbpedia.org/ontology/AnatomicalStructure##6##0.0919963
 http://dbpedia.org/ontology/ArchitecturalStructure,_Monument##0##0
 http://dbpedia.org/ontology/Agglomeration##0##0
@@ -470,8 +470,8 @@ http://dbpedia.org/ontology/Comics##0##0
 http://dbpedia.org/ontology/Glacier##0##0
 http://dbpedia.org/ontology/BritishRoyalty##0##0
 http://dbpedia.org/ontology/SocietalEvent##2##0.0306654
-http://dbpedia.org/ontology/Coach##3##0.0459982
 http://dbpedia.org/ontology/Database##0##0
+http://dbpedia.org/ontology/Coach##3##0.0459982
 http://dbpedia.org/ontology/Castle##0##0
 http://dbpedia.org/ontology/Prefecture##0##0
 http://dbpedia.org/ontology/Diocese,_Parish##0##0
@@ -528,8 +528,8 @@ http://dbpedia.org/ontology/SnookerWorldRanking##0##0
 http://dbpedia.org/ontology/Sea##0##0
 http://dbpedia.org/ontology/CurlingLeague##0##0
 http://dbpedia.org/ontology/Hospital##1##0.0153327
-http://dbpedia.org/ontology/Athlete##56##0.858632
 http://dbpedia.org/ontology/Memorial##0##0
+http://dbpedia.org/ontology/Athlete##56##0.858632
 http://dbpedia.org/ontology/College##3##0.0459982
 http://dbpedia.org/ontology/EthnicGroup##3##0.0459982
 http://dbpedia.org/ontology/MetroStation##0##0
@@ -623,9 +623,9 @@ http://dbpedia.org/ontology/Amphibian##1##0.0153327
 http://dbpedia.org/ontology/RomaniaSettlement##0##0
 http://dbpedia.org/ontology/Community##0##0
 http://dbpedia.org/ontology/FieldHockeyLeague##0##0
-http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Situation##96##1.47194
 http://dbpedia.org/ontology/SerialKiller##0##0
 http://dbpedia.org/ontology/MovingImage##0##0
+http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Situation##96##1.47194
 http://dbpedia.org/ontology/Cheese##0##0
 http://dbpedia.org/ontology/VolleyballPlayer##0##0
 http://dbpedia.org/ontology/Department##0##0
@@ -652,8 +652,8 @@ http://dbpedia.org/ontology/Manhwa##0##0
 http://dbpedia.org/ontology/AmericanFootballPlayer##2##0.0306654
 http://dbpedia.org/ontology/AustralianFootballLeague##0##0
 http://dbpedia.org/ontology/RoadTunnel##0##0
-http://dbpedia.org/ontology/TradeUnion##2##0.0306654
 http://dbpedia.org/ontology/ClassicalMusicArtist##1##0.0153327
+http://dbpedia.org/ontology/TradeUnion##2##0.0306654
 http://dbpedia.org/ontology/ChristianDoctrine##1##0.0153327
 http://dbpedia.org/datatype/hour##0##0
 http://dbpedia.org/ontology/TennisLeague##0##0
@@ -762,8 +762,8 @@ http://dbpedia.org/ontology/SoccerLeagueSeason##0##0
 http://dbpedia.org/ontology/SkiResort##0##0
 http://dbpedia.org/ontology/AmericanFootballLeague##0##0
 http://dbpedia.org/ontology/NobleFamily##0##0
-http://dbpedia.org/ontology/TimePeriod##16##0.245324
 http://dbpedia.org/ontology/Village##115##1.76326
+http://dbpedia.org/ontology/TimePeriod##16##0.245324
 http://dbpedia.org/ontology/Intercommunality##0##0
 http://dbpedia.org/ontology/WomensTennisAssociationTournament##0##0
 http://dbpedia.org/ontology/VicePresident##0##0

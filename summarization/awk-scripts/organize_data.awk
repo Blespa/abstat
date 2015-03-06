@@ -4,7 +4,7 @@ BEGIN {
 	triple_scritte=0;
 	pref=prefix;
 	destDir=destinatioDirectory;
-	lengthArray=split("a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,%,_",splitters,",");
+	lengthArray=split("0,1,2,3,4,5,6,7,8,9,a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,%,_",splitters,",");
 	#Salvo le lettere nell'array associativo utilizzato per il salvataggio delle informazioni
 	for(iSplit=1; iSplit<=lengthArray; iSplit++)
 		letters[splitters[iSplit]];
@@ -54,13 +54,11 @@ BEGIN {
 				gsub("##","%23%23",oggetto);
 			}
 			else{ #I dati presenti possono essere al più 3, da standard, quindi 3 coppie di <>
-				print "Errore nella forma dei dati, vi sono più di 3 coppie di <>";
-             			exit 1;
+             			next;
 			}
 		}
 		else{
-			print "Errore nella forma dei dati";
-             		exit 1;
+             		next;
 		}
 	}
 

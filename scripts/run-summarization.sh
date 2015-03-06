@@ -43,7 +43,7 @@ patternTmpFiles="$ResultsDirectory/patterns/tmp-files"
 
 #Variabili per la parallelizzazione
 #Lettere con cui splitto i file per la parallelizzazione
-IFS=',' read -a splitters <<< "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,%,_,others" #Allineare con quanto presente in organize:data, se modifico
+IFS=',' read -a splitters <<< "0,1,2,3,4,5,6,7,8,9,a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,%,_,others" #Allineare con quanto presente in organize:data, se modifico
 NProc=4 #Numero di processi da parallelizzare [I passi successivi sono, per ora, vincolati all'uso di 4 processori]
 NUM=0
 QUEUE=""
@@ -127,24 +127,11 @@ echo ""
  
 	let "dataBlockSize1=($dataSize1/$NProc)+10000000" #Aggiungo 10000000 così da assicurarmi di salvare tutte le informazioni nel passo successivo
 
-	#Processi da eseguire per lo splittaggio
-	splitFile[0]="split -u -C $dataBlockSize1 $DatasetFile/$TripleFile $tmpDatasetFile/1_lod_part_" #-u per scrittura diretta senza bufferizzazione
+	#Processo da eseguire per lo splittaggio
+	splitFile="split -u -C $dataBlockSize1 $DatasetFile/$TripleFile $tmpDatasetFile/1_lod_part_" #-u per scrittura diretta senza bufferizzazione
 
 	#Splitto il file utilizzando dataBlockSize
-	#Avvio l'esecuzione parallela dei processi
-	for (( proc=0; proc<${#splitFile[@]}; proc++ )) # for the rest of the arguments
-	do
-		#echo ${splitFile[$proc]}
-		eval ${dbgCmd}""${splitFile[$proc]} &
-		PID=$!
-		queue $PID
-
-		while [ $NUM -ge $NProc ]; do
-			checkqueue
-			sleep 0.4
-		done
-	done
-	wait # attendi il completamento di tutti i processi prima di procedere con il passo successivo
+	eval ${dbgCmd}""${splitFile}
 	sync #Mi assicuro che tutte le informazioni siano scritte su file
 
 	#Creo le stringhe contenenti i file da organizzare
@@ -165,49 +152,15 @@ echo ""
 				filePart="${filePart} $tmpDatasetFile/1_lod_part_${stringFile[$i]}"
 			fi
 		fi
-
-		if [ -f $tmpDatasetFile/2_lod_part_${stringFile[$i]} ];
-		then
-			if [ filePart == "" ]
-			then
-				filePart="$tmpDatasetFile/2_lod_part_${stringFile[$i]}"
-			else
-				filePart="${filePart} $tmpDatasetFile/2_lod_part_${stringFile[$i]}"
-			fi
-		fi
-
-		if [ -f $tmpDatasetFile/3_lod_part_${stringFile[$i]} ];
-		then
-			if [ filePart == "" ]
-			then
-				filePart="$tmpDatasetFile/3_lod_part_${stringFile[$i]}"
-			else
-				filePart="${filePart} $tmpDatasetFile/3_lod_part_${stringFile[$i]}"
-			fi
-		fi
-
-		if [ -f $tmpDatasetFile/4_lod_part_${stringFile[$i]} ];
-		then
-			if [ filePart == "" ]
-			then
-				filePart="$tmpDatasetFile/4_lod_part_${stringFile[$i]}"
-			else
-				filePart="${filePart} $tmpDatasetFile/4_lod_part_${stringFile[$i]}"
-			fi
-		fi
-		
 		filePartCom[$filePartCount]=${filePart}
 		filePartCount=$(($filePartCount+1))	
 
 	done
 
-
 	rm -f $orgDatasetFile/*.nt  2>/dev/null #Rimuovo i file generati nell'esecuzione precedente
 	mkdir -p $orgDatasetFile
 
-	#TODO: Rendere flessibile la lettura per non essere vincolati a NProc
-
-	#Processi da eseguire per l'organizzazione (Assumo che le stringhe di file abbiano almeno un file, TODO: Generalizzare a tutti i dataset)
+	#Processi da eseguire per l'organizzazione (Assumo che le stringhe di file abbiano almeno un file)
 	orgFile[0]="gawk -f $AwkScriptsDirectory/organize_data.awk -v prefix=1 -v destinatioDirectory=\"${orgDatasetFile}\" ${filePartCom[0]}"
 	orgFile[1]="gawk -f $AwkScriptsDirectory/organize_data.awk -v prefix=2 -v destinatioDirectory=\"${orgDatasetFile}\" ${filePartCom[1]}"
 	orgFile[2]="gawk -f $AwkScriptsDirectory/organize_data.awk -v prefix=3 -v destinatioDirectory=\"${orgDatasetFile}\" ${filePartCom[2]}"
@@ -234,14 +187,11 @@ echo ""
 	sync #Mi assicuro che tutte le informazioni siano scritte su file
 
 	#Rimuovo le singole parti (Separato perchè in parallelo si crea dipendenza tra coppie di processi, ed essendo la rimozione veloce si può gestire senza problemi così)
-	for i in 1 2 3 4
-	do
-		rm -f $tmpDatasetFile/${i}_lod_part_aa
-		rm -f $tmpDatasetFile/${i}_lod_part_ab
-		rm -f $tmpDatasetFile/${i}_lod_part_ac
-		rm -f $tmpDatasetFile/${i}_lod_part_ad
-	done
-
+	rm -f $tmpDatasetFile/1_lod_part_aa
+	rm -f $tmpDatasetFile/1_lod_part_ab
+	rm -f $tmpDatasetFile/1_lod_part_ac
+	rm -f $tmpDatasetFile/1_lod_part_ad
+	
 	rm -rf $tmpDatasetFile/ #Rimuovo la directory con i file temporanei, non più utili
 
 	endBlock=$SECONDS

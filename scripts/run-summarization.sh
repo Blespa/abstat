@@ -43,7 +43,7 @@ patternTmpFiles="$ResultsDirectory/patterns/tmp-files"
 
 #Variabili per la parallelizzazione
 #Lettere con cui splitto i file per la parallelizzazione
-IFS=',' read -a splitters <<< "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,%,_,others" #Allineare con quanto presente in organize:data, se modifico
+IFS=',' read -a splitters <<< "0,1,2,3,4,5,6,7,8,9,a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,%,_,others" #Allineare con quanto presente in organize:data, se modifico
 NProc=4 #Numero di processi da parallelizzare [I passi successivi sono, per ora, vincolati all'uso di 4 processori]
 NUM=0
 QUEUE=""

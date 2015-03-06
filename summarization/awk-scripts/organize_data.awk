@@ -54,8 +54,7 @@ BEGIN {
 				gsub("##","%23%23",oggetto);
 			}
 			else{ #I dati presenti possono essere al più 3, da standard, quindi 3 coppie di <>
-				print "Errore nella forma dei dati, vi sono più di 3 coppie di <>";
-             			exit 1;
+             			next;
 			}
 		}
 		else{

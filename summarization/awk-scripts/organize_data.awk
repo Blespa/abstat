@@ -59,8 +59,7 @@ BEGIN {
 			}
 		}
 		else{
-			print "Errore nella forma dei dati";
-             		exit 1;
+             		next;
 		}
 	}
 

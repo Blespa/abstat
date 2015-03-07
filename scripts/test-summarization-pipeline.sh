@@ -35,14 +35,14 @@ function assert_results_are_compliant()
 
 function assert_results_are_present_in_virtuoso(){
 	sparql_query="http://localhost:8890/sparql?default-graph-uri=http%3A%2F%2Fsystem.test&query=select+count%28*%29+where+%7B%3Fa+%3Fb+%3Fc%7D&format=text%2Fplain&timeout=0&debug=on"
-	not_expected="<http://www.w3.org/2005/sparql-results#value> \"0\"^^<http://www.w3.org/2001/XMLSchema#integer>"
+	expected="<http://www.w3.org/2005/sparql-results#value> \"2334\"^^<http://www.w3.org/2001/XMLSchema#integer>"
 
-	highlight_color='\e[0;32m'
-	message='OK'
-	if [[ $(curl --silent "$sparql_query" | grep "$not_expected") ]]
+	highlight_color='\e[0;31m'
+	message='KO'
+	if [[ $(curl --silent "$sparql_query" | grep "$expected") ]]
 	then
-		highlight_color='\e[0;31m'
-		message="KO"
+		highlight_color='\e[0;32m'
+		message="OK"
 	fi
 	echo -e "checking that rdf produced was loaded: ${highlight_color}${message}\e[0m"
 }
@@ -68,7 +68,7 @@ echo "checking system configuration"
 virtuoso_config_file=/etc/virtuoso-opensource-6.1/virtuoso.ini
 if ! command -v virtuoso-t ; then
 	echo "no virtuoso end point detected"
-	echo "installing via sudo apt-get"
+	echo "installing via apt-get"
 	echo 
 	echo "\e[0;31m WARNING:\e[0m remember to set up the dba user password equal to 'dba'"	
 	echo
@@ -93,18 +93,13 @@ cd $current_directory
 ./test-java-summarization-module.sh
 ./run-summarization-pipeline.sh $data $results
 echo
-
-isql-vt 1111 dba dba VERBOSE=OFF "EXEC=SPARQL CLEAR GRAPH <http://system.test>;"
-echo "exporting the result of the analysis in ${results} to virtuoso endpoint"
-mkdir -p $rdf_export_path
-./export-to-rdf.sh $results/patterns/obj-patterns/countConcepts.txt $rdf_export_path/count-concepts.nt
-./load-rdf.sh $rdf_export_path http://system.test
-rm -r $rdf_export_path
-echo "done"
-
-echo
 assert_no_errors_on ../summarization/log/log.txt
 assert_results_are_compliant $expected_results $results
+
+graph=http://system.test
+isql-vt 1111 dba dba VERBOSE=OFF "EXEC=SPARQL CLEAR GRAPH <$graph>;"
+./export-to-rdf.sh $results $rdf_export_path $graph
+echo
 assert_results_are_present_in_virtuoso
 echo
 

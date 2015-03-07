@@ -38,7 +38,7 @@ function as_absolute(){
 }
 
 echo
-echo "REGRESSION TEST"
+echo "SYSTEM TEST"
 echo
 
 set -e
@@ -48,6 +48,8 @@ root=$(as_absolute $current_directory/../)
 data=$root/benchmark/regression-test
 results=$root/benchmark/tmp
 expected_results=$root/benchmark/regression-test-results
+
+mkdir -p $expected_results/patterns/tmp-files
 
 cd $current_directory
 ./test-java-summarization-module.sh

@@ -28,7 +28,7 @@ cd $root
 echo "done"
 
 echo "indexing the result of the analysis in ${output_directory} into virtuoso endpoint"
-isql-vt 1111 dba dba VERBOSE=OFF "EXEC=delete from DB.DBA.load_list;ld_dir ('${output_directory}', '*.nt', '${graph}');rdf_loader_run();"
+./isql.sh "delete from DB.DBA.load_list;ld_dir ('${output_directory}', '*.nt', '${graph}');rdf_loader_run();"
 echo "done"
 
 rm -r $output_directory

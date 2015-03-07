@@ -97,7 +97,7 @@ assert_no_errors_on ../summarization/log/log.txt
 assert_results_are_compliant $expected_results $results
 
 graph=http://system.test
-isql-vt 1111 dba dba VERBOSE=OFF "EXEC=SPARQL CLEAR GRAPH <$graph>;"
+./isql.sh "SPARQL CLEAR GRAPH <$graph>;"
 ./export-to-rdf.sh $results $rdf_export_path $graph
 echo
 assert_results_are_present_in_virtuoso

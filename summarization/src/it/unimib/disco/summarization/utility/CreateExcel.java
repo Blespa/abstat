@@ -1547,8 +1547,6 @@ public class CreateExcel {
 
 				if(types.get(0).isAnon() || types.get(1).isAnon()) continue;
 				
-				new Events().info(property + " - " + types);
-				
 				// First column
 				addLabel(excelSheet, 0, i, allProperty.getProperty().get(property));
 				// Second column

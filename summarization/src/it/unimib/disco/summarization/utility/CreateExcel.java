@@ -11,7 +11,6 @@ import it.unimib.disco.summarization.datatype.Property;
 import it.unimib.disco.summarization.datatype.SubClassOf;
 import it.unimib.disco.summarization.datatype.SubProperty;
 import it.unimib.disco.summarization.info.InfoExtractor;
-import it.unimib.disco.summarization.starter.Events;
 
 import java.io.File;
 import java.io.IOException;

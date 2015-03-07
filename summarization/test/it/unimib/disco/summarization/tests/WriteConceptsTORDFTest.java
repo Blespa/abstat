@@ -6,37 +6,15 @@ import it.unimib.disco.summarization.output.WriteConceptsTORDF;
 
 import java.io.File;
 
-import org.apache.commons.io.FileUtils;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.contrib.java.lang.system.ExpectedSystemExit;
 
-public class WriteConceptsTORDFTest {
-
-	File temporary = new File("tmp");
-	
-	@Rule
-    public final ExpectedSystemExit exit = ExpectedSystemExit.none();
-	
-	@Before
-	public void eraseTemporaryFolder(){
-		temporary.mkdir();
-	}
-	
-	@After
-	public void deleteTemporaryFolders(){
-		FileUtils.deleteQuietly(temporary);
-	}
+public class WriteConceptsTORDFTest extends UnitTest{
 	
 	@Test
 	public void shouldExportAsRDF() throws Exception {
 		
-		File inputFile = new File(temporary, "input.txt");
-		FileUtils.write(inputFile, "http://dbpedia.org/ontology/Artist##24##0.367985");
-		
-		File outputFile = new File(temporary, "output.nt");
+		File inputFile = temporary.newFile("http://dbpedia.org/ontology/Artist##24##0.367985");
+		File outputFile = temporary.newFile();
 		
 		WriteConceptsTORDF.main(new String[]{
 				inputFile.getAbsolutePath(),

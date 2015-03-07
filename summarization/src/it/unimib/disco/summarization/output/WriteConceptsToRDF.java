@@ -19,7 +19,7 @@ import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.vocabulary.RDF;
 
-public class WriteConceptsTORDF {
+public class WriteConceptsToRDF {
 	public static void main (String args []) throws IOException{
 
 		new Events();

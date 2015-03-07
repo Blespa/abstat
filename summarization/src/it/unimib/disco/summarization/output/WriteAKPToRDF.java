@@ -18,17 +18,18 @@ import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.vocabulary.RDF;
 
-public class Write_AKP_RDF {
+public class WriteAKPToRDF {
 	public static void main (String args []) throws IOException{
 
 		Model model = ModelFactory.createDefaultModel();
 
 		String csvFilePath = args[0];
+		String outputFile = args[1];
 
 		//Get all of the rows
 		List<Row> rows = readCSV(csvFilePath);
 
-		for (int i=1;i<rows.size();i++){
+		for (int i=0;i<rows.size();i++){
 
 			Resource id = model.createResource("http://schemasummaries.org/resource/"+i);
 			final Resource subject = model.createResource(rows.get(i).get(Row.Entry.SUBJECT));
@@ -56,9 +57,7 @@ public class Write_AKP_RDF {
 			model.add(stmt5);
 			model.add(stmt_stat);
 
-			File directory = new File (".");
-			OutputStream output = new FileOutputStream(directory.getAbsolutePath()+"/output/relationCount.nt");
-			
+			OutputStream output = new FileOutputStream(new File(outputFile));
 			model.write( output, "N-Triples", null ); // or "RDF/XML", etc.
 			
 			output.close();

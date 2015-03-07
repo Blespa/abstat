@@ -29,7 +29,8 @@ cd $root
 ./build-java-summarization-module.sh
 
 cd $project
-export_rdf WriteConceptsTORDF $input_directory/obj-patterns/countConcepts.txt $output_directory/count-concepts.nt 
+export_rdf WriteConceptsToRDF $input_directory/obj-patterns/countConcepts.txt $output_directory/count-concepts.nt 
+export_rdf WriteAKPToRDF $input_directory/obj-patterns/relationCount.txt $output_directory/relation-count.nt 
 cd $root
 
 echo "indexing the result of the analysis in ${output_directory} into virtuoso endpoint"

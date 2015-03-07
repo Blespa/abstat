@@ -65,6 +65,7 @@ echo "SYSTEM TEST"
 echo
 
 echo "checking system configuration"
+virtuoso_config_file=/etc/virtuoso-opensource-6.1/virtuoso.ini
 if ! command -v virtuoso-t ; then
 	echo "no virtuoso end point detected"
 	echo "installing via sudo apt-get"
@@ -75,8 +76,14 @@ if ! command -v virtuoso-t ; then
 	echo
 	echo "configuring virtuoso to watch ${rdf_export_path}"
 	echo	
-	sudo sed -i -e "s|= \., /usr/share/virtuoso-opensource-6.1/vad|= \., /usr/share/virtuoso-opensource-6.1/vad, ${rdf_export_path}|g" /etc/virtuoso-opensource-6.1/virtuoso.ini
-	sudo service virtuoso-opensource-6.1 restart	
+	sudo sed -i -e "s|= \., /usr/share/virtuoso-opensource-6.1/vad|= \., /usr/share/virtuoso-opensource-6.1/vad, ${rdf_export_path}|g" $virtuoso_config_file
+	sudo service virtuoso-opensource-6.1 force-reload	
+fi
+if ! [[ $(grep $rdf_export_path $virtuoso_config_file) ]]
+then
+	echo "virtuoso is not configured properly:"
+	echo "add ${rdf_export_path} to the DirsAllowed parameter in ${virtuoso_config_file}"
+	exit
 fi
 echo
 

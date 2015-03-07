@@ -13,6 +13,7 @@
 #!bash
 $ git clone https://bitbucket.org/rporrini/schema-summaries.git
 $ cd schema-summaries
+$ git checkout development
 $ scripts/test-summarization-pipeline.sh
 ```
 If everything goes as expected the script will print "OK".

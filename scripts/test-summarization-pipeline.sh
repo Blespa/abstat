@@ -41,6 +41,15 @@ echo
 echo "SYSTEM TEST"
 echo
 
+echo "checking system configuration"
+if ! command -v virtuoso-t ; then
+	echo "no virtuoso end point detected"
+	echo "installing via sudo apt-get:"
+	echo
+	sudo apt-get install virtuoso-opensource-6.1
+fi
+echo
+
 set -e
 relative_path=`dirname $0`
 current_directory=$(as_absolute $relative_path)

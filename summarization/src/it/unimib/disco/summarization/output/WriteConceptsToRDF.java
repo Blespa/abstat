@@ -1,7 +1,8 @@
 package it.unimib.disco.summarization.output;
 
+import it.unimib.disco.summarization.starter.Events;
+
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -18,17 +19,20 @@ import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.vocabulary.RDF;
 
-public class Write_Concepts_RDF {
+public class WriteConceptsToRDF {
 	public static void main (String args []) throws IOException{
 
+		new Events();
+		
 		Model model = ModelFactory.createDefaultModel();
 
-		String csvFilePath = args[0];
+		String inputFilePath = args[0];
+		String outputFilePath = args[1];
 
 		//Get all of the rows
-		List<Row> rows = readCSV(csvFilePath);
+		List<Row> rows = readCSV(inputFilePath);
 
-		for (int i=1;i<rows.size();i++){
+		for (int i=0;i<rows.size();i++){
 
 			final Resource subject = model.createResource(rows.get(i).get(Row.Entry.SUBJECT));
 			final Resource signature = model.createResource("http://schemasummaries.org/ontology/Signature");
@@ -46,10 +50,8 @@ public class Write_Concepts_RDF {
 			model.add(stmt_stat1);
 			model.add(stmt_stat2);
 
-			File directory = new File (".");
-
-			OutputStream output = new FileOutputStream(directory.getAbsolutePath()+"/output/countConcepts.nt");
-			model.write( output, "N-Triples", null ); // or "RDF/XML", etc.
+			OutputStream output = new FileOutputStream(outputFilePath);
+			model.write( output, "N-Triples", null); // or "RDF/XML", etc.
 			output.close();
 		}
 

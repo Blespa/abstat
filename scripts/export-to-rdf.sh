@@ -10,7 +10,7 @@ function export_rdf(){
 	to=$3
 
 	echo "exporting $from as $to"
-	java -Xms256m -Xmx1g -cp .:'ontology_summarization.jar' it.unimib.disco.summarization.output.$command $from $to
+	java -Xms256m -Xmx4g -cp .:'ontology_summarization.jar' it.unimib.disco.summarization.output.$command $from $to
 	echo "done"
 }
 

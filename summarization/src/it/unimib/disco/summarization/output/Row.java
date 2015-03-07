@@ -1,8 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package it.unimib.disco.write;
+package it.unimib.disco.summarization.output;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +7,7 @@ public class Row {
 
     Map<Entry, String> components;
 
-    public enum Entry {SUBJECT, OBJECT, PREDICATE, SCORE};
+    public enum Entry {SUBJECT, OBJECT, PREDICATE, SCORE1, SCORE2, SCORE3};
     public Row() {
         components = new HashMap<Entry, String>();
     }
@@ -33,7 +29,6 @@ public class Row {
             components.remove(key);
         }
     }
-
     public Row copy() {
         Row f = new Row();
         for (Entry key : components.keySet()) {
@@ -47,4 +42,3 @@ public class Row {
         return components.toString();
     }
 }
-

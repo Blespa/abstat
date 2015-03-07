@@ -1,6 +1,7 @@
-package it.unimib.disco.write;
+package it.unimib.disco.summarization.output;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -13,54 +14,65 @@ import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Property;
-import com.hp.hpl.jena.rdf.model.ReifiedStatement;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
+import com.hp.hpl.jena.vocabulary.RDF;
 
-public class WriteCSV_RDF {
+public class Write_AKP_RDF {
 	public static void main (String args []) throws IOException{
 
 		Model model = ModelFactory.createDefaultModel();
 
-		String csvFilePath = "/Users/anisarula/Documents/git/schema-summaries/temp/relationCount.csv";
+		String csvFilePath = args[0];
 
 		//Get all of the rows
 		List<Row> rows = readCSV(csvFilePath);
 
 		for (int i=1;i<rows.size();i++){
-			System.out.println(rows.size());
-			Resource id = model.createResource("http://example.org/resource/"+i);
+
+			Resource id = model.createResource("http://schemasummaries.org/resource/"+i);
 			final Resource subject = model.createResource(rows.get(i).get(Row.Entry.SUBJECT));
-			System.out.println(rows.get(i).get(Row.Entry.PREDICATE));
+
 			final Property predicate = model.createProperty(rows.get(i).get(Row.Entry.PREDICATE));
 			final Resource object = model.createResource(rows.get(i).get(Row.Entry.OBJECT));
-			final Property has_statistic = model.createProperty("http://example.org/property/has_value");
-			final Literal statistic = model.createTypedLiteral(rows.get(i).get(Row.Entry.SCORE));
-			final Property has_knowledgePattern = model.createProperty("http://example.org/property/has_knowledgePattern");
+			final Property has_frequency = model.createProperty("http://schemasummaries.org/ontology/has_frequency");
+			final Literal statistic = model.createTypedLiteral(Integer.parseInt(rows.get(i).get(Row.Entry.SCORE1)));
+			final Resource AKP = model.createProperty("http://schemasummaries.org/ontology/AbstractKnowledgePattern");
 
 			// creating a statement doesn't add it to the model
-			final Statement stmt = model.createStatement( subject, predicate, object );
-			final Statement stmt_stat = model.createStatement( id, has_statistic, statistic );
+			final Statement stmt1 = model.createStatement( id, RDF.type, RDF.Statement );
+			final Statement stmt2 = model.createStatement( id, RDF.subject, subject );
+			final Statement stmt3 = model.createStatement( id, RDF.predicate, predicate );
+			final Statement stmt4 = model.createStatement( id, RDF.object, object );
+			final Statement stmt_stat = model.createStatement( id, has_frequency, statistic);
+			final Statement stmt5 = model.createStatement( id, RDF.type, AKP);
 
 			// creating a reified statement does add some triples to the model
-			final ReifiedStatement rstmt = model.createReifiedStatement( stmt );
-
+			//final ReifiedStatement rstmt = model.createReifiedStatement( stmt );
+			model.add(stmt1);
+			model.add(stmt2);
+			model.add(stmt3);
+			model.add(stmt4);
+			model.add(stmt5);
 			model.add(stmt_stat);
-			model.add( id, has_knowledgePattern, rstmt );
+
+			File directory = new File (".");
+			OutputStream output = new FileOutputStream(directory.getAbsolutePath()+"/output/relationCount.nt");
 			
-			OutputStream output = new FileOutputStream("/Users/anisarula/Documents/git/schema-summaries/temp/relationCount.rdf");
 			model.write( output, "N-Triples", null ); // or "RDF/XML", etc.
+			
 			output.close();
 		}
 
 	}
 
-	public static List<Row> readCSV(String rsListFile) {
+	public static List<Row> readCSV(String rsListFile) throws IOException {
 		List<Row> allFacts = new ArrayList<Row>();
 
 		BufferedReader br = null;
-		String line = "";
-		String cvsSplitBy = ",";
+		String line =  ""
+				;
+		String cvsSplitBy = "##";
 
 		try {
 
@@ -69,12 +81,14 @@ public class WriteCSV_RDF {
 				// use comma as separator
 				String[] row = line.split(cvsSplitBy);
 				Row r = new Row();
-				if (row.length>0){r.add(Row.Entry.SUBJECT, row[0]);}
-				if (row.length>1){r.add(Row.Entry.PREDICATE, row[1]);}
-				if (row.length>2){r.add(Row.Entry.OBJECT, row[2]);}
-				if (row.length>3){r.add(Row.Entry.SCORE, row[3]);}
+				if (row[0].contains("http")){
+					r.add(Row.Entry.SUBJECT, row[0]);
+					r.add(Row.Entry.PREDICATE, row[1]);
+					r.add(Row.Entry.OBJECT, row[2]);
+					r.add(Row.Entry.SCORE1, row[3]);
 
-				allFacts.add(r);
+					allFacts.add(r);
+				}
 			}
 
 		} catch (FileNotFoundException e) {

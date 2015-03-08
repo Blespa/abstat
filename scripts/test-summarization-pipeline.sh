@@ -119,11 +119,12 @@ echo
 assert_results_are_present_in_virtuoso
 echo
 
-echo "starting the web interface module"
+echo "integration testing of the web interface module"
+port=8887
 ./build-java-ui-module.sh
-./java-ui.sh start 8887
+./java-ui.sh start $port
 sleep 1
-assert_application_is_up 8887
-./java-ui.sh stop
+assert_application_is_up $port
+./java-ui.sh stop $port
 echo
 

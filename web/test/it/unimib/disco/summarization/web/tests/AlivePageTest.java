@@ -1,5 +1,6 @@
 package it.unimib.disco.summarization.web.tests;
 
+import static org.hamcrest.Matchers.equalTo;
 import it.unimib.disco.summarization.web.SummarizationInspection;
 
 import org.junit.After;
@@ -23,5 +24,10 @@ public class AlivePageTest {
 	@Test
 	public void shouldRespond200() throws Exception {
 		new HttpAssert("http://localhost:8888").statusOf("/alive", 200);
+	}
+	
+	@Test
+	public void shouldRespondOK() throws Exception {
+		new HttpAssert("http://localhost:8888").body("/alive", equalTo("OK"));
 	}
 }

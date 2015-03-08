@@ -17,5 +17,6 @@ class AlivePage extends AbstractHandler{
 		response.setContentType("text/html");
 		response.setCharacterEncoding("utf-8");
 		base.setHandled(true);
+		response.getWriter().write("OK");
 	}
 }

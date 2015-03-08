@@ -90,6 +90,7 @@ echo
 mkdir -p $expected_results/patterns/tmp-files
 
 cd $current_directory
+./test-java-ui-module.sh
 ./test-java-summarization-module.sh
 ./run-summarization-pipeline.sh $data $results
 echo

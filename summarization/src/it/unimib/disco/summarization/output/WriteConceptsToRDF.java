@@ -46,12 +46,13 @@ public class WriteConceptsToRDF {
 				model.add(stmt);
 				model.add(stmt_stat1);
 				model.add(stmt_stat2);
-	
-				OutputStream output = new FileOutputStream(outputFilePath);
-				model.write( output, "N-Triples", null); // or "RDF/XML", etc.
-				output.close();
 			}
-		}catch(Exception e){
+			
+			OutputStream output = new FileOutputStream(outputFilePath);
+			model.write( output, "N-Triples", null); // or "RDF/XML", etc.
+			output.close();
+		}
+		catch(Exception e){
 			new Events().error("WriteConceptsToRDF", e);
 		}
 	}

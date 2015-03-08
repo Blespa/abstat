@@ -59,13 +59,14 @@ public class WriteAKPToRDF {
 				model.add(stmt4);
 				model.add(stmt5);
 				model.add(stmt_stat);
-	
-				OutputStream output = new FileOutputStream(new File(outputFile));
-				model.write( output, "N-Triples", null ); // or "RDF/XML", etc.
 				
-				output.close();
 				i++;
 			}
+			
+			OutputStream output = new FileOutputStream(new File(outputFile));
+			model.write( output, "N-Triples", null ); // or "RDF/XML", etc.
+			output.close();
+		
 		}catch(Exception e){
 			new Events().error("WriteAKPToRDF", e);
 		}

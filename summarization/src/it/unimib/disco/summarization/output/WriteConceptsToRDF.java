@@ -2,14 +2,13 @@ package it.unimib.disco.summarization.output;
 
 import it.unimib.disco.summarization.starter.Events;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
+import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.commons.io.FileUtils;
 
 import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.Model;
@@ -20,7 +19,7 @@ import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.vocabulary.RDF;
 
 public class WriteConceptsToRDF {
-	public static void main (String args []) throws IOException{
+	public static void main (String args []) throws Exception{
 
 		new Events();
 		
@@ -29,17 +28,14 @@ public class WriteConceptsToRDF {
 		String inputFilePath = args[0];
 		String outputFilePath = args[1];
 
-		//Get all of the rows
-		List<Row> rows = readCSV(inputFilePath);
+		for (Row row : readCSV(inputFilePath)){
 
-		for (int i=0;i<rows.size();i++){
-
-			final Resource subject = model.createResource(rows.get(i).get(Row.Entry.SUBJECT));
+			final Resource subject = model.createResource(row.get(Row.Entry.SUBJECT));
 			final Resource signature = model.createResource("http://schemasummaries.org/ontology/Signature");
 			final Property has_statistic1 = model.createProperty("http://schemasummaries.org/ontology/has_frequency");
 			final Property has_statistic2 = model.createProperty("http://schemasummaries.org/ontology/has_percentage_minimalType");
-			final Literal statistic1 = model.createTypedLiteral(Integer.parseInt(rows.get(i).get(Row.Entry.SCORE1)));
-			final Literal statistic2 = model.createTypedLiteral(Double.parseDouble(rows.get(i).get(Row.Entry.SCORE2)));
+			final Literal statistic1 = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
+			final Literal statistic2 = model.createTypedLiteral(Double.parseDouble(row.get(Row.Entry.SCORE2)));
 
 			// creating a statement doesn't add it to the model
 			final Statement stmt = model.createStatement( subject, RDF.type, signature );
@@ -54,46 +50,24 @@ public class WriteConceptsToRDF {
 			model.write( output, "N-Triples", null); // or "RDF/XML", etc.
 			output.close();
 		}
-
 	}
 
-	public static List<Row> readCSV(String rsListFile) throws IOException {
+	public static List<Row> readCSV(String rsListFile) throws Exception {
+		
 		List<Row> allFacts = new ArrayList<Row>();
-
-		BufferedReader br = null;
-		String line  =  "";
 		String cvsSplitBy = "##";
+		
+		for(String line : FileUtils.readLines(new File(rsListFile))){
+			String[] row = line.split(cvsSplitBy);
+			Row r = new Row();
+			if (row[0].contains("http")){
+				r.add(Row.Entry.SUBJECT, row[0]);
+				r.add(Row.Entry.SCORE1, row[1]);
+				r.add(Row.Entry.SCORE2, row[2]);
 
-		try {
-
-			br = new BufferedReader(new FileReader(rsListFile));
-			while ((line = br.readLine()) != null) {
-
-				String[] row = line.split(cvsSplitBy);
-				Row r = new Row();
-				if (row[0].contains("http")){
-					r.add(Row.Entry.SUBJECT, row[0]);
-					r.add(Row.Entry.SCORE1, row[1]);
-					r.add(Row.Entry.SCORE2, row[2]);
-
-					allFacts.add(r);
-				}
-			}
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			if (br != null) {
-				try {
-					br.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				allFacts.add(r);
 			}
 		}
-
 		return allFacts;
 	}
 

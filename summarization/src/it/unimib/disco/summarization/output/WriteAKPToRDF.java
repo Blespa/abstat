@@ -1,14 +1,13 @@
 package it.unimib.disco.summarization.output;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.commons.io.FileUtils;
 
 import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.Model;
@@ -19,25 +18,24 @@ import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.vocabulary.RDF;
 
 public class WriteAKPToRDF {
-	public static void main (String args []) throws IOException{
+	
+	public static void main (String args []) throws Exception{
 
 		Model model = ModelFactory.createDefaultModel();
 
 		String csvFilePath = args[0];
 		String outputFile = args[1];
 
-		//Get all of the rows
-		List<Row> rows = readCSV(csvFilePath);
+		int i=1;
+		for (Row row : readCSV(csvFilePath)){
 
-		for (int i=0;i<rows.size();i++){
+			Resource id = model.createResource("http://schemasummaries.org/resource/" + i);
+			final Resource subject = model.createResource(row.get(Row.Entry.SUBJECT));
 
-			Resource id = model.createResource("http://schemasummaries.org/resource/"+i);
-			final Resource subject = model.createResource(rows.get(i).get(Row.Entry.SUBJECT));
-
-			final Property predicate = model.createProperty(rows.get(i).get(Row.Entry.PREDICATE));
-			final Resource object = model.createResource(rows.get(i).get(Row.Entry.OBJECT));
+			final Property predicate = model.createProperty(row.get(Row.Entry.PREDICATE));
+			final Resource object = model.createResource(row.get(Row.Entry.OBJECT));
 			final Property has_frequency = model.createProperty("http://schemasummaries.org/ontology/has_frequency");
-			final Literal statistic = model.createTypedLiteral(Integer.parseInt(rows.get(i).get(Row.Entry.SCORE1)));
+			final Literal statistic = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
 			final Resource AKP = model.createProperty("http://schemasummaries.org/ontology/AbstractKnowledgePattern");
 
 			// creating a statement doesn't add it to the model
@@ -61,49 +59,28 @@ public class WriteAKPToRDF {
 			model.write( output, "N-Triples", null ); // or "RDF/XML", etc.
 			
 			output.close();
+			i++;
 		}
 
 	}
 
 	public static List<Row> readCSV(String rsListFile) throws IOException {
+		
 		List<Row> allFacts = new ArrayList<Row>();
-
-		BufferedReader br = null;
-		String line =  ""
-				;
 		String cvsSplitBy = "##";
+		
+		for(String line : FileUtils.readLines(new File(rsListFile))){
+			String[] row = line.split(cvsSplitBy);
+			Row r = new Row();
+			if (row[0].contains("http")){
+				r.add(Row.Entry.SUBJECT, row[0]);
+				r.add(Row.Entry.PREDICATE, row[1]);
+				r.add(Row.Entry.OBJECT, row[2]);
+				r.add(Row.Entry.SCORE1, row[3]);
 
-		try {
-
-			br = new BufferedReader(new FileReader(rsListFile));
-			while ((line = br.readLine()) != null) {
-				// use comma as separator
-				String[] row = line.split(cvsSplitBy);
-				Row r = new Row();
-				if (row[0].contains("http")){
-					r.add(Row.Entry.SUBJECT, row[0]);
-					r.add(Row.Entry.PREDICATE, row[1]);
-					r.add(Row.Entry.OBJECT, row[2]);
-					r.add(Row.Entry.SCORE1, row[3]);
-
-					allFacts.add(r);
-				}
-			}
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			if (br != null) {
-				try {
-					br.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				allFacts.add(r);
 			}
 		}
-
 		return allFacts;
 	}
 

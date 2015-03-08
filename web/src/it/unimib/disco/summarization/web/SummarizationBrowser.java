@@ -2,23 +2,23 @@ package it.unimib.disco.summarization.web;
 
 import org.eclipse.jetty.server.Server;
 
-public class SummarizationInspection {
+public class SummarizationBrowser {
 
 	private Server server;
 
-	public SummarizationInspection on(int port) {
+	public SummarizationBrowser on(int port) {
 		new Events();
 		server = new Server(port);
-		server.setHandler(new AlivePage());
+		server.setHandler(new Application());
 		return this;
 	}
 
-	public SummarizationInspection start() throws Exception {
+	public SummarizationBrowser start() throws Exception {
 		server.start();
 		return this;
 	}
 
-	public SummarizationInspection stop() throws Exception {
+	public SummarizationBrowser stop() throws Exception {
 		server.stop();
 		return this;
 	}

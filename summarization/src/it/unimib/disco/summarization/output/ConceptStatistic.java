@@ -18,7 +18,7 @@ import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.vocabulary.RDF;
 
-public class Write_Concepts_RDF {
+public class ConceptStatistic {
 	public static void main (String args []) throws IOException{
 
 		Model model = ModelFactory.createDefaultModel();
@@ -30,17 +30,17 @@ public class Write_Concepts_RDF {
 
 		for (int i=1;i<rows.size();i++){
 
-			final Resource subject = model.createResource(rows.get(i).get(Row.Entry.SUBJECT));
-			final Resource signature = model.createResource("http://schemasummaries.org/ontology/Signature");
-			final Property has_statistic1 = model.createProperty("http://schemasummaries.org/ontology/has_frequency");
-			final Property has_statistic2 = model.createProperty("http://schemasummaries.org/ontology/has_percentage_minimalType");
-			final Literal statistic1 = model.createTypedLiteral(Integer.parseInt(rows.get(i).get(Row.Entry.SCORE1)));
-			final Literal statistic2 = model.createTypedLiteral(Double.parseDouble(rows.get(i).get(Row.Entry.SCORE2)));
+			Resource subject = model.createResource(rows.get(i).get(Row.Entry.SUBJECT));
+			Resource signature = model.createResource("http://schemasummaries.org/ontology/Signature");
+			Property has_statistic1 = model.createProperty("http://schemasummaries.org/ontology/has_frequency");
+			Property has_statistic2 = model.createProperty("http://schemasummaries.org/ontology/has_percentage_minimalType");
+			Literal statistic1 = model.createTypedLiteral(Integer.parseInt(rows.get(i).get(Row.Entry.SCORE1)));
+			Literal statistic2 = model.createTypedLiteral(Double.parseDouble(rows.get(i).get(Row.Entry.SCORE2)));
 
 			// creating a statement doesn't add it to the model
-			final Statement stmt = model.createStatement( subject, RDF.type, signature );
-			final Statement stmt_stat1 = model.createStatement( subject, has_statistic1, statistic1 );
-			final Statement stmt_stat2 = model.createStatement( subject, has_statistic2, statistic2 );
+			Statement stmt = model.createStatement( subject, RDF.type, signature );
+			Statement stmt_stat1 = model.createStatement( subject, has_statistic1, statistic1 );
+			Statement stmt_stat2 = model.createStatement( subject, has_statistic2, statistic2 );
 
 			model.add(stmt);
 			model.add(stmt_stat1);

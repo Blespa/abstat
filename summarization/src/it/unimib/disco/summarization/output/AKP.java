@@ -18,7 +18,7 @@ import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.vocabulary.RDF;
 
-public class Write_AKP_RDF {
+public class AKP {
 	public static void main (String args []) throws IOException{
 
 		Model model = ModelFactory.createDefaultModel();
@@ -31,24 +31,23 @@ public class Write_AKP_RDF {
 		for (int i=1;i<rows.size();i++){
 
 			Resource id = model.createResource("http://schemasummaries.org/resource/"+i);
-			final Resource subject = model.createResource(rows.get(i).get(Row.Entry.SUBJECT));
-
-			final Property predicate = model.createProperty(rows.get(i).get(Row.Entry.PREDICATE));
-			final Resource object = model.createResource(rows.get(i).get(Row.Entry.OBJECT));
-			final Property has_frequency = model.createProperty("http://schemasummaries.org/ontology/has_frequency");
-			final Literal statistic = model.createTypedLiteral(Integer.parseInt(rows.get(i).get(Row.Entry.SCORE1)));
-			final Resource AKP = model.createProperty("http://schemasummaries.org/ontology/AbstractKnowledgePattern");
+			Resource subject = model.createResource(rows.get(i).get(Row.Entry.SUBJECT));
+			Property predicate = model.createProperty(rows.get(i).get(Row.Entry.PREDICATE));
+			Resource object = model.createResource(rows.get(i).get(Row.Entry.OBJECT));
+			Property has_frequency = model.createProperty("http://schemasummaries.org/ontology/has_frequency");
+			Literal statistic = model.createTypedLiteral(Integer.parseInt(rows.get(i).get(Row.Entry.SCORE1)));
+			Resource AKP = model.createProperty("http://schemasummaries.org/ontology/AbstractKnowledgePattern");
 
 			// creating a statement doesn't add it to the model
-			final Statement stmt1 = model.createStatement( id, RDF.type, RDF.Statement );
-			final Statement stmt2 = model.createStatement( id, RDF.subject, subject );
-			final Statement stmt3 = model.createStatement( id, RDF.predicate, predicate );
-			final Statement stmt4 = model.createStatement( id, RDF.object, object );
-			final Statement stmt_stat = model.createStatement( id, has_frequency, statistic);
-			final Statement stmt5 = model.createStatement( id, RDF.type, AKP);
+			Statement stmt1 = model.createStatement( id, RDF.type, RDF.Statement );
+			Statement stmt2 = model.createStatement( id, RDF.subject, subject );
+			Statement stmt3 = model.createStatement( id, RDF.predicate, predicate );
+			Statement stmt4 = model.createStatement( id, RDF.object, object );
+			Statement stmt_stat = model.createStatement( id, has_frequency, statistic);
+			Statement stmt5 = model.createStatement( id, RDF.type, AKP);
 
 			// creating a reified statement does add some triples to the model
-			//final ReifiedStatement rstmt = model.createReifiedStatement( stmt );
+			// ReifiedStatement rstmt = model.createReifiedStatement( stmt );
 			model.add(stmt1);
 			model.add(stmt2);
 			model.add(stmt3);
@@ -58,9 +57,9 @@ public class Write_AKP_RDF {
 
 			File directory = new File (".");
 			OutputStream output = new FileOutputStream(directory.getAbsolutePath()+"/output/relationCount.nt");
-			
+
 			model.write( output, "N-Triples", null ); // or "RDF/XML", etc.
-			
+
 			output.close();
 		}
 

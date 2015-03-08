@@ -23,32 +23,36 @@ public class WriteConceptsToRDF {
 
 		new Events();
 		
-		Model model = ModelFactory.createDefaultModel();
-
-		String inputFilePath = args[0];
-		String outputFilePath = args[1];
-
-		for (Row row : readCSV(inputFilePath)){
-
-			final Resource subject = model.createResource(row.get(Row.Entry.SUBJECT));
-			final Resource signature = model.createResource("http://schemasummaries.org/ontology/Signature");
-			final Property has_statistic1 = model.createProperty("http://schemasummaries.org/ontology/has_frequency");
-			final Property has_statistic2 = model.createProperty("http://schemasummaries.org/ontology/has_percentage_minimalType");
-			final Literal statistic1 = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
-			final Literal statistic2 = model.createTypedLiteral(Double.parseDouble(row.get(Row.Entry.SCORE2)));
-
-			// creating a statement doesn't add it to the model
-			final Statement stmt = model.createStatement( subject, RDF.type, signature );
-			final Statement stmt_stat1 = model.createStatement( subject, has_statistic1, statistic1 );
-			final Statement stmt_stat2 = model.createStatement( subject, has_statistic2, statistic2 );
-
-			model.add(stmt);
-			model.add(stmt_stat1);
-			model.add(stmt_stat2);
-
-			OutputStream output = new FileOutputStream(outputFilePath);
-			model.write( output, "N-Triples", null); // or "RDF/XML", etc.
-			output.close();
+		try{
+			Model model = ModelFactory.createDefaultModel();
+	
+			String inputFilePath = args[0];
+			String outputFilePath = args[1];
+	
+			for (Row row : readCSV(inputFilePath)){
+	
+				final Resource subject = model.createResource(row.get(Row.Entry.SUBJECT));
+				final Resource signature = model.createResource("http://schemasummaries.org/ontology/Signature");
+				final Property has_statistic1 = model.createProperty("http://schemasummaries.org/ontology/has_frequency");
+				final Property has_statistic2 = model.createProperty("http://schemasummaries.org/ontology/has_percentage_minimalType");
+				final Literal statistic1 = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
+				final Literal statistic2 = model.createTypedLiteral(Double.parseDouble(row.get(Row.Entry.SCORE2)));
+	
+				// creating a statement doesn't add it to the model
+				final Statement stmt = model.createStatement( subject, RDF.type, signature );
+				final Statement stmt_stat1 = model.createStatement( subject, has_statistic1, statistic1 );
+				final Statement stmt_stat2 = model.createStatement( subject, has_statistic2, statistic2 );
+	
+				model.add(stmt);
+				model.add(stmt_stat1);
+				model.add(stmt_stat2);
+	
+				OutputStream output = new FileOutputStream(outputFilePath);
+				model.write( output, "N-Triples", null); // or "RDF/XML", etc.
+				output.close();
+			}
+		}catch(Exception e){
+			new Events().error("WriteConceptsToRDF", e);
 		}
 	}
 

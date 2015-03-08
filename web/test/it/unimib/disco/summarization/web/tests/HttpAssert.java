@@ -1,0 +1,24 @@
+package it.unimib.disco.summarization.web.tests;
+
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
+
+import org.apache.commons.io.IOUtils;
+import org.hamcrest.Matcher;
+
+public class HttpAssert{
+	
+	private String address;
+
+	public HttpAssert(String address){
+		this.address = address;
+	}
+	
+	public void statusOf(String path, int code) throws Exception {
+		assertThat(new ClientCommunication(address).httpGet(path).getStatusLine().getStatusCode(), is(code));
+	}
+	
+	public void body(String path, Matcher<String> constraint) throws Exception {
+		assertThat(IOUtils.toString(new ClientCommunication(address).httpGet(path).getEntity().getContent()), constraint);
+	}
+}

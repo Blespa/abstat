@@ -51,6 +51,21 @@ function as_absolute(){
 	echo `cd $1; pwd`
 }
 
+function assert_application_is_up(){
+
+	port=$1
+
+	highlight_color='\e[0;31m'
+	message='KO'
+
+	if [[ $(curl --silent "localhost:$port/alive" | grep "OK") ]]
+	then
+		highlight_color='\e[0;32m'
+		message="OK"
+	fi
+	echo -e "checking that web ui is up: ${highlight_color}${message}\e[0m"
+}
+
 set -e
 relative_path=`dirname $0`
 current_directory=$(as_absolute $relative_path)
@@ -104,4 +119,11 @@ echo
 assert_results_are_present_in_virtuoso
 echo
 
+echo "starting the web interface module"
+./build-java-ui-module.sh
+./java-ui.sh start 8887
+sleep 1
+assert_application_is_up 8887
+./java-ui.sh stop
+echo
 

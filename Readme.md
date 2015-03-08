@@ -26,6 +26,12 @@ $ scripts/run-summarization-pipeline.sh $DATA $RESULTS
 ```
 Where the arguments $DATA and $RESULTS are directories. The scripts expects to find an ontology in ```$DATA/ontology``` and a ntriple file in ```$DATA/triples/dataset.nt```
 
+Exporting the results in rdf and inxing them into the virtuoso endpoint:
+```
+$ scripts/export-to-rdf.sh $RESULTS $TMP_DIR $GRAPH
+```
+Where the argument $RESULTS is the directory that contains the results of the analysis from the previous script, $TMP_DIR must point to the directory ```summarization-output``` of the root of the repository and $GRAPH is the iri of the graph that will contain the exported rdf data
+
 Preparing the dbpedia dataset
 ```
 $ scripts/prepare-dbpedia-dataset.sh $TARGET-DIRECTORY $VERSION

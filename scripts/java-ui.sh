@@ -11,7 +11,7 @@ status=$?
 
 function start(){
 	log_begin_msg "starting summarization-ui service"
-        java -cp .:'summarization-web.jar' it.unimib.disco.summarization.web.WebApplication $port &
+        java -cp .:'summarization-web.jar' it.unimib.disco.summarization.web.WebApplication $port >> /dev/null 2>&1 &
 	status=$?	
 	echo $! > $pid
 	log_end_msg $status
@@ -35,7 +35,7 @@ case "$1" in
                 stop
                 ;;
         *)
-                log_success_msg "Usage: java-ui.sh start|stop|restart"
+                log_success_msg "Usage: java-ui.sh start|stop"
 		status=1
 		;;
 esac

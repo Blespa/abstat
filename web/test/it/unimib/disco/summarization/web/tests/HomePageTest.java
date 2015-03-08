@@ -1,12 +1,12 @@
 package it.unimib.disco.summarization.web.tests;
 
-import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.containsString;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class AlivePageTest {
+public class HomePageTest {
 
 	SummarizationTestApplication application = new SummarizationTestApplication();
 	
@@ -22,11 +22,11 @@ public class AlivePageTest {
 	
 	@Test
 	public void shouldRespond200() throws Exception {
-		application.httpAssert().statusOf("/alive", 200);
+		application.httpAssert().statusOf("/", 200);
 	}
 	
 	@Test
-	public void shouldRespondOK() throws Exception {
-		application.httpAssert().body("/alive", equalTo("OK"));
+	public void shouldContainTheTitle() throws Exception {
+		application.httpAssert().body("/", containsString("Schema Summaries"));
 	}
 }

@@ -3,13 +3,14 @@
 relative_path=`dirname $0`
 root=`cd $relative_path;pwd`
 project=$root/../web
-pid=log/java-ui.pid
+port=$2
+pid=log/java-ui-$port.pid
+status=$?
 
 . /lib/lsb/init-functions
 
 function start(){
 	log_begin_msg "starting summarization-ui service"
-	port=$1
         java -cp .:'summarization-web.jar' it.unimib.disco.summarization.web.WebApplication $port &
 	status=$?	
 	echo $! > $pid
@@ -28,14 +29,15 @@ cd $project
 
 case "$1" in
         start)
-                start $2
+                start
                 ;;
         stop)
                 stop
                 ;;
         *)
                 log_success_msg "Usage: java-ui.sh start|stop|restart"
-		exit 1
+		status=1
 		;;
 esac
-exit $?
+exit $status
+

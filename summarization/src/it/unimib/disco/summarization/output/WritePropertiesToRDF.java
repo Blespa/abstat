@@ -60,9 +60,6 @@ public class WritePropertiesToRDF {
 		OutputStream output = new FileOutputStream(outputFilePath);
 		model.write( output, "N-Triples", null ); // or "", etc.
 		output.close();
-
-
-
 	}
 
 	public static List<Row> readCSV(String rsListFile) throws IOException {

@@ -14,15 +14,36 @@
 		<div class="page-header">
 			<h1>Schema Summaries</h1>
 		</div>
-		<div ng-controller="GraphsList">
+		<div ng-controller="Summarization">
 			<form class="form-inline">
 			<div class="form-group">
-				<select id="dataset" class="form-control">
+				<select id="dataset" ng-model="selected_graph" class="form-control">
+					<option>Select a dataset</option>
 				    <option ng-repeat="graph in graphs">{{graph.uri.value}}</option>
 				</select>
-				<button type="submit" class="btn btn-primary">View</button>
+				<button type="submit" ng-click='loadPatterns()' class="btn btn-primary">View</button>
 			</div>
 			</form>
+			</br>
+			<h4>Abstract Knowledge Patterns</h4>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+					<th>Subject</th>
+					<th>Predicate</th>
+					<th>Object</th>
+					<th>Frequency</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="summary in summaries">
+						<td>{{summary.subject.value}}</td>
+						<td>{{summary.predicate.value}}</td>
+						<td>{{summary.object.value}}</td>
+						<td>{{summary.frequency.value}}</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 	</div>
 </body>

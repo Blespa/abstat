@@ -34,7 +34,7 @@ function assert_results_are_compliant()
 }
 
 function assert_results_are_present_in_virtuoso(){
-	sparql_query="http://localhost:8890/sparql?default-graph-uri=http%3A%2F%2Fsystem.test&query=select+count%28*%29+where+%7B%3Fa+%3Fb+%3Fc%7D&format=text%2Fplain&timeout=0&debug=on"
+	sparql_query="http://localhost:8890/sparql?default-graph-uri=http%3A%2F%2Fschemasummaries.org%2Fsystem-test&query=select+count%28*%29+where+%7B%3Fa+%3Fb+%3Fc%7D&format=text%2Fplain&timeout=0&debug=on"
 	expected="<http://www.w3.org/2005/sparql-results#value> \"5009\"^^<http://www.w3.org/2001/XMLSchema#integer>"
 
 	highlight_color='\e[0;31m'
@@ -96,8 +96,18 @@ if ! command -v virtuoso-t ; then
 fi
 if ! [[ $(grep $rdf_export_path $virtuoso_config_file) ]]
 then
+	echo
 	echo "virtuoso is not configured properly:"
 	echo "add ${rdf_export_path} to the DirsAllowed parameter in ${virtuoso_config_file}"
+	echo
+	exit
+fi
+if ! [[ $(curl --silent -i -H "Origin: http://localhost:1234" http://localhost:8890/sparql | grep "Access-Control-Allow-Origin: *") ]]
+then
+	echo
+	echo "virtuoso is not configured for allowing Cross-Origin Resource Sharing over the uri '/sparql'. Please configure it following the tutorial on:"
+	echo "http://virtuoso.openlinksw.com/dataspace/doc/dav/wiki/Main/VirtTipsAndTricksGuideCORSSetup#Server-level+CORS+Setup"
+	echo
 	exit
 fi
 echo
@@ -112,7 +122,7 @@ echo
 assert_no_errors_on ../summarization/log/log.txt
 assert_results_are_compliant $expected_results $results
 
-graph=http://system.test
+graph=http://schemasummaries.org/system-test
 ./isql.sh "SPARQL CLEAR GRAPH <$graph>;"
 ./export-to-rdf.sh $results $rdf_export_path $graph
 echo

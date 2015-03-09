@@ -81,7 +81,7 @@ public class PropertiesStatistic {
 					r.add(Row.Entry.SUBJECT, row[0]);
 					r.add(Row.Entry.SCORE1, row[1]); 
 					r.add(Row.Entry.SCORE2, row[4]);
-					r.add(Row.Entry.SCORE3, row[6]);
+					r.add(Row.Entry.SCORE3, row[5]);
 
 					allFacts.add(r);
 				}

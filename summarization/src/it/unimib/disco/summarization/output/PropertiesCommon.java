@@ -20,8 +20,6 @@ import com.hp.hpl.jena.vocabulary.RDF;
 public class PropertiesCommon {
 	public static void main (String args []) throws IOException{
 
-
-
 		for (int j=0; j<args.length; j++){
 			Model model = ModelFactory.createDefaultModel();
 			String csvFilePath = args[j];

@@ -1,7 +1,6 @@
 package it.unimib.disco.summarization.output;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -21,50 +20,47 @@ import com.hp.hpl.jena.vocabulary.RDF;
 public class WriteAKPToRDF {
 	public static void main (String args []) throws IOException{
 
-		for (int j=0; j<args.length; j++){
-			Model model = ModelFactory.createDefaultModel();
-			String csvFilePath = args[j];
 
-			//Get all of the rows
-			List<Row> rows = readCSV(csvFilePath);
+		Model model = ModelFactory.createDefaultModel();
+		String csvFilePath = args[0];
+		String outputFilePath = args[1];
 
-			for (int i=1;i<rows.size();i++){
+		//Get all of the rows
+		List<Row> rows = readCSV(csvFilePath);
 
-				Resource id = model.createResource("http://schemasummaries.org/resource/"+i);
-				Resource subject = model.createResource(rows.get(i).get(Row.Entry.SUBJECT));
-				Property predicate = model.createProperty(rows.get(i).get(Row.Entry.PREDICATE));
-				Resource object = model.createResource(rows.get(i).get(Row.Entry.OBJECT));
-				Property has_frequency = model.createProperty("http://schemasummaries.org/ontology/has_frequency");
-				Literal statistic = model.createTypedLiteral(Integer.parseInt(rows.get(i).get(Row.Entry.SCORE1)));
-				Resource AKP = model.createProperty("http://schemasummaries.org/ontology/AbstractKnowledgePattern");
+		for (int i=1;i<rows.size();i++){
 
-				// creating a statement doesn't add it to the model
-				Statement stmt1 = model.createStatement( id, RDF.type, RDF.Statement );
-				Statement stmt2 = model.createStatement( id, RDF.subject, subject );
-				Statement stmt3 = model.createStatement( id, RDF.predicate, predicate );
-				Statement stmt4 = model.createStatement( id, RDF.object, object );
-				Statement stmt_stat = model.createStatement( id, has_frequency, statistic);
-				Statement stmt5 = model.createStatement( id, RDF.type, AKP);
+			Resource id = model.createResource("http://schemasummaries.org/resource/"+i);
+			Resource subject = model.createResource(rows.get(i).get(Row.Entry.SUBJECT));
+			Property predicate = model.createProperty(rows.get(i).get(Row.Entry.PREDICATE));
+			Resource object = model.createResource(rows.get(i).get(Row.Entry.OBJECT));
+			Property has_frequency = model.createProperty("http://schemasummaries.org/ontology/has_frequency");
+			Literal statistic = model.createTypedLiteral(Integer.parseInt(rows.get(i).get(Row.Entry.SCORE1)));
+			Resource AKP = model.createProperty("http://schemasummaries.org/ontology/AbstractKnowledgePattern");
 
-				// creating a reified statement does add some triples to the model
-				// ReifiedStatement rstmt = model.createReifiedStatement( stmt );
-				model.add(stmt1);
-				model.add(stmt2);
-				model.add(stmt3);
-				model.add(stmt4);
-				model.add(stmt5);
-				model.add(stmt_stat);
+			// creating a statement doesn't add it to the model
+			Statement stmt1 = model.createStatement( id, RDF.type, RDF.Statement );
+			Statement stmt2 = model.createStatement( id, RDF.subject, subject );
+			Statement stmt3 = model.createStatement( id, RDF.predicate, predicate );
+			Statement stmt4 = model.createStatement( id, RDF.object, object );
+			Statement stmt_stat = model.createStatement( id, has_frequency, statistic);
+			Statement stmt5 = model.createStatement( id, RDF.type, AKP);
 
-			}
-			String file_name= args[j].substring(args[j].lastIndexOf("/"), args[j].lastIndexOf(".")); 
+			// creating a reified statement does add some triples to the model
+			// ReifiedStatement rstmt = model.createReifiedStatement( stmt );
+			model.add(stmt1);
+			model.add(stmt2);
+			model.add(stmt3);
+			model.add(stmt4);
+			model.add(stmt5);
+			model.add(stmt_stat);
 
-			File directory = new File (".");
-
-			OutputStream output = new FileOutputStream(directory.getAbsolutePath()+"/output/"+file_name+".nt");
-			model.write( output, "N-Triples", null ); // or "RDF/XML", etc.
-
-			output.close();
 		}
+		OutputStream output = new FileOutputStream(outputFilePath);
+		model.write( output, "N-Triples", null ); // or "RDF/XML", etc.
+
+		output.close();
+
 
 	}
 

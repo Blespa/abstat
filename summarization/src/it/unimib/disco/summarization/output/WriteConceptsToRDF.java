@@ -1,7 +1,6 @@
 package it.unimib.disco.summarization.output;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -21,9 +20,10 @@ import com.hp.hpl.jena.vocabulary.RDF;
 public class WriteConceptsToRDF {
 	public static void main (String args []) throws IOException{
 
-		for (int j=0; j<args.length; j++){
-			Model model = ModelFactory.createDefaultModel();
-			String csvFilePath = args[j];
+
+		Model model = ModelFactory.createDefaultModel();
+		String csvFilePath = args[0];
+		String outputFilePath = args[1];
 
 		//Get all of the rows
 		List<Row> rows = readCSV(csvFilePath);
@@ -46,15 +46,11 @@ public class WriteConceptsToRDF {
 			model.add(stmt_stat1);
 			model.add(stmt_stat2);
 		}
-		String file_name= args[j].substring(args[j].lastIndexOf("/"), args[j].lastIndexOf(".")); 
-
-		File directory = new File (".");
-
-		OutputStream output = new FileOutputStream(directory.getAbsolutePath()+"/output/"+file_name+".nt");
+		OutputStream output = new FileOutputStream(outputFilePath);
 		model.write( output, "N-Triples", null ); // or "RDF/XML", etc.
 		output.close();
 
-		}
+
 	}
 
 	public static List<Row> readCSV(String rsListFile) throws IOException {

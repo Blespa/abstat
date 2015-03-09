@@ -17,7 +17,7 @@ import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.vocabulary.RDF;
 
-public class AAKP {
+public class WritePropertiesOtherStatToRDF {
 	public static void main (String args []) throws IOException{
 
 		for (int j=0; j<args.length; j++){
@@ -29,10 +29,8 @@ public class AAKP {
 
 			for (int i=1;i<rows.size();i++){
 
-				Resource id = model.createResource("http://schemasummaries.org/resource/"+i);
 				Resource subject = model.createResource(rows.get(i).get(Row.Entry.SUBJECT));
-				Property predicate = model.createProperty(rows.get(i).get(Row.Entry.PREDICATE));
-				Resource aakp = model.createResource("http://schemasummaries.org/ontology/AggregatedAbstractKnowledgePattern");
+				Resource signature = model.createResource("http://schemasummaries.org/ontology/Signature");
 				Property has_statistic1 = model.createProperty("http://schemasummaries.org/ontology/has_frequency");
 				Property has_statistic2 = model.createProperty("http://schemasummaries.org/ontology/has_ratio");
 				Literal statistic1 = model.createTypedLiteral(Integer.parseInt(rows.get(i).get(Row.Entry.SCORE1)));
@@ -40,35 +38,24 @@ public class AAKP {
 
 
 				// creating a statement doesn't add it to the model
+				Statement stmt_stat1 = model.createStatement( subject, has_statistic1, statistic1 );
+				Statement stmt_stat2 = model.createStatement( subject, has_statistic2, statistic2 );
 
-				Statement stmt1 = model.createStatement( id, RDF.type, RDF.Statement );
-				Statement stmt2 = null;
-				if (j==1){
-					stmt2=model.createStatement( id, RDF.object, subject );
-				}
-				else{
-					stmt2=model.createStatement( id, RDF.subject, subject );
-				}
-				Statement stmt3 = model.createStatement( id, RDF.predicate, predicate );
-				Statement stmt4 = model.createStatement( id, RDF.type, aakp);
-				Statement stmt_stat1 = model.createStatement( id, has_statistic1, statistic1 );
-				Statement stmt_stat2 = model.createStatement( id, has_statistic2, statistic2 );
 
-				model.add(stmt1);
-				model.add(stmt2);
-				model.add(stmt3);
-				model.add(stmt4);
+				Statement stmt = model.createStatement( subject, RDF.type, signature );
+
+				model.add(stmt);
 				model.add(stmt_stat1);
 				model.add(stmt_stat2);
-
-				String file_name= args[j].substring(args[j].lastIndexOf("/"), args[j].lastIndexOf(".")); 
-
-				File directory = new File (".");
-
-				OutputStream output = new FileOutputStream(directory.getAbsolutePath()+"/output/"+file_name+".nt");
-				model.write( output, "N-Triples", null ); // or "", etc.
-				output.close();
 			}
+			String file_name= args[j].substring(args[j].lastIndexOf("/"), args[j].lastIndexOf(".")); 
+
+			File directory = new File (".");
+
+			OutputStream output = new FileOutputStream(directory.getAbsolutePath()+"/output/"+file_name+".nt");
+			model.write( output, "N-Triples", null ); // or "", etc.
+			output.close();
+
 		}
 
 	}
@@ -91,9 +78,8 @@ public class AAKP {
 				if (row[0].contains("http")){
 
 					r.add(Row.Entry.SUBJECT, row[0]);
-					r.add(Row.Entry.PREDICATE, row[1]);
-					r.add(Row.Entry.SCORE1, row[3]); 
-					r.add(Row.Entry.SCORE2, row[2]);
+					r.add(Row.Entry.SCORE1, row[2]); 
+					r.add(Row.Entry.SCORE2, row[1]);
 
 					allFacts.add(r);
 				}

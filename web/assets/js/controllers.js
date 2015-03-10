@@ -52,7 +52,8 @@ summary.controller('Summarization', function ($scope, $http, $location) {
 			         	'?pattern rdf:object ' + object + ' . ' +
 			         	'?pattern ss:has_frequency ?frequency . ' +
 					'} ' +
-					'order by desc(?frequency) ')
+					'order by desc(?frequency) ' +
+					'limit 10')
 			.onGraph($scope.selected_graph)
 			.accumulate(function(results){
 				$scope.summaries=results;

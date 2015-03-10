@@ -2,78 +2,81 @@ var summary = angular.module('schemasummaries', ['ui.bootstrap']);
 
 summary.controller('Summarization', function ($scope, $http, $location) {
 	
-	$scope.loadTopFrequentPatterns = function(){
+	$scope.loadPatterns = function(){
 		
-		new Sparql($http, $location)
-			.query('select ?subject ?predicate ?object ?frequency ' + 
-					'where { '+
-			         	'?pattern a ss:AbstractKnowledgePattern . ' +
-			         	'?pattern rdf:subject ?subject . ' +
-			         	'?pattern rdf:predicate ?predicate . ' + 
-			         	'?pattern rdf:object ?object . ' +
-			         	'?pattern ss:has_frequency ?frequency . ' +
-		         	'} ' +
-		         	'order by desc(?frequency) ' +
-		         	'limit 10')
-         	.onGraph($scope.selected_graph)
-         	.accumulate(function(results){
-				$scope.summaries=results;
-				$scope.graph_was_selected=true;
-			});
+		loadSummaries($scope, $http, $location);
 		
-		new Sparql($http, $location)
-			.query('select distinct(?subject) ' + 
-					'where { '+
-						'?pattern a ss:AbstractKnowledgePattern . ' +
-			         	'?pattern rdf:subject ?subject . ' +
-		         	'} ')
-		     .onGraph($scope.selected_graph)
-		     .accumulate(function(results){
-		    	 $scope.pattern_subjects = [];
-		    	 
-		    	 angular.forEach(results, function(key, value){
-		    		 this.push(key.subject.value)
-		    	 }, $scope.pattern_subjects);
-		     });
+		$scope.autocomplete = {};
+		
+		fill('subject', $scope.autocomplete, $http, $location)
+		fill('predicate', $scope.autocomplete, $http, $location)
+		fill('object', $scope.autocomplete, $http, $location)
 	};
 	
 	$scope.filterPatterns = function(){
 		
-		var subject = valueOrDefault($scope.subject, '?subject');
-		var predicate = valueOrDefault($scope.predicate, '?predicate');
-		var object = valueOrDefault($scope.object, '?object');
-		
-		new Sparql($http, $location)
-			.query('select ' + subject + 'as ?subject ' + predicate + ' as ?predicate ' + object + ' as ?object ?frequency ' +
-					'where { ' +
-						'?pattern a ss:AbstractKnowledgePattern . ' +
-						'?pattern rdf:subject ' + subject + ' . ' +
-						'?pattern rdf:predicate ' + predicate + ' . ' + 
-			         	'?pattern rdf:object ' + object + ' . ' +
-			         	'?pattern ss:has_frequency ?frequency . ' +
-					'} ' +
-					'order by desc(?frequency) ' +
-					'limit 10')
-			.onGraph($scope.selected_graph)
-			.accumulate(function(results){
-				$scope.summaries=results;
-			});;
+		loadSummaries($scope, $http, $location);
 	}
 	
 	$scope.selected_graph='Select a dataset';
 	
-	new Sparql($http, $location)
-			.query("select distinct ?uri where {GRAPH ?uri {?s ?p ?o} . FILTER regex(?uri, 'schemasummaries')}")
-			.accumulate(function(results){
-				$scope.graphs=results;
-			});
+	getGraphs($scope, $http, $location);
 });
 
-valueOrDefault = function(value, default_value){
-	var value_to_return = default_value;
-	if(value) value_to_return = '<' + value + '>';
-	return value_to_return;
-}
+fill = function(type, result, http, location){
+	
+	result[type] = [];
+	
+	new Sparql(http, location)
+	.query('select distinct(?' + type + ') as ?resource ' + 
+			'where { '+
+				'?pattern a ss:AbstractKnowledgePattern . ' +
+	         	'?pattern rdf:' + type + ' ?' + type + ' . ' +
+         	'} ')
+     .accumulate(function(results){		    	 
+    	 angular.forEach(results, function(key, value){
+    		 this.push(key.resource.value)
+    	 }, result[type]);
+     });
+};
+
+getGraphs = function(scope, http, location){
+	new Sparql(http, location)
+			.query("select distinct ?uri where {GRAPH ?uri {?s ?p ?o} . FILTER regex(?uri, 'schemasummaries')}")
+			.accumulate(function(results){
+				scope.graphs=results;
+	});
+};
+
+loadSummaries = function(scope, http, location){
+	
+	var valueOrDefault = function(value, default_value){
+		var value_to_return = default_value;
+		if(value) value_to_return = '<' + value + '>';
+		return value_to_return;
+	}
+	
+	var subject = valueOrDefault(scope.subject, '?subject');
+	var predicate = valueOrDefault(scope.predicate, '?predicate');
+	var object = valueOrDefault(scope.object, '?object');
+	
+	new Sparql(http, location)
+		.query('select ' + subject + 'as ?subject ' + predicate + ' as ?predicate ' + object + ' as ?object ?frequency ' +
+				'where { ' +
+					'?pattern a ss:AbstractKnowledgePattern . ' +
+					'?pattern rdf:subject ' + subject + ' . ' +
+					'?pattern rdf:predicate ' + predicate + ' . ' + 
+		         	'?pattern rdf:object ' + object + ' . ' +
+		         	'?pattern ss:has_frequency ?frequency . ' +
+				'} ' +
+				'order by desc(?frequency) ' +
+				'limit 10')
+		.onGraph(scope.selected_graph)
+		.accumulate(function(results){
+			scope.summaries=results;
+			scope.graph_was_selected=true;
+		});
+};
 
 Sparql = function(http_service, location_service){
 	

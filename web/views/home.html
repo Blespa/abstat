@@ -24,7 +24,7 @@
 					<option>Select a dataset</option>
 				    <option ng-repeat="graph in graphs">{{graph.uri.value}}</option>
 				</select>
-				<button type="submit" ng-click='loadTopFrequentPatterns()' class="btn btn-primary">View</button>
+				<button type="submit" ng-click='loadPatterns()' class="btn btn-primary">View</button>
 			</div>
 			</form>
 			</div>
@@ -40,9 +40,9 @@
 			<div style="margin-top:0.5cm" class="row">
 			<div class="col-md-12">
 			<form class="form-inline">
-				<input type="text" typeahead="pattern_subject for pattern_subject in pattern_subjects | filter:$viewValue | limitTo:7" ng-model="subject" class="form-control" placeholder="Subject">
-				<input type="text" ng-model="predicate" class="form-control" placeholder="Predicate">
-				<input type="text" ng-model="object" class="form-control" placeholder="Object">
+				<input type="text" typeahead="subject for subject in autocomplete.subject | filter:$viewValue | limitTo:7" ng-model="subject" class="form-control" placeholder="Subject">
+				<input type="text" typeahead="predicate for predicate in autocomplete.predicate | filter:$viewValue | limitTo:7" ng-model="predicate" class="form-control" placeholder="Predicate">
+				<input type="text" typeahead="object for object in autocomplete.object | filter:$viewValue | limitTo:7" ng-model="object" class="form-control" placeholder="Object">
 				<button type="submit" ng-click='filterPatterns()' class="btn btn-primary">Filter</button>
 			</form>
 			</div>

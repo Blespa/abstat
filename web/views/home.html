@@ -15,18 +15,41 @@
 			<h1>Schema Summaries</h1>
 		</div>
 		<div ng-controller="Summarization">
+			<div class="row">
+			<div class="col-md-12">
 			<form class="form-inline">
 			<div class="form-group">
 				<select id="dataset" ng-model="selected_graph" class="form-control">
 					<option>Select a dataset</option>
 				    <option ng-repeat="graph in graphs">{{graph.uri.value}}</option>
 				</select>
-				<button type="submit" ng-click='loadPatterns()' class="btn btn-primary">View</button>
+				<button type="submit" ng-click='loadTopFrequentPatterns()' class="btn btn-primary">View</button>
 			</div>
 			</form>
-			</br>
-			<h4>Abstract Knowledge Patterns</h4>
-			<table class="table table-striped">
+			</div>
+			</div>
+			
+			<div ng-show="graph_was_selected">
+			<div style="margin-top:1cm" class="row">
+			<div class="col-md-12">
+			<h3>Abstract Knowledge Patterns</h3>
+			</div>
+			</div>
+			
+			<div style="margin-top:0.5cm" class="row">
+			<div class="col-md-12">
+			<form class="form-inline">
+				<input type="text" ng-model="subject" class="form-control" placeholder="Subject">
+				<input type="text" ng-model="predicate" class="form-control" placeholder="Predicate">
+				<input type="text" ng-model="object" class="form-control" placeholder="Object">
+				<button type="submit" ng-click='filterPatterns()' class="btn btn-primary">Filter</button>
+			</form>
+			</div>
+			</div>
+			
+			<div style="margin-top:0.5cm" class="row">
+			<div class="col-md-12">
+			<table class="table table-hover">
 				<thead>
 					<tr>
 					<th>Subject</th>
@@ -44,6 +67,9 @@
 					</tr>
 				</tbody>
 			</table>
+			</div>
+			</div>
+			</div>
 		</div>
 	</div>
 </body>

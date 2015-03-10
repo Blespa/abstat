@@ -1,4 +1,4 @@
-var summary = angular.module('schemasummaries', []);
+var summary = angular.module('schemasummaries', ['ui.bootstrap']);
 
 summary.controller('Summarization', function ($scope, $http, $location) {
 	
@@ -20,6 +20,21 @@ summary.controller('Summarization', function ($scope, $http, $location) {
 				$scope.summaries=results;
 				$scope.graph_was_selected=true;
 			});
+		
+		new Sparql($http, $location)
+			.query('select distinct(?subject) ' + 
+					'where { '+
+						'?pattern a ss:AbstractKnowledgePattern . ' +
+			         	'?pattern rdf:subject ?subject . ' +
+		         	'} ')
+		     .onGraph($scope.selected_graph)
+		     .accumulate(function(results){
+		    	 $scope.pattern_subjects = [];
+		    	 
+		    	 angular.forEach(results, function(key, value){
+		    		 this.push(key.subject.value)
+		    	 }, $scope.pattern_subjects);
+		     });
 	};
 	
 	$scope.filterPatterns = function(){

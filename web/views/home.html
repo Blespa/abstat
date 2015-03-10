@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+	<script src="assets/js/ui-bootstrap-tpls-0.12.1.min.js"></script>
 	<script src="assets/js/controllers.js"></script>
 	<title>Schema Summaries</title>
 </head>
@@ -39,7 +40,7 @@
 			<div style="margin-top:0.5cm" class="row">
 			<div class="col-md-12">
 			<form class="form-inline">
-				<input type="text" ng-model="subject" class="form-control" placeholder="Subject">
+				<input type="text" typeahead="pattern_subject for pattern_subject in pattern_subjects | filter:$viewValue | limitTo:7" ng-model="subject" class="form-control" placeholder="Subject">
 				<input type="text" ng-model="predicate" class="form-control" placeholder="Predicate">
 				<input type="text" ng-model="object" class="form-control" placeholder="Object">
 				<button type="submit" ng-click='filterPatterns()' class="btn btn-primary">Filter</button>

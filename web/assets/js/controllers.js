@@ -8,9 +8,9 @@ summary.controller('Summarization', function ($scope, $http, $location) {
 		
 		$scope.autocomplete = {};
 		
-		fill('subject', $scope.autocomplete, $http, $location)
-		fill('predicate', $scope.autocomplete, $http, $location)
-		fill('object', $scope.autocomplete, $http, $location)
+		fill('subject', $scope.selected_graph, $scope.autocomplete, $http, $location)
+		fill('predicate', $scope.selected_graph, $scope.autocomplete, $http, $location)
+		fill('object', $scope.selected_graph, $scope.autocomplete, $http, $location)
 	};
 	
 	$scope.filterPatterns = function(){
@@ -23,7 +23,7 @@ summary.controller('Summarization', function ($scope, $http, $location) {
 	getGraphs($scope, $http, $location);
 });
 
-fill = function(type, result, http, location){
+fill = function(type, graph, result, http, location){
 	
 	result[type] = [];
 	
@@ -33,6 +33,7 @@ fill = function(type, result, http, location){
 				'?pattern a ss:AbstractKnowledgePattern . ' +
 	         	'?pattern rdf:' + type + ' ?' + type + ' . ' +
          	'} ')
+     .onGraph(graph)
      .accumulate(function(results){		    	 
     	 angular.forEach(results, function(key, value){
     		 this.push(key.resource.value)

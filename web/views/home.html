@@ -38,37 +38,37 @@
 			</div>
 			
 			<div style="margin-top:0.5cm" class="row">
-			<div class="col-md-12">
-			<form class="form-inline">
+				<div class="col-md-3">
 				<input type="text" typeahead="subject for subject in autocomplete.subject | filter:$viewValue | limitTo:7" ng-model="subject" class="form-control" placeholder="Subject">
+				</div>
+				
+				<div class="col-md-3">
 				<input type="text" typeahead="predicate for predicate in autocomplete.predicate | filter:$viewValue | limitTo:7" ng-model="predicate" class="form-control" placeholder="Predicate">
+				</div>
+				
+				<div class="col-md-3">
 				<input type="text" typeahead="object for object in autocomplete.object | filter:$viewValue | limitTo:7" ng-model="object" class="form-control" placeholder="Object">
+				</div>
+				
+				<div class="col-md-1">
 				<button type="submit" ng-click='filterPatterns()' class="btn btn-primary">Filter</button>
-			</form>
-			</div>
+				</div>
 			</div>
 			
 			<div style="margin-top:0.5cm" class="row">
-			<div class="col-md-12">
-			<table class="table table-hover">
-				<thead>
-					<tr>
-					<th>Subject</th>
-					<th>Predicate</th>
-					<th>Object</th>
-					<th>Frequency</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr ng-repeat="summary in summaries">
-						<td>{{summary.subject.value}}</td>
-						<td>{{summary.predicate.value}}</td>
-						<td>{{summary.object.value}}</td>
-						<td>{{summary.frequency.value}}</td>
-					</tr>
-				</tbody>
-			</table>
+				<div class="col-md-3"><strong>Subject</strong></div>
+				<div class="col-md-3"><strong>Predicate</strong></div>
+				<div class="col-md-3"><strong>Object</strong></div>
+				<div class="col-md-1"><strong>Frequency</strong></div>
+				<div class="col-md-1"><strong>Score 1</strong></div>
+				<div class="col-md-1"><strong>Score 2</strong></div>
 			</div>
+			
+			<div style="margin-top:0.25cm" class="row" ng-repeat="summary in summaries">
+				<div class="col-md-3">{{summary.subject.value}}</div>
+				<div class="col-md-3">{{summary.predicate.value}}</div>
+				<div class="col-md-3">{{summary.object.value}}</div>
+				<div class="col-md-1">{{summary.frequency.value}}</div>
 			</div>
 			</div>
 		</div>

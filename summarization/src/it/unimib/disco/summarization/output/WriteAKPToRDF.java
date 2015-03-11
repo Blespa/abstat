@@ -1,13 +1,15 @@
 package it.unimib.disco.summarization.output;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
+import it.unimib.disco.summarization.starter.Events;
+
+import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.commons.io.FileUtils;
 
 import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.Model;
@@ -20,40 +22,45 @@ import com.hp.hpl.jena.vocabulary.RDF;
 public class WriteAKPToRDF {
 	public static void main (String args []) throws IOException{
 
-
 		Model model = ModelFactory.createDefaultModel();
 		String csvFilePath = args[0];
 		String outputFilePath = args[1];
+		String dataset = new RDFResource(args[2]).localName();
 
-		//Get all of the rows
-		List<Row> rows = readCSV(csvFilePath);
+		for (Row row : readCSV(csvFilePath)){
 
-		for (int i=1;i<rows.size();i++){
+			try{
+				Resource id = model.createResource("http://schemasummaries.org/" + dataset + "/resource/AKP_" +
+						new RDFResource(row.get(Row.Entry.SUBJECT)).localName()+"_"+
+						new RDFResource(row.get(Row.Entry.PREDICATE)).localName()+"_"+
+						new RDFResource(row.get(Row.Entry.OBJECT)).localName());
+				
+				Resource subject = model.createResource(row.get(Row.Entry.SUBJECT));
+				Property predicate = model.createProperty(row.get(Row.Entry.PREDICATE));
+				Resource object = model.createResource(row.get(Row.Entry.OBJECT));
+				Property has_frequency = model.createProperty("http://schemasummaries.org/ontology/instanceOccurrence");
+				Literal statistic = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
+				Resource AKP = model.createProperty("http://schemasummaries.org/ontology/AbstractKnowledgePattern");
 
-			Resource id = model.createResource("http://schemasummaries.org/resource/"+i);
-			Resource subject = model.createResource(rows.get(i).get(Row.Entry.SUBJECT));
-			Property predicate = model.createProperty(rows.get(i).get(Row.Entry.PREDICATE));
-			Resource object = model.createResource(rows.get(i).get(Row.Entry.OBJECT));
-			Property has_frequency = model.createProperty("http://schemasummaries.org/ontology/has_frequency");
-			Literal statistic = model.createTypedLiteral(Integer.parseInt(rows.get(i).get(Row.Entry.SCORE1)));
-			Resource AKP = model.createProperty("http://schemasummaries.org/ontology/AbstractKnowledgePattern");
+				// create statements
+				Statement stmt1 = model.createStatement( id, RDF.type, RDF.Statement );
+				Statement stmt2 = model.createStatement( id, RDF.subject, subject );
+				Statement stmt3 = model.createStatement( id, RDF.predicate, predicate );
+				Statement stmt4 = model.createStatement( id, RDF.object, object );
+				Statement stmt_stat = model.createStatement( id, has_frequency, statistic);
+				Statement stmt5 = model.createStatement( id, RDF.type, AKP);
 
-			// creating a statement doesn't add it to the model
-			Statement stmt1 = model.createStatement( id, RDF.type, RDF.Statement );
-			Statement stmt2 = model.createStatement( id, RDF.subject, subject );
-			Statement stmt3 = model.createStatement( id, RDF.predicate, predicate );
-			Statement stmt4 = model.createStatement( id, RDF.object, object );
-			Statement stmt_stat = model.createStatement( id, has_frequency, statistic);
-			Statement stmt5 = model.createStatement( id, RDF.type, AKP);
-
-			// creating a reified statement does add some triples to the model
-			// ReifiedStatement rstmt = model.createReifiedStatement( stmt );
-			model.add(stmt1);
-			model.add(stmt2);
-			model.add(stmt3);
-			model.add(stmt4);
-			model.add(stmt5);
-			model.add(stmt_stat);
+				//add statements to model
+				model.add(stmt1);
+				model.add(stmt2);
+				model.add(stmt3);
+				model.add(stmt4);
+				model.add(stmt5);
+				model.add(stmt_stat);
+			}
+			catch(Exception e){
+				new Events().error("file" + csvFilePath + " row" + row, e);
+			}
 
 		}
 		OutputStream output = new FileOutputStream(outputFilePath);
@@ -67,18 +74,13 @@ public class WriteAKPToRDF {
 	public static List<Row> readCSV(String rsListFile) throws IOException {
 		List<Row> allFacts = new ArrayList<Row>();
 
-		BufferedReader br = null;
-		String line =  ""
-				;
 		String cvsSplitBy = "##";
 
-		try {
-
-			br = new BufferedReader(new FileReader(rsListFile));
-			while ((line = br.readLine()) != null) {
-				// use comma as separator
+		for(String line : FileUtils.readLines(new File(rsListFile))){
+			try{
 				String[] row = line.split(cvsSplitBy);
 				Row r = new Row();
+
 				if (row[0].contains("http")){
 					r.add(Row.Entry.SUBJECT, row[0]);
 					r.add(Row.Entry.PREDICATE, row[1]);
@@ -88,21 +90,10 @@ public class WriteAKPToRDF {
 					allFacts.add(r);
 				}
 			}
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			if (br != null) {
-				try {
-					br.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+			catch(Exception e){
+				new Events().error("file" + rsListFile + " line " + line, e);
 			}
 		}
-
 		return allFacts;
 	}
 

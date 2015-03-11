@@ -1,7 +1,7 @@
 package it.unimib.disco.summarization.tests;
 
 import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 import it.unimib.disco.summarization.output.RDFResource;
 
 import org.junit.Test;
@@ -12,21 +12,21 @@ public class RDFResourceTest {
 	public void shouldGiveTheLabelOfDBPediaProperties() throws Exception {
 		RDFResource result = new RDFResource("http://dbpedia.org/property/name");
 		
-		assertThat(result.resource(), equalTo("name"));
+		assertThat(result.localName(), equalTo("name"));
 	}
 	
 	@Test
 	public void shouldGiveTheLabelOfDBPediaOntologyProperties() throws Exception {
 		RDFResource result = new RDFResource("http://dbpedia.org/ontology/name");
 		
-		assertThat(result.resource(), equalTo("name"));
+		assertThat(result.localName(), equalTo("name"));
 	}
 	
 	@Test
 	public void shouldGiveTheLabelOnDublinCoreSubject() throws Exception {
 		RDFResource result = new RDFResource("http://www.w3.org/2004/02/skos/core#subject");		
 		
-		assertThat(result.resource(), equalTo("subject"));
+		assertThat(result.localName(), equalTo("subject"));
 	}
 
 	@Test
@@ -41,5 +41,13 @@ public class RDFResourceTest {
 		RDFResource result = new RDFResource("http://dbpedia.org/ontology/name");
 		
 		assertThat(result.namespace(), equalTo("http://dbpedia.org/ontology/"));
+	}
+	
+	@Test
+	public void shouldParseTheSchemaSummariesNamedGraph() throws Exception {
+		
+		RDFResource result = new RDFResource("http://schemasummaries.org/dbpedia-2014");
+		
+		assertThat(result.localName(), equalTo("dbpedia-2014"));
 	}
 }

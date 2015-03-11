@@ -10,7 +10,7 @@ public class RDFResource {
 		this.uri = uri;
 	}
 	
-	public String resource() {
+	public String localName() {
 		String[] splitted = StringUtils.split(uri, "/#");
 		return splitted[splitted.length - 1];
 	}
@@ -20,7 +20,7 @@ public class RDFResource {
 	}
 
 	public String namespace() {
-		return uri.replace(resource(), "");
+		return uri.replace(localName(), "");
 	}
 	
 	@Override

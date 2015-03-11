@@ -38,42 +38,38 @@
 			</div>
 			
 			<div style="margin-top:0.5cm" class="row">
-				<div class="col-md-1" style="color: white"><strong>Browse</strong></div>
-				<div class="col-md-3">
-				<input type="text" typeahead="subject for subject in autocomplete.subject | filter:$viewValue | limitTo:7" ng-model="subject" class="form-control" placeholder="Subject">
-				</div>
-				
-				<div class="col-md-2">
-				<input type="text" typeahead="predicate for predicate in autocomplete.predicate | filter:$viewValue | limitTo:7" ng-model="predicate" class="form-control" placeholder="Predicate">
-				</div>
-				
-				<div class="col-md-3">
-				<input type="text" typeahead="object for object in autocomplete.object | filter:$viewValue | limitTo:7" ng-model="object" class="form-control" placeholder="Object">
-				</div>
-				
-				<div class="col-md-1">
-				<button type="submit" ng-click='filterPatterns()' class="btn btn-primary">Filter</button>
-				</div>
+			<div class="col-md-12">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Subject</th>
+						<th>Predicate</th>
+						<th>Object</th>
+						<th>Freq.</th>
+						<th>Score 1</th>
+						<th>Score 2</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="text-center"><button type="submit" ng-click='filterPatterns()' class="btn btn-primary">Filter</button></td>
+						<td><input type="text" typeahead="subject for subject in autocomplete.subject | filter:$viewValue | limitTo:7" ng-model="subject" class="form-control" placeholder="Subject"></td>
+						<td><input type="text" typeahead="predicate for predicate in autocomplete.predicate | filter:$viewValue | limitTo:7" ng-model="predicate" class="form-control" placeholder="Predicate"></td>
+						<td><input type="text" typeahead="object for object in autocomplete.object | filter:$viewValue | limitTo:7" ng-model="object" class="form-control" placeholder="Object"></td>
+					</tr>
+					<tr ng-repeat="summary in summaries">
+						<td class="text-center"><a target="_blank" href="{{describe_uri}}{{summary.pattern.value | escape}}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a></td>
+						<td><a target="_blank" href="{{describe_uri}}{{summary.subject.value | escape}}">{{summary.subject.value}}</a></td>
+						<td><a target="_blank" href="{{describe_uri}}{{summary.predicate.value | escape}}">{{summary.predicate.value}}</a></td>
+						<td><a target="_blank" href="{{describe_uri}}{{summary.object.value | escape}}">{{summary.object.value}}</a></td>
+						<td>{{summary.frequency.value}}</td>
+						<td>0</td>
+						<td>0</td>
+					</tr>
+				</tbody>
+			</table>
 			</div>
-			
-			<div style="margin-top:0.5cm" class="row">
-				<div class="col-md-1 text-center"><strong>Browse</strong></div>
-				<div class="col-md-3"><strong>Subject</strong></div>
-				<div class="col-md-2"><strong>Predicate</strong></div>
-				<div class="col-md-3"><strong>Object</strong></div>
-				<div class="col-md-1"><strong>Frequency</strong></div>
-				<div class="col-md-1"><strong>Score 1</strong></div>
-				<div class="col-md-1"><strong>Score 2</strong></div>
-			</div>
-			
-			<div style="margin-top:0.25cm" class="row" ng-repeat="summary in summaries">
-				<div class="col-md-1 text-center"><a target="_blank" href="{{describe_uri}}{{summary.pattern.value | escape}}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a></div>
-				<div class="col-md-3"><a target="_blank" href="{{describe_uri}}{{summary.subject.value | escape}}">{{summary.subject.value}}</a></div>
-				<div class="col-md-2"><a target="_blank" href="{{describe_uri}}{{summary.predicate.value | escape}}">{{summary.predicate.value}}</a></div>
-				<div class="col-md-3"><a target="_blank" href="{{describe_uri}}{{summary.object.value | escape}}">{{summary.object.value}}</a></div>
-				<div class="col-md-1">{{summary.frequency.value}}</div>
-				<div class="col-md-1">0</div>
-				<div class="col-md-1">0</div>
 			</div>
 			</div>
 		</div>

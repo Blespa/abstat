@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=2">
 	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
 	<script src="assets/js/ui-bootstrap-tpls-0.12.1.min.js"></script>
@@ -67,10 +67,10 @@
 			</div>
 			
 			<div style="margin-top:0.25cm" class="row" ng-repeat="summary in summaries">
-				<div class="col-md-1 text-center"><a target="_blank" href="{{describe_uri}}{{summary.pattern.value}}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a></div>
-				<div class="col-md-3"><a target="_blank" href="{{describe_uri}}{{summary.subject.value}}">{{summary.subject.value}}</a></div>
-				<div class="col-md-2"><a target="_blank" href="{{describe_uri}}{{summary.predicate.value}}">{{summary.predicate.value}}</a></div>
-				<div class="col-md-3"><a target="_blank" href="{{describe_uri}}{{summary.object.value}}">{{summary.object.value}}</a></div>
+				<div class="col-md-1 text-center"><a target="_blank" href="{{describe_uri}}{{summary.pattern.value | escape}}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a></div>
+				<div class="col-md-3"><a target="_blank" href="{{describe_uri}}{{summary.subject.value | escape}}">{{summary.subject.value}}</a></div>
+				<div class="col-md-2"><a target="_blank" href="{{describe_uri}}{{summary.predicate.value | escape}}">{{summary.predicate.value}}</a></div>
+				<div class="col-md-3"><a target="_blank" href="{{describe_uri}}{{summary.object.value | escape}}">{{summary.object.value}}</a></div>
 				<div class="col-md-1">{{summary.frequency.value}}</div>
 				<div class="col-md-1">0</div>
 				<div class="col-md-1">0</div>

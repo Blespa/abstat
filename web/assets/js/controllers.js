@@ -1,5 +1,9 @@
 var summary = angular.module('schemasummaries', ['ui.bootstrap']);
 
+summary.filter('escape', function(){
+	return window.encodeURIComponent;
+});
+
 summary.controller('Summarization', function ($scope, $http, $location) {
 	
 	$scope.loadPatterns = function(){

@@ -1,5 +1,9 @@
 var summary = angular.module('schemasummaries', ['ui.bootstrap']);
 
+summary.filter('escape', function(){
+	return window.encodeURIComponent;
+});
+
 summary.controller('Summarization', function ($scope, $http, $location) {
 	
 	$scope.loadPatterns = function(){
@@ -17,8 +21,9 @@ summary.controller('Summarization', function ($scope, $http, $location) {
 		
 		loadSummaries($scope, $http, $location);
 	}
-	
-	$scope.selected_graph='Select a dataset';
+
+	$scope.selected_graph = 'Select a dataset';
+	$scope.describe_uri = endpoint($location) + '/describe/?uri=';
 	
 	getGraphs($scope, $http, $location);
 });
@@ -61,9 +66,11 @@ loadSummaries = function(scope, http, location){
 	var predicate = valueOrDefault(scope.predicate, '?predicate');
 	var object = valueOrDefault(scope.object, '?object');
 	
+	scope.summaries = [];
+	
 	new Sparql(http, location)
-		.query('select ' + subject + 'as ?subject ' + predicate + ' as ?predicate ' + object + ' as ?object ?frequency ' +
-				'where { ' +
+		.query('select ' + subject + 'as ?subject ' + predicate + ' as ?predicate ' + object + ' as ?object ?frequency ?pattern' +
+			   ' where { ' +
 					'?pattern a ss:AbstractKnowledgePattern . ' +
 					'?pattern rdf:subject ' + subject + ' . ' +
 					'?pattern rdf:predicate ' + predicate + ' . ' + 
@@ -71,13 +78,17 @@ loadSummaries = function(scope, http, location){
 		         	'?pattern ss:has_frequency ?frequency . ' +
 				'} ' +
 				'order by desc(?frequency) ' +
-				'limit 10')
+				'limit 20')
 		.onGraph(scope.selected_graph)
 		.accumulate(function(results){
 			scope.summaries=results;
 			scope.graph_was_selected=true;
 		});
 };
+
+endpoint = function(location_service){
+	return 'http://' + location_service.host() + ':8890'
+}
 
 Sparql = function(http_service, location_service){
 	
@@ -97,7 +108,7 @@ Sparql = function(http_service, location_service){
 	};
 	
 	this.accumulate = function(onSuccess){
-		http.get('http://' + location.host() + ':8890/sparql', {
+		http.get(endpoint(location) + '/sparql', {
 	        method: 'GET',
 	        params: {
 	            query: 'prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ' +

@@ -110,6 +110,15 @@ then
 	echo
 	exit
 fi
+if ! [[ $(curl --silent -i http://localhost:8890/describe/?uri=any | grep 200) ]]
+then
+	echo
+	echo "virtuoso is not configured to provide the url '/describe' for resources loaded in the triplestore. Please configure it following the tutorial on:"
+	echo "http://virtuoso.openlinksw.com/dataspace/doc/dav/wiki/Main/VirtFacetBrowserInstallConfig"
+	echo "NOTE: download the VAD package from http://opldownload.s3.amazonaws.com/uda/vad-packages/6.4/virtuoso/fct_dav.vad"
+	echo
+	exit
+fi
 echo
 
 mkdir -p $expected_results/patterns/tmp-files

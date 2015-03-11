@@ -67,10 +67,10 @@
 			</div>
 			
 			<div style="margin-top:0.25cm" class="row" ng-repeat="summary in summaries">
-				<div class="col-md-1 text-center"><a href="{{describe_uri}}{{summary.pattern.value}}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a></div>
-				<div class="col-md-3"><a href="{{describe_uri}}{{summary.subject.value}}">{{summary.subject.value}}</a></div>
-				<div class="col-md-2"><a href="{{describe_uri}}{{summary.predicate.value}}">{{summary.predicate.value}}</a></div>
-				<div class="col-md-3"><a href="{{describe_uri}}{{summary.object.value}}">{{summary.object.value}}</a></div>
+				<div class="col-md-1 text-center"><a target="_blank" href="{{describe_uri}}{{summary.pattern.value}}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a></div>
+				<div class="col-md-3"><a target="_blank" href="{{describe_uri}}{{summary.subject.value}}">{{summary.subject.value}}</a></div>
+				<div class="col-md-2"><a target="_blank" href="{{describe_uri}}{{summary.predicate.value}}">{{summary.predicate.value}}</a></div>
+				<div class="col-md-3"><a target="_blank" href="{{describe_uri}}{{summary.object.value}}">{{summary.object.value}}</a></div>
 				<div class="col-md-1">{{summary.frequency.value}}</div>
 				<div class="col-md-1">0</div>
 				<div class="col-md-1">0</div>

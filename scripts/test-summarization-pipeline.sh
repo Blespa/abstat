@@ -54,16 +54,18 @@ function as_absolute(){
 function assert_application_is_up(){
 
 	port=$1
+	page=$2
+	url="localhost:$port/$page"
 
 	highlight_color='\e[0;31m'
 	message='KO'
 
-	if [[ $(curl --silent "localhost:$port/alive" | grep "OK") ]]
+	if [[ $(curl --silent $url | grep "OK") ]]
 	then
 		highlight_color='\e[0;32m'
 		message="OK"
 	fi
-	echo -e "checking that web ui is up: ${highlight_color}${message}\e[0m"
+	echo -e "checking that $url is up: ${highlight_color}${message}\e[0m"
 }
 
 set -e
@@ -143,7 +145,14 @@ port=8887
 ./build-java-ui-module.sh
 ./java-ui.sh start $port
 sleep 1
-assert_application_is_up $port
+assert_application_is_up $port alive
 ./java-ui.sh stop $port
+echo
+
+echo "integration testing of the solr module"
+./solr.sh start 8886
+sleep 1
+assert_application_is_up 8886 solr
+./solr.sh stop
 echo
 

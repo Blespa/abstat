@@ -24,15 +24,16 @@ public class WriteSubjAAKPToRDF {
 		Model model = ModelFactory.createDefaultModel();
 		String csvFilePath = args[0];
 		String outputFilePath = args[1];
+		String dataset = new RDFResource(args[2]).localName();
 
 		//Get all of the rows
 		for (Row row : readCSV(csvFilePath)){
 
 			try{
 
-			Resource id = model.createResource("http://schemasummaries.org/resource/AAKP_"+
-						new RDFResource(row.get(Row.Entry.SUBJECT)).resource()+"_"+
-						new RDFResource(row.get(Row.Entry.PREDICATE)).resource());
+			Resource id = model.createResource("http://schemasummaries.org/resource/" + dataset + "AAKP_"+
+						new RDFResource(row.get(Row.Entry.SUBJECT)).localName()+"_"+
+						new RDFResource(row.get(Row.Entry.PREDICATE)).localName());
 				
 				Resource subject = model.createResource(row.get(Row.Entry.SUBJECT));
 				Property predicate = model.createProperty(row.get(Row.Entry.PREDICATE));

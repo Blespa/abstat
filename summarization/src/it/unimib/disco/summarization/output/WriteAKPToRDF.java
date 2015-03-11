@@ -25,14 +25,15 @@ public class WriteAKPToRDF {
 		Model model = ModelFactory.createDefaultModel();
 		String csvFilePath = args[0];
 		String outputFilePath = args[1];
+		String dataset = new RDFResource(args[2]).localName();
 
 		for (Row row : readCSV(csvFilePath)){
 
 			try{
-				Resource id = model.createResource("http://schemasummaries.org/resource/AKP_"+
-						new RDFResource(row.get(Row.Entry.SUBJECT)).resource()+"_"+
-						new RDFResource(row.get(Row.Entry.PREDICATE)).resource()+"_"+
-						new RDFResource(row.get(Row.Entry.OBJECT)).resource());
+				Resource id = model.createResource("http://schemasummaries.org/resource/" + dataset + "AKP_"+
+						new RDFResource(row.get(Row.Entry.SUBJECT)).localName()+"_"+
+						new RDFResource(row.get(Row.Entry.PREDICATE)).localName()+"_"+
+						new RDFResource(row.get(Row.Entry.OBJECT)).localName());
 				
 				Resource subject = model.createResource(row.get(Row.Entry.SUBJECT));
 				Property predicate = model.createProperty(row.get(Row.Entry.PREDICATE));

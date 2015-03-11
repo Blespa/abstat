@@ -30,7 +30,7 @@ public class WriteObjAAKPToRDF {
 		for (Row row : readCSV(csvFilePath)){
 
 			try{
-				Resource id = model.createResource("http://schemasummaries.org/resource/" + dataset + "AAKP_"+
+				Resource id = model.createResource("http://schemasummaries.org/" + dataset + "/resource/AAKP_" +
 						new RDFResource(row.get(Row.Entry.PREDICATE)).localName()+"_"+
 						new RDFResource(row.get(Row.Entry.SUBJECT)).localName());
 				

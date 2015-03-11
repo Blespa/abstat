@@ -18,7 +18,8 @@ public class WriteAKPToRDFTest extends UnitTest{
 		
 		WriteAKPToRDF.main(new String[]{
 				inputFile.getAbsolutePath(),
-				outputFile.getAbsolutePath()
+				outputFile.getAbsolutePath(),
+				"http://schemasummaries.org/dataset"
 		});
 		
 		assertThat(outputFile.exists(), is(true));

@@ -31,7 +31,7 @@ public class WriteSubjAAKPToRDF {
 
 			try{
 
-			Resource id = model.createResource("http://schemasummaries.org/resource/" + dataset + "AAKP_"+
+			Resource id = model.createResource("http://schemasummaries.org/" + dataset + "/resource/AAKP_" +
 						new RDFResource(row.get(Row.Entry.SUBJECT)).localName()+"_"+
 						new RDFResource(row.get(Row.Entry.PREDICATE)).localName());
 				

@@ -30,7 +30,7 @@ public class WriteAKPToRDF {
 		for (Row row : readCSV(csvFilePath)){
 
 			try{
-				Resource id = model.createResource("http://schemasummaries.org/resource/" + dataset + "AKP_"+
+				Resource id = model.createResource("http://schemasummaries.org/" + dataset + "/resource/AKP_" +
 						new RDFResource(row.get(Row.Entry.SUBJECT)).localName()+"_"+
 						new RDFResource(row.get(Row.Entry.PREDICATE)).localName()+"_"+
 						new RDFResource(row.get(Row.Entry.OBJECT)).localName());
@@ -38,7 +38,7 @@ public class WriteAKPToRDF {
 				Resource subject = model.createResource(row.get(Row.Entry.SUBJECT));
 				Property predicate = model.createProperty(row.get(Row.Entry.PREDICATE));
 				Resource object = model.createResource(row.get(Row.Entry.OBJECT));
-				Property has_frequency = model.createProperty("http://schemasummaries.org/ontology/instancOccurrence");
+				Property has_frequency = model.createProperty("http://schemasummaries.org/ontology/instanceOccurrence");
 				Literal statistic = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
 				Resource AKP = model.createProperty("http://schemasummaries.org/ontology/AbstractKnowledgePattern");
 

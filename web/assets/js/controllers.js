@@ -69,13 +69,13 @@ loadSummaries = function(scope, http, location){
 	scope.summaries = [];
 	
 	new Sparql(http, location)
-		.query('select ' + subject + 'as ?subject ' + predicate + ' as ?predicate ' + object + ' as ?object ?frequency ?pattern' +
+		.query('select ' + subject + ' as ?subject ' + predicate + ' as ?predicate ' + object + ' as ?object ?frequency ?pattern' +
 			   ' where { ' +
 					'?pattern a ss:AbstractKnowledgePattern . ' +
 					'?pattern rdf:subject ' + subject + ' . ' +
 					'?pattern rdf:predicate ' + predicate + ' . ' + 
 		         	'?pattern rdf:object ' + object + ' . ' +
-		         	'?pattern ss:frequency ?frequency . ' +
+		         	'?pattern ss:instanceOccurrence ?frequency . ' +
 				'} ' +
 				'order by desc(?frequency) ' +
 				'limit 20')

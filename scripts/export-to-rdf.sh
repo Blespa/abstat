@@ -8,9 +8,10 @@ function export_rdf(){
 	command=$1	
 	from=$2
 	to=$3
+	dataset=$4
 
 	echo "exporting $from as $to"
-	java -Xms256m -Xmx4g -cp .:'ontology_summarization.jar' it.unimib.disco.summarization.output.$command $from $to
+	java -Xms256m -Xmx4g -cp .:'ontology_summarization.jar' it.unimib.disco.summarization.output.$command $from $to $dataset
 	echo "done"
 }
 
@@ -29,10 +30,10 @@ cd $root
 ./build-java-summarization-module.sh
 
 cd $project
-export_rdf WriteConceptsToRDF $input_directory/obj-patterns/countConcepts.txt $output_directory/count-concepts.nt 
-export_rdf WriteConceptsToRDF $input_directory/dt-patterns/countDataType.txt $output_directory/count-datatype.nt 
-export_rdf WritePropertiesToRDF $input_directory/obj-patterns/countProp.txt $output_directory/count-properties.nt 
-export_rdf WritePropertiesToRDF $input_directory/dt-patterns/countDTProp.txt $output_directory/count-datatype-properties.nt 
+export_rdf WriteConceptToRDF $input_directory/obj-patterns/countConcepts.txt $output_directory/count-concepts.nt 
+export_rdf WriteDatatypeToRDF $input_directory/dt-patterns/countDataType.txt $output_directory/count-datatype.nt 
+export_rdf WriteObjectPropertyToRDF $input_directory/obj-patterns/countProp.txt $output_directory/count-properties.nt 
+export_rdf WriteDatatypePropertyToRDF $input_directory/dt-patterns/countDTProp.txt $output_directory/count-datatype-properties.nt 
 export_rdf WriteAKPToRDF $input_directory/obj-patterns/relationCount.txt $output_directory/relation-count.nt $graph
 export_rdf WriteAKPToRDF $input_directory/dt-patterns/relationDTCount.txt $output_directory/relation-datatype-count.nt $graph
 

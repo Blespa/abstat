@@ -66,6 +66,8 @@ loadSummaries = function(scope, http, location){
 	var predicate = valueOrDefault(scope.predicate, '?predicate');
 	var object = valueOrDefault(scope.object, '?object');
 	
+	scope.summaries = [];
+	
 	new Sparql(http, location)
 		.query('select ' + subject + 'as ?subject ' + predicate + ' as ?predicate ' + object + ' as ?object ?frequency ?pattern' +
 			   ' where { ' +
@@ -76,7 +78,7 @@ loadSummaries = function(scope, http, location){
 		         	'?pattern ss:has_frequency ?frequency . ' +
 				'} ' +
 				'order by desc(?frequency) ' +
-				'limit 10')
+				'limit 20')
 		.onGraph(scope.selected_graph)
 		.accumulate(function(results){
 			scope.summaries=results;

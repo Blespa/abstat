@@ -37,7 +37,7 @@ public class WriteAKPToRDF {
 				Resource subject = model.createResource(row.get(Row.Entry.SUBJECT));
 				Property predicate = model.createProperty(row.get(Row.Entry.PREDICATE));
 				Resource object = model.createResource(row.get(Row.Entry.OBJECT));
-				Property has_frequency = model.createProperty("http://schemasummaries.org/ontology/frequency");
+				Property has_frequency = model.createProperty("http://schemasummaries.org/ontology/instancOccurrence");
 				Literal statistic = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
 				Resource AKP = model.createProperty("http://schemasummaries.org/ontology/AbstractKnowledgePattern");
 

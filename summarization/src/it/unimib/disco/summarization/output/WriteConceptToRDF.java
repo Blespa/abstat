@@ -1,4 +1,5 @@
 package it.unimib.disco.summarization.output;
+
 import it.unimib.disco.summarization.starter.Events;
 
 import java.io.File;
@@ -17,9 +18,11 @@ import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.vocabulary.RDF;
+import com.hp.hpl.jena.vocabulary.RDFS;
 
-public class WriteObjAAKPToRDF {
+public class WriteConceptToRDF {
 	public static void main (String args []) throws IOException{
+
 
 		Model model = ModelFactory.createDefaultModel();
 		String csvFilePath = args[0];
@@ -29,28 +32,19 @@ public class WriteObjAAKPToRDF {
 		for (Row row : readCSV(csvFilePath)){
 
 			try{
-				Resource id = model.createResource("http://schemasummaries.org/resource/AAKP_"+
-						new RDFResource(row.get(Row.Entry.PREDICATE)).resource()+"_"+
-						new RDFResource(row.get(Row.Entry.SUBJECT)).resource());
-				
 				Resource subject = model.createResource(row.get(Row.Entry.SUBJECT));
-				Property predicate = model.createProperty(row.get(Row.Entry.PREDICATE));
-				Resource aakp = model.createResource("http://schemasummaries.org/ontology/AggregatedAbstractKnowledgePattern");
-				Property has_statistic1 = model.createProperty("http://schemasummaries.org/ontology/minTypeOccurrence");
+				Resource type = model.createResource("http://schemasummaries.org/ontology/Type");
+				Property has_statistic1 = model.createProperty("http://schemasummaries.org/ontology/instancOccurrence");
 				Literal statistic1 = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
-				
-				// create statements
-				Statement stmt1 = model.createStatement( id, RDF.type, RDF.Statement );
-				Statement stmt3 = model.createStatement( id, RDF.predicate, predicate );
-				Statement stmt2 = model.createStatement( id, RDF.object, subject );
-				Statement stmt4 = model.createStatement( id, RDF.type, aakp);
-				Statement stmt_stat1 = model.createStatement( id, has_statistic1, statistic1 );
-				
+
+				//create statements
+				Statement stmt1 = model.createStatement( subject, RDF.type, RDFS.Class);
+				Statement stmt2 = model.createStatement( subject, RDF.type, type);
+				Statement stmt_stat1 = model.createStatement( subject, has_statistic1, statistic1 );
+
 				//add statements to model
 				model.add(stmt1);
 				model.add(stmt2);
-				model.add(stmt3);
-				model.add(stmt4);
 				model.add(stmt_stat1);
 			}
 			catch(Exception e){
@@ -58,9 +52,8 @@ public class WriteObjAAKPToRDF {
 			}
 		}
 		OutputStream output = new FileOutputStream(outputFilePath);
-		model.write( output, "N-Triples", null ); // or "", etc.
+		model.write( output, "N-Triples", null ); // or "RDF/XML", etc.
 		output.close();
-
 
 
 	}
@@ -76,10 +69,8 @@ public class WriteObjAAKPToRDF {
 				Row r = new Row();
 
 				if (row[0].contains("http")){
-
 					r.add(Row.Entry.SUBJECT, row[0]);
-					r.add(Row.Entry.PREDICATE, row[1]);
-					r.add(Row.Entry.SCORE1, row[3]); 
+					r.add(Row.Entry.SCORE1, row[1]);
 
 					allFacts.add(r);
 				}
@@ -90,4 +81,5 @@ public class WriteObjAAKPToRDF {
 		}
 		return allFacts;
 	}
+
 }

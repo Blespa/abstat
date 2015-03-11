@@ -37,7 +37,7 @@ public class WriteSubjAAKPToRDF {
 				Resource subject = model.createResource(row.get(Row.Entry.SUBJECT));
 				Property predicate = model.createProperty(row.get(Row.Entry.PREDICATE));
 				Resource aakp = model.createResource("http://schemasummaries.org/ontology/AggregatedAbstractKnowledgePattern");
-				Property has_statistic1 = model.createProperty("http://schemasummaries.org/ontology/frequency");
+				Property has_statistic1 = model.createProperty("http://schemasummaries.org/ontology/minTypeSubOccurrence");
 				Literal statistic1 = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
 
 				// create statements

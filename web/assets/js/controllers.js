@@ -75,7 +75,7 @@ loadSummaries = function(scope, http, location){
 					'?pattern rdf:subject ' + subject + ' . ' +
 					'?pattern rdf:predicate ' + predicate + ' . ' + 
 		         	'?pattern rdf:object ' + object + ' . ' +
-		         	'?pattern ss:has_frequency ?frequency . ' +
+		         	'?pattern ss:frequency ?frequency . ' +
 				'} ' +
 				'order by desc(?frequency) ' +
 				'limit 20')

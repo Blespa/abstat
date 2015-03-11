@@ -65,9 +65,9 @@
 			</div>
 			
 			<div style="margin-top:0.25cm" class="row" ng-repeat="summary in summaries">
-				<div class="col-md-3">{{summary.subject.value}}</div>
-				<div class="col-md-3">{{summary.predicate.value}}</div>
-				<div class="col-md-3">{{summary.object.value}}</div>
+				<div class="col-md-3"><a href="{{describe_uri}}{{summary.subject.value}}">{{summary.subject.value}}</a></div>
+				<div class="col-md-3"><a href="{{describe_uri}}{{summary.predicate.value}}">{{summary.predicate.value}}</a></div>
+				<div class="col-md-3"><a href="{{describe_uri}}{{summary.object.value}}">{{summary.object.value}}</a></div>
 				<div class="col-md-1">{{summary.frequency.value}}</div>
 			</div>
 			</div>

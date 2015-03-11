@@ -17,8 +17,9 @@ summary.controller('Summarization', function ($scope, $http, $location) {
 		
 		loadSummaries($scope, $http, $location);
 	}
-	
-	$scope.selected_graph='Select a dataset';
+
+	$scope.selected_graph = 'Select a dataset';
+	$scope.describe_uri = endpoint($location) + '/describe/?uri=';
 	
 	getGraphs($scope, $http, $location);
 });
@@ -79,6 +80,10 @@ loadSummaries = function(scope, http, location){
 		});
 };
 
+endpoint = function(location_service){
+	return 'http://' + location_service.host() + ':8890'
+}
+
 Sparql = function(http_service, location_service){
 	
 	var http = http_service;
@@ -97,7 +102,7 @@ Sparql = function(http_service, location_service){
 	};
 	
 	this.accumulate = function(onSuccess){
-		http.get('http://' + location.host() + ':8890/sparql', {
+		http.get(endpoint(location) + '/sparql', {
 	        method: 'GET',
 	        params: {
 	            query: 'prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ' +

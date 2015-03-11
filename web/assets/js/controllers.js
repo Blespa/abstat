@@ -63,8 +63,8 @@ loadSummaries = function(scope, http, location){
 	var object = valueOrDefault(scope.object, '?object');
 	
 	new Sparql(http, location)
-		.query('select ' + subject + 'as ?subject ' + predicate + ' as ?predicate ' + object + ' as ?object ?frequency ' +
-				'where { ' +
+		.query('select ' + subject + 'as ?subject ' + predicate + ' as ?predicate ' + object + ' as ?object ?frequency ?pattern' +
+			   ' where { ' +
 					'?pattern a ss:AbstractKnowledgePattern . ' +
 					'?pattern rdf:subject ' + subject + ' . ' +
 					'?pattern rdf:predicate ' + predicate + ' . ' + 

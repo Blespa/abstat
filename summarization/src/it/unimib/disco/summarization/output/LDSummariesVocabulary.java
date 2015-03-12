@@ -3,6 +3,7 @@ package it.unimib.disco.summarization.output;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import com.hp.hpl.jena.rdf.model.Model;
@@ -73,7 +74,7 @@ public class LDSummariesVocabulary {
 			localNames.add(new RDFResource(element).localName());
 		}
 		
-		return model.createResource(resourcesNamespace() + type + "_" + StringUtils.join(localNames, "_"));
+		return model.createResource(resourcesNamespace() + type + "/" + DigestUtils.md5Hex(StringUtils.join(localNames, "")));
 	}
 
 	private String ontologyNamespace() {

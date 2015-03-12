@@ -132,7 +132,6 @@ assert_no_errors_on ../summarization/log/log.txt
 assert_results_are_compliant $expected_results $results
 
 graph=http://schemasummaries.org/system-test
-./isql.sh "SPARQL CLEAR GRAPH <$graph>;"
 ./export-to-rdf.sh $results $rdf_export_path $graph
 echo
 assert_results_are_present_in_virtuoso

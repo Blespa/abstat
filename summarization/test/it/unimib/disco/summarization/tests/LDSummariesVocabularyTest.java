@@ -1,7 +1,7 @@
 package it.unimib.disco.summarization.tests;
 
 import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 import it.unimib.disco.summarization.output.LDSummariesVocabulary;
 
 import org.junit.Before;
@@ -41,5 +41,13 @@ public class LDSummariesVocabularyTest {
 		Resource akpInstance = vocabulary.akpInstance("http://example.org/Subject", "http://example.org/property", "http://example.org/Object");
 		
 		assertThat(akpInstance.getURI(), equalTo("http://schemasummaries.org/resource/the-dataset/AKP_Subject_property_Object"));
+	}
+	
+	@Test
+	public void shouldCreateAType() throws Exception {
+		
+		Resource type = vocabulary.type();
+		
+		assertThat(type.getURI(), equalTo("http://schemasummaries.org/ontology/Type"));
 	}
 }

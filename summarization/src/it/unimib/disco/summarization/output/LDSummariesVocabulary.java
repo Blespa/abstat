@@ -23,6 +23,10 @@ public class LDSummariesVocabulary {
 		return model.createResource(ontologyNamespace() + "AbstractKnowledgePattern");
 	}
 
+	public Resource type() {
+		return model.createResource(ontologyNamespace() + "Type");
+	}
+	
 	public Property frequency() {
 		return model.createProperty(ontologyNamespace() + "instanceOccurrence");
 	}
@@ -47,6 +51,4 @@ public class LDSummariesVocabulary {
 	private String baseUri() {
 		return "http://schemasummaries.org/";
 	}
-
-	
 }

@@ -34,12 +34,11 @@ public class WriteConceptToRDF {
 
 			try{
 				Resource subject = model.createResource(row.get(Row.Entry.SUBJECT));
-				Resource type = model.createResource("http://schemasummaries.org/ontology/Type");
 				Literal statistic1 = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
 
 				//create statements
 				Statement stmt1 = model.createStatement( subject, RDF.type, RDFS.Class);
-				Statement stmt2 = model.createStatement( subject, RDF.type, type);
+				Statement stmt2 = model.createStatement( subject, RDF.type, vocabulary.type());
 				Statement stmt_stat1 = model.createStatement( subject, vocabulary.frequency(), statistic1);
 
 				//add statements to model

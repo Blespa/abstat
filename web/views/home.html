@@ -52,15 +52,15 @@
 				<tbody>
 					<tr>
 						<td class="text-center"><button type="submit" ng-click='filterPatterns()' class="btn btn-primary">Filter</button></td>
-						<td><input type="text" typeahead="subject for subject in autocomplete.subject | filter:$viewValue | limitTo:7" ng-model="subject" class="form-control" placeholder="Subject"></td>
-						<td><input type="text" typeahead="predicate for predicate in autocomplete.predicate | filter:$viewValue | limitTo:7" ng-model="predicate" class="form-control" placeholder="Predicate"></td>
-						<td><input type="text" typeahead="object for object in autocomplete.object | filter:$viewValue | limitTo:7" ng-model="object" class="form-control" placeholder="Object"></td>
+						<td><input type="text" typeahead="subject as subject.global for subject in autocomplete.subject | filter:$viewValue | limitTo:7" ng-model="subject" class="form-control" placeholder="Subject"></td>
+						<td><input type="text" typeahead="predicate as predicate.global for predicate in autocomplete.predicate | filter:$viewValue | limitTo:7" ng-model="predicate" class="form-control" placeholder="Predicate"></td>
+						<td><input type="text" typeahead="object as object.global for object in autocomplete.object | filter:$viewValue | limitTo:7" ng-model="object" class="form-control" placeholder="Object"></td>
 					</tr>
 					<tr ng-repeat="summary in summaries">
 						<td class="text-center"><a target="_blank" href="{{describe_uri}}{{summary.pattern.value | escape}}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a></td>
-						<td><a target="_blank" href="{{describe_uri}}{{summary.subject.value | escape}}">{{summary.subject.value}}</a></td>
-						<td><a target="_blank" href="{{describe_uri}}{{summary.predicate.value | escape}}">{{summary.predicate.value}}</a></td>
-						<td><a target="_blank" href="{{describe_uri}}{{summary.object.value | escape}}">{{summary.object.value}}</a></td>
+						<td><a target="_blank" href="{{describe_uri}}{{summary.subject.value | escape}}">{{summary.gSubject.value}}</a></td>
+						<td><a target="_blank" href="{{describe_uri}}{{summary.predicate.value | escape}}">{{summary.gPredicate.value}}</a></td>
+						<td><a target="_blank" href="{{describe_uri}}{{summary.object.value | escape}}">{{summary.gObject.value}}</a></td>
 						<td>{{summary.frequency.value}}</td>
 					</tr>
 				</tbody>

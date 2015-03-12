@@ -39,16 +39,8 @@ public class LDSummariesVocabulary {
 		return model.createResource(ontologyNamespace() + "Datatype");
 	}
 	
-	public Property occurrences() {
+	public Property instanceOccurrence() {
 		return model.createProperty(ontologyNamespace() + "instanceOccurrence");
-	}
-	
-	public Property frequency() {
-		return model.createProperty(ontologyNamespace() + "frequency");
-	}
-	
-	public Property ratio() {
-		return model.createProperty(ontologyNamespace() + "ratio");
 	}
 	
 	public Property minTypeSubOccurrence() {
@@ -66,6 +58,10 @@ public class LDSummariesVocabulary {
 	public Resource aakpInstance(String... elements) {
 		return aggregate("AAKP", elements);
 	}
+	
+	public Resource asLocalResource(String globalResource) {
+		return model.createResource(resourcesNamespace() + globalResource.replace("http://", ""));
+	}
 
 	private Resource aggregate(String type, String... elements) {
 		List<String> localNames = new ArrayList<String>();
@@ -73,7 +69,7 @@ public class LDSummariesVocabulary {
 			localNames.add(new RDFResource(element).localName());
 		}
 		
-		return model.createResource(resourcesNamespace() + dataset + "/" + type + "_" + StringUtils.join(localNames, "_"));
+		return model.createResource(resourcesNamespace() + type + "_" + StringUtils.join(localNames, "_"));
 	}
 
 	private String ontologyNamespace() {
@@ -81,7 +77,7 @@ public class LDSummariesVocabulary {
 	}
 
 	private String resourcesNamespace() {
-		return baseUri() + "resource/";
+		return baseUri() + "resource/" + dataset + "/";
 	}
 
 	private String baseUri() {

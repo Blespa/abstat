@@ -41,7 +41,7 @@ public class WriteDatatypePropertyToRDF {
 				//create statements
 				Statement stmt1 = model.createStatement( subject, RDF.type, RDF.Property );
 				Statement stmt2 = model.createStatement( subject, RDF.type, datatypeProperty );
-				Statement stmt_stat1 = model.createStatement( subject, vocabulary.occurrences(), statistic1 );
+				Statement stmt_stat1 = model.createStatement( subject, vocabulary.instanceOccurrence(), statistic1 );
 				Statement stmt_stat2 = model.createStatement( subject, vocabulary.minTypeSubOccurrence(), statistic2 );
 				Statement stmt_stat3 = model.createStatement( subject, vocabulary.minTypeObjOccurrence(), statistic3 );
 

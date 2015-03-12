@@ -39,7 +39,7 @@ public class WriteConceptToRDF {
 				//create statements
 				Statement stmt1 = model.createStatement( subject, RDF.type, RDFS.Class);
 				Statement stmt2 = model.createStatement( subject, RDF.type, vocabulary.type());
-				Statement stmt_stat1 = model.createStatement( subject, vocabulary.occurrences(), statistic1);
+				Statement stmt_stat1 = model.createStatement( subject, vocabulary.instanceOccurrence(), statistic1);
 
 				//add statements to model
 				model.add(stmt1);

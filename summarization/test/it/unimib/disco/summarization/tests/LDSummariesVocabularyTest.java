@@ -30,7 +30,7 @@ public class LDSummariesVocabularyTest {
 	@Test
 	public void shouldCreateTheFrequencyProperty() throws Exception {
 		
-		Resource frequency = vocabulary.occurrences();
+		Resource frequency = vocabulary.instanceOccurrence();
 		
 		assertThat(frequency.getURI(), equalTo("http://schemasummaries.org/ontology/instanceOccurrence"));
 	}
@@ -100,16 +100,10 @@ public class LDSummariesVocabularyTest {
 	}
 	
 	@Test
-	public void shouldCreateAfrequency() throws Exception {
-		Resource frequency = vocabulary.frequency();
+	public void shouldGetTheLocalResourceForAGlobalResource() throws Exception {
 		
-		assertThat(frequency.getURI(), equalTo("http://schemasummaries.org/ontology/frequency"));
-	}
-	
-	@Test
-	public void shouldCreateARatio() throws Exception {
-		Resource ratio = vocabulary.ratio();
+		Resource localConcept = vocabulary.asLocalResource("http://www.w3.org/2002/07/owl#Thing");
 		
-		assertThat(ratio.getURI(), equalTo("http://schemasummaries.org/ontology/ratio"));
+		assertThat(localConcept.getURI(), equalTo("http://schemasummaries.org/resource/the-dataset/www.w3.org/2002/07/owl#Thing"));
 	}
 }

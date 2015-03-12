@@ -27,6 +27,6 @@ public class HomePageTest {
 	
 	@Test
 	public void shouldContainTheTitle() throws Exception {
-		application.httpAssert().body("/", containsString("Schema Summaries"));
+		application.httpAssert().body("/", containsString("Linked Data Summaries"));
 	}
 }

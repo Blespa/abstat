@@ -41,7 +41,7 @@ public class WriteDatatypePropertySubjToRDF {
 				model.add(model.createStatement( localProperty , OWL.sameAs, globalProperty ));
 				model.add(model.createStatement( localProperty, RDF.type, RDF.Property));
 				model.add(model.createStatement( localProperty, RDF.type, datatypeProperty));
-				model.add(model.createStatement( localProperty, vocabulary.subjectInstanceOccurrence(), occurrence ));
+//				model.add(model.createStatement( localProperty, vocabulary.subjectInstanceOccurrence(), occurrence ));
 			}
 			catch(Exception e){
 				new Events().error("file" + csvFilePath + " row" + row, e);

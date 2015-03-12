@@ -14,8 +14,8 @@ import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.vocabulary.OWL;
 import com.hp.hpl.jena.vocabulary.RDF;
+import com.hp.hpl.jena.vocabulary.RDFS;
 
 public class WriteObjectPropertyToRDF {
 	public static void main (String args []) throws IOException{
@@ -34,7 +34,6 @@ public class WriteObjectPropertyToRDF {
 			try{
 				Resource globalSubject = model.createResource(row.get(Row.Entry.SUBJECT));
 				Resource localSubject = vocabulary.asLocalResource(globalSubject.getURI());
-				Resource objectProperty = model.createResource("http://www.w3.org/2002/07/owl/ObjectProperty");
 				
 				Literal occurrence = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
 				Literal minTypeSubOccurrence = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE2)));
@@ -42,12 +41,12 @@ public class WriteObjectPropertyToRDF {
 
 				
 				//add statements to model
-				model.add(model.createStatement( localSubject, OWL.sameAs, globalSubject));
-				model.add(model.createStatement( localSubject, RDF.type, RDF.Property));
-				model.add(model.createStatement( localSubject, RDF.type, objectProperty));
-				model.add(model.createStatement( localSubject, vocabulary.instanceOccurrence(), occurrence ));
-				model.add(model.createStatement( localSubject, vocabulary.minTypeSubOccurrence(), minTypeSubOccurrence ));
-				model.add(model.createStatement( localSubject, vocabulary.minTypeObjOccurrence(), minTypeObjOccurrence ));
+				model.add(model.createStatement(localSubject, RDFS.seeAlso, globalSubject));
+				model.add(model.createStatement(localSubject, RDF.type, vocabulary.property()));
+				
+				model.add(model.createStatement(localSubject, vocabulary.occurrence(), occurrence));
+				model.add(model.createStatement(localSubject, vocabulary.subjectMinTypes(), minTypeSubOccurrence));
+				model.add(model.createStatement(localSubject, vocabulary.subjectMinTypes(), minTypeObjOccurrence));
 			}
 			catch(Exception e){
 				new Events().error("file" + csvFilePath + " row" + row, e);

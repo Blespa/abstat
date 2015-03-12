@@ -15,7 +15,6 @@ import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.vocabulary.OWL;
 import com.hp.hpl.jena.vocabulary.RDF;
 import com.hp.hpl.jena.vocabulary.RDFS;
 
@@ -39,11 +38,11 @@ public class WriteConceptToRDF {
 				Literal occurrences = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
 
 				//add statements to model
-				model.add(model.createStatement( localSubject, OWL.sameAs, globalSubject ));
+				model.add(model.createStatement( localSubject, RDFS.seeAlso, globalSubject ));
 				
-				model.add(model.createStatement( localSubject, RDF.type, RDFS.Class));
 				model.add(model.createStatement( localSubject, RDF.type, vocabulary.type()));
-				model.add(model.createStatement( localSubject, vocabulary.instanceOccurrence(), occurrences));
+				model.add(model.createStatement( localSubject, RDF.type, vocabulary.concept()));
+				model.add(model.createStatement( localSubject, vocabulary.occurrence(), occurrences));
 			}
 			catch(Exception e){
 				new Events().error("file" + csvFilePath + " row" + row, e);

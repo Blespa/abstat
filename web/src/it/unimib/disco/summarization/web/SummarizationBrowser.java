@@ -33,7 +33,7 @@ public class SummarizationBrowser {
 		ResourceHandler resources = new ResourceHandler();
 		resources.setDirectoriesListed(false);
 		resources.setResourceBase("assets");
-		ContextHandler contextHandler = new ContextHandler("/assets");
+		ContextHandler contextHandler = new ContextHandler("/static");
 		contextHandler.setHandler(resources);
 		return contextHandler;
 	}

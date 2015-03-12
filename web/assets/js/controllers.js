@@ -35,9 +35,9 @@ fill = function(type, graph, result, http, location){
 	new Sparql(http, location)
 	.query('select distinct(?' + type + ') ?g' + type + ' ' + 
 			'where { '+
-				'?pattern a ss:AbstractKnowledgePattern . ' +
+				'?pattern a lds:AbstractKnowledgePattern . ' +
 	         	'?pattern rdf:' + type + ' ?' + type + ' . ' +
-	         	'?' + type + ' owl:sameAs' + ' ?g' + type + ' . ' +
+	         	'?' + type + ' rdfs:seeAlso' + ' ?g' + type + ' . ' +
          	'} ')
      .onGraph(graph)
      .accumulate(function(results){		    	 
@@ -53,7 +53,7 @@ fill = function(type, graph, result, http, location){
 
 getGraphs = function(scope, http, location){
 	new Sparql(http, location)
-			.query("select distinct ?uri where {GRAPH ?uri {?s ?p ?o} . FILTER regex(?uri, 'schemasummaries')}")
+			.query("select distinct ?uri where {GRAPH ?uri {?s ?p ?o} . FILTER regex(?uri, 'ld-summaries')}")
 			.accumulate(function(results){
 				scope.graphs=results;
 	});
@@ -76,14 +76,14 @@ loadSummaries = function(scope, http, location){
 	new Sparql(http, location)
 		.query('select ' + subject + ' as ?subject ' + predicate + ' as ?predicate ' + object + ' as ?object ?frequency ?pattern ?gSubject ?gPredicate ?gObject' +
 			   ' where { ' +
-				   	subject + ' owl:sameAs ?gSubject . ' +
-		         	predicate +' owl:sameAs ?gPredicate . ' +
-		         	object + ' owl:sameAs ?gObject . ' +
-					'?pattern a ss:AbstractKnowledgePattern . ' +
+					'?pattern a lds:AbstractKnowledgePattern . ' +
 					'?pattern rdf:subject ' + subject + ' . ' +
 					'?pattern rdf:predicate ' + predicate + ' . ' + 
 		         	'?pattern rdf:object ' + object + ' . ' +
-		         	'?pattern ss:instanceOccurrence ?frequency . ' +
+		         	'?pattern lds:occurrence ?frequency . ' +
+		         	subject + ' rdfs:seeAlso ?gSubject . ' +
+		         	predicate +' rdfs:seeAlso ?gPredicate . ' +
+		         	object + ' rdfs:seeAlso ?gObject . ' +
 				'} ' +
 				'order by desc(?frequency) ' +
 				'limit 20')
@@ -120,8 +120,8 @@ Sparql = function(http_service, location_service){
 	        method: 'GET',
 	        params: {
 	            query: 'prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ' +
-		        	   'prefix ss:   <http://schemasummaries.org/ontology/> '+
-		        	   'prefix owl:   <http://www.w3.org/2002/07/owl#> ' +
+		        	   'prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> ' +
+		        	   'prefix lds:   <http://ld-summaries.org/ontology/> '+
 	         	       query,
 	            'default-graph-uri' : graph,
 	            format: 'json'

@@ -14,8 +14,8 @@ import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.vocabulary.OWL;
 import com.hp.hpl.jena.vocabulary.RDF;
+import com.hp.hpl.jena.vocabulary.RDFS;
 
 public class WriteDatatypePropertyToRDF {
 	public static void main (String args []) throws IOException{
@@ -34,19 +34,17 @@ public class WriteDatatypePropertyToRDF {
 			try{
 				Resource globalProperty = model.createResource(row.get(Row.Entry.SUBJECT));
 				Resource localProperty = vocabulary.asLocalResource(globalProperty.getURI());
-				Resource datatypeProperty = model.createResource("http://www.w3.org/2002/07/owl/DatatypeProperty");
-				
+
 				Literal occurrence = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
 				Literal minTypeSubOccurrence = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE2)));
 				Literal minTypeObjOccurrence = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE3)));
 				
 				//add statements to model
-				model.add(model.createStatement( localProperty, OWL.sameAs, globalProperty));
-				model.add(model.createStatement( localProperty, RDF.type, RDF.Property));
-				model.add(model.createStatement( localProperty, RDF.type, datatypeProperty));
-				model.add(model.createStatement( localProperty, vocabulary.instanceOccurrence(), occurrence ));
-				model.add(model.createStatement( localProperty, vocabulary.minTypeSubOccurrence(), minTypeSubOccurrence ));
-				model.add(model.createStatement( localProperty, vocabulary.minTypeObjOccurrence(), minTypeObjOccurrence ));
+				model.add(model.createStatement( localProperty, RDFS.seeAlso, globalProperty));
+				model.add(model.createStatement( localProperty, RDF.type, vocabulary.property()));
+				model.add(model.createStatement( localProperty, vocabulary.occurrence(), occurrence ));
+				model.add(model.createStatement( localProperty, vocabulary.subjectMinTypes(), minTypeSubOccurrence ));
+				model.add(model.createStatement( localProperty, vocabulary.objectMinTypes(), minTypeObjOccurrence ));
 			}
 			catch(Exception e){
 				new Events().error("file" + csvFilePath + " row" + row, e);

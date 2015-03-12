@@ -2,7 +2,7 @@ package it.unimib.disco.summarization.tests;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.not;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 import it.unimib.disco.summarization.output.LDSummariesVocabulary;
 
 import org.junit.Before;
@@ -23,9 +23,9 @@ public class LDSummariesVocabularyTest {
 	@Test
 	public void shouldCreateTheFrequencyProperty() throws Exception {
 		
-		Resource frequency = vocabulary.instanceOccurrence();
+		Resource frequency = vocabulary.occurrence();
 		
-		assertThat(frequency.getURI(), equalTo("http://schemasummaries.org/ontology/instanceOccurrence"));
+		assertThat(frequency.getURI(), equalTo("http://ld-summaries.org/ontology/occurrence"));
 	}
 	
 	@Test
@@ -33,23 +33,39 @@ public class LDSummariesVocabularyTest {
 		
 		Resource type = vocabulary.type();
 		
-		assertThat(type.getURI(), equalTo("http://schemasummaries.org/ontology/Type"));
+		assertThat(type.getURI(), equalTo("http://ld-summaries.org/ontology/Type"));
 	}
 	
 	@Test
 	public void shouldCreateMinTypeSubOccurrenceProperty() throws Exception {
 		
-		Resource property = vocabulary.minTypeSubOccurrence();
+		Resource property = vocabulary.subjectOccurrence();
 		
-		assertThat(property.getURI(), equalTo("http://schemasummaries.org/ontology/minTypeSubOccurrence"));
+		assertThat(property.getURI(), equalTo("http://ld-summaries.org/ontology/subjectOccurrence"));
 	}
 	
 	@Test
 	public void shouldCreateMinTypeObjOccurrenceProperty() throws Exception {
 		
-		Resource property = vocabulary.minTypeObjOccurrence();
+		Resource property = vocabulary.objectOccurrence();
 		
-		assertThat(property.getURI(), equalTo("http://schemasummaries.org/ontology/minTypeObjOccurrence"));
+		assertThat(property.getURI(), equalTo("http://ld-summaries.org/ontology/objectOccurrence"));
+	}
+	
+	@Test
+	public void shouldCreateSubjectMinTypesProperty() throws Exception {
+		
+		Resource property = vocabulary.subjectMinTypes();
+		
+		assertThat(property.getURI(), equalTo("http://ld-summaries.org/ontology/subjectMinTypes"));
+	}
+	
+	@Test
+	public void shouldCreateObjectMinTypesProperty() throws Exception {
+		
+		Resource property = vocabulary.objectMinTypes();
+		
+		assertThat(property.getURI(), equalTo("http://ld-summaries.org/ontology/objectMinTypes"));
 	}
 	
 	@Test
@@ -57,23 +73,23 @@ public class LDSummariesVocabularyTest {
 		
 		Resource type = vocabulary.datatype();
 		
-		assertThat(type.getURI(), equalTo("http://schemasummaries.org/ontology/Datatype"));
+		assertThat(type.getURI(), equalTo("http://ld-summaries.org/ontology/Datatype"));
 	}
 	
 	@Test
 	public void shouldCreateAnAKP() {
 		
-		Resource akp = vocabulary.akpConcept();
+		Resource akp = vocabulary.abstractKnowledgePattern();
 		
-		assertThat(akp.getURI(), equalTo("http://schemasummaries.org/ontology/AbstractKnowledgePattern"));
+		assertThat(akp.getURI(), equalTo("http://ld-summaries.org/ontology/AbstractKnowledgePattern"));
 	}
 	
 	@Test
 	public void shouldCreateAnAAKP() throws Exception {
 		
-		Resource type = vocabulary.aakpConcept();
+		Resource type = vocabulary.aggregatePattern();
 		
-		assertThat(type.getURI(), equalTo("http://schemasummaries.org/ontology/AggregatedAbstractKnowledgePattern"));
+		assertThat(type.getURI(), equalTo("http://ld-summaries.org/ontology/AggregatePattern"));
 	}
 	
 	@Test
@@ -81,7 +97,7 @@ public class LDSummariesVocabularyTest {
 		
 		Resource akpInstance = vocabulary.aakpInstance("http://example.org/Subject", "http://example.org/Object");
 		
-		assertThat(akpInstance.getURI(), equalTo("http://schemasummaries.org/resource/the-dataset/AAKP/a48609f690994c9e2d54ee70b1125707"));
+		assertThat(akpInstance.getURI(), equalTo("http://ld-summaries.org/resource/the-dataset/AP/a48609f690994c9e2d54ee70b1125707"));
 	}
 	
 	@Test
@@ -89,7 +105,7 @@ public class LDSummariesVocabularyTest {
 		
 		Resource akpInstance = vocabulary.akpInstance("http://example.org/Subject", "http://example.org/property", "http://example.org/Object");
 		
-		assertThat(akpInstance.getURI(), equalTo("http://schemasummaries.org/resource/the-dataset/AKP/81372da753a8fabedfa1afefa050c2cc"));
+		assertThat(akpInstance.getURI(), equalTo("http://ld-summaries.org/resource/the-dataset/AKP/81372da753a8fabedfa1afefa050c2cc"));
 	}
 	
 	@Test
@@ -102,26 +118,66 @@ public class LDSummariesVocabularyTest {
 	}
 	
 	@Test
-	public void shouldCreateASignature() throws Exception {
-		
-		Resource signature = vocabulary.signature();
-		
-		assertThat(signature.getURI(), equalTo("http://schemasummaries.org/ontology/Signature"));
-	}
-	
-	@Test
 	public void shouldGetTheLocalResourceForAGlobalResource() throws Exception {
 		
 		Resource localConcept = vocabulary.asLocalResource("http://www.w3.org/2002/07/owl#Thing");
 		
-		assertThat(localConcept.getURI(), equalTo("http://schemasummaries.org/resource/the-dataset/www.w3.org/2002/07/owl#Thing"));
+		assertThat(localConcept.getURI(), equalTo("http://ld-summaries.org/resource/the-dataset/www.w3.org/2002/07/owl#Thing"));
 	}
 	
 	@Test
-	public void shouldGetTheSubjectInstanceOccurrence() throws Exception {
+	public void shouldWriteAProperty() throws Exception {
 		
-		Resource property = vocabulary.subjectInstanceOccurrence();
+		Resource property = vocabulary.property();
 		
-		assertThat(property.getURI(), equalTo("http://schemasummaries.org/ontology/subjectInstanceOccurrence"));
+		assertThat(property.getURI(), equalTo("http://ld-summaries.org/ontology/Property"));
+	}
+	
+	@Test
+	public void shouldGetAConcept() throws Exception {
+		
+		Resource property = vocabulary.concept();
+		
+		assertThat(property.getURI(), equalTo("http://www.w3.org/2004/02/skos/core#Concept"));
+	}
+	
+	@Test
+	public void shouldGetTheSubjectProperty() throws Exception {
+		
+		Resource subject = vocabulary.subject();
+		
+		assertThat(subject.getURI(), equalTo("http://www.w3.org/1999/02/22-rdf-syntax-ns#subject"));
+	}
+	
+	@Test
+	public void shouldGetTheObjectProperty() throws Exception {
+		
+		Resource subject = vocabulary.object();
+		
+		assertThat(subject.getURI(), equalTo("http://www.w3.org/1999/02/22-rdf-syntax-ns#object"));
+	}
+	
+	@Test
+	public void shouldGetThePredicateProperty() throws Exception {
+		
+		Resource subject = vocabulary.predicate();
+		
+		assertThat(subject.getURI(), equalTo("http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate"));
+	}
+	
+	@Test
+	public void shouldGetTheTypedEntity() throws Exception {
+		
+		Resource typed = vocabulary.selfOrUntyped("http://aaa.org/Concept");
+		
+		assertThat(typed.getURI(), equalTo("http://aaa.org/Concept"));
+	}
+	
+	@Test
+	public void shouldGetTheUntypedConcept() throws Exception {
+		
+		Resource typed = vocabulary.selfOrUntyped("Ukn_Type");
+		
+		assertThat(typed.getURI(), equalTo("http://ld-summaries.org/ontology/Untyped"));
 	}
 }

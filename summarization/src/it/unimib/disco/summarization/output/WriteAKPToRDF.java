@@ -16,7 +16,7 @@ import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.rdf.model.Statement;
+import com.hp.hpl.jena.vocabulary.OWL;
 import com.hp.hpl.jena.vocabulary.RDF;
 
 public class WriteAKPToRDF {
@@ -32,28 +32,28 @@ public class WriteAKPToRDF {
 		for (Row row : readCSV(csvFilePath)){
 
 			try{
-				Resource subject = model.createResource(row.get(Row.Entry.SUBJECT));
-				Property predicate = model.createProperty(row.get(Row.Entry.PREDICATE));
-				Resource object = model.createResource(row.get(Row.Entry.OBJECT));
+				Resource globalSubject = model.createResource(row.get(Row.Entry.SUBJECT));
+				Property globalPredicate = model.createProperty(row.get(Row.Entry.PREDICATE));
+				Resource globalObject = model.createResource(row.get(Row.Entry.OBJECT));
 				Literal statistic = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
 				
-				Resource akpInstance = vocabulary.akpInstance(row.get(Row.Entry.SUBJECT), row.get(Row.Entry.PREDICATE), row.get(Row.Entry.OBJECT));
+				Resource localSubject = vocabulary.asLocalResource(globalSubject.getURI());
+				Resource localPredicate = vocabulary.asLocalResource(globalPredicate.getURI());
+				Resource localObject = vocabulary.asLocalResource(globalObject.getURI());
 				
-				// create statements
-				Statement stmt1 = model.createStatement( akpInstance, RDF.type, RDF.Statement );
-				Statement stmt2 = model.createStatement( akpInstance, RDF.subject, subject );
-				Statement stmt3 = model.createStatement( akpInstance, RDF.predicate, predicate );
-				Statement stmt4 = model.createStatement( akpInstance, RDF.object, object );
-				Statement stmt_stat = model.createStatement( akpInstance, vocabulary.instanceOccurrence(), statistic);
-				Statement stmt5 = model.createStatement( akpInstance, RDF.type, vocabulary.akpConcept());
-
+				Resource akpInstance = vocabulary.akpInstance(localSubject.getURI(), localPredicate.getURI(), localObject.getURI());
+				
 				//add statements to model
-				model.add(stmt1);
-				model.add(stmt2);
-				model.add(stmt3);
-				model.add(stmt4);
-				model.add(stmt5);
-				model.add(stmt_stat);
+				model.add(model.createStatement(localSubject, OWL.sameAs, globalSubject ));
+				model.add(model.createStatement(localPredicate, OWL.sameAs, globalPredicate ));
+				model.add(model.createStatement(localObject, OWL.sameAs, globalObject ));
+				
+				model.add(model.createStatement( akpInstance, RDF.type, RDF.Statement ));
+				model.add(model.createStatement( akpInstance, RDF.subject, localSubject ));
+				model.add(model.createStatement( akpInstance, RDF.predicate, localPredicate ));
+				model.add(model.createStatement( akpInstance, RDF.object, localObject ));
+				model.add(model.createStatement( akpInstance, RDF.type, vocabulary.akpConcept()));
+				model.add(model.createStatement( akpInstance, vocabulary.instanceOccurrence(), statistic));
 			}
 			catch(Exception e){
 				new Events().error("file" + csvFilePath + " row" + row, e);

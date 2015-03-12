@@ -51,6 +51,10 @@ public class LDSummariesVocabulary {
 		return model.createProperty(ontologyNamespace() + "minTypeObjOccurrence");
 	}
 	
+	public Property subjectInstanceOccurrence() {
+		return model.createProperty(ontologyNamespace() + "subjectInstanceOccurrence");
+	}
+	
 	public Resource akpInstance(String... elements) {
 		return aggregate("AKP", elements);
 	}
@@ -83,4 +87,6 @@ public class LDSummariesVocabulary {
 	private String baseUri() {
 		return "http://schemasummaries.org/";
 	}
+
+	
 }

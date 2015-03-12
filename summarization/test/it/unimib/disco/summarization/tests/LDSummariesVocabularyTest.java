@@ -1,7 +1,7 @@
 package it.unimib.disco.summarization.tests;
 
 import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 import it.unimib.disco.summarization.output.LDSummariesVocabulary;
 
 import org.junit.Before;
@@ -105,5 +105,13 @@ public class LDSummariesVocabularyTest {
 		Resource localConcept = vocabulary.asLocalResource("http://www.w3.org/2002/07/owl#Thing");
 		
 		assertThat(localConcept.getURI(), equalTo("http://schemasummaries.org/resource/the-dataset/www.w3.org/2002/07/owl#Thing"));
+	}
+	
+	@Test
+	public void shouldGetTheSubjectInstanceOccurrence() throws Exception {
+		
+		Resource property = vocabulary.subjectInstanceOccurrence();
+		
+		assertThat(property.getURI(), equalTo("http://schemasummaries.org/ontology/subjectInstanceOccurrence"));
 	}
 }

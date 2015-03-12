@@ -14,11 +14,10 @@ import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.rdf.model.Statement;
+import com.hp.hpl.jena.vocabulary.OWL;
 import com.hp.hpl.jena.vocabulary.RDF;
-import com.hp.hpl.jena.vocabulary.RDFS;
 
-public class WritePropertiesOtherStatToRDF {
+public class WriteDatatypePropertySubjToRDF {
 	public static void main (String args []) throws IOException{
 
 
@@ -33,19 +32,16 @@ public class WritePropertiesOtherStatToRDF {
 		for (Row row : readCSV(csvFilePath)){
 
 			try{
-
-				Resource subject = model.createResource(row.get(Row.Entry.SUBJECT));
-				Literal statistic1 = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
-
-				//create the statements
-				Statement stmt1 = model.createStatement( subject, RDF.type, vocabulary.signature());
-				Statement stmt2 = model.createStatement( subject, RDF.type, RDFS.Class );
-				Statement stmt_stat1 = model.createStatement( subject, vocabulary.instanceOccurrence(), statistic1 );
-
+				Resource globalProperty = model.createResource(row.get(Row.Entry.SUBJECT));
+				Resource localProperty = vocabulary.asLocalResource(globalProperty.getURI());
+				Literal occurrence = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
+				Resource datatypeProperty = model.createResource("http://www.w3.org/2002/07/owl/DatatypeProperty");
+				
 				//add statements to model
-				model.add(stmt1);
-				model.add(stmt2);
-				model.add(stmt_stat1);
+				model.add(model.createStatement( localProperty , OWL.sameAs, globalProperty ));
+				model.add(model.createStatement( localProperty, RDF.type, RDF.Property));
+				model.add(model.createStatement( localProperty, RDF.type, datatypeProperty));
+				model.add(model.createStatement( localProperty, vocabulary.subjectInstanceOccurrence(), occurrence ));
 			}
 			catch(Exception e){
 				new Events().error("file" + csvFilePath + " row" + row, e);

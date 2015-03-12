@@ -15,7 +15,7 @@ import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.rdf.model.Statement;
+import com.hp.hpl.jena.vocabulary.OWL;
 import com.hp.hpl.jena.vocabulary.RDF;
 import com.hp.hpl.jena.vocabulary.RDFS;
 
@@ -33,18 +33,17 @@ public class WriteConceptToRDF {
 		for (Row row : readCSV(csvFilePath)){
 
 			try{
-				Resource subject = model.createResource(row.get(Row.Entry.SUBJECT));
-				Literal statistic1 = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
-
-				//create statements
-				Statement stmt1 = model.createStatement( subject, RDF.type, RDFS.Class);
-				Statement stmt2 = model.createStatement( subject, RDF.type, vocabulary.type());
-				Statement stmt_stat1 = model.createStatement( subject, vocabulary.instanceOccurrence(), statistic1);
+				Resource globalSubject = model.createResource(row.get(Row.Entry.SUBJECT));
+				Resource localSubject = vocabulary.asLocalResource(globalSubject.getURI());
+				
+				Literal occurrences = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
 
 				//add statements to model
-				model.add(stmt1);
-				model.add(stmt2);
-				model.add(stmt_stat1);
+				model.add(model.createStatement( localSubject, OWL.sameAs, globalSubject ));
+				
+				model.add(model.createStatement( localSubject, RDF.type, RDFS.Class));
+				model.add(model.createStatement( localSubject, RDF.type, vocabulary.type()));
+				model.add(model.createStatement( localSubject, vocabulary.instanceOccurrence(), occurrences));
 			}
 			catch(Exception e){
 				new Events().error("file" + csvFilePath + " row" + row, e);

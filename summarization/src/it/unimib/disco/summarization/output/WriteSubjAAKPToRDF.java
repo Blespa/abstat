@@ -15,7 +15,7 @@ import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.rdf.model.Statement;
+import com.hp.hpl.jena.vocabulary.OWL;
 import com.hp.hpl.jena.vocabulary.RDF;
 
 public class WriteSubjAAKPToRDF {
@@ -33,27 +33,22 @@ public class WriteSubjAAKPToRDF {
 
 			try{
 
-				Resource subject = model.createResource(row.get(Row.Entry.SUBJECT));
-				Property predicate = model.createProperty(row.get(Row.Entry.PREDICATE));
-				Resource aakp = vocabulary.aakpConcept();
-				Property has_statistic1 = vocabulary.minTypeSubOccurrence();
-				Literal statistic1 = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
+				Resource globalSubject = model.createResource(row.get(Row.Entry.SUBJECT));
+				Property globalPredicate = model.createProperty(row.get(Row.Entry.PREDICATE));
+				Resource localSubject = vocabulary.asLocalResource(globalSubject.getURI());
+				Resource localPredicate = vocabulary.asLocalResource(globalPredicate.getURI());
+				Literal occurrence = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
 
-				Resource id = vocabulary.aakpInstance(row.get(Row.Entry.SUBJECT), row.get(Row.Entry.PREDICATE));
+				Resource id = vocabulary.aakpInstance(localSubject.getURI(), localPredicate.getURI());
 				
-				// create statements
-				Statement stmt1 = model.createStatement( id, RDF.type, RDF.Statement );
-				Statement stmt2 = model.createStatement( id, RDF.subject, subject );
-				Statement stmt3 = model.createStatement( id, RDF.predicate, predicate );
-				Statement stmt4 = model.createStatement( id, RDF.type, aakp);
-				Statement stmt_stat1 = model.createStatement( id, has_statistic1, statistic1 );
-
 				//add statements to model
-				model.add(stmt1);
-				model.add(stmt2);
-				model.add(stmt3);
-				model.add(stmt4);
-				model.add(stmt_stat1);
+				model.add(model.createStatement(localSubject, OWL.sameAs, globalSubject));
+				model.add(model.createStatement(localPredicate, OWL.sameAs, globalPredicate));
+				model.add(model.createStatement( id, RDF.type, RDF.Statement ));
+				model.add(model.createStatement( id, RDF.subject, localSubject ));
+				model.add(model.createStatement( id, RDF.predicate, localPredicate ));
+				model.add(model.createStatement( id, RDF.type, vocabulary.aakpConcept()));
+				model.add(model.createStatement( id, vocabulary.minTypeSubOccurrence(), occurrence ));
 			}
 			catch(Exception e){
 				new Events().error("file" + csvFilePath + " row" + row, e);

@@ -33,15 +33,20 @@ fill = function(type, graph, result, http, location){
 	result[type] = [];
 	
 	new Sparql(http, location)
-	.query('select distinct(?' + type + ') as ?resource ' + 
+	.query('select distinct(?' + type + ') ?g' + type + ' ' + 
 			'where { '+
 				'?pattern a ss:AbstractKnowledgePattern . ' +
 	         	'?pattern rdf:' + type + ' ?' + type + ' . ' +
+	         	'?' + type + ' owl:sameAs' + ' ?g' + type + ' . ' +
          	'} ')
      .onGraph(graph)
      .accumulate(function(results){		    	 
     	 angular.forEach(results, function(key, value){
-    		 this.push(key.resource.value)
+    		 var result = {};
+    		 result['local'] = key[type].value;
+    		 result['global'] = key['g' + type].value;
+    		 
+    		 this.push(result)
     	 }, result[type]);
      });
 };
@@ -56,21 +61,24 @@ getGraphs = function(scope, http, location){
 
 loadSummaries = function(scope, http, location){
 	
-	var valueOrDefault = function(value, default_value){
+	var localOrDefault = function(value, default_value){
 		var value_to_return = default_value;
-		if(value) value_to_return = '<' + value + '>';
+		if(value) value_to_return = '<' + value.local + '>';
 		return value_to_return;
 	}
 	
-	var subject = valueOrDefault(scope.subject, '?subject');
-	var predicate = valueOrDefault(scope.predicate, '?predicate');
-	var object = valueOrDefault(scope.object, '?object');
+	var subject = localOrDefault(scope.subject, '?subject');
+	var predicate = localOrDefault(scope.predicate, '?predicate');
+	var object = localOrDefault(scope.object, '?object');
 	
 	scope.summaries = [];
 	
 	new Sparql(http, location)
-		.query('select ' + subject + ' as ?subject ' + predicate + ' as ?predicate ' + object + ' as ?object ?frequency ?pattern' +
+		.query('select ' + subject + ' as ?subject ' + predicate + ' as ?predicate ' + object + ' as ?object ?frequency ?pattern ?gSubject ?gPredicate ?gObject' +
 			   ' where { ' +
+				   	subject + ' owl:sameAs ?gSubject . ' +
+		         	predicate +' owl:sameAs ?gPredicate . ' +
+		         	object + ' owl:sameAs ?gObject . ' +
 					'?pattern a ss:AbstractKnowledgePattern . ' +
 					'?pattern rdf:subject ' + subject + ' . ' +
 					'?pattern rdf:predicate ' + predicate + ' . ' + 
@@ -113,6 +121,7 @@ Sparql = function(http_service, location_service){
 	        params: {
 	            query: 'prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ' +
 		        	   'prefix ss:   <http://schemasummaries.org/ontology/> '+
+		        	   'prefix owl:   <http://www.w3.org/2002/07/owl#> ' +
 	         	       query,
 	            'default-graph-uri' : graph,
 	            format: 'json'

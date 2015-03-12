@@ -16,7 +16,7 @@ public class LDSummariesVocabulary {
 
 	public LDSummariesVocabulary(Model model, String dataset) {
 		this.model = model;
-		this.dataset = dataset;
+		this.dataset = new RDFResource(dataset).localName();
 	}
 
 	public Resource akpConcept() {

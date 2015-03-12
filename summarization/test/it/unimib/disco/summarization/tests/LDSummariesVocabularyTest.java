@@ -16,7 +16,7 @@ public class LDSummariesVocabularyTest {
 	
 	@Before
 	public void setUp(){
-		vocabulary = new LDSummariesVocabulary(ModelFactory.createDefaultModel(), "the-dataset");
+		vocabulary = new LDSummariesVocabulary(ModelFactory.createDefaultModel(), "http://whatever.org/the-dataset");
 	}
 	
 	@Test

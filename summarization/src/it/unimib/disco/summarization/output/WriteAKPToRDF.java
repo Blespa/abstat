@@ -24,7 +24,7 @@ public class WriteAKPToRDF {
 		
 		String csvFilePath = args[0];
 		String outputFilePath = args[1];
-		String dataset = new RDFResource(args[2]).localName();
+		String dataset = args[2];
 
 		Model model = ModelFactory.createDefaultModel();
 		LDSummariesVocabulary vocabulary = new LDSummariesVocabulary(model, dataset);

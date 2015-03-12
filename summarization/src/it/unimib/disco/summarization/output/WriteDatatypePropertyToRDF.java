@@ -25,6 +25,9 @@ public class WriteDatatypePropertyToRDF {
 
 		String csvFilePath = args[0];
 		String outputFilePath = args[1];
+		String dataset = args[2];
+		
+		LDSummariesVocabulary vocabulary = new LDSummariesVocabulary(model, dataset);
 
 		//Get all of the rows
 		for (Row row : readCSV(csvFilePath)){
@@ -32,8 +35,6 @@ public class WriteDatatypePropertyToRDF {
 			try{
 				Resource subject = model.createResource(row.get(Row.Entry.SUBJECT));
 				Resource datatypeProperty = model.createResource("http://www.w3.org/2002/07/owl/DatatypeProperty");
-				Property has_statistic1 = model.createProperty("http://schemasummaries.org/ontology/instancOccurrence");
-				Property has_statistic2 = model.createProperty("http://schemasummaries.org/ontology/minTypeSubOccurrence");
 				Property has_statistic3 = model.createProperty("http://schemasummaries.org/ontology/minTypeObjOccurrence");
 				Literal statistic1 = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
 				Literal statistic2 = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE2)));
@@ -42,8 +43,8 @@ public class WriteDatatypePropertyToRDF {
 				//create statements
 				Statement stmt1 = model.createStatement( subject, RDF.type, RDF.Property );
 				Statement stmt2 = model.createStatement( subject, RDF.type, datatypeProperty );
-				Statement stmt_stat1 = model.createStatement( subject, has_statistic1, statistic1 );
-				Statement stmt_stat2 = model.createStatement( subject, has_statistic2, statistic2 );
+				Statement stmt_stat1 = model.createStatement( subject, vocabulary.occurrences(), statistic1 );
+				Statement stmt_stat2 = model.createStatement( subject, vocabulary.minTypeSubOccurrence(), statistic2 );
 				Statement stmt_stat3 = model.createStatement( subject, has_statistic3, statistic3 );
 
 				//add statements to model

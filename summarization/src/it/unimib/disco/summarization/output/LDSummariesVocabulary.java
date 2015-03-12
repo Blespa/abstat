@@ -27,8 +27,12 @@ public class LDSummariesVocabulary {
 		return model.createResource(ontologyNamespace() + "Type");
 	}
 	
-	public Property frequency() {
+	public Property occurrences() {
 		return model.createProperty(ontologyNamespace() + "instanceOccurrence");
+	}
+	
+	public Property minTypeSubOccurrence() {
+		return model.createProperty(ontologyNamespace() + "minTypeSubOccurrence");
 	}
 	
 	public Resource akpInstance(String... elements) {

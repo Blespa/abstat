@@ -33,7 +33,7 @@ cd $project
 export_rdf WriteConceptToRDF $input_directory/obj-patterns/countConcepts.txt $output_directory/count-concepts.nt $graph
 export_rdf WriteDatatypeToRDF $input_directory/dt-patterns/countDataType.txt $output_directory/count-datatype.nt 
 export_rdf WriteObjectPropertyToRDF $input_directory/obj-patterns/countProp.txt $output_directory/count-properties.nt 
-export_rdf WriteDatatypePropertyToRDF $input_directory/dt-patterns/countDTProp.txt $output_directory/count-datatype-properties.nt 
+export_rdf WriteDatatypePropertyToRDF $input_directory/dt-patterns/countDTProp.txt $output_directory/count-datatype-properties.nt $graph
 export_rdf WriteAKPToRDF $input_directory/obj-patterns/relationCount.txt $output_directory/relation-count.nt $graph
 export_rdf WriteAKPToRDF $input_directory/dt-patterns/relationDTCount.txt $output_directory/relation-datatype-count.nt $graph
 

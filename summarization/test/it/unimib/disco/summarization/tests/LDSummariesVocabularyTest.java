@@ -30,7 +30,7 @@ public class LDSummariesVocabularyTest {
 	@Test
 	public void shouldCreateTheFrequencyProperty() throws Exception {
 		
-		Resource frequency = vocabulary.frequency();
+		Resource frequency = vocabulary.occurrences();
 		
 		assertThat(frequency.getURI(), equalTo("http://schemasummaries.org/ontology/instanceOccurrence"));
 	}
@@ -49,5 +49,13 @@ public class LDSummariesVocabularyTest {
 		Resource type = vocabulary.type();
 		
 		assertThat(type.getURI(), equalTo("http://schemasummaries.org/ontology/Type"));
+	}
+	
+	@Test
+	public void shouldCreateMinTypeSubOccurrenceProperty() throws Exception {
+		
+		Resource property = vocabulary.minTypeSubOccurrence();
+		
+		assertThat(property.getURI(), equalTo("http://schemasummaries.org/ontology/minTypeSubOccurrence"));
 	}
 }

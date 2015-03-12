@@ -44,7 +44,7 @@ public class WriteAKPToRDF {
 				Statement stmt2 = model.createStatement( akpInstance, RDF.subject, subject );
 				Statement stmt3 = model.createStatement( akpInstance, RDF.predicate, predicate );
 				Statement stmt4 = model.createStatement( akpInstance, RDF.object, object );
-				Statement stmt_stat = model.createStatement( akpInstance, vocabulary.frequency(), statistic);
+				Statement stmt_stat = model.createStatement( akpInstance, vocabulary.occurrences(), statistic);
 				Statement stmt5 = model.createStatement( akpInstance, RDF.type, vocabulary.akpConcept());
 
 				//add statements to model

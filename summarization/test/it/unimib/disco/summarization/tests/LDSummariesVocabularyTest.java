@@ -20,27 +20,11 @@ public class LDSummariesVocabularyTest {
 	}
 	
 	@Test
-	public void shouldCreateAnAKP() {
-		
-		Resource akp = vocabulary.akpConcept();
-		
-		assertThat(akp.getURI(), equalTo("http://schemasummaries.org/ontology/AbstractKnowledgePattern"));
-	}
-	
-	@Test
 	public void shouldCreateTheFrequencyProperty() throws Exception {
 		
 		Resource frequency = vocabulary.instanceOccurrence();
 		
 		assertThat(frequency.getURI(), equalTo("http://schemasummaries.org/ontology/instanceOccurrence"));
-	}
-	
-	@Test
-	public void shouldCreateAnAKPInstance() throws Exception {
-		
-		Resource akpInstance = vocabulary.akpInstance("http://example.org/Subject", "http://example.org/property", "http://example.org/Object");
-		
-		assertThat(akpInstance.getURI(), equalTo("http://schemasummaries.org/resource/the-dataset/AKP_Subject_property_Object"));
 	}
 	
 	@Test
@@ -76,6 +60,14 @@ public class LDSummariesVocabularyTest {
 	}
 	
 	@Test
+	public void shouldCreateAnAKP() {
+		
+		Resource akp = vocabulary.akpConcept();
+		
+		assertThat(akp.getURI(), equalTo("http://schemasummaries.org/ontology/AbstractKnowledgePattern"));
+	}
+	
+	@Test
 	public void shouldCreateAnAAKP() throws Exception {
 		
 		Resource type = vocabulary.aakpConcept();
@@ -88,7 +80,15 @@ public class LDSummariesVocabularyTest {
 		
 		Resource akpInstance = vocabulary.aakpInstance("http://example.org/Subject", "http://example.org/Object");
 		
-		assertThat(akpInstance.getURI(), equalTo("http://schemasummaries.org/resource/the-dataset/AAKP_Subject_Object"));
+		assertThat(akpInstance.getURI(), equalTo("http://schemasummaries.org/resource/the-dataset/AAKP/84640c424f7d63e4bc14c36a31845364"));
+	}
+	
+	@Test
+	public void shouldCreateAnAKPInstance() throws Exception {
+		
+		Resource akpInstance = vocabulary.akpInstance("http://example.org/Subject", "http://example.org/property", "http://example.org/Object");
+		
+		assertThat(akpInstance.getURI(), equalTo("http://schemasummaries.org/resource/the-dataset/AKP/e8c7fbf81f3c886caff75d83e65e7cfd"));
 	}
 	
 	@Test

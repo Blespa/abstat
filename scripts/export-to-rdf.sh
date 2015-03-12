@@ -49,7 +49,10 @@ export_rdf WriteDatatypePropertySubjToRDF $input_directory/dt-patterns/countDTSU
  
 cd $root
 
-echo "indexing the result of the analysis in ${output_directory} into virtuoso endpoint"
+echo "deleting graph ${graph}"
+./isql.sh "SPARQL CLEAR GRAPH <$graph>;"
+
+echo "indexing the result of the analysis in ${output_directory} into graph ${graph}"
 ./isql.sh "delete from DB.DBA.load_list;ld_dir ('${output_directory}', '*.nt', '${graph}');rdf_loader_run();"
 echo "done"
 

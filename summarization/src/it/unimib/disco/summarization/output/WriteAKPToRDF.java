@@ -21,33 +21,31 @@ import com.hp.hpl.jena.vocabulary.RDF;
 
 public class WriteAKPToRDF {
 	public static void main (String args []) throws IOException{
-
-		Model model = ModelFactory.createDefaultModel();
-		LDSummariesVocabulary vocabulary = new LDSummariesVocabulary(model);
+		
 		String csvFilePath = args[0];
 		String outputFilePath = args[1];
 		String dataset = new RDFResource(args[2]).localName();
 
+		Model model = ModelFactory.createDefaultModel();
+		LDSummariesVocabulary vocabulary = new LDSummariesVocabulary(model, dataset);
+		
 		for (Row row : readCSV(csvFilePath)){
 
 			try{
-				Resource id = model.createResource("http://schemasummaries.org/" + dataset + "/resource/AKP_" +
-						new RDFResource(row.get(Row.Entry.SUBJECT)).localName()+"_"+
-						new RDFResource(row.get(Row.Entry.PREDICATE)).localName()+"_"+
-						new RDFResource(row.get(Row.Entry.OBJECT)).localName());
-				
 				Resource subject = model.createResource(row.get(Row.Entry.SUBJECT));
 				Property predicate = model.createProperty(row.get(Row.Entry.PREDICATE));
 				Resource object = model.createResource(row.get(Row.Entry.OBJECT));
 				Literal statistic = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
 				
+				Resource akpInstance = vocabulary.akpInstance(row.get(Row.Entry.SUBJECT), row.get(Row.Entry.PREDICATE), row.get(Row.Entry.OBJECT));
+				
 				// create statements
-				Statement stmt1 = model.createStatement( id, RDF.type, RDF.Statement );
-				Statement stmt2 = model.createStatement( id, RDF.subject, subject );
-				Statement stmt3 = model.createStatement( id, RDF.predicate, predicate );
-				Statement stmt4 = model.createStatement( id, RDF.object, object );
-				Statement stmt_stat = model.createStatement( id, vocabulary.frequency(), statistic);
-				Statement stmt5 = model.createStatement( id, RDF.type, vocabulary.akpConcept());
+				Statement stmt1 = model.createStatement( akpInstance, RDF.type, RDF.Statement );
+				Statement stmt2 = model.createStatement( akpInstance, RDF.subject, subject );
+				Statement stmt3 = model.createStatement( akpInstance, RDF.predicate, predicate );
+				Statement stmt4 = model.createStatement( akpInstance, RDF.object, object );
+				Statement stmt_stat = model.createStatement( akpInstance, vocabulary.frequency(), statistic);
+				Statement stmt5 = model.createStatement( akpInstance, RDF.type, vocabulary.akpConcept());
 
 				//add statements to model
 				model.add(stmt1);

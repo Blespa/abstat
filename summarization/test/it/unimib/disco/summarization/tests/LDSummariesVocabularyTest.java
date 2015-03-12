@@ -1,6 +1,7 @@
 package it.unimib.disco.summarization.tests;
 
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertThat;
 import it.unimib.disco.summarization.output.LDSummariesVocabulary;
 
@@ -80,7 +81,7 @@ public class LDSummariesVocabularyTest {
 		
 		Resource akpInstance = vocabulary.aakpInstance("http://example.org/Subject", "http://example.org/Object");
 		
-		assertThat(akpInstance.getURI(), equalTo("http://schemasummaries.org/resource/the-dataset/AAKP/84640c424f7d63e4bc14c36a31845364"));
+		assertThat(akpInstance.getURI(), equalTo("http://schemasummaries.org/resource/the-dataset/AAKP/a48609f690994c9e2d54ee70b1125707"));
 	}
 	
 	@Test
@@ -88,7 +89,16 @@ public class LDSummariesVocabularyTest {
 		
 		Resource akpInstance = vocabulary.akpInstance("http://example.org/Subject", "http://example.org/property", "http://example.org/Object");
 		
-		assertThat(akpInstance.getURI(), equalTo("http://schemasummaries.org/resource/the-dataset/AKP/e8c7fbf81f3c886caff75d83e65e7cfd"));
+		assertThat(akpInstance.getURI(), equalTo("http://schemasummaries.org/resource/the-dataset/AKP/81372da753a8fabedfa1afefa050c2cc"));
+	}
+	
+	@Test
+	public void twoAKPWithSameLocalNamesShouldBeDifferent() throws Exception {
+		
+		Resource akp = vocabulary.akpInstance("http://aa.org/Subject", "http://aa.org/property", "http://aa.org/Object");
+		Resource akpWithSameLocalName = vocabulary.akpInstance("http://aa.org/Subject", "http://bb.org/property", "http://aa.org/Object");
+		
+		assertThat(akp.getURI(), not(equalTo(akpWithSameLocalName.getURI())));
 	}
 	
 	@Test

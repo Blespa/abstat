@@ -71,7 +71,7 @@ public class LDSummariesVocabulary {
 	private Resource aggregate(String type, String... elements) {
 		List<String> localNames = new ArrayList<String>();
 		for(String element : elements){
-			localNames.add(new RDFResource(element).localName());
+			localNames.add(element);
 		}
 		
 		return model.createResource(resourcesNamespace() + type + "/" + DigestUtils.md5Hex(StringUtils.join(localNames, "")));

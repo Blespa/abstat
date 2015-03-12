@@ -61,15 +61,15 @@ getGraphs = function(scope, http, location){
 
 loadSummaries = function(scope, http, location){
 	
-	var valueOrDefault = function(value, default_value){
+	var localOrDefault = function(value, default_value){
 		var value_to_return = default_value;
 		if(value) value_to_return = '<' + value.local + '>';
 		return value_to_return;
 	}
 	
-	var subject = valueOrDefault(scope.subject, '?subject');
-	var predicate = valueOrDefault(scope.predicate, '?predicate');
-	var object = valueOrDefault(scope.object, '?object');
+	var subject = localOrDefault(scope.subject, '?subject');
+	var predicate = localOrDefault(scope.predicate, '?predicate');
+	var object = localOrDefault(scope.object, '?object');
 	
 	scope.summaries = [];
 	

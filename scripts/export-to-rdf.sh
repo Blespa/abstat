@@ -37,14 +37,14 @@ export_rdf WriteDatatypePropertyToRDF $input_directory/dt-patterns/countDTProp.t
 export_rdf WriteAKPToRDF $input_directory/obj-patterns/relationCount.txt $output_directory/relation-count.nt $graph
 export_rdf WriteAKPToRDF $input_directory/dt-patterns/relationDTCount.txt $output_directory/relation-datatype-count.nt $graph
 
-export_rdf WritePropertiesOtherStatToRDF $input_directory/obj-patterns/countSUBJ.txt $output_directory/count-subjects.nt $graph
-export_rdf WritePropertiesOtherStatToRDF $input_directory/obj-patterns/countOBJ.txt $output_directory/count-objects.nt $graph
-export_rdf WritePropertiesOtherStatToRDF $input_directory/dt-patterns/countDTSUBJ.txt $output_directory/count-datatype-subjects.nt $graph
-export_rdf WritePropertiesOtherStatToRDF $input_directory/dt-patterns/countDTOBJ.txt $output_directory/count-datatype-objects.nt $graph
-
 export_rdf WriteSubjAAKPToRDF $input_directory/obj-patterns/countClassSUBJ.txt $output_directory/count-class-subject.nt $graph 
 export_rdf WriteObjAAKPToRDF $input_directory/obj-patterns/countClassOBJ.txt $output_directory/count-class-object.nt $graph
 export_rdf WriteSubjAAKPToRDF $input_directory/dt-patterns/countClassDTSUBJ.txt $output_directory/count-datatype-class-subject.nt $graph
+
+#export_rdf WritePropertiesOtherStatToRDF $input_directory/obj-patterns/countSUBJ.txt $output_directory/count-subjects.nt $graph
+#export_rdf WritePropertiesOtherStatToRDF $input_directory/obj-patterns/countOBJ.txt $output_directory/count-objects.nt $graph
+#export_rdf WritePropertiesOtherStatToRDF $input_directory/dt-patterns/countDTSUBJ.txt $output_directory/count-datatype-subjects.nt $graph
+#export_rdf WritePropertiesOtherStatToRDF $input_directory/dt-patterns/countDTOBJ.txt $output_directory/count-datatype-objects.nt $graph
  
 cd $root
 

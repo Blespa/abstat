@@ -9,6 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.vocabulary.RDF;
 
 public class LDSummariesVocabulary {
 
@@ -20,16 +21,16 @@ public class LDSummariesVocabulary {
 		this.dataset = new RDFResource(dataset).localName();
 	}
 
-	public Resource akpConcept() {
+	public Resource abstractKnowledgePattern() {
 		return model.createResource(ontologyNamespace() + "AbstractKnowledgePattern");
 	}
 	
-	public Resource aakpConcept() {
-		return model.createResource(ontologyNamespace() + "AggregatedAbstractKnowledgePattern");
+	public Resource aggregatePattern() {
+		return model.createResource(ontologyNamespace() + "AggregatePattern");
 	}
 
-	public Resource signature() {
-		return model.createResource(ontologyNamespace() + "Signature");
+	public Resource property() {
+		return model.createResource(ontologyNamespace() + "Property");
 	}
 	
 	public Resource type() {
@@ -40,20 +41,40 @@ public class LDSummariesVocabulary {
 		return model.createResource(ontologyNamespace() + "Datatype");
 	}
 	
-	public Property instanceOccurrence() {
-		return model.createProperty(ontologyNamespace() + "instanceOccurrence");
+	public Resource concept() {
+		return model.createResource("http://www.w3.org/2004/02/skos/core#Concept");
 	}
 	
-	public Property minTypeSubOccurrence() {
-		return model.createProperty(ontologyNamespace() + "minTypeSubOccurrence");
+	public Property subject() {
+		return RDF.subject;
 	}
 	
-	public Property minTypeObjOccurrence() {
-		return model.createProperty(ontologyNamespace() + "minTypeObjOccurrence");
+	public Property object() {
+		return RDF.object;
 	}
 	
-	public Property subjectInstanceOccurrence() {
-		return model.createProperty(ontologyNamespace() + "subjectInstanceOccurrence");
+	public Property predicate() {
+		return RDF.predicate;
+	}
+	
+	public Property occurrence() {
+		return model.createProperty(ontologyNamespace() + "occurrence");
+	}
+	
+	public Property subjectOccurrence() {
+		return model.createProperty(ontologyNamespace() + "subjectOccurrence");
+	}
+	
+	public Property objectOccurrence() {
+		return model.createProperty(ontologyNamespace() + "objectOccurrence");
+	}
+	
+	public Property subjectMinTypes() {
+		return model.createProperty(ontologyNamespace() + "subjectMinTypes");
+	}
+	
+	public Property objectMinTypes() {
+		return model.createProperty(ontologyNamespace() + "objectMinTypes");
 	}
 	
 	public Resource akpInstance(String... elements) {
@@ -61,7 +82,7 @@ public class LDSummariesVocabulary {
 	}
 	
 	public Resource aakpInstance(String... elements) {
-		return aggregate("AAKP", elements);
+		return aggregate("AP", elements);
 	}
 	
 	public Resource asLocalResource(String globalResource) {
@@ -88,6 +109,4 @@ public class LDSummariesVocabulary {
 	private String baseUri() {
 		return "http://schemasummaries.org/";
 	}
-
-	
 }

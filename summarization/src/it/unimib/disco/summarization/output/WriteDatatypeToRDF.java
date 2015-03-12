@@ -15,8 +15,8 @@ import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.vocabulary.OWL;
 import com.hp.hpl.jena.vocabulary.RDF;
+import com.hp.hpl.jena.vocabulary.RDFS;
 
 public class WriteDatatypeToRDF {
 	public static void main (String args []) throws IOException{
@@ -37,9 +37,10 @@ public class WriteDatatypeToRDF {
 				Literal occurrence = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
 
 				//add statements to model
-				model.add(model.createStatement(localSubject, OWL.sameAs, globalSubject));
-				model.add(model.createStatement( localSubject, RDF.type, vocabulary.datatype() ));
-				model.add(model.createStatement( localSubject, vocabulary.instanceOccurrence(), occurrence ));
+				model.add(model.createStatement(localSubject, RDFS.seeAlso, globalSubject));
+				model.add(model.createStatement(localSubject, RDF.type, vocabulary.type()));
+				model.add(model.createStatement(localSubject, RDF.type, vocabulary.datatype()));
+				model.add(model.createStatement(localSubject, vocabulary.occurrence(), occurrence));
 			}
 			catch(Exception e){
 				new Events().error("file" + csvFilePath + " row" + row, e);

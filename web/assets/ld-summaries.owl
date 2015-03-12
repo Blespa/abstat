@@ -65,6 +65,32 @@
     
 
 
+    <!-- http://ld-summaries.org/ontology/objectMinTypes -->
+
+    <owl:DatatypeProperty rdf:about="http://ld-summaries.org/ontology/objectMinTypes">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://ld-summaries.org/ontology/Property"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://ld-summaries.org/ontology/objectOccurrence -->
+
+    <owl:DatatypeProperty rdf:about="http://ld-summaries.org/ontology/objectOccurrence">
+        <rdfs:range rdf:resource="&xsd;int"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&rdf;object"/>
+                <owl:onClass rdf:resource="http://ld-summaries.org/ontology/AggregatePattern"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://ld-summaries.org/ontology/occurrence -->
 
     <owl:DatatypeProperty rdf:about="http://ld-summaries.org/ontology/occurrence">
@@ -79,6 +105,32 @@
                     <rdf:Description rdf:about="http://ld-summaries.org/ontology/Type"/>
                 </owl:unionOf>
             </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://ld-summaries.org/ontology/subjectMinTypes -->
+
+    <owl:DatatypeProperty rdf:about="http://ld-summaries.org/ontology/subjectMinTypes">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://ld-summaries.org/ontology/Property"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://ld-summaries.org/ontology/subjectOccurrence -->
+
+    <owl:DatatypeProperty rdf:about="http://ld-summaries.org/ontology/subjectOccurrence">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&rdf;subject"/>
+                <owl:onClass rdf:resource="http://ld-summaries.org/ontology/AggregatePattern"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
         </rdfs:domain>
     </owl:DatatypeProperty>
     
@@ -117,12 +169,12 @@
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="&rdf;subject"/>
-                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+                        <owl:onProperty rdf:resource="&rdf;predicate"/>
+                        <owl:allValuesFrom rdf:resource="http://ld-summaries.org/ontology/Property"/>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="&rdf;subject"/>
-                        <owl:onClass rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+                        <owl:onProperty rdf:resource="&rdf;predicate"/>
+                        <owl:onClass rdf:resource="http://ld-summaries.org/ontology/Property"/>
                         <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
                     </owl:Restriction>
                 </owl:intersectionOf>
@@ -132,12 +184,12 @@
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="&rdf;predicate"/>
-                        <owl:allValuesFrom rdf:resource="http://ld-summaries.org/ontology/Property"/>
+                        <owl:onProperty rdf:resource="&rdf;subject"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="&rdf;predicate"/>
-                        <owl:onClass rdf:resource="http://ld-summaries.org/ontology/Property"/>
+                        <owl:onProperty rdf:resource="&rdf;subject"/>
+                        <owl:onClass rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
                         <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
                     </owl:Restriction>
                 </owl:intersectionOf>

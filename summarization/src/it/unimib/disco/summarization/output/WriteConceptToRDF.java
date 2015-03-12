@@ -14,7 +14,6 @@ import org.apache.commons.io.FileUtils;
 import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.vocabulary.RDF;
@@ -23,10 +22,12 @@ import com.hp.hpl.jena.vocabulary.RDFS;
 public class WriteConceptToRDF {
 	public static void main (String args []) throws IOException{
 
-
 		Model model = ModelFactory.createDefaultModel();
 		String csvFilePath = args[0];
 		String outputFilePath = args[1];
+		String dataset = args[2];
+		
+		LDSummariesVocabulary vocabulary = new LDSummariesVocabulary(model, dataset);
 		
 		//Get all of the rows
 		for (Row row : readCSV(csvFilePath)){
@@ -34,13 +35,12 @@ public class WriteConceptToRDF {
 			try{
 				Resource subject = model.createResource(row.get(Row.Entry.SUBJECT));
 				Resource type = model.createResource("http://schemasummaries.org/ontology/Type");
-				Property has_statistic = model.createProperty("http://schemasummaries.org/ontology/instancOccurrence");
 				Literal statistic1 = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
 
 				//create statements
 				Statement stmt1 = model.createStatement( subject, RDF.type, RDFS.Class);
 				Statement stmt2 = model.createStatement( subject, RDF.type, type);
-				Statement stmt_stat1 = model.createStatement( subject, has_statistic, statistic1 );
+				Statement stmt_stat1 = model.createStatement( subject, vocabulary.frequency(), statistic1);
 
 				//add statements to model
 				model.add(stmt1);

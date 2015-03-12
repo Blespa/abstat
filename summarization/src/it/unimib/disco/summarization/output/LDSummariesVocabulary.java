@@ -27,6 +27,18 @@ public class LDSummariesVocabulary {
 		return model.createResource(ontologyNamespace() + "AggregatedAbstractKnowledgePattern");
 	}
 
+	public Resource signature() {
+		return model.createResource(ontologyNamespace() + "Signature");
+	}
+	
+	public Property frequency() {
+		return model.createProperty(ontologyNamespace() + "frequency");
+	}
+	
+	public Property ratio() {
+		return model.createProperty(ontologyNamespace() + "ratio");
+	}
+	
 	public Resource type() {
 		return model.createResource(ontologyNamespace() + "Type");
 	}

@@ -13,7 +13,6 @@ import org.apache.commons.io.FileUtils;
 import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.vocabulary.RDF;
@@ -26,6 +25,9 @@ public class WritePropertiesOtherStatToRDF {
 		Model model = ModelFactory.createDefaultModel();
 		String csvFilePath = args[0];
 		String outputFilePath = args[1];
+		String dataset = args[2];
+		
+		LDSummariesVocabulary vocabulary = new LDSummariesVocabulary(model, dataset);
 
 		//Get all of the rows
 		for (Row row : readCSV(csvFilePath)){
@@ -33,17 +35,14 @@ public class WritePropertiesOtherStatToRDF {
 			try{
 
 				Resource subject = model.createResource(row.get(Row.Entry.SUBJECT));
-				Resource signature = model.createResource("http://schemasummaries.org/ontology/Signature");
-				Property has_statistic1 = model.createProperty("http://schemasummaries.org/ontology/frequency");
-				Property has_statistic2 = model.createProperty("http://schemasummaries.org/ontology/ratio");
 				Literal statistic1 = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
 				Literal statistic2 = model.createTypedLiteral(Double.parseDouble(row.get(Row.Entry.SCORE2)));
 
 				//create the statements
-				Statement stmt1 = model.createStatement( subject, RDF.type, signature );
+				Statement stmt1 = model.createStatement( subject, RDF.type, vocabulary.signature() );
 				Statement stmt2 = model.createStatement( subject, RDF.type, RDFS.Class );
-				Statement stmt_stat1 = model.createStatement( subject, has_statistic1, statistic1 );
-				Statement stmt_stat2 = model.createStatement( subject, has_statistic2, statistic2 );
+				Statement stmt_stat1 = model.createStatement( subject, vocabulary.frequency(), statistic1 );
+				Statement stmt_stat2 = model.createStatement( subject, vocabulary.ratio(), statistic2 );
 
 				//add statements to model
 				model.add(stmt1);

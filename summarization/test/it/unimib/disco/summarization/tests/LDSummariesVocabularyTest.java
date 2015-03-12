@@ -90,4 +90,26 @@ public class LDSummariesVocabularyTest {
 		
 		assertThat(akpInstance.getURI(), equalTo("http://schemasummaries.org/resource/the-dataset/AAKP_Subject_Object"));
 	}
+	
+	@Test
+	public void shouldCreateASignature() throws Exception {
+		
+		Resource signature = vocabulary.signature();
+		
+		assertThat(signature.getURI(), equalTo("http://schemasummaries.org/ontology/Signature"));
+	}
+	
+	@Test
+	public void shouldCreateAfrequency() throws Exception {
+		Resource frequency = vocabulary.frequency();
+		
+		assertThat(frequency.getURI(), equalTo("http://schemasummaries.org/ontology/frequency"));
+	}
+	
+	@Test
+	public void shouldCreateARatio() throws Exception {
+		Resource ratio = vocabulary.ratio();
+		
+		assertThat(ratio.getURI(), equalTo("http://schemasummaries.org/ontology/ratio"));
+	}
 }

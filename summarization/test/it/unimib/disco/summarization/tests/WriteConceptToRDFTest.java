@@ -8,7 +8,7 @@ import java.io.File;
 
 import org.junit.Test;
 
-public class WriteConceptsToRDFTest extends UnitTest{
+public class WriteConceptToRDFTest extends UnitTest{
 	
 	@Test
 	public void shouldExportAsRDF() throws Exception {
@@ -18,7 +18,8 @@ public class WriteConceptsToRDFTest extends UnitTest{
 		
 		WriteConceptToRDF.main(new String[]{
 				inputFile.getAbsolutePath(),
-				outputFile.getAbsolutePath()
+				outputFile.getAbsolutePath(),
+				"dataset"
 		});
 		
 		assertThat(outputFile.exists(), is(true));

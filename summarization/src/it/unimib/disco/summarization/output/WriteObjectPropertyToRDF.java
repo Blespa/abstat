@@ -13,9 +13,8 @@ import org.apache.commons.io.FileUtils;
 import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.rdf.model.Statement;
+import com.hp.hpl.jena.vocabulary.OWL;
 import com.hp.hpl.jena.vocabulary.RDF;
 
 public class WriteObjectPropertyToRDF {
@@ -25,33 +24,30 @@ public class WriteObjectPropertyToRDF {
 
 		String csvFilePath = args[0];
 		String outputFilePath = args[1];
+		String dataset = args[2];
+		
+		LDSummariesVocabulary vocabulary = new LDSummariesVocabulary(model, dataset);
 
 		//Get all of the rows
 		for (Row row : readCSV(csvFilePath)){
 
 			try{
-				Resource subject = model.createResource(row.get(Row.Entry.SUBJECT));
+				Resource globalSubject = model.createResource(row.get(Row.Entry.SUBJECT));
+				Resource localSubject = vocabulary.asLocalResource(globalSubject.getURI());
 				Resource objectProperty = model.createResource("http://www.w3.org/2002/07/owl/ObjectProperty");
-				Property has_statistic1 = model.createProperty("http://schemasummaries.org/ontology/instancOccurrence");
-				Property has_statistic2 = model.createProperty("http://schemasummaries.org/ontology/minTypeSubOccurrence");
-				Property has_statistic3 = model.createProperty("http://schemasummaries.org/ontology/minTypeObjOccurrence");
-				Literal statistic1 = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
-				Literal statistic2 = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE2)));
-				Literal statistic3 = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE3)));
+				
+				Literal occurrence = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
+				Literal minTypeSubOccurrence = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE2)));
+				Literal minTypeObjOccurrence = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE3)));
 
-				//create statements
-				Statement stmt1 = model.createStatement( subject, RDF.type, RDF.Property);
-				Statement stmt2 = model.createStatement( subject, RDF.type, objectProperty);
-				Statement stmt_stat1 = model.createStatement( subject, has_statistic1, statistic1 );
-				Statement stmt_stat2 = model.createStatement( subject, has_statistic2, statistic2 );
-				Statement stmt_stat3 = model.createStatement( subject, has_statistic3, statistic3 );
-	
+				
 				//add statements to model
-				model.add(stmt1);
-				model.add(stmt2);
-				model.add(stmt_stat1);
-				model.add(stmt_stat2);
-				model.add(stmt_stat3);
+				model.add(model.createStatement( localSubject, OWL.sameAs, globalSubject));
+				model.add(model.createStatement( localSubject, RDF.type, RDF.Property));
+				model.add(model.createStatement( localSubject, RDF.type, objectProperty));
+				model.add(model.createStatement( localSubject, vocabulary.instanceOccurrence(), occurrence ));
+				model.add(model.createStatement( localSubject, vocabulary.minTypeSubOccurrence(), minTypeSubOccurrence ));
+				model.add(model.createStatement( localSubject, vocabulary.minTypeObjOccurrence(), minTypeObjOccurrence ));
 			}
 			catch(Exception e){
 				new Events().error("file" + csvFilePath + " row" + row, e);

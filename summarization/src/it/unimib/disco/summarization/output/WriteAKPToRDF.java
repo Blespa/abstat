@@ -23,6 +23,7 @@ public class WriteAKPToRDF {
 	public static void main (String args []) throws IOException{
 
 		Model model = ModelFactory.createDefaultModel();
+		LDSummariesVocabulary vocabulary = new LDSummariesVocabulary(model);
 		String csvFilePath = args[0];
 		String outputFilePath = args[1];
 		String dataset = new RDFResource(args[2]).localName();
@@ -40,15 +41,14 @@ public class WriteAKPToRDF {
 				Resource object = model.createResource(row.get(Row.Entry.OBJECT));
 				Property has_frequency = model.createProperty("http://schemasummaries.org/ontology/instanceOccurrence");
 				Literal statistic = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
-				Resource AKP = model.createProperty("http://schemasummaries.org/ontology/AbstractKnowledgePattern");
-
+				
 				// create statements
 				Statement stmt1 = model.createStatement( id, RDF.type, RDF.Statement );
 				Statement stmt2 = model.createStatement( id, RDF.subject, subject );
 				Statement stmt3 = model.createStatement( id, RDF.predicate, predicate );
 				Statement stmt4 = model.createStatement( id, RDF.object, object );
 				Statement stmt_stat = model.createStatement( id, has_frequency, statistic);
-				Statement stmt5 = model.createStatement( id, RDF.type, AKP);
+				Statement stmt5 = model.createStatement( id, RDF.type, vocabulary.akpConcept());
 
 				//add statements to model
 				model.add(stmt1);

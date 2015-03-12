@@ -2,7 +2,7 @@ package it.unimib.disco.summarization.tests;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.not;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 import it.unimib.disco.summarization.output.LDSummariesVocabulary;
 
 import org.junit.Before;
@@ -163,5 +163,21 @@ public class LDSummariesVocabularyTest {
 		Resource subject = vocabulary.predicate();
 		
 		assertThat(subject.getURI(), equalTo("http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate"));
+	}
+	
+	@Test
+	public void shouldGetTheTypedEntity() throws Exception {
+		
+		Resource typed = vocabulary.selfOrUntyped("http://aaa.org/Concept");
+		
+		assertThat(typed.getURI(), equalTo("http://aaa.org/Concept"));
+	}
+	
+	@Test
+	public void shouldGetTheUntypedConcept() throws Exception {
+		
+		Resource typed = vocabulary.selfOrUntyped("Ukn_Type");
+		
+		assertThat(typed.getURI(), equalTo("http://ld-summaries.org/ontology/Untyped"));
 	}
 }

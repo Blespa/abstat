@@ -21,6 +21,14 @@ public class LDSummariesVocabulary {
 		this.dataset = new RDFResource(dataset).localName();
 	}
 
+	public Resource selfOrUntyped(String concept) {
+		String uri = new String(concept);
+		if(concept.equals("Ukn_Type")) {
+			uri = ontologyNamespace() + "Untyped";
+		}
+		return model.createResource(uri);
+	}
+	
 	public Resource abstractKnowledgePattern() {
 		return model.createResource(ontologyNamespace() + "AbstractKnowledgePattern");
 	}

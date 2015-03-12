@@ -34,7 +34,7 @@ public class WriteAKPToRDF {
 			try{
 				Resource globalSubject = model.createResource(row.get(Row.Entry.SUBJECT));
 				Property globalPredicate = model.createProperty(row.get(Row.Entry.PREDICATE));
-				Resource globalObject = model.createResource(row.get(Row.Entry.OBJECT));
+				Resource globalObject = vocabulary.selfOrUntyped(row.get(Row.Entry.OBJECT));
 				Literal statistic = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
 				
 				Resource localSubject = vocabulary.asLocalResource(globalSubject.getURI());

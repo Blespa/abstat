@@ -1,7 +1,7 @@
 package it.unimib.disco.summarization.tests;
 
 import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 import it.unimib.disco.summarization.output.LDSummariesVocabulary;
 
 import org.junit.Before;
@@ -26,5 +26,13 @@ public class LDSummariesVocabularyTest {
 		Resource akp = new LDSummariesVocabulary(model).akpConcept();
 		
 		assertThat(akp.getURI(), equalTo("http://schemasummaries.org/ontology/AbstractKnowledgePattern"));
+	}
+	
+	@Test
+	public void shouldCreateTheFrequencyProperty() throws Exception {
+		
+		Resource frequency = new LDSummariesVocabulary(model).frequency();
+		
+		assertThat(frequency.getURI(), equalTo("http://schemasummaries.org/ontology/instanceOccurrence"));
 	}
 }

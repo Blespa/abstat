@@ -39,7 +39,6 @@ public class WriteAKPToRDF {
 				Resource subject = model.createResource(row.get(Row.Entry.SUBJECT));
 				Property predicate = model.createProperty(row.get(Row.Entry.PREDICATE));
 				Resource object = model.createResource(row.get(Row.Entry.OBJECT));
-				Property has_frequency = model.createProperty("http://schemasummaries.org/ontology/instanceOccurrence");
 				Literal statistic = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
 				
 				// create statements
@@ -47,7 +46,7 @@ public class WriteAKPToRDF {
 				Statement stmt2 = model.createStatement( id, RDF.subject, subject );
 				Statement stmt3 = model.createStatement( id, RDF.predicate, predicate );
 				Statement stmt4 = model.createStatement( id, RDF.object, object );
-				Statement stmt_stat = model.createStatement( id, has_frequency, statistic);
+				Statement stmt_stat = model.createStatement( id, vocabulary.frequency(), statistic);
 				Statement stmt5 = model.createStatement( id, RDF.type, vocabulary.akpConcept());
 
 				//add statements to model

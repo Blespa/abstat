@@ -1,0 +1,259 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://ld-summaries.org/ontology/"
+     xml:base="http://ld-summaries.org/ontology/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://ld-summaries.org/ontology/">
+        <rdfs:comment rdf:datatype="&rdfs;Literal">This is the first alpha version of the ontology used to represent Linked Data Summaries. it makes use of reification to represent Abstract Knowledge Patterns. Occurrences of the elements of the summaries are interpreted under the minimal type pattern extraction model.</rdfs:comment>
+        <owl:versionIRI rdf:resource="http://ld-summaries.org/ontology/0.0.1/"/>
+        <owl:imports rdf:resource="http://www.w3.org/2004/02/skos/core"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/1999/02/22-rdf-syntax-ns#object -->
+
+    <owl:ObjectProperty rdf:about="&rdf;object">
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate -->
+
+    <owl:ObjectProperty rdf:about="&rdf;predicate"/>
+    
+
+
+    <!-- http://www.w3.org/1999/02/22-rdf-syntax-ns#subject -->
+
+    <owl:ObjectProperty rdf:about="&rdf;subject"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ld-summaries.org/ontology/occurrence -->
+
+    <owl:DatatypeProperty rdf:about="http://ld-summaries.org/ontology/occurrence">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://ld-summaries.org/ontology/AbstractKnowledgePattern"/>
+                    <rdf:Description rdf:about="http://ld-summaries.org/ontology/AggregatePattern"/>
+                    <rdf:Description rdf:about="http://ld-summaries.org/ontology/Property"/>
+                    <rdf:Description rdf:about="http://ld-summaries.org/ontology/Type"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ld-summaries.org/ontology/AbstractKnowledgePattern -->
+
+    <owl:Class rdf:about="http://ld-summaries.org/ontology/AbstractKnowledgePattern">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&rdf;object"/>
+                        <owl:allValuesFrom rdf:resource="http://ld-summaries.org/ontology/Type"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&rdf;object"/>
+                        <owl:onClass rdf:resource="http://ld-summaries.org/ontology/Type"/>
+                        <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&rdf;subject"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&rdf;subject"/>
+                        <owl:onClass rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+                        <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&rdf;predicate"/>
+                        <owl:allValuesFrom rdf:resource="http://ld-summaries.org/ontology/Property"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&rdf;predicate"/>
+                        <owl:onClass rdf:resource="http://ld-summaries.org/ontology/Property"/>
+                        <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ld-summaries.org/ontology/AggregatePattern -->
+
+    <owl:Class rdf:about="http://ld-summaries.org/ontology/AggregatePattern">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&rdf;object"/>
+                                <owl:allValuesFrom rdf:resource="http://ld-summaries.org/ontology/Type"/>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&rdf;subject"/>
+                                <owl:allValuesFrom rdf:resource="http://ld-summaries.org/ontology/Property"/>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&rdf;object"/>
+                                <owl:onClass rdf:resource="http://ld-summaries.org/ontology/Type"/>
+                                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&rdf;predicate"/>
+                                <owl:onClass rdf:resource="http://ld-summaries.org/ontology/Property"/>
+                                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&rdf;object"/>
+                                <owl:allValuesFrom rdf:resource="http://ld-summaries.org/ontology/Type"/>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&rdf;subject"/>
+                                <owl:allValuesFrom rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&rdf;object"/>
+                                <owl:onClass rdf:resource="http://ld-summaries.org/ontology/Type"/>
+                                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&rdf;subject"/>
+                                <owl:onClass rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+                                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&rdf;subject"/>
+                                <owl:allValuesFrom rdf:resource="http://ld-summaries.org/ontology/Property"/>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&rdf;subject"/>
+                                <owl:allValuesFrom rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&rdf;predicate"/>
+                                <owl:onClass rdf:resource="http://ld-summaries.org/ontology/Property"/>
+                                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&rdf;subject"/>
+                                <owl:onClass rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+                                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ld-summaries.org/ontology/Datatype -->
+
+    <owl:Class rdf:about="http://ld-summaries.org/ontology/Datatype">
+        <rdfs:subClassOf rdf:resource="http://ld-summaries.org/ontology/Type"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ld-summaries.org/ontology/Property -->
+
+    <owl:Class rdf:about="http://ld-summaries.org/ontology/Property"/>
+    
+
+
+    <!-- http://ld-summaries.org/ontology/Type -->
+
+    <owl:Class rdf:about="http://ld-summaries.org/ontology/Type"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#Concept -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2004/02/skos/core#Concept">
+        <rdfs:subClassOf rdf:resource="http://ld-summaries.org/ontology/Type"/>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net -->
+

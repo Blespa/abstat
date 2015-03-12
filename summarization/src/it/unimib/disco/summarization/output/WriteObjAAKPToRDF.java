@@ -15,8 +15,8 @@ import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.vocabulary.OWL;
 import com.hp.hpl.jena.vocabulary.RDF;
+import com.hp.hpl.jena.vocabulary.RDFS;
 
 public class WriteObjAAKPToRDF {
 	public static void main (String args []) throws IOException{
@@ -42,13 +42,15 @@ public class WriteObjAAKPToRDF {
 				Resource id = vocabulary.aakpInstance(localPredicate.getURI(), localObject.getURI());
 
 				//add statements to model
-				model.add(model.createStatement(localObject, OWL.sameAs, globalObject));
-				model.add(model.createStatement(localPredicate, OWL.sameAs, globalPredicate));
-				model.add(model.createStatement( id, RDF.type, RDF.Statement ));
-				model.add(model.createStatement( id, RDF.object, localObject ));
-				model.add(model.createStatement( id, RDF.predicate, localPredicate ));
-				model.add(model.createStatement( id, RDF.type, vocabulary.aakpConcept()));
-				model.add(model.createStatement( id, vocabulary.minTypeObjOccurrence(), occurrence ));
+				model.add(model.createStatement(localObject, RDFS.seeAlso, globalObject));
+				model.add(model.createStatement(localPredicate, RDFS.seeAlso, globalPredicate));
+				
+				model.add(model.createStatement(id, RDF.type, RDF.Statement));
+				model.add(model.createStatement(id, RDF.type, vocabulary.aggregatePattern()));
+				
+				model.add(model.createStatement(id, RDF.object, localObject ));
+				model.add(model.createStatement(id, RDF.predicate, localPredicate));
+				model.add(model.createStatement(id, vocabulary.objectOccurrence(), occurrence));
 			}
 			catch(Exception e){
 				new Events().error("file" + csvFilePath + " row" + row, e);

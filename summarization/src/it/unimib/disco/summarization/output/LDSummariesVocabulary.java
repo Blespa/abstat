@@ -22,6 +22,10 @@ public class LDSummariesVocabulary {
 	public Resource akpConcept() {
 		return model.createResource(ontologyNamespace() + "AbstractKnowledgePattern");
 	}
+	
+	public Resource aakpConcept() {
+		return model.createResource(ontologyNamespace() + "AggregatedAbstractKnowledgePattern");
+	}
 
 	public Resource type() {
 		return model.createResource(ontologyNamespace() + "Type");
@@ -44,12 +48,20 @@ public class LDSummariesVocabulary {
 	}
 	
 	public Resource akpInstance(String... elements) {
+		return aggregate("AKP", elements);
+	}
+	
+	public Resource aakpInstance(String... elements) {
+		return aggregate("AAKP", elements);
+	}
+
+	private Resource aggregate(String type, String... elements) {
 		List<String> localNames = new ArrayList<String>();
 		for(String element : elements){
 			localNames.add(new RDFResource(element).localName());
 		}
-	
-		return model.createResource(resourcesNamespace() + dataset + "/AKP_" + StringUtils.join(localNames, "_"));
+		
+		return model.createResource(resourcesNamespace() + dataset + "/" + type + "_" + StringUtils.join(localNames, "_"));
 	}
 
 	private String ontologyNamespace() {

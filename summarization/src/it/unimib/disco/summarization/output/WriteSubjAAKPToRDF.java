@@ -24,23 +24,23 @@ public class WriteSubjAAKPToRDF {
 		Model model = ModelFactory.createDefaultModel();
 		String csvFilePath = args[0];
 		String outputFilePath = args[1];
-		String dataset = new RDFResource(args[2]).localName();
+		String dataset = args[2];
+		
+		LDSummariesVocabulary vocabulary = new LDSummariesVocabulary(model, dataset);
 
 		//Get all of the rows
 		for (Row row : readCSV(csvFilePath)){
 
 			try{
 
-			Resource id = model.createResource("http://schemasummaries.org/" + dataset + "/resource/AAKP_" +
-						new RDFResource(row.get(Row.Entry.SUBJECT)).localName()+"_"+
-						new RDFResource(row.get(Row.Entry.PREDICATE)).localName());
-				
 				Resource subject = model.createResource(row.get(Row.Entry.SUBJECT));
 				Property predicate = model.createProperty(row.get(Row.Entry.PREDICATE));
-				Resource aakp = model.createResource("http://schemasummaries.org/ontology/AggregatedAbstractKnowledgePattern");
-				Property has_statistic1 = model.createProperty("http://schemasummaries.org/ontology/minTypeSubOccurrence");
+				Resource aakp = vocabulary.aakpConcept();
+				Property has_statistic1 = vocabulary.minTypeSubOccurrence();
 				Literal statistic1 = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
 
+				Resource id = vocabulary.aakpInstance(row.get(Row.Entry.SUBJECT), row.get(Row.Entry.PREDICATE));
+				
 				// create statements
 				Statement stmt1 = model.createStatement( id, RDF.type, RDF.Statement );
 				Statement stmt2 = model.createStatement( id, RDF.subject, subject );

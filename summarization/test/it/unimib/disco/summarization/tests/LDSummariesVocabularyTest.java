@@ -74,4 +74,20 @@ public class LDSummariesVocabularyTest {
 		
 		assertThat(type.getURI(), equalTo("http://schemasummaries.org/ontology/Datatype"));
 	}
+	
+	@Test
+	public void shouldCreateAnAAKP() throws Exception {
+		
+		Resource type = vocabulary.aakpConcept();
+		
+		assertThat(type.getURI(), equalTo("http://schemasummaries.org/ontology/AggregatedAbstractKnowledgePattern"));
+	}
+	
+	@Test
+	public void shouldCreateAnAAKPInstance() throws Exception {
+		
+		Resource akpInstance = vocabulary.aakpInstance("http://example.org/Subject", "http://example.org/Object");
+		
+		assertThat(akpInstance.getURI(), equalTo("http://schemasummaries.org/resource/the-dataset/AAKP_Subject_Object"));
+	}
 }

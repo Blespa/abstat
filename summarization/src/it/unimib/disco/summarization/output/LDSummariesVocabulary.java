@@ -27,12 +27,20 @@ public class LDSummariesVocabulary {
 		return model.createResource(ontologyNamespace() + "Type");
 	}
 	
+	public Resource datatype() {
+		return model.createResource(ontologyNamespace() + "Datatype");
+	}
+	
 	public Property occurrences() {
 		return model.createProperty(ontologyNamespace() + "instanceOccurrence");
 	}
 	
 	public Property minTypeSubOccurrence() {
 		return model.createProperty(ontologyNamespace() + "minTypeSubOccurrence");
+	}
+	
+	public Property minTypeObjOccurrence() {
+		return model.createProperty(ontologyNamespace() + "minTypeObjOccurrence");
 	}
 	
 	public Resource akpInstance(String... elements) {

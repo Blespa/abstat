@@ -13,7 +13,6 @@ import org.apache.commons.io.FileUtils;
 import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.vocabulary.RDF;
@@ -35,7 +34,6 @@ public class WriteDatatypePropertyToRDF {
 			try{
 				Resource subject = model.createResource(row.get(Row.Entry.SUBJECT));
 				Resource datatypeProperty = model.createResource("http://www.w3.org/2002/07/owl/DatatypeProperty");
-				Property has_statistic3 = model.createProperty("http://schemasummaries.org/ontology/minTypeObjOccurrence");
 				Literal statistic1 = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
 				Literal statistic2 = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE2)));
 				Literal statistic3 = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE3)));
@@ -45,7 +43,7 @@ public class WriteDatatypePropertyToRDF {
 				Statement stmt2 = model.createStatement( subject, RDF.type, datatypeProperty );
 				Statement stmt_stat1 = model.createStatement( subject, vocabulary.occurrences(), statistic1 );
 				Statement stmt_stat2 = model.createStatement( subject, vocabulary.minTypeSubOccurrence(), statistic2 );
-				Statement stmt_stat3 = model.createStatement( subject, has_statistic3, statistic3 );
+				Statement stmt_stat3 = model.createStatement( subject, vocabulary.minTypeObjOccurrence(), statistic3 );
 
 				//add statements to model
 				model.add(stmt1);

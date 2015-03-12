@@ -58,4 +58,20 @@ public class LDSummariesVocabularyTest {
 		
 		assertThat(property.getURI(), equalTo("http://schemasummaries.org/ontology/minTypeSubOccurrence"));
 	}
+	
+	@Test
+	public void shouldCreateMinTypeObjOccurrenceProperty() throws Exception {
+		
+		Resource property = vocabulary.minTypeObjOccurrence();
+		
+		assertThat(property.getURI(), equalTo("http://schemasummaries.org/ontology/minTypeObjOccurrence"));
+	}
+	
+	@Test
+	public void shouldDatatypeConcept() throws Exception {
+		
+		Resource type = vocabulary.datatype();
+		
+		assertThat(type.getURI(), equalTo("http://schemasummaries.org/ontology/Datatype"));
+	}
 }

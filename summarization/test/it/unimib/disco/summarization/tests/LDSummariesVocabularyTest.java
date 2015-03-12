@@ -25,7 +25,7 @@ public class LDSummariesVocabularyTest {
 		
 		Resource frequency = vocabulary.occurrence();
 		
-		assertThat(frequency.getURI(), equalTo("http://schemasummaries.org/ontology/occurrence"));
+		assertThat(frequency.getURI(), equalTo("http://ld-summaries.org/ontology/occurrence"));
 	}
 	
 	@Test
@@ -33,7 +33,7 @@ public class LDSummariesVocabularyTest {
 		
 		Resource type = vocabulary.type();
 		
-		assertThat(type.getURI(), equalTo("http://schemasummaries.org/ontology/Type"));
+		assertThat(type.getURI(), equalTo("http://ld-summaries.org/ontology/Type"));
 	}
 	
 	@Test
@@ -41,7 +41,7 @@ public class LDSummariesVocabularyTest {
 		
 		Resource property = vocabulary.subjectOccurrence();
 		
-		assertThat(property.getURI(), equalTo("http://schemasummaries.org/ontology/subjectOccurrence"));
+		assertThat(property.getURI(), equalTo("http://ld-summaries.org/ontology/subjectOccurrence"));
 	}
 	
 	@Test
@@ -49,7 +49,7 @@ public class LDSummariesVocabularyTest {
 		
 		Resource property = vocabulary.objectOccurrence();
 		
-		assertThat(property.getURI(), equalTo("http://schemasummaries.org/ontology/objectOccurrence"));
+		assertThat(property.getURI(), equalTo("http://ld-summaries.org/ontology/objectOccurrence"));
 	}
 	
 	@Test
@@ -57,7 +57,7 @@ public class LDSummariesVocabularyTest {
 		
 		Resource property = vocabulary.subjectMinTypes();
 		
-		assertThat(property.getURI(), equalTo("http://schemasummaries.org/ontology/subjectMinTypes"));
+		assertThat(property.getURI(), equalTo("http://ld-summaries.org/ontology/subjectMinTypes"));
 	}
 	
 	@Test
@@ -65,7 +65,7 @@ public class LDSummariesVocabularyTest {
 		
 		Resource property = vocabulary.objectMinTypes();
 		
-		assertThat(property.getURI(), equalTo("http://schemasummaries.org/ontology/objectMinTypes"));
+		assertThat(property.getURI(), equalTo("http://ld-summaries.org/ontology/objectMinTypes"));
 	}
 	
 	@Test
@@ -73,7 +73,7 @@ public class LDSummariesVocabularyTest {
 		
 		Resource type = vocabulary.datatype();
 		
-		assertThat(type.getURI(), equalTo("http://schemasummaries.org/ontology/Datatype"));
+		assertThat(type.getURI(), equalTo("http://ld-summaries.org/ontology/Datatype"));
 	}
 	
 	@Test
@@ -81,7 +81,7 @@ public class LDSummariesVocabularyTest {
 		
 		Resource akp = vocabulary.abstractKnowledgePattern();
 		
-		assertThat(akp.getURI(), equalTo("http://schemasummaries.org/ontology/AbstractKnowledgePattern"));
+		assertThat(akp.getURI(), equalTo("http://ld-summaries.org/ontology/AbstractKnowledgePattern"));
 	}
 	
 	@Test
@@ -89,7 +89,7 @@ public class LDSummariesVocabularyTest {
 		
 		Resource type = vocabulary.aggregatePattern();
 		
-		assertThat(type.getURI(), equalTo("http://schemasummaries.org/ontology/AggregatePattern"));
+		assertThat(type.getURI(), equalTo("http://ld-summaries.org/ontology/AggregatePattern"));
 	}
 	
 	@Test
@@ -97,7 +97,7 @@ public class LDSummariesVocabularyTest {
 		
 		Resource akpInstance = vocabulary.aakpInstance("http://example.org/Subject", "http://example.org/Object");
 		
-		assertThat(akpInstance.getURI(), equalTo("http://schemasummaries.org/resource/the-dataset/AP/a48609f690994c9e2d54ee70b1125707"));
+		assertThat(akpInstance.getURI(), equalTo("http://ld-summaries.org/resource/the-dataset/AP/a48609f690994c9e2d54ee70b1125707"));
 	}
 	
 	@Test
@@ -105,7 +105,7 @@ public class LDSummariesVocabularyTest {
 		
 		Resource akpInstance = vocabulary.akpInstance("http://example.org/Subject", "http://example.org/property", "http://example.org/Object");
 		
-		assertThat(akpInstance.getURI(), equalTo("http://schemasummaries.org/resource/the-dataset/AKP/81372da753a8fabedfa1afefa050c2cc"));
+		assertThat(akpInstance.getURI(), equalTo("http://ld-summaries.org/resource/the-dataset/AKP/81372da753a8fabedfa1afefa050c2cc"));
 	}
 	
 	@Test
@@ -122,7 +122,7 @@ public class LDSummariesVocabularyTest {
 		
 		Resource localConcept = vocabulary.asLocalResource("http://www.w3.org/2002/07/owl#Thing");
 		
-		assertThat(localConcept.getURI(), equalTo("http://schemasummaries.org/resource/the-dataset/www.w3.org/2002/07/owl#Thing"));
+		assertThat(localConcept.getURI(), equalTo("http://ld-summaries.org/resource/the-dataset/www.w3.org/2002/07/owl#Thing"));
 	}
 	
 	@Test
@@ -130,7 +130,7 @@ public class LDSummariesVocabularyTest {
 		
 		Resource property = vocabulary.property();
 		
-		assertThat(property.getURI(), equalTo("http://schemasummaries.org/ontology/Property"));
+		assertThat(property.getURI(), equalTo("http://ld-summaries.org/ontology/Property"));
 	}
 	
 	@Test

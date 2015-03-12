@@ -107,6 +107,6 @@ public class LDSummariesVocabulary {
 	}
 
 	private String baseUri() {
-		return "http://schemasummaries.org/";
+		return "http://ld-summaries.org/";
 	}
 }

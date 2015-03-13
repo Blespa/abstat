@@ -50,7 +50,15 @@ public class LDSummariesVocabulary {
 	}
 	
 	public Resource concept() {
-		return model.createResource("http://www.w3.org/2004/02/skos/core#Concept");
+		return model.createResource(skos() + "Concept");
+	}
+	
+	public Property broader() {
+		return model.createProperty(skos() + "broader");
+	}
+
+	private String skos() {
+		return "http://www.w3.org/2004/02/skos/core#";
 	}
 	
 	public Property subject() {

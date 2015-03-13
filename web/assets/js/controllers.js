@@ -8,11 +8,11 @@ summary.controller('Summarization', function ($scope, $http, $location) {
 	
 	$scope.loadPatterns = function(){
 		
-		loadSummaries($scope, $http, $location);
+		$scope.subject = undefined;
+		$scope.object = undefined;
+		$scope.predicate = undefined;
 		
-		$scope.subject = "";
-		$scope.object = "";
-		$scope.predicate = "";
+		loadSummaries($scope, $http, $location);
 		
 		$scope.autocomplete = {};
 		
@@ -26,7 +26,9 @@ summary.controller('Summarization', function ($scope, $http, $location) {
 		loadSummaries($scope, $http, $location);
 	}
 
-	$scope.selected_graph = 'Select a dataset';
+	$scope.endpoint = endpoint($location) + "/sparql";
+	
+	$scope.selected_graph = 'select a dataset';
 	$scope.describe_uri = endpoint($location) + '/describe/?uri=';
 	
 	getGraphs($scope, $http, $location);

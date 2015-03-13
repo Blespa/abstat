@@ -61,15 +61,15 @@
 						<td class="text-center"><a target="_blank" href="{{describe_uri}}{{summary.pattern.value | escape}}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a></td>
 						<td>
 							<a target="_blank" href="{{describe_uri}}{{summary.subject.value | escape}}">{{summary.gSubject.value}}</a>
-							<span ng-show="summary.subjectOcc" class="label label-primary">{{summary.subjectOcc.value}}</span>
+							<small ng-show="summary.subjectOcc">({{summary.subjectOcc.value}})</small>
 						</td>
 						<td>
 							<a target="_blank" href="{{describe_uri}}{{summary.predicate.value | escape}}">{{summary.gPredicate.value}}</a>
-							<span ng-show="summary.predicateOcc" class="label label-primary">{{summary.predicateOcc.value}}</span>
+							<small ng-show="summary.predicateOcc">({{summary.predicateOcc.value}})</small>
 						</td>
 						<td>
 							<a target="_blank" href="{{describe_uri}}{{summary.object.value | escape}}">{{summary.gObject.value}}</a>
-							<span ng-show="summary.objectOcc" class="label label-primary">{{summary.objectOcc.value}}</span>
+							<small ng-show="summary.objectOcc">({{summary.objectOcc.value}})</small>
 						</td>
 						<td>{{summary.frequency.value}}</td>
 					</tr>

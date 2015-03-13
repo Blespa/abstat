@@ -10,9 +10,9 @@ summary.controller('Summarization', function ($scope, $http, $location) {
 		
 		loadSummaries($scope, $http, $location);
 		
-		$scope.subject = "";
-		$scope.object = "";
-		$scope.predicate = "";
+		$scope.subject = undefined;
+		$scope.object = undefined;
+		$scope.predicate = undefined;
 		
 		$scope.autocomplete = {};
 		

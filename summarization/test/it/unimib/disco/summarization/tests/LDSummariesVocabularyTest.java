@@ -178,6 +178,6 @@ public class LDSummariesVocabularyTest {
 		
 		Resource typed = vocabulary.selfOrUntyped("Ukn_Type");
 		
-		assertThat(typed.getURI(), equalTo("http://ld-summaries.org/ontology/Untyped"));
+		assertThat(typed.getURI(), equalTo("http://www.w3.org/2000/01/rdf-schema#Literal"));
 	}
 }

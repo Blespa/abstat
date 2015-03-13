@@ -154,12 +154,12 @@
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="&rdf;subject"/>
-                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+                        <owl:onProperty rdf:resource="&rdf;object"/>
+                        <owl:allValuesFrom rdf:resource="http://ld-summaries.org/ontology/Type"/>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="&rdf;subject"/>
-                        <owl:onClass rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+                        <owl:onProperty rdf:resource="&rdf;object"/>
+                        <owl:onClass rdf:resource="http://ld-summaries.org/ontology/Type"/>
                         <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
                     </owl:Restriction>
                 </owl:intersectionOf>
@@ -169,12 +169,12 @@
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="&rdf;object"/>
-                        <owl:allValuesFrom rdf:resource="http://ld-summaries.org/ontology/Type"/>
+                        <owl:onProperty rdf:resource="&rdf;subject"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="&rdf;object"/>
-                        <owl:onClass rdf:resource="http://ld-summaries.org/ontology/Type"/>
+                        <owl:onProperty rdf:resource="&rdf;subject"/>
+                        <owl:onClass rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
                         <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
                     </owl:Restriction>
                 </owl:intersectionOf>
@@ -295,14 +295,6 @@
     <!-- http://ld-summaries.org/ontology/Type -->
 
     <owl:Class rdf:about="http://ld-summaries.org/ontology/Type"/>
-    
-
-
-    <!-- http://ld-summaries.org/ontology/Untyped -->
-
-    <owl:Class rdf:about="http://ld-summaries.org/ontology/Untyped">
-        <rdfs:subClassOf rdf:resource="http://ld-summaries.org/ontology/Type"/>
-    </owl:Class>
     
 
 

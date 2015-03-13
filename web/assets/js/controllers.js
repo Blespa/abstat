@@ -74,7 +74,7 @@ loadSummaries = function(scope, http, location){
 	scope.summaries = [];
 	
 	new Sparql(http, location)
-		.query('select ' + subject + ' as ?subject ' + predicate + ' as ?predicate ' + object + ' as ?object ?frequency ?pattern ?gSubject ?gPredicate ?gObject' +
+		.query('select ' + subject + ' as ?subject ' + predicate + ' as ?predicate ' + object + ' as ?object ?frequency ?pattern ?gSubject ?gPredicate ?gObject ?subjectOcc ?predicateOcc ?objectOcc ' +
 			   ' where { ' +
 					'?pattern a lds:AbstractKnowledgePattern . ' +
 					'?pattern rdf:subject ' + subject + ' . ' +
@@ -84,6 +84,16 @@ loadSummaries = function(scope, http, location){
 		         	subject + ' rdfs:seeAlso ?gSubject . ' +
 		         	predicate +' rdfs:seeAlso ?gPredicate . ' +
 		         	object + ' rdfs:seeAlso ?gObject . ' +
+		         	'optional { ' +
+		         		subject + ' lds:occurrence ?subjectOcc .' +
+		         	'} . ' +
+		         	'optional { ' +
+		         		predicate + ' lds:occurrence ?predicateOcc .' +
+		         	'} . ' +
+		         	'optional { ' +
+	         			object + ' lds:occurrence ?objectOcc . ' +
+	         			'FILTER (?objectOcc > 0) ' +
+	         		'} . ' +
 				'} ' +
 				'order by desc(?frequency) ' +
 				'limit 20')
@@ -122,6 +132,7 @@ Sparql = function(http_service, location_service){
 	            query: 'prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ' +
 		        	   'prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> ' +
 		        	   'prefix lds:   <http://ld-summaries.org/ontology/> '+
+		        	   'prefix skos:   <http://www.w3.org/2004/02/skos/core#> '+
 	         	       query,
 	            'default-graph-uri' : graph,
 	            format: 'json'

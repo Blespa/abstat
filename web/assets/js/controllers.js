@@ -74,7 +74,7 @@ loadSummaries = function(scope, http, location){
 	scope.summaries = [];
 	
 	new Sparql(http, location)
-		.query('select ' + subject + ' as ?subject ' + predicate + ' as ?predicate ' + object + ' as ?object ?frequency ?pattern ?gSubject ?gPredicate ?gObject ?subjectOcc ?subjectSupertype ' +
+		.query('select ' + subject + ' as ?subject ' + predicate + ' as ?predicate ' + object + ' as ?object ?frequency ?pattern ?gSubject ?gPredicate ?gObject ?subjectOcc ?predicateOcc ?objectOcc ' +
 			   ' where { ' +
 					'?pattern a lds:AbstractKnowledgePattern . ' +
 					'?pattern rdf:subject ' + subject + ' . ' +
@@ -86,9 +86,14 @@ loadSummaries = function(scope, http, location){
 		         	object + ' rdfs:seeAlso ?gObject . ' +
 		         	'optional { ' +
 		         		subject + ' lds:occurrence ?subjectOcc .' +
-		         		subject + ' skos:broader ?tmp . ' +
-		         		'?tmp rdfs:seeAlso ?subjectSupertype . ' +
-		         	'}' +
+		         	'} . ' +
+		         	'optional { ' +
+		         		predicate + ' lds:occurrence ?predicateOcc .' +
+		         	'} . ' +
+		         	'optional { ' +
+	         			object + ' lds:occurrence ?objectOcc . ' +
+	         			'FILTER (?objectOcc > 0) ' +
+	         		'} . ' +
 				'} ' +
 				'order by desc(?frequency) ' +
 				'limit 20')

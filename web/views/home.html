@@ -46,9 +46,9 @@
 				<thead>
 					<tr>
 						<th></th>
-						<th>Subject</th>
-						<th>Predicate</th>
-						<th>Object</th>
+						<th>Subject <small>(occurrences)</small></th>
+						<th>Predicate <small>(occurrences)</small></th>
+						<th>Object <small>(occurrences)</small></th>
 						<th>Frequency</th>
 					</tr>
 				</thead>
@@ -63,21 +63,15 @@
 						<td class="text-center"><a target="_blank" href="{{describe_uri}}{{summary.pattern.value | escape}}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a></td>
 						<td>
 							<a target="_blank" href="{{describe_uri}}{{summary.subject.value | escape}}">{{summary.gSubject.value}}</a>
-							<div class="btn-group" dropdown is-open="status.isopen">
-							      <button type="button" class="btn btn-default btn-xs dropdown-toggle" dropdown-toggle ng-disabled="disabled">
-							        <span class="caret"></span>
-							      </button>
-							      <ul class="dropdown-menu" role="menu">
-							        <li><a>Occurrences: {{summary.subjectOcc.value}}</a></li>
-							        <li><a>Supertype: {{summary.subjectSupertype.value}}</a></li>
-							      </ul>
-							    </div>
+							<span ng-show="summary.subjectOcc" class="label label-primary">{{summary.subjectOcc.value}}</span>
 						</td>
 						<td>
 							<a target="_blank" href="{{describe_uri}}{{summary.predicate.value | escape}}">{{summary.gPredicate.value}}</a>
+							<span ng-show="summary.predicateOcc" class="label label-primary">{{summary.predicateOcc.value}}</span>
 						</td>
 						<td>
 							<a target="_blank" href="{{describe_uri}}{{summary.object.value | escape}}">{{summary.gObject.value}}</a>
+							<span ng-show="summary.objectOcc" class="label label-primary">{{summary.objectOcc.value}}</span>
 						</td>
 						<td>{{summary.frequency.value}}</td>
 					</tr>

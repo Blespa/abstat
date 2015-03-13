@@ -8,11 +8,11 @@ summary.controller('Summarization', function ($scope, $http, $location) {
 	
 	$scope.loadPatterns = function(){
 		
-		loadSummaries($scope, $http, $location);
-		
 		$scope.subject = undefined;
 		$scope.object = undefined;
 		$scope.predicate = undefined;
+		
+		loadSummaries($scope, $http, $location);
 		
 		$scope.autocomplete = {};
 		

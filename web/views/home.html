@@ -17,47 +17,45 @@
 		</div>
 		<div ng-controller="Summarization">
 			<div class="row">
-			<div class="col-md-9">
+			<div class="col-md-7">
 			<form class="form-inline">
 			<div class="form-group">
+				browse the <strong>abstract knowledge patterns</strong> found into 
 				<select id="dataset" ng-model="selected_graph" class="form-control">
-					<option>Select a dataset</option>
+					<option>select a dataset</option>
 				    <option ng-repeat="graph in graphs">{{graph.uri.value}}</option>
 				</select>
-				<button type="submit" ng-click='loadPatterns()' class="btn btn-primary">View</button>
+				<button type="submit" ng-click='loadPatterns()' class="btn btn-primary">view</button>
 			</div>
 			</form>
 			</div>
-			<div class="col-md-3 text-right">
-				<a href="static/ld-summaries.owl" class="btn btn-default" download>Download the ld-summaries Ontology</a>
+			<div class="col-md-5 text-right">
+				<a target="_blank" href="{{endpoint}}" class="btn btn-default">Sparql endpoint</a>
+				<a href="static/ld-summaries.owl" class="btn btn-default" download>ld-summaries ontology</a>
 			</div>
 			</div>
+			
+			<br><br>
 			
 			<div ng-show="graph_was_selected">
-			<div style="margin-top:1cm" class="row">
-			<div class="col-md-12">
-			<h3>Abstract Knowledge Patterns</h3>
-			</div>
-			</div>
-			
 			<div style="margin-top:0.5cm" class="row">
 			<div class="col-md-12">
 			<table class="table table-hover">
 				<thead>
 					<tr>
 						<th></th>
-						<th>Subject <small>(occurrences)</small></th>
-						<th>Predicate <small>(occurrences)</small></th>
-						<th>Object <small>(occurrences)</small></th>
-						<th>Frequency</th>
+						<th>subject <small>(occurrences)</small></th>
+						<th>predicate <small>(occurrences)</small></th>
+						<th>object <small>(occurrences)</small></th>
+						<th>frequency</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td class="text-center"><button type="submit" ng-click='filterPatterns()' class="btn btn-primary">Filter</button></td>
-						<td><input type="text" typeahead="subject as subject.global for subject in autocomplete.subject | filter:$viewValue | limitTo:7" ng-model="subject" class="form-control" placeholder="Subject"></td>
-						<td><input type="text" typeahead="predicate as predicate.global for predicate in autocomplete.predicate | filter:$viewValue | limitTo:7" ng-model="predicate" class="form-control" placeholder="Predicate"></td>
-						<td><input type="text" typeahead="object as object.global for object in autocomplete.object | filter:$viewValue | limitTo:7" ng-model="object" class="form-control" placeholder="Object"></td>
+						<td class="text-center"><button type="submit" ng-click='filterPatterns()' class="btn btn-primary">filter</button></td>
+						<td><input type="text" typeahead="subject as subject.global for subject in autocomplete.subject | filter:$viewValue | limitTo:7" ng-model="subject" class="form-control" placeholder="subject"></td>
+						<td><input type="text" typeahead="predicate as predicate.global for predicate in autocomplete.predicate | filter:$viewValue | limitTo:7" ng-model="predicate" class="form-control" placeholder="predicate"></td>
+						<td><input type="text" typeahead="object as object.global for object in autocomplete.object | filter:$viewValue | limitTo:7" ng-model="object" class="form-control" placeholder="object"></td>
 					</tr>
 					<tr ng-repeat="summary in summaries">
 						<td class="text-center"><a target="_blank" href="{{describe_uri}}{{summary.pattern.value | escape}}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a></td>

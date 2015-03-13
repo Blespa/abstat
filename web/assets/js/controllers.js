@@ -26,7 +26,9 @@ summary.controller('Summarization', function ($scope, $http, $location) {
 		loadSummaries($scope, $http, $location);
 	}
 
-	$scope.selected_graph = 'Select a dataset';
+	$scope.endpoint = endpoint($location) + "/sparql";
+	
+	$scope.selected_graph = 'select a dataset';
 	$scope.describe_uri = endpoint($location) + '/describe/?uri=';
 	
 	getGraphs($scope, $http, $location);

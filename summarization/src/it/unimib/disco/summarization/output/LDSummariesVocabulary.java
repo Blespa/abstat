@@ -10,6 +10,7 @@ import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.vocabulary.RDF;
+import com.hp.hpl.jena.vocabulary.RDFS;
 
 public class LDSummariesVocabulary {
 
@@ -22,11 +23,10 @@ public class LDSummariesVocabulary {
 	}
 
 	public Resource selfOrUntyped(String concept) {
-		String uri = new String(concept);
 		if(concept.equals("Ukn_Type")) {
-			uri = ontologyNamespace() + "Untyped";
+			return RDFS.Literal;
 		}
-		return model.createResource(uri);
+		return model.createResource(concept);
 	}
 	
 	public Resource abstractKnowledgePattern() {

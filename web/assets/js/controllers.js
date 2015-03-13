@@ -10,6 +10,10 @@ summary.controller('Summarization', function ($scope, $http, $location) {
 		
 		loadSummaries($scope, $http, $location);
 		
+		$scope.subject = "";
+		$scope.object = "";
+		$scope.predicate = "";
+		
 		$scope.autocomplete = {};
 		
 		fill('subject', $scope.selected_graph, $scope.autocomplete, $http, $location)

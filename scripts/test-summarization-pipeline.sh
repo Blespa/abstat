@@ -150,9 +150,12 @@ assert_application_is_up $port alive
 echo
 
 echo "integration testing of the solr module"
+echo
+
 ./solr.sh start 8886
 sleep 1
-assert_application_is_up 8886 solr
-./solr.sh stop
+./solr.sh assert_application_is_up 8886 solr/
+./solr.sh stop 8886
+
 echo
 

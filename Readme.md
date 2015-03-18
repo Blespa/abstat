@@ -43,7 +43,23 @@ Preparing the linked-brainz dataset
 $ scripts/prepare-linked-brainz-dataset.sh $TARGET-DIRECTORY
 ```
 
-## Production machine Configuration and Deployment
+## Production use
+
+### Monitoring
+
+The web interface is constantly monitored, since has to be accessible all the time. You can view the current status [here](http://uptime.statuscake.com/?TestID=TCI9iWyOqa)
+
+### Managing the Web interface
+
+To start | stop the web app:
+
+```
+#!bash
+$ ssh schema-summaries@siti-rack.siti.disco.unimib.it
+$ schema-summaries/scripts/java-ui.sh [start | stop] 8880
+```
+
+### Configuring a production machine
 
 To configure a production machine do the following steps. First login into the machine, install all the dependencies listed above and then:
 
@@ -55,6 +71,8 @@ $ cd schema-summaries
 $ git remote set-url origin git@bitbucket.org:rporrini/schema-summaries.git
 $ chmod 700 scripts/deploy_rsa
 ```
+
+### Deployment
 
 To deploy the latest version of the code, from your development machine:
 

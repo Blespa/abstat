@@ -48,5 +48,6 @@ case "$1" in
                 log_success_msg "Usage: java-ui.sh start|stop"
 		;;
 esac
+sleep 2
 exit $status
 

@@ -5,12 +5,14 @@ set -e
 function start(){
 	log_begin_msg "starting summarization-ui service on port $port"
 	start-stop-daemon --chuid $current_user --start --background --exec "/usr/bin/java" -m --pidfile "$pid" -d $project -- -cp .:"summarization-web.jar" it.unimib.disco.summarization.web.WebApplication $port
-	log_end_msg $?
+	status=$?
+	log_end_msg $status
 }
 
 function stop(){
 	log_begin_msg "stopping summarization-ui service on port $port"
 	start-stop-daemon --oknodo --stop --pidfile "$pid"
+	status=$?	
 	log_end_msg $?
 	rm -f $pid
 }
@@ -29,6 +31,7 @@ then
 	port=8880
 fi
 pid=log/java-ui-$port.pid
+status=0
 
 . /lib/lsb/init-functions
 
@@ -45,5 +48,6 @@ case "$1" in
                 log_success_msg "Usage: java-ui.sh start|stop"
 		;;
 esac
-
+sleep 2
+exit $status
 

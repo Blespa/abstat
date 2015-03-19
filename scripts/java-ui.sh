@@ -10,7 +10,7 @@ function start(){
 
 function stop(){
 	log_begin_msg "stopping summarization-ui service on port $port"
-	start-stop-daemon --stop --pidfile "$pid"
+	start-stop-daemon --oknodo --stop --pidfile "$pid"
 	log_end_msg $?
 	rm -f $pid
 }

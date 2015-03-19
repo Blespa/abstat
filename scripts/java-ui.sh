@@ -10,19 +10,16 @@ status=$?
 . /lib/lsb/init-functions
 
 function start(){
-	log_begin_msg "starting summarization-ui service"
-        java -cp .:'summarization-web.jar' it.unimib.disco.summarization.web.WebApplication $port >> /dev/null 2>&1 &
-	status=$?	
-	echo $! > $pid
-	log_end_msg $status
+	log_begin_msg "starting summarization-ui service on port $port"
+	start-stop-daemon --background -m --pidfile "$pid" --start -d $project --exec "/usr/bin/java" -- -cp .:"summarization-web.jar" it.unimib.disco.summarization.web.WebApplication $port
+	log_end_msg $?
 }
 
 function stop(){
-	log_begin_msg "stopping summarization-ui service"
-	cat $pid | xargs kill -9
-	status=$?
-	rm -f $pid
-	log_end_msg $status
+	log_begin_msg "stopping summarization-ui service on port $port"
+	start-stop-daemon --pidfile "$pid" --stop "/usr/bin/java" -- -cp .:'summarization-web.jar' it.unimib.disco.summarization.web.WebApplication $port
+	log_end_msg $?
+	rm $pid
 }
 
 cd $project

@@ -140,9 +140,9 @@ echo
 echo "integration testing of the web interface module"
 port=8887
 ./build-java-ui-module.sh
-./java-ui.sh start $port
+./java-ui-development.sh start $port
 sleep 1
 assert_application_is_up $port
-./java-ui.sh stop $port
+./java-ui-development.sh stop $port
 echo
 

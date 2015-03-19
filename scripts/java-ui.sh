@@ -3,14 +3,17 @@
 relative_path=`dirname $0`
 root=`cd $relative_path;pwd`
 project=$root/../web
-port=$2
-pid=log/java-ui-$port.pid
-status=$?
 current_user=$(id -u -n)
-if [[ current_user == 'root' ]]
+if [[ $current_user == 'root' ]]
 then
 	current_user='schema-summaries'
 fi
+port=$2
+if [[ $port == '' ]]
+then
+	port=8880
+fi
+pid=log/java-ui-$port.pid
 
 . /lib/lsb/init-functions
 

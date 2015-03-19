@@ -56,15 +56,23 @@ To start | stop the web app:
 ```
 #!bash
 $ ssh schema-summaries@siti-rack.siti.disco.unimib.it
-$ schema-summaries/scripts/java-ui.sh [start | stop] 8880
+$ sudo service ld-summaries [start | stop]
 ```
 
-### Configuring a production machine
+### Configuring a production machine (ubuntu server)
 
-To configure a production machine do the following steps. First login into the machine, install all the dependencies listed above and then:
+To configure a production machine do the following steps. First login into the machine using a user that is allowed to run sudo commands, install all the dependencies listed above and then:
 
 ```
 #!bash
+$ sudo adduser schema-summaries	# choose the appropriate password
+$ sudo visudo 	# append the following lines at the bottom (remeber to cut comments of)
+# schema-summaries ALL=(ALL) NOPASSWD: /bin/ln -s /home/schema-summaries/schema-summaries/scripts/java-ui-production.sh /etc/init.d/ld-summaries
+# schema-summaries ALL=(ALL) NOPASSWD: /usr/sbin/update-rc.d ld-summaries defaults
+# schema-summaries ALL=(ALL) NOPASSWD: /bin/rm -f /etc/init.d/ld-summaries
+# schema-summaries ALL=(ALL) NOPASSWD: /usr/sbin/service ld-summaries start
+# schema-summaries ALL=(ALL) NOPASSWD: /usr/sbin/service ld-summaries stop
+$ su schema-summaries
 $ cd
 $ git clone https://bitbucket.org/rporrini/schema-summaries.git
 $ cd schema-summaries

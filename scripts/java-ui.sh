@@ -1,29 +1,36 @@
 #!/bin/bash
 
-relative_path=`dirname $0`
-root=`cd $relative_path;pwd`
-project=$root/../web
-port=$2
-pid=log/java-ui-$port.pid
-status=$?
-
-. /lib/lsb/init-functions
+set -e
 
 function start(){
-	log_begin_msg "starting summarization-ui service"
-        java -cp .:'summarization-web.jar' it.unimib.disco.summarization.web.WebApplication $port >> /dev/null 2>&1 &
-	status=$?	
-	echo $! > $pid
-	log_end_msg $status
+	log_begin_msg "starting summarization-ui service on port $port"
+	start-stop-daemon --chuid $current_user --start --background --exec "/usr/bin/java" -m --pidfile "$pid" -d $project -- -cp .:"summarization-web.jar" it.unimib.disco.summarization.web.WebApplication $port
+	log_end_msg $?
 }
 
 function stop(){
-	log_begin_msg "stopping summarization-ui service"
-	cat $pid | xargs kill -9
-	status=$?
+	log_begin_msg "stopping summarization-ui service on port $port"
+	start-stop-daemon --oknodo --stop --pidfile "$pid"
+	log_end_msg $?
 	rm -f $pid
-	log_end_msg $status
 }
+
+relative_path=`dirname $0`
+root=`cd $relative_path;pwd`
+project=$root/../web
+current_user=$(id -u -n)
+if [[ $current_user == 'root' ]]
+then
+	current_user='schema-summaries'
+fi
+port=$2
+if [[ $port == '' ]]
+then
+	port=8880
+fi
+pid=log/java-ui-$port.pid
+
+. /lib/lsb/init-functions
 
 cd $project
 
@@ -36,8 +43,7 @@ case "$1" in
                 ;;
         *)
                 log_success_msg "Usage: java-ui.sh start|stop"
-		status=1
 		;;
 esac
-exit $status
+
 

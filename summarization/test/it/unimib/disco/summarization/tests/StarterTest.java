@@ -5,7 +5,6 @@ import it.unimib.disco.summarization.starter.Starter;
 import java.io.File;
 
 import org.apache.commons.lang3.StringUtils;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class StarterTest extends UnitTest{
@@ -18,7 +17,6 @@ public class StarterTest extends UnitTest{
 	}
 	
 	@Test
-	@Ignore
 	public void shouldParseASmallExtractOfTheYAGO1Ontology() throws Exception {
 		
 		String[] ontology = new String[]{

@@ -1,6 +1,7 @@
 package it.unimib.disco.summarization.tests;
 
 import java.io.File;
+import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
 
@@ -23,12 +24,20 @@ public class TemporaryFolder{
 	}
 	
 	public File newFile(){
-		return new File(temporary, Math.random() + "");
+		return createRandomFileWithExtension("");
 	}
-	
+
 	public File newFile(String content) throws Exception{
-		File file = newFile();
+		return newFile(content, "");
+	}
+
+	public File newFile(String content, String extension) throws IOException {
+		File file = createRandomFileWithExtension(extension);
 		FileUtils.write(file, content);
 		return file;
+	}
+	
+	private File createRandomFileWithExtension(String extension) {
+		return new File(temporary, Math.random() + "." + extension);
 	}
 }

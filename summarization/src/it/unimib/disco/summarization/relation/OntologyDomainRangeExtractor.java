@@ -182,6 +182,4 @@ public class OntologyDomainRangeExtractor {
 	public DomainRange getPropertyDomainRange() {
 		return propertyDomainRange;
 	}
-
-
 }

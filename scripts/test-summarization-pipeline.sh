@@ -55,12 +55,13 @@ function assert_application_is_up(){
 
 	port=$1
 	page=$2
+	grepString=$3
 	url="localhost:$port/$page"
 
 	highlight_color='\e[0;31m'
 	message='KO'
 
-	if [[ $(curl --silent $url | grep "OK") ]]
+	if [[ $(curl --silent $url | grep "$3") ]]
 	then
 		highlight_color='\e[0;32m'
 		message="OK"
@@ -145,7 +146,7 @@ port=8887
 ./build-java-ui-module.sh
 ./java-ui.sh start $port
 sleep 1
-assert_application_is_up $port alive
+assert_application_is_up $port alive OK
 ./java-ui.sh stop $port
 echo
 
@@ -154,7 +155,7 @@ echo
 
 ./solr.sh start 8886
 sleep 1
-./solr.sh assert_application_is_up 8886 solr/
+assert_application_is_up 8886 solr/ Solr Admin
 ./solr.sh stop 8886
 
 echo

@@ -1,4 +1,5 @@
 package it.unimib.disco.summarization.output;
+
 import it.unimib.disco.summarization.starter.Events;
 
 import java.io.File;
@@ -13,12 +14,11 @@ import org.apache.commons.io.FileUtils;
 import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.vocabulary.RDF;
 import com.hp.hpl.jena.vocabulary.RDFS;
 
-public class WriteObjAAKPToRDF {
+public class WriteConceptToRDF {
 	public static void main (String args []) throws IOException{
 
 		Model model = ModelFactory.createDefaultModel();
@@ -27,39 +27,30 @@ public class WriteObjAAKPToRDF {
 		String dataset = args[2];
 		
 		LDSummariesVocabulary vocabulary = new LDSummariesVocabulary(model, dataset);
-
+		
 		//Get all of the rows
 		for (Row row : readCSV(csvFilePath)){
 
 			try{
+				Resource globalSubject = model.createResource(row.get(Row.Entry.SUBJECT));
+				Resource localSubject = vocabulary.asLocalResource(globalSubject.getURI());
 				
-				Resource globalObject = model.createResource(row.get(Row.Entry.SUBJECT));
-				Property globalPredicate = model.createProperty(row.get(Row.Entry.PREDICATE));
-				Resource localObject = vocabulary.asLocalResource(globalObject.getURI());
-				Resource localPredicate = vocabulary.asLocalResource(globalPredicate.getURI());
-				Literal occurrence = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
-				
-				Resource id = vocabulary.aakpInstance(localPredicate.getURI(), localObject.getURI());
+				Literal occurrences = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
 
 				//add statements to model
-				model.add(model.createStatement(localObject, RDFS.seeAlso, globalObject));
-				model.add(model.createStatement(localPredicate, RDFS.seeAlso, globalPredicate));
+				model.add(model.createStatement( localSubject, RDFS.seeAlso, globalSubject ));
 				
-				model.add(model.createStatement(id, RDF.type, RDF.Statement));
-				model.add(model.createStatement(id, RDF.type, vocabulary.aggregatePattern()));
-				
-				model.add(model.createStatement(id, RDF.object, localObject ));
-				model.add(model.createStatement(id, RDF.predicate, localPredicate));
-				model.add(model.createStatement(id, vocabulary.objectOccurrence(), occurrence));
+				model.add(model.createStatement( localSubject, RDF.type, vocabulary.type()));
+				model.add(model.createStatement( localSubject, RDF.type, vocabulary.concept()));
+				model.add(model.createStatement( localSubject, vocabulary.occurrence(), occurrences));
 			}
 			catch(Exception e){
 				new Events().error("file" + csvFilePath + " row" + row, e);
 			}
 		}
 		OutputStream output = new FileOutputStream(outputFilePath);
-		model.write( output, "N-Triples", null ); // or "", etc.
+		model.write( output, "N-Triples", null ); // or "RDF/XML", etc.
 		output.close();
-
 
 
 	}
@@ -75,10 +66,8 @@ public class WriteObjAAKPToRDF {
 				Row r = new Row();
 
 				if (row[0].contains("http")){
-
 					r.add(Row.Entry.SUBJECT, row[0]);
-					r.add(Row.Entry.PREDICATE, row[1]);
-					r.add(Row.Entry.SCORE1, row[3]); 
+					r.add(Row.Entry.SCORE1, row[1]);
 
 					allFacts.add(r);
 				}
@@ -89,4 +78,5 @@ public class WriteObjAAKPToRDF {
 		}
 		return allFacts;
 	}
+
 }

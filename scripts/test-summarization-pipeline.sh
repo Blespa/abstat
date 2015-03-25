@@ -34,8 +34,8 @@ function assert_results_are_compliant()
 }
 
 function assert_results_are_present_in_virtuoso(){
-	sparql_query="http://localhost:8890/sparql?default-graph-uri=http%3A%2F%2Fschemasummaries.org%2Fsystem-test&query=select+count%28*%29+where+%7B%3Fa+%3Fb+%3Fc%7D&format=text%2Fplain&timeout=0&debug=on"
-	expected="<http://www.w3.org/2005/sparql-results#value> \"5009\"^^<http://www.w3.org/2001/XMLSchema#integer>"
+	sparql_query="http://localhost:8890/sparql?default-graph-uri=http%3A%2F%2Fld-summaries.org%2Fsystem-test&query=select+count%28*%29+where+%7B%3Fa+%3Fb+%3Fc%7D&format=text%2Fplain&timeout=0&debug=on"
+	expected="<http://www.w3.org/2005/sparql-results#value> \"6550\"^^<http://www.w3.org/2001/XMLSchema#integer>"
 
 	highlight_color='\e[0;31m'
 	message='KO'
@@ -135,8 +135,7 @@ echo
 assert_no_errors_on ../summarization/log/log.txt
 assert_results_are_compliant $expected_results $results
 
-graph=http://schemasummaries.org/system-test
-./isql.sh "SPARQL CLEAR GRAPH <$graph>;"
+graph=http://ld-summaries.org/system-test
 ./export-to-rdf.sh $results $rdf_export_path $graph
 echo
 assert_results_are_present_in_virtuoso
@@ -145,11 +144,10 @@ echo
 echo "integration testing of the web interface module"
 ui_port=8887
 ./build-java-ui-module.sh
-./java-ui.sh start $ui_port
+./java-ui-development.sh start $ui_port
 sleep 1
-assert_application_is_up $ui_port alive OK
-./java-ui.sh stop $ui_port
-echo
+assert_application_is_up $ui_port
+./java-ui-development.sh stop $ui_port
 
 echo "integration testing of the solr module"
 echo

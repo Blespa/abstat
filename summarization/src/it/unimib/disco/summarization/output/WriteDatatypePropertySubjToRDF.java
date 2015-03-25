@@ -13,13 +13,13 @@ import org.apache.commons.io.FileUtils;
 import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.vocabulary.OWL;
 import com.hp.hpl.jena.vocabulary.RDF;
-import com.hp.hpl.jena.vocabulary.RDFS;
 
-public class WriteObjAAKPToRDF {
+public class WriteDatatypePropertySubjToRDF {
 	public static void main (String args []) throws IOException{
+
 
 		Model model = ModelFactory.createDefaultModel();
 		String csvFilePath = args[0];
@@ -32,25 +32,16 @@ public class WriteObjAAKPToRDF {
 		for (Row row : readCSV(csvFilePath)){
 
 			try{
-				
-				Resource globalObject = model.createResource(row.get(Row.Entry.SUBJECT));
-				Property globalPredicate = model.createProperty(row.get(Row.Entry.PREDICATE));
-				Resource localObject = vocabulary.asLocalResource(globalObject.getURI());
-				Resource localPredicate = vocabulary.asLocalResource(globalPredicate.getURI());
+				Resource globalProperty = model.createResource(row.get(Row.Entry.SUBJECT));
+				Resource localProperty = vocabulary.asLocalResource(globalProperty.getURI());
 				Literal occurrence = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
+				Resource datatypeProperty = model.createResource("http://www.w3.org/2002/07/owl/DatatypeProperty");
 				
-				Resource id = vocabulary.aakpInstance(localPredicate.getURI(), localObject.getURI());
-
 				//add statements to model
-				model.add(model.createStatement(localObject, RDFS.seeAlso, globalObject));
-				model.add(model.createStatement(localPredicate, RDFS.seeAlso, globalPredicate));
-				
-				model.add(model.createStatement(id, RDF.type, RDF.Statement));
-				model.add(model.createStatement(id, RDF.type, vocabulary.aggregatePattern()));
-				
-				model.add(model.createStatement(id, RDF.object, localObject ));
-				model.add(model.createStatement(id, RDF.predicate, localPredicate));
-				model.add(model.createStatement(id, vocabulary.objectOccurrence(), occurrence));
+				model.add(model.createStatement( localProperty , OWL.sameAs, globalProperty ));
+				model.add(model.createStatement( localProperty, RDF.type, RDF.Property));
+				model.add(model.createStatement( localProperty, RDF.type, datatypeProperty));
+//				model.add(model.createStatement( localProperty, vocabulary.subjectInstanceOccurrence(), occurrence ));
 			}
 			catch(Exception e){
 				new Events().error("file" + csvFilePath + " row" + row, e);
@@ -77,8 +68,7 @@ public class WriteObjAAKPToRDF {
 				if (row[0].contains("http")){
 
 					r.add(Row.Entry.SUBJECT, row[0]);
-					r.add(Row.Entry.PREDICATE, row[1]);
-					r.add(Row.Entry.SCORE1, row[3]); 
+					r.add(Row.Entry.SCORE1, row[2]); 
 
 					allFacts.add(r);
 				}
@@ -89,4 +79,5 @@ public class WriteObjAAKPToRDF {
 		}
 		return allFacts;
 	}
+
 }

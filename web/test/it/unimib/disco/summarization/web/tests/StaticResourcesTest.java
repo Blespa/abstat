@@ -29,6 +29,6 @@ public class StaticResourcesTest {
 	@Test
 	public void aStaticResourceShouldBeUnderAssetsDirectoryOnTheServer() throws Exception {
 		
-		application.httpAssert().body("/assets/a-file", equalTo("content"));
+		application.httpAssert().body("/static/a-file", equalTo("content"));
 	}
 }

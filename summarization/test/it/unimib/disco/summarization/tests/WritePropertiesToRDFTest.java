@@ -1,6 +1,6 @@
 package it.unimib.disco.summarization.tests;
 
-import it.unimib.disco.summarization.output.WritePropertiesToRDF;
+import it.unimib.disco.summarization.output.WriteDatatypePropertyToRDF;
 
 import java.io.File;
 
@@ -13,7 +13,7 @@ public class WritePropertiesToRDFTest extends UnitTest{
 		File input = temporary.newFile("http://dbpedia.org/ontology/operatingSystem##2##0##0##0##0##0##0");
 		File output = temporary.newFile();
 		
-		WritePropertiesToRDF.main(new String[]{input.getAbsolutePath(), output.getAbsolutePath()});
+		WriteDatatypePropertyToRDF.main(new String[]{input.getAbsolutePath(), output.getAbsolutePath(), "dataset"});
 	}
 
 	@Test
@@ -21,6 +21,6 @@ public class WritePropertiesToRDFTest extends UnitTest{
 		File input = temporary.newFile("http://dbpedia.org/ontology/operatingSystem##2##0##0##0##0");
 		File output = temporary.newFile();
 		
-		WritePropertiesToRDF.main(new String[]{input.getAbsolutePath(), output.getAbsolutePath()});
+		WriteDatatypePropertyToRDF.main(new String[]{input.getAbsolutePath(), output.getAbsolutePath(), "dataset"});
 	}
 }

@@ -13,5 +13,3 @@ page=$3
 
 $current_directory/../solr/bin/solr $1 -p $port
 
-echo
-

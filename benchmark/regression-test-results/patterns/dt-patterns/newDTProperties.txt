@@ -12,6 +12,7 @@ http://dbpedia.org/ontology/areaLand##areaLand
 http://dbpedia.org/ontology/areaMetro##areaMetro
 http://dbpedia.org/ontology/areaWater##areaWater
 http://dbpedia.org/ontology/atcPrefix##atcPrefix
+http://dbpedia.org/ontology/Automobile/wheelbase##wheelbase
 http://dbpedia.org/ontology/background##background
 http://dbpedia.org/ontology/band##band
 http://dbpedia.org/ontology/battingSide##battingSide
@@ -22,6 +23,7 @@ http://dbpedia.org/ontology/bnfId##bnfId
 http://dbpedia.org/ontology/broadcastStationClass##broadcastStationClass
 http://dbpedia.org/ontology/bSide##bSide
 http://dbpedia.org/ontology/budget##budget
+http://dbpedia.org/ontology/Building/floorArea##floorArea
 http://dbpedia.org/ontology/buildingStartYear##buildingStartYear
 http://dbpedia.org/ontology/callsignMeaning##callsignMeaning
 http://dbpedia.org/ontology/campusSize##campusSize
@@ -77,6 +79,7 @@ http://dbpedia.org/ontology/foundingYear##foundingYear
 http://dbpedia.org/ontology/frequency##frequency
 http://dbpedia.org/ontology/frequentlyUpdated##frequentlyUpdated
 http://dbpedia.org/ontology/generationUnits##generationUnits
+http://dbpedia.org/ontology/GrandPrix/course##course
 http://dbpedia.org/ontology/graySubject##graySubject
 http://dbpedia.org/ontology/gridReference##gridReference
 http://dbpedia.org/ontology/gross##gross
@@ -89,10 +92,12 @@ http://dbpedia.org/ontology/icaoLocationIdentifier##icaoLocationIdentifier
 http://dbpedia.org/ontology/icd10##icd10
 http://dbpedia.org/ontology/identificationSymbol##identificationSymbol
 http://dbpedia.org/ontology/individualisedGnd##individualisedGnd
+http://dbpedia.org/ontology/Infrastructure/length##length
 http://dbpedia.org/ontology/inseeCode##inseeCode
 http://dbpedia.org/ontology/isbn##isbn
 http://dbpedia.org/ontology/iucnCategory##iucnCategory
 http://dbpedia.org/ontology/iupacName##iupacName
+http://dbpedia.org/ontology/Lake/shoreLength##shoreLength
 http://dbpedia.org/ontology/lastPublicationDate##lastPublicationDate
 http://dbpedia.org/ontology/latestReleaseDate##latestReleaseDate
 http://dbpedia.org/ontology/latestReleaseVersion##latestReleaseVersion
@@ -105,6 +110,9 @@ http://dbpedia.org/ontology/lowerAge##lowerAge
 http://dbpedia.org/ontology/mainspan##mainspan
 http://dbpedia.org/ontology/maximumElevation##maximumElevation
 http://dbpedia.org/ontology/meaning##meaning
+http://dbpedia.org/ontology/MeanOfTransportation/height##height
+http://dbpedia.org/ontology/MeanOfTransportation/length##length
+http://dbpedia.org/ontology/MeanOfTransportation/width##width
 http://dbpedia.org/ontology/meshId##meshId
 http://dbpedia.org/ontology/militaryCommand##militaryCommand
 http://dbpedia.org/ontology/militaryUnitSize##militaryUnitSize
@@ -141,6 +149,12 @@ http://dbpedia.org/ontology/overallRecord##overallRecord
 http://dbpedia.org/ontology/passengersPerYear##passengersPerYear
 http://dbpedia.org/ontology/percentageOfAreaWater##percentageOfAreaWater
 http://dbpedia.org/ontology/periapsis##periapsis
+http://dbpedia.org/ontology/Person/height##height
+http://dbpedia.org/ontology/Planet/apoapsis##apoapsis
+http://dbpedia.org/ontology/Planet/orbitalPeriod##orbitalPeriod
+http://dbpedia.org/ontology/Planet/periapsis##periapsis
+http://dbpedia.org/ontology/PopulatedPlace/areaTotal##areaTotal
+http://dbpedia.org/ontology/PopulatedPlace/populationDensity##populationDensity
 http://dbpedia.org/ontology/populationAsOf##populationAsOf
 http://dbpedia.org/ontology/populationDensity##populationDensity
 http://dbpedia.org/ontology/populationTotalRanking##populationTotalRanking
@@ -192,8 +206,10 @@ http://dbpedia.org/ontology/undraftedYear##undraftedYear
 http://dbpedia.org/ontology/upperAge##upperAge
 http://dbpedia.org/ontology/utcOffset##utcOffset
 http://dbpedia.org/ontology/viafId##viafId
+http://dbpedia.org/ontology/Weapon/diameter##diameter
 http://dbpedia.org/ontology/weight##weight
 http://dbpedia.org/ontology/wheelbase##wheelbase
+http://dbpedia.org/ontology/Work/runtime##runtime
 http://dbpedia.org/ontology/yearOfConstruction##yearOfConstruction
 http://purl.org/dc/elements/1.1/description##description
 http://www.georss.org/georss/point##point

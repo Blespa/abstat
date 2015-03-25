@@ -13,6 +13,7 @@ http://dbpedia.org/ontology/staff
 http://dbpedia.org/ontology/rankArea
 http://dbpedia.org/ontology/numberOfEntrances
 http://dbpedia.org/ontology/ratio
+http://dbpedia.org/ontology/AutomobileEngine/displacement
 http://dbpedia.org/ontology/ground
 http://dbpedia.org/ontology/activeYearsStartYear
 http://dbpedia.org/ontology/novel
@@ -55,9 +56,11 @@ http://dbpedia.org/ontology/largestCity
 http://dbpedia.org/ontology/gross
 http://dbpedia.org/ontology/nation
 http://dbpedia.org/ontology/uRN
+http://dbpedia.org/ontology/Galaxy/averageSpeed
 http://dbpedia.org/ontology/temple
 http://dbpedia.org/ontology/otherName
 http://dbpedia.org/ontology/developer
+http://dbpedia.org/ontology/PopulatedPlace/populationMetroDensity
 http://dbpedia.org/ontology/lessPopulousCountry
 http://dbpedia.org/ontology/ascentDate
 http://dbpedia.org/ontology/modelEndDate
@@ -69,6 +72,7 @@ http://dbpedia.org/ontology/origin
 http://dbpedia.org/ontology/projectKeyword
 http://dbpedia.org/ontology/numberOfVisitors
 http://dbpedia.org/ontology/selectionPoint
+http://dbpedia.org/ontology/Automobile/fuelCapacity
 http://dbpedia.org/ontology/averageDepth
 http://dbpedia.org/ontology/managerTitle
 http://dbpedia.org/ontology/dateCompleted
@@ -156,9 +160,11 @@ http://dbpedia.org/ontology/revenue
 http://dbpedia.org/ontology/originalName
 http://dbpedia.org/ontology/hasChannel
 http://dbpedia.org/ontology/alpsGroup
+http://dbpedia.org/ontology/Software/fileSize
 http://dbpedia.org/ontology/flagSize
 http://dbpedia.org/ontology/summerTemperature
 http://dbpedia.org/ontology/doctoralAdvisor
+http://dbpedia.org/ontology/ChemicalSubstance/meltingPoint
 http://dbpedia.org/ontology/governmentMountain
 http://dbpedia.org/ontology/trustee
 http://dbpedia.org/ontology/prefectMandate
@@ -177,6 +183,7 @@ http://dbpedia.org/ontology/mouthElevation
 http://dbpedia.org/ontology/firstDriverCountry
 http://dbpedia.org/ontology/firstFlightEndDate
 http://dbpedia.org/ontology/militaryRank
+http://dbpedia.org/ontology/PopulatedPlace/areaUrban
 http://dbpedia.org/ontology/followedBy
 http://dbpedia.org/ontology/numberOfAcademicStaff
 http://dbpedia.org/ontology/routeEndDirection
@@ -191,17 +198,20 @@ http://dbpedia.org/ontology/otherFunction
 http://dbpedia.org/ontology/identificationSymbol
 http://dbpedia.org/ontology/highestPosition
 http://dbpedia.org/ontology/worldTeamCup
+http://dbpedia.org/ontology/Rocket/mass
 http://dbpedia.org/ontology/agency
 http://dbpedia.org/ontology/continentRank
 http://dbpedia.org/ontology/formula
 http://dbpedia.org/ontology/distanceToCharingCross
 http://dbpedia.org/ontology/gameModus
+http://dbpedia.org/ontology/MeanOfTransportation/mass
 http://dbpedia.org/ontology/commissioningDate
 http://dbpedia.org/ontology/numberOfIslands
 http://dbpedia.org/ontology/managementRegion
 http://dbpedia.org/ontology/finalLostDouble
 http://dbpedia.org/ontology/termPeriod
 http://dbpedia.org/ontology/particularSign
+http://dbpedia.org/ontology/PopulatedPlace/areaTotal
 http://dbpedia.org/ontology/muteCharacterInPlay
 http://dbpedia.org/ontology/ceo
 http://dbpedia.org/ontology/feastDay
@@ -273,6 +283,7 @@ http://dbpedia.org/ontology/salary
 http://dbpedia.org/ontology/giniCoefficientRanking
 http://dbpedia.org/ontology/numberOfSpeakers
 http://dbpedia.org/ontology/aircraftPatrol
+http://dbpedia.org/ontology/Stream/dischargeAverage
 http://dbpedia.org/ontology/worldTournament
 http://dbpedia.org/ontology/island
 http://dbpedia.org/ontology/acquirementDate
@@ -287,6 +298,7 @@ http://dbpedia.org/ontology/newspaper
 http://dbpedia.org/ontology/headAlloy
 http://dbpedia.org/ontology/musicalKey
 http://dbpedia.org/ontology/areaTotalRanking
+http://dbpedia.org/ontology/SpaceMission/lunarOrbitTime
 http://dbpedia.org/ontology/championInMixedDouble
 http://dbpedia.org/ontology/tonyAward
 http://dbpedia.org/ontology/managementPosition
@@ -314,6 +326,7 @@ http://dbpedia.org/ontology/endReign
 http://dbpedia.org/ontology/picturesCommonsCategory
 http://dbpedia.org/ontology/endDate
 http://dbpedia.org/ontology/derivative
+http://dbpedia.org/ontology/Spacecraft/port1DockedTime
 http://dbpedia.org/ontology/originalEndPoint
 http://dbpedia.org/ontology/eruption
 http://dbpedia.org/ontology/stateDelegate
@@ -332,9 +345,11 @@ http://dbpedia.org/ontology/tuition
 http://dbpedia.org/ontology/reffBourgmestre
 http://dbpedia.org/ontology/spokesperson
 http://dbpedia.org/ontology/passengersPerDay
+http://dbpedia.org/ontology/Planet/minimumTemperature
 http://dbpedia.org/ontology/alpsSupergroup
 http://dbpedia.org/ontology/assembly
 http://dbpedia.org/ontology/solicitorGeneral
+http://dbpedia.org/ontology/Planet/surfaceArea
 http://dbpedia.org/ontology/computingMedia
 http://dbpedia.org/ontology/distributor
 http://dbpedia.org/ontology/iso31661Code
@@ -351,10 +366,12 @@ http://dbpedia.org/ontology/fileExtension
 http://dbpedia.org/ontology/omim
 http://dbpedia.org/ontology/discharge
 http://dbpedia.org/ontology/numberOfVisitorsAsOf
+http://dbpedia.org/ontology/ChemicalSubstance/density
 http://dbpedia.org/ontology/currentLeague
 http://dbpedia.org/ontology/europeanChampionship
 http://dbpedia.org/ontology/conflict
 http://dbpedia.org/ontology/speaker
+http://dbpedia.org/ontology/Planet/apoapsis
 http://dbpedia.org/ontology/maxApparentMagnitude
 http://dbpedia.org/ontology/identifiedBy
 http://dbpedia.org/ontology/motto
@@ -389,6 +406,7 @@ http://dbpedia.org/ontology/australiaOpenMixed
 http://dbpedia.org/ontology/numberOfLiveAlbums
 http://dbpedia.org/ontology/awayColourHexCode
 http://dbpedia.org/ontology/worldTournamentGold
+http://dbpedia.org/ontology/Spacecraft/dockedTime
 http://dbpedia.org/ontology/majorityLeader
 http://dbpedia.org/ontology/winsAtMajors
 http://dbpedia.org/ontology/grayPage
@@ -420,6 +438,7 @@ http://dbpedia.org/ontology/licenceLetter
 http://dbpedia.org/ontology/vicePrincipalLabel
 http://dbpedia.org/ontology/managementCountry
 http://dbpedia.org/ontology/citizenship
+http://dbpedia.org/ontology/Weapon/diameter
 http://dbpedia.org/ontology/sportDiscipline
 http://dbpedia.org/ontology/coolingSystem
 http://dbpedia.org/ontology/europeanAffiliation
@@ -435,6 +454,7 @@ http://dbpedia.org/ontology/electionDateLeader
 http://dbpedia.org/ontology/demonym
 http://dbpedia.org/ontology/musicBy
 http://dbpedia.org/ontology/ccaState
+http://dbpedia.org/ontology/Drug/meltingPoint
 http://dbpedia.org/ontology/usurper
 http://dbpedia.org/ontology/lastFlightEndDate
 http://dbpedia.org/ontology/protestantPercentage
@@ -458,6 +478,7 @@ http://dbpedia.org/ontology/icaoAirlineCode
 http://dbpedia.org/ontology/citySince
 http://dbpedia.org/ontology/templeYear
 http://dbpedia.org/ontology/scottishName
+http://dbpedia.org/ontology/Galaxy/temperature
 http://dbpedia.org/ontology/isil
 http://dbpedia.org/ontology/part
 http://dbpedia.org/ontology/dubber
@@ -478,9 +499,11 @@ http://dbpedia.org/ontology/surfaceFormOccurrenceOffset
 http://dbpedia.org/ontology/notableFeatures
 http://dbpedia.org/ontology/lowestState
 http://dbpedia.org/ontology/associateEditor
+http://dbpedia.org/ontology/Astronaut/timeInSpace
 http://dbpedia.org/ontology/barPassRate
 http://dbpedia.org/ontology/penaltiesTeamA
 http://dbpedia.org/ontology/giniCoefficientAsOf
+http://dbpedia.org/ontology/Planet/mass
 http://dbpedia.org/ontology/head
 http://dbpedia.org/ontology/smallestCountry
 http://dbpedia.org/ontology/populationPctMen
@@ -510,6 +533,7 @@ http://dbpedia.org/ontology/wikiPageRevisionID
 http://dbpedia.org/ontology/supplies
 http://dbpedia.org/ontology/managingEditor
 http://dbpedia.org/ontology/countryWithFirstAstronaut
+http://dbpedia.org/ontology/Canal/originalMaximumBoatBeam
 http://dbpedia.org/ontology/episode
 http://dbpedia.org/ontology/populationUrban
 http://dbpedia.org/ontology/teamCoached
@@ -522,6 +546,7 @@ http://dbpedia.org/ontology/building
 http://dbpedia.org/ontology/nextMission
 http://dbpedia.org/ontology/hgncid
 http://dbpedia.org/ontology/geolocDepartment
+http://dbpedia.org/ontology/SpaceMission/lunarSurfaceTime
 http://dbpedia.org/ontology/priceMoney
 http://dbpedia.org/ontology/routeStart
 http://dbpedia.org/ontology/delegateMayor
@@ -540,11 +565,13 @@ http://dbpedia.org/ontology/musicComposer
 http://dbpedia.org/ontology/populationUrbanDensity
 http://dbpedia.org/ontology/teamPoint
 http://dbpedia.org/ontology/wikiPageLength
+http://dbpedia.org/ontology/GeopoliticalOrganisation/areaMetro
 http://dbpedia.org/ontology/icd10
 http://dbpedia.org/ontology/subsequentInfrastructure
 http://dbpedia.org/ontology/countryOrigin
 http://dbpedia.org/ontology/third
 http://dbpedia.org/ontology/nationalTeamYear
+http://dbpedia.org/ontology/PopulatedPlace/populationDensity
 http://dbpedia.org/ontology/tradeMark
 http://dbpedia.org/ontology/titleSingle
 http://dbpedia.org/ontology/availableSmartCard
@@ -616,6 +643,8 @@ http://dbpedia.org/ontology/leader
 http://dbpedia.org/ontology/coastLength
 http://dbpedia.org/ontology/mgiid
 http://dbpedia.org/ontology/highestState
+http://dbpedia.org/ontology/MeanOfTransportation/diameter
+http://dbpedia.org/ontology/Planet/meanTemperature
 http://dbpedia.org/ontology/background
 http://dbpedia.org/ontology/discovery
 http://dbpedia.org/ontology/numberOfPiersInWater
@@ -631,6 +660,7 @@ http://dbpedia.org/ontology/capitalCountry
 http://dbpedia.org/ontology/oldProvince
 http://dbpedia.org/ontology/orbitalFlights
 http://dbpedia.org/ontology/neighboringMunicipality
+http://dbpedia.org/ontology/PopulatedPlace/areaMetro
 http://dbpedia.org/ontology/intercommunality
 http://dbpedia.org/ontology/fundedBy
 http://dbpedia.org/ontology/riverBranch
@@ -647,6 +677,7 @@ http://dbpedia.org/ontology/victim
 http://dbpedia.org/ontology/format
 http://dbpedia.org/ontology/landRegistryCode
 http://dbpedia.org/ontology/games
+http://dbpedia.org/ontology/Canal/maximumBoatLength
 http://dbpedia.org/ontology/editing
 http://dbpedia.org/ontology/formerTeam
 http://dbpedia.org/ontology/mount
@@ -743,6 +774,7 @@ http://dbpedia.org/ontology/quebecerTitle
 http://dbpedia.org/ontology/settlementAttached
 http://dbpedia.org/ontology/episodeNumber
 http://dbpedia.org/ontology/world
+http://dbpedia.org/ontology/Galaxy/apoapsis
 http://dbpedia.org/ontology/filmAudioType
 http://dbpedia.org/ontology/militaryBranch
 http://dbpedia.org/ontology/qatarClassic
@@ -756,6 +788,7 @@ http://dbpedia.org/ontology/otherWins
 http://dbpedia.org/ontology/watershed
 http://dbpedia.org/ontology/highestPlace
 http://dbpedia.org/ontology/employer
+http://dbpedia.org/ontology/SpaceShuttle/timeInSpace
 http://dbpedia.org/ontology/noContest
 http://dbpedia.org/ontology/numberOfVineyards
 http://dbpedia.org/ontology/gnl
@@ -780,6 +813,7 @@ http://dbpedia.org/ontology/aircraftFighter
 http://dbpedia.org/ontology/foundationDate
 http://dbpedia.org/ontology/usedInWar
 http://dbpedia.org/ontology/giniCoefficientCategory
+http://dbpedia.org/ontology/Lake/volume
 http://dbpedia.org/ontology/buildingStartDate
 http://dbpedia.org/ontology/atPage
 http://dbpedia.org/ontology/selibrId
@@ -790,6 +824,7 @@ http://dbpedia.org/ontology/governmentPosition
 http://dbpedia.org/ontology/olympicGamesGold
 http://dbpedia.org/ontology/operator
 http://dbpedia.org/ontology/votesAgainst
+http://dbpedia.org/ontology/LunarCrater/diameter
 http://dbpedia.org/ontology/chromosome
 http://dbpedia.org/ontology/rating
 http://dbpedia.org/ontology/subClassis
@@ -822,6 +857,7 @@ http://dbpedia.org/ontology/principalArea
 http://dbpedia.org/ontology/director
 http://dbpedia.org/ontology/numberOfPlatformLevels
 http://dbpedia.org/ontology/digitalChannel
+http://dbpedia.org/ontology/Infrastructure/length
 http://dbpedia.org/ontology/contractor
 http://dbpedia.org/ontology/organ
 http://dbpedia.org/ontology/trainerClub
@@ -923,6 +959,7 @@ http://dbpedia.org/ontology/touaregSettlementName
 http://dbpedia.org/ontology/rival
 http://dbpedia.org/ontology/imposedDanseScore
 http://dbpedia.org/ontology/author
+http://dbpedia.org/ontology/Galaxy/orbitalPeriod
 http://dbpedia.org/ontology/aSide
 http://dbpedia.org/ontology/frozen
 http://dbpedia.org/ontology/starRating
@@ -946,6 +983,7 @@ http://dbpedia.org/ontology/beatifiedDate
 http://dbpedia.org/ontology/dateLastUpdated
 http://dbpedia.org/ontology/construction
 http://dbpedia.org/ontology/numberOfLawyers
+http://dbpedia.org/ontology/Automobile/wheelbase
 http://dbpedia.org/ontology/ra
 http://dbpedia.org/ontology/mostDownPoint
 http://dbpedia.org/ontology/numberOfVolunteers
@@ -972,8 +1010,11 @@ http://dbpedia.org/ontology/cornishName
 http://dbpedia.org/ontology/genus
 http://dbpedia.org/ontology/coastLine
 http://dbpedia.org/ontology/codeProvincialMonument
+http://dbpedia.org/ontology/SpaceMission/cmpEvaDuration
 http://dbpedia.org/ontology/heightAttack
 http://dbpedia.org/ontology/breeder
+http://dbpedia.org/ontology/MeanOfTransportation/height
+http://dbpedia.org/ontology/SpaceShuttle/distance
 http://dbpedia.org/ontology/bestFinish
 http://dbpedia.org/ontology/draft
 http://dbpedia.org/ontology/numberOfMinistries
@@ -1022,6 +1063,7 @@ http://dbpedia.org/ontology/upperAge
 http://dbpedia.org/ontology/orbitalEccentricity
 http://dbpedia.org/ontology/meshName
 http://dbpedia.org/ontology/numberOfLaps
+http://dbpedia.org/ontology/AutomobileEngine/acceleration
 http://dbpedia.org/ontology/significantBuilding
 http://dbpedia.org/ontology/timeshiftChannel
 http://dbpedia.org/ontology/placeOfWorship
@@ -1059,6 +1101,7 @@ http://dbpedia.org/ontology/firstDriverTeam
 http://dbpedia.org/ontology/functionStartYear
 http://dbpedia.org/ontology/numberOfStateDeputies
 http://dbpedia.org/ontology/clothSize
+http://dbpedia.org/ontology/AutomobileEngine/torqueOutput
 http://dbpedia.org/ontology/timeZone
 http://dbpedia.org/ontology/firstFlight
 http://dbpedia.org/ontology/electionMajority
@@ -1084,6 +1127,8 @@ http://dbpedia.org/ontology/start
 http://dbpedia.org/ontology/meaning
 http://dbpedia.org/ontology/basedOn
 http://dbpedia.org/ontology/numberOfLocations
+http://dbpedia.org/ontology/Planet/maximumTemperature
+http://dbpedia.org/ontology/SpaceMission/distanceTraveled
 http://dbpedia.org/ontology/frenchName
 http://dbpedia.org/ontology/assets
 http://dbpedia.org/ontology/lastPublicationDate
@@ -1095,11 +1140,13 @@ http://dbpedia.org/ontology/otherServingLines
 http://dbpedia.org/ontology/pistonStroke
 http://dbpedia.org/ontology/club
 http://dbpedia.org/ontology/growingGrape
+http://dbpedia.org/ontology/School/campusSize
 http://dbpedia.org/ontology/parish
 http://dbpedia.org/ontology/impactFactorAsOf
 http://dbpedia.org/ontology/closed
 http://dbpedia.org/ontology/fullCompetition
 http://dbpedia.org/ontology/numberOfCity
+http://dbpedia.org/ontology/GeopoliticalOrganisation/populationDensity
 http://dbpedia.org/ontology/material
 http://dbpedia.org/ontology/modelStartDate
 http://dbpedia.org/ontology/summerAppearances
@@ -1121,6 +1168,7 @@ http://dbpedia.org/ontology/numberOfMembersAsOf
 http://dbpedia.org/ontology/work
 http://dbpedia.org/ontology/amateurTeam
 http://dbpedia.org/ontology/boxerStyle
+http://dbpedia.org/ontology/Work/runtime
 http://dbpedia.org/ontology/occitanName
 http://dbpedia.org/ontology/broadcastRepeater
 http://dbpedia.org/ontology/flora
@@ -1150,8 +1198,10 @@ http://dbpedia.org/ontology/internationalPhonePrefix
 http://dbpedia.org/ontology/lchfDraft
 http://dbpedia.org/ontology/playingTime
 http://dbpedia.org/ontology/routeJunction
+http://dbpedia.org/ontology/SpaceMission/mass
 http://dbpedia.org/ontology/maximumElevation
 http://dbpedia.org/ontology/minimumArea
+http://dbpedia.org/ontology/AutomobileEngine/diameter
 http://dbpedia.org/ontology/previousEvent
 http://dbpedia.org/ontology/lccnId
 http://dbpedia.org/ontology/numberOfCompetitors
@@ -1160,6 +1210,7 @@ http://dbpedia.org/ontology/isPartOf
 http://dbpedia.org/ontology/originalLanguage
 http://dbpedia.org/ontology/poleDriverTeam
 http://dbpedia.org/ontology/lunarLandingSite
+http://dbpedia.org/ontology/Spacecraft/cargoFuel
 http://dbpedia.org/ontology/dateOfBurial
 http://dbpedia.org/ontology/openingTheme
 http://dbpedia.org/ontology/category
@@ -1181,6 +1232,7 @@ http://dbpedia.org/ontology/associate
 http://dbpedia.org/ontology/atcSuffix
 http://dbpedia.org/ontology/countySeat
 http://dbpedia.org/ontology/atcPrefix
+http://dbpedia.org/ontology/SpaceMission/stationVisitDuration
 http://dbpedia.org/ontology/closingFilm
 http://dbpedia.org/ontology/officialOpenedBy
 http://dbpedia.org/ontology/secretaryGeneral
@@ -1188,7 +1240,9 @@ http://dbpedia.org/ontology/bustSize
 http://dbpedia.org/ontology/longName
 http://dbpedia.org/ontology/locationCity
 http://dbpedia.org/ontology/firstAscentYear
+http://dbpedia.org/ontology/SpaceMission/lunarEvaTime
 http://dbpedia.org/ontology/greekName
+http://dbpedia.org/ontology/Spacecraft/totalCargo
 http://dbpedia.org/ontology/training
 http://dbpedia.org/ontology/organSystem
 http://dbpedia.org/ontology/composer
@@ -1197,10 +1251,12 @@ http://dbpedia.org/ontology/servingTemperature
 http://dbpedia.org/ontology/previousPopulationTotal
 http://dbpedia.org/ontology/owner
 http://dbpedia.org/ontology/museumType
+http://dbpedia.org/ontology/Galaxy/surfaceArea
 http://dbpedia.org/ontology/bestYearWsop
 http://dbpedia.org/ontology/capitalPosition
 http://dbpedia.org/ontology/podiums
 http://dbpedia.org/ontology/whaDraftTeam
+http://dbpedia.org/ontology/Spacecraft/port2DockedTime
 http://dbpedia.org/ontology/governingBody
 http://dbpedia.org/ontology/connectsReferencedTo
 http://dbpedia.org/ontology/activeYearsEndYear
@@ -1246,6 +1302,7 @@ http://dbpedia.org/ontology/agglomerationArea
 http://dbpedia.org/ontology/historicalRegion
 http://dbpedia.org/ontology/originalTitle
 http://dbpedia.org/ontology/projectEndDate
+http://dbpedia.org/ontology/Lake/areaOfCatchment
 http://dbpedia.org/ontology/wingspan
 http://dbpedia.org/ontology/pictureFormat
 http://dbpedia.org/ontology/decay
@@ -1279,12 +1336,14 @@ http://dbpedia.org/ontology/sisterCollege
 http://dbpedia.org/ontology/aircraftRecon
 http://dbpedia.org/ontology/meetingBuilding
 http://dbpedia.org/ontology/raceTrack
+http://dbpedia.org/ontology/AutomobileEngine/weight
 http://dbpedia.org/ontology/recordDate
 http://dbpedia.org/ontology/custodian
 http://dbpedia.org/ontology/bandMember
 http://dbpedia.org/ontology/hasAbsorbedMunicipality
 http://dbpedia.org/ontology/nonProfessionalCareer
 http://dbpedia.org/ontology/associatedRocket
+http://dbpedia.org/ontology/MeanOfTransportation/length
 http://dbpedia.org/ontology/rankingsSingles
 http://dbpedia.org/ontology/numberBuilt
 http://dbpedia.org/ontology/produces
@@ -1305,6 +1364,7 @@ http://dbpedia.org/ontology/shareSource
 http://dbpedia.org/ontology/winsAtChallenges
 http://dbpedia.org/ontology/duration
 http://dbpedia.org/ontology/elevatorCount
+http://dbpedia.org/ontology/Canal/maximumBoatBeam
 http://dbpedia.org/ontology/algerianName
 http://dbpedia.org/ontology/minimumInclination
 http://dbpedia.org/ontology/postalCode
@@ -1332,6 +1392,7 @@ http://dbpedia.org/ontology/network
 http://dbpedia.org/ontology/albumRuntime
 http://dbpedia.org/ontology/nationality
 http://dbpedia.org/ontology/licenceNumberLabel
+http://dbpedia.org/ontology/Spacecraft/dryCargo
 http://dbpedia.org/ontology/cylinderCount
 http://dbpedia.org/ontology/course
 http://dbpedia.org/ontology/wptTitle
@@ -1414,6 +1475,7 @@ http://dbpedia.org/ontology/missions
 http://dbpedia.org/ontology/heir
 http://dbpedia.org/ontology/maximumDepth
 http://dbpedia.org/ontology/foundingDate
+http://dbpedia.org/ontology/AutomobileEngine/length
 http://dbpedia.org/ontology/hand
 http://dbpedia.org/ontology/forces
 http://dbpedia.org/ontology/proYear
@@ -1424,6 +1486,7 @@ http://dbpedia.org/ontology/religiousHead
 http://dbpedia.org/ontology/peabodyAward
 http://dbpedia.org/ontology/alpsMainPart
 http://dbpedia.org/ontology/announcedFrom
+http://dbpedia.org/ontology/Lake/shoreLength
 http://dbpedia.org/ontology/numberOfAlbums
 http://dbpedia.org/ontology/sourceConfluence
 http://dbpedia.org/ontology/televisionSeries
@@ -1503,6 +1566,7 @@ http://dbpedia.org/ontology/yearElevationIntoNobility
 http://dbpedia.org/ontology/satellitesDeployed
 http://dbpedia.org/ontology/purchasingPowerParity
 http://dbpedia.org/ontology/heightAboveAverageTerrain
+http://dbpedia.org/ontology/MeanOfTransportation/width
 http://dbpedia.org/ontology/deathCause
 http://dbpedia.org/ontology/isoCodeRegion
 http://dbpedia.org/ontology/pubchem
@@ -1513,6 +1577,7 @@ http://dbpedia.org/ontology/managerYearsStartYear
 http://dbpedia.org/ontology/programmingLanguage
 http://dbpedia.org/ontology/installedCapacity
 http://dbpedia.org/ontology/editorTitle
+http://dbpedia.org/ontology/Planet/orbitalPeriod
 http://dbpedia.org/ontology/demolitionYear
 http://dbpedia.org/ontology/races
 http://dbpedia.org/ontology/numberOfIsland
@@ -1525,6 +1590,7 @@ http://dbpedia.org/ontology/riverBranchOf
 http://dbpedia.org/ontology/hasInput
 http://dbpedia.org/ontology/japanName
 http://dbpedia.org/ontology/spouseName
+http://dbpedia.org/ontology/Spacecraft/periapsis
 http://dbpedia.org/ontology/supplementalDraftRound
 http://dbpedia.org/ontology/firstAscent
 http://dbpedia.org/ontology/pictureDescription
@@ -1548,6 +1614,7 @@ http://dbpedia.org/ontology/winsAtSun
 http://dbpedia.org/ontology/unicode
 http://dbpedia.org/ontology/atcSupplemental
 http://dbpedia.org/ontology/jureLanguage
+http://dbpedia.org/ontology/Planet/temperature
 http://dbpedia.org/ontology/goldenRaspberryAward
 http://dbpedia.org/ontology/unitCost
 http://dbpedia.org/ontology/grandsire
@@ -1578,6 +1645,7 @@ http://dbpedia.org/ontology/twinCountry
 http://dbpedia.org/ontology/championInSingleMale
 http://dbpedia.org/ontology/floorCount
 http://dbpedia.org/ontology/largestMetro
+http://dbpedia.org/ontology/Rocket/lowerEarthOrbitPayload
 http://dbpedia.org/ontology/dressCode
 http://dbpedia.org/ontology/hsvCoordinateHue
 http://dbpedia.org/ontology/border
@@ -1613,11 +1681,13 @@ http://dbpedia.org/ontology/codeDistrict
 http://dbpedia.org/ontology/prefecture
 http://dbpedia.org/ontology/certificationDate
 http://dbpedia.org/ontology/aircraftHelicopterObservation
+http://dbpedia.org/ontology/Person/height
 http://dbpedia.org/ontology/moldavianName
 http://dbpedia.org/ontology/firstMention
 http://dbpedia.org/ontology/programmeFormat
 http://dbpedia.org/ontology/builder
 http://dbpedia.org/ontology/gaelicName
+http://dbpedia.org/ontology/AutomobileEngine/topSpeed
 http://dbpedia.org/ontology/provCode
 http://dbpedia.org/ontology/regency
 http://dbpedia.org/ontology/takePlace
@@ -1634,6 +1704,7 @@ http://dbpedia.org/ontology/fipsCode
 http://dbpedia.org/ontology/block
 http://dbpedia.org/ontology/launches
 http://dbpedia.org/ontology/musicians
+http://dbpedia.org/ontology/Planet/density
 http://dbpedia.org/ontology/wavelength
 http://dbpedia.org/ontology/australiaOpenDouble
 http://dbpedia.org/ontology/familyMember
@@ -1649,13 +1720,16 @@ http://dbpedia.org/ontology/fuelSystem
 http://dbpedia.org/ontology/diocese
 http://dbpedia.org/ontology/ladinName
 http://dbpedia.org/ontology/mayorTitle
+http://dbpedia.org/ontology/Planet/averageSpeed
 http://dbpedia.org/ontology/endPoint
 http://dbpedia.org/ontology/rankInFinalMedalCount
 http://dbpedia.org/ontology/sicilianName
 http://dbpedia.org/ontology/authorityMandate
+http://dbpedia.org/ontology/Galaxy/periapsis
 http://dbpedia.org/ontology/presentMunicipality
 http://dbpedia.org/ontology/sourceConfluencePosition
 http://dbpedia.org/ontology/debut
+http://dbpedia.org/ontology/SpaceMission/stationEvaDuration
 http://dbpedia.org/ontology/viafId
 http://dbpedia.org/ontology/dfE
 http://dbpedia.org/ontology/supply
@@ -1672,6 +1746,7 @@ http://dbpedia.org/ontology/commissioner
 http://dbpedia.org/ontology/atRowNumber
 http://dbpedia.org/ontology/numberOfIntercommunality
 http://dbpedia.org/ontology/waistSize
+http://dbpedia.org/ontology/Spacecraft/apoapsis
 http://dbpedia.org/ontology/poleDriverCountry
 http://dbpedia.org/ontology/circumcised
 http://dbpedia.org/ontology/chairman
@@ -1693,6 +1768,7 @@ http://dbpedia.org/ontology/size_v
 http://dbpedia.org/ontology/wikiPageInterLanguageLink
 http://dbpedia.org/ontology/nationalFilmAward
 http://dbpedia.org/ontology/votesFor
+http://dbpedia.org/ontology/Canal/originalMaximumBoatLength
 http://dbpedia.org/ontology/appointer
 http://dbpedia.org/ontology/spacewalkEnd
 http://dbpedia.org/ontology/supplementalDraftYear
@@ -1715,6 +1791,7 @@ http://dbpedia.org/ontology/winsAtOtherTournaments
 http://dbpedia.org/ontology/specialTrial
 http://dbpedia.org/ontology/projectParticipant
 http://dbpedia.org/ontology/linguisticsTradition
+http://dbpedia.org/ontology/Galaxy/maximumTemperature
 http://dbpedia.org/ontology/phonePrefixLabel
 http://dbpedia.org/ontology/mvp
 http://dbpedia.org/ontology/film
@@ -1746,6 +1823,7 @@ http://dbpedia.org/ontology/firstPublisher
 http://dbpedia.org/ontology/tattoo
 http://dbpedia.org/ontology/lieutenancyArea
 http://dbpedia.org/ontology/bpnId
+http://dbpedia.org/ontology/SpaceMission/missionDuration
 http://dbpedia.org/ontology/politicalFunction
 http://dbpedia.org/ontology/campus
 http://dbpedia.org/ontology/award
@@ -1755,6 +1833,7 @@ http://dbpedia.org/ontology/numberOfNeighbourhood
 http://dbpedia.org/ontology/landtag
 http://dbpedia.org/ontology/populationPctWomen
 http://dbpedia.org/ontology/mostPopulatedCountry
+http://dbpedia.org/ontology/Planet/meanRadius
 http://dbpedia.org/ontology/australiaOpenSingle
 http://dbpedia.org/ontology/isHandicappedAccessible
 http://dbpedia.org/ontology/formationYear
@@ -1793,6 +1872,8 @@ http://dbpedia.org/ontology/areaLand
 http://dbpedia.org/ontology/sourcePosition
 http://dbpedia.org/ontology/cableCar
 http://dbpedia.org/ontology/worstDefeat
+http://dbpedia.org/ontology/Galaxy/meanRadius
+http://dbpedia.org/ontology/AutomobileEngine/co2Emission
 http://dbpedia.org/ontology/academicAdvisor
 http://dbpedia.org/ontology/blazonRatio
 http://dbpedia.org/ontology/powerType
@@ -1811,6 +1892,7 @@ http://dbpedia.org/ontology/functionEndDate
 http://dbpedia.org/ontology/currentStatus
 http://dbpedia.org/ontology/fight
 http://dbpedia.org/ontology/chiefEditor
+http://dbpedia.org/ontology/Stream/watershed
 http://dbpedia.org/ontology/declination
 http://dbpedia.org/ontology/nerve
 http://dbpedia.org/ontology/eTeatrId
@@ -1868,6 +1950,7 @@ http://dbpedia.org/ontology/commonName
 http://dbpedia.org/ontology/youthYears
 http://dbpedia.org/ontology/lowestMountain
 http://dbpedia.org/ontology/voiceType
+http://dbpedia.org/ontology/Spacecraft/totalMass
 http://dbpedia.org/ontology/period
 http://dbpedia.org/ontology/maxAbsoluteMagnitude
 http://dbpedia.org/ontology/settlement
@@ -1878,6 +1961,7 @@ http://dbpedia.org/ontology/leaderParty
 http://dbpedia.org/ontology/lessPopulatedCountry
 http://dbpedia.org/ontology/zdb
 http://dbpedia.org/ontology/highschool
+http://dbpedia.org/ontology/GrandPrix/course
 http://dbpedia.org/ontology/footedness
 http://dbpedia.org/ontology/officialLanguage
 http://dbpedia.org/ontology/previousPopulation
@@ -1890,6 +1974,7 @@ http://dbpedia.org/ontology/gameArtist
 http://dbpedia.org/ontology/thirdDriver
 http://dbpedia.org/ontology/boilerPressure
 http://dbpedia.org/ontology/affiliation
+http://dbpedia.org/ontology/Spacecraft/cargoWater
 http://dbpedia.org/ontology/wilaya
 http://dbpedia.org/ontology/status
 http://dbpedia.org/ontology/typeOfYeast
@@ -1955,6 +2040,7 @@ http://dbpedia.org/ontology/notableWine
 http://dbpedia.org/ontology/origo
 http://dbpedia.org/ontology/longDistancePisteNumber
 http://dbpedia.org/ontology/startWct
+http://dbpedia.org/ontology/Stream/discharge
 http://dbpedia.org/ontology/added
 http://dbpedia.org/ontology/soccerTournamentThisSeason
 http://dbpedia.org/ontology/board
@@ -1972,6 +2058,7 @@ http://dbpedia.org/ontology/existence
 http://dbpedia.org/ontology/numberOfParticipatingFemaleAthletes
 http://dbpedia.org/ontology/topFloorHeight
 http://dbpedia.org/ontology/domain
+http://dbpedia.org/ontology/GrandPrix/distance
 http://dbpedia.org/ontology/skiPisteKilometre
 http://dbpedia.org/ontology/codeSettlement
 http://dbpedia.org/ontology/railwayRollingStock
@@ -2071,14 +2158,17 @@ http://dbpedia.org/ontology/proTeam
 http://dbpedia.org/ontology/circuitLength
 http://dbpedia.org/ontology/kabyleName
 http://dbpedia.org/ontology/casualties
+http://dbpedia.org/ontology/Galaxy/minimumTemperature
 http://dbpedia.org/ontology/tie
 http://dbpedia.org/ontology/programCost
 http://dbpedia.org/ontology/trackLength
 http://dbpedia.org/ontology/mouthState
 http://dbpedia.org/ontology/otherMedia
+http://dbpedia.org/ontology/Galaxy/meanTemperature
 http://dbpedia.org/ontology/operatedBy
 http://dbpedia.org/ontology/administrativeHeadCity
 http://dbpedia.org/ontology/project
+http://dbpedia.org/ontology/Weapon/length
 http://dbpedia.org/ontology/goyaAward
 http://dbpedia.org/ontology/seiyu
 http://dbpedia.org/ontology/productionEndDate
@@ -2089,6 +2179,7 @@ http://dbpedia.org/ontology/comment
 http://dbpedia.org/ontology/otherChannel
 http://dbpedia.org/ontology/publisher
 http://dbpedia.org/ontology/creativeDirector
+http://dbpedia.org/ontology/SpaceMission/lunarSampleMass
 http://dbpedia.org/ontology/unloCode
 http://dbpedia.org/ontology/worldTournamentBronze
 http://dbpedia.org/ontology/center
@@ -2110,6 +2201,7 @@ http://dbpedia.org/ontology/college
 http://dbpedia.org/ontology/managerSeason
 http://dbpedia.org/ontology/populationMetro
 http://dbpedia.org/ontology/endYearOfInsertion
+http://dbpedia.org/ontology/Weapon/weight
 http://dbpedia.org/ontology/belgiumMergedSettlement
 http://dbpedia.org/ontology/notableCommander
 http://dbpedia.org/ontology/okatoCode
@@ -2136,6 +2228,7 @@ http://dbpedia.org/ontology/sizeLogo
 http://dbpedia.org/ontology/namedAfter
 http://dbpedia.org/ontology/federalState
 http://dbpedia.org/ontology/wholeArea
+http://dbpedia.org/ontology/Weapon/width
 http://dbpedia.org/ontology/winsAtSenEuro
 http://dbpedia.org/ontology/laurenceOlivierAward
 http://dbpedia.org/ontology/usOpenSingle
@@ -2162,6 +2255,7 @@ http://dbpedia.org/ontology/numberOfLines
 http://dbpedia.org/ontology/bSide
 http://dbpedia.org/ontology/maximumDepthQuote
 http://dbpedia.org/ontology/activeYear
+http://dbpedia.org/ontology/Spacecraft/freeFlightTime
 http://dbpedia.org/ontology/army
 http://dbpedia.org/ontology/prefaceBy
 http://dbpedia.org/ontology/chaouiName
@@ -2206,6 +2300,7 @@ http://dbpedia.org/ontology/proPeriod
 http://dbpedia.org/ontology/fuelCapacity
 http://dbpedia.org/ontology/callsignMeaning
 http://dbpedia.org/ontology/currentRank
+http://dbpedia.org/ontology/Spacecraft/cargoGas
 http://dbpedia.org/ontology/regionalLanguage
 http://dbpedia.org/ontology/buildingType
 http://dbpedia.org/ontology/allcinemaId
@@ -2214,6 +2309,7 @@ http://dbpedia.org/ontology/numberOfSuites
 http://dbpedia.org/ontology/fullScore
 http://dbpedia.org/ontology/licensee
 http://dbpedia.org/ontology/computingInput
+http://dbpedia.org/ontology/AutomobileEngine/width
 http://dbpedia.org/ontology/fibahof
 http://dbpedia.org/ontology/zipCode
 http://dbpedia.org/ontology/managementMountain
@@ -2221,6 +2317,7 @@ http://dbpedia.org/ontology/series
 http://dbpedia.org/ontology/codeNationalMonument
 http://dbpedia.org/ontology/formerHighschool
 http://dbpedia.org/ontology/mission
+http://dbpedia.org/ontology/AutomobileEngine/powerOutput
 http://dbpedia.org/ontology/creationYear
 http://dbpedia.org/ontology/wikiPageModified
 http://dbpedia.org/ontology/powerOutput
@@ -2234,6 +2331,7 @@ http://dbpedia.org/ontology/nationalSelection
 http://dbpedia.org/ontology/sourceRegion
 http://dbpedia.org/ontology/enshrinedDeity
 http://dbpedia.org/ontology/ngcName
+http://dbpedia.org/ontology/AutomobileEngine/cylinderBore
 http://dbpedia.org/ontology/numberOfPads
 http://dbpedia.org/ontology/numberOfMatches
 http://dbpedia.org/ontology/rgbCoordinateRed
@@ -2262,6 +2360,7 @@ http://dbpedia.org/ontology/aircraftHelicopterUtility
 http://dbpedia.org/ontology/carcinogen
 http://dbpedia.org/ontology/belgiumPoliticalSeats
 http://dbpedia.org/ontology/automobilePlatform
+http://dbpedia.org/ontology/Stream/minimumDischarge
 http://dbpedia.org/ontology/deliveryDate
 http://dbpedia.org/ontology/frenchNickname
 http://dbpedia.org/ontology/related
@@ -2373,6 +2472,7 @@ http://dbpedia.org/ontology/musicalArtist
 http://dbpedia.org/ontology/terytCode
 http://dbpedia.org/ontology/choreographer
 http://dbpedia.org/ontology/command
+http://dbpedia.org/ontology/PopulatedPlace/populationUrbanDensity
 http://dbpedia.org/ontology/cmykCoordinateBlack
 http://dbpedia.org/ontology/complexion
 http://dbpedia.org/ontology/producedBy
@@ -2407,6 +2507,7 @@ http://dbpedia.org/ontology/battingSide
 http://dbpedia.org/ontology/bicycleInformation
 http://dbpedia.org/ontology/adjacentSettlement
 http://dbpedia.org/ontology/birthPlace
+http://dbpedia.org/ontology/Building/floorArea
 http://dbpedia.org/ontology/gender
 http://dbpedia.org/ontology/dist_ly
 http://dbpedia.org/ontology/subsystem
@@ -2433,6 +2534,7 @@ http://dbpedia.org/ontology/filmRuntime
 http://dbpedia.org/ontology/actScore
 http://dbpedia.org/ontology/mainFamilyBranch
 http://dbpedia.org/ontology/coalition
+http://dbpedia.org/ontology/AutomobileEngine/pistonStroke
 http://dbpedia.org/ontology/maximumBoatLength
 http://dbpedia.org/ontology/notifyDate
 http://dbpedia.org/ontology/callSign
@@ -2576,6 +2678,7 @@ http://dbpedia.org/ontology/refgeo
 http://dbpedia.org/ontology/architect
 http://dbpedia.org/ontology/authorityTitle
 http://dbpedia.org/ontology/finalLost
+http://dbpedia.org/ontology/Planet/periapsis
 http://dbpedia.org/ontology/catholicPercentage
 http://dbpedia.org/ontology/dateClosed
 http://dbpedia.org/ontology/primate
@@ -2590,9 +2693,11 @@ http://dbpedia.org/ontology/instrument
 http://dbpedia.org/ontology/leftTributary
 http://dbpedia.org/ontology/millsCodeBE
 http://dbpedia.org/ontology/sourceConfluencePlace
+http://dbpedia.org/ontology/Stream/maximumDischarge
 http://dbpedia.org/ontology/firstWin
 http://dbpedia.org/ontology/flagCaption
 http://dbpedia.org/ontology/outflow
+http://dbpedia.org/ontology/Galaxy/mass
 http://dbpedia.org/ontology/achievement
 http://dbpedia.org/ontology/bibsysId
 http://dbpedia.org/ontology/analogChannel

@@ -7,6 +7,7 @@
 * git
 * wget
 * bzip2
+* unzip
 
 ## Checking out the repository and configuring your local machine
 ```

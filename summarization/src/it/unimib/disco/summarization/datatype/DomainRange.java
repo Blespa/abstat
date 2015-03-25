@@ -37,6 +37,4 @@ public class DomainRange {
 	public void setPropertyType(String URIProperty, String propertyType) {
 		getPropertyType().put(URIProperty, propertyType);
 	}
-
-
 }

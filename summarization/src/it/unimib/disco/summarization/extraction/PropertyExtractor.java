@@ -2,11 +2,17 @@ package it.unimib.disco.summarization.extraction;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntProperty;
+import com.hp.hpl.jena.rdf.model.Property;
+import com.hp.hpl.jena.rdf.model.SimpleSelector;
+import com.hp.hpl.jena.rdf.model.Statement;
+import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.util.iterator.ExtendedIterator;
+import com.hp.hpl.jena.vocabulary.RDFS;
 
 /**
  * ConceptExtractor: Extract Property Defined inside Ontology
@@ -20,26 +26,45 @@ public class PropertyExtractor {
 
 	public void setProperty(OntModel ontologyModel) {
 		
-		//Get Property from Model
+		enrichWithImplicitPropertyDeclarations(ontologyModel);
 		ExtendedIterator<OntProperty> TempExtractedPropery = ontologyModel.listAllOntProperties();
-		
-		//Save Useful Info About Property
 		while(TempExtractedPropery.hasNext()) {
 			OntProperty property = TempExtractedPropery.next();
-			String URI = property.getURI();
-
-			if( URI!=null ){
-				ExtractedProperty.add(property);
-				Property.put(URI,property.getLocalName());
-				//Count direct presence
-				HashMap<String,Integer> count = new HashMap<String,Integer>();
-				count.put("Direct",1);
-				getCounter().put(URI,count);
-			}
+			add(property);
 		}
 		
 		TempExtractedPropery.close();
-		
+	}
+
+	private void enrichWithImplicitPropertyDeclarations(OntModel ontologyModel) {
+		StmtIterator domainStatements = ontologyModel.listStatements(new SimpleSelector(){
+			@Override
+			public boolean selects(Statement s) {
+				Property predicate = s.getPredicate();
+				return predicate.equals(RDFS.domain) || predicate.equals(RDFS.range);
+			}
+		});
+		HashSet<String> implicitProperties = new HashSet<String>();
+		while(domainStatements.hasNext()){
+			implicitProperties.add(domainStatements.next().getSubject().getURI());
+		}
+		domainStatements.close();
+		for(String property : implicitProperties){
+			ontologyModel.createOntProperty(property);
+		}
+	}
+
+	private void add(OntProperty property) {
+		String URI = property.getURI();
+
+		if( URI!=null ){
+			ExtractedProperty.add(property);
+			Property.put(URI,property.getLocalName());
+			//Count direct presence
+			HashMap<String,Integer> count = new HashMap<String,Integer>();
+			count.put("Direct",1);
+			getCounter().put(URI,count);
+		}
 	}
 	
 	public List<OntProperty> getExtractedProperty() {

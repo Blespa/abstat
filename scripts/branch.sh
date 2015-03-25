@@ -35,6 +35,7 @@ case $action in
 		git checkout $target_branch
 		git pull
 		git merge --no-ff $source_branch
+		scripts/test-summarization-pipeline.sh
 		git push
 		;;
 esac

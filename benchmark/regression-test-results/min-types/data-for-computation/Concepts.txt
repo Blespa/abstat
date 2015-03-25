@@ -113,8 +113,8 @@ http://dbpedia.org/ontology/Treadmill
 http://dbpedia.org/ontology/Statistic
 http://dbpedia.org/ontology/Archeologist
 http://dbpedia.org/ontology/Plant
-http://dbpedia.org/datatype/newtonMetre
 http://dbpedia.org/ontology/FieldHockeyLeague
+http://dbpedia.org/datatype/newtonMetre
 http://dbpedia.org/ontology/SoccerTournament
 http://dbpedia.org/ontology/MountainRange
 http://dbpedia.org/ontology/MilitaryUnit
@@ -287,8 +287,8 @@ http://dbpedia.org/ontology/Surname
 http://dbpedia.org/ontology/BroadcastNetwork
 http://dbpedia.org/ontology/Painter
 http://dbpedia.org/ontology/President
-http://dbpedia.org/ontology/Lawyer
 http://www.w3.org/2001/XMLSchema#gYearMonth
+http://dbpedia.org/ontology/Lawyer
 http://dbpedia.org/datatype/fuelType
 http://dbpedia.org/ontology/BoxingStyle
 http://dbpedia.org/ontology/HistoricalPeriod
@@ -347,8 +347,8 @@ http://dbpedia.org/ontology/Disease
 http://dbpedia.org/ontology/PopulatedPlace
 http://dbpedia.org/ontology/PaintballLeague
 http://dbpedia.org/ontology/AnatomicalStructure
-http://dbpedia.org/datatype/litre
 http://dbpedia.org/ontology/MeanOfTransportation
+http://dbpedia.org/datatype/litre
 http://dbpedia.org/ontology/Glacier
 http://dbpedia.org/ontology/Game
 http://dbpedia.org/ontology/Winery
@@ -462,8 +462,8 @@ http://dbpedia.org/ontology/Cricketer
 http://dbpedia.org/ontology/VicePrimeMinister
 http://dbpedia.org/ontology/Station
 http://dbpedia.org/ontology/AcademicJournal
-http://dbpedia.org/ontology/Presenter
 http://dbpedia.org/ontology/ArchitecturalStructure,_Monument
+http://dbpedia.org/ontology/Presenter
 http://dbpedia.org/ontology/Bird
 http://www.w3.org/2004/02/skos/core#Concept
 http://dbpedia.org/ontology/FictionalCharacter
@@ -603,9 +603,9 @@ http://dbpedia.org/ontology/Work
 http://dbpedia.org/ontology/Town
 http://dbpedia.org/ontology/GaelicGamesPlayer
 http://dbpedia.org/ontology/Project
-http://dbpedia.org/datatype/centimetre
 http://dbpedia.org/ontology/Boxing
 http://dbpedia.org/ontology/CyclingLeague
+http://dbpedia.org/datatype/centimetre
 http://dbpedia.org/ontology/VoiceActor
 http://dbpedia.org/ontology/Food
 http://dbpedia.org/ontology/Lock
@@ -641,8 +641,8 @@ http://dbpedia.org/ontology/SambaSchool
 http://dbpedia.org/ontology/Swimmer
 http://dbpedia.org/ontology/SportsEvent
 http://dbpedia.org/ontology/Economist
-http://dbpedia.org/ontology/OverseasDepartment
 http://dbpedia.org/ontology/Diocese,_Parish
+http://dbpedia.org/ontology/OverseasDepartment
 http://dbpedia.org/ontology/UnitOfWork
 http://dbpedia.org/ontology/PlayWright
 http://dbpedia.org/ontology/FormulaOneTeam

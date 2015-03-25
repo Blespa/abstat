@@ -54,16 +54,20 @@ function as_absolute(){
 function assert_application_is_up(){
 
 	port=$1
+	page=$2
+	expected_response=$3
+
+	url="localhost:$port/$page"
 
 	highlight_color='\e[0;31m'
 	message='KO'
 
-	if [[ $(curl --silent "localhost:$port/alive" | grep "OK") ]]
+	if [[ $(curl --silent $url | grep "$expected_response") ]]
 	then
 		highlight_color='\e[0;32m'
 		message="OK"
 	fi
-	echo -e "checking that web ui is up: ${highlight_color}${message}\e[0m"
+	echo -e "checking that $url is up: ${highlight_color}${message}\e[0m"
 }
 
 set -e
@@ -138,11 +142,20 @@ assert_results_are_present_in_virtuoso
 echo
 
 echo "integration testing of the web interface module"
-port=8887
+ui_port=8887
 ./build-java-ui-module.sh
-./java-ui-development.sh start $port
+./java-ui-development.sh start $ui_port
 sleep 1
-assert_application_is_up $port
-./java-ui-development.sh stop $port
+assert_application_is_up $ui_port
+./java-ui-development.sh stop $ui_port
+
+echo "integration testing of the solr module"
+echo
+
+solr_port=8886
+./solr.sh start $solr_port
+assert_application_is_up $solr_port solr/ "Solr Admin"
+./solr.sh stop $solr_port
+
 echo
 

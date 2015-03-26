@@ -1,6 +1,7 @@
 package it.unimib.disco.summarization.utility;
 
 import it.unimib.disco.summarization.datatype.Concept;
+import it.unimib.disco.summarization.starter.Events;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -22,42 +23,54 @@ import org.jgraph.graph.DefaultEdge;
 import org.jgrapht.DirectedGraph;
 import org.jgrapht.graph.DefaultDirectedGraph;
 
-//TODO: Rivedere e sistemare perchè può essere ottimizzato ( se serve ), ma sicuramente evitate alcune strutture
-
 public class ComputeLongestPathHierarchy {
 
 	DirectedGraph<String, DefaultEdge> completeGraph = new DefaultDirectedGraph<String, DefaultEdge>(DefaultEdge.class);
 	HashMap<String,DirectedGraph<String, DefaultEdge>> longestPathHierarchy = new HashMap<String,DirectedGraph<String, DefaultEdge>>();
 	HashMap<String,ArrayList<String>> longestPathLeef = new HashMap<String,ArrayList<String>>();
-	private ArrayList<String> listOfConcept = new ArrayList<String>();
-	ArrayList<String> listOfRoot = new ArrayList<String>();
-	ArrayList<String> listOfLeef = new ArrayList<String>();
-	ArrayList<String> listOfSubClassREl = new ArrayList<String>();
-	int numOfConcept = 0;
-	//int[][] adiacMatrix;
+	
+	HashSet<String> listOfConcept = new HashSet<String>();
+	HashSet<String> roots = new HashSet<String>();
+	HashSet<String> leaves = new HashSet<String>();
+	HashSet<String> subClassRelations = new HashSet<String>();
+	
 	String subClassOfFile;
-	Set<String> Concepts;
-	private Stack<String> path  = new Stack<String>();   // the current path
-    private Set<String> onPath  = new TreeSet<String>();     // the set of vertices on the path
+	
+	HashSet<String> concepts;
+	
+	Stack<String> path  = new Stack<String>();   // the current path
+    Set<String> onPath  = new TreeSet<String>();     // the set of vertices on the path
 
 	public ComputeLongestPathHierarchy(Concept Concepts, String subClassOfFile) {
 		this.subClassOfFile=subClassOfFile;
-		this.Concepts=cloneSet(Concepts.getConcepts().keySet());
+		this.concepts=cloneSet(Concepts.getConcepts().keySet());
 	}
 	
-	public void computeLonghestPathHierarchy(String file, String fileAllSubConcept){
+	public void computeLonghestPathHierarchy(String file){
+		//Assume che non vi siano cicli, come dovrebbe essere per le ontologie
 		
-		//Assume che non vi siano cicli, com'� per le ontologie
+		new Events().info("Computing the longest path for " + concepts.size() + " concepts");
 		
-		getListOfConcept(subClassOfFile,Concepts);
-		listOfRoot = cloneList(getListOfConcept()); //Inizialmente assumo che tutti i concetti siano radici
-		listOfLeef = cloneList(getListOfConcept()); //Inizialmente assumo che tutti i concetti siano foglie
+		buildConceptList(subClassOfFile, concepts);
+		
+		new Events().info("got the list of concepts");
+		
+		roots = cloneSet(listOfConcept); //Inizialmente assumo che tutti i concetti siano radici
+		leaves = cloneSet(listOfConcept); //Inizialmente assumo che tutti i concetti siano foglie
+		
+		new Events().info("cloned the data structures");
+		
 		computeGraph();
 		
-		//Calcolo tutti i percorsi pi� lunghi tra i concetti nella gerarchia
+		new Events().info("computed the graph");
+		
+		//Calcolo tutti i percorsi piu lunghi tra i concetti nella gerarchia
 
-		Iterator<String> rootClasses = listOfRoot.iterator();
+		Iterator<String> rootClasses = roots.iterator();
 
+		new Events().info("Roots: " + roots.size());
+		new Events().info("Leaves: " + leaves.size());
+		
 		while(rootClasses.hasNext()){
 			
 			String curRoot = rootClasses.next();
@@ -166,7 +179,7 @@ public class ComputeLongestPathHierarchy {
 			
 		}
 		
-		Iterator<String> hierFromRoot = listOfRoot.iterator();
+		Iterator<String> hierFromRoot = roots.iterator();
 		
 		try{
 			// Create file 
@@ -199,9 +212,8 @@ public class ComputeLongestPathHierarchy {
 
 	}
 
-	private ArrayList<String> getListOfConcept(String subClassOfFile, Set<String> Concepts){
+	private void buildConceptList(String subClassOfFile, HashSet<String> concepts){
 		
-		//Leggo le relazioni di sottoclasse
 		try{
 			// Open the file that is the first 
 			// command line parameter
@@ -213,6 +225,8 @@ public class ComputeLongestPathHierarchy {
 			//Read File Line By Line
 			while ((strLine = br.readLine()) != null)   {
 				
+				new Events().info("processing " + strLine);
+				
 				//Memorizzo i concetti
 				String[] subObj = strLine.split("##");
 				
@@ -220,55 +234,32 @@ public class ComputeLongestPathHierarchy {
 				String object = subObj[1];
 				
 				//Rimuovo dai concetti questi trovati, se presenti
-				if(Concepts.contains(subject))
-					Concepts.remove(subject);
+				concepts.remove(subject);
+				concepts.remove(object);
 				
-				if(Concepts.contains(object))
-					Concepts.remove(object);
-				
-				if(!listOfConcept.contains(subject)){
-					listOfConcept.add(subject);
-					numOfConcept++;
-				}
-				
-				if(!listOfConcept.contains(object)){
-					listOfConcept.add(object);
-					numOfConcept++;
-				}
-				
-				listOfSubClassREl.add(strLine);
-				
+				listOfConcept.add(subject);
+				listOfConcept.add(object);
+				subClassRelations.add(strLine);
 			}
-			//Close the input stream
+			
 			in.close();
-		}catch (Exception e){//Catch exception if any
-			System.err.println("Error: " + e.getMessage());
+		}catch (Exception e){
+			new Events().error("Error processing creating the list of known concepts", e);
 		}
 		
 		//Aggiungo eventuali concetti non in relazione di sottoclasse
-		if(!Concepts.isEmpty()){
-			
-			Iterator<String> listConcetti = Concepts.iterator();
-			
+		if(!concepts.isEmpty()){
+			Iterator<String> listConcetti = concepts.iterator();
 			while(listConcetti.hasNext()){
-				
-				String conc = listConcetti.next();
-				listOfConcept.add(conc);
-				numOfConcept++;
+				listOfConcept.add(listConcetti.next());
 			}
-			
 		}
-		
-		return null;
-		
 	}
 	
 
 	private void computeGraph(){
 
-		//adiacMatrix = new int[numOfConcept][numOfConcept];
-
-		Iterator<String> subClRel = listOfSubClassREl.iterator();
+		Iterator<String> subClRel = subClassRelations.iterator();
 
 		while(subClRel.hasNext()){
 			String Rel = subClRel.next();
@@ -286,39 +277,31 @@ public class ComputeLongestPathHierarchy {
 			completeGraph.addEdge(object, subject);
 			
 			//Rimuovo la classe sulla colonna (subject) dalle radici (E' sottoclasse di almeno una classe)
-			listOfRoot.remove(subject);		
+			roots.remove(subject);		
 			
 			//Rimuovo la classe sulla riga (object) dalle foglie (Ha almeno una sottoclasse)
-			listOfLeef.remove(object);		
+			leaves.remove(object);		
 		}
 		
 		//Aggiungo eventuali concetti non in relazione di sottoclasse al grafo
-		if(!Concepts.isEmpty()){
+		if(!concepts.isEmpty()){
 
-			Iterator<String> listConcetti = Concepts.iterator();
+			Iterator<String> listConcetti = concepts.iterator();
 
 			while(listConcetti.hasNext()){
 
 				String conc = listConcetti.next();
 				completeGraph.addVertex(conc);
 				//Rimuovo la classe sulla riga (object) dalle foglie (E' una radice perch� non presente nella gerarchia)
-				listOfLeef.remove(conc);	
+				leaves.remove(conc);	
 			}
 
 		}
 
 	}
 	
-	public static ArrayList<String> cloneList(ArrayList<String> List) {
-		ArrayList<String> clonedList = new ArrayList<String>(List.size());
-	    for (String conc : List) {
-	        clonedList.add(new String(conc));
-	    }
-	    return clonedList;
-	}
-	
-	public static Set<String> cloneSet(Set<String> Set) {
-		Set<String> clonedSet = new HashSet<String>(Set.size());
+	private HashSet<String> cloneSet(Set<String> Set) {
+		HashSet<String> clonedSet = new HashSet<String>(Set.size());
 	    for (String conc : Set) {
 	        clonedSet.add(new String(conc));
 	    }
@@ -355,13 +338,4 @@ public class ComputeLongestPathHierarchy {
         path.pop();
         onPath.remove(v);
     }
-
-	public ArrayList<String> getListOfConcept() {
-		return listOfConcept;
-	}
-
-	public void setListOfConcept(ArrayList<String> listOfConcept) {
-		this.listOfConcept = listOfConcept;
-	}
-
 }

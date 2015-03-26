@@ -102,9 +102,9 @@ http://dbpedia.org/ontology/FilmFestival
 http://dbpedia.org/ontology/Painting
 http://dbpedia.org/ontology/AutoRacingLeague
 http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity
+http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description
 http://dbpedia.org/ontology/SoccerClub
 http://dbpedia.org/ontology/CurlingLeague
-http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description
 http://dbpedia.org/ontology/HorseRider
 http://dbpedia.org/ontology/GeopoliticalOrganisation
 http://dbpedia.org/ontology/TelevisionShow
@@ -214,11 +214,11 @@ http://dbpedia.org/ontology/HorseTrainer
 http://dbpedia.org/ontology/HollywoodCartoon
 http://dbpedia.org/ontology/Motorcycle
 http://dbpedia.org/ontology/Cardinal
-http://dbpedia.org/ontology/Monarch
 http://schema.org/MusicGroup
+http://dbpedia.org/ontology/Monarch
 http://dbpedia.org/ontology/FormulaOneRacer
-http://dbpedia.org/ontology/Flag
 http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalBody
+http://dbpedia.org/ontology/Flag
 http://dbpedia.org/ontology/OfficeHolder
 http://dbpedia.org/ontology/Casino
 http://dbpedia.org/ontology/Camera
@@ -241,8 +241,8 @@ http://dbpedia.org/ontology/Non-ProfitOrganisation
 http://dbpedia.org/ontology/SiteOfSpecialScientificInterest
 http://dbpedia.org/ontology/Journalist
 http://dbpedia.org/ontology/SkiResort
-http://dbpedia.org/ontology/Square
 http://dbpedia.org/ontology/
+http://dbpedia.org/ontology/Square
 http://dbpedia.org/ontology/RugbyLeague
 http://dbpedia.org/datatype/kilometrePerHour
 http://dbpedia.org/ontology/LightNovel
@@ -275,8 +275,8 @@ http://dbpedia.org/ontology/RomaniaSettlement
 http://dbpedia.org/ontology/River
 http://dbpedia.org/ontology/Enzyme
 http://dbpedia.org/ontology/Venue
-http://dbpedia.org/ontology/Senator
 http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity
+http://dbpedia.org/ontology/Senator
 http://dbpedia.org/ontology/RadioHost
 http://dbpedia.org/ontology/EurovisionSongContestEntry
 http://dbpedia.org/ontology/Family
@@ -392,8 +392,8 @@ http://dbpedia.org/ontology/GovernmentType
 http://dbpedia.org/ontology/ArtistDiscography
 http://dbpedia.org/ontology/Broadcaster
 http://dbpedia.org/ontology/SoftballLeague
-http://dbpedia.org/ontology/Mosque
 http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#BiologicalObject
+http://dbpedia.org/ontology/Mosque
 http://dbpedia.org/ontology/Continent
 http://dbpedia.org/ontology/LegalCase
 http://dbpedia.org/ontology/Mayor
@@ -406,8 +406,8 @@ http://dbpedia.org/ontology/Planet
 http://dbpedia.org/ontology/Holiday
 http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson
 http://dbpedia.org/ontology/Windmill
-http://dbpedia.org/ontology/Diocese
 http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Quality
+http://dbpedia.org/ontology/Diocese
 http://dbpedia.org/ontology/Cleric
 http://dbpedia.org/datatype/kilogram
 http://dbpedia.org/ontology/Prefecture
@@ -512,8 +512,8 @@ http://dbpedia.org/ontology/TimePeriod
 http://dbpedia.org/ontology/GridironFootballPlayer
 http://dbpedia.org/ontology/Device
 http://dbpedia.org/ontology/Bodybuilder
-http://dbpedia.org/ontology/Gene
 http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity
+http://dbpedia.org/ontology/Gene
 http://dbpedia.org/ontology/Cycad
 http://dbpedia.org/ontology/ClericalOrder
 http://dbpedia.org/ontology/BaseballLeague
@@ -557,8 +557,8 @@ http://dbpedia.org/datatype/kilowatt
 http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson
 http://dbpedia.org/ontology/Award
 http://dbpedia.org/ontology/Infrastructure
-http://dbpedia.org/ontology/BoxingCategory
 http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collective
+http://dbpedia.org/ontology/BoxingCategory
 http://dbpedia.org/ontology/HorseRace
 http://dbpedia.org/ontology/BasketballLeague
 http://dbpedia.org/ontology/Sound
@@ -634,8 +634,8 @@ http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Role
 http://dbpedia.org/ontology/SystemOfLaw
 http://dbpedia.org/ontology/OldTerritory
 http://dbpedia.org/ontology/Ship
-http://dbpedia.org/ontology/RailwayTunnel
 http://dbpedia.org/ontology/Company
+http://dbpedia.org/ontology/RailwayTunnel
 http://dbpedia.org/ontology/FloweringPlant
 http://dbpedia.org/ontology/SambaSchool
 http://dbpedia.org/ontology/Swimmer
@@ -694,8 +694,8 @@ http://dbpedia.org/ontology/GolfCourse
 http://dbpedia.org/ontology/Name
 http://dbpedia.org/ontology/Religious
 http://dbpedia.org/ontology/WrittenWork
-http://dbpedia.org/ontology/Depth
 http://dbpedia.org/ontology/WorldHeritageSite
+http://dbpedia.org/ontology/Depth
 http://dbpedia.org/ontology/Architect
 http://dbpedia.org/ontology/Population
 http://dbpedia.org/ontology/Musical

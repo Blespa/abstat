@@ -1,4 +1,3 @@
-[http://www.ontologydesignpatterns.org/ont/d0.owl#Location, http://dbpedia.org/ontology/Place, http://dbpedia.org/ontology/Monastery]
 [http://www.ontologydesignpatterns.org/ont/d0.owl#Location, http://dbpedia.org/ontology/Place, http://dbpedia.org/ontology/SiteOfSpecialScientificInterest]
 [http://www.ontologydesignpatterns.org/ont/d0.owl#Location, http://dbpedia.org/ontology/Place, http://dbpedia.org/ontology/WineRegion]
 [http://www.ontologydesignpatterns.org/ont/d0.owl#Location, http://dbpedia.org/ontology/Place, http://dbpedia.org/ontology/Monument, http://dbpedia.org/ontology/Memorial]
@@ -6,6 +5,7 @@
 [http://www.ontologydesignpatterns.org/ont/d0.owl#Location, http://dbpedia.org/ontology/Place, http://dbpedia.org/ontology/Garden]
 [http://www.ontologydesignpatterns.org/ont/d0.owl#Location, http://dbpedia.org/ontology/Place, http://dbpedia.org/ontology/Community]
 [http://www.ontologydesignpatterns.org/ont/d0.owl#Location, http://dbpedia.org/ontology/Place, http://dbpedia.org/ontology/CountrySeat]
+[http://www.ontologydesignpatterns.org/ont/d0.owl#Location, http://dbpedia.org/ontology/Place, http://dbpedia.org/ontology/Monastery]
 [http://www.ontologydesignpatterns.org/ont/d0.owl#Location, http://dbpedia.org/ontology/Place, http://dbpedia.org/ontology/SportFacility, http://dbpedia.org/ontology/GolfCourse]
 [http://www.ontologydesignpatterns.org/ont/d0.owl#Location, http://dbpedia.org/ontology/Place, http://dbpedia.org/ontology/SportFacility, http://dbpedia.org/ontology/CricketGround]
 [http://www.ontologydesignpatterns.org/ont/d0.owl#Location, http://dbpedia.org/ontology/Place, http://dbpedia.org/ontology/SportFacility, http://dbpedia.org/ontology/Stadium]

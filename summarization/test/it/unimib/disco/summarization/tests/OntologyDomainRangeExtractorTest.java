@@ -12,6 +12,7 @@ import it.unimib.disco.summarization.relation.OntologyDomainRangeExtractor;
 import org.junit.Test;
 
 import com.hp.hpl.jena.ontology.OntModel;
+import com.hp.hpl.jena.ontology.OntModelSpec;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.vocabulary.RDFS;
@@ -19,16 +20,8 @@ import com.hp.hpl.jena.vocabulary.RDFS;
 public class OntologyDomainRangeExtractorTest {
 
 	@Test
-	public void shouldParseAnEmptyOntology() {
-		
-		DomainRange patterns = patternsFrom(ModelFactory.createOntologyModel());
-		
-		assertThat(patterns.getDRRelation().size(), equalTo(5));
-	}
-
-	@Test
 	public void shouldParseASimpleOntology() throws Exception {
-		OntModel model = ModelFactory.createOntologyModel();
+		OntModel model = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM);
 		Resource actor = model.createResource("http://actor");
 		Resource city = model.createResource("http://city");
 		Resource livesIn = model.createResource("http://livesIn");

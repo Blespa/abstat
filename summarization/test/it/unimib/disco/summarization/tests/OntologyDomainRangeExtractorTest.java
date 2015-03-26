@@ -12,30 +12,29 @@ import it.unimib.disco.summarization.relation.OntologyDomainRangeExtractor;
 import org.junit.Test;
 
 import com.hp.hpl.jena.ontology.OntModel;
-import com.hp.hpl.jena.ontology.OntModelSpec;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.vocabulary.RDFS;
 
 public class OntologyDomainRangeExtractorTest {
 
 	@Test
 	public void shouldParseASimpleOntology() throws Exception {
-		OntModel model = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM);
-		Resource actor = model.createResource("http://actor");
-		Resource city = model.createResource("http://city");
-		Resource livesIn = model.createResource("http://livesIn");
 		
-		model.add(livesIn, RDFS.domain, actor);
-		model.add(livesIn, RDFS.range, city);
+		TestOntology model = new TestOntology()
+				.owl()
+				.definingResource("http://livesIn")
+					.thatHasProperty(RDFS.domain)
+						.linkingTo("http://actor")
+					.thatHasProperty(RDFS.range)
+						.linkingTo("http://city");
 		
-		DomainRange patterns = patternsFrom(model);
+		DomainRange patterns = patternsFrom(model.build());
 		
 		assertThat(patterns.getDRRelation().get("http://livesIn").get(0).getURI(), equalTo("http://actor"));
 		assertThat(patterns.getDRRelation().get("http://livesIn").get(1).getURI(), equalTo("http://city"));
 	}
 
 	private DomainRange patternsFrom(OntModel model) {
+		
 		PropertyExtractor propertyExtractor = new PropertyExtractor();
 		propertyExtractor.setProperty(model);
 		Property properties = new Property();

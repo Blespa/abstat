@@ -8,19 +8,14 @@ import java.util.HashMap;
 
 import org.junit.Test;
 
-import com.hp.hpl.jena.ontology.OntModel;
-import com.hp.hpl.jena.ontology.OntModelSpec;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.vocabulary.RDFS;
-
 public class ConceptExtractorTest {
 
 	@Test
 	public void shouldSpotAOWLClearDefinedConcept() {
 		
-		OntModel model = ModelFactory.createOntologyModel(OntModelSpec.RDFS_MEM);
-		model.createClass("http://the.class");
+		TestOntology model = new TestOntology()
+									.rdfs()
+									.definingConcept("http://the.class");
 		
 		HashMap<String, String> concepts = conceptsFrom(model);
 		
@@ -30,11 +25,10 @@ public class ConceptExtractorTest {
 	@Test
 	public void shouldSpotAlsoImplicitTypeDeclarations() throws Exception {
 		
-		OntModel model = ModelFactory.createOntologyModel(OntModelSpec.RDFS_MEM);
-		Resource father = model.createResource("http://father");
-		Resource parent = model.createResource("http://parent");
-		
-		model.add(father, RDFS.subClassOf, parent);
+		TestOntology model = new TestOntology()
+									.rdfs()
+									.definingResource("http://father")
+									.aSubconceptOf("http://parent");
 		
 		HashMap<String, String> concepts = conceptsFrom(model);
 		
@@ -42,10 +36,10 @@ public class ConceptExtractorTest {
 		assertThat(concepts.get("http://parent"), notNullValue());
 	}
 	
-	private HashMap<String, String> conceptsFrom(OntModel model) {
+	private HashMap<String, String> conceptsFrom(TestOntology model) {
 		
 		ConceptExtractor conceptExtractor = new ConceptExtractor();
-		conceptExtractor.setConcepts(model);
+		conceptExtractor.setConcepts(model.build());
 		
 		return conceptExtractor.getConcepts();
 	}

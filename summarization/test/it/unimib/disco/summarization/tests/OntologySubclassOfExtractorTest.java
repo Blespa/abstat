@@ -14,34 +14,33 @@ import org.junit.Test;
 
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
-import com.hp.hpl.jena.ontology.OntModelSpec;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
 
 public class OntologySubclassOfExtractorTest {
 
 	@Test
 	public void shouldExtractTheHierarchyFromCanonicalOWL() {
-		OntModel model = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM);
 		
-		OntClass concept = model.createClass("http://father");
-		concept.addSuperClass(model.createResource("http://parent"));
+		TestOntology model = new TestOntology()
+				.owl()
+				.definingConcept("http://father")
+				.aSubconceptOf("http://parent");
 		
-		assertArePresent(subClassesFrom(model), concept.getURI(), "http://parent");
+		assertArePresent(subClassesFrom(model), "http://father", "http://parent");
 	}
 	
 	@Test
 	public void shouldExtractTheHierarchyInPresenceOfMultipleInheritance() throws Exception {
-		OntModel model = ModelFactory.createOntologyModel(OntModelSpec.RDFS_MEM);
 		
-		OntClass father = model.createClass("http://father");
-		father.addSuperClass(model.createResource("http://parent"));
+		TestOntology model = new TestOntology()
+										.rdfs()
+										.definingConcept("http://father")
+										.aSubconceptOf("http://parent")
+										.definingConcept("http://mother")
+										.aSubconceptOf("http://parent");
 		
-		OntClass mother = model.createClass("http://mother");
-		mother.addSuperClass(model.createResource("http://parent"));
-
 		SubClassOf subClasses = subClassesFrom(model);
 		
-		assertArePresent(subClasses, mother.getURI(), "http://parent");
+		assertArePresent(subClasses, "http://mother", "http://parent");
 	}
 
 	private void assertArePresent(SubClassOf subClasses, String son, String father) {
@@ -54,7 +53,9 @@ public class OntologySubclassOfExtractorTest {
 		fail();
 	}
 
-	private SubClassOf subClassesFrom(OntModel model) {
+	private SubClassOf subClassesFrom(TestOntology ontology) {
+		
+		OntModel model = ontology.build();
 		
 		ConceptExtractor conceptExtractor = new ConceptExtractor();
 		conceptExtractor.setConcepts(model);

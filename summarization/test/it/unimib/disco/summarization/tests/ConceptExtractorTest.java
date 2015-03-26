@@ -13,7 +13,7 @@ public class ConceptExtractorTest {
 	@Test
 	public void shouldSpotAOWLClearDefinedConcept() {
 		
-		TestOntology model = new TestOntology()
+		ToyOntology model = new ToyOntology()
 									.rdfs()
 									.definingConcept("http://the.class");
 		
@@ -25,7 +25,7 @@ public class ConceptExtractorTest {
 	@Test
 	public void shouldSpotAlsoImplicitTypeDeclarations() throws Exception {
 		
-		TestOntology model = new TestOntology()
+		ToyOntology model = new ToyOntology()
 									.rdfs()
 									.definingResource("http://father")
 									.aSubconceptOf("http://parent");
@@ -36,7 +36,7 @@ public class ConceptExtractorTest {
 		assertThat(concepts.get("http://parent"), notNullValue());
 	}
 	
-	private HashMap<String, String> conceptsFrom(TestOntology model) {
+	private HashMap<String, String> conceptsFrom(ToyOntology model) {
 		
 		ConceptExtractor conceptExtractor = new ConceptExtractor();
 		conceptExtractor.setConcepts(model.build());

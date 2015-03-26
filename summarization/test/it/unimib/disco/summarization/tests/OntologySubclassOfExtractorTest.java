@@ -20,7 +20,7 @@ public class OntologySubclassOfExtractorTest {
 	@Test
 	public void shouldExtractTheHierarchyFromCanonicalOWL() {
 		
-		TestOntology model = new TestOntology()
+		ToyOntology model = new ToyOntology()
 				.owl()
 				.definingConcept("http://father")
 				.aSubconceptOf("http://parent");
@@ -31,7 +31,7 @@ public class OntologySubclassOfExtractorTest {
 	@Test
 	public void shouldExtractTheHierarchyInPresenceOfMultipleInheritance() throws Exception {
 		
-		TestOntology model = new TestOntology()
+		ToyOntology model = new ToyOntology()
 										.rdfs()
 										.definingConcept("http://father")
 										.aSubconceptOf("http://parent")
@@ -53,7 +53,7 @@ public class OntologySubclassOfExtractorTest {
 		fail();
 	}
 
-	private SubClassOf subClassesFrom(TestOntology ontology) {
+	private SubClassOf subClassesFrom(ToyOntology ontology) {
 		
 		OntModel model = ontology.build();
 		

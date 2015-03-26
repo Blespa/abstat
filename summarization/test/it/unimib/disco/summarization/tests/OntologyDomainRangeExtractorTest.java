@@ -19,7 +19,7 @@ public class OntologyDomainRangeExtractorTest {
 	@Test
 	public void shouldParseASimpleOntology() throws Exception {
 		
-		TestOntology model = new TestOntology()
+		ToyOntology model = new ToyOntology()
 				.owl()
 				.definingResource("http://livesIn")
 					.thatHasProperty(RDFS.domain)

@@ -29,7 +29,7 @@ public class WriteConceptGraphToRDF {
 			Resource localConcept = vocabulary.asLocalResource(splitted[0]);
 			Resource localBroaderConcept = vocabulary.asLocalResource(splitted[1]);
 			
-			model.add(model.createStatement(localConcept, vocabulary.broader(), localBroaderConcept));
+			model.add(localConcept, vocabulary.broader(), localBroaderConcept);
 		}
 		
 		OutputStream file = new FileOutputStream(output);

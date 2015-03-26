@@ -31,21 +31,18 @@ public class EqConceptExtractor {
 	public void setEquConcept(Concept AllConcepts, OntModel ontologyModel) {
 
 		Iterator<OntResource> itC = AllConcepts.getExtractedConcepts().iterator();
-
+		
 		while(itC.hasNext()) {
 			OntResource concept = itC.next();
 			
 			List<OntResource> equConc = new ArrayList<OntResource>();
 			
-			//SPARQL Query for EquProperty
-			String queryString = "PREFIX ont:<" + concept.getNameSpace() + ">" +
-								 "PREFIX owl:<" + OWL.getURI() + ">" + 
+			String queryString = "PREFIX owl:<" + OWL.getURI() + ">" + 
 								 "SELECT ?obj " +
 								 "WHERE {" +
-								 "      ont:" + concept.getLocalName() + " owl:equivalentClass ?obj" +
+								 "      <" + concept.getURI() + "> owl:equivalentClass ?obj" +
 								 "      }";
 			
-			//Execute Query
 			Query query = QueryFactory.create(queryString) ;
 			QueryExecution qexec = QueryExecutionFactory.create(query, ontologyModel) ;
 			

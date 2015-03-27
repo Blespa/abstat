@@ -1,7 +1,6 @@
 package it.unimib.disco.summarization.utility;
 
 import it.unimib.disco.summarization.datatype.Concept;
-import it.unimib.disco.summarization.starter.Events;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -26,13 +25,11 @@ public class LongestPath {
 		List<String> leaves = typeGraph.leaves();
 		List<String> roots = typeGraph.roots();
 		
-		int currentlyProcessed = 0;
 		for(String leaf : leaves){
 			for(String root : roots){
 				int maxLenght = 0;
 				List<List<String>> longestPaths = new ArrayList<List<String>>();
 				List<List<String>> paths = typeGraph.pathsBetween(leaf, root);
-//				new Events().info("found " + paths.size() + " between " + leaf + " and " + root);
 				for(List<String> path : paths){
 					if(path.size() > maxLenght){
 						longestPaths = new ArrayList<List<String>>();
@@ -45,8 +42,6 @@ public class LongestPath {
 				}
 				allLongestPaths.addAll(longestPaths);
 			}
-			currentlyProcessed++;
-			new Events().info("processed " + currentlyProcessed + " out of " + leaves.size());
 		}
 		
 		FileUtils.write(new File(resultPath), StringUtils.join(allLongestPaths, "\n"));

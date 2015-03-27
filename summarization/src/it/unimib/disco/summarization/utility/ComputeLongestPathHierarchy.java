@@ -27,7 +27,7 @@ public class ComputeLongestPathHierarchy {
 
 	DirectedGraph<String, DefaultEdge> completeGraph = new DefaultDirectedGraph<String, DefaultEdge>(DefaultEdge.class);
 	HashMap<String,DirectedGraph<String, DefaultEdge>> longestPathHierarchy = new HashMap<String,DirectedGraph<String, DefaultEdge>>();
-	HashMap<String,ArrayList<String>> longestPathLeef = new HashMap<String,ArrayList<String>>();
+	HashMap<String,ArrayList<String>> longestPathLeaves = new HashMap<String,ArrayList<String>>();
 	
 	HashSet<String> listOfConcept = new HashSet<String>();
 	HashSet<String> roots = new HashSet<String>();
@@ -49,20 +49,12 @@ public class ComputeLongestPathHierarchy {
 	public void computeLonghestPathHierarchy(String file){
 		//Assume che non vi siano cicli, come dovrebbe essere per le ontologie
 		
-		new Events().info("Computing the longest path for " + concepts.size() + " concepts");
-		
 		buildConceptList(subClassOfFile, concepts);
-		
-		new Events().info("got the list of concepts");
 		
 		roots = cloneSet(listOfConcept); //Inizialmente assumo che tutti i concetti siano radici
 		leaves = cloneSet(listOfConcept); //Inizialmente assumo che tutti i concetti siano foglie
 		
-		new Events().info("cloned the data structures");
-		
 		computeGraph();
-		
-		new Events().info("computed the graph");
 		
 		//Calcolo tutti i percorsi piu lunghi tra i concetti nella gerarchia
 
@@ -75,6 +67,8 @@ public class ComputeLongestPathHierarchy {
 			
 			String curRoot = rootClasses.next();
 			
+			new Events().info("processing " + curRoot);
+			
 			//Costruisco la struttura per salvare le informazioni sul percorso [Pu� essere ottimizzato]
 			HashMap<String,Integer> posVertex = new HashMap<String,Integer>();
 			//Contiene la provenienza dei nodi salvati nella struttura precedente
@@ -86,20 +80,21 @@ public class ComputeLongestPathHierarchy {
 			//Salvo la radice
 			hierarchyGraph.addVertex(curRoot);
 			
-			int depth = 0; //Profondit� della navigazione del grafo
-			
 			LinkedList<String> queue = new LinkedList<String>();
 			
 			//Inizializzo la coda con la radice
 			queue.push(curRoot);
-			posVertex.put(curRoot, depth);
+			posVertex.put(curRoot, 0);
 			provVertex.put(curRoot, null);
 			
 			//Struttura che salver� le foglie di questa gerarchia
 			ArrayList<String> leefHier = new ArrayList<String>();
 			
+			int processed = 0;
+			
 			while(!queue.isEmpty()){
 				
+				processed++;
 				//Setto il vertice corrente di analisi
 				String CurNode = queue.pollFirst();
 				
@@ -110,8 +105,10 @@ public class ComputeLongestPathHierarchy {
 				
 				//E' una foglia, non ha archi in unscita
 				if(!adjCurrVertexOutgoing.hasNext()){
-					if(!leefHier.contains(CurNode))
+					if(!leefHier.contains(CurNode)){
 						leefHier.add(CurNode);
+						new Events().info("found a leaf: " + CurNode + " on iteration " + processed);
+					}
 				}
 				
 				while(adjCurrVertexOutgoing.hasNext()){
@@ -175,7 +172,7 @@ public class ComputeLongestPathHierarchy {
 			longestPathHierarchy.put(curRoot, hierarchyGraph);
 			
 			//Salvo le foglie
-			longestPathLeef.put(curRoot, leefHier);
+			longestPathLeaves.put(curRoot, leefHier);
 			
 		}
 		
@@ -188,26 +185,21 @@ public class ComputeLongestPathHierarchy {
 			
 			while (hierFromRoot.hasNext()){
 				
-				String currRoot = hierFromRoot.next();
+				String root = hierFromRoot.next();
 				
 				//Prendo le foglie della gerarchia
-				Iterator<String> leefCurr = longestPathLeef.get(currRoot).iterator();
+				Iterator<String> leaves = longestPathLeaves.get(root).iterator();
 				Stack<String> pathConc  = new Stack<String>();   // the current path
 				
-				while(leefCurr.hasNext()){ 
-					String foglia = leefCurr.next();
-					
-					AllPaths(longestPathHierarchy.get(currRoot), currRoot, foglia, out, pathConc);
+				while(leaves.hasNext()){ 
+					AllPaths(longestPathHierarchy.get(root), root, leaves.next(), out, pathConc);
 				}
 				
 			}
-			
-			//Close the output stream
 			out.close();
-			//outConc.close();
 			
-		}catch (Exception e){//Catch exception if any
-			System.err.println("Error: " + e.getMessage());
+		}catch (Exception e){
+			new Events().error("Error saving the paths file", e);
 		}
 
 	}
@@ -224,8 +216,6 @@ public class ComputeLongestPathHierarchy {
 			String strLine;
 			//Read File Line By Line
 			while ((strLine = br.readLine()) != null)   {
-				
-				new Events().info("processing " + strLine);
 				
 				//Memorizzo i concetti
 				String[] subObj = strLine.split("##");
@@ -259,13 +249,14 @@ public class ComputeLongestPathHierarchy {
 
 	private void computeGraph(){
 
-		Iterator<String> subClRel = subClassRelations.iterator();
+		Iterator<String> relations = subClassRelations.iterator();
 
-		while(subClRel.hasNext()){
-			String Rel = subClRel.next();
+		while(relations.hasNext()){
+			
+			String relation = relations.next();
 			
 			//Memorizzo i concetti
-			String[] subObj = Rel.split("##");
+			String[] subObj = relation.split("##");
 			
 			String subject = new String(subObj[0]);
 			String object = new String(subObj[1]);

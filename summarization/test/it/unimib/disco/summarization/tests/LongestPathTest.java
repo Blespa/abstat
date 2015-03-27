@@ -1,10 +1,12 @@
 package it.unimib.disco.summarization.tests;
 
+import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.*;
+import static org.hamcrest.Matchers.not;
+import static org.junit.Assert.assertThat;
 import it.unimib.disco.summarization.datatype.Concept;
 import it.unimib.disco.summarization.extraction.ConceptExtractor;
 import it.unimib.disco.summarization.relation.OntologySubclassOfExtractor;
@@ -39,7 +41,7 @@ public class LongestPathTest extends TestWithTemporaryData{
 	}
 	
 	@Test
-	public void shouldPrintIsolatedNodes() throws Exception {
+	public void shouldPrintIsolatedConcepts() throws Exception {
 		
 		ToyOntology ontology = new ToyOntology()
 										.owl()
@@ -52,6 +54,42 @@ public class LongestPathTest extends TestWithTemporaryData{
 		
 		assertThat(paths, hasSize(1));
 		assertThat(paths, hasItem("[http://concept]"));
+	}
+	
+	@Test
+	public void shouldNotPrintConnectedConcepts() throws Exception {
+		
+		ToyOntology ontology = new ToyOntology()
+										.owl()
+										.definingConcept("http://isolated-concept")
+										.definingConcept("http://agent")
+											.aSubconceptOf("http://thing");
+		
+		Concept concepts = getConceptsFrom(ontology);
+		File subClasses = writeSubClassRelationsFrom(ontology);
+		
+		List<String> paths = linesFrom(longestPaths(concepts, subClasses));
+		
+		assertThat(paths, contains("[http://isolated-concept]"));
+		assertThat(paths, not(contains("[http://http://agent]")));
+		assertThat(paths, not(contains("[http://thing]")));
+	}
+	
+	@Test
+	@Ignore
+	public void shouldPrintAPath() throws Exception {
+		
+		ToyOntology ontology = new ToyOntology()
+										.owl()
+										.definingConcept("http://agent")
+											.aSubconceptOf("http://thing");
+		
+		Concept concepts = getConceptsFrom(ontology);
+		File subClasses = writeSubClassRelationsFrom(ontology);
+		
+		List<String> paths = linesFrom(longestPaths(concepts, subClasses));
+		
+		assertThat(paths, contains("[http://thing,http://agent]"));
 	}
 
 	@Test

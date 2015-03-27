@@ -71,9 +71,12 @@ public class TypeGraph{
 		}
 		
 		for(String line : subclassRelations){
-			String[] relation = StringUtils.split(line, "##");
+			String[] relation = line.split("##");
 			String subtype = relation[0];
 			String supertype = relation[1];
+			
+			if(!typeGraph.containsVertex(subtype)) typeGraph.addVertex(subtype);
+			if(!typeGraph.containsVertex(supertype)) typeGraph.addVertex(supertype);
 			
 			typeGraph.addDagEdge(subtype, supertype);
 		}

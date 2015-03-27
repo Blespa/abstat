@@ -5,7 +5,7 @@ import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.not;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 import it.unimib.disco.summarization.datatype.Concept;
 import it.unimib.disco.summarization.extraction.ConceptExtractor;
 import it.unimib.disco.summarization.relation.OntologySubclassOfExtractor;
@@ -26,6 +26,22 @@ import com.hp.hpl.jena.ontology.OntClass;
 
 public class LongestPathTest extends TestWithTemporaryData{
 
+	@Test
+	public void shouldAddAlsoExternalTypes() throws Exception {
+		
+		Concept concepts = getConceptsFrom(new ToyOntology()
+													.owl()
+													.definingConcept("http://concept"));
+		File subClasses = writeSubClassRelationsFrom(new ToyOntology()
+											.owl()
+											.definingConcept("http://concept")
+												.aSubconceptOf("http://external-ontology#Concept"));
+		
+		List<String> paths = linesFrom(longestPaths(concepts, subClasses));
+		
+		assertThat(paths, hasItem("[http://external-ontology#Concept, http://concept]"));
+	}
+	
 	@Test
 	public void shouldHandlesAnEmptyOntology() throws Exception {
 		

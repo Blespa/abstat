@@ -4,7 +4,6 @@ import it.unimib.disco.summarization.starter.Starter;
 
 import java.io.File;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import com.hp.hpl.jena.vocabulary.RDFS;
@@ -12,8 +11,7 @@ import com.hp.hpl.jena.vocabulary.RDFS;
 public class StarterTest extends TestWithTemporaryData{
 
 	@Test
-	@Ignore
-	public void shouldBeAbleToProcessTheMusicOntology() {
+	public void shouldBeAbleToProcessTheMusicOntology() throws Exception {
 		String ontologyDirectory = new File("test/it/unimib/disco/summarization/tests/").getAbsolutePath();
 		
 		Starter.main(new String[]{ontologyDirectory + "/", temporary.path() + "/", temporary.path() + "/"});

@@ -2,6 +2,7 @@ package it.unimib.disco.summarization.tests;
 
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.empty;
+import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.hasSize;
 import static org.junit.Assert.*;
 import it.unimib.disco.summarization.datatype.Concept;
@@ -11,6 +12,7 @@ import it.unimib.disco.summarization.utility.ComputeLongestPathHierarchy;
 import it.unimib.disco.summarization.utility.LongestPath;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -33,9 +35,25 @@ public class LongestPathTest extends TestWithTemporaryData{
 		
 		File savedPaths = longestPaths(concepts, subClasses);
 		
-		assertThat(FileUtils.readLines(savedPaths), empty());
+		assertThat(linesFrom(savedPaths), empty());
 	}
 	
+	@Test
+	public void shouldPrintIsolatedNodes() throws Exception {
+		
+		ToyOntology ontology = new ToyOntology()
+										.owl()
+										.definingConcept("http://concept");
+		
+		Concept concepts = getConceptsFrom(ontology);
+		File subClasses = writeSubClassRelationsFrom(ontology);
+		
+		List<String> paths = linesFrom(longestPaths(concepts, subClasses));
+		
+		assertThat(paths, hasSize(1));
+		assertThat(paths, hasItem("[http://concept]"));
+	}
+
 	@Test
 	@Ignore
 	public void shouldComputeTheSamePathsThanLegacyCode() throws Exception {
@@ -76,8 +94,8 @@ public class LongestPathTest extends TestWithTemporaryData{
 	}
 	
 	private void assertAreEquivalent(File legacyResults, File results) throws Exception {
-		Collection<String> legacyPaths = FileUtils.readLines(legacyResults);
-		Collection<String> paths = FileUtils.readLines(results);
+		Collection<String> legacyPaths = linesFrom(legacyResults);
+		Collection<String> paths = linesFrom(results);
 		
 		assertThat(paths, hasSize(legacyPaths.size()));
 		assertThat(paths, containsInAnyOrder(legacyPaths.toArray()));
@@ -107,5 +125,9 @@ public class LongestPathTest extends TestWithTemporaryData{
 		}
 		
 		return temporary.newFile(StringUtils.join(result, "\n"));
+	}
+	
+	private List<String> linesFrom(File savedPaths) throws IOException {
+		return FileUtils.readLines(savedPaths);
 	}
 }

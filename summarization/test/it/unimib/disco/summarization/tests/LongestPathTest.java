@@ -1,6 +1,5 @@
 package it.unimib.disco.summarization.tests;
 
-import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.hasItem;
@@ -21,7 +20,6 @@ import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import com.hp.hpl.jena.ontology.OntClass;
@@ -70,13 +68,12 @@ public class LongestPathTest extends TestWithTemporaryData{
 		
 		List<String> paths = linesFrom(longestPaths(concepts, subClasses));
 		
-		assertThat(paths, contains("[http://isolated-concept]"));
-		assertThat(paths, not(contains("[http://http://agent]")));
-		assertThat(paths, not(contains("[http://thing]")));
+		assertThat(paths, hasItem("[http://isolated-concept]"));
+		assertThat(paths, not(hasItem("[http://http://agent]")));
+		assertThat(paths, not(hasItem("[http://thing]")));
 	}
 	
 	@Test
-	@Ignore
 	public void shouldPrintAPath() throws Exception {
 		
 		ToyOntology ontology = new ToyOntology()
@@ -89,11 +86,10 @@ public class LongestPathTest extends TestWithTemporaryData{
 		
 		List<String> paths = linesFrom(longestPaths(concepts, subClasses));
 		
-		assertThat(paths, contains("[http://thing,http://agent]"));
+		assertThat(paths, hasItem("[http://thing, http://agent]"));
 	}
 
 	@Test
-	@Ignore
 	public void shouldComputeTheSamePathsThanLegacyCode() throws Exception {
 		
 		String root = "http://root";

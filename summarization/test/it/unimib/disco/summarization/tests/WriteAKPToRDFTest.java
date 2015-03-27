@@ -8,7 +8,7 @@ import java.io.File;
 
 import org.junit.Test;
 
-public class WriteAKPToRDFTest extends UnitTest{
+public class WriteAKPToRDFTest extends TestWithTemporaryData{
 	
 	@Test
 	public void shouldExportAsRDF() throws Exception {

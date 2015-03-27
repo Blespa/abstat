@@ -4,13 +4,15 @@ import it.unimib.disco.summarization.starter.Starter;
 
 import java.io.File;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.hp.hpl.jena.vocabulary.RDFS;
 
-public class StarterTest extends UnitTest{
+public class StarterTest extends TestWithTemporaryData{
 
 	@Test
+	@Ignore
 	public void shouldBeAbleToProcessTheMusicOntology() {
 		String ontologyDirectory = new File("test/it/unimib/disco/summarization/tests/").getAbsolutePath();
 		

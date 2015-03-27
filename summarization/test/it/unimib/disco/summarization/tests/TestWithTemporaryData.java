@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.contrib.java.lang.system.ExpectedSystemExit;
 
-public class UnitTest{
+public class TestWithTemporaryData{
 	
 	public TemporaryFolder temporary;
 	

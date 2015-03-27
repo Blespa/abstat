@@ -7,7 +7,7 @@ import org.apache.commons.io.FileUtils;
 
 public class TemporaryFolder{
 	
-	File temporary = new File("tmp");
+	private File temporary = new File("tmp");
 	
 	public TemporaryFolder create(){
 		temporary.mkdir();

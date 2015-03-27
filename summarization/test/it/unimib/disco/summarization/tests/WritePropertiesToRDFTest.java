@@ -6,7 +6,7 @@ import java.io.File;
 
 import org.junit.Test;
 
-public class WritePropertiesToRDFTest extends UnitTest{
+public class WritePropertiesToRDFTest extends TestWithTemporaryData{
 
 	@Test
 	public void shouldParseAFullLine() throws Exception {

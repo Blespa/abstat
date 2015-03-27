@@ -37,10 +37,10 @@ public class WriteDatatypeToRDF {
 				Literal occurrence = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
 
 				//add statements to model
-				model.add(model.createStatement(localSubject, RDFS.seeAlso, globalSubject));
-				model.add(model.createStatement(localSubject, RDF.type, vocabulary.type()));
-				model.add(model.createStatement(localSubject, RDF.type, vocabulary.datatype()));
-				model.add(model.createStatement(localSubject, vocabulary.occurrence(), occurrence));
+				model.add(localSubject, RDFS.seeAlso, globalSubject);
+				model.add(localSubject, RDF.type, vocabulary.type());
+				model.add(localSubject, RDF.type, vocabulary.datatype());
+				model.add(localSubject, vocabulary.occurrence(), occurrence);
 			}
 			catch(Exception e){
 				new Events().error("file" + csvFilePath + " row" + row, e);

@@ -41,12 +41,12 @@ public class WriteObjectPropertyToRDF {
 
 				
 				//add statements to model
-				model.add(model.createStatement(localSubject, RDFS.seeAlso, globalSubject));
-				model.add(model.createStatement(localSubject, RDF.type, vocabulary.property()));
+				model.add(localSubject, RDFS.seeAlso, globalSubject);
+				model.add(localSubject, RDF.type, vocabulary.property());
 				
-				model.add(model.createStatement(localSubject, vocabulary.occurrence(), occurrence));
-				model.add(model.createStatement(localSubject, vocabulary.subjectMinTypes(), minTypeSubOccurrence));
-				model.add(model.createStatement(localSubject, vocabulary.subjectMinTypes(), minTypeObjOccurrence));
+				model.add(localSubject, vocabulary.occurrence(), occurrence);
+				model.add(localSubject, vocabulary.subjectMinTypes(), minTypeSubOccurrence);
+				model.add(localSubject, vocabulary.subjectMinTypes(), minTypeObjOccurrence);
 			}
 			catch(Exception e){
 				new Events().error("file" + csvFilePath + " row" + row, e);

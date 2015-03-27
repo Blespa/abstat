@@ -27,13 +27,10 @@ import it.unimib.disco.summarization.utility.Model;
 import it.unimib.disco.summarization.utility.UsedOntology;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
-
-import jxl.write.WriteException;
 
 import com.hp.hpl.jena.ontology.OntModel;
 
@@ -218,19 +215,17 @@ public class Starter {
 			report.generateUsedOntologySheet(usedOntology,numSheet+1);			
 			//Close File and End Write
 			report.endWrite();
-		} catch (WriteException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}	
+		} catch (Exception e) {
+			new Events().error("Failed to write the ontology report", e);
+		}
 	
         //Salvo le informazioni utilizzate per il calcolo dei percorsi nella gerarchia
         FileDataSupport writeFileSupp = new FileDataSupport(SubClassOfRelation, datasetSupportFileDirectory + "SubclassOf.txt", datasetSupportFileDirectory + "Concepts.txt", datasetSupportFileDirectory + "EquConcepts.txt", datasetSupportFileDirectory + "EquProperties.txt", datasetSupportFileDirectory + "DR.txt", datasetSupportFileDirectory + "Properties.txt", datasetSupportFileDirectory + "DTProperties.txt");
         writeFileSupp.writeSubclass(equConcept);
         
         //Calcolo tutti i percorsi nella gerarchia
-        ComputeLongestPathHierarchy pathHierarchy = new ComputeLongestPathHierarchy(Concepts,datasetSupportFileDirectory + "SubclassOf.txt");
-        pathHierarchy.computeLonghestPathHierarchy(datasetSupportFileDirectory + "path.txt",datasetSupportFileDirectory + "allSubConcept.txt");
+        ComputeLongestPathHierarchy pathHierarchy = new ComputeLongestPathHierarchy(Concepts, datasetSupportFileDirectory + "SubclassOf.txt");
+        pathHierarchy.computeLonghestPathHierarchy(datasetSupportFileDirectory + "path.txt");
         
         writeFileSupp.writeConcept(Concepts);
         writeFileSupp.writeEquclass(equConcept);

@@ -40,11 +40,11 @@ public class WriteDatatypePropertyToRDF {
 				Literal minTypeObjOccurrence = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE3)));
 				
 				//add statements to model
-				model.add(model.createStatement( localProperty, RDFS.seeAlso, globalProperty));
-				model.add(model.createStatement( localProperty, RDF.type, vocabulary.property()));
-				model.add(model.createStatement( localProperty, vocabulary.occurrence(), occurrence ));
-				model.add(model.createStatement( localProperty, vocabulary.subjectMinTypes(), minTypeSubOccurrence ));
-				model.add(model.createStatement( localProperty, vocabulary.objectMinTypes(), minTypeObjOccurrence ));
+				model.add(localProperty, RDFS.seeAlso, globalProperty);
+				model.add(localProperty, RDF.type, vocabulary.property());
+				model.add(localProperty, vocabulary.occurrence(), occurrence);
+				model.add(localProperty, vocabulary.subjectMinTypes(), minTypeSubOccurrence);
+				model.add(localProperty, vocabulary.objectMinTypes(), minTypeObjOccurrence);
 			}
 			catch(Exception e){
 				new Events().error("file" + csvFilePath + " row" + row, e);

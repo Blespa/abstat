@@ -8,11 +8,16 @@ set -e
 relative_path=`dirname $0`
 scripts_directory=`cd $relative_path;pwd`
 
-target_directory=$(as_absolute $1)
+target_directory=$1
 
 if [[ $target_directory == '' ]]
 then
 	echo "No directory passed as argument. Please specify the directory were the data have to be saved."
+	exit 1
+fi
+if [[ $target_directory != /* ]]
+then
+	echo "The path '$target_directory' passed as argument is relative. Please specify an absolute path."
 	exit 1
 fi
 

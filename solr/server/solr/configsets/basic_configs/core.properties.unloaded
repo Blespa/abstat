@@ -1,0 +1,6 @@
+#Written by CorePropertiesLocator
+#Sat Mar 28 13:25:23 UTC 2015
+name=coreSolr
+config=solrconfig.xml
+schema=schema.xml
+dataDir=/home/edoardo/schema-summaries/solr/server/solr/configsets/basic_configs/

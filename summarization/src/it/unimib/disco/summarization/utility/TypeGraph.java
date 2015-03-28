@@ -17,7 +17,7 @@ public class TypeGraph{
 	private DirectedAcyclicGraph<String, DefaultEdge> graph;
 
 	public TypeGraph(Concept concepts, String subClassesPath) throws Exception{
-		this.graph = typeGraphFrom(concepts, FileUtils.readLines(new File(subClassesPath)));
+		this.graph = subTypeGraphFrom(concepts, FileUtils.readLines(new File(subClassesPath)));
 	}
 	
 	public List<String> roots(){
@@ -38,11 +38,11 @@ public class TypeGraph{
 	
 	public List<List<String>> pathsBetween(String leaf, String root){
 		ArrayList<List<String>> paths = new ArrayList<List<String>>();
-		enumeratePathsBetween(leaf, root, new ArrayList<String>(), paths);
+		inOrderTraversal(leaf, root, new ArrayList<String>(), paths);
 		return paths;
 	}
 	
-	private void enumeratePathsBetween(String leaf, String root, List<String> currentPath, List<List<String>> paths){
+	private void inOrderTraversal(String leaf, String root, List<String> currentPath, List<List<String>> paths){
 		ArrayList<String> path = new ArrayList<String>(currentPath);
 		path.add(leaf);
 		if(leaf.equals(root)){
@@ -50,7 +50,7 @@ public class TypeGraph{
 		}
 		for(DefaultEdge edgeToSuperType : graph.outgoingEdgesOf(leaf)){
 			String superType = graph.getEdgeTarget(edgeToSuperType);
-			enumeratePathsBetween(superType, root, path, paths);
+			inOrderTraversal(superType, root, path, paths);
 		}
 	}
 	
@@ -62,7 +62,7 @@ public class TypeGraph{
 		return graph.outgoingEdgesOf(concept).isEmpty();
 	}
 	
-	private DirectedAcyclicGraph<String, DefaultEdge> typeGraphFrom(Concept concepts, List<String> subclassRelations) throws Exception {
+	private DirectedAcyclicGraph<String, DefaultEdge> subTypeGraphFrom(Concept concepts, List<String> subclassRelations) throws Exception {
 		DirectedAcyclicGraph<String, DefaultEdge> typeGraph = new DirectedAcyclicGraph<String, DefaultEdge>(DefaultEdge.class);
 		
 		for(OntResource concept : concepts.getExtractedConcepts()){

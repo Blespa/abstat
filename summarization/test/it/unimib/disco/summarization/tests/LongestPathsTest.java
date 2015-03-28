@@ -10,7 +10,7 @@ import it.unimib.disco.summarization.datatype.Concept;
 import it.unimib.disco.summarization.extraction.ConceptExtractor;
 import it.unimib.disco.summarization.relation.OntologySubclassOfExtractor;
 import it.unimib.disco.summarization.utility.ComputeLongestPathHierarchy;
-import it.unimib.disco.summarization.utility.LongestPath;
+import it.unimib.disco.summarization.utility.LongestPaths;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,7 +24,7 @@ import org.junit.Test;
 
 import com.hp.hpl.jena.ontology.OntClass;
 
-public class LongestPathTest extends TestWithTemporaryData{
+public class LongestPathsTest extends TestWithTemporaryData{
 
 	@Test
 	public void shouldAddAlsoExternalTypes() throws Exception {
@@ -43,7 +43,7 @@ public class LongestPathTest extends TestWithTemporaryData{
 	}
 	
 	@Test
-	public void shouldHandlesAnEmptyOntology() throws Exception {
+	public void shouldHandleAnEmptyOntology() throws Exception {
 		
 		ToyOntology ontology = new ToyOntology().owl();
 		Concept concepts = getConceptsFrom(ontology);
@@ -139,7 +139,7 @@ public class LongestPathTest extends TestWithTemporaryData{
 
 	private File longestPaths(Concept concepts, File subClasses) throws Exception {
 		File results = temporary.newFile();
-		new LongestPath(concepts, subClasses.getAbsolutePath()).compute(results.getAbsolutePath());
+		new LongestPaths(concepts, subClasses.getAbsolutePath()).compute(results.getAbsolutePath());
 		return results;
 	}
 	

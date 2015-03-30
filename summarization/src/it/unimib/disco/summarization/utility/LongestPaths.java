@@ -18,7 +18,7 @@ public class LongestPaths {
 		this.typeGraph = new TypeGraph(concepts, subClassesPath);
 	}
 	
-	public void compute(String resultPath) throws Exception {
+	public void writeTo(String resultPath) throws Exception {
 		
 		List<List<String>> allLongestPaths = new ArrayList<List<String>>();
 		
@@ -27,19 +27,18 @@ public class LongestPaths {
 		
 		for(String leaf : leaves){
 			for(String root : roots){
-				List<List<String>> longestPaths = extractLongestPathsBetween(leaf, root);
-				allLongestPaths.addAll(longestPaths);
+				allLongestPaths.addAll(longestPathsBetween(leaf, root));
 			}
 		}
 		
 		FileUtils.write(new File(resultPath), StringUtils.join(allLongestPaths, "\n"));
 	}
 
-	private List<List<String>> extractLongestPathsBetween(String leaf, String root) {
+	private List<List<String>> longestPathsBetween(String leaf, String root) {
 		int maxLenght = 0;
 		List<List<String>> longestPaths = new ArrayList<List<String>>();
-		List<List<String>> paths = typeGraph.pathsBetween(leaf, root);
-		for(List<String> path : paths){
+		
+		for(List<String> path : typeGraph.pathsBetween(leaf, root)){
 			if(path.size() > maxLenght){
 				longestPaths = new ArrayList<List<String>>();
 			}

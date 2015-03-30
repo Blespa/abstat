@@ -139,7 +139,7 @@ public class LongestPathsTest extends TestWithTemporaryData{
 
 	private File longestPaths(Concept concepts, File subClasses) throws Exception {
 		File results = temporary.newFile();
-		new LongestPaths(concepts, subClasses.getAbsolutePath()).compute(results.getAbsolutePath());
+		new LongestPaths(concepts, subClasses.getAbsolutePath()).writeTo(results.getAbsolutePath());
 		return results;
 	}
 	

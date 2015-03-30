@@ -13,13 +13,13 @@ public class TestWithTemporaryData{
     public final ExpectedSystemExit exit = ExpectedSystemExit.none();
 	
 	@Before
-	public void eraseTemporaryFolder(){
+	public void createTemporaryFolder(){
 		temporary = new TemporaryFolder();
 		temporary.create();
 	}
 	
 	@After
-	public void deleteTemporaryFolders(){
+	public void deleteTemporaryFolder(){
 		temporary.delete();
 	}
 }

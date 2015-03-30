@@ -226,7 +226,7 @@ public class Starter {
         
         //Calcolo tutti i percorsi nella gerarchia
         LongestPaths pathHierarchy = new LongestPaths(Concepts, datasetSupportFileDirectory + "SubclassOf.txt");
-        pathHierarchy.compute(datasetSupportFileDirectory + "path.txt");
+        pathHierarchy.writeTo(datasetSupportFileDirectory + "path.txt");
         
         writeFileSupp.writeConcept(Concepts);
         writeFileSupp.writeEquclass(equConcept);

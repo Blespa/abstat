@@ -9,6 +9,7 @@
 	<field name="surname" type="text_general" indexed="true" stored="true" required="true" multiValued="false" />
 	<field name="age" type="int" indexed="true" stored="true" required="true" multiValued="false" />
 	<field name="city" type="text_general" indexed="true" stored="true" required="true" multiValued="false" /> -->
+	<field name="text" type="text_general" indexed="true" stored="false" multiValued="true"/>
    </fields>
 
    <uniqueKey>idDocument</uniqueKey>

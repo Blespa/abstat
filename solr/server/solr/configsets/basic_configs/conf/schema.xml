@@ -5,17 +5,20 @@
    	<field name="idDocument" type="int" indexed="true" stored="true" required="true" multiValued="false" /> 
 	<field name="conceptName" type="text_general" indexed="true" stored="true" required="false" multiValued="false" />
 	<field name="propertyName" type="text_general" indexed="true" stored="true" required="false" multiValued="false" />
-   	<!-- <field name="name" type="text_general" indexed="true" stored="true" required="true" multiValued="false" />
-	<field name="surname" type="text_general" indexed="true" stored="true" required="true" multiValued="false" />
-	<field name="age" type="int" indexed="true" stored="true" required="true" multiValued="false" />
-	<field name="city" type="text_general" indexed="true" stored="true" required="true" multiValued="false" /> -->
+
+	<!-- Ora posso fare query di qualsiasi tipo sui documenti indicizzati (grazie al campo 'text')-->
 	<field name="text" type="text_general" indexed="true" stored="false" multiValued="true"/>
+
+	<!--Risolto il problema dell'UpdateLog in solrconfig.xml (mancava il campo '_version_')-->
+	<field name="_version_" type="long" indexed="true" stored="true" multiValued="false" />
    </fields>
 
    <uniqueKey>idDocument</uniqueKey>
 
    <types>
 	<fieldType name="int" class="solr.TrieIntField" precisionStep="0" positionIncrementGap="0"/>
+	
+	<fieldType name="long" class="solr.TrieLongField" precisionStep="0" positionIncrementGap="0"/>
 
    	<fieldType name="text_general" class="solr.TextField" sortMissingLast="true" positionIncrementGap="100">
 		<analyzer type="index">

@@ -15,7 +15,7 @@ public class TextOutputTest extends TestWithTemporaryData{
 	@Test
 	public void shouldWriteStrings() throws Exception {
 		
-		File temporaryFile = temporary.newFile();
+		File temporaryFile = temporary.file();
 		
 		TextOutput textFile = new TextOutput(new FileSystemConnector(temporaryFile));
 		

@@ -38,7 +38,7 @@ public class StarterTest extends TestWithTemporaryData{
 					.thatHasProperty(RDFS.range)
 						.linkingTo(wordnetActorGeo);
 		
-		temporary.newFile(ontology.serialize(), "owl");
+		temporary.file(ontology.serialize(), "owl");
 		
 		Starter.main(new String[]{temporary.path() + "/", temporary.path() + "/", temporary.path() + "/"});
 	}

@@ -7,37 +7,39 @@ import org.apache.commons.io.FileUtils;
 
 public class TemporaryFolder{
 	
-	private File temporary = new File("tmp");
+	public File directory() {
+		return new File("tmp");
+	}
 	
 	public TemporaryFolder create(){
-		temporary.mkdir();
+		directory().mkdir();
 		return this;
 	}
 	
 	public TemporaryFolder delete(){
-		FileUtils.deleteQuietly(temporary);
+		FileUtils.deleteQuietly(directory());
 		return this;
 	}
 	
 	public String path(){
-		return temporary.getAbsolutePath();
+		return directory().getAbsolutePath();
 	}
 	
-	public File newFile(){
+	public File file(){
 		return createRandomFileWithExtension("");
 	}
 
-	public File newFile(String content) throws Exception{
-		return newFile(content, "");
+	public File file(String content) throws Exception{
+		return file(content, "");
 	}
 
-	public File newFile(String content, String extension) throws IOException {
+	public File file(String content, String extension) throws IOException {
 		File file = createRandomFileWithExtension(extension);
 		FileUtils.write(file, content);
 		return file;
 	}
 	
 	private File createRandomFileWithExtension(String extension) {
-		return new File(temporary, Math.random() + "." + extension);
+		return new File(directory(), Math.random() + "." + extension);
 	}
 }

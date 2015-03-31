@@ -13,8 +13,8 @@ public class WriteConceptToRDFTest extends TestWithTemporaryData{
 	@Test
 	public void shouldExportAsRDF() throws Exception {
 		
-		File inputFile = temporary.newFile("http://dbpedia.org/ontology/Artist##24##0.367985");
-		File outputFile = temporary.newFile();
+		File inputFile = temporary.file("http://dbpedia.org/ontology/Artist##24##0.367985");
+		File outputFile = temporary.file();
 		
 		WriteConceptToRDF.main(new String[]{
 				inputFile.getAbsolutePath(),

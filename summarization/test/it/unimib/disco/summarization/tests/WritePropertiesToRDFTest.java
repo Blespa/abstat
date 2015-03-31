@@ -10,16 +10,16 @@ public class WritePropertiesToRDFTest extends TestWithTemporaryData{
 
 	@Test
 	public void shouldParseAFullLine() throws Exception {
-		File input = temporary.newFile("http://dbpedia.org/ontology/operatingSystem##2##0##0##0##0##0##0");
-		File output = temporary.newFile();
+		File input = temporary.file("http://dbpedia.org/ontology/operatingSystem##2##0##0##0##0##0##0");
+		File output = temporary.file();
 		
 		WriteDatatypePropertyToRDF.main(new String[]{input.getAbsolutePath(), output.getAbsolutePath(), "dataset"});
 	}
 
 	@Test
 	public void shouldParseAPartialLine() throws Exception {
-		File input = temporary.newFile("http://dbpedia.org/ontology/operatingSystem##2##0##0##0##0");
-		File output = temporary.newFile();
+		File input = temporary.file("http://dbpedia.org/ontology/operatingSystem##2##0##0##0##0");
+		File output = temporary.file();
 		
 		WriteDatatypePropertyToRDF.main(new String[]{input.getAbsolutePath(), output.getAbsolutePath(), "dataset"});
 	}

@@ -133,14 +133,14 @@ public class LongestPathsTest extends TestWithTemporaryData{
 		Concept concepts = getConceptsFrom(ontology);
 		File subClasses = writeSubClassRelationsFrom(ontology);
 		
-		File legacyResults = temporary.newFile();
+		File legacyResults = temporary.file();
 		new ComputeLongestPathHierarchy(concepts, subClasses.getAbsolutePath()).computeLonghestPathHierarchy(legacyResults.getAbsolutePath());
 		
 		assertAreEquivalent(legacyResults, longestPaths(concepts, subClasses));
 	}
 
 	private File longestPaths(Concept concepts, File subClasses) throws Exception {
-		File results = temporary.newFile();
+		File results = temporary.file();
 		new LongestPaths(concepts, new TextInput(new FileSystemConnector(subClasses))).writeTo(results.getAbsolutePath());
 		return results;
 	}
@@ -176,7 +176,7 @@ public class LongestPathsTest extends TestWithTemporaryData{
 			result.add(subClasses.get(0) + "##" + subClasses.get(1));
 		}
 		
-		return temporary.newFile(StringUtils.join(result, "\n"));
+		return temporary.file(StringUtils.join(result, "\n"));
 	}
 	
 	private List<String> linesFrom(File savedPaths) throws IOException {

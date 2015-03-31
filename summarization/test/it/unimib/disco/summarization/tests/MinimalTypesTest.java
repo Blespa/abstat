@@ -1,5 +1,7 @@
 package it.unimib.disco.summarization.tests;
 
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
 import it.unimib.disco.summarization.datatype.Concept;
 import it.unimib.disco.summarization.extraction.ConceptExtractor;
 import it.unimib.disco.summarization.relation.OntologySubclassOfExtractor;
@@ -21,11 +23,16 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 		
 		ToyOntology ontology = new ToyOntology().owl();
 		
-		File types = temporary.file();
+		File types = temporary.namedFile("", "s_types.nt");
 		File directory = temporary.directory();
 		
-		new MinimalTypes(getConceptsFrom(ontology), writeSubClassRelationsFrom(ontology)).computeFor(types, directory);
+		new MinimalTypes(getConceptsFrom(ontology), writeSubClassRelationsFrom(ontology))
+				.computeFor(types, directory);
 		
+		assertThat(new File(directory, "s_minType.txt").exists(), is(true));
+		assertThat(new File(directory, "s_newConcepts.txt").exists(), is(true));
+		assertThat(new File(directory, "s_uknHierConcept.txt").exists(), is(true));
+		assertThat(new File(directory, "s_countConcepts.txt").exists(), is(true));
 	}
 	
 	private Concept getConceptsFrom(ToyOntology ontology){

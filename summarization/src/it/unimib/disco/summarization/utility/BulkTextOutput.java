@@ -20,12 +20,13 @@ public class BulkTextOutput{
 		return this;
 	}
 
-	public void close() throws Exception {
+	public BulkTextOutput close() throws Exception {
 		TextOutput out = new TextOutput(connector);
 		for(String line : lines){
 			out.writeLine(line);
 		}
 		out.close();
 		lines = new ArrayList<String>();
+		return this;
 	}
 }

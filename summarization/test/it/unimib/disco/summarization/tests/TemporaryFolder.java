@@ -25,6 +25,12 @@ public class TemporaryFolder{
 		return directory().getAbsolutePath();
 	}
 	
+	public File namedFile(String content, String name) throws Exception{
+		File file = new File(directory(), name);
+		FileUtils.write(file, content);
+		return file;
+	}
+	
 	public File file(){
 		return createRandomFileWithExtension("");
 	}

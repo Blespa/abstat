@@ -22,8 +22,10 @@ import it.unimib.disco.summarization.relation.OntologyDomainRangeExtractor;
 import it.unimib.disco.summarization.relation.OntologySubclassOfExtractor;
 import it.unimib.disco.summarization.utility.CreateExcel;
 import it.unimib.disco.summarization.utility.FileDataSupport;
+import it.unimib.disco.summarization.utility.FileSystemConnector;
 import it.unimib.disco.summarization.utility.LongestPaths;
 import it.unimib.disco.summarization.utility.Model;
+import it.unimib.disco.summarization.utility.TextInput;
 import it.unimib.disco.summarization.utility.UsedOntology;
 
 import java.io.File;
@@ -225,7 +227,9 @@ public class Starter {
         writeFileSupp.writeSubclass(equConcept);
         
         //Calcolo tutti i percorsi nella gerarchia
-        LongestPaths pathHierarchy = new LongestPaths(Concepts, datasetSupportFileDirectory + "SubclassOf.txt");
+        
+        TextInput subclasses = new TextInput(new FileSystemConnector(new File(datasetSupportFileDirectory + "SubclassOf.txt")));
+        LongestPaths pathHierarchy = new LongestPaths(Concepts, subclasses);
         pathHierarchy.writeTo(datasetSupportFileDirectory + "path.txt");
         
         writeFileSupp.writeConcept(Concepts);

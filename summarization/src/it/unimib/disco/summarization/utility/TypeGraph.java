@@ -2,11 +2,9 @@ package it.unimib.disco.summarization.utility;
 
 import it.unimib.disco.summarization.datatype.Concept;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.io.FileUtils;
 import org.jgraph.graph.DefaultEdge;
 import org.jgrapht.experimental.dag.DirectedAcyclicGraph;
 
@@ -16,8 +14,8 @@ public class TypeGraph{
 	
 	private DirectedAcyclicGraph<String, DefaultEdge> graph;
 
-	public TypeGraph(Concept concepts, String subClassesPath) throws Exception{
-		this.graph = subTypeGraphFrom(concepts, FileUtils.readLines(new File(subClassesPath)));
+	public TypeGraph(Concept concepts, TextInput subClassesPath) throws Exception{
+		this.graph = subTypeGraphFrom(concepts, subClassesPath);
 	}
 	
 	public List<String> roots(){
@@ -62,14 +60,15 @@ public class TypeGraph{
 		return graph.outgoingEdgesOf(concept).isEmpty();
 	}
 	
-	private DirectedAcyclicGraph<String, DefaultEdge> subTypeGraphFrom(Concept concepts, List<String> subclassRelations) throws Exception {
+	private DirectedAcyclicGraph<String, DefaultEdge> subTypeGraphFrom(Concept concepts, TextInput subclassRelations) throws Exception {
 		DirectedAcyclicGraph<String, DefaultEdge> typeGraph = new DirectedAcyclicGraph<String, DefaultEdge>(DefaultEdge.class);
 		
 		for(OntResource concept : concepts.getExtractedConcepts()){
 			typeGraph.addVertex(concept.getURI());
 		}
 		
-		for(String line : subclassRelations){
+		while(subclassRelations.hasNextLine()){
+			String line = subclassRelations.nextLine();
 			String[] relation = line.split("##");
 			String subtype = relation[0];
 			String supertype = relation[1];

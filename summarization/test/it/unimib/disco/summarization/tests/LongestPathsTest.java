@@ -1,16 +1,18 @@
 package it.unimib.disco.summarization.tests;
 
 import static org.hamcrest.Matchers.containsInAnyOrder;
-import static org.hamcrest.Matchers.empty;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.not;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 import it.unimib.disco.summarization.datatype.Concept;
 import it.unimib.disco.summarization.extraction.ConceptExtractor;
 import it.unimib.disco.summarization.relation.OntologySubclassOfExtractor;
 import it.unimib.disco.summarization.utility.ComputeLongestPathHierarchy;
+import it.unimib.disco.summarization.utility.FileSystemConnector;
 import it.unimib.disco.summarization.utility.LongestPaths;
+import it.unimib.disco.summarization.utility.TextInput;
 
 import java.io.File;
 import java.io.IOException;
@@ -51,7 +53,7 @@ public class LongestPathsTest extends TestWithTemporaryData{
 		
 		File savedPaths = longestPaths(concepts, subClasses);
 		
-		assertThat(linesFrom(savedPaths), empty());
+		assertThat(linesFrom(savedPaths).get(0), equalTo(""));
 	}
 	
 	@Test
@@ -139,7 +141,7 @@ public class LongestPathsTest extends TestWithTemporaryData{
 
 	private File longestPaths(Concept concepts, File subClasses) throws Exception {
 		File results = temporary.newFile();
-		new LongestPaths(concepts, subClasses.getAbsolutePath()).writeTo(results.getAbsolutePath());
+		new LongestPaths(concepts, new TextInput(new FileSystemConnector(subClasses))).writeTo(results.getAbsolutePath());
 		return results;
 	}
 	

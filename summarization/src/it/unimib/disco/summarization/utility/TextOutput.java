@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 
-public class TextOutput implements OutputFile {
+public class TextOutput{
 
 	private List<String> lines;
 	private FileSystemConnector connector;
@@ -16,13 +16,11 @@ public class TextOutput implements OutputFile {
 		this.connector = connector;
 	}
 	
-	@Override
-	public OutputFile writeLine(String content) throws Exception {
+	public TextOutput writeLine(String content) throws Exception {
 		lines.add(content.toString());
 		return this;
 	}
 
-	@Override
 	public void close() throws Exception {
 		FileUtils.writeLines(new File(connector.absoluteName()), lines, true);
 		lines = new ArrayList<String>();

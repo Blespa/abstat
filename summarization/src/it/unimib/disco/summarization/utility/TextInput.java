@@ -3,7 +3,7 @@ package it.unimib.disco.summarization.utility;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.LineIterator;
 
-public class TextInput implements InputFile{
+public class TextInput{
 
 	private LineIterator lines;
 
@@ -11,12 +11,10 @@ public class TextInput implements InputFile{
 		this.lines = IOUtils.lineIterator(connector.open(), "UTF-8");
 	}
 
-	@Override
 	public String nextLine() throws Exception {
 		return lines.nextLine();
 	}
 
-	@Override
 	public boolean hasNextLine() {
 		return lines.hasNext();
 	}

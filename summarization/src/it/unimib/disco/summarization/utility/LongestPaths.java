@@ -7,14 +7,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 
 public class LongestPaths {
 
 	private TypeGraph typeGraph;
 
-	public LongestPaths(Concept concepts, String subClassesPath) throws Exception {
+	public LongestPaths(Concept concepts, TextInput subClassesPath) throws Exception {
 		this.typeGraph = new TypeGraph(concepts, subClassesPath);
 	}
 	
@@ -31,7 +30,9 @@ public class LongestPaths {
 			}
 		}
 		
-		FileUtils.write(new File(resultPath), StringUtils.join(allLongestPaths, "\n"));
+		new TextOutput(new FileSystemConnector(new File(resultPath)))
+						.writeLine(StringUtils.join(allLongestPaths, "\n"))
+						.close();
 	}
 
 	private List<List<String>> longestPathsBetween(String leaf, String root) {

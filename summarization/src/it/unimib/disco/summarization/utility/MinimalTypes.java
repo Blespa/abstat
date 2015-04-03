@@ -3,7 +3,9 @@ package it.unimib.disco.summarization.utility;
 import it.unimib.disco.summarization.datatype.Concept;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map.Entry;
 
 import org.apache.commons.lang3.StringUtils;
@@ -24,24 +26,40 @@ public class MinimalTypes {
 
 	public void computeFor(File types, File directory) throws Exception {
 		HashMap<String, Integer> conceptCounts = buildConceptCounts();
+		List<String> externalConcepts = new ArrayList<String>();
 		
 		TextInput typeRelations = new TextInput(new FileSystemConnector(types));
 		while(typeRelations.hasNextLine()){
-			String concept = new NTriple(NxParser.parseNodes(typeRelations.nextLine())).object().uri();
+			NTriple triple = new NTriple(NxParser.parseNodes(typeRelations.nextLine()));
+			
+			String entity = triple.subject().uri();
+			String concept = triple.object().uri();
 			if(!concept.equals(OWL.Thing.getURI())){
-				trackConcept(concept, conceptCounts);
+				trackAsConcept(entity, concept, conceptCounts, externalConcepts);
 			}
 		}
 		
 		String prefix = prefixOf(types);
 		writeConceptCounts(conceptCounts, directory, prefix);
+		writeExternalConcepts(externalConcepts, directory, prefix);
 		
 		connectorTo(directory, prefix, "minType").close();
-		connectorTo(directory, prefix, "uknHierConcept").close();
 	}
 
-	private void trackConcept(String concept, HashMap<String, Integer> counts) {
-		counts.put(concept, counts.get(concept) + 1);
+	private void writeExternalConcepts(List<String> externalConcepts, File directory, String prefix) throws Exception {
+		BulkTextOutput externalConceptFile = connectorTo(directory, prefix, "uknHierConcept");
+		for(String line : externalConcepts){
+			externalConceptFile.writeLine(line);
+		}
+		externalConceptFile.close();		
+	}
+
+	private void trackAsConcept(String entity, String concept, HashMap<String, Integer> counts, List<String> externalConcepts) {
+		if(counts.containsKey(concept))	{
+			counts.put(concept, counts.get(concept) + 1);
+		}else{
+			externalConcepts.add(entity + "##" + concept);
+		}
 	}
 
 	private void writeConceptCounts(HashMap<String, Integer> conceptCounts, File directory, String prefix) throws Exception {

@@ -17,7 +17,6 @@ import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.semanticweb.yars.nx.namespace.OWL;
 
@@ -85,7 +84,6 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 	}
 	
 	@Test
-	@Ignore
 	public void shouldCountAlsoUnknownConcepts() throws Exception {
 		ToyOntology ontology = new ToyOntology().owl();
 
@@ -95,7 +93,7 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 		new MinimalTypes(getConceptsFrom(ontology), writeSubClassRelationsFrom(ontology)).computeFor(types, directory);
 		
 		assertThat(linesOf("s_countConcepts.txt"), is(empty()));
-		assertThat(linesOf("s_uknHierConcept.txt"), hasItem("http://concept##1"));
+		assertThat(linesOf("s_uknHierConcept.txt"), hasItem("http://entity##http://concept"));
 	}
 	
 	private List<String> linesOf(String name) throws IOException {

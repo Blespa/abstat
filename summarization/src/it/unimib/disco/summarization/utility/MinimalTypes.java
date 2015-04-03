@@ -35,7 +35,7 @@ public class MinimalTypes {
 			String entity = triple.subject().uri();
 			String concept = triple.object().uri();
 			if(!concept.equals(OWL.Thing.getURI())){
-				trackAsConcept(entity, concept, conceptCounts, externalConcepts);
+				trackConcept(entity, concept, conceptCounts, externalConcepts);
 			}
 		}
 		
@@ -46,20 +46,20 @@ public class MinimalTypes {
 		connectorTo(directory, prefix, "minType").close();
 	}
 
+	private void trackConcept(String entity, String concept, HashMap<String, Integer> counts, List<String> externalConcepts) {
+		if(counts.containsKey(concept))	{
+			counts.put(concept, counts.get(concept) + 1);
+		}else{
+			externalConcepts.add(entity + "##" + concept);
+		}
+	}
+	
 	private void writeExternalConcepts(List<String> externalConcepts, File directory, String prefix) throws Exception {
 		BulkTextOutput externalConceptFile = connectorTo(directory, prefix, "uknHierConcept");
 		for(String line : externalConcepts){
 			externalConceptFile.writeLine(line);
 		}
 		externalConceptFile.close();		
-	}
-
-	private void trackAsConcept(String entity, String concept, HashMap<String, Integer> counts, List<String> externalConcepts) {
-		if(counts.containsKey(concept))	{
-			counts.put(concept, counts.get(concept) + 1);
-		}else{
-			externalConcepts.add(entity + "##" + concept);
-		}
 	}
 
 	private void writeConceptCounts(HashMap<String, Integer> conceptCounts, File directory, String prefix) throws Exception {

@@ -4,11 +4,13 @@ import it.unimib.disco.summarization.datatype.Concept;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.Map.Entry;
 
 import org.apache.commons.lang3.StringUtils;
 import org.semanticweb.yars.nx.parser.NxParser;
 
 import com.hp.hpl.jena.ontology.OntResource;
+import com.hp.hpl.jena.vocabulary.OWL;
 
 public class MinimalTypes {
 
@@ -21,26 +23,38 @@ public class MinimalTypes {
 	}
 
 	public void computeFor(File types, File directory) throws Exception {
-		HashMap<String, Integer> conceptCounts = new HashMap<String, Integer>();
-		for(OntResource concept : concepts.getExtractedConcepts()){
-			conceptCounts.put(concept.getURI(), 0);
-		}
+		HashMap<String, Integer> conceptCounts = buildConceptCounts();
+		
 		TextInput typeRelations = new TextInput(new FileSystemConnector(types));
 		while(typeRelations.hasNextLine()){
-			NTriple triple = new NTriple(NxParser.parseNodes(typeRelations.nextLine()));
-			conceptCounts.put(triple.object().uri(), conceptCounts.get(triple.object().uri()) + 1);
+			String type = new NTriple(NxParser.parseNodes(typeRelations.nextLine())).object().uri();
+			if(!type.equals(OWL.Thing.getURI())){
+				conceptCounts.put(type, conceptCounts.get(type) + 1);
+			}
 		}
 		
 		String prefix = prefixOf(types);
-		BulkTextOutput countConceptFile = connectorTo(directory, prefix, "countConcepts");
-		for(String concept : conceptCounts.keySet()){
-			countConceptFile.writeLine(concept + "##" + conceptCounts.get(concept));
-		}
+		writeConceptCounts(conceptCounts, directory, prefix);
 		
 		connectorTo(directory, prefix, "minType").close();
 		connectorTo(directory, prefix, "newConcepts").close();
 		connectorTo(directory, prefix, "uknHierConcept").close();
+	}
+
+	private void writeConceptCounts(HashMap<String, Integer> conceptCounts, File directory, String prefix) throws Exception {
+		BulkTextOutput countConceptFile = connectorTo(directory, prefix, "countConcepts");
+		for(Entry<String, Integer> concept : conceptCounts.entrySet()){
+			countConceptFile.writeLine(concept.getKey() + "##" + concept.getValue());
+		}
 		countConceptFile.close();
+	}
+
+	private HashMap<String, Integer> buildConceptCounts() {
+		HashMap<String, Integer> conceptCounts = new HashMap<String, Integer>();
+		for(OntResource concept : concepts.getExtractedConcepts()){
+			conceptCounts.put(concept.getURI(), 0);
+		}
+		return conceptCounts;
 	}
 
 	private BulkTextOutput connectorTo(File directory, String prefix, String name) {

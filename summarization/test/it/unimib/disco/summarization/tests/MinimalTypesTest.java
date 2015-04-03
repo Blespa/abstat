@@ -3,7 +3,7 @@ package it.unimib.disco.summarization.tests;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 import it.unimib.disco.summarization.datatype.Concept;
 import it.unimib.disco.summarization.extraction.ConceptExtractor;
 import it.unimib.disco.summarization.relation.OntologySubclassOfExtractor;
@@ -52,6 +52,21 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 		
 		assertThat(conceptCounts, hasSize(1));
 		assertThat(conceptCounts, hasItem("http://concept##0"));
+	}
+	
+	@Test
+	public void shouldCountTheRightNumberOfConcepts() throws Exception {
+		ToyOntology ontology = new ToyOntology()
+								.owl()
+								.definingConcept("http://concept");
+
+		File types = temporary.namedFile("<http://entity> <> <http://concept> .", "s_types.nt");
+		File directory = temporary.directory();
+		
+		new MinimalTypes(getConceptsFrom(ontology), writeSubClassRelationsFrom(ontology)).computeFor(types, directory);
+		List<String> conceptCounts = conceptCounts("s_countConcepts.txt");
+		
+		assertThat(conceptCounts, hasItem("http://concept##1"));
 	}
 
 	private List<String> conceptCounts(String name) throws IOException {

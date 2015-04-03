@@ -3,8 +3,10 @@ package it.unimib.disco.summarization.utility;
 import it.unimib.disco.summarization.datatype.Concept;
 
 import java.io.File;
+import java.util.HashMap;
 
 import org.apache.commons.lang3.StringUtils;
+import org.semanticweb.yars.nx.parser.NxParser;
 
 import com.hp.hpl.jena.ontology.OntResource;
 
@@ -19,11 +21,20 @@ public class MinimalTypes {
 	}
 
 	public void computeFor(File types, File directory) throws Exception {
+		HashMap<String, Integer> conceptCounts = new HashMap<String, Integer>();
+		for(OntResource concept : concepts.getExtractedConcepts()){
+			conceptCounts.put(concept.getURI(), 0);
+		}
+		TextInput typeRelations = new TextInput(new FileSystemConnector(types));
+		while(typeRelations.hasNextLine()){
+			NTriple triple = new NTriple(NxParser.parseNodes(typeRelations.nextLine()));
+			conceptCounts.put(triple.object().uri(), conceptCounts.get(triple.object().uri()) + 1);
+		}
+		
 		String prefix = prefixOf(types);
 		BulkTextOutput countConceptFile = connectorTo(directory, prefix, "countConcepts");
-		
-		for(OntResource concept : concepts.getExtractedConcepts()){
-			countConceptFile.writeLine(concept + "##" + 0);
+		for(String concept : conceptCounts.keySet()){
+			countConceptFile.writeLine(concept + "##" + conceptCounts.get(concept));
 		}
 		
 		connectorTo(directory, prefix, "minType").close();

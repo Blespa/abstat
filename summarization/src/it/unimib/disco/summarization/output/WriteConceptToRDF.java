@@ -37,12 +37,11 @@ public class WriteConceptToRDF {
 				
 				Literal occurrences = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
 
-				//add statements to model
-				model.add(model.createStatement( localSubject, RDFS.seeAlso, globalSubject ));
+				model.add(localSubject, RDFS.seeAlso, globalSubject);
 				
-				model.add(model.createStatement( localSubject, RDF.type, vocabulary.type()));
-				model.add(model.createStatement( localSubject, RDF.type, vocabulary.concept()));
-				model.add(model.createStatement( localSubject, vocabulary.occurrence(), occurrences));
+				model.add(localSubject, RDF.type, vocabulary.type());
+				model.add(localSubject, RDF.type, vocabulary.concept());
+				model.add(localSubject, vocabulary.occurrence(), occurrences);
 			}
 			catch(Exception e){
 				new Events().error("file" + csvFilePath + " row" + row, e);

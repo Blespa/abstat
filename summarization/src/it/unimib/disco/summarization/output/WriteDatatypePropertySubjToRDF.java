@@ -38,9 +38,9 @@ public class WriteDatatypePropertySubjToRDF {
 				Resource datatypeProperty = model.createResource("http://www.w3.org/2002/07/owl/DatatypeProperty");
 				
 				//add statements to model
-				model.add(model.createStatement( localProperty , OWL.sameAs, globalProperty ));
-				model.add(model.createStatement( localProperty, RDF.type, RDF.Property));
-				model.add(model.createStatement( localProperty, RDF.type, datatypeProperty));
+				model.add(localProperty , OWL.sameAs, globalProperty);
+				model.add(localProperty, RDF.type, RDF.Property);
+				model.add(localProperty, RDF.type, datatypeProperty);
 //				model.add(model.createStatement( localProperty, vocabulary.subjectInstanceOccurrence(), occurrence ));
 			}
 			catch(Exception e){

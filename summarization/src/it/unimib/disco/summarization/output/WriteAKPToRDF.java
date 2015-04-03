@@ -44,16 +44,16 @@ public class WriteAKPToRDF {
 				Resource akpInstance = vocabulary.akpInstance(localSubject.getURI(), localPredicate.getURI(), localObject.getURI());
 				
 				//add statements to model
-				model.add(model.createStatement(localSubject, RDFS.seeAlso, globalSubject ));
-				model.add(model.createStatement(localPredicate, RDFS.seeAlso, globalPredicate ));
-				model.add(model.createStatement(localObject, RDFS.seeAlso, globalObject ));
+				model.add(localSubject, RDFS.seeAlso, globalSubject);
+				model.add(localPredicate, RDFS.seeAlso, globalPredicate);
+				model.add(localObject, RDFS.seeAlso, globalObject);
 				
-				model.add(model.createStatement( akpInstance, RDF.type, RDF.Statement ));
-				model.add(model.createStatement( akpInstance, vocabulary.subject(), localSubject ));
-				model.add(model.createStatement( akpInstance, vocabulary.predicate(), localPredicate ));
-				model.add(model.createStatement( akpInstance, vocabulary.object(), localObject ));
-				model.add(model.createStatement( akpInstance, RDF.type, vocabulary.abstractKnowledgePattern()));
-				model.add(model.createStatement( akpInstance, vocabulary.occurrence(), statistic));
+				model.add(akpInstance, RDF.type, RDF.Statement);
+				model.add(akpInstance, vocabulary.subject(), localSubject);
+				model.add(akpInstance, vocabulary.predicate(), localPredicate);
+				model.add(akpInstance, vocabulary.object(), localObject);
+				model.add(akpInstance, RDF.type, vocabulary.abstractKnowledgePattern());
+				model.add(akpInstance, vocabulary.occurrence(), statistic);
 			}
 			catch(Exception e){
 				new Events().error("file" + csvFilePath + " row" + row, e);

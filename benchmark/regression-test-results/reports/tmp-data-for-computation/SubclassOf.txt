@@ -447,7 +447,6 @@ http://dbpedia.org/ontology/Zoo##http://dbpedia.org/ontology/ArchitecturalStruct
 http://dbpedia.org/ontology/FilmFestival##http://dbpedia.org/ontology/SocietalEvent
 http://dbpedia.org/ontology/FilmFestival##http://schema.org/Festival
 http://dbpedia.org/ontology/Monastery##http://dbpedia.org/ontology/Place
-http://dbpedia.org/ontology/Monastery##http://www.ontologydesignpatterns.org/ont/d0.owl#Location
 http://dbpedia.org/ontology/GolfLeague##http://dbpedia.org/ontology/SportsLeague
 http://dbpedia.org/ontology/SupremeCourtOfTheUnitedStatesCase##http://dbpedia.org/ontology/LegalCase
 http://dbpedia.org/ontology/Listen##http://dbpedia.org/ontology/Event

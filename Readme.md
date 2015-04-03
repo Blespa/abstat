@@ -88,9 +88,19 @@ $ chmod 700 scripts/deploy_rsa
 
 ### Deployment
 
-To deploy the latest version of the code, from your development machine:
+#### Summarization Deploy (only summarization)
+
+from your development machine:
 
 ```
-$ scripts/deploy.sh USER@HOST
+$ scripts/deploy-summarization.sh USER@HOST
+```
+
+#### Full Deploy (webapp, summarization, backend)
+
+from your development machine:
+
+```
+$ scripts/deploy-full.sh USER@HOST
 ```
 

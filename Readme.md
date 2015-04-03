@@ -46,6 +46,11 @@ $ scripts/prepare-linked-brainz-dataset.sh $TARGET-DIRECTORY
 
 ## Production use
 
+### Machines
+
+* 149.132.176.73 - siti-rack.siti.disco.unimib.it - complete installation
+* 193.204.59.21 - bari server - only summarization (no indexing and no webapp)
+
 ### Monitoring
 
 The web interface is constantly monitored, since has to be accessible all the time. You can view the current status [here](http://uptime.statuscake.com/?TestID=TCI9iWyOqa)

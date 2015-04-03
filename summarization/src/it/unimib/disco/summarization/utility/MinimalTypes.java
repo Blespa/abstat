@@ -27,9 +27,9 @@ public class MinimalTypes {
 		
 		TextInput typeRelations = new TextInput(new FileSystemConnector(types));
 		while(typeRelations.hasNextLine()){
-			String type = new NTriple(NxParser.parseNodes(typeRelations.nextLine())).object().uri();
-			if(!type.equals(OWL.Thing.getURI())){
-				conceptCounts.put(type, conceptCounts.get(type) + 1);
+			String concept = new NTriple(NxParser.parseNodes(typeRelations.nextLine())).object().uri();
+			if(!concept.equals(OWL.Thing.getURI())){
+				trackConcept(concept, conceptCounts);
 			}
 		}
 		
@@ -37,8 +37,11 @@ public class MinimalTypes {
 		writeConceptCounts(conceptCounts, directory, prefix);
 		
 		connectorTo(directory, prefix, "minType").close();
-		connectorTo(directory, prefix, "newConcepts").close();
 		connectorTo(directory, prefix, "uknHierConcept").close();
+	}
+
+	private void trackConcept(String concept, HashMap<String, Integer> counts) {
+		counts.put(concept, counts.get(concept) + 1);
 	}
 
 	private void writeConceptCounts(HashMap<String, Integer> conceptCounts, File directory, String prefix) throws Exception {

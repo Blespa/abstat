@@ -1,5 +1,6 @@
 package it.unimib.disco.summarization.tests;
 
+import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
@@ -16,6 +17,7 @@ import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.semanticweb.yars.nx.namespace.OWL;
 
@@ -34,7 +36,6 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 		new MinimalTypes(getConceptsFrom(ontology), writeSubClassRelationsFrom(ontology)).computeFor(types, directory);
 		
 		assertThat(new File(directory, "s_minType.txt").exists(), is(true));
-		assertThat(new File(directory, "s_newConcepts.txt").exists(), is(true));
 		assertThat(new File(directory, "s_uknHierConcept.txt").exists(), is(true));
 		assertThat(new File(directory, "s_countConcepts.txt").exists(), is(true));
 	}
@@ -50,7 +51,6 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 		new MinimalTypes(getConceptsFrom(ontology), writeSubClassRelationsFrom(ontology)).computeFor(types, directory);
 		
 		assertThat(new File(directory, "s_minType.txt").exists(), is(true));
-		assertThat(new File(directory, "s_newConcepts.txt").exists(), is(true));
 		assertThat(new File(directory, "s_uknHierConcept.txt").exists(), is(true));
 		assertThat(new File(directory, "s_countConcepts.txt").exists(), is(true));
 	}
@@ -65,7 +65,6 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 		new MinimalTypes(getConceptsFrom(ontology), writeSubClassRelationsFrom(ontology)).computeFor(types, directory);
 		
 		assertThat(linesOf("s_minType.txt"), hasSize(0));
-		assertThat(linesOf("s_newConcepts.txt"), hasSize(0));
 		assertThat(linesOf("s_uknHierConcept.txt"), hasSize(0));
 		assertThat(linesOf("s_countConcepts.txt"), hasSize(0));
 	}
@@ -84,7 +83,21 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 		
 		assertThat(conceptCounts, hasItem("http://concept##1"));
 	}
+	
+	@Test
+	@Ignore
+	public void shouldCountAlsoUnknownConcepts() throws Exception {
+		ToyOntology ontology = new ToyOntology().owl();
 
+		File types = temporary.namedFile("<http://entity> <> <http://concept> .", "s_types.nt");
+		File directory = temporary.directory();
+		
+		new MinimalTypes(getConceptsFrom(ontology), writeSubClassRelationsFrom(ontology)).computeFor(types, directory);
+		
+		assertThat(linesOf("s_countConcepts.txt"), is(empty()));
+		assertThat(linesOf("s_uknHierConcept.txt"), hasItem("http://concept##1"));
+	}
+	
 	private List<String> linesOf(String name) throws IOException {
 		return FileUtils.readLines(new File(temporary.directory(), name));
 	}

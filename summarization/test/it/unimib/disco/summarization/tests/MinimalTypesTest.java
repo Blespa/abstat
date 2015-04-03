@@ -1,5 +1,7 @@
 package it.unimib.disco.summarization.tests;
 
+import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import it.unimib.disco.summarization.datatype.Concept;
@@ -8,9 +10,11 @@ import it.unimib.disco.summarization.relation.OntologySubclassOfExtractor;
 import it.unimib.disco.summarization.utility.MinimalTypes;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
@@ -26,13 +30,32 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 		File types = temporary.namedFile("", "s_types.nt");
 		File directory = temporary.directory();
 		
-		new MinimalTypes(getConceptsFrom(ontology), writeSubClassRelationsFrom(ontology))
-				.computeFor(types, directory);
+		new MinimalTypes(getConceptsFrom(ontology), writeSubClassRelationsFrom(ontology)).computeFor(types, directory);
 		
 		assertThat(new File(directory, "s_minType.txt").exists(), is(true));
 		assertThat(new File(directory, "s_newConcepts.txt").exists(), is(true));
 		assertThat(new File(directory, "s_uknHierConcept.txt").exists(), is(true));
 		assertThat(new File(directory, "s_countConcepts.txt").exists(), is(true));
+	}
+	
+	@Test
+	public void shouldCountConceptsEvenWhenTheyHaveNoInstance() throws Exception {
+		ToyOntology ontology = new ToyOntology()
+										.owl()
+										.definingConcept("http://concept");
+		
+		File types = temporary.namedFile("", "s_types.nt");
+		File directory = temporary.directory();
+		
+		new MinimalTypes(getConceptsFrom(ontology), writeSubClassRelationsFrom(ontology)).computeFor(types, directory);
+		List<String> conceptCounts = conceptCounts("s_countConcepts.txt");
+		
+		assertThat(conceptCounts, hasSize(1));
+		assertThat(conceptCounts, hasItem("http://concept##0"));
+	}
+
+	private List<String> conceptCounts(String name) throws IOException {
+		return FileUtils.readLines(new File(temporary.directory(), name));
 	}
 	
 	private Concept getConceptsFrom(ToyOntology ontology){

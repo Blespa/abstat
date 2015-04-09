@@ -48,9 +48,16 @@ public class MinimalTypes {
 		writeMinimalTypes(minimalTypes, directory, prefix);
 	}
 
-	private void trackMinimalType(String entity, String concept,
-			HashMap<String, HashSet<String>> minimalTypes) {
+	private void trackMinimalType(String entity, String concept, HashMap<String, HashSet<String>> minimalTypes) {
 		if(!minimalTypes.containsKey(entity)) minimalTypes.put(entity, new HashSet<String>());
+		for(String minimalType : minimalTypes.get(entity)){
+			if(!graph.pathsBetween(minimalType, concept).isEmpty()){
+				return;
+			}
+			if(!graph.pathsBetween(concept, minimalType).isEmpty()){
+				minimalTypes.get(entity).remove(minimalType);
+			}
+		}
 		minimalTypes.get(entity).add(concept);
 	}
 

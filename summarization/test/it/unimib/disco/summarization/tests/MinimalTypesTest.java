@@ -110,6 +110,42 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 		assertThat(linesOf("s_minType.txt"), hasItem("http://entity##http://concept"));
 	}
 	
+	@Test
+	public void shouldExcludeNonMinimalTypes() throws Exception {
+		ToyOntology ontology = new ToyOntology()
+										.owl()
+										.definingConcept("http://thing")
+										.definingConcept("http://concept")
+											.aSubconceptOf("http://thing");
+
+		File types = temporary.namedFile("<http://entity> <> <http://concept> ."
+										+ "\n"
+										+ "<http://entity> <> <http://thing> .", "s_types.nt");
+		File directory = temporary.directory();
+		
+		new MinimalTypes(getConceptsFrom(ontology), writeSubClassRelationsFrom(ontology)).computeFor(types, directory);
+		
+		assertThat(linesOf("s_minType.txt"), hasItem("http://entity##http://concept"));
+	}
+	
+	@Test
+	public void shouldReplaceANonMinimalTypeWhenAMinimalIsFound() throws Exception {
+		ToyOntology ontology = new ToyOntology()
+										.owl()
+										.definingConcept("http://thing")
+										.definingConcept("http://concept")
+											.aSubconceptOf("http://thing");
+
+		File types = temporary.namedFile("<http://entity> <> <http://thing> ."
+										+ "\n"
+										+ "<http://entity> <> <http://concept> .", "s_types.nt");
+		File directory = temporary.directory();
+		
+		new MinimalTypes(getConceptsFrom(ontology), writeSubClassRelationsFrom(ontology)).computeFor(types, directory);
+		
+		assertThat(linesOf("s_minType.txt"), hasItem("http://entity##http://concept"));
+	}
+	
 	private List<String> linesOf(String name) throws IOException {
 		return FileUtils.readLines(new File(temporary.directory(), name));
 	}

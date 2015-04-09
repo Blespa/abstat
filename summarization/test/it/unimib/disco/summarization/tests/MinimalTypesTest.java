@@ -4,7 +4,7 @@ import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 import it.unimib.disco.summarization.datatype.Concept;
 import it.unimib.disco.summarization.extraction.ConceptExtractor;
 import it.unimib.disco.summarization.relation.OntologySubclassOfExtractor;
@@ -94,6 +94,20 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 		
 		assertThat(linesOf("s_countConcepts.txt"), is(empty()));
 		assertThat(linesOf("s_uknHierConcept.txt"), hasItem("http://entity##http://concept"));
+	}
+	
+	@Test
+	public void shouldTrackASimpleMinimalType() throws Exception {
+		ToyOntology ontology = new ToyOntology()
+										.owl()
+										.definingConcept("http://concept");
+
+		File types = temporary.namedFile("<http://entity> <> <http://concept> .", "s_types.nt");
+		File directory = temporary.directory();
+		
+		new MinimalTypes(getConceptsFrom(ontology), writeSubClassRelationsFrom(ontology)).computeFor(types, directory);
+		
+		assertThat(linesOf("s_minType.txt"), hasItem("http://entity##http://concept"));
 	}
 	
 	private List<String> linesOf(String name) throws IOException {

@@ -5,6 +5,7 @@ import it.unimib.disco.summarization.datatype.Concept;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map.Entry;
 
@@ -25,8 +26,9 @@ public class MinimalTypes {
 	}
 
 	public void computeFor(File types, File directory) throws Exception {
-		HashMap<String, Integer> conceptCounts = buildConceptCounts();
+		HashMap<String, Integer> conceptCounts = buildConceptCountsFrom(concepts);
 		List<String> externalConcepts = new ArrayList<String>();
+		HashMap<String, HashSet<String>> minimalTypes = new HashMap<String, HashSet<String>>();
 		
 		TextInput typeRelations = new TextInput(new FileSystemConnector(types));
 		while(typeRelations.hasNextLine()){
@@ -36,14 +38,20 @@ public class MinimalTypes {
 			String concept = triple.object().uri();
 			if(!concept.equals(OWL.Thing.getURI())){
 				trackConcept(entity, concept, conceptCounts, externalConcepts);
+				trackMinimalType(entity, concept, minimalTypes);
 			}
 		}
 		
 		String prefix = prefixOf(types);
 		writeConceptCounts(conceptCounts, directory, prefix);
 		writeExternalConcepts(externalConcepts, directory, prefix);
-		
-		connectorTo(directory, prefix, "minType").close();
+		writeMinimalTypes(minimalTypes, directory, prefix);
+	}
+
+	private void trackMinimalType(String entity, String concept,
+			HashMap<String, HashSet<String>> minimalTypes) {
+		if(!minimalTypes.containsKey(entity)) minimalTypes.put(entity, new HashSet<String>());
+		minimalTypes.get(entity).add(concept);
 	}
 
 	private void trackConcept(String entity, String concept, HashMap<String, Integer> counts, List<String> externalConcepts) {
@@ -70,7 +78,15 @@ public class MinimalTypes {
 		countConceptFile.close();
 	}
 
-	private HashMap<String, Integer> buildConceptCounts() {
+	private void writeMinimalTypes(HashMap<String, HashSet<String>> minimalTypes, File directory, String prefix) throws Exception {
+		BulkTextOutput connector = connectorTo(directory, prefix, "minType");
+		for(Entry<String, HashSet<String>> entityTypes : minimalTypes.entrySet()){
+			connector.writeLine(entityTypes.getKey() + "##" + StringUtils.join(entityTypes.getValue(), "##"));
+		}
+		connector.close();
+	}
+	
+	private HashMap<String, Integer> buildConceptCountsFrom(Concept concepts) {
 		HashMap<String, Integer> conceptCounts = new HashMap<String, Integer>();
 		for(OntResource concept : concepts.getExtractedConcepts()){
 			conceptCounts.put(concept.getURI(), 0);

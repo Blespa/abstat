@@ -9,13 +9,14 @@ import java.util.List;
 import java.util.Map.Entry;
 
 import org.jgraph.graph.DefaultEdge;
-import org.jgrapht.experimental.dag.DirectedAcyclicGraph;
+import org.jgrapht.DirectedGraph;
+import org.jgrapht.graph.DirectedPseudograph;
 
 import com.hp.hpl.jena.ontology.OntResource;
 
 public class TypeGraph{
 	
-	private DirectedAcyclicGraph<String, DefaultEdge> graph;
+	private DirectedGraph<String, DefaultEdge> graph;
 
 	public TypeGraph(Concepts concepts, TextInput subClassesPath) throws Exception{
 		this.graph = subTypeGraphFrom(concepts, subClassesPath);
@@ -49,11 +50,11 @@ public class TypeGraph{
 				graph.addVertex(equivalentConcept);
 				for(DefaultEdge edgeToSuperType : graph.outgoingEdgesOf(equivalences.getKey())){
 					String supertype = graph.getEdgeTarget(edgeToSuperType);
-					graph.addDagEdge(equivalentConcept, supertype);
+					graph.addEdge(equivalentConcept, supertype);
 				}
 				for(DefaultEdge edgeToSubType : graph.incomingEdgesOf(equivalences.getKey())){
 					String subtype = graph.getEdgeSource(edgeToSubType);
-					graph.addDagEdge(subtype, equivalentConcept);
+					graph.addEdge(subtype, equivalentConcept);
 				}
 			}
 		}
@@ -79,8 +80,8 @@ public class TypeGraph{
 		return graph.outgoingEdgesOf(concept).isEmpty();
 	}
 	
-	private DirectedAcyclicGraph<String, DefaultEdge> subTypeGraphFrom(Concepts concepts, TextInput subclassRelations) throws Exception {
-		DirectedAcyclicGraph<String, DefaultEdge> typeGraph = new DirectedAcyclicGraph<String, DefaultEdge>(DefaultEdge.class);
+	private DirectedGraph<String, DefaultEdge> subTypeGraphFrom(Concepts concepts, TextInput subclassRelations) throws Exception {
+		DirectedGraph<String, DefaultEdge> typeGraph = new DirectedPseudograph<String, DefaultEdge>(DefaultEdge.class);
 		
 		for(OntResource concept : concepts.getExtractedConcepts()){
 			typeGraph.addVertex(concept.getURI());
@@ -95,7 +96,7 @@ public class TypeGraph{
 			if(!typeGraph.containsVertex(subtype)) typeGraph.addVertex(subtype);
 			if(!typeGraph.containsVertex(supertype)) typeGraph.addVertex(supertype);
 			
-			typeGraph.addDagEdge(subtype, supertype);
+			typeGraph.addEdge(subtype, supertype);
 		}
 		
 		return typeGraph;

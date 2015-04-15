@@ -126,6 +126,8 @@ fi
 echo
 
 mkdir -p $expected_results/patterns/tmp-files
+rm -rf $results
+mkdir -p $results
 
 cd $current_directory
 ./test-java-ui-module.sh

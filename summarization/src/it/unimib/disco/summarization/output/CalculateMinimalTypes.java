@@ -4,10 +4,12 @@ import it.unimib.disco.summarization.datatype.Concepts;
 import it.unimib.disco.summarization.datatype.EquivalentConcepts;
 import it.unimib.disco.summarization.extraction.ConceptExtractor;
 import it.unimib.disco.summarization.extraction.EqConceptExtractor;
+import it.unimib.disco.summarization.starter.Events;
 import it.unimib.disco.summarization.utility.MinimalTypes;
 import it.unimib.disco.summarization.utility.Model;
 
 import java.io.File;
+import java.util.Collection;
 
 import org.apache.commons.io.FileUtils;
 
@@ -17,7 +19,12 @@ public class CalculateMinimalTypes {
 
 	public static void main(String[] args) throws Exception {
 		
-		File ontology = new File(args[0]);
+		new Events();
+		
+		File folder = new File(args[0]);
+		Collection<File> listOfFiles = FileUtils.listFiles(folder, new String[]{"owl"}, false);
+		File ontology = listOfFiles.iterator().next();
+		
 		File subClasses = new File(args[1]);
 		File typesDirectory = new File(args[2]);
 		File targetDirectory = new File(args[3]);

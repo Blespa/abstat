@@ -4,7 +4,7 @@ import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 import it.unimib.disco.summarization.datatype.Concepts;
 import it.unimib.disco.summarization.datatype.EquivalentConcepts;
 import it.unimib.disco.summarization.extraction.ConceptExtractor;
@@ -20,9 +20,9 @@ import java.util.List;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
-import org.semanticweb.yars.nx.namespace.OWL;
 
 import com.hp.hpl.jena.ontology.OntClass;
+import com.hp.hpl.jena.vocabulary.OWL;
 
 public class MinimalTypesTest extends TestWithTemporaryData{
 
@@ -60,7 +60,7 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 	public void shouldCountConceptsEvenWhenTheyHaveNoInstance() throws Exception {
 		ToyOntology ontology = new ToyOntology().owl();
 		
-		File types = temporary.namedFile("<http://entity> <> <" + OWL.THING + "> .", "s_types.nt");
+		File types = temporary.namedFile("<http://entity> <> <" + OWL.Thing + "> .", "s_types.nt");
 		File directory = temporary.directory();
 		
 		minimalTypesFrom(ontology).computeFor(types, directory);

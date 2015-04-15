@@ -9,7 +9,7 @@ import com.hp.hpl.jena.ontology.OntResource;
 /**
  * Provides datatype for store EquConcept infos
  */
-public class EquConcept {
+public class EquivalentConcepts {
 	
 	private HashMap<OntResource,List<OntResource>> ExtractedEquConcept;
 	private ArrayList<String> equConcept = new ArrayList<String>();

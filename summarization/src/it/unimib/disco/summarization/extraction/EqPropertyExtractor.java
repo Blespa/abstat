@@ -1,6 +1,6 @@
 package it.unimib.disco.summarization.extraction;
 
-import it.unimib.disco.summarization.datatype.Property;
+import it.unimib.disco.summarization.datatype.Properties;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +29,7 @@ public class EqPropertyExtractor {
 	private HashMap<String,HashMap<String,Integer>> Counter = new HashMap<String,HashMap<String,Integer>>(); //Property -> Context(Relation Type), Total
 
 
-	public void setEquProperty(Property properties, OntModel ontologyModel) {
+	public void setEquProperty(Properties properties, OntModel ontologyModel) {
 
 		Iterator<OntProperty> itP = properties.getExtractedProperty().iterator();
 

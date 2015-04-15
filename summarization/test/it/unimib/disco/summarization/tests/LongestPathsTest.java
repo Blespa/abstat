@@ -6,7 +6,7 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertThat;
-import it.unimib.disco.summarization.datatype.Concept;
+import it.unimib.disco.summarization.datatype.Concepts;
 import it.unimib.disco.summarization.extraction.ConceptExtractor;
 import it.unimib.disco.summarization.relation.OntologySubclassOfExtractor;
 import it.unimib.disco.summarization.utility.ComputeLongestPathHierarchy;
@@ -31,7 +31,7 @@ public class LongestPathsTest extends TestWithTemporaryData{
 	@Test
 	public void shouldAddAlsoExternalTypes() throws Exception {
 		
-		Concept concepts = getConceptsFrom(new ToyOntology()
+		Concepts concepts = getConceptsFrom(new ToyOntology()
 													.owl()
 													.definingConcept("http://concept"));
 		File subClasses = writeSubClassRelationsFrom(new ToyOntology()
@@ -48,7 +48,7 @@ public class LongestPathsTest extends TestWithTemporaryData{
 	public void shouldHandleAnEmptyOntology() throws Exception {
 		
 		ToyOntology ontology = new ToyOntology().owl();
-		Concept concepts = getConceptsFrom(ontology);
+		Concepts concepts = getConceptsFrom(ontology);
 		File subClasses = writeSubClassRelationsFrom(ontology);
 		
 		File savedPaths = longestPaths(concepts, subClasses);
@@ -63,7 +63,7 @@ public class LongestPathsTest extends TestWithTemporaryData{
 										.owl()
 										.definingConcept("http://concept");
 		
-		Concept concepts = getConceptsFrom(ontology);
+		Concepts concepts = getConceptsFrom(ontology);
 		File subClasses = writeSubClassRelationsFrom(ontology);
 		
 		List<String> paths = linesFrom(longestPaths(concepts, subClasses));
@@ -81,7 +81,7 @@ public class LongestPathsTest extends TestWithTemporaryData{
 										.definingConcept("http://agent")
 											.aSubconceptOf("http://thing");
 		
-		Concept concepts = getConceptsFrom(ontology);
+		Concepts concepts = getConceptsFrom(ontology);
 		File subClasses = writeSubClassRelationsFrom(ontology);
 		
 		List<String> paths = linesFrom(longestPaths(concepts, subClasses));
@@ -99,7 +99,7 @@ public class LongestPathsTest extends TestWithTemporaryData{
 										.definingConcept("http://agent")
 											.aSubconceptOf("http://thing");
 		
-		Concept concepts = getConceptsFrom(ontology);
+		Concepts concepts = getConceptsFrom(ontology);
 		File subClasses = writeSubClassRelationsFrom(ontology);
 		
 		List<String> paths = linesFrom(longestPaths(concepts, subClasses));
@@ -130,7 +130,7 @@ public class LongestPathsTest extends TestWithTemporaryData{
 					.aSubconceptOf(root)
 					.aSubconceptOf(place);
 		
-		Concept concepts = getConceptsFrom(ontology);
+		Concepts concepts = getConceptsFrom(ontology);
 		File subClasses = writeSubClassRelationsFrom(ontology);
 		
 		File legacyResults = temporary.file();
@@ -139,7 +139,7 @@ public class LongestPathsTest extends TestWithTemporaryData{
 		assertAreEquivalent(legacyResults, longestPaths(concepts, subClasses));
 	}
 
-	private File longestPaths(Concept concepts, File subClasses) throws Exception {
+	private File longestPaths(Concepts concepts, File subClasses) throws Exception {
 		File results = temporary.file();
 		new LongestPaths(concepts, new TextInput(new FileSystemConnector(subClasses))).writeTo(results.getAbsolutePath());
 		return results;
@@ -153,12 +153,12 @@ public class LongestPathsTest extends TestWithTemporaryData{
 		assertThat(paths, containsInAnyOrder(legacyPaths.toArray()));
 	}
 
-	private Concept getConceptsFrom(ToyOntology ontology){
+	private Concepts getConceptsFrom(ToyOntology ontology){
 		
 		ConceptExtractor conceptExtractor = new ConceptExtractor();
 		conceptExtractor.setConcepts(ontology.build());
 		
-		Concept concepts = new Concept();
+		Concepts concepts = new Concepts();
 		concepts.setConcepts(conceptExtractor.getConcepts());
 		concepts.setExtractedConcepts(conceptExtractor.getExtractedConcepts());
 		concepts.setObtainedBy(conceptExtractor.getObtainedBy());

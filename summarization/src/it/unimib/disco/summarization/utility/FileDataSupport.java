@@ -1,10 +1,10 @@
 package it.unimib.disco.summarization.utility;
 
-import it.unimib.disco.summarization.datatype.Concept;
+import it.unimib.disco.summarization.datatype.Concepts;
 import it.unimib.disco.summarization.datatype.DomainRange;
-import it.unimib.disco.summarization.datatype.EquConcept;
+import it.unimib.disco.summarization.datatype.EquivalentConcepts;
 import it.unimib.disco.summarization.datatype.EquProperty;
-import it.unimib.disco.summarization.datatype.Property;
+import it.unimib.disco.summarization.datatype.Properties;
 import it.unimib.disco.summarization.datatype.SubClassOf;
 
 import java.io.BufferedWriter;
@@ -41,7 +41,7 @@ public class FileDataSupport {
 	}
 	
 	
-	public void writeSubclass(EquConcept equConcept){
+	public void writeSubclass(EquivalentConcepts equConcept){
 
 		Iterator<List<OntClass>> ScIter = subClassOfRelation.getConceptsSubclassOf().iterator();
 		
@@ -119,7 +119,7 @@ public class FileDataSupport {
 		}
 	}
 	
-	public void writeConcept(Concept AllConcepts){
+	public void writeConcept(Concepts AllConcepts){
 
 		Iterator<String> cIter = AllConcepts.getConcepts().keySet().iterator();
 		
@@ -143,7 +143,7 @@ public class FileDataSupport {
 		}
 	}
 	
-	public void writeProperty(Property AllProperty){
+	public void writeProperty(Properties AllProperty){
 
 		List<OntProperty> extractedProp = AllProperty.getExtractedProperty();
 		Iterator<OntProperty> ePropIt = extractedProp.iterator();
@@ -178,7 +178,7 @@ public class FileDataSupport {
 		}
 	}
 	
-	public void writeEquclass(EquConcept equConcepts){
+	public void writeEquclass(EquivalentConcepts equConcepts){
 
 		Iterator<OntResource> pIter = equConcepts.getExtractedEquConcept().keySet().iterator();
 
@@ -275,7 +275,7 @@ public class FileDataSupport {
 		
 	}
 	
-	private ArrayList<String> listRelativeEquConcept(EquConcept equConcept,OntClass equClass){
+	private ArrayList<String> listRelativeEquConcept(EquivalentConcepts equConcept,OntClass equClass){
 		HashMap<OntResource,List<OntResource>> ExtractedEquConcept = equConcept.getExtractedEquConcept();
 		
 		ArrayList<String> equConcepts = new ArrayList<String>();

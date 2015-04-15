@@ -1,6 +1,6 @@
 package it.unimib.disco.summarization.utility;
 
-import it.unimib.disco.summarization.datatype.Concept;
+import it.unimib.disco.summarization.datatype.Concepts;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ public class LongestPaths {
 
 	private TypeGraph typeGraph;
 
-	public LongestPaths(Concept concepts, TextInput subClassesPath) throws Exception {
+	public LongestPaths(Concepts concepts, TextInput subClassesPath) throws Exception {
 		this.typeGraph = new TypeGraph(concepts, subClassesPath);
 	}
 	

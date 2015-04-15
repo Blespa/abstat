@@ -1,6 +1,7 @@
 package it.unimib.disco.summarization.utility;
 
-import it.unimib.disco.summarization.datatype.Concept;
+import it.unimib.disco.summarization.datatype.Concepts;
+import it.unimib.disco.summarization.datatype.EquivalentConcepts;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -17,12 +18,13 @@ import com.hp.hpl.jena.vocabulary.OWL;
 
 public class MinimalTypes {
 
-	private Concept concepts;
+	private Concepts concepts;
 	private TypeGraph graph;
 
-	public MinimalTypes(Concept concepts, File subClassRelations) throws Exception {
+	public MinimalTypes(Concepts concepts, EquivalentConcepts equConcept, File subClassRelations) throws Exception {
 		this.concepts = concepts;
 		this.graph = new TypeGraph(concepts, new TextInput(new FileSystemConnector(subClassRelations)));
+		this.graph.enrichWith(buildEquivalentConceptsFrom(equConcept.getExtractedEquConcept()));
 	}
 
 	public void computeFor(File types, File directory) throws Exception {
@@ -31,6 +33,7 @@ public class MinimalTypes {
 		HashMap<String, HashSet<String>> minimalTypes = new HashMap<String, HashSet<String>>();
 		
 		TextInput typeRelations = new TextInput(new FileSystemConnector(types));
+		
 		while(typeRelations.hasNextLine()){
 			NTriple triple = new NTriple(NxParser.parseNodes(typeRelations.nextLine()));
 			
@@ -46,6 +49,18 @@ public class MinimalTypes {
 		writeConceptCounts(conceptCounts, directory, prefix);
 		writeExternalConcepts(externalConcepts, directory, prefix);
 		writeMinimalTypes(minimalTypes, directory, prefix);
+	}
+
+	private HashMap<String, HashSet<String>> buildEquivalentConceptsFrom(HashMap<OntResource, List<OntResource>> equivalentConcepts) {
+		HashMap<String, HashSet<String>> result = new HashMap<String, HashSet<String>>();
+		for(Entry<OntResource, List<OntResource>> entry : equivalentConcepts.entrySet()){
+			HashSet<String> concepts = new HashSet<String>();
+			for(OntResource concept : entry.getValue()){
+				concepts.add(concept.getURI());
+			}
+			result.put(entry.getKey().getURI(), concepts);
+		}
+		return result;
 	}
 
 	private void trackMinimalType(String entity, String concept, HashMap<String, HashSet<String>> minimalTypes) {
@@ -94,7 +109,7 @@ public class MinimalTypes {
 		connector.close();
 	}
 	
-	private HashMap<String, Integer> buildConceptCountsFrom(Concept concepts) {
+	private HashMap<String, Integer> buildConceptCountsFrom(Concepts concepts) {
 		HashMap<String, Integer> conceptCounts = new HashMap<String, Integer>();
 		for(OntResource concept : concepts.getExtractedConcepts()){
 			conceptCounts.put(concept.getURI(), 0);

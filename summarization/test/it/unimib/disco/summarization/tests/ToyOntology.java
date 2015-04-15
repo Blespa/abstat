@@ -41,7 +41,7 @@ public class ToyOntology{
 	}
 	
 	public ToyOntology equivalentTo(String concept) {
-		return thatHasProperty(OWL.sameAs).linkingTo(concept);
+		return thatHasProperty(OWL.equivalentClass).linkingTo(concept);
 	}
 	
 	public ToyOntology linkingTo(String uri){

@@ -1,9 +1,12 @@
 package it.unimib.disco.summarization.utility;
 
-import it.unimib.disco.summarization.datatype.Concept;
+import it.unimib.disco.summarization.datatype.Concepts;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map.Entry;
 
 import org.jgraph.graph.DefaultEdge;
 import org.jgrapht.experimental.dag.DirectedAcyclicGraph;
@@ -14,7 +17,7 @@ public class TypeGraph{
 	
 	private DirectedAcyclicGraph<String, DefaultEdge> graph;
 
-	public TypeGraph(Concept concepts, TextInput subClassesPath) throws Exception{
+	public TypeGraph(Concepts concepts, TextInput subClassesPath) throws Exception{
 		this.graph = subTypeGraphFrom(concepts, subClassesPath);
 	}
 	
@@ -40,6 +43,22 @@ public class TypeGraph{
 		return paths;
 	}
 	
+	public void enrichWith(HashMap<String, HashSet<String>> equivalentConcepts) throws Exception {
+		for(Entry<String, HashSet<String>> equivalences : equivalentConcepts.entrySet()){
+			for(String equivalentConcept : equivalences.getValue()){
+				graph.addVertex(equivalentConcept);
+				for(DefaultEdge edgeToSuperType : graph.outgoingEdgesOf(equivalences.getKey())){
+					String supertype = graph.getEdgeTarget(edgeToSuperType);
+					graph.addDagEdge(equivalentConcept, supertype);
+				}
+				for(DefaultEdge edgeToSubType : graph.incomingEdgesOf(equivalences.getKey())){
+					String subtype = graph.getEdgeSource(edgeToSubType);
+					graph.addDagEdge(subtype, equivalentConcept);
+				}
+			}
+		}
+	}
+	
 	private void inOrderTraversal(String leaf, String root, List<String> currentPath, List<List<String>> paths){
 		ArrayList<String> path = new ArrayList<String>(currentPath);
 		path.add(leaf);
@@ -60,7 +79,7 @@ public class TypeGraph{
 		return graph.outgoingEdgesOf(concept).isEmpty();
 	}
 	
-	private DirectedAcyclicGraph<String, DefaultEdge> subTypeGraphFrom(Concept concepts, TextInput subclassRelations) throws Exception {
+	private DirectedAcyclicGraph<String, DefaultEdge> subTypeGraphFrom(Concepts concepts, TextInput subclassRelations) throws Exception {
 		DirectedAcyclicGraph<String, DefaultEdge> typeGraph = new DirectedAcyclicGraph<String, DefaultEdge>(DefaultEdge.class);
 		
 		for(OntResource concept : concepts.getExtractedConcepts()){

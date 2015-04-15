@@ -1,13 +1,13 @@
 package it.unimib.disco.summarization.starter;
 
 import it.unimib.disco.summarization.datatype.Axiom;
-import it.unimib.disco.summarization.datatype.Concept;
+import it.unimib.disco.summarization.datatype.Concepts;
 import it.unimib.disco.summarization.datatype.DomainRange;
-import it.unimib.disco.summarization.datatype.EquConcept;
+import it.unimib.disco.summarization.datatype.EquivalentConcepts;
 import it.unimib.disco.summarization.datatype.EquProperty;
 import it.unimib.disco.summarization.datatype.InvProperty;
 import it.unimib.disco.summarization.datatype.LiteralAxiom;
-import it.unimib.disco.summarization.datatype.Property;
+import it.unimib.disco.summarization.datatype.Properties;
 import it.unimib.disco.summarization.datatype.SubClassOf;
 import it.unimib.disco.summarization.datatype.SubProperty;
 import it.unimib.disco.summarization.extraction.ConceptExtractor;
@@ -95,14 +95,14 @@ public class Starter {
 		PropertyExtractor pExtract = new PropertyExtractor();
 		pExtract.setProperty(ontologyModel);
 		
-		Property Properties = new Property();
-		Properties.setProperty(pExtract.getProperty());
-		Properties.setExtractedProperty(pExtract.getExtractedProperty());
-		Properties.setCounter(pExtract.getCounter());
+		Properties properties = new Properties();
+		properties.setProperty(pExtract.getProperty());
+		properties.setExtractedProperty(pExtract.getExtractedProperty());
+		properties.setCounter(pExtract.getCounter());
 		
 		//Extract SubProperty from Ontology Model
 		SubPropertyExtractor spExtract = new SubPropertyExtractor();
-		spExtract.setSubProperty(Properties);
+		spExtract.setSubProperty(properties);
 		
 		SubProperty subProperties = new SubProperty();
 		subProperties.setExtractedSubProperty(spExtract.getExtractedSubProperty());
@@ -110,7 +110,7 @@ public class Starter {
 		
 		//Extract InverseProperty from Ontology Model
 		InvPropertyExtractor ipExtract = new InvPropertyExtractor();
-		ipExtract.setInvProperty(Properties);
+		ipExtract.setInvProperty(properties);
 		
 		InvProperty invProperties = new InvProperty();
 		invProperties.setExtractedInvProperty(ipExtract.getExtractedInvProperty());
@@ -118,7 +118,7 @@ public class Starter {
 		
 		//Extract EquivalentProperty from Ontology Model
 		EqPropertyExtractor epExtract = new EqPropertyExtractor();
-		epExtract.setEquProperty(Properties, ontologyModel);
+		epExtract.setEquProperty(properties, ontologyModel);
 				
 		EquProperty equProperties = new EquProperty();
 		equProperties.setExtractedEquProperty(epExtract.getExtractedEquProperty());
@@ -129,29 +129,29 @@ public class Starter {
 		ConceptExtractor cExtract = new ConceptExtractor();
 		cExtract.setConcepts(ontologyModel);
 		
-		Concept Concepts = new Concept();
-		Concepts.setConcepts(cExtract.getConcepts());
-		Concepts.setExtractedConcepts(cExtract.getExtractedConcepts());
-		Concepts.setObtainedBy(cExtract.getObtainedBy());
+		Concepts concepts = new Concepts();
+		concepts.setConcepts(cExtract.getConcepts());
+		concepts.setExtractedConcepts(cExtract.getExtractedConcepts());
+		concepts.setObtainedBy(cExtract.getObtainedBy());
 		
 		//Extract SubClassOf Relation from OntologyModel
 		OntologySubclassOfExtractor SbExtractor = new OntologySubclassOfExtractor();
 		//The Set of Concepts will be Updated if Superclasses are not in It
-		SbExtractor.setConceptsSubclassOf(Concepts, ontologyModel);
+		SbExtractor.setConceptsSubclassOf(concepts, ontologyModel);
 		SubClassOf SubClassOfRelation = SbExtractor.getConceptsSubclassOf();
 		
 		//Extract Domain & Range Relation
 		OntologyDomainRangeExtractor DRExtractor = new OntologyDomainRangeExtractor();
 		//The Set of Concepts will be Updated if Domain or Range are not in It
-		DRExtractor.setConceptsDomainRange(Concepts, Properties);
+		DRExtractor.setConceptsDomainRange(concepts, properties);
 		DomainRange DRRelation = DRExtractor.getPropertyDomainRange();
 		
 		//Extract Axioms from OntologyModel
 		OntologyAxiomExtractor SVFExtractor = new OntologyAxiomExtractor();
 		//The Set of Concepts will be Updated if Superclasses are not in It
-		SVFExtractor.setConceptsSomeValueFrom(Concepts, DRRelation, ontologyModel);
-		SVFExtractor.setConceptsAllValueFrom(Concepts, DRRelation, ontologyModel);
-		SVFExtractor.setConceptsMinCardinality(Concepts, DRRelation, ontologyModel);
+		SVFExtractor.setConceptsSomeValueFrom(concepts, DRRelation, ontologyModel);
+		SVFExtractor.setConceptsAllValueFrom(concepts, DRRelation, ontologyModel);
+		SVFExtractor.setConceptsMinCardinality(concepts, DRRelation, ontologyModel);
 		Axiom SomeValueFromRelation = SVFExtractor.getConceptsSomeValueFrom();
 		Axiom AllValueFromRelation = SVFExtractor.getConceptsAllValueFrom();
 		Axiom MinCardinalityRelation = SVFExtractor.getConceptsMinCardinality();
@@ -161,24 +161,24 @@ public class Starter {
 		
 		//Extract EquivalentClass from Ontology Model - Qui per considerare tutti i concetti
 		EqConceptExtractor equConcepts = new EqConceptExtractor();
-		equConcepts.setEquConcept(Concepts, ontologyModel);
+		equConcepts.setEquConcept(concepts, ontologyModel);
 		
-		EquConcept equConcept = new EquConcept();
+		EquivalentConcepts equConcept = new EquivalentConcepts();
 		equConcept.setExtractedEquConcept(equConcepts.getExtractedEquConcept());
 		equConcept.setEquConcept(equConcepts.getEquConcept());
 		
 		//Get List of Used Ontology
-		List<String> usedOntology = UsedOntology.getUsedOntology(ontologyModel, Concepts, Properties, equProperties);
+		List<String> usedOntology = UsedOntology.getUsedOntology(ontologyModel, concepts, properties, equProperties);
 		
 		//Extract Labels and Comments
 		InfoExtractor info = new InfoExtractor();
-		info.setConceptInfo(Concepts);
-		info.setPropertyInfo(Properties);
+		info.setConceptInfo(concepts);
+		info.setPropertyInfo(properties);
 		
 		//Save Data in an Excel Report - TODO: Salvare su database
 		
 		//Pulisco i concetti da eventuali null e Thing
-		Concepts.deleteThing();
+		concepts.deleteThing();
 		
 		//Pulisco le relazioni di sottoclasse di Thing
 		SubClassOfRelation.deleteThing();
@@ -195,18 +195,18 @@ public class Starter {
 			report.startWrite();
 			
 			//Write Data
-			report.generateConceptsSheet(Concepts,0);
+			report.generateConceptsSheet(concepts,0);
 			report.generateEquConceptsSheet(equConcept,1);
-			report.generateConceptsCountSheet(Concepts,2);
-			report.generateConceptsLabelSheet(Concepts,info,3);
-			report.generateConceptsCommentSheet(Concepts, info, 4);
-			int numSheet = report.generatePropertiesSheet(Properties,5);
-			report.generatePropertiesLabelSheet(Properties, info, numSheet+1);
-			report.generatePropertiesCommentSheet(Properties, info, numSheet+2);			
+			report.generateConceptsCountSheet(concepts,2);
+			report.generateConceptsLabelSheet(concepts,info,3);
+			report.generateConceptsCommentSheet(concepts, info, 4);
+			int numSheet = report.generatePropertiesSheet(properties,5);
+			report.generatePropertiesLabelSheet(properties, info, numSheet+1);
+			report.generatePropertiesCommentSheet(properties, info, numSheet+2);			
 			report.generateEquPropertiesSheet(equProperties,numSheet+3);
 			report.generateSubPropertiesSheet(subProperties,numSheet+4);
 			report.generateInvPropertiesSheet(invProperties,numSheet+5);
-			report.generatePropertiesCountSheet(Properties,subProperties,invProperties,equProperties,numSheet+6);
+			report.generatePropertiesCountSheet(properties,subProperties,invProperties,equProperties,numSheet+6);
 			report.generateSubClassOfSheet(SubClassOfRelation,numSheet+7);
 			report.generateSomeValueFromSheet(SomeValueFromRelation,numSheet+8);
 			report.generateSomeValueFromLiteralSheet(SomeValueFromLiteralRelation,numSheet+9);
@@ -214,7 +214,7 @@ public class Starter {
 			report.generateAllValueFromLiteralSheet(AllValueFromLiteralRelation,numSheet+11);
 			report.generateMinCardinalitySheet(MinCardinalityRelation,numSheet+12);
 			report.generateMinCardinalityLiteralSheet(MinCardinalityLiteralRelation,numSheet+13);
-			numSheet = report.generateDomainRangeSheet(DRRelation, Properties,numSheet+14);
+			numSheet = report.generateDomainRangeSheet(DRRelation, properties,numSheet+14);
 			report.generateUsedOntologySheet(usedOntology,numSheet+1);			
 			//Close File and End Write
 			report.endWrite();
@@ -229,14 +229,14 @@ public class Starter {
         //Calcolo tutti i percorsi nella gerarchia
         
         TextInput subclasses = new TextInput(new FileSystemConnector(new File(datasetSupportFileDirectory + "SubclassOf.txt")));
-        LongestPaths pathHierarchy = new LongestPaths(Concepts, subclasses);
+        LongestPaths pathHierarchy = new LongestPaths(concepts, subclasses);
         pathHierarchy.writeTo(datasetSupportFileDirectory + "path.txt");
         
-        writeFileSupp.writeConcept(Concepts);
+        writeFileSupp.writeConcept(concepts);
         writeFileSupp.writeEquclass(equConcept);
         writeFileSupp.writeEquProperty(equProperties);
         writeFileSupp.writeDR(DRRelation);
-        writeFileSupp.writeProperty(Properties);
+        writeFileSupp.writeProperty(properties);
 	}
 
 }

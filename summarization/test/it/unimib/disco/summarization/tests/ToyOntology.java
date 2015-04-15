@@ -7,6 +7,7 @@ import com.hp.hpl.jena.ontology.OntModelSpec;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.vocabulary.OWL;
 import com.hp.hpl.jena.vocabulary.RDFS;
 
 public class ToyOntology{
@@ -37,6 +38,10 @@ public class ToyOntology{
 	
 	public ToyOntology aSubconceptOf(String uri){
 		return thatHasProperty(RDFS.subClassOf).linkingTo(uri);
+	}
+	
+	public ToyOntology equivalentTo(String concept) {
+		return thatHasProperty(OWL.sameAs).linkingTo(concept);
 	}
 	
 	public ToyOntology linkingTo(String uri){

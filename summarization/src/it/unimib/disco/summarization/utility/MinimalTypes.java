@@ -88,7 +88,8 @@ public class MinimalTypes {
 	private void writeMinimalTypes(HashMap<String, HashSet<String>> minimalTypes, File directory, String prefix) throws Exception {
 		BulkTextOutput connector = connectorTo(directory, prefix, "minType");
 		for(Entry<String, HashSet<String>> entityTypes : minimalTypes.entrySet()){
-			connector.writeLine(entityTypes.getKey() + "##" + StringUtils.join(entityTypes.getValue(), "##"));
+			HashSet<String> types = entityTypes.getValue();
+			connector.writeLine(types.size() + "##" + entityTypes.getKey() + "##" + StringUtils.join(types, "##"));
 		}
 		connector.close();
 	}

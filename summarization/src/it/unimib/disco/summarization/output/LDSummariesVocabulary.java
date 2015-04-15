@@ -1,5 +1,7 @@
 package it.unimib.disco.summarization.output;
 
+import it.unimib.disco.summarization.utility.RDFResource;
+
 import java.util.ArrayList;
 import java.util.List;
 

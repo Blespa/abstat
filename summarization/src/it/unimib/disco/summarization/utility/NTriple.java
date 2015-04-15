@@ -1,7 +1,5 @@
 package it.unimib.disco.summarization.utility;
 
-import it.unimib.disco.summarization.output.RDFResource;
-
 import org.semanticweb.yars.nx.Node;
 
 public class NTriple{

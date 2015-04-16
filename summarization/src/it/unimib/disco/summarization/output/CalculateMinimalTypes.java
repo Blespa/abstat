@@ -12,6 +12,7 @@ import java.io.File;
 import java.util.Collection;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import com.hp.hpl.jena.ontology.OntModel;
 
@@ -19,7 +20,7 @@ public class CalculateMinimalTypes {
 
 	public static void main(String[] args) throws Exception {
 		
-		new Events();
+		Events logger = new Events();
 		
 		File folder = new File(args[0]);
 		Collection<File> listOfFiles = FileUtils.listFiles(folder, new String[]{"owl"}, false);
@@ -36,8 +37,12 @@ public class CalculateMinimalTypes {
 		
 		MinimalTypes minimalTypes = new MinimalTypes(concepts, equivalentConcepts, subClasses);
 		
-		for(File typeFile : FileUtils.listFiles(typesDirectory, new String[]{"_types.nt"}, false)){
+		Collection<File> files = FileUtils.listFiles(typesDirectory, new String[]{"_types.nt"}, false);
+		logger.info(StringUtils.join(files, " "));
+		for(File typeFile : files){
+			logger.info("computing minimal types for " + typeFile);
 			minimalTypes.computeFor(typeFile, targetDirectory);
+			logger.info("done: " + typeFile);
 		}
 	}
 

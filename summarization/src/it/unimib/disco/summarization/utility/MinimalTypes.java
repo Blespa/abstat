@@ -17,16 +17,14 @@ import com.hp.hpl.jena.vocabulary.OWL;
 
 public class MinimalTypes {
 
-	private Concepts concepts;
 	private TypeGraph graph;
 
 	public MinimalTypes(Concepts concepts, EquivalentConcepts equConcept, File subClassRelations) throws Exception {
-		this.concepts = concepts;
 		this.graph = new TypeGraph(concepts, new TextInput(new FileSystemConnector(subClassRelations)));
 		this.graph.enrichWith(buildEquivalentConceptsFrom(equConcept.getExtractedEquConcept()));
 	}
 
-	public void computeFor(File types, File directory) throws Exception {
+	public void computeFor(File concepts, File types, File directory) throws Exception {
 		HashMap<String, Integer> conceptCounts = buildConceptCountsFrom(concepts);
 		List<String> externalConcepts = new ArrayList<String>();
 		HashMap<String, HashSet<String>> minimalTypes = new HashMap<String, HashSet<String>>();
@@ -109,10 +107,12 @@ public class MinimalTypes {
 		connector.close();
 	}
 	
-	private HashMap<String, Integer> buildConceptCountsFrom(Concepts concepts) {
+	private HashMap<String, Integer> buildConceptCountsFrom(File concepts) throws Exception {
 		HashMap<String, Integer> conceptCounts = new HashMap<String, Integer>();
-		for(OntResource concept : concepts.getExtractedConcepts()){
-			conceptCounts.put(concept.getURI(), 0);
+		TextInput text = new TextInput(new FileSystemConnector(concepts));
+		while(text.hasNextLine()){
+			String line = text.nextLine();
+			conceptCounts.put(line, 0);
 		}
 		return conceptCounts;
 	}

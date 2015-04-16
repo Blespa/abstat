@@ -30,8 +30,9 @@ public class CalculateMinimalTypes {
 		Collection<File> listOfFiles = FileUtils.listFiles(folder, new String[]{"owl"}, false);
 		File ontology = listOfFiles.iterator().next();
 		File subClasses = new File(args[1]);
-		File typesDirectory = new File(args[2]);
-		final File targetDirectory = new File(args[3]);
+		final File conceptFile = new File(args[2]);
+		File typesDirectory = new File(args[3]);
+		final File targetDirectory = new File(args[4]);
 		
 		OntModel ontologyModel = new Model(null, ontology.getAbsolutePath(),"RDF/XML").getOntologyModel();
 		
@@ -56,7 +57,7 @@ public class CalculateMinimalTypes {
 				public void run() {
 					try {
 						logger.info("computing minimal types for " + typeFile);
-						minimalTypes.computeFor(typeFile, targetDirectory);
+						minimalTypes.computeFor(conceptFile, typeFile, targetDirectory);
 						logger.info("done: " + typeFile);
 					} catch (Exception e) {
 						logger.error(typeFile, e);

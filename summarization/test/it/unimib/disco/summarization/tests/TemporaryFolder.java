@@ -32,8 +32,8 @@ public class TemporaryFolder{
 		return file;
 	}
 	
-	public File file(){
-		return createRandomFileWithExtension("");
+	public File file() throws Exception{
+		return file("");
 	}
 
 	public File file(String content) throws Exception{

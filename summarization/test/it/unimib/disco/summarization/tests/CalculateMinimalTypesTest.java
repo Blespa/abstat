@@ -22,10 +22,12 @@ public class CalculateMinimalTypesTest extends TestWithTemporaryData{
 		temporary.namedFile("http://instance2##type##http://concept", "1_types.nt");
 		
 		File subclasses = temporary.file("http://concept##http://thing");
+		File concepts = temporary.file("http://concept\nhttp://thing");
 		
 		CalculateMinimalTypes.main(new String[]{
 				temporary.path(),
 				subclasses.getAbsolutePath(),
+				concepts.getAbsolutePath(),
 				temporary.path(),
 				temporary.path()
 		});

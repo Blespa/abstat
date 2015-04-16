@@ -27,6 +27,19 @@ import com.hp.hpl.jena.vocabulary.OWL;
 public class MinimalTypesTest extends TestWithTemporaryData{
 
 	@Test
+	public void shouldParseFileNamesWithStrangeSeparators() throws Exception {
+		
+		ToyOntology ontology = new ToyOntology().owl();
+		
+		File types = temporary.namedFile("", "__types.nt");
+		File directory = temporary.directory();
+		
+		minimalTypesFrom(ontology).computeFor(types, directory);
+		
+		assertThat(new File(directory, "__minType.txt").exists(), is(true));
+	}
+	
+	@Test
 	public void shouldParseAnEmptyTripleFile() throws Exception {
 		
 		ToyOntology ontology = new ToyOntology().owl();

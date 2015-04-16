@@ -122,6 +122,6 @@ public class MinimalTypes {
 	}
 
 	private String prefixOf(File types) {
-		return StringUtils.split(types.getName(), "_")[0];
+		return types.getName().charAt(0) + "";
 	}
 }

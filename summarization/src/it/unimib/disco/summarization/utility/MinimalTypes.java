@@ -122,6 +122,7 @@ public class MinimalTypes {
 	}
 
 	private String prefixOf(File types) {
-		return types.getName().charAt(0) + "";
+		String[] splitted = StringUtils.split(types.getName(), "_");
+		return splitted.length == 1 ? "_": splitted[0];
 	}
 }

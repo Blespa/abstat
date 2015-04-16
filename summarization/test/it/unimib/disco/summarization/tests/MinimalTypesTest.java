@@ -40,6 +40,19 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 	}
 	
 	@Test
+	public void shouldParseFileNamesThatAreMoreThanOneCharLong() throws Exception {
+		
+		ToyOntology ontology = new ToyOntology().owl();
+		
+		File types = temporary.namedFile("", "others_types.nt");
+		File directory = temporary.directory();
+		
+		minimalTypesFrom(ontology).computeFor(types, directory);
+		
+		assertThat(new File(directory, "others_minType.txt").exists(), is(true));
+	}
+	
+	@Test
 	public void shouldParseAnEmptyTripleFile() throws Exception {
 		
 		ToyOntology ontology = new ToyOntology().owl();

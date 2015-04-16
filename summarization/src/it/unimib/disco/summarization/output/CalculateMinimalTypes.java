@@ -9,6 +9,7 @@ import it.unimib.disco.summarization.utility.MinimalTypes;
 import it.unimib.disco.summarization.utility.Model;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.util.Collection;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -23,11 +24,11 @@ public class CalculateMinimalTypes {
 	public static void main(String[] args) throws Exception {
 		
 		final Events logger = new Events();
+		logger.info(StringUtils.join(args, " "));
 		
 		File folder = new File(args[0]);
 		Collection<File> listOfFiles = FileUtils.listFiles(folder, new String[]{"owl"}, false);
 		File ontology = listOfFiles.iterator().next();
-		
 		File subClasses = new File(args[1]);
 		File typesDirectory = new File(args[2]);
 		final File targetDirectory = new File(args[3]);
@@ -39,7 +40,13 @@ public class CalculateMinimalTypes {
 		
 		final MinimalTypes minimalTypes = new MinimalTypes(concepts, equivalentConcepts, subClasses);
 		
-		Collection<File> files = FileUtils.listFiles(typesDirectory, new String[]{"_types.nt"}, false);
+		File[] files = typesDirectory.listFiles(new FilenameFilter() {
+			@Override
+			public boolean accept(File dir, String name) {
+				return name.endsWith("_types.nt");
+			}
+		});
+				
 		logger.info(StringUtils.join(files, " "));
 		
 		ExecutorService executor = Executors.newFixedThreadPool(10);

@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Map.Entry;
 
 import org.apache.commons.lang3.StringUtils;
-import org.semanticweb.yars.nx.parser.NxParser;
 
 import com.hp.hpl.jena.ontology.OntResource;
 import com.hp.hpl.jena.vocabulary.OWL;
@@ -35,10 +34,11 @@ public class MinimalTypes {
 		TextInput typeRelations = new TextInput(new FileSystemConnector(types));
 		
 		while(typeRelations.hasNextLine()){
-			NTriple triple = new NTriple(NxParser.parseNodes(typeRelations.nextLine()));
+			String line = typeRelations.nextLine();
+			String[] resources = line.split("##");
 			
-			String entity = triple.subject().uri();
-			String concept = triple.object().uri();
+			String entity = resources[0];
+			String concept = resources[2];
 			if(!concept.equals(OWL.Thing.getURI())){
 				trackConcept(entity, concept, conceptCounts, externalConcepts);
 				trackMinimalType(entity, concept, minimalTypes);

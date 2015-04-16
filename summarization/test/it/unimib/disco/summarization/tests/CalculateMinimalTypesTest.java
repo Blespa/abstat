@@ -1,6 +1,6 @@
 package it.unimib.disco.summarization.tests;
 
-import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 import it.unimib.disco.summarization.output.CalculateMinimalTypes;
 
@@ -18,8 +18,8 @@ public class CalculateMinimalTypesTest extends TestWithTemporaryData{
 								.definingConcept("http://concept")
 									.aSubconceptOf("http://thing")
 								.serialize(), "owl");
-		temporary.file("<http://instance1> <> <http://concept> .", "_types.nt");
-		temporary.file("<http://instance2> <> <http://concept> .", "_types.nt");
+		temporary.namedFile("http://instance1##type##http://concept", "0_types.nt");
+		temporary.namedFile("http://instance2##type##http://concept", "1_types.nt");
 		
 		File subclasses = temporary.file("http://concept##http://thing");
 		
@@ -30,6 +30,6 @@ public class CalculateMinimalTypesTest extends TestWithTemporaryData{
 				temporary.path()
 		});
 		
-		assertThat(temporary.files("_minType.txt"), hasSize(2));
+		assertThat(temporary.files("_minType.txt").length, equalTo(2));
 	}
 }

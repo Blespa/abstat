@@ -60,7 +60,7 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 	public void shouldCountConceptsEvenWhenTheyHaveNoInstance() throws Exception {
 		ToyOntology ontology = new ToyOntology().owl();
 		
-		File types = temporary.namedFile("<http://entity> <> <" + OWL.Thing + "> .", "s_types.nt");
+		File types = temporary.namedFile("http://entity##type##" + OWL.Thing, "s_types.nt");
 		File directory = temporary.directory();
 		
 		minimalTypesFrom(ontology).computeFor(types, directory);
@@ -76,7 +76,7 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 								.owl()
 								.definingConcept("http://concept");
 
-		File types = temporary.namedFile("<http://entity> <> <http://concept> .", "s_types.nt");
+		File types = temporary.namedFile("http://entity##type##http://concept", "s_types.nt");
 		File directory = temporary.directory();
 		
 		minimalTypesFrom(ontology).computeFor(types, directory);
@@ -89,7 +89,7 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 	public void shouldCountAlsoUnknownConcepts() throws Exception {
 		ToyOntology ontology = new ToyOntology().owl();
 
-		File types = temporary.namedFile("<http://entity> <> <http://concept> .", "s_types.nt");
+		File types = temporary.namedFile("http://entity##type##http://concept", "s_types.nt");
 		File directory = temporary.directory();
 		
 		minimalTypesFrom(ontology).computeFor(types, directory);
@@ -104,7 +104,7 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 										.owl()
 										.definingConcept("http://concept");
 
-		File types = temporary.namedFile("<http://entity> <> <http://concept> .", "s_types.nt");
+		File types = temporary.namedFile("http://entity##type##http://concept", "s_types.nt");
 		File directory = temporary.directory();
 		
 		minimalTypesFrom(ontology).computeFor(types, directory);
@@ -120,9 +120,9 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 										.definingConcept("http://concept")
 											.aSubconceptOf("http://thing");
 
-		File types = temporary.namedFile("<http://entity> <> <http://concept> ."
+		File types = temporary.namedFile("http://entity##type##http://concept"
 										+ "\n"
-										+ "<http://entity> <> <http://thing> .", "s_types.nt");
+										+ "http://entity##type##http://thing", "s_types.nt");
 		File directory = temporary.directory();
 		
 		minimalTypesFrom(ontology).computeFor(types, directory);
@@ -138,9 +138,9 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 										.definingConcept("http://concept")
 											.aSubconceptOf("http://thing");
 
-		File types = temporary.namedFile("<http://entity> <> <http://thing> ."
+		File types = temporary.namedFile("http://entity##type##http://thing"
 										+ "\n"
-										+ "<http://entity> <> <http://concept> .", "s_types.nt");
+										+ "http://entity##type##http://concept", "s_types.nt");
 		File directory = temporary.directory();
 		
 		minimalTypesFrom(ontology).computeFor(types, directory);
@@ -155,9 +155,9 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 									.definingConcept("http://thing")
 									.definingConcept("http://concept");
 
-		File types = temporary.namedFile("<http://entity> <> <http://thing> ."
-				+ "\n"
-				+ "<http://entity> <> <http://concept> .", "s_types.nt");
+		File types = temporary.namedFile("http://entity##type##http://thing"
+										+ "\n"
+										+ "http://entity##type##http://concept", "s_types.nt");
 		File directory = temporary.directory();
 		
 		minimalTypesFrom(ontology).computeFor(types, directory);
@@ -172,7 +172,7 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 										.definingConcept("http://dbpedia.org/Car")
 											.equivalentTo("http://schema.org/Car");
 		
-		File types = temporary.namedFile("<http://entity> <> <http://schema.org/Car> .", "s_types.nt");
+		File types = temporary.namedFile("http://entity##type##http://schema.org/Car", "s_types.nt");
 		File directory = temporary.directory();
 		
 		minimalTypesFrom(ontology).computeFor(types, directory);
@@ -187,7 +187,7 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 										.definingConcept("http://dbpedia.org/Car")
 											.equivalentTo("http://schema.org/Car");
 		
-		File types = temporary.namedFile("<http://entity> <> <http://dbpedia.org/Car> .", "s_types.nt");
+		File types = temporary.namedFile("http://entity##type##http://dbpedia.org/Car", "s_types.nt");
 		File directory = temporary.directory();
 		
 		minimalTypesFrom(ontology).computeFor(types, directory);
@@ -203,9 +203,9 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 											.equivalentTo("http://schema.org/Car")
 										.definingConcept("http://dbpedia.org/Pickup")
 											.aSubconceptOf("http://dbpedia.org/Car");
-		File types = temporary.namedFile("<http://entity> <> <http://schema.org/Car> ."
+		File types = temporary.namedFile("http://entity##type##http://schema.org/Car"
 										+ "\n"
-										+ "<http://entity> <> <http://dbpedia.org/Pickup> .", "s_types.nt");
+										+ "http://entity##type##http://dbpedia.org/Pickup", "s_types.nt");
 		File directory = temporary.directory();
 		
 		minimalTypesFrom(ontology).computeFor(types, directory);
@@ -221,9 +221,9 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 										.definingConcept("http://dbpedia.org/Car")
 											.equivalentTo("http://schema.org/Car")
 											.aSubconceptOf("http://dbpedia.org/MeanOfTransportation");
-		File types = temporary.namedFile("<http://entity> <> <http://schema.org/Car> ."
+		File types = temporary.namedFile("http://entity##type##http://schema.org/Car"
 										+ "\n"
-										+ "<http://entity> <> <http://dbpedia.org/MeanOfTransportation> .", "s_types.nt");
+										+ "http://entity##type##http://dbpedia.org/MeanOfTransportation", "s_types.nt");
 		File directory = temporary.directory();
 		
 		minimalTypesFrom(ontology).computeFor(types, directory);

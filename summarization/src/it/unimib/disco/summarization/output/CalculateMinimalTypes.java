@@ -10,6 +10,8 @@ import it.unimib.disco.summarization.utility.Model;
 
 import java.io.File;
 import java.util.Collection;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -20,7 +22,7 @@ public class CalculateMinimalTypes {
 
 	public static void main(String[] args) throws Exception {
 		
-		Events logger = new Events();
+		final Events logger = new Events();
 		
 		File folder = new File(args[0]);
 		Collection<File> listOfFiles = FileUtils.listFiles(folder, new String[]{"owl"}, false);
@@ -28,22 +30,35 @@ public class CalculateMinimalTypes {
 		
 		File subClasses = new File(args[1]);
 		File typesDirectory = new File(args[2]);
-		File targetDirectory = new File(args[3]);
+		final File targetDirectory = new File(args[3]);
 		
 		OntModel ontologyModel = new Model(null, ontology.getAbsolutePath(),"RDF/XML").getOntologyModel();
 		
 		Concepts concepts = extractConcepts(ontologyModel);
 		EquivalentConcepts equivalentConcepts = extractEquivalentConcepts(ontologyModel, concepts);
 		
-		MinimalTypes minimalTypes = new MinimalTypes(concepts, equivalentConcepts, subClasses);
+		final MinimalTypes minimalTypes = new MinimalTypes(concepts, equivalentConcepts, subClasses);
 		
 		Collection<File> files = FileUtils.listFiles(typesDirectory, new String[]{"_types.nt"}, false);
 		logger.info(StringUtils.join(files, " "));
-		for(File typeFile : files){
-			logger.info("computing minimal types for " + typeFile);
-			minimalTypes.computeFor(typeFile, targetDirectory);
-			logger.info("done: " + typeFile);
+		
+		ExecutorService executor = Executors.newFixedThreadPool(10);
+		for(final File typeFile : files){
+			executor.execute(new Runnable() {
+				@Override
+				public void run() {
+					try {
+						logger.info("computing minimal types for " + typeFile);
+						minimalTypes.computeFor(typeFile, targetDirectory);
+						logger.info("done: " + typeFile);
+					} catch (Exception e) {
+						logger.error(typeFile, e);
+					}
+				}
+			});
 		}
+		executor.shutdown();
+	    while(!executor.isTerminated()){}
 	}
 
 	private static EquivalentConcepts extractEquivalentConcepts(OntModel ontologyModel, Concepts concepts) {

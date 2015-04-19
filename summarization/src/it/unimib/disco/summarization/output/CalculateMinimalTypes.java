@@ -1,9 +1,7 @@
 package it.unimib.disco.summarization.output;
 
 import it.unimib.disco.summarization.datatype.Concepts;
-import it.unimib.disco.summarization.datatype.EquivalentConcepts;
 import it.unimib.disco.summarization.extraction.ConceptExtractor;
-import it.unimib.disco.summarization.extraction.EqConceptExtractor;
 import it.unimib.disco.summarization.starter.Events;
 import it.unimib.disco.summarization.utility.MinimalTypes;
 import it.unimib.disco.summarization.utility.Model;
@@ -37,9 +35,8 @@ public class CalculateMinimalTypes {
 		OntModel ontologyModel = new Model(null, ontology.getAbsolutePath(),"RDF/XML").getOntologyModel();
 		
 		Concepts concepts = extractConcepts(ontologyModel);
-		EquivalentConcepts equivalentConcepts = extractEquivalentConcepts(ontologyModel, concepts);
-		
-		final MinimalTypes minimalTypes = new MinimalTypes(concepts, equivalentConcepts, subClasses);
+
+		final MinimalTypes minimalTypes = new MinimalTypes(concepts, subClasses);
 		
 		File[] files = typesDirectory.listFiles(new FilenameFilter() {
 			@Override
@@ -67,16 +64,6 @@ public class CalculateMinimalTypes {
 		}
 		executor.shutdown();
 	    while(!executor.isTerminated()){}
-	}
-
-	private static EquivalentConcepts extractEquivalentConcepts(OntModel ontologyModel, Concepts concepts) {
-		EqConceptExtractor equConcepts = new EqConceptExtractor();
-		equConcepts.setEquConcept(concepts, ontologyModel);
-		
-		EquivalentConcepts equivalentConcepts = new EquivalentConcepts();
-		equivalentConcepts.setExtractedEquConcept(equConcepts.getExtractedEquConcept());
-		equivalentConcepts.setEquConcept(equConcepts.getEquConcept());
-		return equivalentConcepts;
 	}
 
 	private static Concepts extractConcepts(OntModel ontologyModel) {

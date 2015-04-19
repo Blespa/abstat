@@ -1,7 +1,6 @@
 package it.unimib.disco.summarization.utility;
 
 import it.unimib.disco.summarization.datatype.Concepts;
-import it.unimib.disco.summarization.datatype.EquivalentConcepts;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -12,16 +11,14 @@ import java.util.Map.Entry;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.hp.hpl.jena.ontology.OntResource;
 import com.hp.hpl.jena.vocabulary.OWL;
 
 public class MinimalTypes {
 
 	private TypeGraph graph;
 
-	public MinimalTypes(Concepts concepts, EquivalentConcepts equConcept, File subClassRelations) throws Exception {
+	public MinimalTypes(Concepts concepts, File subClassRelations) throws Exception {
 		this.graph = new TypeGraph(concepts, new TextInput(new FileSystemConnector(subClassRelations)));
-		this.graph.enrichWith(buildEquivalentConceptsFrom(equConcept.getExtractedEquConcept()));
 	}
 
 	public void computeFor(File concepts, File types, File directory) throws Exception {
@@ -47,18 +44,6 @@ public class MinimalTypes {
 		writeConceptCounts(conceptCounts, directory, prefix);
 		writeExternalConcepts(externalConcepts, directory, prefix);
 		writeMinimalTypes(minimalTypes, directory, prefix);
-	}
-
-	private HashMap<String, HashSet<String>> buildEquivalentConceptsFrom(HashMap<OntResource, List<OntResource>> equivalentConcepts) {
-		HashMap<String, HashSet<String>> result = new HashMap<String, HashSet<String>>();
-		for(Entry<OntResource, List<OntResource>> entry : equivalentConcepts.entrySet()){
-			HashSet<String> concepts = new HashSet<String>();
-			for(OntResource concept : entry.getValue()){
-				concepts.add(concept.getURI());
-			}
-			result.put(entry.getKey().getURI(), concepts);
-		}
-		return result;
 	}
 
 	private void trackMinimalType(String entity, String concept, HashMap<String, HashSet<String>> minimalTypes) {

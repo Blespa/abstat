@@ -6,9 +6,7 @@ import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import it.unimib.disco.summarization.datatype.Concepts;
-import it.unimib.disco.summarization.datatype.EquivalentConcepts;
 import it.unimib.disco.summarization.extraction.ConceptExtractor;
-import it.unimib.disco.summarization.extraction.EqConceptExtractor;
 import it.unimib.disco.summarization.relation.OntologySubclassOfExtractor;
 import it.unimib.disco.summarization.utility.MinimalTypes;
 
@@ -221,43 +219,9 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 		assertThat(linesOf("s_minType.txt"), hasItem("1##http://entity##http://dbpedia.org/Car"));		
 	}
 	
-	@Test
-	public void equivalentConceptInTheSameHierarchy() throws Exception {
-		ToyOntology ontology = new ToyOntology()
-										.owl()
-										.definingConcept("http://dbpedia.org/Car")
-											.equivalentTo("http://schema.org/Car")
-										.definingConcept("http://dbpedia.org/Pickup")
-											.aSubconceptOf("http://dbpedia.org/Car");
-		File types = temporary.namedFile("http://entity##type##http://schema.org/Car"
-										+ "\n"
-										+ "http://entity##type##http://dbpedia.org/Pickup", "s_types.nt");
-		File directory = temporary.directory();
-		minimalTypesFrom(ontology).computeFor(temporary.file(), types, directory);
-		
-		assertThat(linesOf("s_minType.txt"), hasItem("1##http://entity##http://dbpedia.org/Pickup"));
-	}
-	
-	@Test
-	public void equivalentConceptInTheSameHierarchySuperclass() throws Exception {
-		ToyOntology ontology = new ToyOntology()
-										.owl()
-										.definingConcept("http://dbpedia.org/MeanOfTransportation")
-										.definingConcept("http://dbpedia.org/Car")
-											.equivalentTo("http://schema.org/Car")
-											.aSubconceptOf("http://dbpedia.org/MeanOfTransportation");
-		File types = temporary.namedFile("http://entity##type##http://schema.org/Car"
-										+ "\n"
-										+ "http://entity##type##http://dbpedia.org/MeanOfTransportation", "s_types.nt");
-		File directory = temporary.directory();
-		minimalTypesFrom(ontology).computeFor(temporary.file(), types, directory);
-		
-		assertThat(linesOf("s_minType.txt"), hasItem("1##http://entity##http://schema.org/Car"));
-	}
-	
 	private MinimalTypes minimalTypesFrom(ToyOntology ontology) throws Exception {
 		
-		return new MinimalTypes(getConceptsFrom(ontology), getEquivalentConceptsFrom(ontology), writeSubClassRelationsFrom(ontology));
+		return new MinimalTypes(getConceptsFrom(ontology), writeSubClassRelationsFrom(ontology));
 	}
 	
 	private List<String> linesOf(String name) throws IOException {
@@ -288,17 +252,5 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 		}
 		
 		return temporary.file(StringUtils.join(result, "\n"));
-	}
-	
-	private EquivalentConcepts getEquivalentConceptsFrom(ToyOntology ontology){
-		
-		EqConceptExtractor equConcepts = new EqConceptExtractor();
-		equConcepts.setEquConcept(getConceptsFrom(ontology), ontology.build());
-		
-		EquivalentConcepts equConcept = new EquivalentConcepts();
-		equConcept.setExtractedEquConcept(equConcepts.getExtractedEquConcept());
-		equConcept.setEquConcept(equConcepts.getEquConcept());
-		
-		return equConcept;
 	}
 }

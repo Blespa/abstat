@@ -189,7 +189,7 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 		
 		minimalTypesFrom(ontology).computeFor(temporary.file(), types, directory);
 		
-		assertThat(linesOf("s_minType.txt"), hasItem("2##http://entity##http://concept##http://thing"));
+		assertThat(linesOf("s_minType.txt"), hasItem("2##http://entity##http://concept#-#http://thing"));
 	}
 	
 	@Test

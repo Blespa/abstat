@@ -102,7 +102,7 @@ public class MinimalTypes {
 		BulkTextOutput connector = connectorTo(directory, prefix, "minType");
 		for(Entry<String, HashSet<String>> entityTypes : minimalTypes.entrySet()){
 			HashSet<String> types = entityTypes.getValue();
-			connector.writeLine(types.size() + "##" + entityTypes.getKey() + "##" + StringUtils.join(types, "##"));
+			connector.writeLine(types.size() + "##" + entityTypes.getKey() + "##" + StringUtils.join(types, "#-#"));
 		}
 		connector.close();
 	}

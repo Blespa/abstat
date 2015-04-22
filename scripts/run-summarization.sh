@@ -438,26 +438,6 @@ echo "---Start: MinType---"
 	numMergeCmd2=0
 	
 	#########################################################
-	#Pattern
-	countPattern=""
-	countPatternCount=0
-	for element in "${splitters[@]}"
-	do
-	   if [ -f ${patternObjResult}/${element}_relationCount.txt ];
-	   then
-		if [ $countPatternCount -eq 0 ]
-		then
-			countPattern=${patternObjResult}/${element}_relationCount.txt
-		else
-			countPattern="${countPattern} ${patternObjResult}/${element}_relationCount.txt"
-		fi
-
-		countPatternCount=$(($countPatternCount+1))	
-	   fi
-	done
-	mergeCmd[$numMergeCmd]="gawk -f $AwkScriptsDirectory/merge_info/mergeRelation.awk -v destinatioDirectory=\"${patternObjResult}\" -v destinationFile=\"relationCount.txt\" ${countPattern}"
-	numMergeCmd=$(($numMergeCmd+1))
-
 	#countDataType
 	countDataType=""
 	countDataTypeCount=0
@@ -497,6 +477,26 @@ echo "---Start: MinType---"
 	done
 	mergeCmd[$numMergeCmd]="gawk -f $AwkScriptsDirectory/merge_info/mergeCountConcepts.awk -v destinatioDirectory=\"${patternObjResult}\" ${countConcepts}"
 	numMergeCmd=$(($numMergeCmd+1))	
+
+	#Pattern
+	countPattern=""
+	countPatternCount=0
+	for element in "${splitters[@]}"
+	do
+	   if [ -f ${patternObjResult}/${element}_relationCount.txt ];
+	   then
+		if [ $countPatternCount -eq 0 ]
+		then
+			countPattern=${patternObjResult}/${element}_relationCount.txt
+		else
+			countPattern="${countPattern} ${patternObjResult}/${element}_relationCount.txt"
+		fi
+
+		countPatternCount=$(($countPatternCount+1))	
+	   fi
+	done
+	mergeCmd[$numMergeCmd]="gawk -f $AwkScriptsDirectory/merge_info/mergeRelation.awk -v destinatioDirectory=\"${patternObjResult}\" -v destinationFile=\"relationCount.txt\" ${countPattern}"
+	numMergeCmd=$(($numMergeCmd+1))
 
 	#Pattern
 	countDtPattern=""
@@ -561,86 +561,6 @@ echo "---Start: MinType---"
 	mergeCmd1[$numMergeCmd1]="gawk -f $AwkScriptsDirectory/merge_info/mergeCountClass.awk -v dataForCompDirectory=\"${patternObjResult}\" -v destinatioDirectory=\"${patternObjResult}\" -v destinationFile=\"countClassOBJ.txt\" ${countClassObj}"
 	numMergeCmd1=$(($numMergeCmd1+1))
 
-	#countSubj
-	countSubj=""
-	countSubjCount=0
-	for element in "${splitters[@]}"
-	do
-	   if [ -f ${patternObjResult}/${element}_countSUBJ.txt ];
-	   then
-		if [ $countSubjCount -eq 0 ]
-		then
-			countSubj=${patternObjResult}/${element}_countSUBJ.txt
-		else
-			countSubj="${countSubj} ${patternObjResult}/${element}_countSUBJ.txt"
-		fi
-
-		countSubjCount=$(($countSubjCount+1))	
-	   fi
-	done
-	mergeCmd1[$numMergeCmd1]="gawk -f $AwkScriptsDirectory/merge_info/mergeCount.awk -v dataForCompDirectory=\"${patternObjResult}\" -v fileForComputation=\"countConcepts.txt\" -v destinatioDirectory=\"${patternObjResult}\" -v destinationFile=\"countSUBJ.txt\" ${countSubj}"
-	numMergeCmd1=$(($numMergeCmd1+1))	
-
-	#countObj
-	countObj=""
-	countObjCount=0
-	for element in "${splitters[@]}"
-	do
-	   if [ -f ${patternObjResult}/${element}_countOBJ.txt ];
-	   then
-		if [ $countObjCount -eq 0 ]
-		then
-			countObj=${patternObjResult}/${element}_countOBJ.txt
-		else
-			countObj="${countObj} ${patternObjResult}/${element}_countOBJ.txt"
-		fi
-
-		countObjCount=$(($countObjCount+1))	
-	   fi
-	done
-	mergeCmd1[$numMergeCmd1]="gawk -f $AwkScriptsDirectory/merge_info/mergeCount.awk -v dataForCompDirectory=\"${patternObjResult}\" -v fileForComputation=\"countConcepts.txt\" -v destinatioDirectory=\"${patternObjResult}\" -v destinationFile=\"countOBJ.txt\" ${countObj}"
-	numMergeCmd1=$(($numMergeCmd1+1))	
-
-	#countPropSubj
-	countPropSubj=""
-	countPropSubjCount=0
-	for element in "${splitters[@]}"
-	do
-	   if [ -f ${patternObjResult}/${element}_concPropSUBJ.txt ];
-	   then
-		if [ $countPropSubjCount -eq 0 ]
-		then
-			countPropSubj=${patternObjResult}/${element}_concPropSUBJ.txt
-		else
-			countPropSubj="${countPropSubj} ${patternObjResult}/${element}_concPropSUBJ.txt"
-		fi
-
-		countPropSubjCount=$(($countPropSubjCount+1))	
-	   fi
-	done
-	mergeCmd1[$numMergeCmd1]="gawk -f $AwkScriptsDirectory/merge_info/mergeCountConcProp.awk -v dataForCompDirectory=\"${patternObjResult}\" -v fileForComputation=\"countConcepts.txt\" -v destinatioDirectory=\"${patternObjResult}\" -v destinationFile=\"concPropSUBJ.txt\" ${countPropSubj}"
-	numMergeCmd1=$(($numMergeCmd1+1))	
-
-	#countPropObj
-	countPropObj=""
-	countPropObjCount=0
-	for element in "${splitters[@]}"
-	do
-	   if [ -f ${patternObjResult}/${element}_concPropOBJ.txt ];
-	   then
-		if [ $countPropObjCount -eq 0 ]
-		then
-			countPropObj=${patternObjResult}/${element}_concPropOBJ.txt
-		else
-			countPropObj="${countPropObj} ${patternObjResult}/${element}_concPropOBJ.txt"
-		fi
-
-		countPropObjCount=$(($countPropObjCount+1))	
-	   fi
-	done
-	mergeCmd1[$numMergeCmd1]="gawk -f $AwkScriptsDirectory/merge_info/mergeCountConcProp.awk -v dataForCompDirectory=\"${patternObjResult}\" -v fileForComputation=\"countConcepts.txt\" -v destinatioDirectory=\"${patternObjResult}\" -v destinationFile=\"concPropOBJ.txt\" ${countPropObj}"
-	numMergeCmd1=$(($numMergeCmd1+1))
-
 	#countClassDtSubj
 	countClassDtSubj=""
 	countClassDtSubjCount=0
@@ -679,6 +599,46 @@ echo "---Start: MinType---"
 	   fi
 	done
 	mergeCmd1[$numMergeCmd1]="gawk -f $AwkScriptsDirectory/merge_info/mergeCountDt.awk -v dataForCompDirectory=\"${patternDtResult}\" -v destinatioDirectory=\"${patternDtResult}\" -v destinationFile=\"countClassDTOBJ.txt\" ${countDataTypeObj}"
+	numMergeCmd1=$(($numMergeCmd1+1))
+
+	#countSubj
+	countSubj=""
+	countSubjCount=0
+	for element in "${splitters[@]}"
+	do
+	   if [ -f ${patternObjResult}/${element}_countSUBJ.txt ];
+	   then
+		if [ $countSubjCount -eq 0 ]
+		then
+			countSubj=${patternObjResult}/${element}_countSUBJ.txt
+		else
+			countSubj="${countSubj} ${patternObjResult}/${element}_countSUBJ.txt"
+		fi
+
+		countSubjCount=$(($countSubjCount+1))	
+	   fi
+	done
+	mergeCmd1[$numMergeCmd1]="gawk -f $AwkScriptsDirectory/merge_info/mergeCount.awk -v dataForCompDirectory=\"${patternObjResult}\" -v fileForComputation=\"countConcepts.txt\" -v destinatioDirectory=\"${patternObjResult}\" -v destinationFile=\"countSUBJ.txt\" ${countSubj}"
+	numMergeCmd1=$(($numMergeCmd1+1))	
+
+	#countObj
+	countObj=""
+	countObjCount=0
+	for element in "${splitters[@]}"
+	do
+	   if [ -f ${patternObjResult}/${element}_countOBJ.txt ];
+	   then
+		if [ $countObjCount -eq 0 ]
+		then
+			countObj=${patternObjResult}/${element}_countOBJ.txt
+		else
+			countObj="${countObj} ${patternObjResult}/${element}_countOBJ.txt"
+		fi
+
+		countObjCount=$(($countObjCount+1))	
+	   fi
+	done
+	mergeCmd1[$numMergeCmd1]="gawk -f $AwkScriptsDirectory/merge_info/mergeCount.awk -v dataForCompDirectory=\"${patternObjResult}\" -v fileForComputation=\"countConcepts.txt\" -v destinatioDirectory=\"${patternObjResult}\" -v destinationFile=\"countOBJ.txt\" ${countObj}"
 	numMergeCmd1=$(($numMergeCmd1+1))
 
 	#countDtSubj
@@ -720,6 +680,46 @@ echo "---Start: MinType---"
 	done
 	mergeCmd1[$numMergeCmd1]="gawk -f $AwkScriptsDirectory/merge_info/mergeCount.awk -v dataForCompDirectory=\"${patternDtResult}\" -v fileForComputation=\"countDataType.txt\" -v destinatioDirectory=\"${patternDtResult}\" -v destinationFile=\"countDTOBJ.txt\" ${countDtObj}"
 	numMergeCmd1=$(($numMergeCmd1+1))	
+
+	#countPropSubj
+	countPropSubj=""
+	countPropSubjCount=0
+	for element in "${splitters[@]}"
+	do
+	   if [ -f ${patternObjResult}/${element}_concPropSUBJ.txt ];
+	   then
+		if [ $countPropSubjCount -eq 0 ]
+		then
+			countPropSubj=${patternObjResult}/${element}_concPropSUBJ.txt
+		else
+			countPropSubj="${countPropSubj} ${patternObjResult}/${element}_concPropSUBJ.txt"
+		fi
+
+		countPropSubjCount=$(($countPropSubjCount+1))	
+	   fi
+	done
+	mergeCmd1[$numMergeCmd1]="gawk -f $AwkScriptsDirectory/merge_info/mergeCountConcProp.awk -v dataForCompDirectory=\"${patternObjResult}\" -v fileForComputation=\"countConcepts.txt\" -v destinatioDirectory=\"${patternObjResult}\" -v destinationFile=\"concPropSUBJ.txt\" ${countPropSubj}"
+	numMergeCmd1=$(($numMergeCmd1+1))	
+
+	#countPropObj
+	countPropObj=""
+	countPropObjCount=0
+	for element in "${splitters[@]}"
+	do
+	   if [ -f ${patternObjResult}/${element}_concPropOBJ.txt ];
+	   then
+		if [ $countPropObjCount -eq 0 ]
+		then
+			countPropObj=${patternObjResult}/${element}_concPropOBJ.txt
+		else
+			countPropObj="${countPropObj} ${patternObjResult}/${element}_concPropOBJ.txt"
+		fi
+
+		countPropObjCount=$(($countPropObjCount+1))	
+	   fi
+	done
+	mergeCmd1[$numMergeCmd1]="gawk -f $AwkScriptsDirectory/merge_info/mergeCountConcProp.awk -v dataForCompDirectory=\"${patternObjResult}\" -v fileForComputation=\"countConcepts.txt\" -v destinatioDirectory=\"${patternObjResult}\" -v destinationFile=\"concPropOBJ.txt\" ${countPropObj}"
+	numMergeCmd1=$(($numMergeCmd1+1))
 
 	#countPropDtSubj
 	countPropDtSubj=""

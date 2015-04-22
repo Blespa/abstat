@@ -12,6 +12,7 @@ import com.hp.hpl.jena.rdf.model.SimpleSelector;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.util.iterator.ExtendedIterator;
+import com.hp.hpl.jena.vocabulary.OWL;
 import com.hp.hpl.jena.vocabulary.RDFS;
 
 /**
@@ -27,7 +28,8 @@ public class ConceptExtractor {
 	public void setConcepts(OntModel ontologyModel) {
 		
 		//Get Concept from Model
-		enrichWithImplicitClassesDeclarations(ontologyModel);
+		enrichWithImplicitClassesDeclarations(ontologyModel, RDFS.subClassOf);
+		enrichWithImplicitClassesDeclarations(ontologyModel, OWL.equivalentClass);
 		ExtendedIterator<OntClass> TempExtractedConcepts = ontologyModel.listClasses();
 		
 		
@@ -47,21 +49,22 @@ public class ConceptExtractor {
 		
 	}
 	
-	private void enrichWithImplicitClassesDeclarations(OntModel ontologyModel) {
-		StmtIterator subclassStatements = ontologyModel.listStatements(new SimpleSelector(){
+	private void enrichWithImplicitClassesDeclarations(OntModel ontologyModel, final Property p) {
+		StmtIterator statements = ontologyModel.listStatements(new SimpleSelector(){
 			@Override
 			public boolean selects(Statement s) {
 				Property predicate = s.getPredicate();
-				return predicate.equals(RDFS.subClassOf);
+				
+				return predicate.equals(p);
 			}
 		});
 		HashSet<String> implicitClasses = new HashSet<String>();
-		while(subclassStatements.hasNext()){
-			Statement subclassStatement = subclassStatements.next();
-			implicitClasses.add(subclassStatement.getSubject().getURI());
-			implicitClasses.add(subclassStatement.getObject().toString());
+		while(statements.hasNext()){
+			Statement statement = statements.next();
+			implicitClasses.add(statement.getSubject().getURI());
+			implicitClasses.add(statement.getObject().toString());
 		}
-		subclassStatements.close();
+		statements.close();
 		for(String implicitClass : implicitClasses){
 			ontologyModel.createClass(implicitClass);
 		}

@@ -5,22 +5,17 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
-import it.unimib.disco.summarization.datatype.Concepts;
-import it.unimib.disco.summarization.extraction.ConceptExtractor;
-import it.unimib.disco.summarization.relation.OntologySubclassOfExtractor;
 import it.unimib.disco.summarization.utility.MinimalTypes;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
-import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.vocabulary.OWL;
+import com.hp.hpl.jena.vocabulary.RDFS;
 
 public class MinimalTypesTest extends TestWithTemporaryData{
 
@@ -220,38 +215,31 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 		assertThat(linesOf("s_uknHierConcept.txt"), hasItem("http://entity##http://unknown"));
 	}
 	
+	@Test
+	public void shouldGetAlsoConceptsThatAreMentionedAsDomaninOrRange() throws Exception {
+		ToyOntology ontology = new ToyOntology()
+										.owl()
+										.definingResource("http://age")
+											.thatHasProperty(RDFS.domain)
+												.linkingTo("http://person")
+											.thatHasProperty(RDFS.range)
+												.linkingTo("http://datatype/age");
+		
+		File types = temporary.namedFile("http://steven_seagal##type##http://person", "s_types.nt");
+		File directory = temporary.directory();
+		
+		minimalTypesFrom(ontology).computeFor(types, directory);
+		
+		assertThat(linesOf("s_countConcepts.txt"), hasItem("http://datatype/age##0"));
+		assertThat(linesOf("s_countConcepts.txt"), hasItem("http://person##1"));
+	}
+	
 	private MinimalTypes minimalTypesFrom(ToyOntology ontology) throws Exception {
 		
-		return new MinimalTypes(getConceptsFrom(ontology), writeSubClassRelationsFrom(ontology));
+		return new MinimalTypes(ontology.build());
 	}
 	
 	private List<String> linesOf(String name) throws IOException {
 		return FileUtils.readLines(new File(temporary.directory(), name));
-	}
-	
-	private Concepts getConceptsFrom(ToyOntology ontology){
-		
-		ConceptExtractor conceptExtractor = new ConceptExtractor();
-		conceptExtractor.setConcepts(ontology.build());
-		
-		Concepts concepts = new Concepts();
-		concepts.setConcepts(conceptExtractor.getConcepts());
-		concepts.setExtractedConcepts(conceptExtractor.getExtractedConcepts());
-		concepts.setObtainedBy(conceptExtractor.getObtainedBy());
-		
-		return concepts;
-	}
-	
-	private File writeSubClassRelationsFrom(ToyOntology ontology) throws Exception{
-		
-		OntologySubclassOfExtractor extractor = new OntologySubclassOfExtractor();
-		extractor.setConceptsSubclassOf(getConceptsFrom(ontology), ontology.build());
-		
-		List<String> result = new ArrayList<String>();
-		for(List<OntClass> subClasses : extractor.getConceptsSubclassOf().getConceptsSubclassOf()){
-			result.add(subClasses.get(0) + "##" + subClasses.get(1));
-		}
-		
-		return temporary.file(StringUtils.join(result, "\n"));
 	}
 }

@@ -4,8 +4,6 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 import it.unimib.disco.summarization.output.CalculateMinimalTypes;
 
-import java.io.File;
-
 import org.junit.Test;
 
 public class CalculateMinimalTypesTest extends TestWithTemporaryData{
@@ -21,11 +19,8 @@ public class CalculateMinimalTypesTest extends TestWithTemporaryData{
 		temporary.namedFile("http://instance1##type##http://concept", "0_types.nt");
 		temporary.namedFile("http://instance2##type##http://concept", "1_types.nt");
 		
-		File subclasses = temporary.file("http://concept##http://thing");
-		
 		CalculateMinimalTypes.main(new String[]{
 				temporary.path(),
-				subclasses.getAbsolutePath(),
 				temporary.path(),
 				temporary.path()
 		});

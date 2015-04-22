@@ -1,7 +1,5 @@
 package it.unimib.disco.summarization.output;
 
-import it.unimib.disco.summarization.datatype.Concepts;
-import it.unimib.disco.summarization.extraction.ConceptExtractor;
 import it.unimib.disco.summarization.starter.Events;
 import it.unimib.disco.summarization.utility.MinimalTypes;
 import it.unimib.disco.summarization.utility.Model;
@@ -27,15 +25,12 @@ public class CalculateMinimalTypes {
 		File folder = new File(args[0]);
 		Collection<File> listOfFiles = FileUtils.listFiles(folder, new String[]{"owl"}, false);
 		File ontology = listOfFiles.iterator().next();
-		File subClasses = new File(args[1]);
-		File typesDirectory = new File(args[2]);
-		final File targetDirectory = new File(args[3]);
+		File typesDirectory = new File(args[1]);
+		final File targetDirectory = new File(args[2]);
 		
 		OntModel ontologyModel = new Model(null, ontology.getAbsolutePath(),"RDF/XML").getOntologyModel();
 		
-		Concepts concepts = extractConcepts(ontologyModel);
-
-		final MinimalTypes minimalTypes = new MinimalTypes(concepts, subClasses);
+		final MinimalTypes minimalTypes = new MinimalTypes(ontologyModel);
 		
 		File[] files = typesDirectory.listFiles(new FilenameFilter() {
 			@Override
@@ -63,16 +58,5 @@ public class CalculateMinimalTypes {
 		}
 		executor.shutdown();
 	    while(!executor.isTerminated()){}
-	}
-
-	private static Concepts extractConcepts(OntModel ontologyModel) {
-		ConceptExtractor cExtract = new ConceptExtractor();
-		cExtract.setConcepts(ontologyModel);
-		
-		Concepts concepts = new Concepts();
-		concepts.setConcepts(cExtract.getConcepts());
-		concepts.setExtractedConcepts(cExtract.getExtractedConcepts());
-		concepts.setObtainedBy(cExtract.getObtainedBy());
-		return concepts;
 	}
 }

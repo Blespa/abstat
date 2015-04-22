@@ -24,6 +24,8 @@ public class OntologyDomainRangeExtractor {
 
 	public void setConceptsDomainRange(Concepts concepts, Properties properties) {
 		
+		if(properties.getExtractedProperty().isEmpty()) return;
+		
 		//Used for Dynamic Computation of Domain And Range
 		HashMap<String, ArrayList<OntResource>> DRProperty = new HashMap<String, ArrayList<OntResource>>();
 		

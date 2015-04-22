@@ -1,7 +1,7 @@
 package it.unimib.disco.summarization.tests;
 
 import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 import it.unimib.disco.summarization.datatype.Concepts;
 import it.unimib.disco.summarization.datatype.DomainRange;
 import it.unimib.disco.summarization.datatype.Properties;
@@ -16,6 +16,13 @@ import com.hp.hpl.jena.vocabulary.RDFS;
 
 public class OntologyDomainRangeExtractorTest {
 
+	@Test
+	public void shouldParseAnEmptyOntology() throws Exception {
+		ToyOntology model = new ToyOntology().owl();
+
+		patternsFrom(model.build());
+	}
+	
 	@Test
 	public void shouldParseASimpleOntology() throws Exception {
 		
@@ -50,7 +57,6 @@ public class OntologyDomainRangeExtractorTest {
 		OntologyDomainRangeExtractor extractor = new OntologyDomainRangeExtractor();
 		extractor.setConceptsDomainRange(concepts, properties);
 		
-		DomainRange patterns = extractor.getPropertyDomainRange();
-		return patterns;
+		return extractor.getPropertyDomainRange();
 	}
 }

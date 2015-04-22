@@ -13,7 +13,15 @@ public class TypeGraph{
 	private DirectedAcyclicGraph<String, DefaultEdge> graph;
 
 	public TypeGraph(Concepts concepts, TextInput subClassesPath) throws Exception{
-		this.graph = subTypeGraphFrom(concepts, subClassesPath);
+		List<String> relations = new ArrayList<String>();
+		while(subClassesPath.hasNextLine()){
+			relations.add(subClassesPath.nextLine());
+		}
+		this.graph = subTypeGraphFrom(concepts, relations);
+	}
+	
+	public TypeGraph(Concepts concepts, List<String> subClasses) throws Exception{
+		this.graph = subTypeGraphFrom(concepts, subClasses);
 	}
 	
 	public List<String> roots(){
@@ -60,15 +68,14 @@ public class TypeGraph{
 		return graph.outgoingEdgesOf(concept).isEmpty();
 	}
 	
-	private DirectedAcyclicGraph<String, DefaultEdge> subTypeGraphFrom(Concepts concepts, TextInput subclassRelations) throws Exception {
+	private DirectedAcyclicGraph<String, DefaultEdge> subTypeGraphFrom(Concepts concepts, List<String> subclassRelations) throws Exception {
 		DirectedAcyclicGraph<String, DefaultEdge> typeGraph = new DirectedAcyclicGraph<String, DefaultEdge>(DefaultEdge.class);
 		
 		for(String concept : concepts.getConcepts().keySet()){
 			typeGraph.addVertex(concept);
 		}
 		
-		while(subclassRelations.hasNextLine()){
-			String line = subclassRelations.nextLine();
+		for(String line : subclassRelations){
 			String[] relation = line.split("##");
 			String subtype = relation[0];
 			String supertype = relation[1];

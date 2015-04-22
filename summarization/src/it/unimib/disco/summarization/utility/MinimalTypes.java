@@ -1,6 +1,11 @@
 package it.unimib.disco.summarization.utility;
 
 import it.unimib.disco.summarization.datatype.Concepts;
+import it.unimib.disco.summarization.datatype.Properties;
+import it.unimib.disco.summarization.extraction.ConceptExtractor;
+import it.unimib.disco.summarization.extraction.PropertyExtractor;
+import it.unimib.disco.summarization.relation.OntologyDomainRangeExtractor;
+import it.unimib.disco.summarization.relation.OntologySubclassOfExtractor;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -11,16 +16,21 @@ import java.util.Map.Entry;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.hp.hpl.jena.ontology.OntClass;
+import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.vocabulary.OWL;
 
 public class MinimalTypes {
 
 	private TypeGraph graph;
 	private Concepts concepts;
+	private List<String> subclassRelations;
 
-	public MinimalTypes(Concepts concepts, File subClassRelations) throws Exception {
+	public MinimalTypes(OntModel ontology) throws Exception {
+		Concepts concepts = extractConcepts(ontology);
+		
 		this.concepts = concepts;
-		this.graph = new TypeGraph(concepts, new TextInput(new FileSystemConnector(subClassRelations)));
+		this.graph = new TypeGraph(concepts, subclassRelations);
 	}
 
 	public void computeFor(File types, File directory) throws Exception {
@@ -109,5 +119,35 @@ public class MinimalTypes {
 	private String prefixOf(File types) {
 		String[] splitted = StringUtils.split(types.getName(), "_");
 		return splitted.length == 1 ? "_": splitted[0];
+	}
+	
+	private Concepts extractConcepts(OntModel ontology) {
+		PropertyExtractor pExtract = new PropertyExtractor();
+		pExtract.setProperty(ontology);
+		
+		Properties properties = new Properties();
+		properties.setProperty(pExtract.getProperty());
+		properties.setExtractedProperty(pExtract.getExtractedProperty());
+		properties.setCounter(pExtract.getCounter());
+		
+		ConceptExtractor cExtract = new ConceptExtractor();
+		cExtract.setConcepts(ontology);
+		
+		Concepts concepts = new Concepts();
+		concepts.setConcepts(cExtract.getConcepts());
+		concepts.setExtractedConcepts(cExtract.getExtractedConcepts());
+		concepts.setObtainedBy(cExtract.getObtainedBy());
+		
+		OntologySubclassOfExtractor extractor = new OntologySubclassOfExtractor();
+		extractor.setConceptsSubclassOf(concepts, ontology);
+		
+		this.subclassRelations = new ArrayList<String>();
+		for(List<OntClass> subClasses : extractor.getConceptsSubclassOf().getConceptsSubclassOf()){
+			this.subclassRelations.add(subClasses.get(0) + "##" + subClasses.get(1));
+		}
+		
+		OntologyDomainRangeExtractor DRExtractor = new OntologyDomainRangeExtractor();
+		DRExtractor.setConceptsDomainRange(concepts, properties);
+		return concepts;
 	}
 }

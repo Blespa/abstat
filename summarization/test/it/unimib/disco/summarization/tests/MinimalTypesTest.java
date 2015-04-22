@@ -4,7 +4,7 @@ import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 import it.unimib.disco.summarization.utility.MinimalTypes;
 
 import java.io.File;
@@ -182,6 +182,27 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 		minimalTypesFrom(ontology).computeFor(types, directory);
 		
 		assertThat(linesOf("s_minType.txt"), hasItem("2##http://entity##http://concept#-#http://thing"));
+	}
+	
+	@Test
+	public void manyMinimalTypesWithOneExclusionAndStrangeOrdering() throws Exception {
+		ToyOntology ontology = new ToyOntology()
+										.owl()
+										.definingConcept("http://zthing")
+										.definingConcept("http://concept")
+											.aSubconceptOf("http://zthing")
+										.definingConcept("http://other");
+
+		File types = temporary.namedFile("http://entity##type##http://other"
+										+ "\n"
+										+ "http://entity##type##http://zthing"
+										+ "\n"
+										+ "http://entity##type##http://concept", "s_types.nt");
+		File directory = temporary.directory();
+
+		minimalTypesFrom(ontology).computeFor(types, directory);
+
+		assertThat(linesOf("s_minType.txt"), hasItem("2##http://entity##http://other#-#http://concept"));
 	}
 	
 	@Test

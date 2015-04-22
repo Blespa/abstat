@@ -60,7 +60,7 @@ public class MinimalTypes {
 
 	private void trackMinimalType(String entity, String concept, HashMap<String, HashSet<String>> minimalTypes) {
 		if(!minimalTypes.containsKey(entity)) minimalTypes.put(entity, new HashSet<String>());
-		for(String minimalType : minimalTypes.get(entity)){
+		for(String minimalType : new HashSet<String>(minimalTypes.get(entity))){
 			if(!graph.pathsBetween(minimalType, concept).isEmpty()){
 				return;
 			}

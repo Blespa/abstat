@@ -1,3 +1,3 @@
-1##http://dbpedia.org/resource/(65714)_1992_VR##http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalBody
-1##http://dbpedia.org/resource/(121514)_1999_UJ7##http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalBody
 1##http://dbpedia.org/resource/Welding_the_C:/##http://schema.org/MusicAlbum
+1##http://dbpedia.org/resource/(121514)_1999_UJ7##http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalBody
+1##http://dbpedia.org/resource/(65714)_1992_VR##http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalBody

@@ -317,61 +317,25 @@ echo ""
 } &>> "log/log.txt"
 
 { 
-#MINTYPE COMPUTATION
-	echo "---Start: MinType---"
-	
+echo "---Start: MinType---"
 	startBlock=$SECONDS	
 
-	#Rimuovo i file del calcolo precedente
-	rm -rf $minTypeDataForComp/* $minTypeResult/*
+	rm -rf $minTypeDataForComp $minTypeResult
 	mkdir -p $minTypeDataForComp $minTypeResult
 
-	#Sposto i file generati dall'ontologia, utili per il calcolo dei tipi minimi
-	mv ${TmpDatasetFileResult}Concepts.txt $minTypeDataForComp/Concepts.txt
-	mv ${TmpDatasetFileResult}EquConcepts.txt $minTypeDataForComp/EquConcepts.txt
-	mv ${TmpDatasetFileResult}path.txt $minTypeDataForComp/path.txt
+	eval ${dbgCmd}""$JAVA_HOME/bin/java -Xms256m -Xmx4000m -cp ontology_summarization.jar it.unimib.disco.summarization.output.CalculateMinimalTypes "$OntologyFile" "$orgDatasetFile" "$minTypeResult"
 
-	sync #Mi assicuro che tutte le informazioni siano scritte su file
-
-	#Creo i processi che andranno a calcolare i tipi minimi
-	numMinType=0
-	for element in "${splitters[@]}"
-	do
-	   if [ -f ${orgDatasetFile}/${element}_types.nt ];
-	   then
-		   minTypeComp[$numMinType]="gawk -f $AwkScriptsDirectory/calculate_mintype.awk -v lett=${element} -v directoryDataForComp=\"${minTypeDataForComp}\" -v destinatioDirectory=\"${minTypeResult}\" ${orgDatasetFile}/${element}_types.nt"
-		   numMinType=$(($numMinType+1))
-	   fi
-	done
-
-	#Calcolo i Tipi minimi
-
-	#Rinizializzo le variabili della parallelizzazione, per sicurezza
-	NUM=0
-	QUEUE=""
-
-	#Avvio l'esecuzione parallela dei processi
-	for (( proc=0; proc<${#minTypeComp[@]}; proc++ )) # for the rest of the arguments
-	do
-		#echo ${minTypeComp[$proc]}
-		eval ${dbgCmd}""${minTypeComp[$proc]} &
-		PID=$!
-		queue $PID
-
-		while [ $NUM -ge $NProc ]; do
-			checkqueue
-			sleep 0.4
-		done
-	done
-	wait # attendi il completamento di tutti i processi prima di procedere con il passo successivo
-	sync #Mi assicuro che tutte le informazioni siano scritte su file
+	if [ $? -ne 0 ]
+	then
+	    echo "App Failed during run"
+	    exit 1
+	fi
 
 	#Rimuovo i file dei tipi utilizzati per il calcolo, non più utili
 	for element in "${splitters[@]}"
 	do
 	   rm -f ${orgDatasetFile}/${element}"_types.nt"
 	done
-	
 
 	endBlock=$SECONDS
 	if [ $debug -eq 1 ]
@@ -379,11 +343,9 @@ echo ""
 		echo "Time: $((endBlock - startBlock)) secs."
 		echo ""
 	fi
+	echo "---End: MinType---"
 
-echo "---End: MinType---"
-
-echo ""
-
+	echo ""
 } &>> "log/log.txt"
 
 { 

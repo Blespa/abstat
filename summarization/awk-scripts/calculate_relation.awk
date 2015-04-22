@@ -46,12 +46,6 @@ BEGIN {
 		equProp[equ[1]]=equ[2];
 	}
 	
-	# Carico la struttura contenente tutte le sottoclassi per le radici della gerarchia
-	#while (getline < "r_pattern_cal_data/allSubConcept.txt")
-	#{
-		#allSubConcept[$0];
-	#}
-	
 	# Carico la struttura contenente tutte le proprietà verso concetti
 	while (getline < (dirDataForComp"/Properties.txt"))
 	{
@@ -75,10 +69,6 @@ BEGIN {
 	
 	triple_lette=0;
 
-	#TODO:Decommentare se sono utili per la Summarization	
-	#countSUBJREs=0;
-	#countOBJREs=0;
-
 	#Valori di quanto mantenere in memoria settati per: Max ~1.5Gb (compreso caricamento di informazioni iniziale, per eccesso di 500Mb), 2.550.000 circa triple velocemente. Compromesso tra memoria allocata (limitata per utilizzare più processi in parallelo), velocità ed efficienza sufficiente in parallelizzazione, anche valutando la probabilità di trovare risorse lontane tra loro.
 
 	countSUBJTempSubj=0;
@@ -91,9 +81,6 @@ BEGIN {
 	maxOBJTempObj=50000000; #400000
 	firstSaveOBJTemp=0;
 
-	#TODO:Decommentare se sono utili per la Summarization		
-	#countDTSUBJREs=0;
-
 	countSUBJTempSubjDt=0;
 	countSUBJTempSubjSostDt=1;
 	maxSUBJTempSubjDt=50000000; #1100000
@@ -103,10 +90,6 @@ BEGIN {
 	countOBJTempObjSostDt=1;
 	maxOBJTempObjDt=50000000; #500000
 	firstSaveOBJTempDt=0;
-
-	#TODO:Decommentare se sono utili per la Summarization		
-	#countDTSUBJREs=0;
-	#countDTOBJREs=0;
 }
 
 { 
@@ -114,16 +97,6 @@ BEGIN {
 # Determino le operazioni (Object Property o DataType Property) in base al file in analisi	
 if(match(FILENAME,"obj_properties")){ #Elaboro Object Properties
 
-	# Elaboro ogni tripla del file
-	#startTime=systime();
-	#Triple=$0;
-	
-	# Stampa di controllo
-	#if(triple_lette%10000==0 && triple_lette!=0)
-		#print triple_lette " triple lette..." #>> "log.txt";
-	
-	#fflush(""); # Avviando gawk, funziona sicuro
-		
 	split("", statementObjProp)
 	split($0,statementObjProp,"##"); # Splitto la tripla
 	
@@ -133,15 +106,11 @@ if(match(FILENAME,"obj_properties")){ #Elaboro Object Properties
 		
 		if(!(proprieta in currObjProperties)){ #Se la proprietà non è nell'elenco delle proprietà (quindi non presa dall'ontologia)
 			if(!(proprieta in stored_equiv_obj_prop)){
-				#print "Prendo l'equivalent property per: " proprieta;
 				equivProp = getEquProp(equProp,proprieta);
 				stored_equiv_obj_prop[proprieta]=equivProp;
-				#print "Presa: " equivProp;
 			}
 			else{
-				#print "PRENDO EQUIVALENT DALLA MEMORIA PER: " proprieta;
 				equivProp = stored_equiv_obj_prop[proprieta];
-				#print "Ripresa dalla memoria: " equivProp;
 			}
 		
 			# Associo la proprietà equivalente alla proprietà
@@ -201,11 +170,8 @@ if(match(FILENAME,"obj_properties")){ #Elaboro Object Properties
 						split("", uknToSottr);
 						lengthArray=split(Ukn[entitaSUbj],uknToSottr,"##");
 						
-						#print "Split UKN: " uknToSottr[1];
-
 						for( i=1; i<=lengthArray; i++){
 							count[uknToSottr[i]]=count[uknToSottr[i]]-1;
-							#print "Scalo: " uknToSottr[i];
 						}
 						
 					}
@@ -277,11 +243,8 @@ if(match(FILENAME,"obj_properties")){ #Elaboro Object Properties
 							split("", uknToSottr);
 							lengthArray=split(Ukn[entitaObj],uknToSottr,"##");
 						
-							#print "Split UKN: " uknToSottr[1];
-
 							for( i=1; i<=lengthArray; i++){
 								count[uknToSottr[i]]=count[uknToSottr[i]]-1;
-								#print "Scalo: " uknToSottr[i];
 							}
 						
 						}
@@ -325,46 +288,6 @@ if(match(FILENAME,"obj_properties")){ #Elaboro Object Properties
 					relationCount[relation]=relationCount[relation]+1;
 				}			
 		
-				# Salvo eventuali informazioni sulle risorse non risolvibili, da mostrare come esempio
-				#if(relation in egUnresolved){
-		
-					#if(subjUnresolv!=""){
-						#split("", UrnRelation);
-						#lengthArray=split(egUnresolved[relation],UrnRelation,"###"); # Splitto lo statement
-						#to_check = subjUnresolv" (SUBJ)";
-				
-						#for(i=1; i<=lengthArray; i++){
-							#UrnRelationCheck[UrnRelation[i]];
-						#}
-				
-						#if(!(to_check in UrnRelationCheck))
-							#egUnresolved[relation] = egUnresolved[relation]"###"subjUnresolv" (SUBJ)";
-					#}
-			
-					#if(objUnresolv!=""){
-						#split("", UrnRelation);
-						#lengthArray=split(egUnresolved[relation],UrnRelation,"###"); # Splitto lo statement
-						#to_check = objUnresolv" (OBJ)";
-				
-						#for(i=1; i<=lengthArray; i++){
-							#UrnRelationCheck[UrnRelation[i]];
-						#}
-				
-						#if(!(to_check in UrnRelationCheck))
-							#egUnresolved[relation] = egUnresolved[relation]"###"objUnresolv" (OBJ)";
-					#}
-				
-				#}
-				#else{
-			
-					#if(subjUnresolv!="")
-						#egUnresolved[relation] = subjUnresolv" (SUBJ)";
-			
-					#if(objUnresolv!="")
-						#egUnresolved[relation] = objUnresolv" (OBJ)";	
-			
-				#}
-		
 				# Conto quante istanze hanno una determinata proprietà
 				# Verifico il soggetto
 				subj_to_check=entitaSUbj"##"proprieta;
@@ -373,58 +296,17 @@ if(match(FILENAME,"obj_properties")){ #Elaboro Object Properties
 				
 				if(countSUBJTempSubj>0 && subj_to_check in tempCountedSUBJProp){
 					subj_to_check_found=1;
-					#print ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>TROVATO IN ARRAY!!!";
 					break;
 				}
-				#system("sleep 2");
 									
-				#system("stat -c %s tmpFile/countedSUBJProp.txt");
 				if( subj_to_check_found!=1 && countSUBJTempSubj>maxSUBJTempSubj ){
-					#startTime=systime();
-					#print "Cerco in File"
-					#cmd="cat tmpFile/countedSUBJProp.txt";
-					#if(substr(subj_to_check,1,1)=="-")
-						#subj_to_check="\\"subj_to_check;		
-					#gensub("/-/","\\-",1,subj_to_check);
-					#print "Cerco: "subj_to_check;
 					cmd="grep -m 1 -e \""subj_to_check"\" "dirTmpFile"/"letter"_countedSUBJProp.txt";
-					#print "Comando: " cmd;
 					while (cmd | getline line > 0){ 
-						#print "Cerco: "subj_to_check;
-						#print "    In: "line;
-						#if(match(line,subj_to_check)){
-							subj_to_check_found=1;
-							#print ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>TROVATO!!!";
-							break;
-						#}
-						#system("sleep 2");
+						break;
 					}
 					close(cmd);
-					
-					#while ((getline < "tmpFile/countedSUBJProp.txt") > 0)
-					#{
-						#print "Cerco: "subj_to_check;
-						#print "    In: "$0;
-						#if(match($0,subj_to_check)){
-							#subj_to_check_found=1;
-							#print ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>TROVATO!!!";
-							#break;
-						#}
-						#system("sleep 2");
-					#}
-					#endTime=systime();
-					#diffTime=endTime-startTime;
-					#if(diffTime>=1)
-						#print "Time Subj Check: " diffTime " --- " subj_to_check;
-
-					#cl=close("tmpFile/countedSUBJProp.txt");
 				}
-				#print "Close: " cl;
-
-				#print "\nsubj_to_check_found: " subj_to_check_found;
-
-				#print "\n";
-
+				
 				if(subj_to_check_found!=1){
 
 					# Conto quante istanze di una data classe hanno una determinata proprietà, solo se la classe di appartenenenza dell'istanza è nota
@@ -435,8 +317,6 @@ if(match(FILENAME,"obj_properties")){ #Elaboro Object Properties
 							# Conto il numero di concetti che hanno una data proprietà e che sono soggetto della proprietà
 							if(!(proprieta in concPropSUBJ)){
 								concPropSUBJ[proprieta]=ClasseSubj
-								#TODO: Riattivare per Domain & Range
-								#concPropSUBJOneClass[proprieta] = ClasseSubj;
 							}
 							else
 								concPropSUBJ[proprieta]=concPropSUBJ[proprieta]"##"ClasseSubj
@@ -461,8 +341,6 @@ if(match(FILENAME,"obj_properties")){ #Elaboro Object Properties
 						indSostSubj=countSUBJTempSubjSostNumber[countSUBJTempSubjSost];
 
 						#Salvo sul file temporaneo l'informazioni, se dovesse servire in seguito
-						#print "Salvo: "	subj_to_check;				
-						#print subj_to_check >> "tmpFile/countedSUBJProp.txt";
 						subj_to_save=indSostSubj;
 
 						if(firstSaveSUBJTemp==0){ #Necessario per la modalità ottimizzata di salvataggio
@@ -478,7 +356,6 @@ if(match(FILENAME,"obj_properties")){ #Elaboro Object Properties
 						tempCountedSUBJProp[subj_to_check];
 						countSUBJTempSubjSostNumber[countSUBJTempSubjSost]=subj_to_check;
 
-						#print "Now: " tempCountedSUBJProp[countSUBJTempSubjSost];
 						countSUBJTempSubjSost=((countSUBJTempSubjSost)%maxSUBJTempSubj)+1;
 
 						countSUBJTempSubj++;						
@@ -490,34 +367,6 @@ if(match(FILENAME,"obj_properties")){ #Elaboro Object Properties
 					}
 
 				}
-		
-				# TODO: Rimettere per Min, Max, Mean
-				#if(subjUnresolv==""){
-					#to_check_prop_conc=entitaSUbj"##"ClasseSubj"##"proprieta;
-					
-					#if(to_check_prop_conc in countedSUBJPropClass)
-						#countedSUBJPropClass[to_check_prop_conc] = countedSUBJPropClass[to_check_prop_conc] + 1;
-					#else
-						#countedSUBJPropClass[to_check_prop_conc] = 1;
-				#}
-				
-				#TODO:Decommentare se sono utili per la Summarization
-				#if(!(entitaSUbj in countedSUBJResource)){
-			
-					#countSUBJREs = countSUBJREs + 1;
-			
-					#if(subjUnresolv==""){
-				
-						#if(ClasseSubj in countNumberOfClassAsSUBJ){
-							#countNumberOfClassAsSUBJ[ClasseSubj] = countNumberOfClassAsSUBJ[ClasseSubj] + 1;
-						#}
-						#else
-							#countNumberOfClassAsSUBJ[ClasseSubj] = 1;
-				
-					#}
-			
-					#countedSUBJResource[entitaSUbj];
-				#}
 		
 				# Verifico l'oggetto
 				obj_to_check=entitaObj"##"proprieta;
@@ -533,67 +382,23 @@ if(match(FILENAME,"obj_properties")){ #Elaboro Object Properties
 									
 				#system("stat -c %s tmpFile/countedOBJProp.txt");
 				if( obj_to_check_found!=1 && countOBJTempObj>maxOBJTempObj ){
-					#startTime=systime();
-					#print "Cerco in File"
-					#cmd="cat tmpFile/countedOBJProp.txt";
-					#if(substr(obj_to_check,1,1)=="-")
-						#obj_to_check="\\"obj_to_check;					
-					#gensub("/-/","\\-",1,obj_to_check);
-					#print "Cerco: "obj_to_check;
 					cmd="grep -m 1 -e \""obj_to_check"\" "dirTmpFile"/"letter"_countedOBJProp.txt";
-					#print "Comando: " cmd;
 					while (cmd | getline line > 0){ 
-						#print "Cerco: "obj_to_check;
-						#print "    In: "line;
-						#if(match(line,obj_to_check)){
-							obj_to_check_found=1;
-							#print ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>TROVATO!!!";
-							break;
-						#}
-						#system("sleep 2");
+						obj_to_check_found=1;
+						break;
 					}
 					close(cmd);
-
-					#while ((getline < "tmpFile/countedOBJProp.txt") > 0)
-					#{
-						#print "Cerco: "obj_to_check;
-						#print "    In: "$0;
-						#if(match($0,obj_to_check)){
-							#obj_to_check_found=1;
-							#print ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>TROVATO!!!";
-							#break;
-						#}
-						#system("sleep 2");
-					#}
-					#endTime=systime();
-					#diffTime=endTime-startTime;
-					#if(diffTime>=1)
-						#print "Time Obj Check: " diffTime " --- " obj_to_check;
-
-					#cl=close("tmpFile/countedOBJProp.txt");
 				}
-				#print "Close OBJ: " cl;
-
-				#print "\nobj_to_check_found: " obj_to_check_found;
-
-				#print "\n";
-
 				if( obj_to_check_found!=1 ){
 		
 					# Conto quante istanze di una data classe hanno una determinata proprietà, solo se la classe di appartenenenza dell'istanza è nota
 					if(objUnresolv==""){
 						obj_to_check_classe=ClasseObj"##"proprieta;
 
-						#if(length(ClasseObj)==0){
-							#print "moreMinTypeObj: " moreMinTypeObj;
-						#}
-				
 						if(!(obj_to_check_classe in countClassOBJ)){
 							# Conto il numero di concetti che hanno una data proprietà e che sono oggetto della proprietà
 							if(!(proprieta in concPropOBJ)){
 								concPropOBJ[proprieta]=ClasseObj
-								#TODO: Riattivare per Domain & Range
-								#concPropOBJOneClass[proprieta] = ClasseObj;
 							}
 							else
 								concPropOBJ[proprieta]=concPropOBJ[proprieta]"##"ClasseObj
@@ -611,14 +416,9 @@ if(match(FILENAME,"obj_properties")){ #Elaboro Object Properties
 
 					#Mantengo un array temporaneo degli ultimi 200 elementi analizzati
 					if( countOBJTempObj>=maxOBJTempObj ){
-						#print "Replace element: " countOBJTempObjSost;
-						#print "Previous: " tempCountedOBJProp[countOBJTempObjSost];
-						
 						#Ottengo l'indice dell'elemeno da sostituire
 						indSostObj=countOBJTempObjSostNumber[countOBJTempObjSost];
 						#Salvo sul file temporaneo l'informazioni, se dovesse servire in seguito
-						#print "Salvo: "	obj_to_check;				
-						#print obj_to_check >> "tmpFile/countedOBJProp.txt";
 						obj_to_save=indSostObj;
 
 						if(firstSaveOBJTemp==0){ #Necessario per la modalità ottimizzata di salvataggio
@@ -627,14 +427,12 @@ if(match(FILENAME,"obj_properties")){ #Elaboro Object Properties
 						}
 						else{
 							system("sed -i -e \"1i "obj_to_save"\" "dirTmpFile"/"letter"_countedOBJProp.txt");
-							#system("sync");
 						}
 
 						delete tempCountedOBJProp[indSostObj];
 						tempCountedOBJProp[obj_to_check];
 						countOBJTempObjSostNumber[countOBJTempObjSost]=obj_to_check;
 
-						#print "Now: " tempCountedOBJProp[countOBJTempObjSost];
 						countOBJTempObjSost=((countOBJTempObjSost)%maxOBJTempObj)+1;
 
 						countOBJTempObj++;
@@ -647,32 +445,6 @@ if(match(FILENAME,"obj_properties")){ #Elaboro Object Properties
 					}
 
 				}
-				
-				# TODO: Rimettere per Min, Max, Mean
-				#if(objUnresolv==""){
-					#to_check_prop_conc=entitaObj"##"ClasseObj"##"proprieta;
-					#if(to_check_prop_conc in countedOBJPropClass)
-						#countedOBJPropClass[to_check_prop_conc] = countedOBJPropClass[to_check_prop_conc] + 1;
-					#else
-						#countedOBJPropClass[to_check_prop_conc] = 1;
-				#}
-				
-				#TODO:Decommentare se sono utili per la Summarization
-				#if(!(entitaObj in countedOBJResource)){
-			
-					#countOBJREs = countOBJREs + 1;
-			
-					#if(objUnresolv==""){
-			
-						#if(ClasseObj in countNumberOfClassAsOBJ){
-							#countNumberOfClassAsOBJ[ClasseObj] = countNumberOfClassAsOBJ[ClasseObj] + 1;
-						#}
-						#else
-							#countNumberOfClassAsOBJ[ClasseObj] = 1;
-					#}
-			
-					#countedOBJResource[entitaObj];
-				#}
 			}
 
 		}
@@ -684,18 +456,7 @@ if(match(FILENAME,"obj_properties")){ #Elaboro Object Properties
 		else{
 			countProp[proprieta]=countProp[proprieta]+1;
 		}
-		
-		#print "Object: " entitaSUbj " - " proprieta " - " entitaObj
-		#print relation " => " relationCount[relation];
-		
 	triple_lette++;
-
-	#endTime=systime();
-	#diffTime=endTime-startTime;
-	#if(diffTime>=1){
-		#print "Time: " diffTime " ( Start: " startTime ",End: " endTime ")";
-		#print "(" triple_lette ") - Tripla: " Triple "\n";
-	#}
 }
 else{ #Elaboro Datatype Properties
 	
@@ -1218,32 +979,6 @@ else{ #Elaboro Datatype Properties
 					}
 				}
 			}
-			
-			# TODO: Rimettere per Min, Max, Mean
-			#if(objUnresolv==""){
-				#to_check_prop_conc=entitaObj"##"DataTypeObj"##"proprieta;
-				#if(to_check_prop_conc in countedDTOBJPropClass)
-					#countedDTOBJPropClass[to_check_prop_conc] = countedDTOBJPropClass[to_check_prop_conc] + 1;
-				#else
-					#countedDTOBJPropClass[to_check_prop_conc] = 1;
-			#}
-		
-			#TODO:Decommentare se sono utili per la Summarization
-			#if(!(entitaObj in countedDTOBJResource)){
-			
-				#countDTOBJREs = countDTOBJREs + 1;
-			
-				#if(objUnresolv==""){
-			
-					#if(DataTypeObj in countNumberOfClassAsDTOBJ){
-						#countNumberOfClassAsDTOBJ[DataTypeObj] = countNumberOfClassAsDTOBJ[DataTypeObj] + 1;
-					#}
-					#else
-						#countNumberOfClassAsDTOBJ[DataTypeObj] = 1;
-				#}
-			
-				#countedDTOBJResource[entitaObj];
-			#}
 		}
 
 		if(!(proprieta in countDTProp)){
@@ -1253,18 +988,7 @@ else{ #Elaboro Datatype Properties
 		else{
 			countDTProp[proprieta]=countDTProp[proprieta]+1;
 		}
-		
-		#print "DataType: " entitaSUbj " - " proprieta " - " entitaObj " >> " DataTypeObj
-		
 	triple_lette++;
-
-	#endTime=systime();
-	#diffTime=endTime-startTime;
-	#if(diffTime>=1){
-		#print "Time: " diffTime " ( Start: " startTime ",End: " endTime ")";
-		#print "(" triple_lette ") - Tripla: " Triple "\n";
-	#}	
-
 }
 
 }
@@ -1340,13 +1064,6 @@ END {
 		print var "##" relationCount[var] >> destDir"/"letter"_relationCount.txt";
 	}
 	
-	
-	#TODO:Decommentare se sono utili per la Summarization
-	#for (varUnr in egUnresolved)
-	#{
-		#print varUnr " => " egUnresolved[varUnr] >> "relation_info/relationEgUnresolved"FILENAME".txt";
-	#}
-
 	system("touch "destDir"/"letter"_countConcepts.txt"); #Creo il file così da averlo, anche se vuoto		
 	for (var in count)
 	{
@@ -1355,186 +1072,6 @@ END {
 		print  to_Print >> destDir"/"letter"_countConcepts.txt";
 	}
 	
-	# TODO: Rimettere per Min, Max, Mean
-	#print "NUMERO DI VOLTE MINIMO, MASSIMO E MEDIO IN CUI UNA PROPRIETA E ASSOCIATA AD UN CONCETTO (SE NOTO) COME SOGGETTO (OVVERO IN USCITA)" >> "relation_info/Conteggi"FILENAME".txt";
-	
-	# Inizializzo gli array per la valutazione
-	#for(countedConcPropSubj in countClassSUBJ){
-		#min_count_class_subj[countedConcPropSubj] = totale;
-		#max_count_class_subj[countedConcPropSubj] = -1;
-	#}
-	
-	#for(countedSubjPropVar in countedSUBJPropClass){
-		
-		# Recupero il concetto associato alla risorsa
-		#split("",propClassTot);
-		#split(countedSubjPropVar,propClassTot,"##");
-		#classe = propClassTot[2];
-		#proprieta = propClassTot[3];
-		#to_check_prop_classe = classe"##"proprieta;
-		
-		#if(min_count_class_subj[to_check_prop_classe]>countedSUBJPropClass[countedSubjPropVar])
-			#min_count_class_subj[to_check_prop_classe]=countedSUBJPropClass[countedSubjPropVar];
-		
-		#if(max_count_class_subj[to_check_prop_classe]<countedSUBJPropClass[countedSubjPropVar])
-			#max_count_class_subj[to_check_prop_classe]=countedSUBJPropClass[countedSubjPropVar];
-		
-	#}
-	
-	#for (min_max_mean_var in min_count_class_subj){
-		
-		#media = (min_count_class_subj[min_max_mean_var]+max_count_class_subj[min_max_mean_var])/2;
-		
-		#print min_max_mean_var " => " "MINIMO: " min_count_class_subj[min_max_mean_var] ", MASSIMO: " max_count_class_subj[min_max_mean_var] ", MEDIA: " media >> "relation_info/Conteggi"FILENAME".txt";
-	
-	#}
-	
-	#print "\n\n" >> "relation_info/Conteggi"FILENAME".txt";
-
-	#print "NUMERO DI VOLTE MINIMO, MASSIMO E MEDIO IN CUI UNA PROPRIETA E ASSOCIATA AD UN DATATYPE (SE NOTO) COME OGGETTO (OVVERO IN ENTRATA)" >> "relation_info/Conteggi"FILENAME".txt";
-	
-	# Inizializzo gli array per la valutazione
-	#for(countedConcPropObj in countClassOBJ){
-		#min_count_class_obj[countedConcPropObj] = totale;
-		#max_count_class_obj[countedConcPropObj] = -1;
-	#}
-	
-	#for(countedObjPropVar in countedOBJPropClass){
-		
-		# Recupero il concetto associato alla risorsa
-		#split("",propClassTot);
-		#split(countedObjPropVar,propClassTot,"##");
-		#classe = propClassTot[2];
-		#proprieta = propClassTot[3];
-		#to_check_prop_classe = classe"##"proprieta;
-		
-		#if(min_count_class_obj[to_check_prop_classe]>countedOBJPropClass[countedObjPropVar])
-			#min_count_class_obj[to_check_prop_classe]=countedOBJPropClass[countedObjPropVar];
-		
-		#if(max_count_class_obj[to_check_prop_classe]<countedOBJPropClass[countedObjPropVar])
-			#max_count_class_obj[to_check_prop_classe]=countedOBJPropClass[countedObjPropVar];
-		
-	#}
-
-	#for (min_max_mean_var_obj in min_count_class_obj){
-		
-		#media = (min_count_class_obj[min_max_mean_var_obj]+max_count_class_obj[min_max_mean_var_obj])/2;
-		
-		#print min_max_mean_var_obj " => " "MINIMO: " min_count_class_obj[min_max_mean_var_obj] ", MASSIMO: " max_count_class_obj[min_max_mean_var_obj] ", MEDIA: " media >> "relation_info/Conteggi"FILENAME".txt";
-	
-	#}
-	
-	#TODO:Decommentare se sono utili per la Summarization
-	# "Inferisco" le relazioni in base all'analisi
-	# Esistenziale
-	#print "\n\n" >> "relation_info/Conteggi"FILENAME".txt";
-	#print "ESISTENZIALE" >> "relation_info/Conteggi"FILENAME".txt";
-	#minCardin = "";
-	#for (varCountClassSUBJ in countClassSUBJ)
-	#{
-		#split("",clCountSubj);
-		#split(varCountClassSUBJ,clCountSubj,"##")
-		
-		#percentuale = (countClassSUBJ[varCountClassSUBJ]/countNumberOfClassAsSUBJ[clCountSubj[1]])*100;
-		
-		#print "VALUTO - SUBJ: " varCountClassSUBJ " Valori: countClassSUBJ[varCountClassSUBJ] - "  countClassSUBJ[varCountClassSUBJ] " - countNumberOfClassAsSUBJ[clCountSubj[1]] " countNumberOfClassAsSUBJ[clCountSubj[1]]
-		
-		#if( percentuale==100 ){ #Tutte le risorse di questa classe hanno questa proprietà
-		
-			#for (varCountClassOBJ in countClassOBJ)
-			#{
-				#split("",clCountObj);
-				#split(varCountClassOBJ,clCountObj,"##")
-				
-				#if( clCountObj[2] == clCountSubj[2] ){
-				
-					#percentuale = (countClassOBJ[varCountClassOBJ]/countNumberOfClassAsOBJ[clCountObj[1]])*100;
-					
-					#print "VALUTO - OBJ: " varCountClassOBJ" Valori: countClassOBJ[varCountClassOBJ] - "  countClassOBJ[varCountClassOBJ] " - countNumberOfClassAsSUBJ[clCountObj[1]] " countNumberOfClassAsOBJ[clCountObj[1]]
-					
-					#if( percentuale==100 ){ #Tutte le risorse di questa classe hanno questa proprietà
-						
-						#print clCountSubj[1] " someValuesFrom [" clCountObj[2] "] " clCountObj[1] >> "relation_info/Conteggi"FILENAME".txt";
-						
-						# MinCardinality
-						#minCardin = minCardin"\n"clCountSubj[1] " minCardinality [" clCountObj[2] "] (" min_count_class_subj[varCountClassSUBJ] ") "clCountObj[1]
-					#}
-				#}
-			#}
-		#}
-		
-	#}
-	
-	# MinCardinality
-	#if(minCardin!=""){
-	
-		#print "\n\n" >> "relation_info/Conteggi"FILENAME".txt";
-		#print "MINCARDINALITY" >> "relation_info/Conteggi"FILENAME".txt";
-		
-		#print minCardin >> "relation_info/Conteggi"FILENAME".txt";
-	#}
-	
-	# Domain & Range
-	#print "\n\n" >> "relation_info/Conteggi"FILENAME".txt";
-	#print "DOMAIN & RANGE" >> "relation_info/Conteggi"FILENAME".txt";
-	#for(countPropCOncSUBJ in concPropSUBJ){
-		
-		# La proprietà ha solo un concetto come dominio
-		#if( concPropSUBJ[countPropCOncSUBJ]==1 ){
-			
-			#if( countPropCOncSUBJ in concPropOBJ ){
-				
-				# La proprietà ha solo un concetto come range
-				#if( concPropOBJ[countPropCOncSUBJ]==1 ){
-					
-					#print concPropSUBJOneClass[countPropCOncSUBJ] " " countPropCOncSUBJ " " concPropOBJOneClass[countPropCOncSUBJ]  >> "relation_info/Conteggi"FILENAME".txt";
-				#}
-			
-			#}
-		
-		#}
-	
-	#}
-	
-	# Creo il report a partire dalle radici della gerarchia
-	#for (repCon in allSubConcept){
-		
-		 #split("", rootSubConc);
-		 #lengthArray=split(repCon,rootSubConc,"##"); # Ottengo Radice e sottoconcetti
-		 #toPrint = "";
-		 #toPrintCount = "";
-		 
-		 # Imposto lo spazio per i sottoconcetti	
-		 #for (i = 1; i <= lengthArray; i++)
-		 #{
-			#split("", URI_El);
-			#lengthArray=split(rootSubConc[i],URI_El,"/"); # Splitto lo statement
-			
-			#risorsa_nome=substr(URI_El[lengthArray], 0, length(URI_El[lengthArray]));
-			
-			#toPrint = toPrint "##" risorsa_nome;
-			
-			#if(rootSubConc[i] in count){
-				#toPrintCount = toPrintCount "##" count[rootSubConc[i]];
-			#}
-			#else{
-				#toPrintCount = toPrintCount "##" "0";
-			#}
-			
-		 #}
-		 
-		 #print toPrint >> "relation_info/countConceptsReportDRResolution"FILENAME".txt";
-		 
-		 # Salvo la radice
-		 #split("", URI_El);
-		 #lengthArray=split(rootSubConc[1],URI_El,"/"); # Splitto lo statement
-			
-		 #risorsa_nome=substr(URI_El[lengthArray], 0, length(URI_El[lengthArray]));
-		 
-		 #print risorsa_nome "" toPrintCount >> "relation_info/countConceptsReportDRResolution"FILENAME".txt";
-		
-	#}
-
 	#DATATYPE PROPERTIES
 	# Salvo tutte le informazioni su file
 
@@ -1602,12 +1139,6 @@ END {
 		print varDT "##" relationDTCount[varDT] >> destDirDt"/"letter"_relationDTCount.txt";
 	}
 	
-	#TODO:Decommentare se sono utili per la Summarization	
-	#for (varDTUnr in egDTUnresolved)
-	#{
-		#print varDTUnr " => " egDTUnresolved[varDTUnr] >> "relation_info/relationEgDTUnresolved"FILENAME".txt";
-	#}
-
 	system("touch "destDirDt"/"letter"_countDataType.txt"); #Creo il file così da averlo, anche se vuoto	
 	for (varCDT in countDt)
 	{
@@ -1615,259 +1146,6 @@ END {
 
 		print  to_Print >> destDirDt"/"letter"_countDataType.txt";
 	}
-	
-	
-	# TODO: Rimettere per Min, Max, Mean
-	#print "NUMERO DI VOLTE MINIMO, MASSIMO E MEDIO IN CUI UNA PROPRIETA E ASSOCIATA AD UN CONCETTO (SE NOTO) COME SOGGETTO (OVVERO IN USCITA)" >> "relation_info/Conteggi"FILENAME".txt";
-	
-	# Inizializzo gli array per la valutazione
-	#for(countedConcPropSubj in countClassSUBJ){
-		#min_count_class_subj[countedConcPropSubj] = totale;
-		#max_count_class_subj[countedConcPropSubj] = -1;
-	#}
-	
-	#for(countedSubjPropVar in countedSUBJPropClass){
-		
-		# Recupero il concetto associato alla risorsa
-		#split("",propClassTot);
-		#split(countedSubjPropVar,propClassTot,"##");
-		#classe = propClassTot[2];
-		#proprieta = propClassTot[3];
-		#to_check_prop_classe = classe"##"proprieta;
-		
-		#if(min_count_class_subj[to_check_prop_classe]>countedSUBJPropClass[countedSubjPropVar])
-			#min_count_class_subj[to_check_prop_classe]=countedSUBJPropClass[countedSubjPropVar];
-		
-		#if(max_count_class_subj[to_check_prop_classe]<countedSUBJPropClass[countedSubjPropVar])
-			#max_count_class_subj[to_check_prop_classe]=countedSUBJPropClass[countedSubjPropVar];
-		
-	#}
-	
-	#for (min_max_mean_var in min_count_class_subj){
-		
-		#media = (min_count_class_subj[min_max_mean_var]+max_count_class_subj[min_max_mean_var])/2;
-		
-		#print min_max_mean_var " => " "MINIMO: " min_count_class_subj[min_max_mean_var] ", MASSIMO: " max_count_class_subj[min_max_mean_var] ", MEDIA: " media >> "relation_info/Conteggi"FILENAME".txt";
-	
-	#}
-	
-	#print "\n\n" >> "relation_info/Conteggi"FILENAME".txt";
-
-	#print "NUMERO DI VOLTE MINIMO, MASSIMO E MEDIO IN CUI UNA PROPRIETA E ASSOCIATA AD UN DATATYPE (SE NOTO) COME OGGETTO (OVVERO IN ENTRATA)" >> "relation_info/Conteggi"FILENAME".txt";
-	
-	# Inizializzo gli array per la valutazione
-	#for(countedConcPropObj in countClassOBJ){
-		#min_count_class_obj[countedConcPropObj] = totale;
-		#max_count_class_obj[countedConcPropObj] = -1;
-	#}
-	
-	#for(countedObjPropVar in countedOBJPropClass){
-		
-		# Recupero il concetto associato alla risorsa
-		#split("",propClassTot);
-		#split(countedObjPropVar,propClassTot,"##");
-		#classe = propClassTot[2];
-		#proprieta = propClassTot[3];
-		#to_check_prop_classe = classe"##"proprieta;
-		
-		#if(min_count_class_obj[to_check_prop_classe]>countedOBJPropClass[countedObjPropVar])
-			#min_count_class_obj[to_check_prop_classe]=countedOBJPropClass[countedObjPropVar];
-		
-		#if(max_count_class_obj[to_check_prop_classe]<countedOBJPropClass[countedObjPropVar])
-			#max_count_class_obj[to_check_prop_classe]=countedOBJPropClass[countedObjPropVar];
-		
-	#}
-
-	#for (min_max_mean_var_obj in min_count_class_obj){
-		
-		#media = (min_count_class_obj[min_max_mean_var_obj]+max_count_class_obj[min_max_mean_var_obj])/2;
-		
-		#print min_max_mean_var_obj " => " "MINIMO: " min_count_class_obj[min_max_mean_var_obj] ", MASSIMO: " max_count_class_obj[min_max_mean_var_obj] ", MEDIA: " media >> "relation_info/Conteggi"FILENAME".txt";
-	
-	#}
-	
-	#TODO:Decommentare se sono utili per la Summarization
-	# DataType Property
-	# TODO: Rimettere per Min, Max, Mean
-	#print "\n\n" >> "relation_info/ConteggiDT"FILENAME".txt";
-	#print "NUMERO DI VOLTE MINIMO, MASSIMO E MEDIO IN CUI UNA PROPRIETA E ASSOCIATA AD UN CONCETTO (SE NOTO) COME SOGGETTO (OVVERO IN USCITA)" >> "relation_info/ConteggiDT"FILENAME".txt";
-	
-	# Inizializzo gli array per la valutazione
-	#for(countedConcPropDTSubj in countClassDTSUBJ){
-		#min_count_class_dt_subj[countedConcPropDTSubj] = totale;
-		#max_count_class_dt_subj[countedConcPropDTSubj] = -1;
-	#}
-	
-	#for(countedDTSubjPropVar in countedDTSUBJPropClass){
-		
-		# Recupero il concetto associato alla risorsa
-		#split("",propClassTot);
-		#split(countedDTSubjPropVar,propClassTot,"##");
-		#classe = propClassTot[2];
-		#proprieta = propClassTot[3];
-		#to_check_prop_classe = classe"##"proprieta;
-		
-		#if(min_count_class_dt_subj[to_check_prop_classe]>countedDTSUBJPropClass[countedDTSubjPropVar])
-			#min_count_class_dt_subj[to_check_prop_classe]=countedDTSUBJPropClass[countedDTSubjPropVar];
-		
-		#if(max_count_class_dt_subj[to_check_prop_classe]<countedDTSUBJPropClass[countedDTSubjPropVar])
-			#max_count_class_dt_subj[to_check_prop_classe]=countedDTSUBJPropClass[countedDTSubjPropVar];
-		
-	#}
-	
-	#for (min_max_mean_var in min_count_class_dt_subj){
-		
-		#media = (min_count_class_dt_subj[min_max_mean_var]+max_count_class_dt_subj[min_max_mean_var])/2;
-		
-		#print min_max_mean_var " => " "MINIMO: " min_count_class_dt_subj[min_max_mean_var] ", MASSIMO: " max_count_class_dt_subj[min_max_mean_var] ", MEDIA: " media >> "relation_info/ConteggiDT"FILENAME".txt";
-	
-	#}
-	
-	#print "\n\n" >> "relation_info/ConteggiDT"FILENAME".txt";
-	#print "NUMERO DI VOLTE MINIMO, MASSIMO E MEDIO IN CUI UNA PROPRIETA E ASSOCIATA AD UN CONCETTO (SE NOTO) COME OGGETTO (OVVERO IN ENTRATA)" >> "relation_info/ConteggiDT"FILENAME".txt";
-	
-	# Inizializzo gli array per la valutazione
-	#for(countedDTConcPropObj in countClassDTOBJ){
-		#min_count_class_dt_obj[countedDTConcPropObj] = totale;
-		#max_count_class_dt_obj[countedDTConcPropObj] = -1;
-	#}
-	
-	#for(countedDTObjPropVar in countedDTOBJPropClass){
-		
-		# Recupero il datatype associato alla risorsa
-		#split("",propClassTot);
-		#split(countedDTObjPropVar,propClassTot,"##");
-		#datatype = propClassTot[2];
-		#proprieta = propClassTot[3];
-		#to_check_prop_classe = datatype"##"proprieta;
-		
-		#if(min_count_class_dt_obj[to_check_prop_classe]>countedDTOBJPropClass[countedDTObjPropVar])
-			#min_count_class_dt_obj[to_check_prop_classe]=countedDTOBJPropClass[countedDTObjPropVar];
-		
-		#if(max_count_class_dt_obj[to_check_prop_classe]<countedDTOBJPropClass[countedDTObjPropVar])
-			#max_count_class_dt_obj[to_check_prop_classe]=countedDTOBJPropClass[countedDTObjPropVar];
-		
-	#}
-	
-	#for (min_max_mean_var_obj in min_count_class_dt_obj){
-		
-		#media = (min_count_class_dt_obj[min_max_mean_var_obj]+max_count_class_dt_obj[min_max_mean_var_obj])/2;
-		
-		#print min_max_mean_var_obj " => " "MINIMO: " min_count_class_dt_obj[min_max_mean_var_obj] ", MASSIMO: " max_count_class_dt_obj[min_max_mean_var_obj] ", MEDIA: " media >> "relation_info/ConteggiDT"FILENAME".txt";
-	
-	#}
-	
-	#TODO:Decommentare se sono utili per la Summarization
-	# "Inferisco" le relazioni in base all'analisi
-	# Esistenziale
-	#print "\n\n" >> "relation_info/ConteggiDT"FILENAME".txt";
-	#print "ESISTENZIALE" >> "relation_info/ConteggiDT"FILENAME".txt";
-	#minCardin = "";
-	#for (varCountClassDTSUBJ in countClassDTSUBJ)
-	#{
-		#split("",clCountSubj);
-		#split(varCountClassDTSUBJ,clCountSubj,"##")
-		
-		#percentuale = (countClassDTSUBJ[varCountClassDTSUBJ]/countNumberOfClassAsDTSUBJ[clCountSubj[1]])*100;
-		
-		#print "VALUTO - SUBJ: " varCountClassSUBJ " Valori: countClassSUBJ[varCountClassSUBJ] - "  countClassSUBJ[varCountClassSUBJ] " - countNumberOfClassAsSUBJ[clCountSubj[1]] " countNumberOfClassAsSUBJ[clCountSubj[1]]
-		
-		#if( percentuale==100 ){ #Tutte le risorse di questa classe hanno questa proprietà
-		
-			#for (varCountClassDTOBJ in countClassDTOBJ)
-			#{
-				#split("",clCountObj);
-				#split(varCountClassDTOBJ,clCountObj,"##")
-				
-				#if( clCountObj[2] == clCountSubj[2] ){
-				
-					#percentuale = (countClassDTOBJ[varCountClassDTOBJ]/countNumberOfClassAsDTOBJ[clCountObj[1]])*100;
-					
-					#print "VALUTO - OBJ: " varCountClassOBJ" Valori: countClassOBJ[varCountClassOBJ] - "  countClassOBJ[varCountClassOBJ] " - countNumberOfClassAsSUBJ[clCountObj[1]] " countNumberOfClassAsOBJ[clCountObj[1]]
-					
-					#if( percentuale==100 ){ #Tutte le risorse di questa classe hanno questa proprietà
-						
-						#print clCountSubj[1] " someValuesFrom [" clCountObj[2] "] " clCountObj[1] >> "relation_info/ConteggiDT"FILENAME".txt";
-						
-						# MinCardinality
-						#minCardin = minCardin"\n"clCountSubj[1] " minCardinality [" clCountObj[2] "] (" min_count_class_dt_subj[varCountClassDTSUBJ] ") "clCountObj[1]
-					#}
-				#}
-			#}
-		#}
-		
-	#}
-	
-	# MinCardinality
-	#if(minCardin!=""){
-	
-		#print "\n\n" >> "relation_info/ConteggiDT"FILENAME".txt";
-		#print "MINCARDINALITY" >> "relation_info/ConteggiDT"FILENAME".txt";
-		
-		#print minCardin >> "relation_info/ConteggiDT"FILENAME".txt";
-	#}
-	
-	# Domain & Range
-	#print "\n\n" >> "relation_info/ConteggiDT"FILENAME".txt";
-	#print "DOMAIN & RANGE" >> "relation_info/ConteggiDT"FILENAME".txt";
-	#for(countPropCOncDTSUBJ in concPropDTSUBJ){
-		
-		# La proprietà ha solo un concetto come dominio
-		#if( concPropDTSUBJ[countPropCOncDTSUBJ]==1 ){
-			
-			#if( countPropCOncDTSUBJ in concPropDTOBJ ){
-				
-				# La proprietà ha solo un concetto come range
-				#if( concPropDTOBJ[countPropCOncDTSUBJ]==1 ){
-					
-					#print concPropDTSUBJOneClass[countPropCOncDTSUBJ] " " countPropCOncDTSUBJ " " concPropDTOBJOneClass[countPropCOncDTSUBJ]  >> "relation_info/ConteggiDT"FILENAME".txt";
-				#}
-			
-			#}
-		
-		#}
-	
-	#}
-	
-	# Creo il report a partire dalle radici della gerarchia
-	#for (repCon in allSubConcept){
-		
-		 #split("", rootSubConc);
-		 #lengthArray=split(repCon,rootSubConc,"##"); # Ottengo Radice e sottoconcetti
-		 #toPrint = "";
-		 #toPrintCount = "";
-		 
-		 # Imposto lo spazio per i sottoconcetti	
-		 #for (i = 1; i <= lengthArray; i++)
-		 #{
-			#split("", URI_El);
-			#lengthArray=split(rootSubConc[i],URI_El,"/"); # Splitto lo statement
-			
-			#risorsa_nome=substr(URI_El[lengthArray], 0, length(URI_El[lengthArray]));
-			
-			#toPrint = toPrint "##" risorsa_nome;
-			
-			#if(rootSubConc[i] in count){
-				#toPrintCount = toPrintCount "##" count[rootSubConc[i]];
-			#}
-			#else{
-				#toPrintCount = toPrintCount "##" "0";
-			#}
-			
-		 #}
-		 
-		 #print toPrint >> "relation_info/countConceptsReportDRResolution"FILENAME".txt";
-		 
-		 # Salvo la radice
-		 #split("", URI_El);
-		 #lengthArray=split(rootSubConc[1],URI_El,"/"); # Splitto lo statement
-			
-		 #risorsa_nome=substr(URI_El[lengthArray], 0, length(URI_El[lengthArray]));
-		 
-		 #print risorsa_nome "" toPrintCount >> "relation_info/countConceptsReportDRResolution"FILENAME".txt";
-		
-	#}
-
 	# Elimino i file temporanei
 	system("rm -f "dirTmpFile"/"letter"_countedSUBJProp.txt");
 	system("rm -f "dirTmpFile"/"letter"_countedSUBJPropDt.txt");

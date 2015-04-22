@@ -8,8 +8,6 @@ import java.util.List;
 import org.jgraph.graph.DefaultEdge;
 import org.jgrapht.experimental.dag.DirectedAcyclicGraph;
 
-import com.hp.hpl.jena.ontology.OntResource;
-
 public class TypeGraph{
 	
 	private DirectedAcyclicGraph<String, DefaultEdge> graph;
@@ -36,7 +34,9 @@ public class TypeGraph{
 	
 	public List<List<String>> pathsBetween(String leaf, String root){
 		ArrayList<List<String>> paths = new ArrayList<List<String>>();
-		inOrderTraversal(leaf, root, new ArrayList<String>(), paths);
+		if(graph.containsVertex(leaf) && graph.containsVertex(root)){
+			inOrderTraversal(leaf, root, new ArrayList<String>(), paths);
+		}
 		return paths;
 	}
 	
@@ -63,8 +63,8 @@ public class TypeGraph{
 	private DirectedAcyclicGraph<String, DefaultEdge> subTypeGraphFrom(Concepts concepts, TextInput subclassRelations) throws Exception {
 		DirectedAcyclicGraph<String, DefaultEdge> typeGraph = new DirectedAcyclicGraph<String, DefaultEdge>(DefaultEdge.class);
 		
-		for(OntResource concept : concepts.getExtractedConcepts()){
-			typeGraph.addVertex(concept.getURI());
+		for(String concept : concepts.getConcepts().keySet()){
+			typeGraph.addVertex(concept);
 		}
 		
 		while(subclassRelations.hasNextLine()){

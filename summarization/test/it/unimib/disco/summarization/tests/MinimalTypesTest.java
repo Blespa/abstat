@@ -32,7 +32,7 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 		File types = temporary.namedFile("", "__types.nt");
 		File directory = temporary.directory();
 		
-		minimalTypesFrom(ontology).computeFor(temporary.file(), types, directory);
+		minimalTypesFrom(ontology).computeFor(types, directory);
 		
 		assertThat(new File(directory, "__minType.txt").exists(), is(true));
 	}
@@ -45,7 +45,7 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 		File types = temporary.namedFile("", "others_types.nt");
 		File directory = temporary.directory();
 		
-		minimalTypesFrom(ontology).computeFor(temporary.file(), types, directory);
+		minimalTypesFrom(ontology).computeFor(types, directory);
 		
 		assertThat(new File(directory, "others_minType.txt").exists(), is(true));
 	}
@@ -58,7 +58,7 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 		File types = temporary.namedFile("", "s_types.nt");
 		File directory = temporary.directory();
 		
-		minimalTypesFrom(ontology).computeFor(temporary.file(), types, directory);
+		minimalTypesFrom(ontology).computeFor(types, directory);
 		
 		assertThat(new File(directory, "s_minType.txt").exists(), is(true));
 		assertThat(new File(directory, "s_uknHierConcept.txt").exists(), is(true));
@@ -73,7 +73,7 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 		File types = temporary.namedFile("", "s_types.nt");
 		File directory = temporary.directory();
 		
-		minimalTypesFrom(ontology).computeFor(temporary.file(), types, directory);
+		minimalTypesFrom(ontology).computeFor(types, directory);
 		
 		assertThat(new File(directory, "s_minType.txt").exists(), is(true));
 		assertThat(new File(directory, "s_uknHierConcept.txt").exists(), is(true));
@@ -87,7 +87,7 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 		File types = temporary.namedFile("http://entity##type##" + OWL.Thing, "s_types.nt");
 		File directory = temporary.directory();
 		
-		minimalTypesFrom(ontology).computeFor(temporary.file(), types, directory);
+		minimalTypesFrom(ontology).computeFor(types, directory);
 		
 		assertThat(linesOf("s_minType.txt"), hasSize(0));
 		assertThat(linesOf("s_uknHierConcept.txt"), hasSize(0));
@@ -102,9 +102,8 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 
 		File types = temporary.namedFile("http://entity##type##http://concept", "s_types.nt");
 		File directory = temporary.directory();
-		File concepts = temporary.file("http://concept");
 		
-		minimalTypesFrom(ontology).computeFor(concepts, types, directory);
+		minimalTypesFrom(ontology).computeFor(types, directory);
 		List<String> conceptCounts = linesOf("s_countConcepts.txt");
 		
 		assertThat(conceptCounts, hasItem("http://concept##1"));
@@ -117,7 +116,7 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 		File types = temporary.namedFile("http://entity##type##http://concept", "s_types.nt");
 		File directory = temporary.directory();
 		
-		minimalTypesFrom(ontology).computeFor(temporary.file(), types, directory);
+		minimalTypesFrom(ontology).computeFor(types, directory);
 		
 		assertThat(linesOf("s_countConcepts.txt"), is(empty()));
 		assertThat(linesOf("s_uknHierConcept.txt"), hasItem("http://entity##http://concept"));
@@ -132,7 +131,7 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 		File types = temporary.namedFile("http://entity##type##http://concept", "s_types.nt");
 		File directory = temporary.directory();
 		
-		minimalTypesFrom(ontology).computeFor(temporary.file(), types, directory);
+		minimalTypesFrom(ontology).computeFor(types, directory);
 		
 		assertThat(linesOf("s_minType.txt"), hasItem("1##http://entity##http://concept"));
 	}
@@ -150,7 +149,7 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 										+ "http://entity##type##http://thing", "s_types.nt");
 		File directory = temporary.directory();
 		
-		minimalTypesFrom(ontology).computeFor(temporary.file(), types, directory);
+		minimalTypesFrom(ontology).computeFor(types, directory);
 		
 		assertThat(linesOf("s_minType.txt"), hasItem("1##http://entity##http://concept"));
 	}
@@ -168,7 +167,7 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 										+ "http://entity##type##http://concept", "s_types.nt");
 		File directory = temporary.directory();
 		
-		minimalTypesFrom(ontology).computeFor(temporary.file(), types, directory);
+		minimalTypesFrom(ontology).computeFor(types, directory);
 		
 		assertThat(linesOf("s_minType.txt"), hasItem("1##http://entity##http://concept"));
 	}
@@ -185,38 +184,40 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 										+ "http://entity##type##http://concept", "s_types.nt");
 		File directory = temporary.directory();
 		
-		minimalTypesFrom(ontology).computeFor(temporary.file(), types, directory);
+		minimalTypesFrom(ontology).computeFor(types, directory);
 		
 		assertThat(linesOf("s_minType.txt"), hasItem("2##http://entity##http://concept#-#http://thing"));
-	}
-	
-	@Test
-	public void equivalentExternalConcept() throws Exception {
-		ToyOntology ontology = new ToyOntology()
-										.owl()
-										.definingConcept("http://dbpedia.org/Car")
-											.equivalentTo("http://schema.org/Car");
-		
-		File types = temporary.namedFile("http://entity##type##http://schema.org/Car", "s_types.nt");
-		File directory = temporary.directory();
-		
-		minimalTypesFrom(ontology).computeFor(temporary.file(), types, directory);
-		
-		assertThat(linesOf("s_minType.txt"), hasItem("1##http://entity##http://schema.org/Car"));		
 	}
 	
 	@Test
 	public void equivalentConcept() throws Exception {
 		ToyOntology ontology = new ToyOntology()
 										.owl()
-										.definingConcept("http://dbpedia.org/Car")
-											.equivalentTo("http://schema.org/Car");
-		
-		File types = temporary.namedFile("http://entity##type##http://dbpedia.org/Car", "s_types.nt");
+										.definingConcept("http://dbpedia.org/Person")
+										.equivalentTo("http://schema.org/Person");
+
+		File types = temporary.namedFile("http://entity##type##http://dbpedia.org/Person"
+					+ "\n"
+					+ "http://entity##type##http://schema.org/Person", "s_types.nt");
 		File directory = temporary.directory();
-		minimalTypesFrom(ontology).computeFor(temporary.file(), types, directory);
 		
-		assertThat(linesOf("s_minType.txt"), hasItem("1##http://entity##http://dbpedia.org/Car"));		
+		minimalTypesFrom(ontology).computeFor(types, directory);
+		
+		assertThat(linesOf("s_minType.txt"), hasItem("2##http://entity##http://schema.org/Person#-#http://dbpedia.org/Person"));
+	}
+	
+	@Test
+	public void unknownConceptForAnEntity() throws Exception {
+		ToyOntology ontology = new ToyOntology().owl().definingConcept("http://dbpedia.org/Person");
+
+		File types = temporary.namedFile("http://entity##type##http://dbpedia.org/Person"
+										+ "\n"
+										+ "http://entity##type##http://unknown", "s_types.nt");
+		File directory = temporary.directory();
+		
+		minimalTypesFrom(ontology).computeFor(types, directory);
+
+		assertThat(linesOf("s_uknHierConcept.txt"), hasItem("http://entity##http://unknown"));
 	}
 	
 	private MinimalTypes minimalTypesFrom(ToyOntology ontology) throws Exception {

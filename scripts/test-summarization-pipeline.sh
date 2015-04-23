@@ -156,7 +156,23 @@ solr_port=8886
 ./solr.sh start $solr_port
 assert_application_is_up $solr_port solr/ "Solr Admin"
 
+cd ../summarization
 java -Xms256m -Xmx4g -cp .:'ontology_summarization.jar' it.unimib.disco.summarization.output.IndexConcepts
+cd ../scripts
+
+echo "sto lanciando la prova"
+
+highlight_color='\e[0;31m'
+message='KO'
+if [[ $(curl --silent http://localhost:8886/solr/coreSolr/select?q=*:* | grep "numFound=\"778\"") ]]
+then
+	highlight_color='\e[0;32m'
+	message="OK"
+	echo "Ci sono 778 concetti indicizzati."
+fi
+echo -e "ok o not ok esecuzione indicizzazione Solr: ${highlight_color}${message}\e[0m"
+
+echo "fine lancio di prova"
 
 ./solr.sh stop $solr_port
 

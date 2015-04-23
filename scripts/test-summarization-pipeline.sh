@@ -153,14 +153,14 @@ echo "integration testing of the solr module"
 echo
 
 solr_port=8886
+
 ./solr.sh start $solr_port
+
 assert_application_is_up $solr_port solr/ "Solr Admin"
 
 cd ../summarization
-java -Xms256m -Xmx4g -cp .:'ontology_summarization.jar' it.unimib.disco.summarization.output.IndexConcepts
+java -Xms256m -Xmx4g -cp .:'ontology_summarization.jar' it.unimib.disco.summarization.output.IndexConcepts localhost 8886
 cd ../scripts
-
-echo "sto lanciando la prova"
 
 highlight_color='\e[0;31m'
 message='KO'
@@ -168,11 +168,9 @@ if [[ $(curl --silent http://localhost:8886/solr/coreSolr/select?q=*:* | grep "n
 then
 	highlight_color='\e[0;32m'
 	message="OK"
-	echo "Ci sono 778 concetti indicizzati."
 fi
-echo -e "ok o not ok esecuzione indicizzazione Solr: ${highlight_color}${message}\e[0m"
 
-echo "fine lancio di prova"
+echo -e "checking solr indexing was successful: ${highlight_color}${message}\e[0m"
 
 ./solr.sh stop $solr_port
 

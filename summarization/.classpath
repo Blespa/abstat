@@ -7,9 +7,7 @@
 	<classpathentry kind="lib" path="lib/commons-csv-1.0.jar"/>
 	<classpathentry kind="lib" path="lib/commons-lang3-3.0.jar"/>
 	<classpathentry kind="lib" path="lib/commons-lang3-3.1.jar"/>
-	<classpathentry kind="lib" path="lib/httpclient-4.2.6.jar"/>
 	<classpathentry kind="lib" path="lib/httpclient-cache-4.2.6.jar"/>
-	<classpathentry kind="lib" path="lib/httpcore-4.2.5.jar"/>
 	<classpathentry kind="lib" path="lib/jackson-annotations-2.3.0.jar"/>
 	<classpathentry kind="lib" path="lib/jackson-core-2.3.3.jar"/>
 	<classpathentry kind="lib" path="lib/jackson-databind-2.3.3.jar"/>
@@ -38,78 +36,10 @@
 	<classpathentry kind="lib" path="lib/cpsuite-1.2.5.jar"/>
 	<classpathentry kind="lib" path="lib/commons-io-2.4.jar"/>
 	<classpathentry kind="lib" path="lib/system-rules-1.8.0.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/zookeeper-3.4.6.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/xml-apis-1.4.01.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/xercesImpl-2.11.0.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/woodstox-core-asl-4.4.1.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/system-rules-1.8.0.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/stax2-api-3.1.4.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/solr-velocity-5.0.0.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/solr-uima-5.0.0.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/solr-test-framework-5.0.0.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/solr-solrj-5.0.0.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/solr-morphlines-core-5.0.0.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/solr-morphlines-cell-5.0.0.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/solr-map-reduce-5.0.0.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/solr-langid-5.0.0.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/solr-dataimporthandler-extras-5.0.0.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/solr-dataimporthandler-5.0.0.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/solr-core-5.0.0.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/solr-clustering-5.0.0.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/solr-cell-5.0.0.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/solr-analytics-5.0.0.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/solr-analysis-extras-5.0.0.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/slf4j-simple-1.7.10-sources.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/slf4j-simple-1.7.10.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/slf4j-log4j12-1.7.6.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/slf4j-api-1.7.7.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/slf4j-api-1.7.6.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/servlet-api-3.0.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/noggit-0.6.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/mysql-connector-java-5.1.34.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/log4j-1.2.17.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/libthrift-0.9.1.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/jxl-2.6.12.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/junit-4.11.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/jsoup-1.7.2.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/json-simple-1.1.1.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/jsonld-java-0.5.0.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/jgrapht-0.8.3.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/jgraph-5.13.0.0.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/jetty-xml-8.1.10.v20130312.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/jetty-webapp-8.1.10.v20130312.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/jetty-util-8.1.10.v20130312.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/jetty-servlet-8.1.10.v20130312.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/jetty-server-8.1.10.v20130312.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/jetty-security-8.1.10.v20130312.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/jetty-jmx-8.1.10.v20130312.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/jetty-io-8.1.10.v20130312.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/jetty-http-8.1.10.v20130312.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/jetty-deploy-8.1.10.v20130312.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/jetty-continuation-8.1.10.v20130312.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/jena-tdb-1.1.1.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/jena-sdb-1.5.1.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/jena-iri-1.1.1.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/jena-core-2.12.1.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/jena-arq-2.12.1.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/jcl-over-slf4j-1.7.6.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/jackson-databind-2.3.3.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/jackson-core-2.3.3.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/jackson-annotations-2.3.0.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/httpmime-4.3.1.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/httpcore-4.3.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/httpcore-4.2.5.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/httpclient-cache-4.2.6.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/httpclient-4.3.1.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/httpclient-4.2.6.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/hamcrest-library-1.3.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/hamcrest-core-1.3.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/cpsuite-1.2.5.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/commons-logging-1.1.2.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/commons-lang3-3.1.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/commons-lang3-3.0.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/commons-io-2.4.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/commons-csv-1.0.jar"/>
-	<classpathentry kind="lib" path="/home/edoardo/schema-summaries/summarization/lib/commons-codec-1.6.jar"/>
+	<classpathentry kind="lib" path="lib/solr-solrj-5.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/httpmime-4.3.1.jar"/>
+	<classpathentry kind="lib" path="lib/httpclient-4.3.1.jar"/>
+	<classpathentry kind="lib" path="lib/httpcore-4.3.jar"/>
+	<classpathentry kind="lib" path="lib/noggit-0.6.jar"/>
 	<classpathentry kind="output" path="bin/eclipse"/>
 </classpath>

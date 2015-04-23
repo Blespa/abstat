@@ -1,6 +1,6 @@
 package it.unimib.disco.summarization.output;
 
-/*import java.io.BufferedReader;
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -10,21 +10,24 @@ import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrServer;
 import org.apache.solr.common.SolrInputDocument;
 
-@SuppressWarnings("deprecation")*/
+@SuppressWarnings("deprecation")
 public class IndexConcepts
 {
-	public static void main(String[] args) //throws SolrServerException, IOException
+	public static void main(String[] args) throws SolrServerException, IOException
 	{
+		String host = args[0];
+		String port = args[1];
+		
 		/*Step: Import dei concetti in Solr.*/
 		
-		/*String serverUrl = "http://localhost:8886/solr/coreSolr"; //URL where is up Solr server
+		String serverUrl = "http://"+host+":"+port+"/solr/coreSolr"; //URL where is up Solr server
 		HttpSolrServer solr = new HttpSolrServer(serverUrl); //connect to Solr server
 		solr.deleteByQuery("*:*"); //delete all documents into Solr server at the start
 		
-		conceptsImport(solr);*/
+		conceptsImport(solr);
 	}
 	
-	/*private static void conceptsImport (HttpSolrServer solr) throws FileNotFoundException, IOException, SolrServerException
+	private static void conceptsImport (HttpSolrServer solr) throws FileNotFoundException, IOException, SolrServerException
 	{
 		ArrayList <String> concepts = takeOnlyConcepts();
 		
@@ -108,5 +111,5 @@ public class IndexConcepts
 		}
 		
 		solr.commit(true, true);
-	}*/
+	}
 }

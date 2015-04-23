@@ -323,7 +323,7 @@ echo "---Start: MinType---"
 	rm -rf $minTypeDataForComp $minTypeResult
 	mkdir -p $minTypeDataForComp $minTypeResult
 
-	eval ${dbgCmd}""$JAVA_HOME/bin/java -Xms256m -Xmx4000m -cp ontology_summarization.jar it.unimib.disco.summarization.output.CalculateMinimalTypes "$OntologyFile" "$orgDatasetFile" "$minTypeResult"
+	eval ${dbgCmd}""$JAVA_HOME/bin/java -Xms256m -Xmx16000m -cp ontology_summarization.jar it.unimib.disco.summarization.output.CalculateMinimalTypes "$OntologyFile" "$orgDatasetFile" "$minTypeResult"
 
 	if [ $? -ne 0 ]
 	then

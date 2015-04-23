@@ -155,6 +155,9 @@ echo
 solr_port=8886
 ./solr.sh start $solr_port
 assert_application_is_up $solr_port solr/ "Solr Admin"
+
+java -Xms256m -Xmx4g -cp .:'ontology_summarization.jar' it.unimib.disco.summarization.output.IndexConcepts
+
 ./solr.sh stop $solr_port
 
 echo

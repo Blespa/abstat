@@ -3,6 +3,7 @@
 ## System Requirements
 
 * linux (tested on Linux Mint 17 Qiana)
+* virtuoso triple store
 * java
 * git
 * wget
@@ -67,11 +68,15 @@ $ sudo service ld-summaries [start | stop]
 
 ### Configuring a production machine (ubuntu server)
 
-To configure a production machine do the following steps. First login into the machine using a user that is allowed to run sudo commands, install all the dependencies listed above and then:
+To configure a production machine do the following steps. First login into the machine using a user that is allowed to run sudo commands and then:
 
 ```
 #!bash
-$ sudo adduser schema-summaries	# choose the appropriate password
+$ sudo apt-get install python-software-properties
+$ sudo add-apt-repository ppa:webupd8team/java
+$ sudo apt-get update
+$ sudo apt-get install oracle-jdk7-installer git wget bzip2 unzip
+$ sudo adduser schema-summaries	# choose an appropriate password
 $ sudo visudo 	# append the following lines at the bottom (remeber to cut comments of)
 # schema-summaries ALL=(ALL) NOPASSWD: /bin/ln -s /home/schema-summaries/schema-summaries/scripts/java-ui-production.sh /etc/init.d/ld-summaries
 # schema-summaries ALL=(ALL) NOPASSWD: /usr/sbin/update-rc.d ld-summaries defaults
@@ -82,6 +87,7 @@ $ su schema-summaries
 $ cd
 $ git clone https://bitbucket.org/rporrini/schema-summaries.git
 $ cd schema-summaries
+$ scripts/end2end-test.sh # follow all the hints that the scripts gives to you and re-launch it untill you get no errors
 $ git remote set-url origin git@bitbucket.org:rporrini/schema-summaries.git
 $ chmod 700 scripts/deploy_rsa
 ```

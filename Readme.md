@@ -110,3 +110,26 @@ from your development machine:
 $ scripts/deploy-full.sh USER@HOST
 ```
 
+### VPN configuration
+
+```
+[vpn]
+service-type=org.freedesktop.NetworkManager.pptp
+password-flags=1
+require-mppe-128=yes
+mppe-stateful=yes
+user= ######
+refuse-eap=yes
+refuse-chap=yes
+gateway=prx14-in-u7.servizi.didattica.unimib.it
+domain=RICERCA
+refuse-pap=yes
+
+[ipv4]
+method=auto
+dns=10.109.149.38;
+dns-search=ricerca.didattica.unimib.it;
+route1=10.109.149.57/32,149.132.157.130,0
+never-default=true
+```
+

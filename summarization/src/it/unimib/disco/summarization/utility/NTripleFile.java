@@ -7,8 +7,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.io.LineIterator;
-import org.semanticweb.yars.nx.parser.NxParser;
+
+import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.rdf.model.Statement;
 
 public class NTripleFile {
 
@@ -23,17 +25,21 @@ public class NTripleFile {
 		TextInput input = new TextInput(new FileSystemConnector(file));
 		while(input.hasNextLine()){
 			String line = input.nextLine();
+			
 			Matcher matcher = isAcceptable.matcher(line);
 			if(!matcher.matches()){
 				continue;
 			}
-			String rawObject = matcher.group("object");
-			if(rawObject.startsWith("<")) line = line.replace(rawObject, rawObject.replace(" ", "%20"));
+			
+			Model model = ModelFactory.createDefaultModel();
+			model.read(IOUtils.toInputStream(line) ,null, "N-TRIPLES");
+			Statement statement = model.listStatements().next();
+			
 			try{
-				NTriple triple = new NTriple(NxParser.parseNodes(line));
+				NTriple triple = new NTriple(statement);
 				analysis.track(triple);
 			}catch(Exception e){
-				new Events().error("error processing " + input.name(), e);
+				new Events().error("error processing " + line + " from " + input.name(), e);
 			}
 		}
 	}

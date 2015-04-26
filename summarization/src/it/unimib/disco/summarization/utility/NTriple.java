@@ -1,24 +1,25 @@
 package it.unimib.disco.summarization.utility;
 
-import org.semanticweb.yars.nx.Node;
+import com.hp.hpl.jena.rdf.model.RDFNode;
+import com.hp.hpl.jena.rdf.model.Statement;
 
 public class NTriple{
 	
-	private Node[] nodes;
+	private Statement nodes;
 
-	public NTriple(Node[] triple){
+	public NTriple(Statement triple){
 		this.nodes = triple;
 	}
 	
-	public RDFResource subject(){
-		return new RDFResource(nodes[0].toString());
+	public RDFNode subject(){
+		return nodes.getSubject();
 	}
 	
-	public RDFResource property(){
-		return new RDFResource(nodes[1].toString());
+	public RDFNode property(){
+		return nodes.getPredicate();
 	}
 	
-	public RDFResource object(){
-		return new RDFResource(nodes[2].toString());
+	public RDFNode object(){
+		return nodes.getObject();
 	}
 }

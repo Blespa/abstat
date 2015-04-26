@@ -2,43 +2,48 @@ package it.unimib.disco.summarization.tests;
 
 import it.unimib.disco.summarization.utility.NTriple;
 
-import org.apache.commons.lang3.StringUtils;
-import org.semanticweb.yars.nx.BNode;
-import org.semanticweb.yars.nx.Node;
-import org.semanticweb.yars.nx.Resource;
+import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.rdf.model.Property;
+import com.hp.hpl.jena.rdf.model.RDFNode;
+import com.hp.hpl.jena.rdf.model.Resource;
 
 
 public class TripleBuilder{
 	
-	private Node s = new BNode("_:1");
-	private Node p = new BNode("_:2");
-	private Node o = new BNode("_:3");
+	private Resource s;
+	private Property p;
+	private RDFNode o;
+	private Model model;
+	
+	public TripleBuilder() {
+		model = ModelFactory.createDefaultModel();
+		s = model.createResource();
+		p = model.createProperty("http://any");
+		o = model.createResource();
+	}
 
 	public TripleBuilder withSubject(String subject) throws Exception{
-		this.s = new Resource(subject);
+		this.s = model.createResource(subject);
 		return this;
 	}
 	
 	public TripleBuilder withProperty(String property) throws Exception{
-		this.p = new Resource(property);
+		this.p = model.createProperty(property);
 		return this;
 	}
 	
-	public TripleBuilder withObject(String uri){
-		this.o = new Resource(uri);
+	public TripleBuilder withTypedLiteral(String literal, String type){
+		this.o = model.createTypedLiteral(literal,type);
+		return this;
+	}
+	
+	public TripleBuilder withLiteral(String literal){
+		this.o = model.createLiteral(literal);
 		return this;
 	}
 	
 	public NTriple asTriple(){
-		return new NTriple(new Node[]{s, p, o});
-	}
-	
-	public String asNTriple(){
-		return StringUtils.join(new Object[]{
-				s.toN3(),
-				p.toN3(),
-				o.toN3(),
-				"."
-		}, " ");
+		return new NTriple(model.createStatement(s, p, o));
 	}
 }

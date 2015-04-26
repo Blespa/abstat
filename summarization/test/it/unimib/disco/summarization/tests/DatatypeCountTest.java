@@ -23,7 +23,7 @@ public class DatatypeCountTest extends TestWithTemporaryData{
 		
 		DatatypeCount datatypeCount = new DatatypeCount();
 		
-		datatypeCount.track(new TripleBuilder().withObject("\"35\"^^<type>").asTriple());
+		datatypeCount.track(new TripleBuilder().withTypedLiteral("35", "type").asTriple());
 		
 		assertThat(datatypeCount.counts().get("type"), equalTo(1l));
 	}
@@ -33,7 +33,7 @@ public class DatatypeCountTest extends TestWithTemporaryData{
 		
 		DatatypeCount datatypeCount = new DatatypeCount();
 		
-		datatypeCount.track(new TripleBuilder().withObject("\"any string\"").asTriple());
+		datatypeCount.track(new TripleBuilder().withLiteral("any string").asTriple());
 		
 		assertThat(datatypeCount.counts().get(RDFS.Literal.getURI()), equalTo(1l));
 	}
@@ -43,8 +43,8 @@ public class DatatypeCountTest extends TestWithTemporaryData{
 		
 		DatatypeCount datatypeCount = new DatatypeCount();
 		
-		datatypeCount.track(new TripleBuilder().withObject("\"35\"").asTriple())
-					 .track(new TripleBuilder().withObject("\"35\"").asTriple());
+		datatypeCount.track(new TripleBuilder().withLiteral("35").asTriple())
+					 .track(new TripleBuilder().withLiteral("35").asTriple());
 		
 		assertThat(datatypeCount.counts().get(RDFS.Literal.getURI()), equalTo(2l));
 	}

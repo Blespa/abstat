@@ -2,6 +2,7 @@ package it.unimib.disco.summarization.tests;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
+import it.unimib.disco.summarization.utility.DatatypeCount;
 import it.unimib.disco.summarization.utility.NTripleFile;
 
 import org.junit.Test;
@@ -59,5 +60,14 @@ public class NTripleFileTest extends TestWithTemporaryData{
 		new NTripleFile(analysis).process(temporary.file("<http://1234> <http://predicate> <http://uri with space> ."));
 		
 		assertThat(analysis.countProcessed(), equalTo(1));
+	}
+	
+	@Test
+	public void shouldProcessAString() throws Exception {
+		DatatypeCount analysis = new DatatypeCount();
+		
+		new NTripleFile(analysis).process(temporary.file("<http://1234> <http://predicate> \"a string\" ."));
+		
+		assertThat(analysis.counts().size(), equalTo(1));
 	}
 }

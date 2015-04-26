@@ -16,14 +16,14 @@ public class AggregateConceptCountsTest extends TestWithTemporaryData {
 	public void shouldAggregateTheConceptCounts() throws Exception {
 
 		temporary.namedFile("concept#name##10" + "\n" + "other concept##34", "a_countConcepts.txt");
-		temporary.namedFile("concept#name##23" + "\n" + "other concept##4", "b_countConcepts,txt");
+		temporary.namedFile("concept#name##23" + "\n" + "other concept##4", "b_countConcepts.txt");
 		
 		AggregateConceptCounts.main(new String[]{
 				temporary.directory().getAbsolutePath(),
 				temporary.directory().getAbsolutePath()
 		});
 		
-		assertThat(linesOf("countConcepts.txt"), hasItem("concept#name##33"));
+		assertThat(linesOf("count-concepts.txt"), hasItem("concept#name##33"));
 	}
 
 	private List<String> linesOf(String file) throws Exception {

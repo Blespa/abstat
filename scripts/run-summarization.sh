@@ -317,7 +317,7 @@ echo ""
 } &>> "log/log.txt"
 
 { 
-echo "---Start: MinType---"
+echo "---Start: MinType and CountConcepts---"
 	startBlock=$SECONDS	
 
 	rm -rf $minTypeDataForComp $minTypeResult
@@ -331,12 +331,17 @@ echo "---Start: MinType---"
 	    exit 1
 	fi
 
-	#Rimuovo i file dei tipi utilizzati per il calcolo, non più utili
-	for element in "${splitters[@]}"
-	do
-	   rm -f ${orgDatasetFile}/${element}"_types.nt"
-	done
+	eval ${dbgCmd}""$JAVA_HOME/bin/java -Xms256m -Xmx16000m -cp ontology_summarization.jar it.unimib.disco.summarization.output.AggregateConceptCounts "$minTypeResult" "$ResultsDirectory/patterns/"
 
+	if [ $? -ne 0 ]
+	then
+	    echo "App Failed during run"
+	    exit 1
+	fi
+
+	#Rimuovo i file dei tipi utilizzati per il calcolo, non più utili
+	rm -f ${orgDatasetFile}/*_types.nt
+	
 	endBlock=$SECONDS
 	if [ $debug -eq 1 ]
 	then

@@ -10,7 +10,7 @@ public class AggregateConceptCounts {
 	public static void main(String[] args) throws Exception {
 		
 		File sourceDirectory = new File(args[0]);
-		File targetFile = new File(args[1], "concept-counts.txt");
+		File targetFile = new File(args[1], "count-concepts.txt");
 		
 		ConceptCount counts = new ConceptCount();
 		for(File file : new Files().get(sourceDirectory, "_countConcepts.txt")){

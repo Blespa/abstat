@@ -5,7 +5,6 @@ import it.unimib.disco.summarization.utility.MinimalTypes;
 import it.unimib.disco.summarization.utility.Model;
 
 import java.io.File;
-import java.io.FilenameFilter;
 import java.util.Collection;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -32,17 +31,8 @@ public class CalculateMinimalTypes {
 		
 		final MinimalTypes minimalTypes = new MinimalTypes(ontologyModel);
 		
-		File[] files = typesDirectory.listFiles(new FilenameFilter() {
-			@Override
-			public boolean accept(File dir, String name) {
-				return name.endsWith("_types.nt");
-			}
-		});
-				
-		logger.info(StringUtils.join(files, " "));
-		
 		ExecutorService executor = Executors.newFixedThreadPool(10);
-		for(final File typeFile : files){
+		for(final File typeFile : new Files().get(typesDirectory, "_types.nt")){
 			executor.execute(new Runnable() {
 				@Override
 				public void run() {
@@ -59,4 +49,6 @@ public class CalculateMinimalTypes {
 		executor.shutdown();
 	    while(!executor.isTerminated()){}
 	}
+
+	
 }

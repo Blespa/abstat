@@ -26,8 +26,8 @@ public class WriteConceptGraphToRDF {
 		for(String line : lines){
 			String[] splitted = StringUtils.split(line, "##");
 			
-			Resource localConcept = vocabulary.asLocalResource(splitted[0]);
-			Resource localBroaderConcept = vocabulary.asLocalResource(splitted[1]);
+			Resource localConcept = vocabulary.addConcept(splitted[0]);
+			Resource localBroaderConcept = vocabulary.addConcept(splitted[1]);
 			
 			model.add(localConcept, vocabulary.broader(), localBroaderConcept);
 		}

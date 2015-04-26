@@ -106,6 +106,18 @@ public class LDSummariesVocabulary {
 	public Resource asLocalResource(String globalResource) {
 		return model.createResource(resourcesNamespace() + globalResource.replace("http://", ""));
 	}
+	
+	public Resource addConcept(String concept) {
+		
+		Resource globalSubject = model.createResource(concept);
+		Resource localSubject = asLocalResource(globalSubject.getURI());
+		
+		model.add(localSubject, RDFS.seeAlso, globalSubject);
+		
+		model.add(localSubject, RDF.type, type());
+		model.add(localSubject, RDF.type, concept());
+		return localSubject;
+	}
 
 	private Resource aggregate(String type, String... elements) {
 		List<String> localNames = new ArrayList<String>();

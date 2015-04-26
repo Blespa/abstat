@@ -1,7 +1,8 @@
 package it.unimib.disco.summarization.tests;
 
+import it.unimib.disco.summarization.output.Files;
+
 import java.io.File;
-import java.io.FilenameFilter;
 import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
@@ -47,12 +48,7 @@ public class TemporaryFolder{
 	}
 	
 	public File[] files(final String suffix) {
-		return directory().listFiles(new FilenameFilter() {
-			@Override
-			public boolean accept(File dir, String name) {
-				return name.endsWith(suffix);
-			}
-		});
+		return new Files().get(directory(), suffix);
 	}
 	
 	private File createRandomFileWithExtension(String extension) {

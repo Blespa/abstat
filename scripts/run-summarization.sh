@@ -317,7 +317,7 @@ echo ""
 } &>> "log/log.txt"
 
 { 
-echo "---Start: MinType and CountConcepts---"
+echo "---Start: MinType, CountConcepts and CountDataTypes---"
 	startBlock=$SECONDS	
 
 	rm -rf $minTypeDataForComp $minTypeResult
@@ -332,6 +332,14 @@ echo "---Start: MinType and CountConcepts---"
 	fi
 
 	eval ${dbgCmd}""$JAVA_HOME/bin/java -Xms256m -Xmx16000m -cp ontology_summarization.jar it.unimib.disco.summarization.output.AggregateConceptCounts "$minTypeResult" "$ResultsDirectory/patterns/"
+
+	if [ $? -ne 0 ]
+	then
+	    echo "App Failed during run"
+	    exit 1
+	fi
+
+	eval ${dbgCmd}""$JAVA_HOME/bin/java -Xms256m -Xmx16000m -cp ontology_summarization.jar it.unimib.disco.summarization.output.AggregateDatatypeCounts "${orgDatasetFile}" "$ResultsDirectory/patterns/"
 
 	if [ $? -ne 0 ]
 	then

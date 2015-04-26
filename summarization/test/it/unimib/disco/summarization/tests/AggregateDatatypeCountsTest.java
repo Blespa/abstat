@@ -17,10 +17,10 @@ public class AggregateDatatypeCountsTest extends TestWithTemporaryData{
 	@Test
 	public void shouldCountAndAggregateDatatypeOccurrences() throws Exception {
 		
-		temporary.namedFile("<entity> <property> \"35\"^^<type> .", "a_dt_properties.nt");
-		temporary.namedFile("<entity> <property> \"82\"^^<type> .", "b_dt_properties.nt");
-		temporary.namedFile("<entity> <property> \"35\" .", "c_dt_properties.nt");
-		temporary.namedFile("<entity> <property> \"a string\" .", "d_dt_properties.nt");
+		temporary.namedFile("entity##property##\"35\"##type", "a_dt_properties.nt");
+		temporary.namedFile("entity##property##\"82\"##type", "b_dt_properties.nt");
+		temporary.namedFile("entity##property##\"35\"", "c_dt_properties.nt");
+		temporary.namedFile("entity##property##\"a string\"", "d_dt_properties.nt");
 		
 		AggregateDatatypeCounts.main(new String[]{
 			temporary.directory().getAbsolutePath(),

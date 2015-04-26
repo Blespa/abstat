@@ -3,8 +3,6 @@ package it.unimib.disco.summarization.utility;
 import it.unimib.disco.summarization.starter.Events;
 
 import java.io.File;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.apache.commons.io.IOUtils;
 
@@ -14,7 +12,6 @@ import com.hp.hpl.jena.rdf.model.Statement;
 
 public class NTripleFile {
 
-	private static final Pattern isAcceptable = Pattern.compile("^<.+> <.+> (?<object>.+) \\.");
 	private NTripleAnalysis analysis;
 
 	public NTripleFile(NTripleAnalysis analysis) {
@@ -25,11 +22,21 @@ public class NTripleFile {
 		TextInput input = new TextInput(new FileSystemConnector(file));
 		while(input.hasNextLine()){
 			String line = input.nextLine();
+			String[] splitted = line.split("##");
+			String subject = splitted[0];
+			String property = splitted[1];
+			String object = splitted[2];
+			String datatype = "";
 			
-			Matcher matcher = isAcceptable.matcher(line);
-			if(!matcher.matches()){
-				continue;
+			if(splitted.length > 3){
+				datatype = "^^<" + splitted[3] + ">";
 			}
+
+			if(!object.startsWith("\"")){
+				object = "<" + object + ">";
+			}
+			
+			line = "<" + subject + "> <" + property + "> " + object + datatype + " .";  
 			
 			Model model = ModelFactory.createDefaultModel();
 			model.read(IOUtils.toInputStream(line) ,null, "N-TRIPLES");

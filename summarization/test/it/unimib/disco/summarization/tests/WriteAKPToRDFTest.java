@@ -8,13 +8,13 @@ import java.io.File;
 
 import org.junit.Test;
 
-public class WriteAKPToRDFTest extends UnitTest{
+public class WriteAKPToRDFTest extends TestWithTemporaryData{
 	
 	@Test
 	public void shouldExportAsRDF() throws Exception {
 		
-		File inputFile = temporary.newFile("http://aaa.com/AAA##http://aaa.com/aaa##http://aaa.com/BBB##35##");
-		File outputFile = temporary.newFile();
+		File inputFile = temporary.file("http://aaa.com/AAA##http://aaa.com/aaa##http://aaa.com/BBB##35##");
+		File outputFile = temporary.file();
 		
 		WriteAKPToRDF.main(new String[]{
 				inputFile.getAbsolutePath(),

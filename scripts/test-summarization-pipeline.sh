@@ -46,6 +46,8 @@ results=$root/benchmark/tmp
 expected_results=$root/benchmark/regression-test-results
 
 mkdir -p $expected_results/patterns/tmp-files
+rm -rf $results
+mkdir -p $results
 
 cd $current_directory
 ./test-java-summarization-module.sh

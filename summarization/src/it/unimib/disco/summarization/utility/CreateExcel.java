@@ -1,13 +1,13 @@
 package it.unimib.disco.summarization.utility;
 
 import it.unimib.disco.summarization.datatype.Axiom;
-import it.unimib.disco.summarization.datatype.Concept;
+import it.unimib.disco.summarization.datatype.Concepts;
 import it.unimib.disco.summarization.datatype.DomainRange;
-import it.unimib.disco.summarization.datatype.EquConcept;
+import it.unimib.disco.summarization.datatype.EquivalentConcepts;
 import it.unimib.disco.summarization.datatype.EquProperty;
 import it.unimib.disco.summarization.datatype.InvProperty;
 import it.unimib.disco.summarization.datatype.LiteralAxiom;
-import it.unimib.disco.summarization.datatype.Property;
+import it.unimib.disco.summarization.datatype.Properties;
 import it.unimib.disco.summarization.datatype.SubClassOf;
 import it.unimib.disco.summarization.datatype.SubProperty;
 import it.unimib.disco.summarization.info.InfoExtractor;
@@ -104,7 +104,7 @@ public class CreateExcel {
 	 * 
 	 * @throws WriteException 
 	 */
-	public void generateConceptsSheet(Concept AllConcepts, int NumSheet) throws WriteException
+	public void generateConceptsSheet(Concepts AllConcepts, int NumSheet) throws WriteException
 	{
 		//Concepts are in the first Sheet
 		workbook.createSheet("Concepts", NumSheet);
@@ -153,7 +153,7 @@ public class CreateExcel {
 	 * 
 	 * @throws WriteException 
 	 */
-	public void generateEquConceptsSheet(EquConcept equConcepts, int NumSheet) throws WriteException
+	public void generateEquConceptsSheet(EquivalentConcepts equConcepts, int NumSheet) throws WriteException
 	{
 		//Properties are in the second Sheet
 		workbook.createSheet("Equivalent Class", NumSheet);
@@ -226,7 +226,7 @@ public class CreateExcel {
 	 * 
 	 * @throws WriteException 
 	 */
-	public void generateConceptsCountSheet(Concept AllConcepts, int NumSheet) throws WriteException
+	public void generateConceptsCountSheet(Concepts AllConcepts, int NumSheet) throws WriteException
 	{
 		//Concepts are in the first Sheet
 		workbook.createSheet("Concepts-Count", NumSheet);
@@ -282,7 +282,7 @@ public class CreateExcel {
 	 * 
 	 * @throws WriteException 
 	 */
-	public void generateConceptsLabelSheet(Concept AllConcepts, InfoExtractor info, int NumSheet) throws WriteException
+	public void generateConceptsLabelSheet(Concepts AllConcepts, InfoExtractor info, int NumSheet) throws WriteException
 	{
 		workbook.createSheet("Concepts-Labels", NumSheet);
 		WritableSheet excelSheet = workbook.getSheet(NumSheet);
@@ -367,7 +367,7 @@ public class CreateExcel {
 	 * 
 	 * @throws WriteException 
 	 */
-	public void generateConceptsCommentSheet(Concept AllConcepts, InfoExtractor info, int NumSheet) throws WriteException
+	public void generateConceptsCommentSheet(Concepts AllConcepts, InfoExtractor info, int NumSheet) throws WriteException
 	{
 		workbook.createSheet("Concepts-Comments", NumSheet);
 		WritableSheet excelSheet = workbook.getSheet(NumSheet);
@@ -452,7 +452,7 @@ public class CreateExcel {
 	 * 
 	 * @throws WriteException 
 	 */
-	public int generatePropertiesSheet(Property AllProperty, int NumSheet) throws WriteException
+	public int generatePropertiesSheet(Properties AllProperty, int NumSheet) throws WriteException
 	{
 		
 		//Determino il numero di fogli da inserire per le propriet�
@@ -557,7 +557,7 @@ public class CreateExcel {
 	 * 
 	 * @throws WriteException 
 	 */
-	public void generatePropertiesLabelSheet(Property AllProperty, InfoExtractor info, int NumSheet) throws WriteException
+	public void generatePropertiesLabelSheet(Properties AllProperty, InfoExtractor info, int NumSheet) throws WriteException
 	{
 		workbook.createSheet("Properties-Labels", NumSheet);
 		WritableSheet excelSheet = workbook.getSheet(NumSheet);
@@ -642,7 +642,7 @@ public class CreateExcel {
 	 * 
 	 * @throws WriteException 
 	 */
-	public void generatePropertiesCommentSheet(Property AllProperty, InfoExtractor info, int NumSheet) throws WriteException
+	public void generatePropertiesCommentSheet(Properties AllProperty, InfoExtractor info, int NumSheet) throws WriteException
 	{
 		workbook.createSheet("Properties-Comments", NumSheet);
 		WritableSheet excelSheet = workbook.getSheet(NumSheet);
@@ -946,7 +946,7 @@ public class CreateExcel {
 	 * 
 	 * @throws WriteException 
 	 */
-	public void generatePropertiesCountSheet(Property AllProperty, SubProperty SubProperty, InvProperty invProperties, EquProperty equProperties, int NumSheet) throws WriteException
+	public void generatePropertiesCountSheet(Properties AllProperty, SubProperty SubProperty, InvProperty invProperties, EquProperty equProperties, int NumSheet) throws WriteException
 	{
 		//Concepts are in the first Sheet
 		workbook.createSheet("Property-Count", NumSheet);
@@ -1495,7 +1495,7 @@ public class CreateExcel {
 	 * 
 	 * @throws WriteException 
 	 */
-	public int generateDomainRangeSheet(DomainRange DRRelation, Property allProperty, int NumSheet) throws WriteException
+	public int generateDomainRangeSheet(DomainRange DRRelation, Properties allProperty, int NumSheet) throws WriteException
 	{
 		//Determino il numero di fogli da inserire per le propriet�
 		HashMap<String, String> extractedProp = DRRelation.getPropertyType();

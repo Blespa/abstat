@@ -11,7 +11,7 @@ import com.hp.hpl.jena.ontology.OntResource;
 /**
  *  Provides datatype for store Concepts infos
  */
-public class Concept {
+public class Concepts {
 	
 	private HashMap<String,String> Concepts;
 	private HashMap<String,String> ObtainedBy = new HashMap<String,String>();

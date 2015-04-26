@@ -2,7 +2,7 @@ package it.unimib.disco.summarization.tests;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.*;
-import it.unimib.disco.summarization.output.RDFResource;
+import it.unimib.disco.summarization.utility.RDFResource;
 
 import org.junit.Test;
 

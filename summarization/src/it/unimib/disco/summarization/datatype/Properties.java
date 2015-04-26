@@ -8,7 +8,7 @@ import com.hp.hpl.jena.ontology.OntProperty;
 /**
  * Provides datatype for store Properties infos
  */
-public class Property {
+public class Properties {
 	
 	private HashMap<String,String> Property;
 	private HashMap<String,HashMap<String,Integer>> Counter = new HashMap<String,HashMap<String,Integer>>(); //Property -> Context(Relation Type), Total

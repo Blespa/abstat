@@ -10,7 +10,6 @@ import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 
-import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Resource;
@@ -34,14 +33,12 @@ public class WriteDatatypePropertySubjToRDF {
 			try{
 				Resource globalProperty = model.createResource(row.get(Row.Entry.SUBJECT));
 				Resource localProperty = vocabulary.asLocalResource(globalProperty.getURI());
-				Literal occurrence = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
 				Resource datatypeProperty = model.createResource("http://www.w3.org/2002/07/owl/DatatypeProperty");
 				
 				//add statements to model
 				model.add(localProperty , OWL.sameAs, globalProperty);
 				model.add(localProperty, RDF.type, RDF.Property);
 				model.add(localProperty, RDF.type, datatypeProperty);
-//				model.add(model.createStatement( localProperty, vocabulary.subjectInstanceOccurrence(), occurrence ));
 			}
 			catch(Exception e){
 				new Events().error("file" + csvFilePath + " row" + row, e);

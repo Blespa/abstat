@@ -1,7 +1,7 @@
 package it.unimib.disco.summarization.info;
 
-import it.unimib.disco.summarization.datatype.Concept;
-import it.unimib.disco.summarization.datatype.Property;
+import it.unimib.disco.summarization.datatype.Concepts;
+import it.unimib.disco.summarization.datatype.Properties;
 import it.unimib.disco.summarization.stemmer.SnowballStemmer;
 
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ public class InfoExtractor {
 	private List<String> PropertyCommentLang = new ArrayList<String>();
 	
 	
-	public void setConceptInfo(Concept AllConcepts) {
+	public void setConceptInfo(Concepts AllConcepts) {
 		
 		for(OntResource conc : AllConcepts.getExtractedConcepts()) {
 			//Get Labels
@@ -91,7 +91,7 @@ public class InfoExtractor {
 		}
 	}
 	
-	public void setPropertyInfo(Property AllProperty) {
+	public void setPropertyInfo(Properties AllProperty) {
 
 		for(OntResource prop : AllProperty.getExtractedProperty()) {
 			//Get Labels

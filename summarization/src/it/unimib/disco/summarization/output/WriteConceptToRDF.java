@@ -15,8 +15,6 @@ import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.vocabulary.RDF;
-import com.hp.hpl.jena.vocabulary.RDFS;
 
 public class WriteConceptToRDF {
 	public static void main (String args []) throws IOException{
@@ -32,15 +30,9 @@ public class WriteConceptToRDF {
 		for (Row row : readCSV(csvFilePath)){
 
 			try{
-				Resource globalSubject = model.createResource(row.get(Row.Entry.SUBJECT));
-				Resource localSubject = vocabulary.asLocalResource(globalSubject.getURI());
-				
+				Resource localSubject = vocabulary.addConcept(row.get(Row.Entry.SUBJECT));
 				Literal occurrences = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
-
-				model.add(localSubject, RDFS.seeAlso, globalSubject);
 				
-				model.add(localSubject, RDF.type, vocabulary.type());
-				model.add(localSubject, RDF.type, vocabulary.concept());
 				model.add(localSubject, vocabulary.occurrence(), occurrences);
 			}
 			catch(Exception e){
@@ -48,7 +40,7 @@ public class WriteConceptToRDF {
 			}
 		}
 		OutputStream output = new FileOutputStream(outputFilePath);
-		model.write( output, "N-Triples", null ); // or "RDF/XML", etc.
+		model.write(output, "N-Triples", null ); // or "RDF/XML", etc.
 		output.close();
 
 

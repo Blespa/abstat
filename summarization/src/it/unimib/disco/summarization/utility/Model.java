@@ -10,7 +10,6 @@ import com.hp.hpl.jena.rdf.model.ModelFactory;
 public class Model {
 	
 	OntModel ontologyModel;
-	//TODO: Creare modello del dataset
 	
 	public Model(String Spec, String OwlBaseFile, String FileType){
 		setOntologyModel(Spec, OwlBaseFile, FileType);
@@ -18,12 +17,7 @@ public class Model {
 	
 	public void setOntologyModel(String Spec, String OwlBaseFile, String FileType){
 		
-		//TODO: Determinare parametro di OntModelSpec in base al file in input o in base alle necessit� di REASONING - Usare Spec
-		  //OWL_DL_MEM_RULE_INF permette di ottenere inferenza sulle relazioni
-		
 		ontologyModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM, null); 
-		
-		//TODO: Determinare secondo parametro in base al file in input
 		ontologyModel.read(OwlBaseFile, FileType); 
 	}
 	

@@ -1,0 +1,6 @@
+http://www.w3.org/2001/XMLSchema#float##2
+http://dbpedia.org/datatype/inhabitantsPerSquareKilometre##1
+http://www.w3.org/2001/XMLSchema#date##1
+http://dbpedia.org/datatype/squareKilometre##3
+http://www.w3.org/2001/XMLSchema#double##8
+http://www.w3.org/2000/01/rdf-schema#Literal##7

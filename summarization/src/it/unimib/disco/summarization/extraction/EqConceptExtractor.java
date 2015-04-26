@@ -1,6 +1,6 @@
 package it.unimib.disco.summarization.extraction;
 
-import it.unimib.disco.summarization.datatype.Concept;
+import it.unimib.disco.summarization.datatype.Concepts;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,7 +28,7 @@ public class EqConceptExtractor {
 	private HashMap<OntResource,List<OntResource>> ExtractedEquConcept = new HashMap<OntResource,List<OntResource>>();
 	private ArrayList<String> equConcept = new ArrayList<String>();
 
-	public void setEquConcept(Concept AllConcepts, OntModel ontologyModel) {
+	public void setEquConcept(Concepts AllConcepts, OntModel ontologyModel) {
 
 		Iterator<OntResource> itC = AllConcepts.getExtractedConcepts().iterator();
 		

@@ -39,7 +39,7 @@ public class DatatypeCountTest extends TestWithTemporaryData{
 	}
 	
 	@Test
-	public void shouldTrackAManyOccurrences() throws Exception {
+	public void shouldTrackManyOccurrences() throws Exception {
 		
 		DatatypeCount datatypeCount = new DatatypeCount();
 		

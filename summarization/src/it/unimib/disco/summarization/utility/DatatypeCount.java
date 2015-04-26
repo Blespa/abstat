@@ -5,7 +5,7 @@ import java.util.HashMap;
 import com.hp.hpl.jena.sparql.util.NodeFactoryExtra;
 import com.hp.hpl.jena.vocabulary.RDFS;
 
-public class DatatypeCount {
+public class DatatypeCount implements NTripleAnalysis {
 
 	private HashMap<String, Long> counts;
 
@@ -17,7 +17,8 @@ public class DatatypeCount {
 		return counts;
 	}
 
-	public DatatypeCount track(NTriple triple) {
+	@Override
+	public NTripleAnalysis track(NTriple triple) {
 		String datatype = NodeFactoryExtra.parseNode(triple.object().uri()).getLiteralDatatypeURI();
 		if(datatype == null) datatype = RDFS.Literal.getURI();
 		if(!counts.containsKey(datatype)) counts.put(datatype, 0l);

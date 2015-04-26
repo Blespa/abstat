@@ -1,8 +1,8 @@
 package it.unimib.disco.summarization.relation;
 
-import it.unimib.disco.summarization.datatype.Concept;
+import it.unimib.disco.summarization.datatype.Concepts;
 import it.unimib.disco.summarization.datatype.DomainRange;
-import it.unimib.disco.summarization.datatype.Property;
+import it.unimib.disco.summarization.datatype.Properties;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,7 +22,9 @@ public class OntologyDomainRangeExtractor {
 
 	private DomainRange propertyDomainRange = new DomainRange();
 
-	public void setConceptsDomainRange(Concept concepts, Property properties) {
+	public void setConceptsDomainRange(Concepts concepts, Properties properties) {
+		
+		if(properties.getExtractedProperty().isEmpty()) return;
 		
 		//Used for Dynamic Computation of Domain And Range
 		HashMap<String, ArrayList<OntResource>> DRProperty = new HashMap<String, ArrayList<OntResource>>();

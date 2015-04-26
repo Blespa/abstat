@@ -38,5 +38,6 @@
 	<classpathentry kind="lib" path="lib/cpsuite-1.2.5.jar"/>
 	<classpathentry kind="lib" path="lib/commons-io-2.4.jar"/>
 	<classpathentry kind="lib" path="lib/system-rules-1.8.0.jar"/>
+	<classpathentry kind="lib" path="lib/nxparser-1.2.3.jar"/>
 	<classpathentry kind="output" path="bin/eclipse"/>
 </classpath>

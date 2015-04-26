@@ -4,7 +4,7 @@
 package it.unimib.disco.summarization.relation;
 
 import it.unimib.disco.summarization.datatype.Axiom;
-import it.unimib.disco.summarization.datatype.Concept;
+import it.unimib.disco.summarization.datatype.Concepts;
 import it.unimib.disco.summarization.datatype.DomainRange;
 import it.unimib.disco.summarization.datatype.LiteralAxiom;
 
@@ -43,7 +43,7 @@ public class OntologyAxiomExtractor {
 	private LiteralAxiom ConceptsAllValueFromLiteral = new LiteralAxiom();
 
 
-	public void setConceptsSomeValueFrom(Concept Concepts, DomainRange DRRelation, OntModel ontologyModel) {
+	public void setConceptsSomeValueFrom(Concepts Concepts, DomainRange DRRelation, OntModel ontologyModel) {
 		
 		//Object SomeValueFrom
 		
@@ -195,7 +195,7 @@ public class OntologyAxiomExtractor {
 		Concepts.getExtractedConcepts().addAll(AddConcepts);
 	}
 
-	public void setConceptsAllValueFrom(Concept Concepts, DomainRange DRRelation, OntModel ontologyModel) {
+	public void setConceptsAllValueFrom(Concepts Concepts, DomainRange DRRelation, OntModel ontologyModel) {
 		
 		//Object AllValueFrom
 		
@@ -344,7 +344,7 @@ public class OntologyAxiomExtractor {
 		Concepts.getExtractedConcepts().addAll(AddConcepts);
 	}
 
-	public void setConceptsMinCardinality(Concept Concepts, DomainRange DRRelation, OntModel ontologyModel) {
+	public void setConceptsMinCardinality(Concepts Concepts, DomainRange DRRelation, OntModel ontologyModel) {
 		
 		//Object MinCardinality
 		

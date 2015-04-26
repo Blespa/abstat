@@ -2,7 +2,7 @@
 
 function assert_results_are_present_in_virtuoso(){
 	sparql_query="http://localhost:8890/sparql?default-graph-uri=http%3A%2F%2Fld-summaries.org%2Fsystem-test&query=select+count%28*%29+where+%7B%3Fa+%3Fb+%3Fc%7D&format=text%2Fplain&timeout=0&debug=on"
-	expected="<http://www.w3.org/2005/sparql-results#value> \"6549\"^^<http://www.w3.org/2001/XMLSchema#integer>"
+	expected="<http://www.w3.org/2005/sparql-results#value> \"6784\"^^<http://www.w3.org/2001/XMLSchema#integer>"
 
 	highlight_color='\e[0;31m'
 	message='KO'

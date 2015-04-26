@@ -1,8 +1,8 @@
 package it.unimib.disco.summarization.utility;
 
-import it.unimib.disco.summarization.datatype.Concept;
+import it.unimib.disco.summarization.datatype.Concepts;
 import it.unimib.disco.summarization.datatype.EquProperty;
-import it.unimib.disco.summarization.datatype.Property;
+import it.unimib.disco.summarization.datatype.Properties;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -20,7 +20,7 @@ public class UsedOntology {
 	
 	private static List<String> impOnt = new ArrayList<String>();
 	
-	public static List<String> getUsedOntology(OntModel ontologyModel, Concept concepts, Property properties, EquProperty equProperties){
+	public static List<String> getUsedOntology(OntModel ontologyModel, Concepts concepts, Properties properties, EquProperty equProperties){
 		
 		//Get Explicit Imported Ontology
 		impOnt.addAll(ontologyModel.listImportedOntologyURIs());

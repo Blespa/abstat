@@ -1,6 +1,6 @@
 package it.unimib.disco.summarization.relation;
 
-import it.unimib.disco.summarization.datatype.Concept;
+import it.unimib.disco.summarization.datatype.Concepts;
 import it.unimib.disco.summarization.datatype.SubClassOf;
 
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ public class OntologySubclassOfExtractor {
 	
 	private SubClassOf ConceptsSubclassOf = new SubClassOf();
 	
-	public void setConceptsSubclassOf(Concept Concepts, OntModel ontologyModel){
+	public void setConceptsSubclassOf(Concepts Concepts, OntModel ontologyModel){
 		//Extract SubClassOf Relation
 		Iterator<OntResource> IteratorExtractedConcepts = Concepts.getExtractedConcepts().iterator();
 		

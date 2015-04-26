@@ -5,7 +5,6 @@ http://www.w3.org/2002/07/owl#Thing##http://purl.org/dc/elements/1.1/description
 http://dbpedia.org/ontology/Book##http://dbpedia.org/ontology/isbn##http://www.w3.org/2001/XMLSchema#string##2##0##0##2##0##0##0##2##0
 http://dbpedia.org/ontology/Person##http://dbpedia.org/ontology/Person/height##http://dbpedia.org/datatype/centimetre##1##0##0##1##0##1##0##0##0
 http://www.w3.org/2002/07/owl#Thing##http://dbpedia.org/ontology/office##Ukn_Type##3##0##3##0##0##0##3##0##0
-http://dbpedia.org/ontology/Person##http://purl.org/dc/elements/1.1/description##Ukn_Type##1##1##0##0##0##0##1##0##0
 http://dbpedia.org/ontology/Airport##http://dbpedia.org/ontology/icaoLocationIdentifier##http://www.w3.org/2001/XMLSchema#string##1##0##0##1##0##0##0##1##0
 http://dbpedia.org/ontology/Person##http://dbpedia.org/ontology/deathYear##http://www.w3.org/2001/XMLSchema#gYear##9##0##0##9##0##9##0##0##0
 http://dbpedia.org/ontology/ArchitecturalStructure##http://dbpedia.org/ontology/rebuildingYear##http://www.w3.org/2001/XMLSchema#gYear##1##0##0##1##0##1##0##0##0
@@ -23,9 +22,9 @@ http://dbpedia.org/ontology/PeriodicalLiterature##http://dbpedia.org/ontology/is
 http://www.w3.org/2002/07/owl#Thing##http://dbpedia.org/ontology/synonym##Ukn_Type##2##0##2##0##0##0##2##0##0
 http://www.w3.org/2002/07/owl#Thing##http://dbpedia.org/ontology/title##Ukn_Type##3##0##3##0##0##0##3##0##0
 http://dbpedia.org/ontology/Work##http://dbpedia.org/ontology/runtime##http://www.w3.org/2001/XMLSchema#double##5##0##0##5##0##5##0##0##0
-http://dbpedia.org/ontology/Person##http://xmlns.com/foaf/0.1/surname##Ukn_Type##1##1##0##0##0##0##1##0##0
 http://www.w3.org/2002/07/owl#Thing##http://dbpedia.org/ontology/topSpeed##http://www.w3.org/2001/XMLSchema#double##1##0##1##0##0##1##0##0##0
 http://dbpedia.org/ontology/Automobile##http://dbpedia.org/ontology/transmission##http://www.w3.org/2001/XMLSchema#string##1##0##0##1##0##0##0##1##0
+http://wikidata.dbpedia.org/resource/Q215627##http://purl.org/dc/elements/1.1/description##Ukn_Type##1##1##0##0##0##0##1##0##0
 http://dbpedia.org/ontology/Ship##http://dbpedia.org/ontology/commissioningDate##http://www.w3.org/2001/XMLSchema#date##1##0##0##1##0##1##0##0##0
 http://www.w3.org/2002/07/owl#Thing##http://xmlns.com/foaf/0.1/name##Ukn_Type##79##0##79##0##0##0##79##0##0
 http://dbpedia.org/ontology/SportCompetitionResult##http://dbpedia.org/ontology/numberOfGoldMedalsWon##http://www.w3.org/2001/XMLSchema#nonNegativeInteger##1##0##0##1##0##1##0##0##0
@@ -43,6 +42,7 @@ http://dbpedia.org/ontology/Person##http://dbpedia.org/ontology/birthName##http:
 http://dbpedia.org/ontology/PopulatedPlace##http://dbpedia.org/ontology/leaderTitle##http://www.w3.org/1999/02/22-rdf-syntax-ns#langString##1##0##0##1##0##0##0##1##0
 http://www.w3.org/2002/07/owl#Thing##http://dbpedia.org/ontology/activeYearsEndDate##http://www.w3.org/2001/XMLSchema#date##1##0##1##0##0##1##0##0##0
 http://www.w3.org/2002/07/owl#Thing##http://dbpedia.org/ontology/weight##http://www.w3.org/2001/XMLSchema#double##2##0##2##0##0##2##0##0##0
+http://xmlns.com/foaf/0.1/Person##http://xmlns.com/foaf/0.1/surname##Ukn_Type##1##1##0##0##0##0##1##0##0
 http://dbpedia.org/ontology/Airline##http://dbpedia.org/ontology/icaoAirlineCode##http://www.w3.org/2001/XMLSchema#string##1##0##0##1##0##0##0##1##0
 http://dbpedia.org/ontology/SportsTeamMember##http://dbpedia.org/ontology/squadNumber##http://www.w3.org/2001/XMLSchema#nonNegativeInteger##4##0##0##4##0##4##0##0##0
 http://www.w3.org/2002/07/owl#Thing##http://www.w3.org/2003/01/geo/wgs84_pos#long##http://www.w3.org/2001/XMLSchema#float##4##0##4##0##0##4##0##0##0

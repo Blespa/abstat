@@ -9,13 +9,13 @@ import java.io.File;
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
-public class WriteConceptGraphToRDFTest extends UnitTest{
+public class WriteConceptGraphToRDFTest extends TestWithTemporaryData{
 
 	@Test
 	public void shouldTranslateFromSubclassTo() throws Exception {
 		
-		File subclasses = temporary.newFile("http://example.org/Guitar##http://example.org/Instrument");
-		File broaderConcepts = temporary.newFile();
+		File subclasses = temporary.file("http://example.org/Guitar##http://example.org/Instrument");
+		File broaderConcepts = temporary.file();
 		
 		WriteConceptGraphToRDF.main(new String[]{
 				subclasses.getAbsolutePath(), broaderConcepts.getAbsolutePath(), "dataset"

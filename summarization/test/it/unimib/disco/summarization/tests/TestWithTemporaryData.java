@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.contrib.java.lang.system.ExpectedSystemExit;
 
-public class UnitTest{
+public class TestWithTemporaryData{
 	
 	public TemporaryFolder temporary;
 	
@@ -13,13 +13,13 @@ public class UnitTest{
     public final ExpectedSystemExit exit = ExpectedSystemExit.none();
 	
 	@Before
-	public void eraseTemporaryFolder(){
+	public void createTemporaryFolder(){
 		temporary = new TemporaryFolder();
 		temporary.create();
 	}
 	
 	@After
-	public void deleteTemporaryFolders(){
+	public void deleteTemporaryFolder(){
 		temporary.delete();
 	}
 }

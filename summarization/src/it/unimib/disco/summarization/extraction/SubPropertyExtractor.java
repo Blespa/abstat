@@ -1,6 +1,6 @@
 package it.unimib.disco.summarization.extraction;
 
-import it.unimib.disco.summarization.datatype.Property;
+import it.unimib.disco.summarization.datatype.Properties;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,7 +19,7 @@ public class SubPropertyExtractor {
 	private HashMap<String,HashMap<String,Integer>> Counter = new HashMap<String,HashMap<String,Integer>>(); //Property -> Context(Relation Type), Total
 
 
-	public void setSubProperty(Property properties) {
+	public void setSubProperty(Properties properties) {
 
 		Iterator<OntProperty> itP = properties.getExtractedProperty().iterator();
 

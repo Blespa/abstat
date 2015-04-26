@@ -1,6 +1,6 @@
 package it.unimib.disco.summarization.utility;
 
-import it.unimib.disco.summarization.datatype.Concept;
+import it.unimib.disco.summarization.datatype.Concepts;
 import it.unimib.disco.summarization.starter.Events;
 
 import java.io.BufferedReader;
@@ -41,7 +41,7 @@ public class ComputeLongestPathHierarchy {
 	Stack<String> path  = new Stack<String>();   // the current path
     Set<String> onPath  = new TreeSet<String>();     // the set of vertices on the path
 
-	public ComputeLongestPathHierarchy(Concept Concepts, String subClassOfFile) {
+	public ComputeLongestPathHierarchy(Concepts Concepts, String subClassOfFile) {
 		this.subClassOfFile=subClassOfFile;
 		this.concepts=cloneSet(Concepts.getConcepts().keySet());
 	}

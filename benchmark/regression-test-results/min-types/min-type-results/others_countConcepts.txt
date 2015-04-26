@@ -52,7 +52,7 @@ http://dbpedia.org/ontology/Ginkgo##0
 http://dbpedia.org/ontology/NorwaySettlement##0
 http://dbpedia.org/ontology/Canoeist##0
 http://dbpedia.org/ontology/GivenName##0
-http://schema.org/MusicAlbum##1
+http://schema.org/MusicAlbum##0
 http://schema.org/BodyOfWater##0
 http://dbpedia.org/ontology/ArchitecturalStructure##0
 http://schema.org/Continent##0
@@ -237,7 +237,7 @@ http://dbpedia.org/ontology/Monarch##0
 http://schema.org/MusicGroup##0
 http://dbpedia.org/ontology/FormulaOneRacer##0
 http://dbpedia.org/ontology/Flag##0
-http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalBody##2
+http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalBody##0
 http://dbpedia.org/ontology/OfficeHolder##0
 http://dbpedia.org/ontology/Casino##0
 http://dbpedia.org/ontology/Imdb##0

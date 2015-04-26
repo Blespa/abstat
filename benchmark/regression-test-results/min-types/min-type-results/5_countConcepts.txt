@@ -439,7 +439,7 @@ http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SpaceRegion##0
 http://dbpedia.org/ontology/Spacecraft##0
 http://dbpedia.org/ontology/MusicGenre##0
 http://dbpedia.org/ontology/HorseRiding##0
-http://dbpedia.org/ontology/Planet##1
+http://dbpedia.org/ontology/Planet##0
 http://dbpedia.org/ontology/Holiday##0
 http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson##0
 http://dbpedia.org/ontology/Windmill##0

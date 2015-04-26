@@ -93,7 +93,7 @@ http://dbpedia.org/ontology/CityDistrict##0
 http://dbpedia.org/ontology/MouseGeneLocation##0
 http://dbpedia.org/ontology/VolleyballCoach##0
 http://dbpedia.org/ontology/LiechtensteinSettlement##0
-http://schema.org/Airport##1
+http://schema.org/Airport##0
 http://dbpedia.org/ontology/Mammal##0
 http://schema.org/Comment##0
 http://dbpedia.org/ontology/Producer##0
@@ -320,7 +320,7 @@ http://dbpedia.org/ontology/HistoricalPeriod##0
 http://dbpedia.org/ontology/SubMunicipality##0
 http://dbpedia.org/ontology/LaunchPad##0
 http://dbpedia.org/ontology/MotorsportRacer##0
-http://dbpedia.org/ontology/Organisation##1
+http://dbpedia.org/ontology/Organisation##0
 http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism##0
 http://dbpedia.org/ontology/Atoll##0
 http://dbpedia.org/ontology/Governor##0
@@ -377,7 +377,7 @@ http://dbpedia.org/ontology/SnookerChamp##0
 http://dbpedia.org/ontology/Writer##0
 http://dbpedia.org/ontology/Dog##0
 http://dbpedia.org/ontology/Disease##0
-http://dbpedia.org/ontology/PopulatedPlace##2
+http://dbpedia.org/ontology/PopulatedPlace##0
 http://dbpedia.org/ontology/PaintballLeague##0
 http://dbpedia.org/ontology/AnatomicalStructure##0
 http://dbpedia.org/ontology/MeanOfTransportation##0
@@ -498,7 +498,7 @@ http://dbpedia.org/ontology/Athlete##0
 http://dbpedia.org/ontology/CollegeCoach##0
 http://dbpedia.org/ontology/Egyptologist##0
 http://dbpedia.org/ontology/Cricketer##0
-http://schema.org/CreativeWork##1
+http://schema.org/CreativeWork##0
 http://dbpedia.org/ontology/VicePrimeMinister##0
 http://dbpedia.org/ontology/Station##0
 http://dbpedia.org/ontology/AcademicJournal##0
@@ -526,7 +526,7 @@ http://dbpedia.org/ontology/Moss##0
 http://www.ontologydesignpatterns.org/ont/d0.owl#Location##0
 http://dbpedia.org/ontology/NationalCollegiateAthleticAssociationAthlete##0
 http://dbpedia.org/ontology/Host##0
-http://schema.org/Place##2
+http://schema.org/Place##0
 http://dbpedia.org/ontology/LineOfFashion##0
 http://dbpedia.org/ontology/Valley##0
 http://dbpedia.org/ontology/ElectionDiagram##0
@@ -640,7 +640,7 @@ http://dbpedia.org/ontology/Factory##0
 http://schema.org/Canal##0
 http://dbpedia.org/ontology/Jockey##0
 http://dbpedia.org/datatype/millimetre##0
-http://dbpedia.org/ontology/Wikidata:Q532##1
+http://dbpedia.org/ontology/Wikidata:Q532##0
 http://dbpedia.org/ontology/Profession##0
 http://dbpedia.org/ontology/PublicTransitSystem##0
 http://dbpedia.org/ontology/Vein##0
@@ -648,7 +648,7 @@ http://dbpedia.org/ontology/BusCompany##0
 http://dbpedia.org/ontology/RoadJunction##0
 http://dbpedia.org/ontology/Work##0
 http://schema.org/Sculpture##0
-http://dbpedia.org/ontology/Town##1
+http://dbpedia.org/ontology/Town##0
 http://dbpedia.org/ontology/GaelicGamesPlayer##0
 http://dbpedia.org/ontology/Project##0
 http://dbpedia.org/datatype/centimetre##0
@@ -796,7 +796,7 @@ http://dbpedia.org/ontology/Municipality##0
 http://dbpedia.org/ontology/Constellation##0
 http://dbpedia.org/ontology/SquashPlayer##0
 http://dbpedia.org/ontology/SumoWrestler##0
-http://dbpedia.org/ontology/Place##1
+http://dbpedia.org/ontology/Place##0
 http://dbpedia.org/ontology/Comic##0
 http://dbpedia.org/ontology/Wikidata:Q11424##0
 http://dbpedia.org/ontology/Website##0
@@ -808,7 +808,7 @@ http://schema.org/City##0
 http://dbpedia.org/ontology/GermanSettlement##0
 http://dbpedia.org/ontology/PublicService##0
 http://dbpedia.org/ontology/NaturalRegion##0
-http://dbpedia.org/ontology/Artwork##1
+http://dbpedia.org/ontology/Artwork##0
 http://dbpedia.org/ontology/BrownDwarf##0
 http://dbpedia.org/ontology/Globularswarm##0
 http://dbpedia.org/ontology/Arena##0

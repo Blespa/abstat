@@ -1,1 +1,3 @@
 Property##How Common is (%)##Number of resources (that have|are object of) the property
+http://dbpedia.org/ontology/isPartOf##2.94118##1
+http://dbpedia.org/ontology/capital##2.94118##1

@@ -77,7 +77,7 @@ http://dbpedia.org/ontology/Artery##0
 http://dbpedia.org/ontology/BaseballSeason##0
 http://dbpedia.org/ontology/SongWriter##0
 http://dbpedia.org/ontology/Resume##0
-http://dbpedia.org/ontology/Person##6
+http://dbpedia.org/ontology/Person##0
 http://dbpedia.org/ontology/SpaceMission##0
 http://dbpedia.org/ontology/Stream##0
 http://dbpedia.org/ontology/Grape##0
@@ -102,7 +102,7 @@ http://dbpedia.org/ontology/Territory##0
 http://dbpedia.org/ontology/Airport##0
 http://dbpedia.org/ontology/Museum##0
 http://dbpedia.org/ontology/Bacteria##0
-http://dbpedia.org/ontology/Agent##4
+http://dbpedia.org/ontology/Agent##0
 http://dbpedia.org/ontology/Newspaper##0
 http://dbpedia.org/ontology/FilmFestival##0
 http://dbpedia.org/ontology/Painting##0
@@ -144,7 +144,7 @@ http://dbpedia.org/ontology/Psychologist##0
 http://dbpedia.org/ontology/Automobile##0
 http://dbpedia.org/ontology/NobelPrize##0
 http://dbpedia.org/ontology/ComicsCreator##0
-http://wikidata.dbpedia.org/resource/Q215627##7
+http://wikidata.dbpedia.org/resource/Q215627##0
 http://dbpedia.org/datatype/engineConfiguration##0
 http://dbpedia.org/ontology/ChartsPlacements##0
 http://dbpedia.org/ontology/HandballLeague##0
@@ -170,7 +170,7 @@ http://dbpedia.org/ontology/Bridge##0
 http://dbpedia.org/ontology/WineRegion##0
 http://schema.org/MusicRecording##0
 http://dbpedia.org/ontology/SoccerLeagueSeason##0
-http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Situation##4
+http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Situation##0
 http://dbpedia.org/ontology/Prison##0
 http://dbpedia.org/ontology/PoliticalParty##0
 http://schema.org/Park##0
@@ -253,7 +253,7 @@ http://dbpedia.org/ontology/AustrianAdministrativeRegion##0
 http://dbpedia.org/ontology/Biomolecule##0
 http://dbpedia.org/ontology/CyclingCompetition##0
 http://dbpedia.org/ontology/Death##0
-http://xmlns.com/foaf/0.1/Person##8
+http://xmlns.com/foaf/0.1/Person##0
 http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval##0
 http://dbpedia.org/ontology/RollerCoaster##0
 http://dbpedia.org/ontology/Fashion##0
@@ -288,7 +288,7 @@ http://dbpedia.org/ontology/Beverage##0
 http://dbpedia.org/ontology/Area##0
 http://dbpedia.org/ontology/List##0
 http://dbpedia.org/ontology/Sport##0
-http://dbpedia.org/ontology/Album##1
+http://dbpedia.org/ontology/Album##0
 http://dbpedia.org/ontology/Athletics##0
 http://dbpedia.org/ontology/SoccerClubSeason##0
 http://dbpedia.org/ontology/Philosopher##0
@@ -321,7 +321,7 @@ http://dbpedia.org/ontology/SubMunicipality##0
 http://dbpedia.org/ontology/LaunchPad##0
 http://dbpedia.org/ontology/MotorsportRacer##0
 http://dbpedia.org/ontology/Organisation##0
-http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism##1
+http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism##0
 http://dbpedia.org/ontology/Atoll##0
 http://dbpedia.org/ontology/Governor##0
 http://schema.org/Restaurant##0
@@ -337,7 +337,7 @@ http://dbpedia.org/ontology/Crater##0
 http://dbpedia.org/ontology/Nerve##0
 http://dbpedia.org/ontology/Case##0
 http://dbpedia.org/ontology/Gate##0
-http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent##2
+http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent##0
 http://dbpedia.org/ontology/Employer##0
 http://schema.org/TelevisionStation##0
 http://dbpedia.org/datatype/megabyte##0
@@ -441,7 +441,7 @@ http://dbpedia.org/ontology/MusicGenre##0
 http://dbpedia.org/ontology/HorseRiding##0
 http://dbpedia.org/ontology/Planet##0
 http://dbpedia.org/ontology/Holiday##0
-http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson##2
+http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson##0
 http://dbpedia.org/ontology/Windmill##0
 http://schema.org/GovernmentOrganization##0
 http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Quality##0
@@ -526,7 +526,7 @@ http://dbpedia.org/ontology/Moss##0
 http://www.ontologydesignpatterns.org/ont/d0.owl#Location##0
 http://dbpedia.org/ontology/NationalCollegiateAthleticAssociationAthlete##0
 http://dbpedia.org/ontology/Host##0
-http://schema.org/Place##3
+http://schema.org/Place##0
 http://dbpedia.org/ontology/LineOfFashion##0
 http://dbpedia.org/ontology/Valley##0
 http://dbpedia.org/ontology/ElectionDiagram##0
@@ -584,7 +584,7 @@ http://dbpedia.org/ontology/Insect##0
 http://dbpedia.org/ontology/SoapCharacter##0
 http://dbpedia.org/ontology/DartsPlayer##0
 http://dbpedia.org/ontology/Aircraft##0
-http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#DesignedArtifact##1
+http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#DesignedArtifact##0
 http://dbpedia.org/ontology/openswarm##0
 http://dbpedia.org/ontology/Manhua##0
 http://dbpedia.org/ontology/Chancellor##0
@@ -596,8 +596,8 @@ http://dbpedia.org/ontology/HistoricalCountry##0
 http://dbpedia.org/ontology/Hospital##0
 http://dbpedia.org/ontology/HistoricalDistrict##0
 http://dbpedia.org/datatype/kilowatt##0
-http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson##2
-http://wikidata.dbpedia.org/resource/Q5##5
+http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson##0
+http://wikidata.dbpedia.org/resource/Q5##0
 http://dbpedia.org/ontology/Award##0
 http://dbpedia.org/ontology/Infrastructure##0
 http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collective##0
@@ -640,13 +640,13 @@ http://dbpedia.org/ontology/Factory##0
 http://schema.org/Canal##0
 http://dbpedia.org/ontology/Jockey##0
 http://dbpedia.org/datatype/millimetre##0
-http://dbpedia.org/ontology/Wikidata:Q532##3
+http://dbpedia.org/ontology/Wikidata:Q532##0
 http://dbpedia.org/ontology/Profession##0
 http://dbpedia.org/ontology/PublicTransitSystem##0
 http://dbpedia.org/ontology/Vein##0
 http://dbpedia.org/ontology/BusCompany##0
 http://dbpedia.org/ontology/RoadJunction##0
-http://dbpedia.org/ontology/Work##1
+http://dbpedia.org/ontology/Work##0
 http://schema.org/Sculpture##0
 http://dbpedia.org/ontology/Town##0
 http://dbpedia.org/ontology/GaelicGamesPlayer##0
@@ -669,7 +669,7 @@ http://dbpedia.org/ontology/WaterPoloPlayer##0
 http://dbpedia.org/ontology/Thing##0
 http://dbpedia.org/ontology/SerialKiller##0
 http://dbpedia.org/datatype/cubicKilometre##0
-http://dbpedia.org/ontology/Eukaryote##1
+http://dbpedia.org/ontology/Eukaryote##0
 http://dbpedia.org/ontology/MixedMartialArtsLeague##0
 http://dbpedia.org/ontology/Cyclist##0
 http://schema.org/RiverBodyOfWater##0
@@ -680,7 +680,7 @@ http://dbpedia.org/ontology/IceHockeyLeague##0
 http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Event##0
 http://dbpedia.org/ontology/Deity##0
 http://dbpedia.org/ontology/BackScene##0
-http://dbpedia.org/ontology/SportsTeam##1
+http://dbpedia.org/ontology/SportsTeam##0
 http://dbpedia.org/ontology/DisneyCharacter##0
 http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Role##0
 http://dbpedia.org/ontology/SystemOfLaw##0
@@ -713,7 +713,7 @@ http://dbpedia.org/ontology/Tower##0
 http://dbpedia.org/ontology/Skater##0
 http://dbpedia.org/ontology/%3Chttp://purl.org/vocab/bio/0.1/Birth%3E##0
 http://dbpedia.org/ontology/SportsLeague##0
-http://dbpedia.org/ontology/Settlement##1
+http://dbpedia.org/ontology/Settlement##0
 http://dbpedia.org/ontology/Organisation,_Parish##0
 http://dbpedia.org/ontology/TheatreDirector##0
 http://dbpedia.org/ontology/Skier##0
@@ -731,13 +731,13 @@ http://dbpedia.org/ontology/Meeting##0
 http://dbpedia.org/ontology/BoardGame##0
 http://dbpedia.org/ontology/Galaxy##0
 http://dbpedia.org/ontology/Asteroid##0
-http://dbpedia.org/ontology/Village##1
+http://dbpedia.org/ontology/Village##0
 http://dbpedia.org/datatype/kilometre##0
 http://dbpedia.org/ontology/Port##0
 http://dbpedia.org/ontology/InlineHockeyLeague##0
 http://dbpedia.org/ontology/ChristianDoctrine##0
 http://dbpedia.org/ontology/Race##0
-http://schema.org/Person##4
+http://schema.org/Person##0
 http://dbpedia.org/ontology/GrandPrix##0
 http://dbpedia.org/ontology/PokerPlayer##0
 http://dbpedia.org/ontology/PeriodOfArtisticStyle##0
@@ -796,9 +796,9 @@ http://dbpedia.org/ontology/Municipality##0
 http://dbpedia.org/ontology/Constellation##0
 http://dbpedia.org/ontology/SquashPlayer##0
 http://dbpedia.org/ontology/SumoWrestler##0
-http://dbpedia.org/ontology/Place##1
+http://dbpedia.org/ontology/Place##0
 http://dbpedia.org/ontology/Comic##0
-http://dbpedia.org/ontology/Wikidata:Q11424##1
+http://dbpedia.org/ontology/Wikidata:Q11424##0
 http://dbpedia.org/ontology/Website##0
 http://dbpedia.org/ontology/Sea##0
 http://dbpedia.org/ontology/StatedResolution##0
@@ -826,7 +826,7 @@ http://dbpedia.org/ontology/SupremeCourtOfTheUnitedStatesCase##0
 http://dbpedia.org/ontology/MountainPass##0
 http://dbpedia.org/ontology/Opera##0
 http://dbpedia.org/ontology/Dancer##0
-http://dbpedia.org/ontology/CareerStation##1
+http://dbpedia.org/ontology/CareerStation##0
 http://dbpedia.org/ontology/Divorce##0
 http://dbpedia.org/ontology/MusicDirector##0
 http://dbpedia.org/ontology/VideogamesLeague##0

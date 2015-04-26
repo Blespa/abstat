@@ -102,7 +102,7 @@ http://dbpedia.org/ontology/Territory##0
 http://dbpedia.org/ontology/Airport##0
 http://dbpedia.org/ontology/Museum##0
 http://dbpedia.org/ontology/Bacteria##0
-http://dbpedia.org/ontology/Agent##1
+http://dbpedia.org/ontology/Agent##0
 http://dbpedia.org/ontology/Newspaper##0
 http://dbpedia.org/ontology/FilmFestival##0
 http://dbpedia.org/ontology/Painting##0
@@ -526,7 +526,7 @@ http://dbpedia.org/ontology/Moss##0
 http://www.ontologydesignpatterns.org/ont/d0.owl#Location##0
 http://dbpedia.org/ontology/NationalCollegiateAthleticAssociationAthlete##0
 http://dbpedia.org/ontology/Host##0
-http://schema.org/Place##1
+http://schema.org/Place##0
 http://dbpedia.org/ontology/LineOfFashion##0
 http://dbpedia.org/ontology/Valley##0
 http://dbpedia.org/ontology/ElectionDiagram##0
@@ -543,9 +543,9 @@ http://dbpedia.org/ontology/MusicalArtist##0
 http://dbpedia.org/ontology/GovernmentAgency##0
 http://dbpedia.org/ontology/MilitaryStructure##0
 http://schema.org/Hotel##0
-http://dbpedia.org/ontology/MilitaryPerson##1
+http://dbpedia.org/ontology/MilitaryPerson##0
 http://dbpedia.org/ontology/Taxon##0
-http://dbpedia.org/ontology/Animal##1
+http://dbpedia.org/ontology/Animal##0
 http://dbpedia.org/ontology/SoccerPlayer##0
 http://dbpedia.org/ontology/BasketballPlayer##0
 http://dbpedia.org/ontology/Locality##0
@@ -640,7 +640,7 @@ http://dbpedia.org/ontology/Factory##0
 http://schema.org/Canal##0
 http://dbpedia.org/ontology/Jockey##0
 http://dbpedia.org/datatype/millimetre##0
-http://dbpedia.org/ontology/Wikidata:Q532##1
+http://dbpedia.org/ontology/Wikidata:Q532##0
 http://dbpedia.org/ontology/Profession##0
 http://dbpedia.org/ontology/PublicTransitSystem##0
 http://dbpedia.org/ontology/Vein##0
@@ -669,7 +669,7 @@ http://dbpedia.org/ontology/WaterPoloPlayer##0
 http://dbpedia.org/ontology/Thing##0
 http://dbpedia.org/ontology/SerialKiller##0
 http://dbpedia.org/datatype/cubicKilometre##0
-http://dbpedia.org/ontology/Eukaryote##1
+http://dbpedia.org/ontology/Eukaryote##0
 http://dbpedia.org/ontology/MixedMartialArtsLeague##0
 http://dbpedia.org/ontology/Cyclist##0
 http://schema.org/RiverBodyOfWater##0

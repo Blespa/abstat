@@ -237,7 +237,7 @@ http://dbpedia.org/ontology/Monarch##0
 http://schema.org/MusicGroup##0
 http://dbpedia.org/ontology/FormulaOneRacer##0
 http://dbpedia.org/ontology/Flag##0
-http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalBody##1
+http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalBody##0
 http://dbpedia.org/ontology/OfficeHolder##0
 http://dbpedia.org/ontology/Casino##0
 http://dbpedia.org/ontology/Imdb##0

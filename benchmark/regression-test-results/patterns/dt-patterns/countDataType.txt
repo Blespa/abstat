@@ -1,16 +1,7 @@
 Property##Number of resources (that have|are object of) the property##% Respect to the total Number of Resources
-http://www.w3.org/2001/XMLSchema#float##12##7.14286
-http://www.w3.org/2001/XMLSchema#integer##1##0.595238
-http://dbpedia.org/datatype/inhabitantsPerSquareKilometre##2##1.19048
-http://www.w3.org/1999/02/22-rdf-syntax-ns#langString##4##2.38095
-http://dbpedia.org/datatype/engineConfiguration##1##0.595238
-http://dbpedia.org/datatype/squareKilometre##2##1.19048
-http://dbpedia.org/datatype/minute##2##1.19048
-http://www.w3.org/2001/XMLSchema#double##22##13.0952
-http://www.w3.org/2001/XMLSchema#nonNegativeInteger##10##5.95238
-http://www.w3.org/2001/XMLSchema#string##24##14.2857
-http://www.w3.org/2001/XMLSchema#gYear##38##22.619
-http://dbpedia.org/datatype/centimetre##1##0.595238
-http://dbpedia.org/datatype/millimetre##1##0.595238
-http://www.w3.org/2001/XMLSchema#date##48##28.5714
-##168
+http://www.w3.org/2001/XMLSchema#float##2##13.3333
+http://dbpedia.org/datatype/inhabitantsPerSquareKilometre##1##6.66667
+http://dbpedia.org/datatype/squareKilometre##3##20
+http://www.w3.org/2001/XMLSchema#double##8##53.3333
+http://www.w3.org/2001/XMLSchema#date##1##6.66667
+##15

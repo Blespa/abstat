@@ -730,7 +730,7 @@ http://dbpedia.org/ontology/Image##0
 http://dbpedia.org/ontology/Meeting##0
 http://dbpedia.org/ontology/BoardGame##0
 http://dbpedia.org/ontology/Galaxy##0
-http://dbpedia.org/ontology/Asteroid##1
+http://dbpedia.org/ontology/Asteroid##0
 http://dbpedia.org/ontology/Village##0
 http://dbpedia.org/datatype/kilometre##0
 http://dbpedia.org/ontology/Port##0

@@ -299,7 +299,7 @@ http://dbpedia.org/ontology/River##0
 http://dbpedia.org/ontology/Enzyme##0
 http://dbpedia.org/ontology/Venue##0
 http://dbpedia.org/ontology/Senator##0
-http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity##1
+http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity##0
 http://dbpedia.org/ontology/RadioHost##0
 http://dbpedia.org/ontology/EurovisionSongContestEntry##0
 http://wikidata.dbpedia.org/resource/Q482994##0
@@ -429,7 +429,7 @@ http://dbpedia.org/ontology/GovernmentType##0
 http://dbpedia.org/ontology/ArtistDiscography##0
 http://dbpedia.org/ontology/Broadcaster##0
 http://dbpedia.org/ontology/SoftballLeague##0
-http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#BiologicalObject##1
+http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#BiologicalObject##0
 http://dbpedia.org/ontology/Mosque##0
 http://dbpedia.org/ontology/Continent##0
 http://dbpedia.org/ontology/LegalCase##0
@@ -550,7 +550,7 @@ http://dbpedia.org/ontology/SoccerPlayer##0
 http://dbpedia.org/ontology/BasketballPlayer##0
 http://dbpedia.org/ontology/Locality##0
 http://dbpedia.org/ontology/LawFirm##0
-http://dbpedia.org/ontology/TimePeriod##1
+http://dbpedia.org/ontology/TimePeriod##0
 http://dbpedia.org/ontology/GridironFootballPlayer##0
 http://dbpedia.org/ontology/Device##0
 http://dbpedia.org/ontology/Bodybuilder##0

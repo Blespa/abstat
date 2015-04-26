@@ -1,1 +1,3 @@
 Concept##Property##How complete is (%)##Number of resources of the minimum type class##Total Number of Concept Resources
+http://dbpedia.org/ontology/Wikidata:Q532##http://dbpedia.org/ontology/isPartOf##33.3333##1##3
+http://dbpedia.org/ontology/Wikidata:Q532##http://dbpedia.org/ontology/capital##33.3333##1##3

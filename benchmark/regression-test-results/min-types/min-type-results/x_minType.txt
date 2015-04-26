@@ -1,6 +1,0 @@
-1##http://dbpedia.org/resource/Xylocrius_agassizi##http://dbpedia.org/ontology/Animal
-1##http://dbpedia.org/resource/XII_Brigade,_Royal_Horse_Artillery##http://dbpedia.org/ontology/Agent
-1##http://dbpedia.org/resource/Xylomelum_benthamii##http://dbpedia.org/ontology/Eukaryote
-1##http://dbpedia.org/resource/Xiaohe,_Anhui##http://dbpedia.org/ontology/Wikidata:Q532
-1##http://dbpedia.org/resource/Xorychti##http://schema.org/Place
-1##http://dbpedia.org/resource/Xhem_Hasa##http://dbpedia.org/ontology/MilitaryPerson

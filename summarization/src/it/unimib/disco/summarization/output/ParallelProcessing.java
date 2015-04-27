@@ -1,6 +1,8 @@
 package it.unimib.disco.summarization.output;
 
 import it.unimib.disco.summarization.starter.Events;
+import it.unimib.disco.summarization.utility.FileSystemConnector;
+import it.unimib.disco.summarization.utility.TextInput;
 
 import java.io.File;
 import java.util.concurrent.ExecutorService;
@@ -23,7 +25,7 @@ public class ParallelProcessing{
 				@Override
 				public void run() {
 					try {
-						processing.process(file);
+						processing.process(new TextInput(new FileSystemConnector(file)));
 					} catch (Exception e) {
 						new Events().error(file, e);
 					}

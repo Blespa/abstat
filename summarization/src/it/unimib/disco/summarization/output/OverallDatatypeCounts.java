@@ -4,6 +4,7 @@ import it.unimib.disco.summarization.utility.BulkTextOutput;
 import it.unimib.disco.summarization.utility.DatatypeCount;
 import it.unimib.disco.summarization.utility.FileSystemConnector;
 import it.unimib.disco.summarization.utility.NTripleFile;
+import it.unimib.disco.summarization.utility.TextInput;
 
 import java.io.File;
 import java.util.HashMap;
@@ -21,7 +22,7 @@ public class OverallDatatypeCounts implements Processing{
 	}
 	
 	@Override
-	public void process(File file) throws Exception {
+	public void process(TextInput file) throws Exception {
 		DatatypeCount analysis = new DatatypeCount();
 		new NTripleFile(analysis).process(file);
 		counts.add(analysis);

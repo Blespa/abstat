@@ -1,6 +1,8 @@
 package it.unimib.disco.summarization.tests;
 
 import it.unimib.disco.summarization.output.Files;
+import it.unimib.disco.summarization.utility.FileSystemConnector;
+import it.unimib.disco.summarization.utility.TextInput;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,12 +35,24 @@ public class TemporaryFolder{
 		return file;
 	}
 	
+	public TextInput namedFileTextInput(String content, String name) throws Exception{
+		return new TextInput(new FileSystemConnector(namedFile(content, name)));
+	}
+	
 	public File file() throws Exception{
 		return file("");
+	}
+	
+	public TextInput fileTextInput() throws Exception{
+		return new TextInput(new FileSystemConnector(file("")));
 	}
 
 	public File file(String content) throws Exception{
 		return file(content, "");
+	}
+	
+	public TextInput fileTextInput(String content) throws Exception{
+		return new TextInput(new FileSystemConnector(file(content, "")));
 	}
 
 	public File file(String content, String extension) throws IOException {

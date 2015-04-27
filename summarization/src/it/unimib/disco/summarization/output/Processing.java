@@ -1,10 +1,10 @@
 package it.unimib.disco.summarization.output;
 
-import java.io.File;
+import it.unimib.disco.summarization.utility.TextInput;
 
 public interface Processing {
 
-	public void process(File file) throws Exception;
+	public void process(TextInput file) throws Exception;
 	
 	public void endProcessing() throws Exception;
 }

@@ -40,15 +40,13 @@ public class MinimalTypes implements Processing{
 	public void endProcessing() throws Exception {}
 	
 	@Override
-	public void process(File types) throws Exception {
+	public void process(TextInput types) throws Exception {
 		HashMap<String, Integer> conceptCounts = buildConceptCountsFrom(concepts);
 		List<String> externalConcepts = new ArrayList<String>();
 		HashMap<String, HashSet<String>> minimalTypes = new HashMap<String, HashSet<String>>();
 		
-		TextInput typeRelations = new TextInput(new FileSystemConnector(types));
-		
-		while(typeRelations.hasNextLine()){
-			String line = typeRelations.nextLine();
+		while(types.hasNextLine()){
+			String line = types.nextLine();
 			String[] resources = line.split("##");
 			
 			String entity = resources[0];
@@ -123,8 +121,8 @@ public class MinimalTypes implements Processing{
 		return new BulkTextOutput(new FileSystemConnector(new File(directory, prefix + "_" + name + ".txt")), 1000);
 	}
 
-	private String prefixOf(File types) {
-		String[] splitted = StringUtils.split(types.getName(), "_");
+	private String prefixOf(TextInput types) {
+		String[] splitted = StringUtils.split(new File(types.name()).getName(), "_");
 		return splitted.length == 1 ? "_": splitted[0];
 	}
 	

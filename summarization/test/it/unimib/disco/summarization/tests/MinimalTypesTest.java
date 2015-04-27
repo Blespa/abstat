@@ -4,8 +4,9 @@ import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 import it.unimib.disco.summarization.utility.MinimalTypes;
+import it.unimib.disco.summarization.utility.TextInput;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,7 +25,7 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 		
 		ToyOntology ontology = new ToyOntology().owl();
 		
-		File types = temporary.namedFile("", "__types.nt");
+		TextInput types = temporary.namedFileTextInput("", "__types.nt");
 		File directory = temporary.directory();
 		
 		minimalTypesFrom(ontology, directory).process(types);
@@ -37,7 +38,7 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 		
 		ToyOntology ontology = new ToyOntology().owl();
 		
-		File types = temporary.namedFile("", "others_types.nt");
+		TextInput types = temporary.namedFileTextInput("", "others_types.nt");
 		File directory = temporary.directory();
 		
 		minimalTypesFrom(ontology, directory).process(types);
@@ -50,7 +51,7 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 		
 		ToyOntology ontology = new ToyOntology().owl();
 		
-		File types = temporary.namedFile("", "s_types.nt");
+		TextInput types = temporary.namedFileTextInput("", "s_types.nt");
 		File directory = temporary.directory();
 		
 		minimalTypesFrom(ontology, directory).process(types);
@@ -65,7 +66,7 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 		
 		ToyOntology ontology = new ToyOntology().owl();
 		
-		File types = temporary.namedFile("", "s_types.nt");
+		TextInput types = temporary.namedFileTextInput("", "s_types.nt");
 		File directory = temporary.directory();
 		
 		minimalTypesFrom(ontology, directory).process(types);
@@ -79,7 +80,7 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 	public void shouldCountConceptsEvenWhenTheyHaveNoInstance() throws Exception {
 		ToyOntology ontology = new ToyOntology().owl();
 		
-		File types = temporary.namedFile("http://entity##type##" + OWL.Thing, "s_types.nt");
+		TextInput types = temporary.namedFileTextInput("http://entity##type##" + OWL.Thing, "s_types.nt");
 		File directory = temporary.directory();
 		
 		minimalTypesFrom(ontology, directory).process(types);
@@ -95,7 +96,7 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 								.owl()
 								.definingConcept("http://concept");
 
-		File types = temporary.namedFile("http://entity##type##http://concept", "s_types.nt");
+		TextInput types = temporary.namedFileTextInput("http://entity##type##http://concept", "s_types.nt");
 		File directory = temporary.directory();
 		
 		minimalTypesFrom(ontology, directory).process(types);
@@ -108,7 +109,7 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 	public void shouldCountAlsoUnknownConcepts() throws Exception {
 		ToyOntology ontology = new ToyOntology().owl();
 
-		File types = temporary.namedFile("http://entity##type##http://concept", "s_types.nt");
+		TextInput types = temporary.namedFileTextInput("http://entity##type##http://concept", "s_types.nt");
 		File directory = temporary.directory();
 		
 		minimalTypesFrom(ontology, directory).process(types);
@@ -123,7 +124,7 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 										.owl()
 										.definingConcept("http://concept");
 
-		File types = temporary.namedFile("http://entity##type##http://concept", "s_types.nt");
+		TextInput types = temporary.namedFileTextInput("http://entity##type##http://concept", "s_types.nt");
 		File directory = temporary.directory();
 		
 		minimalTypesFrom(ontology, directory).process(types);
@@ -139,7 +140,7 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 										.definingConcept("http://concept")
 											.aSubconceptOf("http://thing");
 
-		File types = temporary.namedFile("http://entity##type##http://concept"
+		TextInput types = temporary.namedFileTextInput("http://entity##type##http://concept"
 										+ "\n"
 										+ "http://entity##type##http://thing", "s_types.nt");
 		File directory = temporary.directory();
@@ -157,7 +158,7 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 										.definingConcept("http://concept")
 											.aSubconceptOf("http://thing");
 
-		File types = temporary.namedFile("http://entity##type##http://thing"
+		TextInput types = temporary.namedFileTextInput("http://entity##type##http://thing"
 										+ "\n"
 										+ "http://entity##type##http://concept", "s_types.nt");
 		File directory = temporary.directory();
@@ -174,7 +175,7 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 									.definingConcept("http://thing")
 									.definingConcept("http://concept");
 
-		File types = temporary.namedFile("http://entity##type##http://thing"
+		TextInput types = temporary.namedFileTextInput("http://entity##type##http://thing"
 										+ "\n"
 										+ "http://entity##type##http://concept", "s_types.nt");
 		File directory = temporary.directory();
@@ -193,7 +194,7 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 											.aSubconceptOf("http://zthing")
 										.definingConcept("http://other");
 
-		File types = temporary.namedFile("http://entity##type##http://other"
+		TextInput types = temporary.namedFileTextInput("http://entity##type##http://other"
 										+ "\n"
 										+ "http://entity##type##http://zthing"
 										+ "\n"
@@ -212,7 +213,7 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 										.definingConcept("http://dbpedia.org/Person")
 										.equivalentTo("http://schema.org/Person");
 
-		File types = temporary.namedFile("http://entity##type##http://dbpedia.org/Person"
+		TextInput types = temporary.namedFileTextInput("http://entity##type##http://dbpedia.org/Person"
 					+ "\n"
 					+ "http://entity##type##http://schema.org/Person", "s_types.nt");
 		File directory = temporary.directory();
@@ -226,7 +227,7 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 	public void unknownConceptForAnEntity() throws Exception {
 		ToyOntology ontology = new ToyOntology().owl().definingConcept("http://dbpedia.org/Person");
 
-		File types = temporary.namedFile("http://entity##type##http://dbpedia.org/Person"
+		TextInput types = temporary.namedFileTextInput("http://entity##type##http://dbpedia.org/Person"
 										+ "\n"
 										+ "http://entity##type##http://unknown", "s_types.nt");
 		File directory = temporary.directory();
@@ -246,7 +247,7 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 											.thatHasProperty(RDFS.range)
 												.linkingTo("http://datatype/age");
 		
-		File types = temporary.namedFile("http://steven_seagal##type##http://person", "s_types.nt");
+		TextInput types = temporary.namedFileTextInput("http://steven_seagal##type##http://person", "s_types.nt");
 		File directory = temporary.directory();
 		
 		minimalTypesFrom(ontology, directory).process(types);

@@ -7,4 +7,6 @@ public interface InputFile {
 	public String nextLine() throws Exception;
 
 	public boolean hasNextLine();
+
+	public InputFile reopen() throws Exception;
 }

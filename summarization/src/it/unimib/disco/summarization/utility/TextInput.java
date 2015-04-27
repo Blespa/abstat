@@ -1,5 +1,7 @@
 package it.unimib.disco.summarization.utility;
 
+import java.io.File;
+
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.LineIterator;
 
@@ -26,5 +28,10 @@ public class TextInput implements InputFile{
 	@Override
 	public boolean hasNextLine() {
 		return lines.hasNext();
+	}
+
+	@Override
+	public InputFile reopen() throws Exception {
+		return new TextInput(new FileSystemConnector(new File(name())));
 	}
 }

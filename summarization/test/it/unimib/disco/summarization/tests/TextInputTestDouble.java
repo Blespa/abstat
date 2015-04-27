@@ -18,4 +18,9 @@ public class TextInputTestDouble implements InputFile{
 	public boolean hasNextLine() {
 		return false;
 	}
+
+	@Override
+	public InputFile reopen() throws Exception {
+		return this;
+	}
 }

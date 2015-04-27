@@ -23,6 +23,7 @@ import it.unimib.disco.summarization.relation.OntologySubclassOfExtractor;
 import it.unimib.disco.summarization.utility.CreateExcel;
 import it.unimib.disco.summarization.utility.FileDataSupport;
 import it.unimib.disco.summarization.utility.FileSystemConnector;
+import it.unimib.disco.summarization.utility.InputFile;
 import it.unimib.disco.summarization.utility.LongestPaths;
 import it.unimib.disco.summarization.utility.Model;
 import it.unimib.disco.summarization.utility.TextInput;
@@ -228,7 +229,7 @@ public class Starter {
         
         //Calcolo tutti i percorsi nella gerarchia
         
-        TextInput subclasses = new TextInput(new FileSystemConnector(new File(datasetSupportFileDirectory + "SubclassOf.txt")));
+        InputFile subclasses = new TextInput(new FileSystemConnector(new File(datasetSupportFileDirectory + "SubclassOf.txt")));
         LongestPaths pathHierarchy = new LongestPaths(concepts, subclasses);
         pathHierarchy.writeTo(datasetSupportFileDirectory + "path.txt");
         

@@ -9,7 +9,7 @@ public class ConceptCount {
 	HashMap<String, Long> conceptCounts = new HashMap<String, Long>();
 	
 	public ConceptCount process(File file) throws Exception {
-		TextInput counts = new TextInput(new FileSystemConnector(file));
+		InputFile counts = new TextInput(new FileSystemConnector(file));
 		while(counts.hasNextLine()){
 			String[] splitted = counts.nextLine().split("##");
 			String concept = splitted[0];

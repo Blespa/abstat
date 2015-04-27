@@ -16,7 +16,7 @@ public class NTripleFile {
 		this.analysis = analysis;
 	}
 
-	public void process(TextInput file) throws Exception {
+	public void process(InputFile file) throws Exception {
 		while(file.hasNextLine()){
 			String line = file.nextLine();
 			String[] splitted = line.split("##");

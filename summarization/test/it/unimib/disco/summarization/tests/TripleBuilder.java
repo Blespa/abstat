@@ -33,6 +33,11 @@ public class TripleBuilder{
 		return this;
 	}
 	
+	public TripleBuilder withObject(String object) {
+		this.o = model.createResource(object);
+		return this;
+	}
+	
 	public TripleBuilder withTypedLiteral(String literal, String type){
 		this.o = model.createTypedLiteral(literal,type);
 		return this;

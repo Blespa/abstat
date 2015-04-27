@@ -13,9 +13,11 @@ public class ProcessObjectRelationAssertions {
 		new Events();
 		
 		File sourceDirectory = new File(args[0]);
-		File properties = new File(new File(args[1]), "count-object-properties.txt");
+		File minimalTypesDirectory = new File(args[1]);
+		File properties = new File(new File(args[2]), "count-object-properties.txt");
+		File akps = new File(new File(args[2]), "object-akp.txt");
 		
-		OverallObjectRelationsCounting counts = new OverallObjectRelationsCounting(properties);
+		OverallObjectRelationsCounting counts = new OverallObjectRelationsCounting(properties, akps, minimalTypesDirectory);
 		
 		new ParallelProcessing(sourceDirectory, "_obj_properties.nt").process(counts);
 	    

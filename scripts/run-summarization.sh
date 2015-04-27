@@ -323,7 +323,7 @@ echo "---Start: MinType, CountConcepts and CountDataTypes---"
 	rm -rf $minTypeDataForComp $minTypeResult
 	mkdir -p $minTypeDataForComp $minTypeResult
 
-	eval ${dbgCmd}""$JAVA_HOME/bin/java -Xms256m -Xmx16000m -cp ontology_summarization.jar it.unimib.disco.summarization.output.CalculateMinimalTypes "$OntologyFile" "$orgDatasetFile" "$minTypeResult"
+	eval ${dbgCmd}""$JAVA_HOME/bin/java -Xms256m -Xmx32000m -cp ontology_summarization.jar it.unimib.disco.summarization.output.CalculateMinimalTypes "$OntologyFile" "$orgDatasetFile" "$minTypeResult"
 
 	if [ $? -ne 0 ]
 	then
@@ -331,7 +331,7 @@ echo "---Start: MinType, CountConcepts and CountDataTypes---"
 	    exit 1
 	fi
 
-	eval ${dbgCmd}""$JAVA_HOME/bin/java -Xms256m -Xmx16000m -cp ontology_summarization.jar it.unimib.disco.summarization.output.AggregateConceptCounts "$minTypeResult" "$ResultsDirectory/patterns/"
+	eval ${dbgCmd}""$JAVA_HOME/bin/java -Xms256m -Xmx32000m -cp ontology_summarization.jar it.unimib.disco.summarization.output.AggregateConceptCounts "$minTypeResult" "$ResultsDirectory/patterns/"
 
 	if [ $? -ne 0 ]
 	then
@@ -339,7 +339,7 @@ echo "---Start: MinType, CountConcepts and CountDataTypes---"
 	    exit 1
 	fi
 
-	eval ${dbgCmd}""$JAVA_HOME/bin/java -Xms256m -Xmx16000m -cp ontology_summarization.jar it.unimib.disco.summarization.output.ProcessDatatypeRelationAssertions "${orgDatasetFile}" "$minTypeResult" "$ResultsDirectory/patterns/"
+	eval ${dbgCmd}""$JAVA_HOME/bin/java -Xms256m -Xmx32000m -cp ontology_summarization.jar it.unimib.disco.summarization.output.ProcessDatatypeRelationAssertions "${orgDatasetFile}" "$minTypeResult" "$ResultsDirectory/patterns/"
 
 	if [ $? -ne 0 ]
 	then
@@ -347,7 +347,7 @@ echo "---Start: MinType, CountConcepts and CountDataTypes---"
 	    exit 1
 	fi
 
-	eval ${dbgCmd}""$JAVA_HOME/bin/java -Xms256m -Xmx16000m -cp ontology_summarization.jar it.unimib.disco.summarization.output.ProcessObjectRelationAssertions "${orgDatasetFile}" "$ResultsDirectory/patterns/"
+	eval ${dbgCmd}""$JAVA_HOME/bin/java -Xms256m -Xmx32000m -cp ontology_summarization.jar it.unimib.disco.summarization.output.ProcessObjectRelationAssertions "${orgDatasetFile}" "$minTypeResult" "$ResultsDirectory/patterns/"
 
 	if [ $? -ne 0 ]
 	then

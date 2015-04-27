@@ -3,17 +3,18 @@ package it.unimib.disco.summarization.tests;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.*;
 import it.unimib.disco.summarization.utility.MinimalTypes;
+import it.unimib.disco.summarization.utility.PartitionedMinimalTypes;
 
 import org.junit.Test;
 
 import com.hp.hpl.jena.vocabulary.OWL;
 
-public class MinimalTypeTest {
+public class PartitionedMinimalTypeTest {
 
 	@Test
 	public void shouldParseAnEmptyContent() throws Exception {
 		
-		MinimalTypes minimalTypes = new MinimalTypes(new TextInputTestDouble());
+		MinimalTypes minimalTypes = new PartitionedMinimalTypes(new TextInputTestDouble());
 		
 		assertThat(minimalTypes.of("any").get(0), equalTo(OWL.Thing.toString()));
 	}
@@ -23,7 +24,7 @@ public class MinimalTypeTest {
 		
 		TextInputTestDouble types = new TextInputTestDouble().withLine("1##http://entity##http://type");
 		
-		MinimalTypes minimalTypes = new MinimalTypes(types);
+		MinimalTypes minimalTypes = new PartitionedMinimalTypes(types);
 		
 		assertThat(minimalTypes.of("http://entity").size(), equalTo(1));
 	}
@@ -32,7 +33,7 @@ public class MinimalTypeTest {
 	public void shouldReturnTheMinimalTypeSet() throws Exception {
 		TextInputTestDouble types = new TextInputTestDouble().withLine("2##http://entity##http://type#-#http://other-type");
 		
-		MinimalTypes minimalTypes = new MinimalTypes(types);
+		MinimalTypes minimalTypes = new PartitionedMinimalTypes(types);
 		
 		assertThat(minimalTypes.of("http://entity").size(), equalTo(2));
 	}

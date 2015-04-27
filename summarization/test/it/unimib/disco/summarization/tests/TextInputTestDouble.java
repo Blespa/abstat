@@ -8,11 +8,17 @@ import java.util.List;
 
 public class TextInputTestDouble implements InputFile{
 
+	private String name = "the_name";
 	private List<String> lines = new ArrayList<String>(); 
 	private Iterator<String> currentLine;
 	
 	public TextInputTestDouble withLine(String line){
 		this.lines.add(line);
+		return this;
+	}
+	
+	public TextInputTestDouble withName(String name) {
+		this.name = name;
 		return this;
 	}
 	
@@ -30,7 +36,7 @@ public class TextInputTestDouble implements InputFile{
 
 	@Override
 	public String name() {
-		return "the_name";
+		return name;
 	}
 
 	@Override

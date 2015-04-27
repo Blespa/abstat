@@ -2,21 +2,41 @@ package it.unimib.disco.summarization.tests;
 
 import it.unimib.disco.summarization.utility.InputFile;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 public class TextInputTestDouble implements InputFile{
 
-	@Override
-	public String name() {
-		return "the_name";
+	private String name = "the_name";
+	private List<String> lines = new ArrayList<String>(); 
+	private Iterator<String> currentLine;
+	
+	public TextInputTestDouble withLine(String line){
+		this.lines.add(line);
+		return this;
 	}
-
+	
+	public TextInputTestDouble withName(String name) {
+		this.name = name;
+		return this;
+	}
+	
 	@Override
 	public String nextLine() throws Exception {
-		return "";
+		if(currentLine == null) currentLine = lines.iterator();
+		return currentLine.next();
 	}
 
 	@Override
 	public boolean hasNextLine() {
-		return false;
+		if(currentLine == null) currentLine = lines.iterator();
+		return currentLine.hasNext();
+	}
+
+	@Override
+	public String name() {
+		return name;
 	}
 
 	@Override

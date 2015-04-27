@@ -1,7 +1,7 @@
 package it.unimib.disco.summarization.output;
 
 import it.unimib.disco.summarization.starter.Events;
-import it.unimib.disco.summarization.utility.MinimalTypes;
+import it.unimib.disco.summarization.utility.MinimalTypesCalculation;
 import it.unimib.disco.summarization.utility.Model;
 import it.unimib.disco.summarization.utility.ParallelProcessing;
 
@@ -26,7 +26,7 @@ public class CalculateMinimalTypes {
 		
 		OntModel ontologyModel = new Model(null, ontology.getAbsolutePath(),"RDF/XML").getOntologyModel();
 		
-		MinimalTypes minimalTypes = new MinimalTypes(ontologyModel, targetDirectory);
+		MinimalTypesCalculation minimalTypes = new MinimalTypesCalculation(ontologyModel, targetDirectory);
 		
 		new ParallelProcessing(typesDirectory, "_types.nt").process(minimalTypes);
 	}

@@ -14,4 +14,9 @@ public class Files{
 		});
 		return files;
 	}
+	
+	public String prefixOf(InputFile file) {
+		String[] splitted = new File(file.name()).getName().split("_");
+		return splitted[0].isEmpty() ? "_" : splitted[0];
+	}
 }

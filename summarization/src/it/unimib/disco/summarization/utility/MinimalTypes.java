@@ -9,6 +9,7 @@ import it.unimib.disco.summarization.relation.OntologySubclassOfExtractor;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -102,7 +103,8 @@ public class MinimalTypes implements Processing{
 	private void writeMinimalTypes(HashMap<String, HashSet<String>> minimalTypes, File directory, String prefix) throws Exception {
 		BulkTextOutput connector = connectorTo(directory, prefix, "minType");
 		for(Entry<String, HashSet<String>> entityTypes : minimalTypes.entrySet()){
-			HashSet<String> types = entityTypes.getValue();
+			ArrayList<String> types = new ArrayList<String>(entityTypes.getValue());
+			Collections.sort(types);
 			connector.writeLine(types.size() + "##" + entityTypes.getKey() + "##" + StringUtils.join(types, "#-#"));
 		}
 		connector.close();

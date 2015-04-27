@@ -1,1 +1,1 @@
-4##http://dbpedia.org/resource/Chicago##http://dbpedia.org/ontology/Wikidata:Q532#-#http://dbpedia.org/ontology/City#-#http://schema.org/Place#-#http://schema.org/City
+4##http://dbpedia.org/resource/Chicago##http://dbpedia.org/ontology/City#-#http://dbpedia.org/ontology/Wikidata:Q532#-#http://schema.org/City#-#http://schema.org/Place

@@ -1,2 +1,2 @@
-4##http://dbpedia.org/resource/Honolulu##http://dbpedia.org/ontology/Wikidata:Q532#-#http://schema.org/Place#-#http://dbpedia.org/ontology/Settlement#-#http://www.opengis.net/gml/_Feature
-4##http://dbpedia.org/resource/Hawaii##http://dbpedia.org/ontology/Wikidata:Q532#-#http://schema.org/Place#-#http://schema.org/AdministrativeArea#-#http://dbpedia.org/ontology/AdministrativeRegion
+4##http://dbpedia.org/resource/Honolulu##http://dbpedia.org/ontology/Settlement#-#http://dbpedia.org/ontology/Wikidata:Q532#-#http://schema.org/Place#-#http://www.opengis.net/gml/_Feature
+4##http://dbpedia.org/resource/Hawaii##http://dbpedia.org/ontology/AdministrativeRegion#-#http://dbpedia.org/ontology/Wikidata:Q532#-#http://schema.org/AdministrativeArea#-#http://schema.org/Place

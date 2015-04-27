@@ -7,14 +7,24 @@ import it.unimib.disco.summarization.utility.AllMinimalTypes;
 import org.junit.Test;
 
 public class AllMinimalTypesTest extends TestWithTemporaryData{
-
+	
 	@Test
-	public void entityWithKnownType() throws Exception {
+	public void entityWithKnownDBPediaType() throws Exception {
 		
-		temporary.namedFile("1##http://a##type", "a_minType.txt");
+		temporary.namedFile("1##http://dbpedia.org/resource/Jasenica_(Valjevo)##type", "j_minType.txt");
 		
 		AllMinimalTypes types = new AllMinimalTypes(temporary.directory());
 		
-		assertThat(types.of("http://a"), hasItem("type"));
+		assertThat(types.of("http://dbpedia.org/resource/Jasenica_(Valjevo)"), hasItem("type"));
+	}
+	
+	@Test
+	public void entityWithKnownTypeAnSeparator() throws Exception {
+		
+		temporary.namedFile("1##http://dbpedia.org/resource#Jasenica_(Valjevo)##type", "j_minType.txt");
+		
+		AllMinimalTypes types = new AllMinimalTypes(temporary.directory());
+		
+		assertThat(types.of("http://dbpedia.org/resource#Jasenica_(Valjevo)"), hasItem("type"));
 	}
 }

@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 
-import com.hp.hpl.jena.rdf.model.ModelFactory;
+import org.apache.commons.lang3.StringUtils;
 
 public class AllMinimalTypes implements MinimalTypes{
 
@@ -26,14 +26,9 @@ public class AllMinimalTypes implements MinimalTypes{
 	}
 
 	public List<String> of(String entity) {
-		char firstChar = ModelFactory
-							.createDefaultModel()
-							.createResource(entity)
-							.getLocalName()
-							.toLowerCase()
-							.charAt(0);
-		
-		PartitionedMinimalTypes minimalTypes = this.types.get(firstChar + "");
+		String[] splitted = StringUtils.split(entity, "/#");
+		String firstChar = splitted[splitted.length - 1].toLowerCase().charAt(0) + "";
+		PartitionedMinimalTypes minimalTypes = this.types.get(firstChar);
 		if(minimalTypes != null) return minimalTypes.of(entity);
 		return others.of(entity);
 	}

@@ -1,8 +1,4 @@
-package it.unimib.disco.summarization.output;
-
-import it.unimib.disco.summarization.utility.BulkTextOutput;
-import it.unimib.disco.summarization.utility.FileSystemConnector;
-import it.unimib.disco.summarization.utility.NTripleAnalysis;
+package it.unimib.disco.summarization.utility;
 
 import java.io.File;
 import java.util.HashMap;

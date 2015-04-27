@@ -1,23 +1,16 @@
-package it.unimib.disco.summarization.output;
-
-import it.unimib.disco.summarization.utility.DatatypeCount;
-import it.unimib.disco.summarization.utility.InputFile;
-import it.unimib.disco.summarization.utility.NTripleAnalysis;
-import it.unimib.disco.summarization.utility.NTripleFile;
-import it.unimib.disco.summarization.utility.Processing;
-import it.unimib.disco.summarization.utility.PropertyCount;
+package it.unimib.disco.summarization.utility;
 
 import java.io.File;
 import java.util.Vector;
 
-public class OverallDatatypeCounts implements Processing{
+public class OverallDatatypeRelationsCounting implements Processing{
 	
 	private Vector<NTripleAnalysis> datatypesCount;
 	private Vector<NTripleAnalysis> propertiesCount;
 	private File datatypeCountsResults;
 	private File propertyFile;
 	
-	public OverallDatatypeCounts(File datatypeFile, File propertyFile) {
+	public OverallDatatypeRelationsCounting(File datatypeFile, File propertyFile) {
 		this.datatypesCount = new Vector<NTripleAnalysis>();
 		this.propertiesCount = new Vector<NTripleAnalysis>();
 		this.datatypeCountsResults = datatypeFile;

@@ -1,5 +1,6 @@
 package it.unimib.disco.summarization.output;
 
+import it.unimib.disco.summarization.starter.Events;
 import it.unimib.disco.summarization.utility.MinimalTypes;
 import it.unimib.disco.summarization.utility.Model;
 import it.unimib.disco.summarization.utility.ParallelProcessing;
@@ -14,6 +15,8 @@ import com.hp.hpl.jena.ontology.OntModel;
 public class CalculateMinimalTypes {
 
 	public static void main(String[] args) throws Exception {
+		
+		new Events();
 		
 		File folder = new File(args[0]);
 		Collection<File> listOfFiles = FileUtils.listFiles(folder, new String[]{"owl"}, false);

@@ -203,7 +203,7 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 
 		minimalTypesFrom(ontology, directory).process(types);
 
-		assertThat(linesOf("s_minType.txt"), hasItem("2##http://entity##http://other#-#http://concept"));
+		assertThat(linesOf("s_minType.txt"), hasItem("2##http://entity##http://concept#-#http://other"));
 	}
 	
 	@Test
@@ -220,7 +220,7 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 		
 		minimalTypesFrom(ontology, directory).process(types);
 		
-		assertThat(linesOf("s_minType.txt"), hasItem("2##http://entity##http://schema.org/Person#-#http://dbpedia.org/Person"));
+		assertThat(linesOf("s_minType.txt"), hasItem("2##http://entity##http://dbpedia.org/Person#-#http://schema.org/Person"));
 	}
 	
 	@Test

@@ -10,10 +10,10 @@ import com.hp.hpl.jena.rdf.model.Statement;
 
 public class NTripleFile {
 
-	private NTripleAnalysis analysis;
+	private NTripleAnalysis[] analyzers;
 
-	public NTripleFile(NTripleAnalysis analysis) {
-		this.analysis = analysis;
+	public NTripleFile(NTripleAnalysis... analyzers) {
+		this.analyzers = analyzers;
 	}
 
 	public void process(InputFile file) throws Exception {
@@ -41,7 +41,9 @@ public class NTripleFile {
 			
 			try{
 				NTriple triple = new NTriple(statement);
-				analysis.track(triple);
+				for(NTripleAnalysis analysis : analyzers){
+					analysis.track(triple);
+				}
 			}catch(Exception e){
 				new Events().error("error processing " + line + " from " + file.name(), e);
 			}

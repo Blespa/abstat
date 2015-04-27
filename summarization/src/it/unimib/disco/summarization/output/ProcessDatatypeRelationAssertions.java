@@ -8,9 +8,10 @@ public class ProcessDatatypeRelationAssertions {
 	public static void main(String[] args) throws Exception {
 		
 		File sourceDirectory = new File(args[0]);
-		File targetFile = new File(new File(args[1]), "count-datatype.txt");
+		File datatypes = new File(new File(args[1]), "count-datatype.txt");
+		File properties = new File(new File(args[1]), "count-datatype-properties.txt");
 		
-		OverallDatatypeCounts counts = new OverallDatatypeCounts(targetFile);
+		OverallDatatypeCounts counts = new OverallDatatypeCounts(datatypes, properties);
 		
 		new ParallelProcessing(sourceDirectory, "_dt_properties.nt").process(counts);
 	    

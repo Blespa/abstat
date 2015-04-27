@@ -7,8 +7,8 @@ public class AKPObjectCount implements NTripleAnalysis{
 	private MinimalTypes types;
 	private HashMap<String, Long> akps;
 
-	public AKPObjectCount(InputFile minimalTypes) throws Exception {
-		this.types = new MinimalTypes(minimalTypes);
+	public AKPObjectCount(MinimalTypes minimalTypes) throws Exception {
+		this.types = minimalTypes;
 		this.akps = new HashMap<String, Long>();
 	}
 

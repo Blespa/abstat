@@ -9,23 +9,20 @@ public class OverallObjectRelationsCounting implements Processing{
 	private Vector<NTripleAnalysis> akpCounts;
 	private File propertyFile;
 	private File akps;
-	private File minimalTypes;
+	private MinimalTypes minimalTypesOracle;
 	
-	public OverallObjectRelationsCounting(File propertyFile, File akps, File types) {
+	public OverallObjectRelationsCounting(File propertyFile, File akps, File types) throws Exception {
 		this.propertiesCount = new Vector<NTripleAnalysis>();
 		this.akpCounts = new Vector<NTripleAnalysis>();
 		this.propertyFile = propertyFile;
 		this.akps = akps;
-		this.minimalTypes = types;
+		this.minimalTypesOracle = new AllMinimalTypes(types);
 	}
 	
 	@Override
 	public void process(InputFile file) throws Exception {
 		PropertyCount propertyCount = new PropertyCount();
-		
-		String prefix = new Files().prefixOf(file);
-		File minimalTypesFile = new File(minimalTypes, prefix + "_minType.txt");
-		AKPObjectCount akpCount = new AKPObjectCount(new TextInput(new FileSystemConnector(minimalTypesFile)));
+		AKPObjectCount akpCount = new AKPObjectCount(minimalTypesOracle);
 		
 		new NTripleFile(propertyCount, akpCount).process(file);
 		

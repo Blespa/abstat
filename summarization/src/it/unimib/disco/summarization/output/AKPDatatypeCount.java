@@ -2,6 +2,7 @@ package it.unimib.disco.summarization.output;
 
 import it.unimib.disco.summarization.utility.InputFile;
 import it.unimib.disco.summarization.utility.MinimalTypes;
+import it.unimib.disco.summarization.utility.PartitionedMinimalTypes;
 import it.unimib.disco.summarization.utility.NTriple;
 import it.unimib.disco.summarization.utility.NTripleAnalysis;
 
@@ -13,7 +14,7 @@ public class AKPDatatypeCount implements NTripleAnalysis{
 	private HashMap<String, Long> akps;
 
 	public AKPDatatypeCount(InputFile minimalTypes) throws Exception {
-		this.types = new MinimalTypes(minimalTypes);
+		this.types = new PartitionedMinimalTypes(minimalTypes);
 		this.akps = new HashMap<String, Long>();
 	}
 

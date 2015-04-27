@@ -14,18 +14,16 @@ public class ProcessObjectRelationAssertionsTest extends TestWithTemporaryData{
 
 	@Test
 	public void shouldCountAndAggregatePropertiesOccurrences() throws Exception {
+		temporary.namedFile("", "others_minType.txt");
 		
-		temporary.namedFile("1##entity##concept\n##other##other-concept", "a_minType.txt");
-		temporary.namedFile("entity##http://property1##other", "a_obj_properties.nt");
+		temporary.namedFile("1##http://a##http://concept", "a_minType.txt");
+		temporary.namedFile("1##http://b##http://other-concept", "b_minType.txt");
+		temporary.namedFile("1##http://c##http://concept", "c_minType.txt");
+		temporary.namedFile("1##http://d##http://other-concept", "d_minType.txt");
 		
-		temporary.namedFile("1##entity##concept\n##other##other-concept", "b_minType.txt");
-		temporary.namedFile("entity##http://property1##other", "b_obj_properties.nt");
-		
-		temporary.namedFile("1##entity##concept\n##other##other-concept", "c_minType.txt");
-		temporary.namedFile("entity##http://property2##other", "c_obj_properties.nt");
-		
-		temporary.namedFile("1##entity##concept\n##other##other-concept", "d_minType.txt");
-		temporary.namedFile("entity##http://property2##other", "d_obj_properties.nt");
+		temporary.namedFile("http://a##http://property2##http://b", "a_obj_properties.nt");
+		temporary.namedFile("http://b##http://property1##http://c", "b_obj_properties.nt");
+		temporary.namedFile("http://c##http://property2##http://d", "c_obj_properties.nt");
 		
 		ProcessObjectRelationAssertions.main(new String[]{
 			temporary.directory().getAbsolutePath(),
@@ -34,12 +32,12 @@ public class ProcessObjectRelationAssertionsTest extends TestWithTemporaryData{
 		});
 		
 		List<String> properties = linesOf("count-object-properties.txt");
-		assertThat(properties, hasItem("http://property1##2"));
+		assertThat(properties, hasItem("http://property1##1"));
 		assertThat(properties, hasItem("http://property2##2"));
 		
 		List<String> akps = linesOf("object-akp.txt");
-		assertThat(akps, hasItem("concept##http://property1##other-concept##2"));
-		assertThat(akps, hasItem("concept##http://property2##other-concept##2"));
+		assertThat(akps, hasItem("http://concept##http://property2##http://other-concept##2"));
+		assertThat(akps, hasItem("http://other-concept##http://property1##http://concept##1"));
 	}
 	
 	private List<String> linesOf(String file) throws Exception {

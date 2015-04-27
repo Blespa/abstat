@@ -3,6 +3,7 @@ package it.unimib.disco.summarization.tests;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.*;
 import it.unimib.disco.summarization.utility.AKPObjectCount;
+import it.unimib.disco.summarization.utility.PartitionedMinimalTypes;
 
 import org.junit.Test;
 
@@ -11,7 +12,7 @@ public class AKPObjectCountTest {
 	@Test
 	public void emptyContent() throws Exception {
 		
-		AKPObjectCount count = new AKPObjectCount(new TextInputTestDouble());
+		AKPObjectCount count = new AKPObjectCount(new PartitionedMinimalTypes(new TextInputTestDouble()));
 		
 		assertThat(count.counts().size(), equalTo(0));
 	}
@@ -21,7 +22,7 @@ public class AKPObjectCountTest {
 		
 		TextInputTestDouble types = new TextInputTestDouble().withLine("1##entity##type");
 		
-		AKPObjectCount count = new AKPObjectCount(types).track(new TripleBuilder().withSubject("entity")
+		AKPObjectCount count = new AKPObjectCount(new PartitionedMinimalTypes(types)).track(new TripleBuilder().withSubject("entity")
 																				.withProperty("property")
 																				.withObject("entity")
 																.asTriple());

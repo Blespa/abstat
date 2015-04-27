@@ -2,7 +2,7 @@ package it.unimib.disco.summarization.utility;
 
 import java.util.HashMap;
 
-public class PropertyCount {
+public class PropertyCount implements NTripleAnalysis{
 
 	private HashMap<String, Long> counts;
 

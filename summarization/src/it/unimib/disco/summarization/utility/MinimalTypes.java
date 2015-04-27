@@ -4,7 +4,6 @@ import it.unimib.disco.summarization.datatype.Concepts;
 import it.unimib.disco.summarization.datatype.Properties;
 import it.unimib.disco.summarization.extraction.ConceptExtractor;
 import it.unimib.disco.summarization.extraction.PropertyExtractor;
-import it.unimib.disco.summarization.output.Processing;
 import it.unimib.disco.summarization.relation.OntologyDomainRangeExtractor;
 import it.unimib.disco.summarization.relation.OntologySubclassOfExtractor;
 

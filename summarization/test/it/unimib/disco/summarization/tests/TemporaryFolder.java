@@ -1,7 +1,7 @@
 package it.unimib.disco.summarization.tests;
 
-import it.unimib.disco.summarization.output.Files;
 import it.unimib.disco.summarization.utility.FileSystemConnector;
+import it.unimib.disco.summarization.utility.Files;
 import it.unimib.disco.summarization.utility.TextInput;
 
 import java.io.File;

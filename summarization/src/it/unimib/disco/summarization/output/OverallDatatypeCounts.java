@@ -4,6 +4,7 @@ import it.unimib.disco.summarization.utility.BulkTextOutput;
 import it.unimib.disco.summarization.utility.DatatypeCount;
 import it.unimib.disco.summarization.utility.FileSystemConnector;
 import it.unimib.disco.summarization.utility.NTripleFile;
+import it.unimib.disco.summarization.utility.Processing;
 import it.unimib.disco.summarization.utility.TextInput;
 
 import java.io.File;

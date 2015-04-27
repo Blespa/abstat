@@ -2,7 +2,7 @@ package it.unimib.disco.summarization.tests;
 
 import static org.hamcrest.Matchers.hasItem;
 import static org.junit.Assert.*;
-import it.unimib.disco.summarization.output.AggregateDatatypeCounts;
+import it.unimib.disco.summarization.output.ProcessDatatypeRelationAssertions;
 
 import java.io.File;
 import java.util.List;
@@ -22,7 +22,7 @@ public class AggregateDatatypeCountsTest extends TestWithTemporaryData{
 		temporary.namedFile("entity##property##\"35\"", "c_dt_properties.nt");
 		temporary.namedFile("entity##property##\"a string\"", "d_dt_properties.nt");
 		
-		AggregateDatatypeCounts.main(new String[]{
+		ProcessDatatypeRelationAssertions.main(new String[]{
 			temporary.directory().getAbsolutePath(),
 			temporary.directory().getAbsolutePath(),
 		});

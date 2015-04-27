@@ -2,6 +2,7 @@ package it.unimib.disco.summarization.output;
 
 import it.unimib.disco.summarization.utility.MinimalTypes;
 import it.unimib.disco.summarization.utility.Model;
+import it.unimib.disco.summarization.utility.ParallelProcessing;
 
 import java.io.File;
 import java.util.Collection;

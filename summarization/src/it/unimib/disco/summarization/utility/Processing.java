@@ -1,6 +1,5 @@
-package it.unimib.disco.summarization.output;
+package it.unimib.disco.summarization.utility;
 
-import it.unimib.disco.summarization.utility.TextInput;
 
 public interface Processing {
 

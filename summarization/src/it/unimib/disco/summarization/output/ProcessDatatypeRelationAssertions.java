@@ -1,7 +1,9 @@
 package it.unimib.disco.summarization.output;
+import it.unimib.disco.summarization.utility.ParallelProcessing;
+
 import java.io.File;
 
-public class AggregateDatatypeCounts {
+public class ProcessDatatypeRelationAssertions {
 
 	public static void main(String[] args) throws Exception {
 		

@@ -1,8 +1,6 @@
-package it.unimib.disco.summarization.output;
+package it.unimib.disco.summarization.utility;
 
 import it.unimib.disco.summarization.starter.Events;
-import it.unimib.disco.summarization.utility.FileSystemConnector;
-import it.unimib.disco.summarization.utility.TextInput;
 
 import java.io.File;
 import java.util.concurrent.ExecutorService;

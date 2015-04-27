@@ -1,4 +1,4 @@
-package it.unimib.disco.summarization.starter;
+package it.unimib.disco.summarization.output;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;

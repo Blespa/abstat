@@ -94,7 +94,7 @@ echo "---Start: Ontology Report---"
 	export ReportDirectory
 	export TmpDatasetFileResult
 
-	eval ${dbgCmd}""$JAVA_HOME/bin/java -Xms256m -Xmx4000m -cp ontology_summarization.jar it.unimib.disco.summarization.starter.Starter "$OntologyFile" "$ReportDirectory" "$TmpDatasetFileResult"
+	eval ${dbgCmd}""$JAVA_HOME/bin/java -Xms256m -Xmx4000m -cp ontology_summarization.jar it.unimib.disco.summarization.output.ProcessOntology "$OntologyFile" "$TmpDatasetFileResult"
 	if [ $? -ne 0 ]
 	then
 	    echo "App Failed during run"
@@ -347,9 +347,6 @@ echo "---Start: Counting---"
 	    exit 1
 	fi
 
-	#Rimuovo i file dei tipi utilizzati per il calcolo, non più utili
-	rm -f ${orgDatasetFile}/*_types.nt
-	
 	endBlock=$SECONDS
 	if [ $debug -eq 1 ]
 	then
@@ -362,7 +359,7 @@ echo "---Start: Counting---"
 } &>> "log/log.txt"
 { 
 	echo "---Start: Cleaning---"
-	#Rimuovo i file parziali dei pattern utilizzati per il calcolo, non più utili
+	rm -f ${orgDatasetFile}/*_types.nt
 	for element in "${splitters[@]}"
 	do
 	  	rm -f ${minTypeResult}/${element}_uknHierConcept.txt

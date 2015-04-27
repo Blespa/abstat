@@ -1,6 +1,5 @@
 package it.unimib.disco.summarization.output;
 
-import it.unimib.disco.summarization.starter.Events;
 import it.unimib.disco.summarization.utility.ConceptCount;
 import it.unimib.disco.summarization.utility.Files;
 

@@ -1,6 +1,6 @@
 package it.unimib.disco.summarization.tests;
 
-import it.unimib.disco.summarization.starter.Starter;
+import it.unimib.disco.summarization.output.ProcessOntology;
 
 import java.io.File;
 
@@ -16,7 +16,7 @@ public class StarterTest extends TestWithTemporaryData{
 	public void shouldBeAbleToProcessTheMusicOntology() throws Exception {
 		String ontologyDirectory = new File("test/it/unimib/disco/summarization/tests/").getAbsolutePath();
 		
-		Starter.main(new String[]{ontologyDirectory + "/", temporary.path() + "/", temporary.path() + "/"});
+		ProcessOntology.main(new String[]{ontologyDirectory + "/", temporary.path() + "/", temporary.path() + "/"});
 	}
 	
 	@Test
@@ -42,6 +42,6 @@ public class StarterTest extends TestWithTemporaryData{
 		
 		temporary.file(ontology.serialize(), "owl");
 		
-		Starter.main(new String[]{temporary.path() + "/", temporary.path() + "/", temporary.path() + "/"});
+		ProcessOntology.main(new String[]{temporary.path() + "/", temporary.path() + "/", temporary.path() + "/"});
 	}
 }

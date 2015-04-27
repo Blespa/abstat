@@ -1,5 +1,4 @@
 package it.unimib.disco.summarization.output;
-import it.unimib.disco.summarization.starter.Events;
 import it.unimib.disco.summarization.utility.OverallDatatypeRelationsCounting;
 import it.unimib.disco.summarization.utility.ParallelProcessing;
 

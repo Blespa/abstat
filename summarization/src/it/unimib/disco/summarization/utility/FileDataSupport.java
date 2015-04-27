@@ -1,10 +1,7 @@
 package it.unimib.disco.summarization.utility;
 
 import it.unimib.disco.summarization.datatype.Concepts;
-import it.unimib.disco.summarization.datatype.DomainRange;
 import it.unimib.disco.summarization.datatype.EquivalentConcepts;
-import it.unimib.disco.summarization.datatype.EquProperty;
-import it.unimib.disco.summarization.datatype.Properties;
 import it.unimib.disco.summarization.datatype.SubClassOf;
 
 import java.io.BufferedWriter;
@@ -15,7 +12,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.hp.hpl.jena.ontology.OntClass;
-import com.hp.hpl.jena.ontology.OntProperty;
 import com.hp.hpl.jena.ontology.OntResource;
 
 public class FileDataSupport {
@@ -23,21 +19,11 @@ public class FileDataSupport {
 	private SubClassOf subClassOfRelation;
 	private String SubClFile;
 	private String ConcFile;
-	private String EquFile;
-	private String EquPropFile;
-	private String DRFile;
-	private String PropFile;
-	private String PropDTFile;
 
-	public FileDataSupport(SubClassOf subClassOfRelation, String SubClFile, String ConcFile, String EquFile, String EquPropFile, String DRFile, String PropFile, String PropDTFile) {
+	public FileDataSupport(SubClassOf subClassOfRelation, String SubClFile, String ConcFile) {
 		this.subClassOfRelation = subClassOfRelation;
 		this.SubClFile = SubClFile;
 		this.ConcFile = ConcFile;
-		this.EquFile = EquFile;
-		this.EquPropFile = EquPropFile;
-		this.DRFile = DRFile;
-		this.PropFile = PropFile;
-		this.PropDTFile = PropDTFile;
 	}
 	
 	
@@ -77,8 +63,6 @@ public class FileDataSupport {
 							
 						}
 					}
-					//TODO: Scrivere tutte le combinazioni nel caso sia Subj che Obj abbiano pi� di un equivalent class
-					
 				}
 				else if(equClassSubj.size()>0){
 					
@@ -111,10 +95,9 @@ public class FileDataSupport {
 				}
 				
 			}
-			//Close the output stream
 			out.close();
 			
-		}catch (Exception e){//Catch exception if any
+		}catch (Exception e){
 			System.err.println("Error: " + e.getMessage());
 		}
 	}
@@ -135,144 +118,11 @@ public class FileDataSupport {
 				out.write(key+"\n");
 			}
 
-			//Close the output stream
 			out.close();
 			
-		}catch (Exception e){//Catch exception if any
+		}catch (Exception e){
 			System.err.println("Error: " + e.getMessage());
 		}
-	}
-	
-	public void writeProperty(Properties AllProperty){
-
-		List<OntProperty> extractedProp = AllProperty.getExtractedProperty();
-		Iterator<OntProperty> ePropIt = extractedProp.iterator();
-
-
-		try{
-			// Create file 
-			FileWriter fstream = new FileWriter(PropFile);
-			BufferedWriter out = new BufferedWriter(fstream);
-			
-			FileWriter fstreamDT = new FileWriter(PropDTFile);
-			BufferedWriter outDT = new BufferedWriter(fstreamDT);
-			
-			
-			while (ePropIt.hasNext()) {
-				OntProperty prop = ePropIt.next();
-				
-				if(prop.getRDFType(true).getLocalName().equals("DatatypeProperty")) //Se ancora non � conteggiata
-				{
-					outDT.write(prop.getURI()+"\n");
-				}
-				else
-					out.write(prop.getURI()+"\n");
-			}
-
-			//Close the output stream
-			out.close();
-			outDT.close();
-			
-		}catch (Exception e){//Catch exception if any
-			System.err.println("Error: " + e.getMessage());
-		}
-	}
-	
-	public void writeEquclass(EquivalentConcepts equConcepts){
-
-		Iterator<OntResource> pIter = equConcepts.getExtractedEquConcept().keySet().iterator();
-
-
-		try{
-			// Create file 
-			FileWriter fstream = new FileWriter(EquFile);
-			BufferedWriter out = new BufferedWriter(fstream);
-			
-			while (pIter.hasNext()) {
-				OntResource key = pIter.next();
-				List<OntResource> value = equConcepts.getExtractedEquConcept().get(key);
-				
-				if( value.size()>0 ) //Il dato concetto ha concetti equivalenti
-				{
-					out.write(key.getURI()); //Concetto
-					
-					for( OntResource subP : value){
-						
-						out.write("##"+subP.getURI()); //Concetto
-					}
-					
-					out.write("\n");
-				}
-			}
-
-			//Close the output stream
-			out.close();
-			
-		}catch (Exception e){//Catch exception if any
-			System.err.println("Error: " + e.getMessage());
-		}
-	}
-	
-	public void writeEquProperty(EquProperty equProperties){
-
-		Iterator<OntProperty> pIter = equProperties.getExtractedEquProperty().keySet().iterator();
-
-		try{
-			// Create file 
-			FileWriter fstream = new FileWriter(EquPropFile);
-			BufferedWriter out = new BufferedWriter(fstream);
-			
-			while (pIter.hasNext()) {
-				OntResource key = pIter.next();
-				List<OntProperty> value = equProperties.getExtractedEquProperty().get(key);
-				
-				if( value.size()>0 ) //La data propriet� ha propriet� equivalenti
-				{
-					out.write(key.getURI()); //Propriet�
-					
-					for( OntResource subP : value){
-						
-						out.write("##"+subP.getURI()); //Propriet�
-					}
-					
-					out.write("\n");
-				}
-			}
-
-			//Close the output stream
-			out.close();
-			
-		}catch (Exception e){//Catch exception if any
-			System.err.println("Error: " + e.getMessage());
-		}
-	}
-	
-	public void writeDR(DomainRange DRRelation){
-		
-		//Scrivo le informazioni di DR su due file a seconda del tipo della risorsa presente come oggetto (Literal o Concetto)
-		HashMap<String, ArrayList<OntResource>> DRRel = DRRelation.getDRRelation();
-		Iterator<String> iterator = DRRel.keySet().iterator();
-		
-		try{
-			// Create file 
-			FileWriter fstream = new FileWriter(DRFile);
-			BufferedWriter out = new BufferedWriter(fstream);
-			
-			while (iterator.hasNext()) {
-				String key = iterator.next().toString();
-				ArrayList<OntResource> value = DRRel.get(key);
-
-				out.write(key + "##" + value.get(0).getURI() + "##" + value.get(1).getURI()); //Propriet�
-				out.write("\n");
-			}
-			
-			//Close the output stream
-			out.close();
-			
-		}catch (Exception e){//Catch exception if any
-			System.err.println("Error: " + e.getMessage());
-		}
-		
 	}
 	
 	private ArrayList<String> listRelativeEquConcept(EquivalentConcepts equConcept,OntClass equClass){
@@ -301,9 +151,6 @@ public class FileDataSupport {
 
 			}
 		}
-
 		return equConcepts;
-		
 	}
-
 }

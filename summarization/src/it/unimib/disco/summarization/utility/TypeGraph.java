@@ -12,32 +12,8 @@ public class TypeGraph{
 	
 	private DirectedAcyclicGraph<String, DefaultEdge> graph;
 
-	public TypeGraph(Concepts concepts, InputFile subClassesPath) throws Exception{
-		List<String> relations = new ArrayList<String>();
-		while(subClassesPath.hasNextLine()){
-			relations.add(subClassesPath.nextLine());
-		}
-		this.graph = subTypeGraphFrom(concepts, relations);
-	}
-	
 	public TypeGraph(Concepts concepts, List<String> subClasses) throws Exception{
 		this.graph = subTypeGraphFrom(concepts, subClasses);
-	}
-	
-	public List<String> roots(){
-		ArrayList<String> roots = new ArrayList<String>();
-		for(String concept : graph.vertexSet()){
-			if(isRoot(concept)) roots.add(concept);
-		}
-		return roots;
-	}
-	
-	public List<String> leaves(){
-		ArrayList<String> leaves = new ArrayList<String>();
-		for(String concept : graph.vertexSet()){
-			if(isLeaf(concept)) leaves.add(concept);
-		}
-		return leaves;
 	}
 	
 	public List<List<String>> pathsBetween(String leaf, String root){
@@ -58,14 +34,6 @@ public class TypeGraph{
 			String superType = graph.getEdgeTarget(edgeToSuperType);
 			inOrderTraversal(superType, root, path, paths);
 		}
-	}
-	
-	private boolean isLeaf(String concept){
-		return graph.incomingEdgesOf(concept).isEmpty();
-	}
-	
-	private boolean isRoot(String concept){
-		return graph.outgoingEdgesOf(concept).isEmpty();
 	}
 	
 	private DirectedAcyclicGraph<String, DefaultEdge> subTypeGraphFrom(Concepts concepts, List<String> subclassRelations) throws Exception {

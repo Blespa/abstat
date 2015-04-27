@@ -5,7 +5,7 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
-import it.unimib.disco.summarization.utility.MinimalTypes;
+import it.unimib.disco.summarization.utility.MinimalTypesCalculation;
 import it.unimib.disco.summarization.utility.TextInput;
 
 import java.io.File;
@@ -18,7 +18,7 @@ import org.junit.Test;
 import com.hp.hpl.jena.vocabulary.OWL;
 import com.hp.hpl.jena.vocabulary.RDFS;
 
-public class MinimalTypesTest extends TestWithTemporaryData{
+public class MinimalTypesCalculationTest extends TestWithTemporaryData{
 
 	@Test
 	public void shouldParseFileNamesWithStrangeSeparators() throws Exception {
@@ -256,9 +256,9 @@ public class MinimalTypesTest extends TestWithTemporaryData{
 		assertThat(linesOf("s_countConcepts.txt"), hasItem("http://person##1"));
 	}
 	
-	private MinimalTypes minimalTypesFrom(ToyOntology ontology, File directory) throws Exception {
+	private MinimalTypesCalculation minimalTypesFrom(ToyOntology ontology, File directory) throws Exception {
 		
-		return new MinimalTypes(ontology.build(), directory);
+		return new MinimalTypesCalculation(ontology.build(), directory);
 	}
 	
 	private List<String> linesOf(String name) throws IOException {

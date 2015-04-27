@@ -339,7 +339,7 @@ echo "---Start: MinType, CountConcepts and CountDataTypes---"
 	    exit 1
 	fi
 
-	eval ${dbgCmd}""$JAVA_HOME/bin/java -Xms256m -Xmx16000m -cp ontology_summarization.jar it.unimib.disco.summarization.output.ProcessDatatypeRelationAssertions "${orgDatasetFile}" "$ResultsDirectory/patterns/"
+	eval ${dbgCmd}""$JAVA_HOME/bin/java -Xms256m -Xmx16000m -cp ontology_summarization.jar it.unimib.disco.summarization.output.ProcessDatatypeRelationAssertions "${orgDatasetFile}" "$minTypeResult" "$ResultsDirectory/patterns/"
 
 	if [ $? -ne 0 ]
 	then

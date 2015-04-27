@@ -17,12 +17,20 @@ public class ProcessDatatypeRelationAssertionsTest extends TestWithTemporaryData
 	@Test
 	public void shouldCountAndAggregateDatatypeOccurrences() throws Exception {
 		
+		temporary.namedFile("1##entity##concept", "a_minType.txt");
 		temporary.namedFile("entity##http://property1##\"35\"##type", "a_dt_properties.nt");
+		
+		temporary.namedFile("1##entity##concept", "b_minType.txt");
 		temporary.namedFile("entity##http://property1##\"82\"##type", "b_dt_properties.nt");
-		temporary.namedFile("entity##http://property2##\"35\"", "c_dt_properties.nt");
-		temporary.namedFile("entity##http://property2##\"a string\"", "d_dt_properties.nt");
+		
+		temporary.namedFile("1##other-entity##other-concept", "c_minType.txt");
+		temporary.namedFile("other-entity##http://property2##\"35\"", "c_dt_properties.nt");
+		
+		temporary.namedFile("1##other-entity##other-concept", "d_minType.txt");
+		temporary.namedFile("other-entity##http://property2##\"a string\"", "d_dt_properties.nt");
 		
 		ProcessDatatypeRelationAssertions.main(new String[]{
+			temporary.directory().getAbsolutePath(),
 			temporary.directory().getAbsolutePath(),
 			temporary.directory().getAbsolutePath(),
 		});
@@ -34,6 +42,10 @@ public class ProcessDatatypeRelationAssertionsTest extends TestWithTemporaryData
 		List<String> properties = linesOf("count-datatype-properties.txt");
 		assertThat(properties, hasItem("http://property1##2"));
 		assertThat(properties, hasItem("http://property2##2"));
+		
+		List<String> patterns = linesOf("datatype-akp.txt");
+		assertThat(patterns, hasItem("concept##http://property1##type##2"));
+		assertThat(patterns, hasItem("other-concept##http://property2##" + RDFS.Literal + "##2"));
 	}
 	
 	private List<String> linesOf(String file) throws Exception {

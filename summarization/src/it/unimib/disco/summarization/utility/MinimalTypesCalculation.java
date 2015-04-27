@@ -57,7 +57,7 @@ public class MinimalTypesCalculation implements Processing{
 			}
 		}
 		
-		String prefix = prefixOf(types);
+		String prefix = new Files().prefixOf(types);
 		writeConceptCounts(conceptCounts, targetDirectory, prefix);
 		writeExternalConcepts(externalConcepts, targetDirectory, prefix);
 		writeMinimalTypes(minimalTypes, targetDirectory, prefix);
@@ -122,11 +122,6 @@ public class MinimalTypesCalculation implements Processing{
 		return new BulkTextOutput(new FileSystemConnector(new File(directory, prefix + "_" + name + ".txt")), 1000);
 	}
 
-	private String prefixOf(InputFile types) {
-		String[] splitted = StringUtils.split(new File(types.name()).getName(), "_");
-		return splitted.length == 1 ? "_": splitted[0];
-	}
-	
 	private Concepts extractConcepts(OntModel ontology) {
 		PropertyExtractor pExtract = new PropertyExtractor();
 		pExtract.setProperty(ontology);
@@ -157,3 +152,4 @@ public class MinimalTypesCalculation implements Processing{
 		return concepts;
 	}
 }
+

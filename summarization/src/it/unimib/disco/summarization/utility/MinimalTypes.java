@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+import com.hp.hpl.jena.vocabulary.OWL;
+
 
 public class MinimalTypes {
 
@@ -16,7 +18,10 @@ public class MinimalTypes {
 
 	public List<String> of(String entity) {
 		List<String> result = types.get(entity);
-		if(result == null) result = new ArrayList<String>();
+		if(result == null){
+			result = new ArrayList<String>();
+			result.add(OWL.Thing.toString());
+		}
 		return result;
 	}
 	

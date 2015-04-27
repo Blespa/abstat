@@ -6,6 +6,8 @@ import it.unimib.disco.summarization.utility.MinimalTypes;
 
 import org.junit.Test;
 
+import com.hp.hpl.jena.vocabulary.OWL;
+
 public class MinimalTypeTest {
 
 	@Test
@@ -13,7 +15,7 @@ public class MinimalTypeTest {
 		
 		MinimalTypes minimalTypes = new MinimalTypes(new TextInputTestDouble());
 		
-		assertThat(minimalTypes.of("any").size(), equalTo(0));
+		assertThat(minimalTypes.of("any").get(0), equalTo(OWL.Thing.toString()));
 	}
 	
 	@Test

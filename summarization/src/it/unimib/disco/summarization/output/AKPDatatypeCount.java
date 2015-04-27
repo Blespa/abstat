@@ -3,10 +3,11 @@ package it.unimib.disco.summarization.output;
 import it.unimib.disco.summarization.utility.InputFile;
 import it.unimib.disco.summarization.utility.MinimalTypes;
 import it.unimib.disco.summarization.utility.NTriple;
+import it.unimib.disco.summarization.utility.NTripleAnalysis;
 
 import java.util.HashMap;
 
-public class AKPDatatypeCount {
+public class AKPDatatypeCount implements NTripleAnalysis{
 
 	private MinimalTypes types;
 	private HashMap<String, Long> akps;

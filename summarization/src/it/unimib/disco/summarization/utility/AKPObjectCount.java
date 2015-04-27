@@ -2,7 +2,7 @@ package it.unimib.disco.summarization.utility;
 
 import java.util.HashMap;
 
-public class AKPObjectCount {
+public class AKPObjectCount implements NTripleAnalysis{
 
 	private MinimalTypes types;
 	private HashMap<String, Long> akps;

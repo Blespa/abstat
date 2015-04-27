@@ -1,11 +1,11 @@
-http://dbpedia.org/ontology/PopulatedPlace/areaTotal##3
 http://www.w3.org/2003/01/geo/wgs84_pos#long##1
+http://dbpedia.org/ontology/PopulatedPlace/areaTotal##3
 http://dbpedia.org/ontology/areaWater##2
 http://dbpedia.org/ontology/areaLand##2
 http://dbpedia.org/ontology/maximumElevation##1
 http://xmlns.com/foaf/0.1/name##7
-http://dbpedia.org/ontology/areaTotal##2
 http://dbpedia.org/ontology/minimumElevation##1
 http://dbpedia.org/ontology/PopulatedPlace/populationDensity##1
+http://dbpedia.org/ontology/areaTotal##2
 http://www.w3.org/2003/01/geo/wgs84_pos#lat##1
 http://dbpedia.org/ontology/birthDate##1

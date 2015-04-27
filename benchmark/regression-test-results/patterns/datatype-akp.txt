@@ -1,9 +1,9 @@
 http://schema.org/AdministrativeArea##http://dbpedia.org/ontology/PopulatedPlace/areaTotal##http://dbpedia.org/datatype/squareKilometre##1
 http://schema.org/AdministrativeArea##http://dbpedia.org/ontology/areaWater##http://www.w3.org/2001/XMLSchema#double##1
 http://dbpedia.org/ontology/OfficeHolder##http://xmlns.com/foaf/0.1/name##http://www.w3.org/2000/01/rdf-schema#Literal##1
-http://schema.org/Place##http://www.w3.org/2003/01/geo/wgs84_pos#lat##http://www.w3.org/2001/XMLSchema#float##1
-http://www.opengis.net/gml/_Feature##http://www.w3.org/2003/01/geo/wgs84_pos#lat##http://www.w3.org/2001/XMLSchema#float##1
 http://schema.org/Person##http://xmlns.com/foaf/0.1/name##http://www.w3.org/2000/01/rdf-schema#Literal##1
+http://www.opengis.net/gml/_Feature##http://www.w3.org/2003/01/geo/wgs84_pos#lat##http://www.w3.org/2001/XMLSchema#float##1
+http://schema.org/Place##http://www.w3.org/2003/01/geo/wgs84_pos#lat##http://www.w3.org/2001/XMLSchema#float##1
 http://www.opengis.net/gml/_Feature##http://dbpedia.org/ontology/PopulatedPlace/populationDensity##http://dbpedia.org/datatype/inhabitantsPerSquareKilometre##1
 http://dbpedia.org/ontology/City##http://dbpedia.org/ontology/areaTotal##http://www.w3.org/2001/XMLSchema#double##1
 http://dbpedia.org/ontology/Settlement##http://dbpedia.org/ontology/PopulatedPlace/areaTotal##http://dbpedia.org/datatype/squareKilometre##1
@@ -21,13 +21,13 @@ http://dbpedia.org/ontology/AdministrativeRegion##http://dbpedia.org/ontology/ar
 http://dbpedia.org/ontology/Wikidata:Q532##http://www.w3.org/2003/01/geo/wgs84_pos#lat##http://www.w3.org/2001/XMLSchema#float##1
 http://dbpedia.org/ontology/City##http://dbpedia.org/ontology/areaWater##http://www.w3.org/2001/XMLSchema#double##1
 http://wikidata.dbpedia.org/resource/Q215627##http://xmlns.com/foaf/0.1/name##http://www.w3.org/2000/01/rdf-schema#Literal##1
-http://dbpedia.org/ontology/Settlement##http://www.w3.org/2003/01/geo/wgs84_pos#lat##http://www.w3.org/2001/XMLSchema#float##1
 http://dbpedia.org/ontology/AdministrativeRegion##http://dbpedia.org/ontology/areaLand##http://www.w3.org/2001/XMLSchema#double##1
+http://dbpedia.org/ontology/Settlement##http://www.w3.org/2003/01/geo/wgs84_pos#lat##http://www.w3.org/2001/XMLSchema#float##1
 http://dbpedia.org/ontology/OfficeHolder##http://dbpedia.org/ontology/birthDate##http://www.w3.org/2001/XMLSchema#date##1
 http://dbpedia.org/ontology/Wikidata:Q532##http://dbpedia.org/ontology/PopulatedPlace/populationDensity##http://dbpedia.org/datatype/inhabitantsPerSquareKilometre##1
-http://wikidata.dbpedia.org/resource/Q5##http://xmlns.com/foaf/0.1/name##http://www.w3.org/2000/01/rdf-schema#Literal##1
 http://dbpedia.org/ontology/AdministrativeRegion##http://xmlns.com/foaf/0.1/name##http://www.w3.org/2000/01/rdf-schema#Literal##2
 http://schema.org/Place##http://dbpedia.org/ontology/areaWater##http://www.w3.org/2001/XMLSchema#double##2
+http://wikidata.dbpedia.org/resource/Q5##http://xmlns.com/foaf/0.1/name##http://www.w3.org/2000/01/rdf-schema#Literal##1
 http://schema.org/Place##http://dbpedia.org/ontology/areaTotal##http://www.w3.org/2001/XMLSchema#double##2
 http://dbpedia.org/ontology/Wikidata:Q532##http://dbpedia.org/ontology/PopulatedPlace/areaTotal##http://dbpedia.org/datatype/squareKilometre##3
 http://schema.org/City##http://dbpedia.org/ontology/areaLand##http://www.w3.org/2001/XMLSchema#double##1
@@ -37,8 +37,8 @@ http://www.opengis.net/gml/_Feature##http://xmlns.com/foaf/0.1/name##http://www.
 http://dbpedia.org/ontology/Wikidata:Q532##http://dbpedia.org/ontology/maximumElevation##http://www.w3.org/2001/XMLSchema#double##1
 http://dbpedia.org/ontology/Wikidata:Q532##http://dbpedia.org/ontology/areaTotal##http://www.w3.org/2001/XMLSchema#double##2
 http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent##http://dbpedia.org/ontology/birthDate##http://www.w3.org/2001/XMLSchema#date##1
-http://dbpedia.org/ontology/City##http://dbpedia.org/ontology/areaLand##http://www.w3.org/2001/XMLSchema#double##1
 http://schema.org/Place##http://dbpedia.org/ontology/areaLand##http://www.w3.org/2001/XMLSchema#double##2
+http://dbpedia.org/ontology/City##http://dbpedia.org/ontology/areaLand##http://www.w3.org/2001/XMLSchema#double##1
 http://schema.org/City##http://dbpedia.org/ontology/areaWater##http://www.w3.org/2001/XMLSchema#double##1
 http://schema.org/Place##http://dbpedia.org/ontology/minimumElevation##http://www.w3.org/2001/XMLSchema#double##1
 http://dbpedia.org/ontology/Wikidata:Q532##http://dbpedia.org/ontology/areaLand##http://www.w3.org/2001/XMLSchema#double##2

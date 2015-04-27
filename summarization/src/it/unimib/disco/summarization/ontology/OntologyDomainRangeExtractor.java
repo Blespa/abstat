@@ -1,8 +1,4 @@
-package it.unimib.disco.summarization.relation;
-
-import it.unimib.disco.summarization.datatype.Concepts;
-import it.unimib.disco.summarization.datatype.DomainRange;
-import it.unimib.disco.summarization.datatype.Properties;
+package it.unimib.disco.summarization.ontology;
 
 import java.util.ArrayList;
 import java.util.HashMap;

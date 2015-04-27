@@ -1,19 +1,13 @@
 package it.unimib.disco.summarization.output;
 
-import it.unimib.disco.summarization.datatype.Concepts;
-import it.unimib.disco.summarization.datatype.EquProperty;
-import it.unimib.disco.summarization.datatype.EquivalentConcepts;
-import it.unimib.disco.summarization.datatype.InvProperty;
-import it.unimib.disco.summarization.datatype.Properties;
-import it.unimib.disco.summarization.datatype.SubClassOf;
-import it.unimib.disco.summarization.datatype.SubProperty;
-import it.unimib.disco.summarization.extraction.ConceptExtractor;
-import it.unimib.disco.summarization.extraction.EqConceptExtractor;
-import it.unimib.disco.summarization.extraction.EqPropertyExtractor;
-import it.unimib.disco.summarization.extraction.InvPropertyExtractor;
-import it.unimib.disco.summarization.extraction.PropertyExtractor;
-import it.unimib.disco.summarization.extraction.SubPropertyExtractor;
-import it.unimib.disco.summarization.relation.OntologySubclassOfExtractor;
+import it.unimib.disco.summarization.ontology.ConceptExtractor;
+import it.unimib.disco.summarization.ontology.Concepts;
+import it.unimib.disco.summarization.ontology.EqConceptExtractor;
+import it.unimib.disco.summarization.ontology.EquivalentConcepts;
+import it.unimib.disco.summarization.ontology.OntologySubclassOfExtractor;
+import it.unimib.disco.summarization.ontology.Properties;
+import it.unimib.disco.summarization.ontology.PropertyExtractor;
+import it.unimib.disco.summarization.ontology.SubClassOf;
 import it.unimib.disco.summarization.utility.FileDataSupport;
 import it.unimib.disco.summarization.utility.Model;
 
@@ -55,30 +49,6 @@ public class ProcessOntology {
 		properties.setExtractedProperty(pExtract.getExtractedProperty());
 		properties.setCounter(pExtract.getCounter());
 		
-		//Extract SubProperty from Ontology Model
-		SubPropertyExtractor spExtract = new SubPropertyExtractor();
-		spExtract.setSubProperty(properties);
-		
-		SubProperty subProperties = new SubProperty();
-		subProperties.setExtractedSubProperty(spExtract.getExtractedSubProperty());
-		subProperties.setCounter(spExtract.getCounter());
-		
-		//Extract InverseProperty from Ontology Model
-		InvPropertyExtractor ipExtract = new InvPropertyExtractor();
-		ipExtract.setInvProperty(properties);
-		
-		InvProperty invProperties = new InvProperty();
-		invProperties.setExtractedInvProperty(ipExtract.getExtractedInvProperty());
-		invProperties.setCounter(ipExtract.getCounter());
-		
-		//Extract EquivalentProperty from Ontology Model
-		EqPropertyExtractor epExtract = new EqPropertyExtractor();
-		epExtract.setEquProperty(properties, ontologyModel);
-				
-		EquProperty equProperties = new EquProperty();
-		equProperties.setExtractedEquProperty(epExtract.getExtractedEquProperty());
-		equProperties.setCounter(epExtract.getCounter());
-
 		//Extract Concept from Ontology Model
 		ConceptExtractor cExtract = new ConceptExtractor();
 		cExtract.setConcepts(ontologyModel);

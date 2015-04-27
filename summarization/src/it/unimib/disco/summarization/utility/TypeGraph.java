@@ -1,6 +1,6 @@
 package it.unimib.disco.summarization.utility;
 
-import it.unimib.disco.summarization.datatype.Concepts;
+import it.unimib.disco.summarization.ontology.Concepts;
 
 import java.util.ArrayList;
 import java.util.List;

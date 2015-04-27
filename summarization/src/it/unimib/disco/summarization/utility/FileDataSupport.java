@@ -1,8 +1,8 @@
 package it.unimib.disco.summarization.utility;
 
-import it.unimib.disco.summarization.datatype.Concepts;
-import it.unimib.disco.summarization.datatype.EquivalentConcepts;
-import it.unimib.disco.summarization.datatype.SubClassOf;
+import it.unimib.disco.summarization.ontology.Concepts;
+import it.unimib.disco.summarization.ontology.EquivalentConcepts;
+import it.unimib.disco.summarization.ontology.SubClassOf;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

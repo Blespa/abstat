@@ -1,4 +1,4 @@
-package it.unimib.disco.summarization.datatype;
+package it.unimib.disco.summarization.ontology;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -2,12 +2,12 @@ package it.unimib.disco.summarization.tests;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.*;
-import it.unimib.disco.summarization.datatype.Concepts;
-import it.unimib.disco.summarization.datatype.DomainRange;
-import it.unimib.disco.summarization.datatype.Properties;
-import it.unimib.disco.summarization.extraction.ConceptExtractor;
-import it.unimib.disco.summarization.extraction.PropertyExtractor;
-import it.unimib.disco.summarization.relation.OntologyDomainRangeExtractor;
+import it.unimib.disco.summarization.ontology.ConceptExtractor;
+import it.unimib.disco.summarization.ontology.Concepts;
+import it.unimib.disco.summarization.ontology.DomainRange;
+import it.unimib.disco.summarization.ontology.OntologyDomainRangeExtractor;
+import it.unimib.disco.summarization.ontology.Properties;
+import it.unimib.disco.summarization.ontology.PropertyExtractor;
 
 import org.junit.Test;
 

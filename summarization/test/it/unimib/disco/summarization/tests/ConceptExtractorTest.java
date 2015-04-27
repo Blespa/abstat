@@ -2,7 +2,7 @@ package it.unimib.disco.summarization.tests;
 
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.*;
-import it.unimib.disco.summarization.extraction.ConceptExtractor;
+import it.unimib.disco.summarization.ontology.ConceptExtractor;
 
 import java.util.HashMap;
 

@@ -1,6 +1,4 @@
-package it.unimib.disco.summarization.extraction;
-
-import it.unimib.disco.summarization.datatype.Concepts;
+package it.unimib.disco.summarization.ontology;
 
 import java.util.ArrayList;
 import java.util.HashMap;

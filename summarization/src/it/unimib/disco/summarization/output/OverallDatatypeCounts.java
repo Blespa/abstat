@@ -7,25 +7,27 @@ import it.unimib.disco.summarization.utility.NTripleFile;
 
 import java.io.File;
 import java.util.HashMap;
-import java.util.Vector;
 import java.util.Map.Entry;
+import java.util.Vector;
 
-public class OverallDatatypeCounts{
+public class OverallDatatypeCounts implements Processing{
 	
-	Vector<DatatypeCount> counts = new Vector<DatatypeCount>();
+	private Vector<DatatypeCount> counts;
 	private File file;
 	
 	public OverallDatatypeCounts(File targetFile) {
+		this.counts = new Vector<DatatypeCount>();
 		this.file = targetFile;
 	}
 	
+	@Override
 	public void process(File file) throws Exception {
 		DatatypeCount analysis = new DatatypeCount();
 		new NTripleFile(analysis).process(file);
 		counts.add(analysis);
 	}
 	
-	public void writeResults() throws Exception {
+	public void endProcessing() throws Exception {
 		
 		HashMap<String, Long> aggregatedCounts = new HashMap<String, Long>();
 	    for(DatatypeCount count : counts){

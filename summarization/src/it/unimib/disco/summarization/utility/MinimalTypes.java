@@ -4,6 +4,7 @@ import it.unimib.disco.summarization.datatype.Concepts;
 import it.unimib.disco.summarization.datatype.Properties;
 import it.unimib.disco.summarization.extraction.ConceptExtractor;
 import it.unimib.disco.summarization.extraction.PropertyExtractor;
+import it.unimib.disco.summarization.output.Processing;
 import it.unimib.disco.summarization.relation.OntologyDomainRangeExtractor;
 import it.unimib.disco.summarization.relation.OntologySubclassOfExtractor;
 
@@ -20,20 +21,26 @@ import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.vocabulary.OWL;
 
-public class MinimalTypes {
+public class MinimalTypes implements Processing{
 
 	private TypeGraph graph;
 	private Concepts concepts;
 	private List<String> subclassRelations;
+	private File targetDirectory;
 
-	public MinimalTypes(OntModel ontology) throws Exception {
+	public MinimalTypes(OntModel ontology, File targetDirectory) throws Exception {
 		Concepts concepts = extractConcepts(ontology);
 		
+		this.targetDirectory = targetDirectory;
 		this.concepts = concepts;
 		this.graph = new TypeGraph(concepts, subclassRelations);
 	}
 
-	public void computeFor(File types, File directory) throws Exception {
+	@Override
+	public void endProcessing() throws Exception {}
+	
+	@Override
+	public void process(File types) throws Exception {
 		HashMap<String, Integer> conceptCounts = buildConceptCountsFrom(concepts);
 		List<String> externalConcepts = new ArrayList<String>();
 		HashMap<String, HashSet<String>> minimalTypes = new HashMap<String, HashSet<String>>();
@@ -53,9 +60,9 @@ public class MinimalTypes {
 		}
 		
 		String prefix = prefixOf(types);
-		writeConceptCounts(conceptCounts, directory, prefix);
-		writeExternalConcepts(externalConcepts, directory, prefix);
-		writeMinimalTypes(minimalTypes, directory, prefix);
+		writeConceptCounts(conceptCounts, targetDirectory, prefix);
+		writeExternalConcepts(externalConcepts, targetDirectory, prefix);
+		writeMinimalTypes(minimalTypes, targetDirectory, prefix);
 	}
 
 	private void trackMinimalType(String entity, String concept, HashMap<String, HashSet<String>> minimalTypes) {

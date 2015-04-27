@@ -16,14 +16,14 @@ public class ParallelProcessing{
 		this.suffix = suffix;
 	}
 	
-	public void process(final OverallDatatypeCounts counts) {
+	public void process(final Processing processing) {
 		ExecutorService executor = Executors.newFixedThreadPool(10);
 		for(final File file : new Files().get(sourceDirectory, suffix)){
 			executor.execute(new Runnable() {
 				@Override
 				public void run() {
 					try {
-						counts.process(file);
+						processing.process(file);
 					} catch (Exception e) {
 						new Events().error(file, e);
 					}

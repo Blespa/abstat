@@ -1,5 +1,0 @@
-Property##How many times is used##Number of Subject Resources##Number of Object Resources##Number of minimum type class that are subject of the property##Number of minimum type class that are subject of the property
-http://dbpedia.org/ontology/birthPlace##2##0##0##0##0
-http://dbpedia.org/ontology/isPartOf##1##1##1##1##0.119332##1##0.119332
-http://dbpedia.org/ontology/capital##1##1##1##1##0.119332##1##0.119332
-http://dbpedia.org/ontology/residence##1##0##0##0##0

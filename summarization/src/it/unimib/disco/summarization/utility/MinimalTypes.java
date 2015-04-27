@@ -20,28 +20,32 @@ import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.vocabulary.OWL;
 
-public class MinimalTypes {
+public class MinimalTypes implements Processing{
 
 	private TypeGraph graph;
 	private Concepts concepts;
 	private List<String> subclassRelations;
+	private File targetDirectory;
 
-	public MinimalTypes(OntModel ontology) throws Exception {
+	public MinimalTypes(OntModel ontology, File targetDirectory) throws Exception {
 		Concepts concepts = extractConcepts(ontology);
 		
+		this.targetDirectory = targetDirectory;
 		this.concepts = concepts;
 		this.graph = new TypeGraph(concepts, subclassRelations);
 	}
 
-	public void computeFor(File types, File directory) throws Exception {
+	@Override
+	public void endProcessing() throws Exception {}
+	
+	@Override
+	public void process(InputFile types) throws Exception {
 		HashMap<String, Integer> conceptCounts = buildConceptCountsFrom(concepts);
 		List<String> externalConcepts = new ArrayList<String>();
 		HashMap<String, HashSet<String>> minimalTypes = new HashMap<String, HashSet<String>>();
 		
-		TextInput typeRelations = new TextInput(new FileSystemConnector(types));
-		
-		while(typeRelations.hasNextLine()){
-			String line = typeRelations.nextLine();
+		while(types.hasNextLine()){
+			String line = types.nextLine();
 			String[] resources = line.split("##");
 			
 			String entity = resources[0];
@@ -53,9 +57,9 @@ public class MinimalTypes {
 		}
 		
 		String prefix = prefixOf(types);
-		writeConceptCounts(conceptCounts, directory, prefix);
-		writeExternalConcepts(externalConcepts, directory, prefix);
-		writeMinimalTypes(minimalTypes, directory, prefix);
+		writeConceptCounts(conceptCounts, targetDirectory, prefix);
+		writeExternalConcepts(externalConcepts, targetDirectory, prefix);
+		writeMinimalTypes(minimalTypes, targetDirectory, prefix);
 	}
 
 	private void trackMinimalType(String entity, String concept, HashMap<String, HashSet<String>> minimalTypes) {
@@ -116,8 +120,8 @@ public class MinimalTypes {
 		return new BulkTextOutput(new FileSystemConnector(new File(directory, prefix + "_" + name + ".txt")), 1000);
 	}
 
-	private String prefixOf(File types) {
-		String[] splitted = StringUtils.split(types.getName(), "_");
+	private String prefixOf(InputFile types) {
+		String[] splitted = StringUtils.split(new File(types.name()).getName(), "_");
 		return splitted.length == 1 ? "_": splitted[0];
 	}
 	

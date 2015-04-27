@@ -4,6 +4,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import it.unimib.disco.summarization.utility.FileSystemConnector;
+import it.unimib.disco.summarization.utility.InputFile;
 import it.unimib.disco.summarization.utility.TextInput;
 import it.unimib.disco.summarization.utility.TextOutput;
 
@@ -18,7 +19,7 @@ public class TextInputTest extends TestWithTemporaryData{
 	public void contentOfAnEmptyFileShouldBeNone() throws Exception {
 		new TextOutput(connector()).close();
 		
-		TextInput text = new TextInput(connector());
+		InputFile text = new TextInput(connector());
 		
 		assertThat(text.hasNextLine(), is(false));
 	}
@@ -27,7 +28,7 @@ public class TextInputTest extends TestWithTemporaryData{
 	public void shouldReadTheLines() throws Exception {
 		new TextOutput(connector()).writeLine("content").close();
 		
-		TextInput textInput = new TextInput(connector());
+		InputFile textInput = new TextInput(connector());
 		
 		assertThat(textInput.nextLine(), is(equalTo("content")));
 	}

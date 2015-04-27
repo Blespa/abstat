@@ -1,4 +1,4 @@
-package it.unimib.disco.summarization.output;
+package it.unimib.disco.summarization.utility;
 
 import java.io.File;
 import java.io.FilenameFilter;

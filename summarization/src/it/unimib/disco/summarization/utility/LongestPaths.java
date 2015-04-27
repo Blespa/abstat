@@ -13,7 +13,7 @@ public class LongestPaths {
 
 	private TypeGraph typeGraph;
 
-	public LongestPaths(Concepts concepts, TextInput subClassesPath) throws Exception {
+	public LongestPaths(Concepts concepts, InputFile subClassesPath) throws Exception {
 		this.typeGraph = new TypeGraph(concepts, subClassesPath);
 	}
 	

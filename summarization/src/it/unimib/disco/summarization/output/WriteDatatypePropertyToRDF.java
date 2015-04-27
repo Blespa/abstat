@@ -36,15 +36,11 @@ public class WriteDatatypePropertyToRDF {
 				Resource localProperty = vocabulary.asLocalResource(globalProperty.getURI());
 
 				Literal occurrence = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
-				Literal minTypeSubOccurrence = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE2)));
-				Literal minTypeObjOccurrence = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE3)));
 				
 				//add statements to model
 				model.add(localProperty, RDFS.seeAlso, globalProperty);
 				model.add(localProperty, RDF.type, vocabulary.property());
 				model.add(localProperty, vocabulary.occurrence(), occurrence);
-				model.add(localProperty, vocabulary.subjectMinTypes(), minTypeSubOccurrence);
-				model.add(localProperty, vocabulary.objectMinTypes(), minTypeObjOccurrence);
 			}
 			catch(Exception e){
 				new Events().error("file" + csvFilePath + " row" + row, e);
@@ -66,19 +62,8 @@ public class WriteDatatypePropertyToRDF {
 				Row r = new Row();
 
 				if (row[0].contains("http")){
-
 					r.add(Row.Entry.SUBJECT, row[0]);
 					r.add(Row.Entry.SCORE1, row[1]);
-					r.add(Row.Entry.SCORE2, row[4]);
-
-					if(row.length == 8|| row.length == 7){
-
-						r.add(Row.Entry.SCORE3, row[6]);
-					}
-					else if(row.length == 6){
-
-						r.add(Row.Entry.SCORE3, row[5]);
-					}
 					allFacts.add(r);
 				}
 			}

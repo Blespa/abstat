@@ -1,0 +1,4 @@
+http://dbpedia.org/ontology/isPartOf##1
+http://dbpedia.org/ontology/residence##1
+http://dbpedia.org/ontology/capital##1
+http://dbpedia.org/ontology/birthPlace##2

@@ -12,7 +12,7 @@ public class TypeGraph{
 	
 	private DirectedAcyclicGraph<String, DefaultEdge> graph;
 
-	public TypeGraph(Concepts concepts, TextInput subClassesPath) throws Exception{
+	public TypeGraph(Concepts concepts, InputFile subClassesPath) throws Exception{
 		List<String> relations = new ArrayList<String>();
 		while(subClassesPath.hasNextLine()){
 			relations.add(subClassesPath.nextLine());

@@ -14,7 +14,7 @@ public class NTripleFileTest extends TestWithTemporaryData{
 		
 		NTripleAnalysisInspector analysis = new NTripleAnalysisInspector();
 		
-		new NTripleFile(analysis).process(temporary.file());
+		new NTripleFile(analysis).process(temporary.fileTextInput());
 		
 		assertThat(analysis.countProcessed(), equalTo(0));
 	}
@@ -24,7 +24,7 @@ public class NTripleFileTest extends TestWithTemporaryData{
 		
 		NTripleAnalysisInspector analysis = new NTripleAnalysisInspector();
 		
-		new NTripleFile(analysis).process(temporary.file("a##b##c"));
+		new NTripleFile(analysis).process(temporary.fileTextInput("a##b##c"));
 		
 		assertThat(analysis.countProcessed(), equalTo(1));
 	}
@@ -33,7 +33,7 @@ public class NTripleFileTest extends TestWithTemporaryData{
 	public void shouldIndexAlsoWithSpaces() throws Exception {
 		NTripleAnalysisInspector analysis = new NTripleAnalysisInspector();
 		
-		new NTripleFile(analysis).process(temporary.file("http://1234##http://predicate##http://uri with space"));
+		new NTripleFile(analysis).process(temporary.fileTextInput("http://1234##http://predicate##http://uri with space"));
 		
 		assertThat(analysis.countProcessed(), equalTo(1));
 	}
@@ -42,7 +42,7 @@ public class NTripleFileTest extends TestWithTemporaryData{
 	public void shouldProcessAStringWithLanguage() throws Exception {
 		DatatypeCount analysis = new DatatypeCount();
 		
-		new NTripleFile(analysis).process(temporary.file("http://1234##http://predicate##\"a string@en\""));
+		new NTripleFile(analysis).process(temporary.fileTextInput("http://1234##http://predicate##\"a string@en\""));
 		
 		assertThat(analysis.counts().size(), equalTo(1));
 	}
@@ -51,7 +51,7 @@ public class NTripleFileTest extends TestWithTemporaryData{
 	public void shouldProcessAString() throws Exception {
 		DatatypeCount analysis = new DatatypeCount();
 		
-		new NTripleFile(analysis).process(temporary.file("http://1234##http://predicate##\"a string\""));
+		new NTripleFile(analysis).process(temporary.fileTextInput("http://1234##http://predicate##\"a string\""));
 		
 		assertThat(analysis.counts().size(), equalTo(1));
 	}
@@ -60,7 +60,7 @@ public class NTripleFileTest extends TestWithTemporaryData{
 	public void shouldProcessADatatype() throws Exception {
 		DatatypeCount analysis = new DatatypeCount();
 		
-		new NTripleFile(analysis).process(temporary.file("http://1234##http://predicate##\"34\"##type"));
+		new NTripleFile(analysis).process(temporary.fileTextInput("http://1234##http://predicate##\"34\"##type"));
 		
 		assertThat(analysis.counts().size(), equalTo(1));
 	}
@@ -69,7 +69,7 @@ public class NTripleFileTest extends TestWithTemporaryData{
 	public void shouldProcessAComplexDatatype() throws Exception {
 		DatatypeCount analysis = new DatatypeCount();
 		
-		new NTripleFile(analysis).process(temporary.file("http://1234##http://predicate##\"34\"##http://uri#type"));
+		new NTripleFile(analysis).process(temporary.fileTextInput("http://1234##http://predicate##\"34\"##http://uri#type"));
 		
 		assertThat(analysis.counts().get("http://uri#type"), equalTo(1l));
 	}

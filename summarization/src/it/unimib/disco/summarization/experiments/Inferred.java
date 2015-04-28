@@ -4,8 +4,6 @@ import it.unimib.disco.summarization.output.LDSummariesVocabulary;
 
 import java.util.HashSet;
 
-import com.hp.hpl.jena.query.QueryExecutionFactory;
-import com.hp.hpl.jena.query.QueryFactory;
 import com.hp.hpl.jena.query.QuerySolution;
 import com.hp.hpl.jena.query.ResultSet;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
@@ -37,7 +35,7 @@ class Inferred{
 			 		 	+ "?localObject <"+ RDFS.seeAlso + "> ?object ."
 			 		 + "} order by ?subject";
 
-		ResultSet patterns = select(query);
+		ResultSet patterns = new AbstatEndpoint().execute(query);
 		while(patterns.hasNext()){
 			QuerySolution solution = patterns.nextSolution();
 			String subject = solution.get("subject").toString();
@@ -68,11 +66,5 @@ class Inferred{
 			   resource.contains("Wikidata:") ||
 			   resource.contains("www.opengis.net") ||
 			   resource.contains("/ontology/bibo/");
-	}
-
-	private ResultSet select(String query) {
-		return QueryExecutionFactory.sparqlService("http://abstat.disco.unimib.it:8890/sparql", 
-											 	   QueryFactory.create(query))
-							 .execSelect();
 	}
 }

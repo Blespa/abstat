@@ -17,8 +17,11 @@ cd $root
 ./build-java-summarization-module.sh
 cd $project
 
+run_experiment PatternStatistics linked-brainz
 run_experiment UnderspecifiedProperties music-ontology/mo.owl linked-brainz
 run_experiment DomainRangeViolations music-ontology/mo.owl linked-brainz
+
+run_experiment PatternStatistics dbpedia2014
 run_experiment UnderspecifiedProperties dbpedia/dbpedia_2014.owl dbpedia2014
 run_experiment DomainRangeViolations dbpedia/dbpedia_2014.owl dbpedia2014
 

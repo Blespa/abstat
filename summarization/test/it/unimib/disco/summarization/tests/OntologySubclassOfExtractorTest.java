@@ -3,10 +3,10 @@ package it.unimib.disco.summarization.tests;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
-import it.unimib.disco.summarization.datatype.Concepts;
-import it.unimib.disco.summarization.datatype.SubClassOf;
-import it.unimib.disco.summarization.extraction.ConceptExtractor;
-import it.unimib.disco.summarization.relation.OntologySubclassOfExtractor;
+import it.unimib.disco.summarization.ontology.ConceptExtractor;
+import it.unimib.disco.summarization.ontology.Concepts;
+import it.unimib.disco.summarization.ontology.OntologySubclassOfExtractor;
+import it.unimib.disco.summarization.ontology.SubClassOf;
 
 import java.util.List;
 

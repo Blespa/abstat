@@ -2,10 +2,10 @@ package it.unimib.disco.summarization.tests;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.*;
-import it.unimib.disco.summarization.datatype.Concepts;
-import it.unimib.disco.summarization.datatype.EquivalentConcepts;
-import it.unimib.disco.summarization.extraction.ConceptExtractor;
-import it.unimib.disco.summarization.extraction.EqConceptExtractor;
+import it.unimib.disco.summarization.ontology.ConceptExtractor;
+import it.unimib.disco.summarization.ontology.Concepts;
+import it.unimib.disco.summarization.ontology.EqConceptExtractor;
+import it.unimib.disco.summarization.ontology.EquivalentConcepts;
 
 import org.junit.Test;
 

@@ -44,8 +44,8 @@ public class DomainRangeViolations {
 			List<String> domainViolations = violations(types, domain, datasetInferences.domains());
 			List<String> rangeViolations = violations(types, range, datasetInferences.ranges());
 			
-			if(!domainViolations.isEmpty()) domainViolations.add(property.toString());
-			if(!rangeViolations.isEmpty()) rangeViolations.add(property.toString());
+			if(!domainViolations.isEmpty()) domainsViolations.add(property.toString());
+			if(!rangeViolations.isEmpty()) rangesViolations.add(property.toString());
 			
 			if(!domainViolations.isEmpty()  || !rangeViolations.isEmpty()){
 				System.out.println("------------------------------------------");

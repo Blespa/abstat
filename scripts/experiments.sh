@@ -17,6 +17,6 @@ cd $root
 ./build-java-summarization-module.sh
 cd $project
 
-run_experiment ComputeUnderspecifiedPropertiesStatistics music-ontology/mo.owl linked-brainz
-run_experiment ComputeUnderspecifiedPropertiesStatistics dbpedia/dbpedia_2014.owl dbpedia2014
+run_experiment UnderspecifiedProperties music-ontology/mo.owl linked-brainz
+run_experiment UnderspecifiedProperties dbpedia/dbpedia_2014.owl dbpedia2014
 

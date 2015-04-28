@@ -1,7 +1,5 @@
 package it.unimib.disco.summarization.output;
 
-import it.unimib.disco.summarization.starter.Events;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;

@@ -1,6 +1,6 @@
 package it.unimib.disco.summarization.utility;
 
-import it.unimib.disco.summarization.starter.Events;
+import it.unimib.disco.summarization.output.Events;
 
 import org.apache.commons.io.IOUtils;
 

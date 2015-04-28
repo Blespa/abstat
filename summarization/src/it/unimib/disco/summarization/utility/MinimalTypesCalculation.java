@@ -1,11 +1,11 @@
 package it.unimib.disco.summarization.utility;
 
-import it.unimib.disco.summarization.datatype.Concepts;
-import it.unimib.disco.summarization.datatype.Properties;
-import it.unimib.disco.summarization.extraction.ConceptExtractor;
-import it.unimib.disco.summarization.extraction.PropertyExtractor;
-import it.unimib.disco.summarization.relation.OntologyDomainRangeExtractor;
-import it.unimib.disco.summarization.relation.OntologySubclassOfExtractor;
+import it.unimib.disco.summarization.ontology.ConceptExtractor;
+import it.unimib.disco.summarization.ontology.Concepts;
+import it.unimib.disco.summarization.ontology.OntologyDomainRangeExtractor;
+import it.unimib.disco.summarization.ontology.OntologySubclassOfExtractor;
+import it.unimib.disco.summarization.ontology.Properties;
+import it.unimib.disco.summarization.ontology.PropertyExtractor;
 
 import java.io.File;
 import java.util.ArrayList;

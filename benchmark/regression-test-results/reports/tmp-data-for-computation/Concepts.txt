@@ -10,8 +10,6 @@ http://dbpedia.org/ontology/Language
 http://dbpedia.org/ontology/PoliticianSpouse
 http://dbpedia.org/ontology/TelevisionPersonality
 http://dbpedia.org/ontology/NationalFootballLeagueEvent
-http://dbpedia.org/ontology/Person,_PersonalEvent
-http://www.w3.org/2001/XMLSchema#date
 http://dbpedia.org/ontology/RacingDriver
 http://dbpedia.org/ontology/AmericanFootballTeam
 http://dbpedia.org/ontology/MicroRegion
@@ -24,12 +22,10 @@ http://dbpedia.org/ontology/Gymnast
 http://dbpedia.org/ontology/VolleyballPlayer
 http://dbpedia.org/ontology/Single
 http://dbpedia.org/ontology/SportsTeamMember
-http://www.w3.org/2001/XMLSchema#integer
 http://dbpedia.org/ontology/City
 http://dbpedia.org/ontology/OlympicEvent
 http://dbpedia.org/ontology/Parliament
 http://dbpedia.org/ontology/Entomologist
-http://www.w3.org/2001/XMLSchema#double
 http://dbpedia.org/ontology/Weapon
 http://dbpedia.org/ontology/Monument
 http://dbpedia.org/ontology/TableTennisPlayer
@@ -41,7 +37,6 @@ http://dbpedia.org/ontology/TeamMember
 http://dbpedia.org/ontology/WaterwayTunnel
 http://dbpedia.org/ontology/Bone
 http://dbpedia.org/ontology/Archive
-http://www.w3.org/2001/XMLSchema#string
 http://dbpedia.org/ontology/HistoricalSettlement
 http://dbpedia.org/ontology/Parish
 http://dbpedia.org/ontology/Priest
@@ -49,7 +44,6 @@ http://dbpedia.org/ontology/Brain
 http://dbpedia.org/ontology/Sales
 http://dbpedia.org/ontology/MotorcycleRacingLeague
 http://dbpedia.org/ontology/Ginkgo
-http://dbpedia.org/ontology/NorwaySettlement
 http://dbpedia.org/ontology/Canoeist
 http://schema.org/MusicAlbum
 http://dbpedia.org/ontology/GivenName
@@ -59,12 +53,10 @@ http://schema.org/Continent
 http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Configuration
 http://dbpedia.org/ontology/Bullfighter
 http://dbpedia.org/ontology/ChessPlayer
-http://www.w3.org/1999/02/22-rdf-syntax-ns#langString
 http://dbpedia.org/ontology/ComicStrip
 http://dbpedia.org/ontology/Singer
 http://dbpedia.org/ontology/AthleticsPlayer
 http://schema.org/WebPage
-http://www.w3.org/2001/XMLSchema#positiveInteger
 http://dbpedia.org/ontology/Birth
 http://dbpedia.org/ontology/TennisLeague
 http://dbpedia.org/ontology/ClassicalMusicComposition
@@ -88,11 +80,9 @@ http://dbpedia.org/ontology/Media
 http://dbpedia.org/ontology/CanadianFootballTeam
 http://dbpedia.org/ontology/ClubMoss
 http://dbpedia.org/ontology/MusicComposer
-http://dbpedia.org/datatype/second
 http://dbpedia.org/ontology/CityDistrict
 http://dbpedia.org/ontology/MouseGeneLocation
 http://dbpedia.org/ontology/VolleyballCoach
-http://dbpedia.org/ontology/LiechtensteinSettlement
 http://schema.org/Airport
 http://dbpedia.org/ontology/Mammal
 http://schema.org/Comment
@@ -120,7 +110,6 @@ http://dbpedia.org/ontology/Treadmill
 http://dbpedia.org/ontology/Statistic
 http://dbpedia.org/ontology/Archeologist
 http://dbpedia.org/ontology/Plant
-http://dbpedia.org/datatype/newtonMetre
 http://dbpedia.org/ontology/FieldHockeyLeague
 http://dbpedia.org/ontology/SoccerTournament
 http://dbpedia.org/ontology/MountainRange
@@ -130,7 +119,6 @@ http://dbpedia.org/ontology/MixedMartialArtsEvent
 http://dbpedia.org/ontology/Species
 http://dbpedia.org/ontology/CyclingRace
 http://dbpedia.org/ontology/MotocycleRacer
-http://dbpedia.org/ontology/HungarySettlement
 http://dbpedia.org/ontology/ProtohistoricalPeriod
 http://purl.org/ontology/bibo/Book
 http://schema.org/SeaBodyOfWater
@@ -145,7 +133,6 @@ http://dbpedia.org/ontology/Automobile
 http://dbpedia.org/ontology/NobelPrize
 http://dbpedia.org/ontology/ComicsCreator
 http://wikidata.dbpedia.org/resource/Q215627
-http://dbpedia.org/datatype/engineConfiguration
 http://dbpedia.org/ontology/ChartsPlacements
 http://dbpedia.org/ontology/HandballLeague
 http://dbpedia.org/ontology/BodyOfWater
@@ -157,8 +144,6 @@ http://dbpedia.org/ontology/AustralianFootballLeague
 http://dbpedia.org/ontology/TennisTournament
 http://dbpedia.org/ontology/Restaurant
 http://dbpedia.org/ontology/Band
-http://www.w3.org/2001/XMLSchema#anyURI
-http://dbpedia.org/ontology/SwitzerlandSettlement
 http://dbpedia.org/ontology/ClericalAdministrativeRegion
 http://schema.org/Festival
 http://dbpedia.org/ontology/Community
@@ -177,7 +162,6 @@ http://schema.org/Park
 http://dbpedia.org/ontology/SpaceShuttle
 http://dbpedia.org/ontology/RadioStation
 http://dbpedia.org/ontology/BeautyQueen
-http://dbpedia.org/ontology/Mountain,Volcano
 http://dbpedia.org/ontology/ResearchProject
 http://dbpedia.org/ontology/University
 http://dbpedia.org/ontology/Scientist
@@ -187,9 +171,7 @@ http://dbpedia.org/ontology/Diploma
 http://dbpedia.org/ontology/Cemetery
 http://dbpedia.org/ontology/Installment
 http://dbpedia.org/ontology/Coach
-http://dbpedia.org/datatype/inhabitantsPerSquareKilometre
 http://dbpedia.org/ontology/Hotel
-http://dbpedia.org/ontology/Parish,_Deanery
 http://dbpedia.org/ontology/NationalSoccerClub
 http://schema.org/Language
 http://dbpedia.org/ontology/Regency
@@ -206,7 +188,6 @@ http://dbpedia.org/ontology/Song
 http://schema.org/EducationalOrganization
 http://dbpedia.org/ontology/Cartoon
 http://schema.org/CollegeOrUniversity
-http://dbpedia.org/ontology/LebanonSettlement
 http://dbpedia.org/ontology/CollectionOfValuables
 http://dbpedia.org/ontology/Royalty
 http://dbpedia.org/ontology/RallyDriver
@@ -215,7 +196,6 @@ http://dbpedia.org/ontology/Archaea
 http://dbpedia.org/ontology/Rocket
 http://dbpedia.org/ontology/TelevisionStation
 http://dbpedia.org/ontology/Country
-http://dbpedia.org/ontology/BelgiumSettlement
 http://dbpedia.org/ontology/Letter
 http://dbpedia.org/ontology/NuclearPowerStation
 http://dbpedia.org/ontology/Organ
@@ -249,7 +229,6 @@ http://dbpedia.org/ontology/Watermill
 http://dbpedia.org/ontology/Skyscraper
 http://dbpedia.org/ontology/Muscle
 http://dbpedia.org/ontology/MythologicalFigure
-http://dbpedia.org/ontology/AustrianAdministrativeRegion
 http://dbpedia.org/ontology/CyclingCompetition
 http://dbpedia.org/ontology/Biomolecule
 http://dbpedia.org/ontology/Death
@@ -265,11 +244,9 @@ http://dbpedia.org/ontology/SkiResort
 http://dbpedia.org/ontology/
 http://dbpedia.org/ontology/Square
 http://dbpedia.org/ontology/RugbyLeague
-http://dbpedia.org/datatype/kilometrePerHour
 http://dbpedia.org/ontology/LightNovel
 http://dbpedia.org/ontology/ProgrammingLanguage
 http://dbpedia.org/ontology/RecordOffice
-http://dbpedia.org/ontology/MilitaryConflict,_AdministrativeRegion
 http://schema.org/Book
 http://dbpedia.org/ontology/Anime
 http://dbpedia.org/ontology/Actor
@@ -282,7 +259,6 @@ http://dbpedia.org/ontology/Aristocrat
 http://dbpedia.org/ontology/Embryology
 http://dbpedia.org/ontology/Fungus
 http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Concept
-http://www.w3.org/2001/XMLSchema#nonNegativeInteger
 http://dbpedia.org/ontology/Year
 http://dbpedia.org/ontology/Beverage
 http://dbpedia.org/ontology/Area
@@ -294,7 +270,6 @@ http://dbpedia.org/ontology/SoccerClubSeason
 http://dbpedia.org/ontology/Philosopher
 http://dbpedia.org/ontology/SportsManager
 http://dbpedia.org/ontology/RaceTrack
-http://dbpedia.org/ontology/RomaniaSettlement
 http://dbpedia.org/ontology/River
 http://dbpedia.org/ontology/Enzyme
 http://dbpedia.org/ontology/Venue
@@ -305,16 +280,13 @@ http://dbpedia.org/ontology/EurovisionSongContestEntry
 http://dbpedia.org/ontology/Family
 http://wikidata.dbpedia.org/resource/Q482994
 http://dbpedia.org/ontology/Tax
-http://dbpedia.org/datatype/kilogramPerCubicMetre
 http://dbpedia.org/ontology/Drug
 http://dbpedia.org/ontology/Surname
 http://dbpedia.org/ontology/BroadcastNetwork
 http://dbpedia.org/ontology/Painter
 http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#ChemicalObject
 http://dbpedia.org/ontology/President
-http://www.w3.org/2001/XMLSchema#gYearMonth
 http://dbpedia.org/ontology/Lawyer
-http://dbpedia.org/datatype/fuelType
 http://dbpedia.org/ontology/BoxingStyle
 http://dbpedia.org/ontology/HistoricalPeriod
 http://dbpedia.org/ontology/SubMunicipality
@@ -340,13 +312,11 @@ http://dbpedia.org/ontology/Gate
 http://dbpedia.org/ontology/Employer
 http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent
 http://schema.org/TelevisionStation
-http://dbpedia.org/datatype/megabyte
 http://dbpedia.org/ontology/NobleFamily
 http://dbpedia.org/ontology/Monastery
 http://dbpedia.org/ontology/CelestialBody
 http://schema.org/LakeBodyOfWater
 http://dbpedia.org/ontology/Desert
-http://dbpedia.org/ontology/AlgerianSettlement
 http://dbpedia.org/ontology/State
 http://dbpedia.org/ontology/Dam
 http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PlanExecution
@@ -362,11 +332,9 @@ http://dbpedia.org/ontology/Ligament
 http://schema.org/RadioStation
 http://dbpedia.org/ontology/NoteworthyPartOfBuilding
 http://www.ontologydesignpatterns.org/ont/d0.owl#Activity
-http://dbpedia.org/datatype/squareKilometre
 http://dbpedia.org/ontology/TelevisionEpisode
 http://dbpedia.org/ontology/Cheese
 http://dbpedia.org/ontology/WaterTower
-http://dbpedia.org/datatype/hour
 http://dbpedia.org/ontology/Wrestler
 http://dbpedia.org/ontology/TelevisionSeason
 http://dbpedia.org/ontology/Comedian
@@ -380,7 +348,6 @@ http://dbpedia.org/ontology/Disease
 http://dbpedia.org/ontology/PopulatedPlace
 http://dbpedia.org/ontology/PaintballLeague
 http://dbpedia.org/ontology/AnatomicalStructure
-http://dbpedia.org/datatype/litre
 http://dbpedia.org/ontology/MeanOfTransportation
 http://dbpedia.org/ontology/Glacier
 http://dbpedia.org/ontology/Game
@@ -397,7 +364,6 @@ http://dbpedia.org/ontology/BeachVolleyballPlayer
 http://dbpedia.org/ontology/MotorcycleRider
 http://dbpedia.org/ontology/Cave
 http://dbpedia.org/ontology/TopicalConcept
-http://dbpedia.org/datatype/gramPerKilometre
 http://dbpedia.org/ontology/AdministrativeRegion
 http://dbpedia.org/ontology/BritishRoyalty
 http://schema.org/SportsTeam
@@ -409,7 +375,6 @@ http://purl.org/ontology/bibo/Note
 http://dbpedia.org/ontology/AdultActor
 http://dbpedia.org/ontology/SnookerWorldRanking
 http://dbpedia.org/ontology/Guitar
-http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing
 http://dbpedia.org/ontology/HumanGene
 http://dbpedia.org/ontology/NetballPlayer
 http://dbpedia.org/ontology/RadioControlledRacingLeague
@@ -446,8 +411,6 @@ http://schema.org/GovernmentOrganization
 http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Quality
 http://dbpedia.org/ontology/Diocese
 http://dbpedia.org/ontology/Cleric
-http://dbpedia.org/datatype/kilogram
-http://dbpedia.org/ontology/TelevisionShow,_FictionalCharacter
 http://dbpedia.org/ontology/Prefecture
 http://dbpedia.org/ontology/Lake
 http://dbpedia.org/ontology/Sculpture
@@ -457,16 +420,13 @@ http://dbpedia.org/ontology/Lymph
 http://dbpedia.org/ontology/NCAATeamSeason
 http://dbpedia.org/ontology/GolfPlayer
 http://dbpedia.org/ontology/TelevisionHost
-http://dbpedia.org/datatype/squareMetre
 http://dbpedia.org/ontology/ClassicalMusicArtist
-http://dbpedia.org/datatype/valvetrain
 http://dbpedia.org/ontology/AutomobileEngine
 http://dbpedia.org/ontology/ReligiousBuilding
 http://dbpedia.org/ontology/DocumentType
 http://dbpedia.org/ontology/WomensTennisAssociationTournament
 http://dbpedia.org/ontology/BoxingLeague
 http://dbpedia.org/ontology/LunarCrater
-http://www.w3.org/2001/XMLSchema#gYear
 http://dbpedia.org/ontology/MovieGenre
 http://dbpedia.org/ontology/SocietalEvent
 http://dbpedia.org/ontology/SpeedwayRider
@@ -501,10 +461,8 @@ http://schema.org/CreativeWork
 http://dbpedia.org/ontology/VicePrimeMinister
 http://dbpedia.org/ontology/Station
 http://dbpedia.org/ontology/AcademicJournal
-http://dbpedia.org/ontology/ArchitecturalStructure,_Monument
 http://dbpedia.org/ontology/Presenter
 http://dbpedia.org/ontology/Bird
-http://www.w3.org/2004/02/skos/core#Concept
 http://dbpedia.org/ontology/FictionalCharacter
 http://dbpedia.org/ontology/Listen
 http://dbpedia.org/ontology/Blazon
@@ -512,7 +470,6 @@ http://dbpedia.org/ontology/NationalFootballLeagueSeason
 http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#FunctionalSubstance
 http://dbpedia.org/ontology/Magazine
 http://dbpedia.org/ontology/OrganisationMember
-http://dbpedia.org/datatype/kelvin
 http://dbpedia.org/ontology/Park
 http://dbpedia.org/ontology/MartialArtist
 http://dbpedia.org/ontology/Synagogue
@@ -529,12 +486,10 @@ http://schema.org/Place
 http://dbpedia.org/ontology/LineOfFashion
 http://dbpedia.org/ontology/Valley
 http://dbpedia.org/ontology/ElectionDiagram
-http://dbpedia.org/datatype/minute
 http://dbpedia.org/ontology/Theatre
 http://dbpedia.org/ontology/PrimeMinister
 http://dbpedia.org/ontology/BaseballPlayer
 http://dbpedia.org/ontology/Volcano
-http://dbpedia.org/datatype/day
 http://dbpedia.org/ontology/AnimangaCharacter
 http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection
 http://dbpedia.org/ontology/GrossDomesticProduct
@@ -568,7 +523,6 @@ http://dbpedia.org/ontology/GolfTournament
 http://dbpedia.org/ontology/Unknown
 http://schema.org/Product
 http://dbpedia.org/ontology/HistoricPlace
-http://dbpedia.org/datatype/cubicCentimetre
 http://dbpedia.org/ontology/CapitalOfRegion
 http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationObject
 http://dbpedia.org/ontology/Wine
@@ -584,17 +538,14 @@ http://dbpedia.org/ontology/SoapCharacter
 http://dbpedia.org/ontology/DartsPlayer
 http://dbpedia.org/ontology/Aircraft
 http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#DesignedArtifact
-http://dbpedia.org/ontology/openswarm
 http://dbpedia.org/ontology/Manhua
 http://dbpedia.org/ontology/Chancellor
 http://dbpedia.org/ontology/WrestlingEvent
 http://dbpedia.org/ontology/Contest
-http://dbpedia.org/ontology/AustrianSettlement
 http://dbpedia.org/ontology/Marriage
 http://dbpedia.org/ontology/HistoricalCountry
 http://dbpedia.org/ontology/Hospital
 http://dbpedia.org/ontology/HistoricalDistrict
-http://dbpedia.org/datatype/kilowatt
 http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson
 http://wikidata.dbpedia.org/resource/Q5
 http://dbpedia.org/ontology/Award
@@ -614,7 +565,6 @@ http://dbpedia.org/ontology/PoliticalFunction
 http://dbpedia.org/ontology/Astronaut
 http://dbpedia.org/ontology/VolleyballLeague
 http://dbpedia.org/ontology/Agglomeration
-http://dbpedia.org/datatype/kilometrePerSecond
 http://dbpedia.org/ontology/ControlledDesignationOfOriginWine
 http://dbpedia.org/ontology/Farmer
 http://dbpedia.org/ontology/ChristianBishop
@@ -630,7 +580,6 @@ http://dbpedia.org/ontology/GraveMonument
 http://dbpedia.org/ontology/Saint
 http://dbpedia.org/ontology/Ambassador
 http://dbpedia.org/ontology/Manga
-http://dbpedia.org/ontology/Monastry
 http://dbpedia.org/ontology/Politician
 http://dbpedia.org/ontology/Pope
 http://dbpedia.org/ontology/NaturalPlace
@@ -638,7 +587,6 @@ http://dbpedia.org/ontology/Abbey
 http://dbpedia.org/ontology/Factory
 http://schema.org/Canal
 http://dbpedia.org/ontology/Jockey
-http://dbpedia.org/datatype/millimetre
 http://dbpedia.org/ontology/Wikidata:Q532
 http://dbpedia.org/ontology/Profession
 http://dbpedia.org/ontology/PublicTransitSystem
@@ -650,7 +598,6 @@ http://schema.org/Sculpture
 http://dbpedia.org/ontology/Town
 http://dbpedia.org/ontology/GaelicGamesPlayer
 http://dbpedia.org/ontology/Project
-http://dbpedia.org/datatype/centimetre
 http://dbpedia.org/ontology/Boxing
 http://dbpedia.org/ontology/CyclingLeague
 http://dbpedia.org/ontology/VoiceActor
@@ -666,12 +613,10 @@ http://schema.org/StadiumOrArena
 http://dbpedia.org/ontology/District
 http://dbpedia.org/ontology/WaterPoloPlayer
 http://dbpedia.org/ontology/SerialKiller
-http://dbpedia.org/datatype/cubicKilometre
 http://dbpedia.org/ontology/Eukaryote
 http://dbpedia.org/ontology/MixedMartialArtsLeague
 http://dbpedia.org/ontology/Cyclist
 http://schema.org/RiverBodyOfWater
-http://www.w3.org/2001/XMLSchema#boolean
 http://dbpedia.org/ontology/Referee
 http://dbpedia.org/ontology/Stadium
 http://dbpedia.org/ontology/IceHockeyLeague
@@ -691,7 +636,6 @@ http://dbpedia.org/ontology/SambaSchool
 http://dbpedia.org/ontology/Swimmer
 http://dbpedia.org/ontology/SportsEvent
 http://dbpedia.org/ontology/Economist
-http://dbpedia.org/ontology/Diocese,_Parish
 http://dbpedia.org/ontology/OverseasDepartment
 http://dbpedia.org/ontology/UnitOfWork
 http://schema.org/SkiResort
@@ -700,19 +644,16 @@ http://dbpedia.org/ontology/FormulaOneTeam
 http://dbpedia.org/ontology/MusicFestival
 http://dbpedia.org/ontology/EthnicGroup
 http://dbpedia.org/ontology/Capital
-http://dbpedia.org/datatype/cubicMetre
 http://dbpedia.org/ontology/Deanery
 http://dbpedia.org/ontology/RailwayLine
 http://dbpedia.org/ontology/TrackList
 http://dbpedia.org/ontology/GatedCommunity
 http://dbpedia.org/ontology/Fish
-http://dbpedia.org/ontology/Athlete,_CareerStation
 http://dbpedia.org/ontology/Tower
 http://dbpedia.org/ontology/Skater
 http://dbpedia.org/ontology/%3Chttp://purl.org/vocab/bio/0.1/Birth%3E
 http://dbpedia.org/ontology/SportsLeague
 http://dbpedia.org/ontology/Settlement
-http://dbpedia.org/ontology/Organisation,_Parish
 http://dbpedia.org/ontology/TheatreDirector
 http://dbpedia.org/ontology/Skier
 http://dbpedia.org/ontology/Software
@@ -730,7 +671,6 @@ http://dbpedia.org/ontology/BoardGame
 http://dbpedia.org/ontology/Galaxy
 http://dbpedia.org/ontology/Asteroid
 http://dbpedia.org/ontology/Village
-http://dbpedia.org/datatype/kilometre
 http://dbpedia.org/ontology/Port
 http://dbpedia.org/ontology/InlineHockeyLeague
 http://dbpedia.org/ontology/ChristianDoctrine
@@ -762,7 +702,6 @@ http://dbpedia.org/ontology/Reptile
 http://dbpedia.org/ontology/CanadianFootballPlayer
 http://dbpedia.org/ontology/Protein
 http://dbpedia.org/ontology/Rower
-http://dbpedia.org/datatype/cubicMetrePerSecond
 http://dbpedia.org/ontology/Castle
 http://dbpedia.org/ontology/Engineer
 http://dbpedia.org/ontology/Convention
@@ -772,7 +711,6 @@ http://dbpedia.org/ontology/AmericanFootballPlayer
 http://dbpedia.org/ontology/PrehistoricalPeriod
 http://schema.org/Painting
 http://dbpedia.org/ontology/OlympicResult
-http://www.w3.org/2001/XMLSchema#float
 http://dbpedia.org/ontology/TermOfOffice
 http://dbpedia.org/ontology/Activity
 http://dbpedia.org/ontology/Type
@@ -803,7 +741,6 @@ http://dbpedia.org/ontology/StatedResolution
 http://dbpedia.org/ontology/Demographics
 http://dbpedia.org/ontology/AmusementParkAttraction
 http://schema.org/City
-http://dbpedia.org/ontology/GermanSettlement
 http://dbpedia.org/ontology/PublicService
 http://dbpedia.org/ontology/NaturalRegion
 http://dbpedia.org/ontology/Artwork
@@ -811,7 +748,6 @@ http://dbpedia.org/ontology/BrownDwarf
 http://dbpedia.org/ontology/Globularswarm
 http://dbpedia.org/ontology/BiologicalDatabase
 http://dbpedia.org/ontology/Arena
-http://dbpedia.org/datatype/metre
 http://dbpedia.org/ontology/FigureSkater
 http://dbpedia.org/ontology/PeriodicalLiterature
 http://dbpedia.org/ontology/Play

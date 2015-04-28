@@ -118,6 +118,10 @@ public class LDSummariesVocabulary {
 		model.add(localSubject, RDF.type, concept());
 		return localSubject;
 	}
+	
+	public String graph(){
+		return baseUri() + dataset;
+	}
 
 	private Resource aggregate(String type, String... elements) {
 		List<String> localNames = new ArrayList<String>();

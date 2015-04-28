@@ -23,7 +23,7 @@ public class CalculateMinimalTypes {
 		File typesDirectory = new File(args[1]);
 		File targetDirectory = new File(args[2]);
 		
-		OntModel ontologyModel = new Model(null, ontology.getAbsolutePath(),"RDF/XML").getOntologyModel();
+		OntModel ontologyModel = new Model(ontology.getAbsolutePath(),"RDF/XML").getOntologyModel();
 		
 		MinimalTypesCalculation minimalTypes = new MinimalTypesCalculation(ontologyModel, targetDirectory);
 		

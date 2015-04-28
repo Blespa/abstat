@@ -4,17 +4,15 @@ import it.unimib.disco.summarization.output.ProcessOntology;
 
 import java.io.File;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import com.hp.hpl.jena.vocabulary.RDFS;
 
-public class StarterTest extends TestWithTemporaryData{
+public class ProcessOntologyTest extends TestWithTemporaryData{
 
 	@Test
-	@Ignore
 	public void shouldBeAbleToProcessTheMusicOntology() throws Exception {
-		String ontologyDirectory = new File("test/it/unimib/disco/summarization/tests/").getAbsolutePath();
+		String ontologyDirectory = new File("../benchmark/experiments/music-ontology").getAbsolutePath().replace("summarization/../", "");
 		
 		ProcessOntology.main(new String[]{ontologyDirectory + "/", temporary.path() + "/", temporary.path() + "/"});
 	}

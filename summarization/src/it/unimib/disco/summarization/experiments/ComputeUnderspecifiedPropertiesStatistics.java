@@ -25,8 +25,8 @@ public class ComputeUnderspecifiedPropertiesStatistics {
 
 		new Events();
 
-		String path = "music-ontology/mo.owl";
-		String dataset = "linked-brainz";
+		String path = "dbpedia/dbpedia_2014.owl";
+		String dataset = "dbpedia2014";
 		
 		LDSummariesVocabulary vocabulary = new LDSummariesVocabulary(ModelFactory.createDefaultModel(), dataset);
 
@@ -46,13 +46,19 @@ public class ComputeUnderspecifiedPropertiesStatistics {
 				 		 	+ "?localSubject <"+ RDFS.seeAlso + "> ?subject ."
 				 		 	+ "?pattern <"+ vocabulary.object()+ "> ?localObject ."
 				 		 	+ "?localObject <"+ RDFS.seeAlso + "> ?object ."
-				 		 + "}";
+				 		 + "} order by ?subject";
 
 			ResultSet patterns = select(query);
 			List<String> inferredDomainAndRanges = new ArrayList<String>();
 			while(patterns.hasNext()){
 				QuerySolution solution = patterns.nextSolution();
-				inferredDomainAndRanges.add(solution.get("subject") + " - " + property + " - " + solution.get("object"));
+				String subject = solution.get("subject").toString();
+				String object = solution.get("object").toString();
+				if(isExternal(subject) || isExternal(object)){
+					continue;
+				}
+				
+				inferredDomainAndRanges.add(subject + " - " + property + " - " + object);
 			}
 			if(!inferredDomainAndRanges.isEmpty()) {
 				System.out.println("------------------------------------------");
@@ -62,6 +68,16 @@ public class ComputeUnderspecifiedPropertiesStatistics {
 				}
 			}
 		}
+	}
+
+	private static boolean isExternal(String resource) {
+		return resource.contains("wikidata.dbpedia.org") || 
+			   resource.contains("ontologydesignpatterns") || 
+			   resource.contains("schema.org") ||
+			   resource.contains("xmlns.com/foaf/") ||
+			   resource.contains("Wikidata:") ||
+			   resource.contains("www.opengis.net") ||
+			   resource.contains("/ontology/bibo/");
 	}
 
 	private static ResultSet select(String query) {

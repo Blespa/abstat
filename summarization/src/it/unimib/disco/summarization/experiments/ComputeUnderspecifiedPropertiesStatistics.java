@@ -30,11 +30,19 @@ public class ComputeUnderspecifiedPropertiesStatistics {
 		
 		LDSummariesVocabulary vocabulary = new LDSummariesVocabulary(ModelFactory.createDefaultModel(), dataset);
 
+		HashSet<String> underspecifiedPropertyDomains = new HashSet<String>();
+		HashSet<String> underspecifiedPropertyRanges = new HashSet<String>();
+		
 		for (OntProperty property : propertiesOf(path)) {
 			OntResource range = property.getRange();
 			OntResource domain = property.getDomain();
 			
-			if(range != null && domain != null) continue;
+			if(range != null && domain != null) {
+				continue;
+			}
+			
+			if(domain == null ) underspecifiedPropertyDomains.add(property.toString());
+			if(range == null ) underspecifiedPropertyRanges.add(property.toString());
 			
 			String query = "select ?subject ?object "
 						 + "from <" + vocabulary.graph() + "> "
@@ -69,6 +77,18 @@ public class ComputeUnderspecifiedPropertiesStatistics {
 				System.out.println("----- RANGES\n" + inferredRange);
 			}
 		}
+		
+		HashSet<String> underSpecifiedProperties = new HashSet<String>();
+		underSpecifiedProperties.addAll(underspecifiedPropertyDomains);
+		underSpecifiedProperties.addAll(underspecifiedPropertyRanges);
+		
+		System.out.println("------------------------------------------");
+		System.out.println("----- Total underspecified properties: " + underSpecifiedProperties.size());
+		System.out.println(underSpecifiedProperties);
+		System.out.println("----- Total underspecified domains: " + underspecifiedPropertyDomains.size());
+		System.out.println(underspecifiedPropertyDomains);
+		System.out.println("----- Total underspecified ranges: " + underspecifiedPropertyRanges.size());
+		System.out.println(underspecifiedPropertyRanges);
 	}
 
 	private static boolean isExternal(String resource) {

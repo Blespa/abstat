@@ -37,8 +37,7 @@ public class ProcessOntology {
 		String owlBaseFile = "file://" + owlBaseFileArg + "/" + fileName;
 
 		//Model
-		Model OntModel = new Model(null,owlBaseFile,"RDF/XML");
-		OntModel ontologyModel = OntModel.getOntologyModel();
+		OntModel ontologyModel = new Model(owlBaseFile,"RDF/XML").getOntologyModel();
 		
 		//Extract Property from Ontology Model
 		PropertyExtractor pExtract = new PropertyExtractor();

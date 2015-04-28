@@ -31,6 +31,9 @@ public class DomainRangeViolations {
 		Ontology model = new Ontology(ontology);
 		TypeGraph types = buildTypeGraph(model.get());
 		
+		HashSet<String> domainsViolations = new HashSet<String>();
+		HashSet<String> rangesViolations = new HashSet<String>();
+		
 		for(OntProperty property : model.properties()){
 			
 			Inferred datasetInferences = new Inferred(dataset).of(property.toString());
@@ -41,6 +44,9 @@ public class DomainRangeViolations {
 			List<String> domainViolations = violations(types, domain, datasetInferences.domains());
 			List<String> rangeViolations = violations(types, range, datasetInferences.ranges());
 			
+			if(!domainViolations.isEmpty()) domainViolations.add(property.toString());
+			if(!rangeViolations.isEmpty()) rangeViolations.add(property.toString());
+			
 			if(!domainViolations.isEmpty()  || !rangeViolations.isEmpty()){
 				System.out.println("------------------------------------------");
 				System.out.println(domain + " - " + property + " - " + range);
@@ -48,6 +54,18 @@ public class DomainRangeViolations {
 				System.out.println("----- RANGE VIOLATIONS\n" + rangeViolations);
 			}
 		}
+		
+		HashSet<String> violations = new HashSet<String>();
+		violations.addAll(domainsViolations);
+		violations.addAll(rangesViolations);
+		
+		System.out.println("------------------------------------------");
+		System.out.println("----- Total domain / range violations: " + violations.size());
+		System.out.println(violations);
+		System.out.println("----- Total domain violations: " + domainsViolations.size());
+		System.out.println(domainsViolations);
+		System.out.println("----- Total range violations: " + rangesViolations.size());
+		System.out.println(rangesViolations);
 	}
 
 	private static List<String> violations(TypeGraph types, OntResource declared, HashSet<String> domains) {

@@ -11,7 +11,7 @@ function export_rdf(){
 	dataset=$4
 
 	echo "exporting $from as $to"
-	java -Xms256m -Xmx4g -cp .:'ontology_summarization.jar' it.unimib.disco.summarization.output.$command $from $to $dataset
+	java -Xms256m -Xmx16g -cp .:'ontology_summarization.jar' it.unimib.disco.summarization.output.$command $from $to $dataset
 	echo "done"
 }
 

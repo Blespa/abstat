@@ -6,7 +6,7 @@ import it.unimib.disco.summarization.output.LDSummariesVocabulary;
 import it.unimib.disco.summarization.utility.Model;
 
 import java.io.File;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import com.hp.hpl.jena.ontology.OntModel;
@@ -25,8 +25,8 @@ public class ComputeUnderspecifiedPropertiesStatistics {
 
 		new Events();
 
-		String path = "dbpedia/dbpedia_2014.owl";
-		String dataset = "dbpedia2014";
+		String path = args[0];
+		String dataset = args[1];
 		
 		LDSummariesVocabulary vocabulary = new LDSummariesVocabulary(ModelFactory.createDefaultModel(), dataset);
 
@@ -49,23 +49,24 @@ public class ComputeUnderspecifiedPropertiesStatistics {
 				 		 + "} order by ?subject";
 
 			ResultSet patterns = select(query);
-			List<String> inferredDomainAndRanges = new ArrayList<String>();
+			HashSet<String> inferredDomain = new HashSet<String>();
+			HashSet<String> inferredRange = new HashSet<String>();
 			while(patterns.hasNext()){
 				QuerySolution solution = patterns.nextSolution();
 				String subject = solution.get("subject").toString();
 				String object = solution.get("object").toString();
-				if(isExternal(subject) || isExternal(object)){
-					continue;
+				if(!isExternal(subject)){
+					inferredDomain.add(subject);
 				}
-				
-				inferredDomainAndRanges.add(subject + " - " + property + " - " + object);
+				if(!isExternal(object)){
+					inferredRange.add(object);
+				}
 			}
-			if(!inferredDomainAndRanges.isEmpty()) {
+			if(!inferredDomain.isEmpty()) {
 				System.out.println("------------------------------------------");
 				System.out.println(domain + " - " + property + " - " + range);
-				for(String line : inferredDomainAndRanges){
-					System.out.println(line);
-				}
+				System.out.println("----- DOMAINS\n" + inferredDomain);
+				System.out.println("----- RANGES\n" + inferredRange);
 			}
 		}
 	}

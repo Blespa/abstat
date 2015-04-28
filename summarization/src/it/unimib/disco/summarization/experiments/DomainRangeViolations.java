@@ -32,21 +32,35 @@ public class DomainRangeViolations {
 		TypeGraph types = buildTypeGraph(model.get());
 		
 		for(OntProperty property : model.properties()){
+			
 			Inferred datasetInferences = new Inferred(dataset).of(property.toString());
-			signal("POSSIBLE DOMAIN VIOLATION", property, property.getDomain(), datasetInferences.domains(), types);
-			signal("POSSIBLE RANGE VIOLATION", property, property.getRange(), datasetInferences.ranges(), types);
+			
+			OntResource domain = property.getDomain();
+			OntResource range = property.getRange();
+			
+			List<String> domainViolations = violations(types, domain, datasetInferences.domains());
+			List<String> rangeViolations = violations(types, range, datasetInferences.ranges());
+			
+			if(!domainViolations.isEmpty()  || !rangeViolations.isEmpty()){
+				System.out.println("------------------------------------------");
+				System.out.println(domain + " - " + property + " - " + range);
+				System.out.println("----- DOMAIN VIOLATIONS\n" + domainViolations);
+				System.out.println("----- RANGE VIOLATIONS\n" + rangeViolations);
+			}
 		}
 	}
 
-	private static void signal(String label, OntProperty property, OntResource declared, HashSet<String> domains, TypeGraph types) {
+	private static List<String> violations(TypeGraph types, OntResource declared, HashSet<String> domains) {
+		List<String> domainViolations = new ArrayList<String>();
 		if(declared != null && !declared.equals(OWL.Thing) && !declared.isAnon()){
 			for(String inferred : domains){
-				if(types.pathsBetween(inferred, declared.toString()).isEmpty()){
-					System.out.println(label);
-					System.out.println(property + " has " +  inferred + " expected " + declared);
+				if(inferred.equals(OWL.Thing.toString()) || inferred.equals(declared.toString())) continue;
+				if(!types.pathsBetween(declared.toString(), inferred).isEmpty()){
+					domainViolations.add(inferred);
 				}
 			}
 		}
+		return domainViolations;
 	}
 	
 	private static TypeGraph buildTypeGraph(OntModel ontology) throws Exception {

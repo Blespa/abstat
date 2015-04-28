@@ -18,5 +18,7 @@ cd $root
 cd $project
 
 run_experiment UnderspecifiedProperties music-ontology/mo.owl linked-brainz
+run_experiment DomainRangeViolations music-ontology/mo.owl linked-brainz
 run_experiment UnderspecifiedProperties dbpedia/dbpedia_2014.owl dbpedia2014
+run_experiment DomainRangeViolations dbpedia/dbpedia_2014.owl dbpedia2014
 

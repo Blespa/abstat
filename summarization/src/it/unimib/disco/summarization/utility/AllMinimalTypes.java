@@ -26,7 +26,7 @@ public class AllMinimalTypes implements MinimalTypes{
 	}
 
 	public List<String> of(String entity) {
-		String[] splitted = StringUtils.split(entity, "/#");
+		String[] splitted = StringUtils.split(entity, "/");
 		String firstChar = splitted[splitted.length - 1].toLowerCase().charAt(0) + "";
 		PartitionedMinimalTypes minimalTypes = this.types.get(firstChar);
 		if(minimalTypes != null) return minimalTypes.of(entity);

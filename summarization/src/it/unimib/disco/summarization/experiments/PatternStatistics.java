@@ -15,7 +15,8 @@ public class PatternStatistics {
 		
 		LDSummariesVocabulary vocabulary = new LDSummariesVocabulary(ModelFactory.createDefaultModel(), dataset);
 		
-		int totalAKP = new AbstatEndpoint()
+		int totalAKP = SparqlEndpoint
+						.abstat()
 						.execute("select (count(?pattern) as ?count)"
 							 + "from <" + vocabulary.graph() + "> "
 					 		 + "where {"
@@ -23,26 +24,8 @@ public class PatternStatistics {
 					 		  "}")
 					 	.next().getLiteral("count").getInt();
 
-//		String ontology = "http://purl.org/ontology/mo/";
-//		int internalAKP = new AbstatEndpoint()
-//						.execute("select (count(?pattern) as ?count)"
-//							 + "from <" + vocabulary.graph() + "> "
-//							 + "where {"
-//						 		+ "?pattern a <"+ vocabulary.abstractKnowledgePattern().getURI() + "> ."
-//							 	+ "?pattern <"+ vocabulary.subject()+ "> ?localSubject ."
-//							 	+ "?localSubject <"+ RDFS.seeAlso + "> ?subject ."
-//							 	+ "?pattern <"+ vocabulary.object()+ "> ?localObject ."
-//							 	+ "?localObject a <"+ vocabulary.type() + "> . "
-//							 	+ "?localObject <"+ RDFS.seeAlso + "> ?object . "
-//							 	+ "filter not exists {"
-//							 		+ "?localObject a <" + vocabulary.datatype() + "> . "
-//						 		+ "} "
-//							 	+ "filter regex(?subject, '" + ontology + "') "
-//							 	+ "filter regex(?object, '" + ontology + "') "
-//							 + "}")
-//					 	.next().getLiteral("count").getInt();
-		
-		int datatypeAKP = new AbstatEndpoint()
+		int datatypeAKP = SparqlEndpoint
+						.abstat()
 						.execute("select (count(?pattern) as ?count)"
 							 + "from <" + vocabulary.graph() + "> "
 					 		 + "where {"

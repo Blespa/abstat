@@ -35,7 +35,7 @@ class Inferred{
 			 		 	+ "?localObject <"+ RDFS.seeAlso + "> ?object ."
 			 		 + "} order by ?subject";
 
-		ResultSet patterns = new AbstatEndpoint().execute(query);
+		ResultSet patterns = SparqlEndpoint.abstat().execute(query);
 		while(patterns.hasNext()){
 			QuerySolution solution = patterns.nextSolution();
 			String subject = solution.get("subject").toString();

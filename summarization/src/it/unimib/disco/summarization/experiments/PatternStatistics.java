@@ -4,14 +4,12 @@ import it.unimib.disco.summarization.output.Events;
 import it.unimib.disco.summarization.output.LDSummariesVocabulary;
 
 import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.vocabulary.RDFS;
 
 public class PatternStatistics {
 
 	public static void main(String[] args) {
 		
-		String dataset = "linked-brainz";
-		String ontology = "http://purl.org/ontology/mo/";
+		String dataset = args[0];
 		
 		new Events();
 		
@@ -24,6 +22,8 @@ public class PatternStatistics {
 					 		 	+ "?pattern a <"+ vocabulary.abstractKnowledgePattern().getURI() + "> ." +
 					 		  "}")
 					 	.next().getLiteral("count").getInt();
+
+//		String ontology = "http://purl.org/ontology/mo/";
 //		int internalAKP = new AbstatEndpoint()
 //						.execute("select (count(?pattern) as ?count)"
 //							 + "from <" + vocabulary.graph() + "> "

@@ -10,6 +10,7 @@ import org.joda.time.Interval;
 import com.hp.hpl.jena.query.ResultSet;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.vocabulary.RDF;
 import com.hp.hpl.jena.vocabulary.RDFS;
 
 public class AKPDiscoveryEfficiency {
@@ -83,13 +84,14 @@ public class AKPDiscoveryEfficiency {
 			}
 			
 			try{
-				String datasetPatterns = "select ?p ?o count(?p) count(?o) "
+				String datasetPatterns = "select ?p ?objectType count(?p) count(?objectType) "
 										+ datasetGraph + " "
 										+ "where {"
 											+ "?instance a <" + concept + "> ."
 											+ "?instance ?p ?o . "
+											+ "?o <" + RDF.type + "> ?objectType ."
 											+ ontologyFilter + " "
-										+ "} group by ?p ?o";
+										+ "} group by ?p ?objectType";
 				
 				DateTime start = DateTime.now();
 				SparqlEndpoint.dataset(dataset).execute(datasetPatterns);
@@ -105,7 +107,7 @@ public class AKPDiscoveryEfficiency {
 		
 		long abstatTimeouts = totalConcepts -abstatResponseTimes.getN();
 		long datasetTimeouts = totalConcepts - datasetResponseTimes.getN();
-		System.out.println("ABSTAT average response time: " + abstatResponseTimes.getMean() + " (" + abstatTimeouts + " timeouts)");
-		System.out.println(dataset + " average response time: " + datasetResponseTimes.getMean()+ " (" + datasetTimeouts + " timeouts)");
+		System.out.println("ABSTAT average response time: " + abstatResponseTimes.getMean() + " - for " + totalConcepts +" concepts (" + abstatTimeouts + " timeouts)");
+		System.out.println(dataset + " average response time: " + datasetResponseTimes.getMean() + " - for " + totalConcepts +" concepts (" + datasetTimeouts + " timeouts)");
 	}
 }

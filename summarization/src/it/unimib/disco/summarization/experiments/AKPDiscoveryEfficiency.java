@@ -15,15 +15,17 @@ import com.hp.hpl.jena.vocabulary.RDFS;
 public class AKPDiscoveryEfficiency {
 
 	public static void main(String[] args) {
+
+		String dataset = args[0];
+		String ontology = "";
+		String ontologyFilter = "";
+		String datasetGraph = "";
 		
-		String dataset = "dbpedia2014";
-		String ontology = "http://dbpedia.org/ontology";
-		String ontologyFilter = "filter regex(?p, 'http://dbpedia.org/ontology')";
-		String datasetGraph = "from <http://dbpedia.org>";
-//		String dataset = "linked-brainz";
-//		String ontology = "";
-//		String ontologyFilter = "";
-//		String datasetGraph = "";
+		if(dataset.equals("dbpedia2014")){
+			ontology = "http://dbpedia.org/ontology";
+			ontologyFilter = "filter regex(?p, 'http://dbpedia.org/ontology')";
+			datasetGraph = "from <http://dbpedia.org>";
+		}
 		
 		new Events();
 		

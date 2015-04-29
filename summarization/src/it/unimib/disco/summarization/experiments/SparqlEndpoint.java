@@ -1,5 +1,7 @@
 package it.unimib.disco.summarization.experiments;
 
+import com.hp.hpl.jena.query.Query;
+import com.hp.hpl.jena.query.QueryExecution;
 import com.hp.hpl.jena.query.QueryExecutionFactory;
 import com.hp.hpl.jena.query.QueryFactory;
 import com.hp.hpl.jena.query.ResultSet;
@@ -23,8 +25,9 @@ class SparqlEndpoint{
 	}
 	
 	public ResultSet execute(String query) {
-		return QueryExecutionFactory.sparqlService(host + "/sparql", 
-											 	   QueryFactory.create(query, Syntax.syntaxARQ))
-							 .execSelect();
+		Query jenaQuery = QueryFactory.create(query, Syntax.syntaxARQ);
+		QueryExecution sparqlService = QueryExecutionFactory.sparqlService(host + "/sparql", jenaQuery);
+//		sparqlService.setTimeout(20000);
+		return sparqlService.execSelect();
 	}
 }

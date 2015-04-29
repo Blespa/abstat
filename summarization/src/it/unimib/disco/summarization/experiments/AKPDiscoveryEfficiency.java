@@ -3,6 +3,10 @@ package it.unimib.disco.summarization.experiments;
 import it.unimib.disco.summarization.output.Events;
 import it.unimib.disco.summarization.output.LDSummariesVocabulary;
 
+import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
+import org.joda.time.DateTime;
+import org.joda.time.Interval;
+
 import com.hp.hpl.jena.query.ResultSet;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Resource;
@@ -12,12 +16,14 @@ public class AKPDiscoveryEfficiency {
 
 	public static void main(String[] args) {
 		
-//		String dataset = "dbpedia2014";
-//		String ontology = "filter regex(?p, 'http://dbpedia.org/ontology')";
-//		String datasetGraph = "from <http://dbpedia.org>";
-		String dataset = "linked-brainz";
-		String ontology = "";
-		String datasetGraph = "";
+		String dataset = "dbpedia2014";
+		String ontology = "http://dbpedia.org/ontology";
+		String ontologyFilter = "filter regex(?p, 'http://dbpedia.org/ontology')";
+		String datasetGraph = "from <http://dbpedia.org>";
+//		String dataset = "linked-brainz";
+//		String ontology = "";
+//		String ontologyFilter = "";
+//		String datasetGraph = "";
 		
 		new Events();
 		
@@ -38,34 +44,66 @@ public class AKPDiscoveryEfficiency {
 				+ "order by desc(?occurrences) limit 20";
 
 		ResultSet result = SparqlEndpoint.abstat().execute(mostFrequentPropertiesAndObjects);
+		
+		DescriptiveStatistics abstatResponseTimes = new DescriptiveStatistics();
+		DescriptiveStatistics datasetResponseTimes = new DescriptiveStatistics();
+		int totalConcepts = 0;
+		
 		while(result.hasNext()){
 			Resource concept = result.next().getResource("?type");
-			System.out.println("processing " + concept);
-			String abstatPatterns = "select ?predicate ?object ?occurrence "
-								+ "from <" + vocabulary.graph() + "> "
-								+ "where {"
-									+ "?pattern a <" + vocabulary.abstractKnowledgePattern() + "> ."
-									+ "?pattern <" + vocabulary.subject() + "> ?localSubject ."
-									+ "?localSubject <" + RDFS.seeAlso + "> <" + concept + "> ."
-									+ "?pattern <" + vocabulary.occurrence() + "> ?occurrence ."
-									+ "?pattern <" + vocabulary.predicate() + "> ?localPredicate ."
-									+ "?localPredicate <" + RDFS.seeAlso + "> ?predicate ."
-									+ "?pattern <" + vocabulary.object() + "> ?localObject ."
-									+ "?localObject <" + RDFS.seeAlso + "> ?object ."
-								+ "} order by desc(?occurrence)";
+			totalConcepts++;
 			
-			SparqlEndpoint.abstat().execute(abstatPatterns);
+			new Events().info("processing " + concept);
 			
-			String datasetPatterns = "select ?p ?o count(?p) count(?o) "
-									+ datasetGraph + " "
+			try{
+				String abstatPatterns = "select ?predicate ?object ?occurrence "
+									+ "from <" + vocabulary.graph() + "> "
 									+ "where {"
-										+ "?instance a <" + concept + "> ."
-										+ "?instance ?p ?o ."
-										+ ontology + " "
-									+ "} group by ?p ?o";
+										+ "?pattern a <" + vocabulary.abstractKnowledgePattern() + "> ."
+										+ "?pattern <" + vocabulary.subject() + "> ?localSubject ."
+										+ "?localSubject <" + RDFS.seeAlso + "> <" + concept + "> ."
+										+ "?pattern <" + vocabulary.occurrence() + "> ?occurrence ."
+										+ "?pattern <" + vocabulary.predicate() + "> ?localPredicate ."
+										+ "?localPredicate <" + RDFS.seeAlso + "> ?predicate ."
+										+ "?pattern <" + vocabulary.object() + "> ?localObject ."
+										+ "?localObject <" + RDFS.seeAlso + "> ?object ."
+									+ "} order by desc(?occurrence)";
+				
+				DateTime start = DateTime.now();
+				SparqlEndpoint.abstat().execute(abstatPatterns);
+				DateTime end = DateTime.now();
+				
+				long duration = new Interval(start, end).toDurationMillis();
+				abstatResponseTimes.addValue(duration);
+				
+			}catch(Exception e){
+				new Events().error(concept, e);
+			}
 			
-			SparqlEndpoint.dataset(dataset).execute(datasetPatterns);
-			System.out.println("done");
+			try{
+				String datasetPatterns = "select ?p ?o count(?p) count(?o) "
+										+ datasetGraph + " "
+										+ "where {"
+											+ "?instance a <" + concept + "> ."
+											+ "?instance ?p ?o . "
+											+ ontologyFilter + " "
+										+ "} group by ?p ?o";
+				
+				DateTime start = DateTime.now();
+				SparqlEndpoint.dataset(dataset).execute(datasetPatterns);
+				DateTime end = DateTime.now();
+				
+				long duration = new Interval(start, end).toDurationMillis();
+				datasetResponseTimes.addValue(duration);
+				
+			}catch(Exception e){
+				new Events().error(concept, e);
+			}
 		}
+		
+		long abstatTimeouts = totalConcepts -abstatResponseTimes.getN();
+		long datasetTimeouts = totalConcepts - datasetResponseTimes.getN();
+		System.out.println("ABSTAT average response time: " + abstatResponseTimes.getMean() + " (" + abstatTimeouts + " timeouts)");
+		System.out.println(dataset + " average response time: " + datasetResponseTimes.getMean()+ " (" + datasetTimeouts + " timeouts)");
 	}
 }

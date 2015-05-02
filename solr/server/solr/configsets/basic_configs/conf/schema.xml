@@ -3,8 +3,8 @@
 <schema name="schemaSolr" version="1.5">
    <fields>
    	<field name="idDocument" type="int" indexed="true" stored="true" required="true" multiValued="false" /> 
-	<field name="conceptName" type="text_general" indexed="true" stored="true" required="false" multiValued="false" />
-	<field name="propertyName" type="text_general" indexed="true" stored="true" required="false" multiValued="false" />
+	<field name="concept" type="text_general" indexed="true" stored="true" required="false" multiValued="false" />
+	<field name="property" type="text_general" indexed="true" stored="true" required="false" multiValued="false" />
 
 	<!-- Ora posso fare query di qualsiasi tipo sui documenti indicizzati (grazie al campo 'text')-->
 	<field name="text" type="text_general" indexed="true" stored="false" multiValued="true"/>

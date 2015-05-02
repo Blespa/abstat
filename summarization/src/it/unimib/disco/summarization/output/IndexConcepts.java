@@ -17,6 +17,7 @@ public class IndexConcepts
 	{
 		String host = args[0];
 		String port = args[1];
+		String pathFile = args[2];
 		
 		/*Step: Import dei concetti in Solr.*/
 		
@@ -24,20 +25,20 @@ public class IndexConcepts
 		HttpSolrServer solr = new HttpSolrServer(serverUrl); //connect to Solr server
 		solr.deleteByQuery("*:*"); //delete all documents into Solr server at the start
 		
-		conceptsImport(solr);
+		conceptsImport(solr, pathFile);
 	}
 	
-	private static void conceptsImport (HttpSolrServer solr) throws FileNotFoundException, IOException, SolrServerException
+	private static void conceptsImport (HttpSolrServer solr, String pathFile) throws FileNotFoundException, IOException, SolrServerException
 	{
-		ArrayList <String> concepts = takeOnlyConcepts();
+		ArrayList <String> concepts = takeOnlyConcepts(pathFile);
 		
 		indexDocuments(solr, concepts);	
 	}
 	
-	private static ArrayList <String> takeOnlyConcepts () throws FileNotFoundException, IOException
+	private static ArrayList <String> takeOnlyConcepts (String pathFile) throws FileNotFoundException, IOException
 	{
-		String pathFile = "/home/edoardo/workspace/Issue#2/countConcepts.txt";
-		BufferedReader reader = new BufferedReader(new FileReader(pathFile));
+		String path = pathFile;
+		BufferedReader reader = new BufferedReader(new FileReader(path));
 		
 		int numberOfConcepts = 0;
 		ArrayList <String> concepts = new ArrayList <String> ();
@@ -106,7 +107,7 @@ public class IndexConcepts
 			String concept = concepts.get(i);
 			SolrInputDocument doc = new SolrInputDocument ();
 			doc.setField("idDocument", i+1);
-			doc.setField("conceptName", concept);
+			doc.setField("concept", concept);
 			solr.add(doc);
 		}
 		

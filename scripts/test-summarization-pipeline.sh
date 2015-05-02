@@ -149,17 +149,17 @@ sleep 1
 assert_application_is_up $ui_port
 ./java-ui-development.sh stop $ui_port
 
-echo "integration testing of the solr module"
 echo
-
+echo "integration testing of the solr module"
 solr_port=8886
 
+echo
 ./solr.sh start $solr_port
 
 assert_application_is_up $solr_port solr/ "Solr Admin"
 
 cd ../summarization
-java -Xms256m -Xmx4g -cp .:'ontology_summarization.jar' it.unimib.disco.summarization.output.IndexConcepts localhost 8886
+java -Xms256m -Xmx4g -cp .:'ontology_summarization.jar' it.unimib.disco.summarization.output.IndexConcepts localhost 8886 ../benchmark/regression-test-results/patterns/obj-patterns/countConcepts.txt
 cd ../scripts
 
 highlight_color='\e[0;31m'
@@ -172,6 +172,7 @@ fi
 
 echo -e "checking solr indexing was successful: ${highlight_color}${message}\e[0m"
 
+echo
 ./solr.sh stop $solr_port
 
 echo

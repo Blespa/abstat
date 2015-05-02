@@ -21,7 +21,7 @@ public class IndexConcepts
 		
 		/*Step: Import dei concetti in Solr.*/
 		
-		String serverUrl = "http://"+host+":"+port+"/solr/coreSolr"; //URL where is up Solr server
+		String serverUrl = "http://"+host+":"+port+"/solr/indexConcepts"; //URL where is up Solr server
 		HttpSolrServer solr = new HttpSolrServer(serverUrl); //connect to Solr server
 		solr.deleteByQuery("*:*"); //delete all documents into Solr server at the start
 		

@@ -7,35 +7,52 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import org.apache.solr.client.solrj.SolrServerException;
-import org.apache.solr.client.solrj.impl.HttpSolrServer;
+import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.apache.solr.common.SolrInputDocument;
 
-@SuppressWarnings("deprecation")
 public class IndexConcepts
 {
-	public static void main(String[] args) throws SolrServerException, IOException
+	public static void main (String[] args) throws SolrServerException, IOException
 	{
+		/*Receive three arguments from script (that are 'host', 'port' and 'pathFile').*/
+		
 		String host = args[0];
 		String port = args[1];
 		String pathFile = args[2];
 		
-		/*Step: Import dei concetti in Solr.*/
+		/*Step: Concepts import.*/
 		
-		String serverUrl = "http://"+host+":"+port+"/solr/indexConcepts"; //URL where is up Solr server
-		HttpSolrServer solr = new HttpSolrServer(serverUrl); //connect to Solr server
-		solr.deleteByQuery("*:*"); //delete all documents into Solr server at the start
+		String serverUrl = "http://"+host+":"+port+"/solr/indexConcepts"; //URL where the Server is up
+		HttpSolrClient client = new HttpSolrClient(serverUrl); //connect to Solr server
+		client.deleteByQuery("*:*"); //delete all the documents indexing before
 		
-		conceptsImport(solr, pathFile);
+		conceptsImport(client, pathFile);
 	}
 	
-	private static void conceptsImport (HttpSolrServer solr, String pathFile) throws FileNotFoundException, IOException, SolrServerException
+	private static void conceptsImport (HttpSolrClient client, String pathFile) throws FileNotFoundException, IOException, SolrServerException
 	{
 		ArrayList <String> concepts = takeOnlyConcepts(pathFile);
 		
-		indexDocuments(solr, concepts);	
+		indexDocuments(client,concepts);
 	}
 	
-	private static ArrayList <String> takeOnlyConcepts (String pathFile) throws FileNotFoundException, IOException
+	private static void indexDocuments(HttpSolrClient client, ArrayList<String> concepts) throws IOException, SolrServerException
+	{
+		int numberOfConcepts = concepts.size();
+		
+		for (int i = 0; i < numberOfConcepts; i++)
+		{
+			String concept = concepts.get(i);
+			SolrInputDocument doc = new SolrInputDocument();
+			doc.setField("idDocument", i+1);
+			doc.setField("concept", concept);
+			client.add(doc);
+		}
+		
+		client.commit(true, true);
+	}
+
+	private static ArrayList<String> takeOnlyConcepts(String pathFile) throws FileNotFoundException, IOException
 	{
 		String path = pathFile;
 		BufferedReader reader = new BufferedReader(new FileReader(path));
@@ -96,21 +113,5 @@ public class IndexConcepts
     	reader.close();
     	
 		return concepts;
-	}
-
-	private static void indexDocuments (HttpSolrServer solr, ArrayList <String> concepts) throws SolrServerException, IOException
-	{
-		int numberOfConcepts = concepts.size();
-		
-		for (int i = 0; i < numberOfConcepts; i++)
-		{
-			String concept = concepts.get(i);
-			SolrInputDocument doc = new SolrInputDocument ();
-			doc.setField("idDocument", i+1);
-			doc.setField("concept", concept);
-			solr.add(doc);
-		}
-		
-		solr.commit(true, true);
 	}
 }

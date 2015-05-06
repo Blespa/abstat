@@ -164,16 +164,14 @@ cd ../scripts
 
 highlight_color='\e[0;31m'
 message='KO'
-if [[ $(curl --silent http://localhost:8886/solr/indexConcepts/select?q=*:* | grep "numFound=\"778\"") ]]
+if [[ $(curl --silent http://localhost:8886/solr/indexing/select?q=*:* | grep "numFound=\"778\"") ]]
 then
 	highlight_color='\e[0;32m'
 	message="OK"
 fi
 
-echo -e "checking solr indexing was successful: ${highlight_color}${message}\e[0m"
+echo -e "checking that solr indexing concepts was successful: ${highlight_color}${message}\e[0m"
 
 echo
 ./solr.sh stop $solr_port
-
-echo
 

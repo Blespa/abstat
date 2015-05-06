@@ -159,12 +159,12 @@ echo
 assert_application_is_up $solr_port solr/ "Solr Admin"
 
 cd ../summarization
-java -Xms256m -Xmx4g -cp .:'ontology_summarization.jar' it.unimib.disco.summarization.output.IndexConcepts localhost 8886 ../benchmark/regression-test-results/patterns/obj-patterns/countConcepts.txt
+java -Xms256m -Xmx4g -cp .:'ontology_summarization.jar' it.unimib.disco.summarization.output.IndexConcepts localhost $solr_port ../benchmark/regression-test-results/patterns/obj-patterns/countConcepts.txt
 cd ../scripts
 
 highlight_color='\e[0;31m'
 message='KO'
-if [[ $(curl --silent http://localhost:8886/solr/indexing/select?q=*:*&fq=type:concept | grep "numFound=\"778\"") ]]
+if [[ $(curl --silent http://localhost:$solr_port/solr/indexing/select?q=*:*&fq=type:concept | grep "numFound=\"778\"") ]]
 then
 	highlight_color='\e[0;32m'
 	message="OK"
@@ -173,12 +173,12 @@ fi
 echo -e "checking that solr indexing concepts was successful: ${highlight_color}${message}\e[0m"
 
 cd ../summarization
-java -Xms256m -Xmx4g -cp .:'ontology_summarization.jar' it.unimib.disco.summarization.output.IndexProperties localhost 8886 ../benchmark/regression-test-results/patterns/obj-patterns/countProp.txt
+java -Xms256m -Xmx4g -cp .:'ontology_summarization.jar' it.unimib.disco.summarization.output.IndexProperties localhost $solr_port ../benchmark/regression-test-results/patterns/obj-patterns/countProp.txt
 cd ../scripts
 
 highlight_color='\e[0;31m'
 message='KO'
-if [[ $(curl --silent http://localhost:8886/solr/indexing/select?q=*:*&fq=type:property | grep "numFound=\"213\"") ]]
+if [[ $(curl --silent http://localhost:$solr_port/solr/indexing/select?q=*:*&fq=type:property | grep "numFound=\"213\"") ]]
 then
 	highlight_color='\e[0;32m'
 	message="OK"

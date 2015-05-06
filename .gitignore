@@ -11,3 +11,5 @@ summarization-web.jar
 solr/server/solr/configsets/basic_configs/index/
 solr/bin/solr-8886.pid
 solr/server/solr/configsets/basic_configs/tlog/
+.recommenders
+

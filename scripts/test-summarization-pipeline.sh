@@ -172,6 +172,20 @@ fi
 
 echo -e "checking that solr indexing concepts was successful: ${highlight_color}${message}\e[0m"
 
+cd ../summarization
+java -Xms256m -Xmx4g -cp .:'ontology_summarization.jar' it.unimib.disco.summarization.output.IndexProperties localhost 8886 ../benchmark/regression-test-results/patterns/obj-patterns/countProp.txt
+cd ../scripts
+
+highlight_color='\e[0;31m'
+message='KO'
+if [[ $(curl --silent http://localhost:8886/solr/indexing/select?q=*:* | grep "numFound=\"213\"") ]]
+then
+	highlight_color='\e[0;32m'
+	message="OK"
+fi
+
+echo -e "checking that solr indexing properties was successful: ${highlight_color}${message}\e[0m"
+
 echo
 ./solr.sh stop $solr_port
 

@@ -22,7 +22,7 @@ public class IndexConcepts
 		
 		/*Step: Concepts import.*/
 		
-		String serverUrl = "http://"+host+":"+port+"/solr/indexConcepts"; //URL where the Server is up
+		String serverUrl = "http://"+host+":"+port+"/solr/indexing"; //URL where the Server is up
 		HttpSolrClient client = new HttpSolrClient(serverUrl); //connect to Solr server
 		client.deleteByQuery("*:*"); //delete all the documents indexing before
 		

@@ -64,7 +64,6 @@ public class IndexProperties
     	String property = "";
     	
     	String line = reader.readLine();
-		numberOfProperties = (numberOfProperties + 1);
     	
     	while (line != null)
     	{
@@ -109,7 +108,6 @@ public class IndexProperties
     		
     	}
     	
-    	numberOfProperties = (numberOfProperties - 1);
     	reader.close();
     	
 		return properties;

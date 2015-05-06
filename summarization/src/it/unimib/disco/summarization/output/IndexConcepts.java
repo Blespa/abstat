@@ -64,7 +64,6 @@ public class IndexConcepts
     	String concept = "";
     	
     	String line = reader.readLine();
-		numberOfConcepts = (numberOfConcepts + 1);
     	
     	while (line != null)
     	{
@@ -109,7 +108,6 @@ public class IndexConcepts
     		
     	}
     	
-    	numberOfConcepts = (numberOfConcepts - 1);
     	reader.close();
     	
 		return concepts;

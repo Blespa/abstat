@@ -22,9 +22,8 @@ public class IndexConcepts
 		
 		/*Step: Concepts import.*/
 		
-		String serverUrl = "http://"+host+":"+port+"/solr/indexing"; //URL where the Server is up
-		HttpSolrClient client = new HttpSolrClient(serverUrl); //connect to Solr server
-		client.deleteByQuery("*:*"); //delete all the documents indexing before
+		String serverUrl = "http://"+host+":"+port+"/solr/indexing";
+		HttpSolrClient client = new HttpSolrClient(serverUrl);
 		
 		conceptsImport(client, pathFile);
 	}
@@ -46,6 +45,7 @@ public class IndexConcepts
 			SolrInputDocument doc = new SolrInputDocument();
 			doc.setField("idDocument", i+1);
 			doc.setField("concept", concept);
+			doc.setField("type", "concept");
 			client.add(doc);
 		}
 		

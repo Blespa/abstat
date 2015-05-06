@@ -24,7 +24,6 @@ public class IndexProperties
 		
 		String serverUrl = "http://"+host+":"+port+"/solr/indexing";
 		HttpSolrClient client = new HttpSolrClient(serverUrl);
-		client.deleteByQuery("*:*");
 		
 		propertiesImport(client, pathFile);
 	}
@@ -44,8 +43,9 @@ public class IndexProperties
 		{
 			String property = properties.get(i);
 			SolrInputDocument doc = new SolrInputDocument();
-			doc.setField("idDocument", i+1);
+			doc.setField("idDocument", (i+1+778));
 			doc.setField("property", property);
+			doc.setField("type", "property");
 			client.add(doc);
 		}
 		

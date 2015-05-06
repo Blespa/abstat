@@ -11,6 +11,12 @@
 
 	<!--Risolto il problema dell'UpdateLog in solrconfig.xml (mancava il campo '_version_')-->
 	<field name="_version_" type="long" indexed="true" stored="true" multiValued="false" />
+
+	<!-- Aggiungo questo campo in modo tale da avere un unico core chiamato 'indexing' in cui indicizzo tutto (concetti, proprietà).
+	Questo campo può contenere solamente uno dei due valori seguenti: "concept" o "property", in modo tale da differenziare nel core
+	se il documento inserito è un concetto oppure è una proprietà.-->
+	<field name="type" type="text_general" indexed="true" stored="true" required="true" multiValued="false" />
+
    </fields>
 
    <uniqueKey>idDocument</uniqueKey>

@@ -164,7 +164,7 @@ cd ../scripts
 
 highlight_color='\e[0;31m'
 message='KO'
-if [[ $(curl --silent http://localhost:8886/solr/indexing/select?q=*:* | grep "numFound=\"778\"") ]]
+if [[ $(curl --silent http://localhost:8886/solr/indexing/select?q=*:*&fq=type:concept | grep "numFound=\"778\"") ]]
 then
 	highlight_color='\e[0;32m'
 	message="OK"
@@ -178,7 +178,7 @@ cd ../scripts
 
 highlight_color='\e[0;31m'
 message='KO'
-if [[ $(curl --silent http://localhost:8886/solr/indexing/select?q=*:* | grep "numFound=\"213\"") ]]
+if [[ $(curl --silent http://localhost:8886/solr/indexing/select?q=*:*&fq=type:property | grep "numFound=\"213\"") ]]
 then
 	highlight_color='\e[0;32m'
 	message="OK"

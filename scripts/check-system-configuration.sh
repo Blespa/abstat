@@ -1,11 +1,23 @@
 #!/bin/bash
 
+function is_reachable(){
+	ping -q -c 1 $1 > /dev/null
+}
+
 rdf_export_path=$1
 
 echo "SYSTEM TEST"
 echo
 
 echo "checking system configuration"
+hosts=(149.132.176.73 193.204.59.21 bitbucket.org)
+for i in ${hosts[@]}; do
+	if ! is_reachable $i ; then
+		echo $i is not reachable
+		exit 1
+	fi
+done
+
 virtuoso_config_file=/etc/virtuoso-opensource-6.1/virtuoso.ini
 if ! command -v virtuoso-t ; then
 	echo "no virtuoso end point detected"
@@ -26,7 +38,7 @@ then
 	echo "virtuoso is not configured properly:"
 	echo "add ${rdf_export_path} to the DirsAllowed parameter in ${virtuoso_config_file}"
 	echo
-	exit
+	exit 1
 fi
 if ! [[ $(curl --silent -i -H "Origin: http://localhost:1234" http://localhost:8890/sparql | grep "Access-Control-Allow-Origin: *") ]]
 then
@@ -34,7 +46,7 @@ then
 	echo "virtuoso is not configured for allowing Cross-Origin Resource Sharing over the uri '/sparql'. Please configure it following the tutorial on:"
 	echo "http://virtuoso.openlinksw.com/dataspace/doc/dav/wiki/Main/VirtTipsAndTricksGuideCORSSetup#Server-level+CORS+Setup"
 	echo
-	exit
+	exit 1
 fi
 if ! [[ $(curl --silent -i http://localhost:8890/describe/?uri=any | grep 200) ]]
 then
@@ -43,6 +55,6 @@ then
 	echo "http://virtuoso.openlinksw.com/dataspace/doc/dav/wiki/Main/VirtFacetBrowserInstallConfig"
 	echo "NOTE: download the VAD package from http://opldownload.s3.amazonaws.com/uda/vad-packages/6.4/virtuoso/fct_dav.vad"
 	echo
-	exit
+	exit 1
 fi
 

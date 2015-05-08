@@ -24,7 +24,7 @@ public class PropertyExtractor {
 	private HashMap<String,HashMap<String,Integer>> Counter = new HashMap<String,HashMap<String,Integer>>(); //Property -> Context(Relation Type), Total
 
 
-	public void setProperty(OntModel ontologyModel) {
+	public PropertyExtractor setProperty(OntModel ontologyModel) {
 		
 		enrichWithImplicitPropertyDeclarations(ontologyModel);
 		ExtendedIterator<OntProperty> TempExtractedPropery = ontologyModel.listAllOntProperties();
@@ -34,6 +34,7 @@ public class PropertyExtractor {
 		}
 		
 		TempExtractedPropery.close();
+		return this;
 	}
 
 	private void enrichWithImplicitPropertyDeclarations(OntModel ontologyModel) {

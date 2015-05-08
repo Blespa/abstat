@@ -4,45 +4,28 @@ import it.unimib.disco.summarization.output.Events;
 import it.unimib.disco.summarization.output.LDSummariesVocabulary;
 
 import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.vocabulary.RDFS;
 
 public class PatternStatistics {
 
 	public static void main(String[] args) {
 		
-		String dataset = "linked-brainz";
-		String ontology = "http://purl.org/ontology/mo/";
+		String dataset = args[0];
 		
 		new Events();
 		
 		LDSummariesVocabulary vocabulary = new LDSummariesVocabulary(ModelFactory.createDefaultModel(), dataset);
 		
-		int totalAKP = new AbstatEndpoint()
+		int totalAKP = SparqlEndpoint
+						.abstat()
 						.execute("select (count(?pattern) as ?count)"
 							 + "from <" + vocabulary.graph() + "> "
 					 		 + "where {"
 					 		 	+ "?pattern a <"+ vocabulary.abstractKnowledgePattern().getURI() + "> ." +
 					 		  "}")
 					 	.next().getLiteral("count").getInt();
-//		int internalAKP = new AbstatEndpoint()
-//						.execute("select (count(?pattern) as ?count)"
-//							 + "from <" + vocabulary.graph() + "> "
-//							 + "where {"
-//						 		+ "?pattern a <"+ vocabulary.abstractKnowledgePattern().getURI() + "> ."
-//							 	+ "?pattern <"+ vocabulary.subject()+ "> ?localSubject ."
-//							 	+ "?localSubject <"+ RDFS.seeAlso + "> ?subject ."
-//							 	+ "?pattern <"+ vocabulary.object()+ "> ?localObject ."
-//							 	+ "?localObject a <"+ vocabulary.type() + "> . "
-//							 	+ "?localObject <"+ RDFS.seeAlso + "> ?object . "
-//							 	+ "filter not exists {"
-//							 		+ "?localObject a <" + vocabulary.datatype() + "> . "
-//						 		+ "} "
-//							 	+ "filter regex(?subject, '" + ontology + "') "
-//							 	+ "filter regex(?object, '" + ontology + "') "
-//							 + "}")
-//					 	.next().getLiteral("count").getInt();
-		
-		int datatypeAKP = new AbstatEndpoint()
+
+		int datatypeAKP = SparqlEndpoint
+						.abstat()
 						.execute("select (count(?pattern) as ?count)"
 							 + "from <" + vocabulary.graph() + "> "
 					 		 + "where {"

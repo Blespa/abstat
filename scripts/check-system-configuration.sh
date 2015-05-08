@@ -6,9 +6,6 @@ function is_reachable(){
 
 rdf_export_path=$1
 
-echo "SYSTEM TEST"
-echo
-
 echo "checking system configuration"
 hosts=(149.132.176.73 193.204.59.21 bitbucket.org)
 for i in ${hosts[@]}; do

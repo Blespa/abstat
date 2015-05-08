@@ -46,6 +46,7 @@ results=$root/benchmark/tmp
 
 cd $current_directory
 
+echo "SYSTEM TEST"
 echo
 ./check-system-configuration.sh $rdf_export_path
 echo

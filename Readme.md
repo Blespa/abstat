@@ -49,7 +49,7 @@ $ scripts/prepare-linked-brainz-dataset.sh $TARGET-DIRECTORY
 
 ### Machines
 
-* 149.132.176.73 - siti-rack.siti.disco.unimib.it - complete installation
+* 10.109.149.57 - behind RICERCA vpn - complete installation
 * 193.204.59.21 - bari server - only summarization (no indexing and no webapp)
 
 ### Monitoring

@@ -7,13 +7,13 @@ function is_reachable(){
 rdf_export_path=$1
 
 echo "checking system configuration"
-hosts=(149.132.176.73 193.204.59.21 bitbucket.org)
-for i in ${hosts[@]}; do
-	if ! is_reachable $i ; then
-		echo $i is not reachable
-		exit 1
-	fi
-done
+#hosts=(149.132.176.73 193.204.59.21 bitbucket.org)
+#for i in ${hosts[@]}; do
+#	if ! is_reachable $i ; then
+#		echo $i is not reachable
+#		exit 1
+#	fi
+#done
 
 virtuoso_config_file=/etc/virtuoso-opensource-6.1/virtuoso.ini
 if ! command -v virtuoso-t ; then

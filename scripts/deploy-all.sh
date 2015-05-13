@@ -12,5 +12,5 @@ echo deploying the summarization module
 echo "done"
 
 echo deploying the webapp module
-./deploy-full.sh $user@149.132.176.73
+./deploy-full.sh $user@10.109.149.57
 echo "done"

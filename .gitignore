@@ -8,10 +8,5 @@ organized-splitted-deduplicated
 RemoteSystemsTempFiles
 summarization-web.jar
 !solr/bin
-solr/server/solr/configsets/basic_configs/index/
-solr/bin/solr-8886.pid
-solr/server/solr/configsets/basic_configs/tlog/
-.recommenders/index/http___download_eclipse_org_recommenders_models_luna_
-.recommenders/caches
-.recommenders/repository/http___download_eclipse_org_recommenders_models_luna_/org/eclipse/recommenders/index/0.0.0-SNAPSHOT
+solr/server/solr/configsets/basic_configs/data/
 

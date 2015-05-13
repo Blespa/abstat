@@ -27,6 +27,7 @@ set -e
 relative_path=`dirname $0`
 current_directory=$(as_absolute $relative_path)
 
+
 cd $current_directory
 
 echo "integration testing of the solr module"
@@ -37,7 +38,7 @@ echo
 assert_application_is_up $solr_port solr/ "Solr Admin"
 
 cd ../summarization
-java -Xms256m -Xmx4g -cp .:'ontology_summarization.jar' it.unimib.disco.summarization.output.IndexConcepts localhost $solr_port ../benchmark/regression-test-results/patterns/obj-patterns/countConcepts.txt
+java -Xms256m -Xmx4g -cp .:'ontology_summarization.jar' it.unimib.disco.summarization.output.IndexConcepts localhost $solr_port ../benchmark/tmp/patterns/count-concepts.txt
 cd ../scripts
 
 highlight_color='\e[0;31m'
@@ -51,7 +52,8 @@ fi
 echo -e "checking that solr indexing concepts was successful: ${highlight_color}${message}\e[0m"
 
 cd ../summarization
-java -Xms256m -Xmx4g -cp .:'ontology_summarization.jar' it.unimib.disco.summarization.output.IndexProperties localhost $solr_port ../benchmark/regression-test-results/patterns/obj-patterns/countProp.txt
+java -Xms256m -Xmx4g -cp .:'ontology_summarization.jar' it.unimib.disco.summarization.output.IndexProperties localhost $solr_port ../benchmark/tmp/patterns/count-datatype-properties.txt
+java -Xms256m -Xmx4g -cp .:'ontology_summarization.jar' it.unimib.disco.summarization.output.IndexProperties localhost $solr_port ../benchmark/tmp/patterns/count-object-properties.txt
 cd ../scripts
 
 highlight_color='\e[0;31m'

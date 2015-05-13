@@ -1,5 +1,7 @@
 package it.unimib.disco.summarization.output;
 
+import it.unimib.disco.summarization.utility.RDFResource;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -103,6 +105,22 @@ public class LDSummariesVocabulary {
 	
 	public Resource asLocalResource(String globalResource) {
 		return model.createResource(resourcesNamespace() + globalResource.replace("http://", ""));
+	}
+	
+	public Resource addConcept(String concept) {
+		
+		Resource globalSubject = model.createResource(concept);
+		Resource localSubject = asLocalResource(globalSubject.getURI());
+		
+		model.add(localSubject, RDFS.seeAlso, globalSubject);
+		
+		model.add(localSubject, RDF.type, type());
+		model.add(localSubject, RDF.type, concept());
+		return localSubject;
+	}
+	
+	public String graph(){
+		return baseUri() + dataset;
 	}
 
 	private Resource aggregate(String type, String... elements) {

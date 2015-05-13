@@ -1,5 +1,0 @@
-URI Subject##URI Property##URI Object##Number of instances##..
-Total##0
-Unresolved Subject##0
-Unresolved Object##0
-Unresolved Total##0

@@ -1,8 +1,8 @@
 package it.unimib.disco.summarization.tests;
 
 import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.Assert.assertThat;
-import it.unimib.disco.summarization.extraction.ConceptExtractor;
+import static org.junit.Assert.*;
+import it.unimib.disco.summarization.ontology.ConceptExtractor;
 
 import java.util.HashMap;
 
@@ -34,6 +34,19 @@ public class ConceptExtractorTest {
 		
 		assertThat(concepts.get("http://father"), notNullValue());
 		assertThat(concepts.get("http://parent"), notNullValue());
+	}
+	
+	@Test
+	public void shouldSpotAnEquivalentClass() throws Exception {
+		
+		ToyOntology ontology = new ToyOntology()
+										.owl()
+										.definingConcept("http://dbpedia.org/Person")
+										.equivalentTo("http://schema.org/Person");
+		
+		HashMap<String, String> concepts = conceptsFrom(ontology);
+		
+		assertThat(concepts.get("http://schema.org/Person"), notNullValue());
 	}
 	
 	private HashMap<String, String> conceptsFrom(ToyOntology model) {

@@ -1,1 +1,0 @@
-Property##Number of Minimum Type Concept (subject|object) of the property##% respect to the total number of Concepts

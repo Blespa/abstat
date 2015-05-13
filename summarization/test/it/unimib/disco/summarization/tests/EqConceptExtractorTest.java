@@ -2,10 +2,10 @@ package it.unimib.disco.summarization.tests;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.*;
-import it.unimib.disco.summarization.datatype.Concept;
-import it.unimib.disco.summarization.datatype.EquConcept;
-import it.unimib.disco.summarization.extraction.ConceptExtractor;
-import it.unimib.disco.summarization.extraction.EqConceptExtractor;
+import it.unimib.disco.summarization.ontology.ConceptExtractor;
+import it.unimib.disco.summarization.ontology.Concepts;
+import it.unimib.disco.summarization.ontology.EqConceptExtractor;
+import it.unimib.disco.summarization.ontology.EquivalentConcepts;
 
 import org.junit.Test;
 
@@ -24,7 +24,7 @@ public class EqConceptExtractorTest {
 										.thatHasProperty(OWL.equivalentClass)
 										.linkingTo("http://schema.org/Place");
 		
-		EquConcept equivalentConcepts = equivalentConceptsFrom(ontology);
+		EquivalentConcepts equivalentConcepts = equivalentConceptsFrom(ontology);
 		
 		assertThat(equivalentConcepts.getExtractedEquConcept().size(), equalTo(1));
 	}
@@ -39,19 +39,19 @@ public class EqConceptExtractorTest {
 											.thatHasProperty(OWL.equivalentClass)
 											.linkingTo("http://any");
 		
-		EquConcept equivalentConcepts = equivalentConceptsFrom(ontology);
+		EquivalentConcepts equivalentConcepts = equivalentConceptsFrom(ontology);
 		
 		assertThat(equivalentConcepts.getExtractedEquConcept().size(), equalTo(1));
 	}
 	
-	private EquConcept equivalentConceptsFrom(ToyOntology ontology) {
+	private EquivalentConcepts equivalentConceptsFrom(ToyOntology ontology) {
 		
 		OntModel model = ontology.build();
 		
 		ConceptExtractor conceptExtractor = new ConceptExtractor();
 		conceptExtractor.setConcepts(model);
 		
-		Concept concepts = new Concept();
+		Concepts concepts = new Concepts();
 		concepts.setConcepts(conceptExtractor.getConcepts());
 		concepts.setExtractedConcepts(conceptExtractor.getExtractedConcepts());
 		concepts.setObtainedBy(conceptExtractor.getObtainedBy());
@@ -59,7 +59,7 @@ public class EqConceptExtractorTest {
 		EqConceptExtractor equConcepts = new EqConceptExtractor();
 		equConcepts.setEquConcept(concepts, model);
 		
-		EquConcept equConcept = new EquConcept();
+		EquivalentConcepts equConcept = new EquivalentConcepts();
 		equConcept.setExtractedEquConcept(equConcepts.getExtractedEquConcept());
 		equConcept.setEquConcept(equConcepts.getEquConcept());
 		

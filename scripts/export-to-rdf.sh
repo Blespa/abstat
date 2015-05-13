@@ -11,7 +11,7 @@ function export_rdf(){
 	dataset=$4
 
 	echo "exporting $from as $to"
-	java -Xms256m -Xmx4g -cp .:'ontology_summarization.jar' it.unimib.disco.summarization.output.$command $from $to $dataset
+	java -Xms256m -Xmx16g -cp .:'ontology_summarization.jar' it.unimib.disco.summarization.output.$command $from $to $dataset
 	echo "done"
 }
 
@@ -30,23 +30,13 @@ cd $root
 ./build-java-summarization-module.sh
 
 cd $project
-export_rdf WriteConceptToRDF $input_directory/obj-patterns/countConcepts.txt $output_directory/count-concepts.nt $graph
-export_rdf WriteDatatypeToRDF $input_directory/dt-patterns/countDataType.txt $output_directory/count-datatype.nt $graph
-export_rdf WriteObjectPropertyToRDF $input_directory/obj-patterns/countProp.txt $output_directory/count-properties.nt $graph
-export_rdf WriteDatatypePropertyToRDF $input_directory/dt-patterns/countDTProp.txt $output_directory/count-datatype-properties.nt $graph
-export_rdf WriteAKPToRDF $input_directory/obj-patterns/relationCount.txt $output_directory/relation-count.nt $graph
-export_rdf WriteAKPToRDF $input_directory/dt-patterns/relationDTCount.txt $output_directory/relation-datatype-count.nt $graph
-
-export_rdf WriteSubjAAKPToRDF $input_directory/obj-patterns/countClassSUBJ.txt $output_directory/count-class-subject.nt $graph 
-export_rdf WriteObjAAKPToRDF $input_directory/obj-patterns/countClassOBJ.txt $output_directory/count-class-object.nt $graph
-export_rdf WriteSubjAAKPToRDF $input_directory/dt-patterns/countClassDTSUBJ.txt $output_directory/count-datatype-class-subject.nt $graph
-
+export_rdf WriteConceptToRDF $input_directory/count-concepts.txt $output_directory/count-concepts.nt $graph
+export_rdf WriteDatatypeToRDF $input_directory/count-datatype.txt $output_directory/count-datatype.nt $graph
+export_rdf WriteObjectPropertyToRDF $input_directory/count-object-properties.txt $output_directory/count-properties.nt $graph
+export_rdf WriteDatatypePropertyToRDF $input_directory/count-datatype-properties.txt $output_directory/count-datatype-properties.nt $graph
+export_rdf WriteAKPToRDF $input_directory/object-akp.txt $output_directory/relation-count.nt $graph
+export_rdf WriteAKPToRDF $input_directory/datatype-akp.txt $output_directory/relation-datatype-count.nt $graph
 export_rdf WriteConceptGraphToRDF "$input_directory/../reports/tmp-data-for-computation/SubclassOf.txt" $output_directory/concept-graph.nt $graph
-
-#export_rdf WriteDatatypePropertySubjToRDF $input_directory/dt-patterns/countDTSUBJ.txt $output_directory/count-datatype-subjects.nt $graph
-#export_rdf WriteObjectPropertySubjToRDF $input_directory/obj-patterns/countSUBJ.txt $output_directory/count-subjects.nt $graph
-#export_rdf WriteObjectPropertyObjToRDF $input_directory/obj-patterns/countOBJ.txt $output_directory/count-objects.nt $graph
-#export_rdf WriteDatatypePropertyObjToRDF $input_directory/dt-patterns/countDTOBJ.txt $output_directory/count-datatype-objects.nt $graph
  
 cd $root
 

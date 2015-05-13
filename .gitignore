@@ -5,8 +5,11 @@ ontology_summarization.jar
 tmp
 organized-splitted-deduplicated
 .metadata
+.recommenders
 RemoteSystemsTempFiles
 summarization-web.jar
 !solr/bin
 solr/server/solr/configsets/basic_configs/data/
+
+
 

@@ -46,6 +46,8 @@ results=$root/benchmark/tmp
 cd $current_directory
 
 echo "SYSTEM TEST"
+./check-system-configuration.sh
+
 ./test-summarization-pipeline.sh
 
 graph=http://ld-summaries.org/system-test

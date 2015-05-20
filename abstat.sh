@@ -38,7 +38,7 @@ case "$1" in
 		run $2
 		;;
         *)
-                echo "Usage: abstat start|stop"
+                echo "Usage: abstat start|stop|build|run"
 		;;
 esac
 exit $status

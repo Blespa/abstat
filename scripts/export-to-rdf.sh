@@ -26,9 +26,6 @@ input_directory=$(as_absolute $1)/patterns
 output_directory=$(as_absolute $2)
 graph=$3
 
-cd $root
-./build-java-summarization-module.sh
-
 cd $project
 export_rdf WriteConceptToRDF $input_directory/count-concepts.txt $output_directory/count-concepts.nt $graph
 export_rdf WriteDatatypeToRDF $input_directory/count-datatype.txt $output_directory/count-datatype.nt $graph

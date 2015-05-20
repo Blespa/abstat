@@ -51,7 +51,9 @@ echo "SYSTEM TEST"
 ./test-summarization-pipeline.sh
 
 graph=http://ld-summaries.org/system-test
+cd ../scripts
 ./export-to-rdf.sh $results $rdf_export_path $graph
+cd ../testing
 assert_results_are_present_in_virtuoso
 
 ./test-java-ui-module.sh

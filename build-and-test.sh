@@ -9,6 +9,6 @@ cd $root
 
 ./abstat.sh build
 ./abstat.sh start
-./abstat.sh run scripts/end2end-test.sh
+./abstat.sh run testing/end2end-test.sh
 ./abstat.sh stop
 

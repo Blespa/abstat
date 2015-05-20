@@ -51,6 +51,8 @@ mkdir -p $results
 
 cd $current_directory
 ./test-java-summarization-module.sh
+cd ../scripts
 ./run-summarization-pipeline.sh $data $results
 assert_no_errors_on ../summarization/log/log.txt
 assert_results_are_compliant $expected_results $results
+cd ../testing

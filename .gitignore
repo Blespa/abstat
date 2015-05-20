@@ -8,3 +8,4 @@ organized-splitted-deduplicated
 RemoteSystemsTempFiles
 summarization-web.jar
 !solr/bin
+*.pid

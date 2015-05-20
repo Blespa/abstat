@@ -23,7 +23,7 @@ function assert_application_is_up(){
 	page=$1
 	expected_response=$2
 
-	url="localhost:${port}${page}"
+	url="localhost${page}"
 
 	highlight_color='\e[0;31m'
 	message='KO'

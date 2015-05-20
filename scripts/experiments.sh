@@ -13,8 +13,6 @@ relative_path=`dirname $0`
 root=`cd $relative_path;pwd`
 project=$root/../summarization
 
-cd $root
-./build-java-summarization-module.sh
 cd $project
 
 run_experiment PatternStatistics linked-brainz

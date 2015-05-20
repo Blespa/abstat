@@ -52,9 +52,5 @@ mkdir -p $results
 cd $current_directory
 ./test-java-summarization-module.sh
 ./run-summarization-pipeline.sh $data $results
-echo
 assert_no_errors_on ../summarization/log/log.txt
 assert_results_are_compliant $expected_results $results
-
-echo
-

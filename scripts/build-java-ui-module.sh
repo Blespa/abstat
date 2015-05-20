@@ -7,6 +7,8 @@ project=$root/../web
 build_directory=$project/bin
 classes_directory=$build_directory/classes
 
+echo building the summarization module
+
 cd $project
 rm -rf $classes_directory
 mkdir -p $classes_directory
@@ -18,5 +20,7 @@ do
 done
 jar cvfe ../../summarization-web.jar -C . > /dev/null
 chmod 777 ../../summarization-web.jar
+
+echo done
 
 

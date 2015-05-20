@@ -7,7 +7,7 @@ function as_absolute(){
 }
 
 function start(){
-	docker build -t abstat startup && docker rm -f abstat && docker run -d -p 80:80 --name abstat -v $(as_absolute `dirname $0`):/schema-summaries abstat/latest
+	docker rm -f abstat && docker run -d -p 80:80 --name abstat -v $(as_absolute `dirname $0`):/schema-summaries abstat/latest
 }
 
 function stop(){
@@ -18,6 +18,12 @@ function run(){
 	docker exec abstat /schema-summaries/$1
 }
 
+function build(){
+	docker build -t abstat startup
+	docker run -it -v $(as_absolute `dirname $0`):/schema-summaries abstat/latest /schema-summaries/scripts/build-java-summarization-module.sh
+	docker run -it -v $(as_absolute `dirname $0`):/schema-summaries abstat/latest /schema-summaries/scripts/build-java-ui-module.sh
+}
+
 case "$1" in
         start)
                 start
@@ -25,6 +31,9 @@ case "$1" in
         stop)
                 stop
                 ;;
+	build)
+		build
+		;;
 	run)
 		run $2
 		;;

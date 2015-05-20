@@ -11,7 +11,11 @@ function start(){
 }
 
 function destroy(){
-	docker stop abstat && docker rm -f abstat
+	if [[ $(docker ps | grep abstat) ]] 
+	then
+		docker stop abstat
+		docker rm -f abstat
+	fi
 }
 
 function run(){

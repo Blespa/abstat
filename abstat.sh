@@ -14,8 +14,8 @@ function destroy(){
 	if [[ $(docker ps | grep abstat) ]] 
 	then
 		docker stop abstat
-		docker rm -f abstat
 	fi
+	docker rm -f $(docker ps -aq)
 }
 
 function run(){
@@ -23,13 +23,12 @@ function run(){
 }
 
 function build(){
-	docker build -t abstat deployment
+	docker build -rm -t abstat deployment
 	docker run -it -v $(as_absolute `dirname $0`):/schema-summaries abstat /schema-summaries/build/build-java-summarization-module.sh
 	docker run -it -v $(as_absolute `dirname $0`):/schema-summaries abstat /schema-summaries/build/build-java-ui-module.sh
 	docker run -it -v $(as_absolute `dirname $0`):/schema-summaries abstat chmod 775 -R /schema-summaries/web/log
 	docker run -it -v $(as_absolute `dirname $0`):/schema-summaries abstat chmod 775 -R /schema-summaries/summarization/log
 	docker run -it -v $(as_absolute `dirname $0`):/schema-summaries abstat chmod 775 -R /schema-summaries/data/
-	docker rm -f $(docker ps -aq)
 }
 
 case "$1" in

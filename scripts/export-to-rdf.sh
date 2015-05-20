@@ -41,7 +41,7 @@ echo "deleting graph ${graph}"
 ./isql.sh "SPARQL CLEAR GRAPH <$graph>;"
 
 echo "indexing the result of the analysis in ${output_directory} into graph ${graph}"
-./isql.sh "delete from DB.DBA.load_list;ld_dir ('${output_directory}', '*.nt', '${graph}');rdf_loader_run();"
+./isql.sh "delete from DB.DBA.load_list;ld_dir ('${output_directory}', '*.nt', '${graph}');rdf_loader_run();checkpoint;"
 echo "done"
 
 rm -r $output_directory

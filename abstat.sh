@@ -7,7 +7,7 @@ function as_absolute(){
 }
 
 function start(){
-	docker run -d -p 80:80 --name abstat -v $(as_absolute `dirname $0`):/schema-summaries abstat
+	docker run -d -p 80:80 -p 8885:8885 --name abstat -v $(as_absolute `dirname $0`):/schema-summaries abstat
 }
 
 function destroy(){

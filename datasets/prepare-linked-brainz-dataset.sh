@@ -2,14 +2,7 @@
 
 set -e
 
-target_directory=$1
-
-if [[ $target_directory == '' ]]
-then
-	echo "No directory passed as argument. Please specify the directory were the data have to be saved."
-	exit 1
-fi
-
+target_directory=/schema-summaries/data/datasets/linked-brainz
 rm -rf $target_directory
 mkdir -p $target_directory
 

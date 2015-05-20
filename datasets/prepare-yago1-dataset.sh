@@ -8,18 +8,7 @@ set -e
 relative_path=`dirname $0`
 scripts_directory=`cd $relative_path;pwd`
 
-target_directory=$1
-
-if [[ $target_directory == '' ]]
-then
-	echo "No directory passed as argument. Please specify the directory were the data have to be saved."
-	exit 1
-fi
-if [[ $target_directory != /* ]]
-then
-	echo "The path '$target_directory' passed as argument is relative. Please specify an absolute path."
-	exit 1
-fi
+target_directory=/schema-summaries/data/datasets/yago1
 
 rm -rf $target_directory
 mkdir -p $target_directory
@@ -42,7 +31,7 @@ grep "http://www.w3.org/2000/01/rdf-schema#subClassOf" $triples_directory/datase
 grep "http://www.w3.org/2000/01/rdf-schema#domain" $triples_directory/dataset.nt >> $ontology_directory/yago-ontology.nt
 grep "http://www.w3.org/2000/01/rdf-schema#range" $triples_directory/dataset.nt >> $ontology_directory/yago-ontology.nt
 
-java -jar $scripts_directory/../tools/rdf2rdf-1.0.1-2.3.1.jar $ontology_directory/yago-ontology.nt $ontology_directory/yago-ontology.owl
+java -jar $scripts_directory/rdf2rdf-1.0.1-2.3.1.jar $ontology_directory/yago-ontology.nt $ontology_directory/yago-ontology.owl
 rm $ontology_directory/yago-ontology.nt
 
 

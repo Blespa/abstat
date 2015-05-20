@@ -2,17 +2,11 @@
 
 set -e
 
-target_directory=$1
-version=$2
-include_raw=$3
+version=$1
+include_raw=$2
 dbpedia_downloads="http://downloads.dbpedia.org/${version}"
 
-if [[ $target_directory == '' ]]
-then
-	echo "No directory passed as argument. Please specify the directory were the data have to be saved."
-	exit 1
-fi
-
+target_directory=/schema-summaries/data/datasets/dbpedia-$1{$include_raw}
 rm -rf $target_directory
 mkdir -p $target_directory
 

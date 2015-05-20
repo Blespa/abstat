@@ -22,7 +22,10 @@ function build(){
 	docker build -t abstat deployment
 	docker run -it -v $(as_absolute `dirname $0`):/schema-summaries abstat /schema-summaries/build/build-java-summarization-module.sh
 	docker run -it -v $(as_absolute `dirname $0`):/schema-summaries abstat /schema-summaries/build/build-java-ui-module.sh
-	docker rm $(docker ps -aq)
+	docker run -it -v $(as_absolute `dirname $0`):/schema-summaries abstat chmod 775 -R /schema-summaries/web/log
+	docker run -it -v $(as_absolute `dirname $0`):/schema-summaries abstat chmod 775 -R /schema-summaries/summarization/log
+	docker run -it -v $(as_absolute `dirname $0`):/schema-summaries abstat chmod 775 -R /schema-summaries/data/
+	docker rm -f $(docker ps -aq)
 }
 
 case "$1" in
@@ -39,7 +42,7 @@ case "$1" in
 		run $2
 		;;
         *)
-                echo "Usage: abstat start|stop|build|run"
+                echo "Usage: abstat start|destroy|build|run"
 		;;
 esac
 exit $status

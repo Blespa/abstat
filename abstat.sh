@@ -20,8 +20,8 @@ function run(){
 
 function build(){
 	docker build -t abstat startup
-	docker run -it -v $(as_absolute `dirname $0`):/schema-summaries abstat/latest /schema-summaries/scripts/build-java-summarization-module.sh
-	docker run -it -v $(as_absolute `dirname $0`):/schema-summaries abstat/latest /schema-summaries/scripts/build-java-ui-module.sh
+	docker run -it -v $(as_absolute `dirname $0`):/schema-summaries abstat/latest /schema-summaries/build/build-java-summarization-module.sh
+	docker run -it -v $(as_absolute `dirname $0`):/schema-summaries abstat/latest /schema-summaries/build/build-java-ui-module.sh
 }
 
 case "$1" in

@@ -14,6 +14,10 @@ function stop(){
 	docker stop abstat
 }
 
+function run(){
+	docker exec abstat /schema-summaries/$1
+}
+
 case "$1" in
         start)
                 start
@@ -21,6 +25,9 @@ case "$1" in
         stop)
                 stop
                 ;;
+	run)
+		run $2
+		;;
         *)
                 echo "Usage: abstat start|stop"
 		;;

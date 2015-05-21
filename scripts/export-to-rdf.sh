@@ -22,7 +22,8 @@ project=$root/../summarization
 
 mkdir -p $2
 
-input_directory=$(as_absolute $1)/patterns
+dataset=$root/../data/summaries/$1
+input_directory=$(as_absolute $dataset)/patterns
 output_directory=$(as_absolute $2)
 graph=$3
 

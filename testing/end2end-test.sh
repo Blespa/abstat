@@ -41,7 +41,6 @@ relative_path=`dirname $0`
 current_directory=$(as_absolute $relative_path)
 root=$(as_absolute $current_directory/../)
 rdf_export_path=$root/summarization-output
-results=$root/benchmark/tmp
 
 cd $current_directory
 
@@ -52,7 +51,7 @@ echo "SYSTEM TEST"
 
 graph=http://ld-summaries.org/system-test
 cd ../scripts
-./export-to-rdf.sh $results $rdf_export_path $graph
+./export-to-rdf.sh system-test $rdf_export_path $graph
 cd ../testing
 assert_results_are_present_in_virtuoso
 

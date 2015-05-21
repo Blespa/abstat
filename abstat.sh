@@ -39,6 +39,10 @@ function status(){
 	set -e
 }
 
+function log(){
+	docker logs abstat
+}
+
 set -e
 
 case "$1" in
@@ -58,8 +62,11 @@ case "$1" in
 	status)
 		status
 		;;
+	log)
+		log
+		;;
         *)
-                echo "Usage: abstat start | destroy | build | run | status"
+                echo "Usage: abstat start | destroy | build | run | status | log"
 		;;
 esac
 exit $status

@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 function as_absolute(){
 	echo `cd $1; pwd`
 }
@@ -18,10 +16,6 @@ function destroy(){
 	docker rm -f $(docker ps -aq)
 }
 
-function run(){
-	docker exec abstat /schema-summaries/$1
-}
-
 function build(){
 	docker build --rm -t abstat deployment
 	docker run -it -v $(as_absolute `dirname $0`):/schema-summaries abstat /schema-summaries/build/build-java-summarization-module.sh
@@ -30,6 +24,20 @@ function build(){
 	docker run -it -v $(as_absolute `dirname $0`):/schema-summaries abstat chmod 775 -R /schema-summaries/summarization/log
 	docker run -it -v $(as_absolute `dirname $0`):/schema-summaries abstat chmod 775 -R /schema-summaries/data/
 }
+
+function run(){
+	docker exec abstat /schema-summaries/$1
+}
+
+function status(){
+	set +e
+	docker ps -a | grep abstat
+	echo
+	docker inspect abstat
+	set -e
+}
+
+set -e
 
 case "$1" in
         start)
@@ -44,8 +52,11 @@ case "$1" in
 	run)
 		run $2
 		;;
+	status)
+		status
+		;;
         *)
-                echo "Usage: abstat start|destroy|build|run"
+                echo "Usage: abstat start | destroy | build | run | status"
 		;;
 esac
 exit $status

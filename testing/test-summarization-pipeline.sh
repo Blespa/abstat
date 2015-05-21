@@ -67,7 +67,7 @@ cd ../scripts
 ./run-summarization-pipeline.sh system-test
 assert_no_errors_on ../summarization/log/log.txt
 assert_results_are_compliant $expected_results $results
-./export-to-rdf.sh system-test ../summarization-output
+./export-to-rdf.sh system-test
 assert_results_are_present_in_virtuoso
 cd ../testing
 

@@ -20,11 +20,12 @@ relative_path=`dirname $0`
 root=`cd $relative_path;pwd`
 project=$root/../summarization
 
-mkdir -p $2
+output=$root/../summarization-output
+mkdir -p $output
 
 dataset=$root/../data/summaries/$1
 input_directory=$(as_absolute $dataset)/patterns
-output_directory=$(as_absolute $2)
+output_directory=$(as_absolute $output)
 graph=http://ld-summaries.org/$1
 
 cd $project

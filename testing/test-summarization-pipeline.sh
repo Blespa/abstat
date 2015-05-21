@@ -41,18 +41,17 @@ set -e
 relative_path=`dirname $0`
 current_directory=$(as_absolute $relative_path)
 root=$(as_absolute $current_directory/../)
-data=$root/benchmark/regression-test
-results=$root/benchmark/tmp
+
+results=$root/data/summaries/system-test
 expected_results=$root/benchmark/regression-test-results
 
 mkdir -p $expected_results/patterns/tmp-files
 rm -rf $results
-mkdir -p $results
 
 cd $current_directory
 ./test-java-summarization-module.sh
 cd ../scripts
-./run-summarization-pipeline.sh $data $results
+./run-summarization-pipeline.sh system-test
 assert_no_errors_on ../summarization/log/log.txt
 assert_results_are_compliant $expected_results $results
 cd ../testing

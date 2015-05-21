@@ -1,0 +1,63 @@
+<http://dbpedia.org/resource/MALFORMED>RESOURCE> <http://xmlns.com/foaf/0.1/name> "any".
+<malformed> <malformed> <malformed> <malformed> .
+<http://dbpedia.org/resource/Barack_Obama> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/OfficeHolder> .
+<http://dbpedia.org/resource/Barack_Obama> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Person> .
+<http://dbpedia.org/resource/Barack_Obama> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://wikidata.dbpedia.org/resource/Q5> .
+<http://dbpedia.org/resource/Barack_Obama> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<http://dbpedia.org/resource/Barack_Obama> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Thing> .
+<http://dbpedia.org/resource/Barack_Obama> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Person> .
+<http://dbpedia.org/resource/Barack_Obama> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://wikidata.dbpedia.org/resource/Q215627> .
+<http://dbpedia.org/resource/Barack_Obama> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson> .
+<http://dbpedia.org/resource/Barack_Obama> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Agent> .
+<http://dbpedia.org/resource/Barack_Obama> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent> .
+<http://dbpedia.org/resource/Barack_Obama> <http://xmlns.com/foaf/0.1/name> "Barack Obama"@en .
+<http://dbpedia.org/resource/Barack_Obama> <http://dbpedia.org/ontology/birthDate> "1961-08-04"^^<http://www.w3.org/2001/XMLSchema#date> .
+<http://dbpedia.org/resource/Barack_Obama> <http://dbpedia.org/ontology/birthPlace> <http://dbpedia.org/resource/Honolulu> .
+<http://dbpedia.org/resource/Barack_Obama> <http://dbpedia.org/ontology/birthPlace> <http://dbpedia.org/resource/Hawaii> .
+<http://dbpedia.org/resource/Barack_Obama> <http://dbpedia.org/ontology/residence> <http://dbpedia.org/resource/Chicago> .
+<http://dbpedia.org/resource/Barack_Obama> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<http://dbpedia.org/resource/Honolulu> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Settlement> .
+<http://dbpedia.org/resource/Honolulu> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/PopulatedPlace> .
+<http://dbpedia.org/resource/Honolulu> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Wikidata:Q532> .
+<http://dbpedia.org/resource/Honolulu> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Place> .
+<http://dbpedia.org/resource/Honolulu> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Place> .
+<http://dbpedia.org/resource/Honolulu> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+<http://dbpedia.org/resource/Honolulu> <http://xmlns.com/foaf/0.1/name> "Honolulu"@en .
+<http://dbpedia.org/resource/Honolulu> <http://xmlns.com/foaf/0.1/name> "City and County of Honolulu"@en .
+<http://dbpedia.org/resource/Honolulu> <http://dbpedia.org/ontology/isPartOf> <http://dbpedia.org/resource/Hawaii> .
+<http://dbpedia.org/resource/Honolulu> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.opengis.net/gml/_Feature> .
+<http://dbpedia.org/resource/Honolulu> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> "21.3"^^<http://www.w3.org/2001/XMLSchema#float> .
+<http://dbpedia.org/resource/Honolulu> <http://www.w3.org/2003/01/geo/wgs84_pos#long> "-157.81666666666666"^^<http://www.w3.org/2001/XMLSchema#float> .
+<http://dbpedia.org/resource/Honolulu> <http://dbpedia.org/ontology/PopulatedPlace/areaTotal> "177.2"^^<http://dbpedia.org/datatype/squareKilometre> .
+<http://dbpedia.org/resource/Honolulu> <http://dbpedia.org/ontology/PopulatedPlace/populationDensity> "2152.2"^^<http://dbpedia.org/datatype/inhabitantsPerSquareKilometre> .
+<http://dbpedia.org/resource/Hawaii> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/AdministrativeRegion> .
+<http://dbpedia.org/resource/Hawaii> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/AdministrativeArea> .
+<http://dbpedia.org/resource/Hawaii> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Region> .
+<http://dbpedia.org/resource/Hawaii> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/PopulatedPlace> .
+<http://dbpedia.org/resource/Hawaii> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Wikidata:Q532> .
+<http://dbpedia.org/resource/Hawaii> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Place> .
+<http://dbpedia.org/resource/Hawaii> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Place> .
+<http://dbpedia.org/resource/Hawaii> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+<http://dbpedia.org/resource/Hawaii> <http://xmlns.com/foaf/0.1/name> "State of Hawaii"@en .
+<http://dbpedia.org/resource/Hawaii> <http://xmlns.com/foaf/0.1/name> "Moku\u0101ina o Hawaii"@en .
+<http://dbpedia.org/resource/Hawaii> <http://dbpedia.org/ontology/capital> <http://dbpedia.org/resource/Honolulu> .
+<http://dbpedia.org/resource/Hawaii> <http://dbpedia.org/ontology/areaTotal> "2.8311E10"^^<http://www.w3.org/2001/XMLSchema#double> .
+<http://dbpedia.org/resource/Hawaii> <http://dbpedia.org/ontology/areaLand> "1.6638E10"^^<http://www.w3.org/2001/XMLSchema#double> .
+<http://dbpedia.org/resource/Hawaii> <http://dbpedia.org/ontology/areaWater> "1.1672E10"^^<http://www.w3.org/2001/XMLSchema#double> .
+<http://dbpedia.org/resource/Hawaii> <http://dbpedia.org/ontology/maximumElevation> "4205.0"^^<http://www.w3.org/2001/XMLSchema#double> .
+<http://dbpedia.org/resource/Hawaii> <http://dbpedia.org/ontology/minimumElevation> "0.0"^^<http://www.w3.org/2001/XMLSchema#double> .
+<http://dbpedia.org/resource/Hawaii> <http://dbpedia.org/ontology/PopulatedPlace/areaTotal> "28311.0"^^<http://dbpedia.org/datatype/squareKilometre> .
+<http://dbpedia.org/resource/Chicago> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/City> .
+<http://dbpedia.org/resource/Chicago> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/City> .
+<http://dbpedia.org/resource/Chicago> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Settlement> .
+<http://dbpedia.org/resource/Chicago> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/PopulatedPlace> .
+<http://dbpedia.org/resource/Chicago> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Wikidata:Q532> .
+<http://dbpedia.org/resource/Chicago> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Place> .
+<http://dbpedia.org/resource/Chicago> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Place> .
+<http://dbpedia.org/resource/Chicago> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+<http://dbpedia.org/resource/Chicago> <http://xmlns.com/foaf/0.1/name> "Chicago"@en .
+<http://dbpedia.org/resource/Chicago> <http://xmlns.com/foaf/0.1/name> "City of Chicago"@en .
+<http://dbpedia.org/resource/Chicago> <http://dbpedia.org/ontology/areaTotal> "6.06057217818624E8"^^<http://www.w3.org/2001/XMLSchema#double> .
+<http://dbpedia.org/resource/Chicago> <http://dbpedia.org/ontology/areaLand> "5.884452986683393E8"^^<http://www.w3.org/2001/XMLSchema#double> .
+<http://dbpedia.org/resource/Chicago> <http://dbpedia.org/ontology/areaWater> "1.78709179613184E7"^^<http://www.w3.org/2001/XMLSchema#double> .
+<http://dbpedia.org/resource/Chicago> <http://dbpedia.org/ontology/PopulatedPlace/areaTotal> "606.1"^^<http://dbpedia.org/datatype/squareKilometre> .

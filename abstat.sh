@@ -26,7 +26,9 @@ function build(){
 }
 
 function run(){
-	docker exec abstat /schema-summaries/$1
+	command=$1
+	shift
+	docker exec abstat /schema-summaries/$command $@
 }
 
 function status(){
@@ -50,7 +52,8 @@ case "$1" in
 		build
 		;;
 	run)
-		run $2
+		shift
+		run $@
 		;;
 	status)
 		status

@@ -1,10 +1,10 @@
 logs
 bin
-ontology_summarization.jar
 tmp
 organized-splitted-deduplicated
 .metadata
 RemoteSystemsTempFiles
+ontology_summarization.jar
 summarization-web.jar
 !solr/bin
 *.pid

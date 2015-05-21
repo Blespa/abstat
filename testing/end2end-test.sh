@@ -28,7 +28,7 @@ function assert_application_is_up(){
 	highlight_color='\e[0;31m'
 	message='KO'
 
-	if [[ $(curl --silent $url | grep "$expected_response") ]]
+	if [[ $(curl --location --silent $url | grep "$expected_response") ]]
 	then
 		highlight_color='\e[0;32m'
 		message="OK"
@@ -59,8 +59,9 @@ assert_results_are_present_in_virtuoso
 ./test-java-ui-module.sh
 
 echo "integration testing of the web interface module"
-assert_application_is_up / ABSTAT
+assert_application_is_up '/' 'ABSTAT'
+assert_application_is_up ':8880/' 'ABSTAT'
 
 echo "integration testing of the solr module"
-assert_application_is_up /solr/ "Solr Admin"
+assert_application_is_up '/solr/' 'Solr Admin'
 

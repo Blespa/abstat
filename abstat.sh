@@ -7,7 +7,7 @@ function as_absolute(){
 }
 
 function start(){
-	docker run -d -p 80:80 -p 8885:8885 --name abstat -v $(as_absolute `dirname $0`):/schema-summaries abstat
+	docker run -d -p 80:80 -p 8885:8885 -p 8880:8880 --name abstat -v $(as_absolute `dirname $0`):/schema-summaries abstat
 }
 
 function destroy(){
@@ -23,7 +23,7 @@ function run(){
 }
 
 function build(){
-	docker build -rm -t abstat deployment
+	docker build --rm -t abstat deployment
 	docker run -it -v $(as_absolute `dirname $0`):/schema-summaries abstat /schema-summaries/build/build-java-summarization-module.sh
 	docker run -it -v $(as_absolute `dirname $0`):/schema-summaries abstat /schema-summaries/build/build-java-ui-module.sh
 	docker run -it -v $(as_absolute `dirname $0`):/schema-summaries abstat chmod 775 -R /schema-summaries/web/log

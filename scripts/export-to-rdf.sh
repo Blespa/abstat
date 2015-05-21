@@ -25,7 +25,7 @@ mkdir -p $2
 dataset=$root/../data/summaries/$1
 input_directory=$(as_absolute $dataset)/patterns
 output_directory=$(as_absolute $2)
-graph=$3
+graph=http://ld-summaries.org/$1
 
 cd $project
 export_rdf WriteConceptToRDF $input_directory/count-concepts.txt $output_directory/count-concepts.nt $graph

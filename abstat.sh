@@ -5,7 +5,12 @@ function as_absolute(){
 }
 
 function start(){
-	docker run -d -p 80:80 -p 8885:8885 -p 8880:8880 --name abstat -v $(as_absolute `dirname $0`):/schema-summaries abstat
+	default_port=80:80
+	if [[ $1 == --backend ]]
+	then
+		default_port=8881:80
+	fi
+	docker run -d -p $default_port -p 8885:8885 -p 8880:8880 --name abstat -v $(as_absolute `dirname $0`):/schema-summaries abstat
 }
 
 function destroy(){
@@ -47,7 +52,8 @@ set -e
 
 case "$1" in
         start)
-                start
+		shift
+                start $1
                 ;;
         destroy)
                 destroy

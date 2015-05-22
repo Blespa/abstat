@@ -8,7 +8,7 @@ cd $root
 user=$1
 
 echo deploying the summarization module
-./deploy.sh $user@193.204.59.21
+./deploy.sh $user@193.204.59.21 --backend
 echo "done"
 
 echo deploying the webapp module

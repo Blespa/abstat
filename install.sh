@@ -9,5 +9,5 @@ cd $root
 
 ./abstat.sh build
 ./abstat.sh destroy
-./abstat.sh start
+./abstat.sh start $1
 

@@ -63,7 +63,7 @@ mkdir -p $expected_results/patterns/tmp-files
 rm -rf $results
 
 cd $current_directory
-cd ../scripts
+cd ../pipeline
 ./run-summarization-pipeline.sh system-test
 assert_no_errors_on ../summarization/log/log.txt
 assert_results_are_compliant $expected_results $results

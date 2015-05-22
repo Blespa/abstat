@@ -32,11 +32,5 @@ echo "SYSTEM TEST"
 ./test-java-ui-module.sh
 ./test-java-summarization-module.sh
 ./test-summarization-pipeline.sh
-
-echo "integration testing of the web interface module"
-assert_application_is_up '/' 'ABSTAT'
-assert_application_is_up ':8880/' 'ABSTAT'
-
-echo "integration testing of the solr module"
-assert_application_is_up '/solr/' 'Solr Admin'
+./test-http-routing.sh
 

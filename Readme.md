@@ -16,7 +16,7 @@
 $ git clone https://bitbucket.org/rporrini/schema-summaries.git
 $ cd schema-summaries
 $ git checkout development
-$ scripts/end2end-test.sh
+$ ./build-and-test.sh
 ```
 If everything goes as expected the script will print "OK".
 

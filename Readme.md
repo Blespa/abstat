@@ -110,12 +110,12 @@ $ deployment/deploy.sh USER@HOST --backend
 $ deployment/deploy.sh USER@HOST
 ```
 
-### Full
+#### Full
 ```
 $ deployment/deploy-all.sh USER@HOST
 ```
 
-### VPN configuration
+#### VPN configuration
 
 ```
 [vpn]

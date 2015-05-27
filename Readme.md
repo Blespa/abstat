@@ -52,7 +52,6 @@ Once the summarization pipeline is run for a dataset ```$DATASET```, you can ind
 ```
 $ abstat.sh run pipeline/export-to-rdf.sh $DATASET
 ```
-Where the argument $RESULTS is the directory that contains the results of the analysis from the previous script, $TMP_DIR must point to the directory ```summarization-output``` of the root of the repository and $GRAPH is the iri of the graph that will contain the exported rdf data.
 
 ## Production
 

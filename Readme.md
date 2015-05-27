@@ -1,10 +1,10 @@
 # ABSTAT
 
-## Development requirements
+## Prerequisites for running and developing ABSTAT
 
-* [docker](https://docs.docker.com/)
+* [docker](https://docs.docker.com/), install from [here](https://docs.docker.com/installation/)
 
-Tested on Linux Mint 17 and Mac OS X
+Tested on Linux Mint 17, Mac OS X, Ubuntu 14.04
 
 ## Checking out the repository and configuring your local machine
 ```
@@ -39,7 +39,7 @@ $ abstat.sh run $SCRIPT # runs the script within the ABSTAT container.
 
 ## Running the Summarization Pipeline
 
-The summarization process of an arbitrary dataset ```$DATASET``` expects to find an ontology in ```data/datasets/$DATASET/ontology``` and a ntriple file in ```data/datasets/$DATASET/triples/dataset.nt```. First, ensure that ABSTAT is running (if not, issue an ```abstat.sh start```), then:
+The summarization process of a dataset ```$DATASET``` expects to find an ontology in ```data/datasets/$DATASET/ontology``` and a ntriple file in ```data/datasets/$DATASET/triples/dataset.nt```. First, ensure that ABSTAT is running (if not, issue an ```abstat.sh start```), then:
 ```
 $ abstat.sh run pipeline/run-summarization-pipeline.sh $DATASET
 ```
@@ -52,72 +52,67 @@ Once the summarization pipeline is run for a dataset ```$DATASET```, you can ind
 ```
 $ abstat.sh run pipeline/export-to-rdf.sh $DATASET
 ```
-Where the argument $RESULTS is the directory that contains the results of the analysis from the previous script, $TMP_DIR must point to the directory ```summarization-output``` of the root of the repository and $GRAPH is the iri of the graph that will contain the exported rdf data
+Where the argument $RESULTS is the directory that contains the results of the analysis from the previous script, $TMP_DIR must point to the directory ```summarization-output``` of the root of the repository and $GRAPH is the iri of the graph that will contain the exported rdf data.
 
-
-## Production use
+## Production
 
 ### Machines
 
-* 10.109.149.57 - behind RICERCA vpn - complete installation
-* 193.204.59.21 - bari server - only summarization (no indexing and no webapp)
+* 10.109.149.57 - ```abstatweb01``` - behind RICERCA vpn - complete installation
+* 193.204.59.21 - bari server - summarization only
 
 ### Monitoring
 
 The web interface is constantly monitored, since has to be accessible all the time. You can view the current status [here](http://uptime.statuscake.com/?TestID=TCI9iWyOqa)
 
-### Managing the Web interface
+### Managing ABSTAT in production
 
-To start | stop the web app:
+To start | stop ABSTAT:
 
 ```
 #!bash
 $ ssh schema-summaries@siti-rack.siti.disco.unimib.it
-$ sudo service ld-summaries [start | stop]
+$ cd schema-summaries
+$ ./abstat.sh start | destroy
 ```
 
-### Configuring a production machine (ubuntu server)
+### Configuring a production machine (Ubuntu server 14.04 LTS)
 
-To configure a production machine do the following steps. First login into the machine using a user that is allowed to run sudo commands and then:
+First login into the machine using a user that is allowed to run sudo commands and then:
 
 ```
 #!bash
-$ sudo apt-get install python-software-properties
-$ sudo add-apt-repository ppa:webupd8team/java
 $ sudo apt-get update
-$ sudo apt-get install oracle-jdk7-installer git wget bzip2 unzip
+$ sudo apt-get install wget
+$ wget -qO- https://get.docker.com/ | sh
 $ sudo adduser schema-summaries	# choose an appropriate password
-$ sudo visudo 	# append the following lines at the bottom (remeber to cut comments of)
-# schema-summaries ALL=(ALL) NOPASSWD: /bin/ln -s /home/schema-summaries/schema-summaries/scripts/java-ui-production.sh /etc/init.d/ld-summaries
-# schema-summaries ALL=(ALL) NOPASSWD: /usr/sbin/update-rc.d ld-summaries defaults
-# schema-summaries ALL=(ALL) NOPASSWD: /bin/rm -f /etc/init.d/ld-summaries
-# schema-summaries ALL=(ALL) NOPASSWD: /usr/sbin/service ld-summaries start
-# schema-summaries ALL=(ALL) NOPASSWD: /usr/sbin/service ld-summaries stop
+$ sudo usermod -aG docker schema-summaries
 $ su schema-summaries
 $ cd
 $ git clone https://bitbucket.org/rporrini/schema-summaries.git
-$ cd schema-summaries
-$ scripts/end2end-test.sh # follow all the hints that the scripts gives to you and re-launch it untill you get no errors
+$ git checkout master
+$ git pull
 $ git remote set-url origin git@bitbucket.org:rporrini/schema-summaries.git
 $ chmod 700 scripts/deploy_rsa
 ```
 
 ### Deployment
 
-#### Summarization Deploy (only summarization)
-
-from your development machine:
+#### Backend
 
 ```
-$ scripts/deploy-summarization.sh USER@HOST
+$ deployment/deploy.sh USER@HOST --backend
 ```
 
-#### Full Deploy (webapp, summarization, backend)
-
-from your development machine:
+#### Webapp
 
 ```
-$ scripts/deploy-full.sh USER@HOST
+$ deployment/deploy.sh USER@HOST
+```
+
+### Full
+```
+$ deployment/deploy-all.sh USER@HOST
 ```
 
 ### VPN configuration

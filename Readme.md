@@ -1,14 +1,10 @@
-# Schema Summarization
+# ABSTAT
 
-## System Requirements
+## Development requirements
 
-* linux (tested on Linux Mint 17 Qiana)
-* virtuoso triple store
-* java
-* git
-* wget
-* bzip2
-* unzip
+* [docker](https://docs.docker.com/)
+
+Tested on Linux Mint 17 and Mac OS X
 
 ## Checking out the repository and configuring your local machine
 ```
@@ -18,32 +14,46 @@ $ cd schema-summaries
 $ git checkout development
 $ ./build-and-test.sh
 ```
-If everything goes as expected the script will print "OK".
 
-## Useful scripts
+## Controlling ABSTAT
 
-Running the whole summarization pipeline:
+ABSTAT can be controlled using the script ```abstat.sh``` from the root of the repository with the following commands:
 ```
-$ scripts/run-summarization-pipeline.sh $DATA $RESULTS
+$ abstat.sh build # builds ABSTAT and the respective docker container
 ```
-Where the arguments $DATA and $RESULTS are directories. The scripts expects to find an ontology in ```$DATA/ontology``` and a ntriple file in ```$DATA/triples/dataset.nt```
+```
+$ abstat.sh start # starts ABSTAT
+```
+```
+$ abstat.sh destroy # stops ABSTAT and deletes all the respective docker container
+```
+```
+$ abstat.sh status # prints out the current status of ABSTAT. Useful to see if ABSTAT is running or not
+```
+```
+$ abstat.sh log # prints out all the available logging information for ABSTAT. Useful to see if ABSTAT is running or not
+```
+```
+$ abstat.sh run $SCRIPT # runs the script within the ABSTAT container.
+```
 
-Exporting the results in rdf and inxing them into the virtuoso endpoint:
+## Running the Summarization Pipeline
+
+The summarization process of an arbitrary dataset ```$DATASET``` expects to find an ontology in ```data/datasets/$DATASET/ontology``` and a ntriple file in ```data/datasets/$DATASET/triples/dataset.nt```. First, ensure that ABSTAT is running (if not, issue an ```abstat.sh start```), then:
 ```
-$ scripts/export-to-rdf.sh $RESULTS $TMP_DIR $GRAPH
+$ abstat.sh run pipeline/run-summarization-pipeline.sh $DATASET
+```
+The result of the summarization can be found in ```data/summaries/$DATASET```.
+
+
+## Indexing an RDF Summary
+
+Once the summarization pipeline is run for a dataset ```$DATASET```, you can index the results into the embedded Virtuoso triple store. As for running the pipeline, first ensure that ABSTAT is running, then:
+```
+$ abstat.sh run pipeline/export-to-rdf.sh $DATASET
 ```
 Where the argument $RESULTS is the directory that contains the results of the analysis from the previous script, $TMP_DIR must point to the directory ```summarization-output``` of the root of the repository and $GRAPH is the iri of the graph that will contain the exported rdf data
 
-Preparing the dbpedia dataset
-```
-$ scripts/prepare-dbpedia-dataset.sh $TARGET-DIRECTORY $VERSION
-```
-Where $VERSION is the dbpedia version that you want to download (e.g., 3.9 or 2014)
-
-Preparing the linked-brainz dataset
-```
-$ scripts/prepare-linked-brainz-dataset.sh $TARGET-DIRECTORY
-```
 
 ## Production use
 

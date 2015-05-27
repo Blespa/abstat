@@ -91,8 +91,6 @@ $ cd
 $ git clone https://bitbucket.org/rporrini/schema-summaries.git
 $ git checkout master
 $ git pull
-$ git remote set-url origin git@bitbucket.org:rporrini/schema-summaries.git
-$ chmod 700 scripts/deploy_rsa
 ```
 
 ### Deployment
@@ -136,4 +134,3 @@ dns-search=ricerca.didattica.unimib.it;
 route1=10.109.149.57/32,149.132.157.130,0
 never-default=true
 ```
-

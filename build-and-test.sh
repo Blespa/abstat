@@ -22,7 +22,7 @@ root=`cd $relative_path;pwd`
 cd $root
 
 ./install.sh
-./abstat.sh run testing/end2end-test.sh
+./abstat.sh exec testing/end2end-test.sh
 ./install.sh
 
 sleep 20

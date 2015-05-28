@@ -34,14 +34,17 @@ $ abstat.sh status # prints out the current status of ABSTAT. Useful to see if A
 $ abstat.sh log # prints out all the available logging information for ABSTAT. Useful to see if ABSTAT is running or not
 ```
 ```
-$ abstat.sh run $SCRIPT # runs the script within the ABSTAT container.
+$ abstat.sh exec $SCRIPT # runs a script within an already running ABSTAT container.
+```
+```
+$ abstat.sh run $COMMAND # runs an arbitrary bash command on an ABSTAT container.
 ```
 
 ## Running the Summarization Pipeline
 
 The summarization process of a dataset ```$DATASET``` expects to find an ontology in ```data/datasets/$DATASET/ontology``` and a ntriple file in ```data/datasets/$DATASET/triples/dataset.nt```. First, ensure that ABSTAT is running (if not, issue an ```abstat.sh start```), then:
 ```
-$ abstat.sh run pipeline/run-summarization-pipeline.sh $DATASET
+$ abstat.sh exec pipeline/run-summarization-pipeline.sh $DATASET
 ```
 The result of the summarization can be found in ```data/summaries/$DATASET```.
 
@@ -50,7 +53,7 @@ The result of the summarization can be found in ```data/summaries/$DATASET```.
 
 Once the summarization pipeline is run for a dataset ```$DATASET```, you can index the results into the embedded Virtuoso triple store. As for running the pipeline, first ensure that ABSTAT is running, then:
 ```
-$ abstat.sh run pipeline/export-to-rdf.sh $DATASET
+$ abstat.sh exec pipeline/export-to-rdf.sh $DATASET
 ```
 
 ## Production

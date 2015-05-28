@@ -5,7 +5,7 @@ function is_reachable(){
 }
 
 echo "checking system configuration"
-hosts=(149.132.176.73 193.204.59.21 bitbucket.org)
+hosts=(siti-rack.siti.disco.unimib.it backend bitbucket.org)
 for i in ${hosts[@]}; do
 	if ! is_reachable $i ; then
 		echo $i is not reachable

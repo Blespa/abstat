@@ -12,6 +12,7 @@ RUN \
 		gawk \
 		nginx \
 		oracle-jdk7-installer \
+		ssh \
 		time \
 		unzip \
 		virtuoso-opensource=7.2 && \

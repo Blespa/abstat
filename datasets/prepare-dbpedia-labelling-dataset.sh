@@ -18,7 +18,7 @@ bunzip2 "$ontology_directory/dbpedia_$version.owl.bz2"
 triples_directory=$target_directory/triples
 wget "$dbpedia_downloads/en/instance_types_en.nt.bz2" -P $triples_directory
 bunzip2 $triples_directory/instance_types_en.nt.bz2
-wget "$dbpedia_downloads/en/instance_types_heuristic_en.nt.bz2"
+wget "$dbpedia_downloads/en/instance_types_heuristic_en.nt.bz2" -P $triples_directory
 bunzip2 $triples_directory/instance_types_heuristic_en.nt.bz2
 
 wget "$dbpedia_downloads/en/mappingbased_properties_cleaned_en.nt.bz2" -P $triples_directory

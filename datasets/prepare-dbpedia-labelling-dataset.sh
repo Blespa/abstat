@@ -6,7 +6,7 @@ version=$1
 include_raw=$2
 dbpedia_downloads="http://downloads.dbpedia.org/${version}"
 
-target_directory=/schema-summaries/data/datasets/labelling-dbpedia-$1{$include_raw}
+target_directory="/schema-summaries/data/datasets/labelling-dbpedia-${version}${include_raw}"
 rm -rf $target_directory
 mkdir -p $target_directory
 

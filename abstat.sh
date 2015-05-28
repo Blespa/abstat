@@ -10,7 +10,7 @@ function start(){
 	then
 		default_port=8881:80
 	fi
-	docker run -v $(as_absolute `dirname $0`):/schema-summaries -d -p $default_port -p 8885:8885 -p 8880:8880 --name abstat abstat
+	$docker_command -d -p $default_port -p 8885:8885 -p 8880:8880 --name abstat $hosts $abstat
 }
 
 function destroy(){
@@ -31,7 +31,7 @@ function build(){
 }
 
 function run_command(){
-	docker run -v $(as_absolute `dirname $0`):/schema-summaries -it abstat $@
+	$docker_command -it $hosts $abstat $@
 }
 
 function exec_command(){
@@ -53,6 +53,11 @@ function log(){
 }
 
 set -e
+
+current_directory=$(as_absolute `dirname $0`)
+docker_command="docker run -v $current_directory:/schema-summaries"
+abstat=abstat
+hosts="--add-host backend:193.204.59.21 --add-host frontend:10.109.149.57"
 
 case "$1" in
         start)

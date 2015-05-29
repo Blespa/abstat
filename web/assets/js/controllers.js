@@ -1,4 +1,4 @@
-var summary = angular.module('schemasummaries', ['ui.bootstrap']);
+var summary = angular.module('schemasummaries', []);
 
 summary.filter('escape', function(){
 	return window.encodeURIComponent;
@@ -31,6 +31,10 @@ summary.controller('Summarization', function ($scope, $http) {
 		summaries.reset();
 		summaries.load();
 	}
+	
+	$scope.loadMore = function(){
+		summaries.load();
+	};
 
 	$scope.selected_graph = 'select a dataset';
 	$scope.describe_uri = '/describe/?uri=';
@@ -82,6 +86,8 @@ Summary = function(scope_service, http_service){
 	
 	this.load = function(){
 		
+		scope.loadingSummary = true;
+		
 		var localOrDefault = function(value, default_value){
 			var value_to_return = default_value;
 			if(value) value_to_return = '<' + value.local + '>';
@@ -119,8 +125,12 @@ Summary = function(scope_service, http_service){
 					'offset ' + offset)
 			.onGraph(scope.selected_graph)
 			.accumulate(function(results){
-				scope.summaries=results;
+				offset = offset + 20;
+				for (var i = 0; i < results.length; i++) {
+					scope.summaries.push(results[i]);
+			    }
 				scope.graph_was_selected=true;
+				scope.loadingSummary = false;
 			});
 	}
 }

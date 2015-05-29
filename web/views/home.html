@@ -56,7 +56,11 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td class="text-center"><button type="submit" ng-click='filterPatterns()' class="btn btn-primary">filter</button></td>
+						<td class="text-center"><button type="submit" ng-click='filterPatterns()' ng-disabled="loadingSummary" class="btn btn-primary">
+													<span ng-hide="loadingSummary">filter</span>
+        											<span ng-show="loadingSummary">filter  <i class="fa fa-spinner fa-spin"></i></span>
+												</button>
+						</td>
 						<td><input type="text" typeahead="subject as subject.global for subject in autocomplete.subject | filter:$viewValue | limitTo:7" ng-model="subject" class="form-control" placeholder="subject"></td>
 						<td><input type="text" typeahead="predicate as predicate.global for predicate in autocomplete.predicate | filter:$viewValue | limitTo:7" ng-model="predicate" class="form-control" placeholder="predicate"></td>
 						<td><input type="text" typeahead="object as object.global for object in autocomplete.object | filter:$viewValue | limitTo:7" ng-model="object" class="form-control" placeholder="object"></td>

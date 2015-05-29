@@ -13,7 +13,7 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<div class="page-header" style="background: url('static/img/logo.jpg'); background-position: right; background-repeat: no-repeat; background-size: contain">
+		<div class="page-header" style="background: url('static/img/logo.jpg') right; background-repeat: no-repeat; background-size: contain">
 			<h1>ABSTAT <small>linked data summaries</small></h1>
 		</div>
 		<div ng-controller="Summarization">
@@ -84,8 +84,8 @@
 				</tbody>
 			</table>
 			<button ng-click="loadMore()" type="button" ng-disabled="loadingSummary" class="btn btn-deafult btn-block">
-				<span ng-hide="loadingSummary">get more patterns</span>
-        		<span ng-show="loadingSummary">get more patterns  <i class="fa fa-spinner fa-spin"></i></span>
+				<span ng-hide="loadingSummary"><strong>{{summaries.length}}</strong> patterns found - get more</span>
+        		<span ng-show="loadingSummary"><strong>{{summaries.length}}</strong> patterns found - get more  <i class="fa fa-spinner fa-spin"></i></span>
         	</button>
 			</div>
 			</div>

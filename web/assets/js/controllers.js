@@ -1,4 +1,4 @@
-var summary = angular.module('schemasummaries', []);
+var summary = angular.module('schemasummaries', ['ui.bootstrap']);
 
 summary.filter('escape', function(){
 	return window.encodeURIComponent;

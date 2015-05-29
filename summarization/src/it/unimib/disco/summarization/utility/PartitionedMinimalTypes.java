@@ -1,5 +1,7 @@
 package it.unimib.disco.summarization.utility;
 
+import it.unimib.disco.summarization.output.Events;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -29,8 +31,13 @@ public class PartitionedMinimalTypes implements MinimalTypes {
 	private HashMap<String, List<String>> buildMinimalTypes(InputFile types) throws Exception {
 		HashMap<String, List<String>> minimalTypes = new HashMap<String, List<String>>();
 		while(types.hasNextLine()){
-			List<String> line = Arrays.asList(types.nextLine().replace("#-#", "##").split("##"));
-			minimalTypes.put(line.get(1), line.subList(2, line.size()));
+			String nextLine = types.nextLine();
+			try{
+				List<String> line = Arrays.asList(nextLine.replace("#-#", "##").split("##"));
+				minimalTypes.put(line.get(1), line.subList(2, line.size()));
+			}catch(Exception e){
+				new Events().error("processing line " + nextLine + " - " + types.name(), e);	
+			}
 		}
 		return minimalTypes;
 	}

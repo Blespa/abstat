@@ -4,7 +4,9 @@ summary.filter('escape', function(){
 	return window.encodeURIComponent;
 });
 
-summary.controller('Summarization', function ($scope, $http, $location) {
+summary.controller('Summarization', function ($scope, $http) {
+	
+	var summaries = new Summary($scope, $http);
 	
 	$scope.loadPatterns = function(){
 		
@@ -12,33 +14,35 @@ summary.controller('Summarization', function ($scope, $http, $location) {
 		$scope.object = undefined;
 		$scope.predicate = undefined;
 		
-		loadSummaries($scope, $http, $location);
+		$scope.summaries = [];
+		summaries.reset();
+		summaries.load();
 		
 		$scope.autocomplete = {};
 		
-		fill('subject', $scope.selected_graph, $scope.autocomplete, $http, $location)
-		fill('predicate', $scope.selected_graph, $scope.autocomplete, $http, $location)
-		fill('object', $scope.selected_graph, $scope.autocomplete, $http, $location)
+		fill('subject', $scope.selected_graph, $scope.autocomplete, $http)
+		fill('predicate', $scope.selected_graph, $scope.autocomplete, $http)
+		fill('object', $scope.selected_graph, $scope.autocomplete, $http)
 	};
 	
 	$scope.filterPatterns = function(){
 		
-		loadSummaries($scope, $http, $location);
+		$scope.summaries = [];
+		summaries.reset();
+		summaries.load();
 	}
 
-	$scope.endpoint = '/sparql';
-	
 	$scope.selected_graph = 'select a dataset';
 	$scope.describe_uri = '/describe/?uri=';
 	
-	getGraphs($scope, $http, $location);
+	getGraphs($scope, $http);
 });
 
-fill = function(type, graph, result, http, location){
+fill = function(type, graph, result, http){
 	
 	result[type] = [];
 	
-	new Sparql(http, location)
+	new Sparql(http)
 	.query('select distinct(?' + type + ') ?g' + type + ' ' + 
 			'where { '+
 				'?pattern a lds:AbstractKnowledgePattern . ' +
@@ -57,63 +61,73 @@ fill = function(type, graph, result, http, location){
      });
 };
 
-getGraphs = function(scope, http, location){
-	new Sparql(http, location)
+getGraphs = function(scope, http){
+	new Sparql(http)
 			.query("select distinct ?uri where {GRAPH ?uri {?s ?p ?o} . FILTER regex(?uri, 'ld-summaries')}")
 			.accumulate(function(results){
 				scope.graphs=results;
 	});
 };
 
-loadSummaries = function(scope, http, location){
+Summary = function(scope_service, http_service){
 	
-	var localOrDefault = function(value, default_value){
-		var value_to_return = default_value;
-		if(value) value_to_return = '<' + value.local + '>';
-		return value_to_return;
+	var offset = 0;
+	var limit = 20;
+	var scope = scope_service;
+	var http = http_service;
+	
+	this.reset = function(){
+		offset = 0;
 	}
 	
-	var subject = localOrDefault(scope.subject, '?subject');
-	var predicate = localOrDefault(scope.predicate, '?predicate');
-	var object = localOrDefault(scope.object, '?object');
-	
-	scope.summaries = [];
-	
-	new Sparql(http, location)
-		.query('select ' + subject + ' as ?subject ' + predicate + ' as ?predicate ' + object + ' as ?object ?frequency ?pattern ?gSubject ?gPredicate ?gObject ?subjectOcc ?predicateOcc ?objectOcc ' +
-			   ' where { ' +
-					'?pattern a lds:AbstractKnowledgePattern . ' +
-					'?pattern rdf:subject ' + subject + ' . ' +
-					'?pattern rdf:predicate ' + predicate + ' . ' + 
-		         	'?pattern rdf:object ' + object + ' . ' +
-		         	'?pattern lds:occurrence ?frequency . ' +
-		         	subject + ' rdfs:seeAlso ?gSubject . ' +
-		         	predicate +' rdfs:seeAlso ?gPredicate . ' +
-		         	object + ' rdfs:seeAlso ?gObject . ' +
-		         	'optional { ' +
-		         		subject + ' lds:occurrence ?subjectOcc .' +
-		         	'} . ' +
-		         	'optional { ' +
-		         		predicate + ' lds:occurrence ?predicateOcc .' +
-		         	'} . ' +
-		         	'optional { ' +
-	         			object + ' lds:occurrence ?objectOcc . ' +
-	         			'FILTER (?objectOcc > 0) ' +
-	         		'} . ' +
-				'} ' +
-				'order by desc(?frequency) ' +
-				'limit 20')
-		.onGraph(scope.selected_graph)
-		.accumulate(function(results){
-			scope.summaries=results;
-			scope.graph_was_selected=true;
-		});
-};
+	this.load = function(){
+		
+		var localOrDefault = function(value, default_value){
+			var value_to_return = default_value;
+			if(value) value_to_return = '<' + value.local + '>';
+			return value_to_return;
+		}
+		
+		var subject = localOrDefault(scope.subject, '?subject');
+		var predicate = localOrDefault(scope.predicate, '?predicate');
+		var object = localOrDefault(scope.object, '?object');
+		
+		new Sparql(http)
+			.query('select ' + subject + ' as ?subject ' + predicate + ' as ?predicate ' + object + ' as ?object ?frequency ?pattern ?gSubject ?gPredicate ?gObject ?subjectOcc ?predicateOcc ?objectOcc ' +
+				   ' where { ' +
+						'?pattern a lds:AbstractKnowledgePattern . ' +
+						'?pattern rdf:subject ' + subject + ' . ' +
+						'?pattern rdf:predicate ' + predicate + ' . ' + 
+			         	'?pattern rdf:object ' + object + ' . ' +
+			         	'?pattern lds:occurrence ?frequency . ' +
+			         	subject + ' rdfs:seeAlso ?gSubject . ' +
+			         	predicate +' rdfs:seeAlso ?gPredicate . ' +
+			         	object + ' rdfs:seeAlso ?gObject . ' +
+			         	'optional { ' +
+			         		subject + ' lds:occurrence ?subjectOcc .' +
+			         	'} . ' +
+			         	'optional { ' +
+			         		predicate + ' lds:occurrence ?predicateOcc .' +
+			         	'} . ' +
+			         	'optional { ' +
+		         			object + ' lds:occurrence ?objectOcc . ' +
+		         			'FILTER (?objectOcc > 0) ' +
+		         		'} . ' +
+					'} ' +
+					'order by desc(?frequency) ' +
+					'limit ' + limit + ' ' +
+					'offset ' + offset)
+			.onGraph(scope.selected_graph)
+			.accumulate(function(results){
+				scope.summaries=results;
+				scope.graph_was_selected=true;
+			});
+	}
+}
 
-Sparql = function(http_service, location_service){
+Sparql = function(http_service){
 	
 	var http = http_service;
-	var location = location_service;
 	var graph = "";
 	var query;
 	

@@ -4,6 +4,14 @@ summary.filter('escape', function(){
 	return window.encodeURIComponent;
 });
 
+summary.filter('isDatatype', function(){
+	return isDatatype;
+});
+
+summary.filter('isObject', function(){
+	return isObject;
+});
+
 summary.controller('Summarization', function ($scope, $http) {
 	
 	var summaries = new Summary($scope, $http);
@@ -39,8 +47,20 @@ summary.controller('Summarization', function ($scope, $http) {
 	$scope.selected_graph = 'select a dataset';
 	$scope.describe_uri = '/describe/?uri=';
 	
+	summary.loadingSummary = true;
 	getGraphs($scope, $http);
+	summary.loadingSummary = false;
 });
+
+isDatatype = function(value){
+	if(value.includes('datatype-property')) return 'DTP';
+	return '';
+};
+
+isObject = function(value){
+	if(value.includes('object-property')) return 'OP';
+	return '';
+};
 
 fill = function(type, graph, result, http){
 	

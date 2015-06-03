@@ -59,9 +59,6 @@ root=$(as_absolute $current_directory/../)
 results=$root/data/summaries/system-test
 expected_results=$root/benchmark/regression-test-results
 
-mkdir -p $expected_results/patterns/tmp-files
-rm -rf $results
-
 cd $current_directory
 cd ../pipeline
 ./run-summarization-pipeline.sh system-test

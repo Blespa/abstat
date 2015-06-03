@@ -33,4 +33,5 @@ echo "SYSTEM TEST"
 ./test-java-summarization-module.sh
 ./test-summarization-pipeline.sh
 ./test-http-routing.sh
+./system-tests.sh
 

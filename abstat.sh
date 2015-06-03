@@ -25,6 +25,7 @@ function build(){
 	docker build --rm -t abstat deployment
 	run_command /schema-summaries/build/build-java-summarization-module.sh
 	run_command /schema-summaries/build/build-java-ui-module.sh
+	run_command /schema-summaries/build/build-system-tests.sh
 	run_command chmod 775 -R /schema-summaries/web/log
 	run_command chmod 775 -R /schema-summaries/summarization/log
 	run_command chmod 775 -R /schema-summaries/data/

@@ -19,7 +19,8 @@ public class WriteAKPToRDFTest extends TestWithTemporaryData{
 		WriteAKPToRDF.main(new String[]{
 				inputFile.getAbsolutePath(),
 				outputFile.getAbsolutePath(),
-				"http://schemasummaries.org/dataset"
+				"http://schemasummaries.org/dataset",
+				"object"
 		});
 		
 		assertThat(outputFile.exists(), is(true));

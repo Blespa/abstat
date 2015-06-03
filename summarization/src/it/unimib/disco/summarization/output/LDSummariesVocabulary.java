@@ -104,7 +104,15 @@ public class LDSummariesVocabulary {
 	}
 	
 	public Resource asLocalResource(String globalResource) {
-		return model.createResource(resourcesNamespace() + globalResource.replace("http://", ""));
+		return model.createResource(resourcesNamespace() + asLocal(globalResource));
+	}
+
+	public Resource asLocalDatatypeProperty(String globalProperty) {
+		return model.createResource(datatypePropertiesNameSpace() + asLocal(globalProperty));
+	}
+	
+	public Resource asLocalObjectProperty(String globalProperty) {
+		return model.createResource(objectPropertiesNameSpace() + asLocal(globalProperty));
 	}
 	
 	public Resource addConcept(String concept) {
@@ -138,6 +146,18 @@ public class LDSummariesVocabulary {
 
 	private String resourcesNamespace() {
 		return baseUri() + "resource/" + dataset + "/";
+	}
+	
+	private String datatypePropertiesNameSpace(){
+		return resourcesNamespace() + "datatype-property/";
+	}
+	
+	private String objectPropertiesNameSpace(){
+		return resourcesNamespace() + "object-property/";
+	}
+	
+	private String asLocal(String globalResource) {
+		return globalResource.replace("http://", "");
 	}
 
 	private String baseUri() {

@@ -1,5 +1,6 @@
 package it.unimib.disco.summarization.tests;
 
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.*;
@@ -179,5 +180,21 @@ public class LDSummariesVocabularyTest {
 		Resource typed = vocabulary.selfOrUntyped("Ukn_Type");
 		
 		assertThat(typed.getURI(), equalTo("http://www.w3.org/2000/01/rdf-schema#Literal"));
+	}
+	
+	@Test
+	public void shouldCreateADatatypeProperty() throws Exception {
+		
+		Resource property = vocabulary.asLocalDatatypeProperty("http://dbpedia.org/property/name");
+		
+		assertThat(property.getURI(), containsString("datatype-property/dbpedia.org/property/name"));
+	}
+	
+	@Test
+	public void shouldCreateAnObjectProperty() throws Exception {
+		
+		Resource property = vocabulary.asLocalObjectProperty("http://dbpedia.org/property/name");
+		
+		assertThat(property.getURI(), containsString("object-property/dbpedia.org/property/name"));
 	}
 }

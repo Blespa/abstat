@@ -1,7 +1,7 @@
 package it.unimib.disco.summarization.systemTests;
 
 import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 import it.unimib.disco.summarization.experiments.SparqlEndpoint;
 import it.unimib.disco.summarization.output.Events;
 import it.unimib.disco.summarization.output.LDSummariesVocabulary;
@@ -39,5 +39,17 @@ public class SummarizationPipelineTest {
 		assertThat(occurrences.size(), equalTo(2));
 		assertThat(occurrences.get("http://ld-summaries.org/resource/system-test/datatype-property/xmlns.com/foaf/0.1/name"), equalTo(7));
 		assertThat(occurrences.get("http://ld-summaries.org/resource/system-test/object-property/xmlns.com/foaf/0.1/name"), equalTo(1));
+	}
+	
+	@Test
+	public void theSummaryShouldBeLoadedIntoIntoTheSparqlEndpoint() throws Exception {
+		new Events();
+		
+		LDSummariesVocabulary vocabulary = new LDSummariesVocabulary(ModelFactory.createDefaultModel(), "system-test");
+		
+		String allTriples = "select (count(*) as ?res) from <" + vocabulary.graph() + "> where {?s ?p ?o}";
+		int numberOfTriples = SparqlEndpoint.local().execute(allTriples).nextSolution().get("res").asLiteral().getInt();
+		
+		assertThat(numberOfTriples, equalTo(3904));
 	}
 }

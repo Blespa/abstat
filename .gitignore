@@ -6,6 +6,5 @@ organized-splitted-deduplicated
 RemoteSystemsTempFiles
 ontology_summarization.jar
 summarization-web.jar
-system-tests.jar
 !solr/bin
 *.pid

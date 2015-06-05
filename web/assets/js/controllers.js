@@ -47,7 +47,7 @@ summary.controller('Summarization', function ($scope, $http) {
 	$scope.selected_graph = 'select a dataset';
 	$scope.describe_uri = '/describe/?uri=';
 	
-	getGraphs($scope, $http, summary);
+	getGraphs($scope, $http, summaries);
 });
 
 isDatatype = function(value){
@@ -84,12 +84,12 @@ fill = function(type, graph, result, http){
 };
 
 getGraphs = function(scope, http, summary){
-	summary.loadingSummary = true;
+	summary.startLoading();
 	new Sparql(http)
 			.query("select distinct ?uri where {GRAPH ?uri {?s ?p ?o} . FILTER regex(?uri, 'ld-summaries')}")
 			.accumulate(function(results){
 				scope.graphs=results;
-				summary.loadingSummary = false;
+				summary.endLoading();
 	});
 };
 
@@ -104,9 +104,17 @@ Summary = function(scope_service, http_service){
 		offset = 0;
 	}
 	
+	this.startLoading = function(){
+		scope.loadingSummary = true;
+	}
+	
+	this.endLoading = function(){
+		scope.loadingSummary = false;
+	}
+	
 	this.load = function(){
 		
-		scope.loadingSummary = true;
+		this.startLoading();
 		
 		var localOrDefault = function(value, default_value){
 			var value_to_return = default_value;
@@ -150,7 +158,7 @@ Summary = function(scope_service, http_service){
 					scope.summaries.push(results[i]);
 			    }
 				scope.graph_was_selected=true;
-				scope.loadingSummary = false;
+				this.endLoading();
 			});
 	}
 }

@@ -114,8 +114,6 @@ Summary = function(scope_service, http_service){
 	
 	this.load = function(){
 		
-		this.startLoading();
-		
 		var localOrDefault = function(value, default_value){
 			var value_to_return = default_value;
 			if(value) value_to_return = '<' + value.local + '>';
@@ -125,6 +123,9 @@ Summary = function(scope_service, http_service){
 		var subject = localOrDefault(scope.subject, '?subject');
 		var predicate = localOrDefault(scope.predicate, '?predicate');
 		var object = localOrDefault(scope.object, '?object');
+		
+		this.startLoading();
+		endLoading = this.endLoading;
 		
 		new Sparql(http)
 			.query('select ' + subject + ' as ?subject ' + predicate + ' as ?predicate ' + object + ' as ?object ?frequency ?pattern ?gSubject ?gPredicate ?gObject ?subjectOcc ?predicateOcc ?objectOcc ' +
@@ -158,7 +159,7 @@ Summary = function(scope_service, http_service){
 					scope.summaries.push(results[i]);
 			    }
 				scope.graph_was_selected=true;
-				this.endLoading();
+				endLoading();
 			});
 	}
 }

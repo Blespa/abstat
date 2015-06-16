@@ -18,12 +18,14 @@ import com.hp.hpl.jena.vocabulary.RDF;
 import com.hp.hpl.jena.vocabulary.RDFS;
 
 public class WriteAKPToRDF {
+	
 	public static void main (String args []) throws IOException{
 		
 		String csvFilePath = args[0];
 		String outputFilePath = args[1];
 		String dataset = args[2];
-
+		String type = args[3];
+		
 		Model model = ModelFactory.createDefaultModel();
 		LDSummariesVocabulary vocabulary = new LDSummariesVocabulary(model, dataset);
 		
@@ -36,7 +38,11 @@ public class WriteAKPToRDF {
 				Literal statistic = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
 				
 				Resource localSubject = vocabulary.asLocalResource(globalSubject.getURI());
-				Resource localPredicate = vocabulary.asLocalResource(globalPredicate.getURI());
+				
+				Resource localPredicate = null;
+				if(type.equals("object")) localPredicate = vocabulary.asLocalObjectProperty(globalPredicate.getURI());
+				if(type.equals("datatype")) localPredicate = vocabulary.asLocalDatatypeProperty(globalPredicate.getURI());
+				
 				Resource localObject = vocabulary.asLocalResource(globalObject.getURI());
 				
 				Resource akpInstance = vocabulary.akpInstance(localSubject.getURI(), localPredicate.getURI(), localObject.getURI());

@@ -1,5 +1,6 @@
 <http://dbpedia.org/resource/MALFORMED>RESOURCE> <http://xmlns.com/foaf/0.1/name> "any".
 <malformed> <malformed> <malformed> <malformed> .
+<http://dbpedia.org/resource/Barack_Obama> <http://xmlns.com/foaf/0.1/name> <http://the_name_of_barack_obama> .
 <http://dbpedia.org/resource/Barack_Obama> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/OfficeHolder> .
 <http://dbpedia.org/resource/Barack_Obama> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Person> .
 <http://dbpedia.org/resource/Barack_Obama> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://wikidata.dbpedia.org/resource/Q5> .

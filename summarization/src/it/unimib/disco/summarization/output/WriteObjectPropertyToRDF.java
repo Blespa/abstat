@@ -31,14 +31,13 @@ public class WriteObjectPropertyToRDF {
 
 			try{
 				Resource globalSubject = model.createResource(row.get(Row.Entry.SUBJECT));
-				Resource localSubject = vocabulary.asLocalResource(globalSubject.getURI());
+				Resource localSubject = vocabulary.asLocalObjectProperty(globalSubject.getURI());
 				
 				Literal occurrence = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
 				
 				//add statements to model
 				model.add(localSubject, RDFS.seeAlso, globalSubject);
 				model.add(localSubject, RDF.type, vocabulary.property());
-				
 				model.add(localSubject, vocabulary.occurrence(), occurrence);
 			}
 			catch(Exception e){

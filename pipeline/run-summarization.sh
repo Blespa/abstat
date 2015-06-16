@@ -32,14 +32,7 @@ tmpDatasetFile="$DataDirectory/organized-splitted-deduplicated-tmp-file"
 orgDatasetFile="$DataDirectory/organized-splitted-deduplicated"
 
 #MinType
-minTypeDataForComp="$ResultsDirectory/min-types/data-for-computation"
 minTypeResult="$ResultsDirectory/min-types/min-type-results"
-
-#Pattern
-patternDataForComp="$ResultsDirectory/patterns/data-for-computation"
-patternObjResult="$ResultsDirectory/patterns/obj-patterns"
-patternDtResult="$ResultsDirectory/patterns/dt-patterns"
-patternTmpFiles="$ResultsDirectory/patterns/tmp-files"
 
 #Variabili per la parallelizzazione
 #Lettere con cui splitto i file per la parallelizzazione
@@ -312,8 +305,11 @@ echo ""
 echo "---Start: Counting---"
 	startBlock=$SECONDS	
 
-	rm -rf $minTypeDataForComp $minTypeResult
-	mkdir -p $minTypeDataForComp $minTypeResult
+	rm -rf $minTypeResult
+	mkdir -p $minTypeResult
+
+	rm -rf $ResultsDirectory/patterns
+	mkdir -p $ResultsDirectory/patterns
 
 	eval ${dbgCmd}""$JAVA_HOME/bin/java -Xms256m -Xmx32000m -cp ontology_summarization.jar it.unimib.disco.summarization.output.CalculateMinimalTypes "$OntologyFile" "$orgDatasetFile" "$minTypeResult"
 
@@ -358,35 +354,12 @@ echo "---Start: Counting---"
 	echo ""
 } &>> "log/log.txt"
 { 
+	startBlock=$SECONDS
 	echo "---Start: Cleaning---"
 	rm -f ${orgDatasetFile}/*_types.nt
-	for element in "${splitters[@]}"
-	do
-	  	rm -f ${minTypeResult}/${element}_uknHierConcept.txt
-		rm -f ${patternObjResult}/${element}_newObjProperties.txt
-		rm -f ${patternDtResult}/${element}_newDTProperties.txt
-		rm -f ${minTypeResult}/${element}_newConcepts.txt
-		rm -f ${patternObjResult}/${element}_countConcepts.txt
-		rm -f ${patternObjResult}/${element}_countClassSUBJ.txt
-		rm -f ${patternObjResult}/${element}_countClassOBJ.txt
-		rm -f ${patternObjResult}/${element}_countSUBJ.txt
-		rm -f ${patternObjResult}/${element}_countOBJ.txt
-		rm -f ${patternObjResult}/${element}_concPropSUBJ.txt
-		rm -f ${patternObjResult}/${element}_concPropOBJ.txt
-		rm -f ${patternObjResult}/${element}_countProp.txt
-		rm -f ${patternObjResult}/${element}_relationCount.txt
-		rm -f ${patternDtResult}/${element}_countDataType.txt
-		rm -f ${patternDtResult}/${element}_countClassDTSUBJ.txt
-		rm -f ${patternDtResult}/${element}_countClassDTOBJ.txt
-		rm -f ${patternDtResult}/${element}_countDTSUBJ.txt
-		rm -f ${patternDtResult}/${element}_countDTOBJ.txt
-		rm -f ${patternDtResult}/${element}_concPropDTSUBJ.txt
-		rm -f ${patternDtResult}/${element}_concPropDTOBJ.txt
-		rm -f ${patternDtResult}/${element}_countDTProp.txt
-		rm -f ${patternDtResult}/${element}_relationDTCount.txt 
-	done
-
+	rm -f ${minTypeResult}/*_uknHierConcept.txt
 	endBlock=$SECONDS
+	
 	if [ $debug -eq 1 ]
 	then
 		echo "Time: $((endBlock - startBlock)) secs."

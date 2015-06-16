@@ -61,8 +61,14 @@
         											<span ng-show="loadingSummary">filter  <i class="fa fa-spinner fa-spin"></i></span>
 												</button>
 						</td>
+						<script type="text/ng-template" id="autocomplete-template.html">
+						<a>
+							{{match.model.local | isDatatype}}{{match.model.local | isObject}}
+      						<span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
+  						</a>
+						</script>
 						<td><input type="text" typeahead="subject as subject.global for subject in autocomplete.subject | filter:$viewValue | limitTo:7" ng-model="subject" class="form-control" placeholder="subject"></td>
-						<td><input type="text" typeahead="predicate as predicate.global for predicate in autocomplete.predicate | filter:$viewValue | limitTo:7" ng-model="predicate" class="form-control" placeholder="predicate"></td>
+						<td><input type="text" typeahead="predicate as predicate.global for predicate in autocomplete.predicate | filter:$viewValue | limitTo:7" typeahead-template-url="autocomplete-template.html" ng-model="predicate" class="form-control" placeholder="predicate"></td>
 						<td><input type="text" typeahead="object as object.global for object in autocomplete.object | filter:$viewValue | limitTo:7" ng-model="object" class="form-control" placeholder="object"></td>
 					</tr>
 					<tr ng-repeat="summary in summaries">
@@ -72,6 +78,7 @@
 							<small ng-show="summary.subjectOcc">({{summary.subjectOcc.value}})</small>
 						</td>
 						<td>
+							{{summary.predicate.value | isDatatype}}{{summary.predicate.value | isObject}}
 							<a target="_blank" href="{{describe_uri}}{{summary.predicate.value | escape}}">{{summary.gPredicate.value}}</a>
 							<small ng-show="summary.predicateOcc">({{summary.predicateOcc.value}})</small>
 						</td>

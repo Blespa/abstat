@@ -4,6 +4,14 @@ summary.filter('escape', function(){
 	return window.encodeURIComponent;
 });
 
+summary.filter('isDatatype', function(){
+	return isDatatype;
+});
+
+summary.filter('isObject', function(){
+	return isObject;
+});
+
 summary.controller('Summarization', function ($scope, $http) {
 	
 	var summaries = new Summary($scope, $http);
@@ -39,8 +47,18 @@ summary.controller('Summarization', function ($scope, $http) {
 	$scope.selected_graph = 'select a dataset';
 	$scope.describe_uri = '/describe/?uri=';
 	
-	getGraphs($scope, $http);
+	getGraphs($scope, $http, summaries);
 });
+
+isDatatype = function(value){
+	if(value.includes('datatype-property')) return 'DTP';
+	return '';
+};
+
+isObject = function(value){
+	if(value.includes('object-property')) return 'OP';
+	return '';
+};
 
 fill = function(type, graph, result, http){
 	
@@ -65,11 +83,13 @@ fill = function(type, graph, result, http){
      });
 };
 
-getGraphs = function(scope, http){
+getGraphs = function(scope, http, summary){
+	summary.startLoading();
 	new Sparql(http)
 			.query("select distinct ?uri where {GRAPH ?uri {?s ?p ?o} . FILTER regex(?uri, 'ld-summaries')}")
 			.accumulate(function(results){
 				scope.graphs=results;
+				summary.endLoading();
 	});
 };
 
@@ -84,9 +104,15 @@ Summary = function(scope_service, http_service){
 		offset = 0;
 	}
 	
-	this.load = function(){
-		
+	this.startLoading = function(){
 		scope.loadingSummary = true;
+	}
+	
+	this.endLoading = function(){
+		scope.loadingSummary = false;
+	}
+	
+	this.load = function(){
 		
 		var localOrDefault = function(value, default_value){
 			var value_to_return = default_value;
@@ -97,6 +123,9 @@ Summary = function(scope_service, http_service){
 		var subject = localOrDefault(scope.subject, '?subject');
 		var predicate = localOrDefault(scope.predicate, '?predicate');
 		var object = localOrDefault(scope.object, '?object');
+		
+		this.startLoading();
+		endLoading = this.endLoading;
 		
 		new Sparql(http)
 			.query('select ' + subject + ' as ?subject ' + predicate + ' as ?predicate ' + object + ' as ?object ?frequency ?pattern ?gSubject ?gPredicate ?gObject ?subjectOcc ?predicateOcc ?objectOcc ' +
@@ -130,7 +159,7 @@ Summary = function(scope_service, http_service){
 					scope.summaries.push(results[i]);
 			    }
 				scope.graph_was_selected=true;
-				scope.loadingSummary = false;
+				endLoading();
 			});
 	}
 }

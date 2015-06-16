@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 directory=$1
 jar=$2
 

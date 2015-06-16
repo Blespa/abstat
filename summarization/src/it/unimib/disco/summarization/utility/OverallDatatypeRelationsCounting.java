@@ -1,7 +1,5 @@
 package it.unimib.disco.summarization.utility;
 
-import it.unimib.disco.summarization.output.AKPDatatypeCount;
-
 import java.io.File;
 import java.util.Vector;
 

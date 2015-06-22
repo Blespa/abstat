@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import org.apache.solr.client.solrj.SolrServerException;
-import org.apache.solr.client.solrj.impl.HttpSolrClient;
+import org.apache.solr.client.solrj.impl.HttpSolrServer;
 import org.apache.solr.common.SolrInputDocument;
 
 public class IndexObjectAkps
@@ -22,18 +22,18 @@ public class IndexObjectAkps
 		/*Step: Object-akp import.*/
 		
 		String serverUrl = "http://"+host+":"+port+"/solr/indexing";
-		HttpSolrClient client = new HttpSolrClient(serverUrl);
+		HttpSolrServer client = new HttpSolrServer(serverUrl);
 		
 		objectAkpsImport(client,pathFile);
 	}
 	
-	private static void objectAkpsImport (HttpSolrClient client, String pathFile) throws SolrServerException, IOException
+	private static void objectAkpsImport (HttpSolrServer client, String pathFile) throws SolrServerException, IOException
 	{
 		ArrayList <String> objectAkps = takeOnlyObjectAkps(pathFile);
 		indexObjectAkps(client,objectAkps);
 	}
 
-	private static void indexObjectAkps (HttpSolrClient client, ArrayList <String> objectAkps) throws SolrServerException, IOException
+	private static void indexObjectAkps (HttpSolrServer client, ArrayList <String> objectAkps) throws SolrServerException, IOException
 	{
 		int numberOfObjectAkps = objectAkps.size();
 		

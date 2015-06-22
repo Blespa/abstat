@@ -1,15 +1,13 @@
-log
 logs
 bin
-ontology_summarization.jar
 tmp
 organized-splitted-deduplicated
 .metadata
 .recommenders
 RemoteSystemsTempFiles
+ontology_summarization.jar
 summarization-web.jar
 !solr/bin
 solr/server/solr/configsets/basic_configs/data/
-
-
+*.pid
 

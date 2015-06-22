@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import org.apache.solr.client.solrj.SolrServerException;
-import org.apache.solr.client.solrj.impl.HttpSolrClient;
+import org.apache.solr.client.solrj.impl.HttpSolrServer;
 import org.apache.solr.common.SolrInputDocument;
 
 public class IndexDatatypeAkps
@@ -22,18 +22,18 @@ public class IndexDatatypeAkps
 		/*Step: Datatype-akp import.*/
 		
 		String serverUrl = "http://"+host+":"+port+"/solr/indexing";
-		HttpSolrClient client = new HttpSolrClient(serverUrl);
+		HttpSolrServer client = new HttpSolrServer(serverUrl);
 		
 		datatypeAkpsImport(client,pathFile);
 	}
 
-	private static void datatypeAkpsImport (HttpSolrClient client, String pathFile) throws IOException, SolrServerException
+	private static void datatypeAkpsImport (HttpSolrServer client, String pathFile) throws IOException, SolrServerException
 	{
 		ArrayList <String> datatypeAkps = takeOnlyDatatypeAkps(pathFile);
 		indexDatatypeAkps(client,datatypeAkps);
 	}
 
-	private static void indexDatatypeAkps (HttpSolrClient client, ArrayList <String> datatypeAkps) throws SolrServerException, IOException
+	private static void indexDatatypeAkps (HttpSolrServer client, ArrayList <String> datatypeAkps) throws SolrServerException, IOException
 	{
 		int numberOfDatatypeAkps = datatypeAkps.size();
 		

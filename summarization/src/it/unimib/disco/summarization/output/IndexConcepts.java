@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import org.apache.solr.client.solrj.SolrServerException;
-import org.apache.solr.client.solrj.impl.HttpSolrClient;
+import org.apache.solr.client.solrj.impl.HttpSolrServer;
 import org.apache.solr.common.SolrInputDocument;
 
 public class IndexConcepts
@@ -23,20 +23,20 @@ public class IndexConcepts
 		/*Step: Concepts import.*/
 		
 		String serverUrl = "http://"+host+":"+port+"/solr/indexing";
-		HttpSolrClient client = new HttpSolrClient(serverUrl);
+		HttpSolrServer client = new HttpSolrServer(serverUrl);
 		
 		//client.deleteByQuery("*:*");
 		conceptsImport(client,pathFile);
 	}
 	
-	private static void conceptsImport (HttpSolrClient client, String pathFile) throws FileNotFoundException, IOException, SolrServerException
+	private static void conceptsImport (HttpSolrServer client, String pathFile) throws FileNotFoundException, IOException, SolrServerException
 	{
 		ArrayList <String> concepts = takeOnlyConcepts(pathFile);
 		
 		indexDocuments(client,concepts);
 	}
 	
-	private static void indexDocuments(HttpSolrClient client, ArrayList<String> concepts) throws IOException, SolrServerException
+	private static void indexDocuments(HttpSolrServer client, ArrayList<String> concepts) throws IOException, SolrServerException
 	{
 		int numberOfConcepts = concepts.size();
 		

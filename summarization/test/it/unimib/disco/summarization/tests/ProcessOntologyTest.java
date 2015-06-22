@@ -4,6 +4,7 @@ import it.unimib.disco.summarization.output.ProcessOntology;
 
 import java.io.File;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.hp.hpl.jena.vocabulary.RDFS;
@@ -11,6 +12,7 @@ import com.hp.hpl.jena.vocabulary.RDFS;
 public class ProcessOntologyTest extends TestWithTemporaryData{
 
 	@Test
+	@Ignore
 	public void shouldBeAbleToProcessTheMusicOntology() throws Exception {
 		String ontologyDirectory = new File("../benchmark/experiments/music-ontology").getAbsolutePath().replace("summarization/../", "");
 		

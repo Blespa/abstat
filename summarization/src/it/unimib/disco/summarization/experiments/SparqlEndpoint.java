@@ -7,7 +7,11 @@ import com.hp.hpl.jena.query.QueryFactory;
 import com.hp.hpl.jena.query.ResultSet;
 import com.hp.hpl.jena.query.Syntax;
 
-class SparqlEndpoint{
+public class SparqlEndpoint{
+	
+	public static SparqlEndpoint local(){
+		return new SparqlEndpoint("http://localhost");
+	}
 	
 	public static SparqlEndpoint abstat(){
 		return new SparqlEndpoint("http://abstat.disco.unimib.it:8890");

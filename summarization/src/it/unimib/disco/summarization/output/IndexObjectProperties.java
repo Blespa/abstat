@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import org.apache.solr.client.solrj.SolrServerException;
-import org.apache.solr.client.solrj.impl.HttpSolrClient;
+import org.apache.solr.client.solrj.impl.HttpSolrServer;
 import org.apache.solr.common.SolrInputDocument;
 
 public class IndexObjectProperties
@@ -23,19 +23,19 @@ public class IndexObjectProperties
 		/*Step: Object-properties import.*/
 		
 		String serverUrl = "http://"+host+":"+port+"/solr/indexing";
-		HttpSolrClient client = new HttpSolrClient(serverUrl);
+		HttpSolrServer client = new HttpSolrServer(serverUrl);
 		
 		objectPropertiesImport(client,pathFile);
 	}
 	
-	private static void objectPropertiesImport (HttpSolrClient client, String pathFile) throws FileNotFoundException, IOException, SolrServerException
+	private static void objectPropertiesImport (HttpSolrServer client, String pathFile) throws FileNotFoundException, IOException, SolrServerException
 	{
 		ArrayList <String> objectProperties = takeOnlyObjectProperties(pathFile);
 		
 		indexObjectProperties(client,objectProperties);
 	}
 	
-	private static void indexObjectProperties(HttpSolrClient client, ArrayList<String> objectProperties) throws IOException, SolrServerException
+	private static void indexObjectProperties(HttpSolrServer client, ArrayList<String> objectProperties) throws IOException, SolrServerException
 	{
 		int numberOfObjectProperties = objectProperties.size();
 		

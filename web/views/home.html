@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=2">
 	<link href="static/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	<script src="static/js/ui-bootstrap-tpls-0.12.1.min.js"></script>
 	<script src="static/js/controllers.js"></script>
 	<title>Abstat</title>
 </head>
 <body>
 	<div class="container-fluid">
-		<div class="page-header" style="background: url('static/img/logo.jpg'); background-position: right; background-repeat: no-repeat; background-size: contain">
+		<div class="page-header" style="background: url('static/img/logo.jpg') right; background-repeat: no-repeat; background-size: contain">
 			<h1>ABSTAT <small>linked data summaries</small></h1>
 		</div>
 		<div ng-controller="Summarization">
@@ -25,12 +26,15 @@
 					<option>select a dataset</option>
 				    <option ng-repeat="graph in graphs">{{graph.uri.value}}</option>
 				</select>
-				<button type="submit" ng-click='loadPatterns()' class="btn btn-primary">view</button>
+				<button type="button" ng-click='loadPatterns()' ng-disabled="loadingSummary" class="btn btn-primary">
+					<span ng-hide="loadingSummary">view</span>
+        			<span ng-show="loadingSummary">view  <i class="fa fa-spinner fa-spin"></i></span>
+        		</button>
 			</div>
 			</form>
 			</div>
 			<div class="col-md-5 text-right">
-				<a target="_blank" href="{{endpoint}}" class="btn btn-default">Sparql endpoint</a>
+				<a target="_blank" href="/sparql" class="btn btn-default">Sparql endpoint</a>
 				<a href="static/ld-summaries.owl" class="btn btn-default" download>ld-summaries ontology</a>
 			</div>
 			</div>
@@ -52,9 +56,19 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td class="text-center"><button type="submit" ng-click='filterPatterns()' class="btn btn-primary">filter</button></td>
+						<td class="text-center"><button type="submit" ng-click='filterPatterns()' ng-disabled="loadingSummary" class="btn btn-primary">
+													<span ng-hide="loadingSummary">filter</span>
+        											<span ng-show="loadingSummary">filter  <i class="fa fa-spinner fa-spin"></i></span>
+												</button>
+						</td>
+						<script type="text/ng-template" id="autocomplete-template.html">
+						<a>
+							{{match.model.local | isDatatype}}{{match.model.local | isObject}}
+      						<span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
+  						</a>
+						</script>
 						<td><input type="text" typeahead="subject as subject.global for subject in autocomplete.subject | filter:$viewValue | limitTo:7" ng-model="subject" class="form-control" placeholder="subject"></td>
-						<td><input type="text" typeahead="predicate as predicate.global for predicate in autocomplete.predicate | filter:$viewValue | limitTo:7" ng-model="predicate" class="form-control" placeholder="predicate"></td>
+						<td><input type="text" typeahead="predicate as predicate.global for predicate in autocomplete.predicate | filter:$viewValue | limitTo:7" typeahead-template-url="autocomplete-template.html" ng-model="predicate" class="form-control" placeholder="predicate"></td>
 						<td><input type="text" typeahead="object as object.global for object in autocomplete.object | filter:$viewValue | limitTo:7" ng-model="object" class="form-control" placeholder="object"></td>
 					</tr>
 					<tr ng-repeat="summary in summaries">
@@ -64,6 +78,7 @@
 							<small ng-show="summary.subjectOcc">({{summary.subjectOcc.value}})</small>
 						</td>
 						<td>
+							{{summary.predicate.value | isDatatype}}{{summary.predicate.value | isObject}}
 							<a target="_blank" href="{{describe_uri}}{{summary.predicate.value | escape}}">{{summary.gPredicate.value}}</a>
 							<small ng-show="summary.predicateOcc">({{summary.predicateOcc.value}})</small>
 						</td>
@@ -75,9 +90,15 @@
 					</tr>
 				</tbody>
 			</table>
+			<button ng-click="loadMore()" type="button" ng-disabled="loadingSummary" class="btn btn-deafult btn-block">
+				<span ng-hide="loadingSummary"><strong>{{summaries.length}}</strong> patterns found - get more</span>
+        		<span ng-show="loadingSummary"><strong>{{summaries.length}}</strong> patterns found - get more  <i class="fa fa-spinner fa-spin"></i></span>
+        	</button>
 			</div>
 			</div>
 			</div>
+			
+			<br><br>
 		</div>
 	</div>
 </body>

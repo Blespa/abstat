@@ -31,7 +31,7 @@ public class WriteDatatypePropertyToRDF {
 
 			try{
 				Resource globalProperty = model.createResource(row.get(Row.Entry.SUBJECT));
-				Resource localProperty = vocabulary.asLocalResource(globalProperty.getURI());
+				Resource localProperty = vocabulary.asLocalDatatypeProperty(globalProperty.getURI());
 
 				Literal occurrence = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
 				

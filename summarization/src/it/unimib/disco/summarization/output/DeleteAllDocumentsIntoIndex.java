@@ -3,7 +3,7 @@ package it.unimib.disco.summarization.output;
 import java.io.IOException;
 
 import org.apache.solr.client.solrj.SolrServerException;
-import org.apache.solr.client.solrj.impl.HttpSolrClient;
+import org.apache.solr.client.solrj.impl.HttpSolrServer;
 
 public class DeleteAllDocumentsIntoIndex
 {
@@ -17,7 +17,7 @@ public class DeleteAllDocumentsIntoIndex
 		/*Delete all the documents stored in the index.*/
 
 		String serverUrl = "http://"+host+":"+port+"/solr/indexing";
-		HttpSolrClient client = new HttpSolrClient(serverUrl);
+		HttpSolrServer client = new HttpSolrServer(serverUrl);
 		
 		client.deleteByQuery("*:*");
 	}

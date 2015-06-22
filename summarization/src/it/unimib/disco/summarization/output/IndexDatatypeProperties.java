@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import org.apache.solr.client.solrj.SolrServerException;
-import org.apache.solr.client.solrj.impl.HttpSolrClient;
+import org.apache.solr.client.solrj.impl.HttpSolrServer;
 import org.apache.solr.common.SolrInputDocument;
 
 public class IndexDatatypeProperties
@@ -23,19 +23,19 @@ public class IndexDatatypeProperties
 		/*Step: Datatype-properties import.*/
 		
 		String serverUrl = "http://"+host+":"+port+"/solr/indexing";
-		HttpSolrClient client = new HttpSolrClient(serverUrl);
+		HttpSolrServer client = new HttpSolrServer(serverUrl);
 		
 		datatypePropertiesImport(client,pathFile);
 	}
 	
-	private static void datatypePropertiesImport (HttpSolrClient client, String pathFile) throws FileNotFoundException, IOException, SolrServerException
+	private static void datatypePropertiesImport (HttpSolrServer client, String pathFile) throws FileNotFoundException, IOException, SolrServerException
 	{
 		ArrayList <String> datatypeProperties = takeOnlyDatatypeProperties(pathFile);
 		
 		indexDatatypeProperties(client,datatypeProperties);
 	}
 	
-	private static void indexDatatypeProperties(HttpSolrClient client, ArrayList<String> datatypeProperties) throws IOException, SolrServerException
+	private static void indexDatatypeProperties(HttpSolrServer client, ArrayList<String> datatypeProperties) throws IOException, SolrServerException
 	{
 		int numberOfDatatypeProperties = datatypeProperties.size();
 		

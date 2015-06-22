@@ -10,7 +10,7 @@ import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.apache.solr.common.SolrInputDocument;
 
-public class IndexProperties
+public class IndexDatatypeProperties
 {
 	public static void main (String[] args) throws SolrServerException, IOException
 	{
@@ -20,48 +20,48 @@ public class IndexProperties
 		String port = args[1];
 		String pathFile = args[2];
 		
-		/*Step: Properties import.*/
+		/*Step: Datatype-properties import.*/
 		
 		String serverUrl = "http://"+host+":"+port+"/solr/indexing";
 		HttpSolrClient client = new HttpSolrClient(serverUrl);
 		
-		propertiesImport(client, pathFile);
+		datatypePropertiesImport(client,pathFile);
 	}
 	
-	private static void propertiesImport (HttpSolrClient client, String pathFile) throws FileNotFoundException, IOException, SolrServerException
+	private static void datatypePropertiesImport (HttpSolrClient client, String pathFile) throws FileNotFoundException, IOException, SolrServerException
 	{
-		ArrayList <String> properties = takeOnlyProperties(pathFile);
+		ArrayList <String> datatypeProperties = takeOnlyDatatypeProperties(pathFile);
 		
-		indexProperties(client, properties);
+		indexDatatypeProperties(client,datatypeProperties);
 	}
 	
-	private static void indexProperties(HttpSolrClient client, ArrayList<String> properties) throws IOException, SolrServerException
+	private static void indexDatatypeProperties(HttpSolrClient client, ArrayList<String> datatypeProperties) throws IOException, SolrServerException
 	{
-		int numberOfProperties = properties.size();
+		int numberOfDatatypeProperties = datatypeProperties.size();
 		
-		for (int i = 0; i < numberOfProperties; i++)
+		for (int i = 0; i < numberOfDatatypeProperties; i++)
 		{
-			String property = properties.get(i);
+			String datatypeProperty = datatypeProperties.get(i);
 			SolrInputDocument doc = new SolrInputDocument();
-			doc.setField("idDocument", (i+1+778));
-			doc.setField("property", property);
-			doc.setField("type", "property");
+			doc.setField("idDocument", (i+1+20));
+			doc.setField("datatypeProperty", datatypeProperty);
+			doc.setField("type", "datatypeProperty");
 			client.add(doc);
 		}
 		
-		client.commit(true, true);
+		client.commit(true,true);
 	}
 
-	private static ArrayList<String> takeOnlyProperties (String pathFile) throws FileNotFoundException, IOException
+	private static ArrayList<String> takeOnlyDatatypeProperties (String pathFile) throws FileNotFoundException, IOException
 	{
 		String path = pathFile;
 		BufferedReader reader = new BufferedReader(new FileReader(path));
 		
-		int numberOfProperties = 0;
-		ArrayList <String> properties = new ArrayList <String> ();
+		int numberOfDatatypeProperties = 0;
+		ArrayList <String> datatypeProperties = new ArrayList <String> ();
 		
     	boolean trovatoDoppioCancelletto = false;
-    	String property = "";
+    	String datatypeProperty = "";
     	
     	String line = reader.readLine();
     	
@@ -77,39 +77,39 @@ public class IndexProperties
     			{
     				if ((line.charAt(i) != '#') && (line.charAt(i+1) != '#'))
     				{
-    					property += line.charAt(i);
+    					datatypeProperty += line.charAt(i);
     				}
     				else
     				{
     					if ((line.charAt(i) != '#') && (line.charAt(i+1) == '#'))
     					{
-    						property += line.charAt(i);
+    						datatypeProperty += line.charAt(i);
     					}
     					else
     					{
     						if ((line.charAt(i) == '#') && (line.charAt(i+1) != '#'))
     						{
-    							property += line.charAt(i);
+    							datatypeProperty += line.charAt(i);
     						}
     					}
     				}
     			}
     		}
     		
-    		if (!(property.equalsIgnoreCase("")) && (!(property.equalsIgnoreCase("Property"))))
+    		if (!(datatypeProperty.equalsIgnoreCase("")))
     		{
-    				properties.add(property);
+    			datatypeProperties.add(datatypeProperty);
     		}
     		
-    		property = "";
+    		datatypeProperty = "";
     		trovatoDoppioCancelletto = false;
     		line = reader.readLine();
-    		numberOfProperties = (numberOfProperties + 1);
+    		numberOfDatatypeProperties = (numberOfDatatypeProperties + 1);
     		
     	}
     	
     	reader.close();
     	
-		return properties;
+		return datatypeProperties;
 	}
 }

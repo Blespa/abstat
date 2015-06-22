@@ -3,4 +3,4 @@
 name=coreSolr
 config=solrconfig.xml
 schema=schema.xml
-dataDir=/home/edoardo/schema-summaries/solr/server/solr/configsets/basic_configs/
+#dataDir=/home/edoardo/schema-summaries/solr/server/solr/configsets/basic_configs/

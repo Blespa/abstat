@@ -10,7 +10,7 @@ import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.apache.solr.common.SolrInputDocument;
 
-public class IndexConcepts
+public class IndexObjectProperties
 {
 	public static void main (String[] args) throws SolrServerException, IOException
 	{
@@ -20,49 +20,48 @@ public class IndexConcepts
 		String port = args[1];
 		String pathFile = args[2];
 		
-		/*Step: Concepts import.*/
+		/*Step: Object-properties import.*/
 		
 		String serverUrl = "http://"+host+":"+port+"/solr/indexing";
 		HttpSolrClient client = new HttpSolrClient(serverUrl);
 		
-		//client.deleteByQuery("*:*");
-		conceptsImport(client,pathFile);
+		objectPropertiesImport(client,pathFile);
 	}
 	
-	private static void conceptsImport (HttpSolrClient client, String pathFile) throws FileNotFoundException, IOException, SolrServerException
+	private static void objectPropertiesImport (HttpSolrClient client, String pathFile) throws FileNotFoundException, IOException, SolrServerException
 	{
-		ArrayList <String> concepts = takeOnlyConcepts(pathFile);
+		ArrayList <String> objectProperties = takeOnlyObjectProperties(pathFile);
 		
-		indexDocuments(client,concepts);
+		indexObjectProperties(client,objectProperties);
 	}
 	
-	private static void indexDocuments(HttpSolrClient client, ArrayList<String> concepts) throws IOException, SolrServerException
+	private static void indexObjectProperties(HttpSolrClient client, ArrayList<String> objectProperties) throws IOException, SolrServerException
 	{
-		int numberOfConcepts = concepts.size();
+		int numberOfObjectProperties = objectProperties.size();
 		
-		for (int i = 0; i < numberOfConcepts; i++)
+		for (int i = 0; i < numberOfObjectProperties; i++)
 		{
-			String concept = concepts.get(i);
+			String objectProperty = objectProperties.get(i);
 			SolrInputDocument doc = new SolrInputDocument();
-			doc.setField("idDocument", i+1);
-			doc.setField("concept", concept);
-			doc.setField("type", "concept");
+			doc.setField("idDocument", (i+1+20+11));
+			doc.setField("objectProperty", objectProperty);
+			doc.setField("type", "objectProperty");
 			client.add(doc);
 		}
 		
 		client.commit(true,true);
 	}
 
-	private static ArrayList<String> takeOnlyConcepts(String pathFile) throws FileNotFoundException, IOException
+	private static ArrayList<String> takeOnlyObjectProperties (String pathFile) throws FileNotFoundException, IOException
 	{
 		String path = pathFile;
 		BufferedReader reader = new BufferedReader(new FileReader(path));
 		
-		int numberOfConcepts = 0;
-		ArrayList <String> concepts = new ArrayList <String> ();
+		int numberOfObjectProperties = 0;
+		ArrayList <String> objectProperties = new ArrayList <String> ();
 		
     	boolean trovatoDoppioCancelletto = false;
-    	String concept = "";
+    	String objectProperty = "";
     	
     	String line = reader.readLine();
     	
@@ -78,39 +77,39 @@ public class IndexConcepts
     			{
     				if ((line.charAt(i) != '#') && (line.charAt(i+1) != '#'))
     				{
-    					concept += line.charAt(i);
+    					objectProperty += line.charAt(i);
     				}
     				else
     				{
     					if ((line.charAt(i) != '#') && (line.charAt(i+1) == '#'))
     					{
-    						concept += line.charAt(i);
+    						objectProperty += line.charAt(i);
     					}
     					else
     					{
     						if ((line.charAt(i) == '#') && (line.charAt(i+1) != '#'))
     						{
-    							concept += line.charAt(i);
+    							objectProperty += line.charAt(i);
     						}
     					}
     				}
     			}
     		}
     		
-    		if (!(concept.equalsIgnoreCase("")) && (!(concept.equalsIgnoreCase("Concept"))))
+    		if (!(objectProperty.equalsIgnoreCase("")))
     		{
-    				concepts.add(concept);
+    				objectProperties.add(objectProperty);
     		}
     		
-    		concept = "";
+    		objectProperty = "";
     		trovatoDoppioCancelletto = false;
     		line = reader.readLine();
-    		numberOfConcepts = (numberOfConcepts + 1);
+    		numberOfObjectProperties = (numberOfObjectProperties + 1);
     		
     	}
     	
     	reader.close();
     	
-		return concepts;
+		return objectProperties;
 	}
 }

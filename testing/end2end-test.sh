@@ -32,5 +32,6 @@ echo "SYSTEM TEST"
 ./test-java-ui-module.sh
 ./test-java-summarization-module.sh
 ./test-summarization-pipeline.sh
+./test-indexing-pipeline.sh
 ./system-tests.sh
 

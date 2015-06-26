@@ -41,7 +41,7 @@ public class IndexDatatypeAkps
 		{
 			String datatypeAkp = datatypeAkps.get(i);
 			SolrInputDocument doc = new SolrInputDocument();
-			doc.setField("idDocument", (i+1+20+11+4));
+			doc.setField("idDocument", (i+1+20+11+5));
 			doc.setField("datatypeAkp", datatypeAkp);
 			doc.setField("type", "datatypeAkp");
 			client.add(doc);

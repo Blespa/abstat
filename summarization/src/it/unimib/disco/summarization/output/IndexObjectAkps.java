@@ -41,7 +41,7 @@ public class IndexObjectAkps
 		{
 			String objectAkp = objectAkps.get(i);
 			SolrInputDocument doc = new SolrInputDocument();
-			doc.setField("idDocument", (i+1+20+11+4+68));
+			doc.setField("idDocument", (i+1+20+11+5+68));
 			doc.setField("objectAkp", objectAkp);
 			doc.setField("type", "objectAkp");
 			client.add(doc);

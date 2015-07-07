@@ -10,7 +10,6 @@ current_directory=$(as_absolute $relative_path)
 
 cd $current_directory
 echo "SYSTEM TEST"
-./check-system-configuration.sh
 ./test-java-ui-module.sh
 ./test-java-summarization-module.sh
 ./test-summarization-pipeline.sh

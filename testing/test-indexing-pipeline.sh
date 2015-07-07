@@ -11,8 +11,7 @@ current_directory=$(as_absolute $relative_path)
 cd $current_directory
 
 echo
-echo "integration testing of the solr module"
-echo
+echo "indexing the produced summary"
 
 solr_port=8891
 

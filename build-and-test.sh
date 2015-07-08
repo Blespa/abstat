@@ -13,6 +13,6 @@ sleep 5
 ./install.sh
 sleep 20
 ./abstat.sh exec testing/system-tests.sh
-
+./abstat.sh run "rm -rf /schema-summaries/data/logs"
 ./abstat.sh destroy
 

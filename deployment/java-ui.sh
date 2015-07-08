@@ -25,6 +25,8 @@ status=0
 
 . /lib/lsb/init-functions
 
+mkdir -p /schema-summaries/data/logs/webapp
+
 cd $project
 
 case "$command" in

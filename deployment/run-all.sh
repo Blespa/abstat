@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -e
+
 ./java-ui.sh start 8892
 ./solr.sh start 8891
 nginx

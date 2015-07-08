@@ -8,13 +8,13 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.hamcrest.Matcher;
 
-public class HttpAssert {
+public class Http {
 
-	public static void body(String url, Matcher<String> constraint) throws Exception {
-		assertThat(httpResponseFrom(url), constraint);
+	public static void assertBody(String url, Matcher<String> constraint) throws Exception {
+		assertThat(responseFrom(url), constraint);
 	}
 	
-	private static String httpResponseFrom(String address) throws Exception{
+	public static String responseFrom(String address) throws Exception{
 		return StringUtils.join(IOUtils.readLines(new DefaultHttpClient().execute(new HttpGet(address)).getEntity().getContent()), "\n");
 	}
 }

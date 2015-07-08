@@ -8,6 +8,7 @@ root=`cd $relative_path;pwd`
 cd $root
 
 ./install.sh
+sleep 5
 ./abstat.sh exec testing/end2end-test.sh
 ./install.sh
 sleep 20

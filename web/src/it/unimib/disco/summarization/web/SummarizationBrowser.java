@@ -5,6 +5,8 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.ContextHandler;
 import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.server.handler.ResourceHandler;
+import org.eclipse.jetty.server.session.HashSessionManager;
+import org.eclipse.jetty.server.session.SessionHandler;
 
 public class SummarizationBrowser {
 
@@ -14,7 +16,7 @@ public class SummarizationBrowser {
 		new Events();
 		server = new Server(port);
 		HandlerList handlers = new HandlerList();
-		handlers.setHandlers(new Handler[]{staticResources(), new Application()});
+		handlers.setHandlers(new Handler[]{trackSessions(), staticResources(), new Application()});
 		server.setHandler(handlers);
 		return this;
 	}
@@ -27,6 +29,12 @@ public class SummarizationBrowser {
 	public SummarizationBrowser stop() throws Exception {
 		server.stop();
 		return this;
+	}
+	
+	private SessionHandler trackSessions() {
+		HashSessionManager sessions = new HashSessionManager();
+		sessions.setMaxInactiveInterval(60 * 60);
+		return new SessionHandler(sessions);
 	}
 	
 	private ContextHandler staticResources() throws Exception {

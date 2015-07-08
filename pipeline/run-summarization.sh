@@ -34,7 +34,8 @@ orgDatasetFile="$DataDirectory/organized-splitted-deduplicated"
 #MinType
 minTypeResult="$ResultsDirectory/min-types/min-type-results"
 
-#Variabili per la parallelizzazione
+log_file="../data/logs/summarization/log.txt"
+
 #Lettere con cui splitto i file per la parallelizzazione
 IFS=',' read -a splitters <<< "0,1,2,3,4,5,6,7,8,9,a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,%,_,others" #Allineare con quanto presente in organize:data, se modifico
 NProc=4 #Numero di processi da parallelizzare [I passi successivi sono, per ora, vincolati all'uso di 4 processori]
@@ -76,9 +77,8 @@ function checkqueue {
 rm -rf ${TmpDatasetFileResult}* #Rimuovo tutti i file Tmp_Data_For_Computation
 mkdir -p $TmpDatasetFileResult
 
-rm -f "log/log.txt" #Rimuovo tutti i file di log
-mkdir -p log
-touch "log/log.txt"
+rm -f $log_file
+touch $log_file
 
 { 
 echo "---Start: Ontology Report---"
@@ -98,7 +98,7 @@ echo "---End: Ontology Report---"
 
 echo ""
 
-} &>> "log/log.txt"
+} &>> $log_file
 
 { 
 	echo "---Start: Organize and Split files---"
@@ -299,7 +299,7 @@ echo ""
 	echo "---End: Deduplication of files---"
 	echo ""
 
-} &>> "log/log.txt"
+} &>> $log_file
 
 { 
 echo "---Start: Counting---"
@@ -352,7 +352,7 @@ echo "---Start: Counting---"
 	echo "---End: Counting---"
 
 	echo ""
-} &>> "log/log.txt"
+} &>> $log_file
 { 
 	startBlock=$SECONDS
 	echo "---Start: Cleaning---"
@@ -369,7 +369,7 @@ echo "---Start: Counting---"
 	echo "---End: Cleaning---"
 	echo ""
 
-} &>> "log/log.txt"
+} &>> $log_file
 
 {
 	end=$SECONDS
@@ -379,5 +379,5 @@ echo "---Start: Counting---"
 		echo ""
 	fi
 
-} &>> "log/log.txt"
+} &>> $log_file
 

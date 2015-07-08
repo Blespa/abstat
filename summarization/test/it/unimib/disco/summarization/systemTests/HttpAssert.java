@@ -1,4 +1,4 @@
-package it.unimib.disco.summarization.web.tests;
+package it.unimib.disco.summarization.systemTests;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;

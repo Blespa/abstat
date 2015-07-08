@@ -20,7 +20,7 @@ function stop(){
 project=/schema-summaries/web
 command=$1
 port=$2
-pid=log/java-ui-$port.pid
+pid=/schema-summaries/data/logs/webapp/java-ui-$port.pid
 status=0
 
 . /lib/lsb/init-functions

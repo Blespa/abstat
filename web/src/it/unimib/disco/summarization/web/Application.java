@@ -19,6 +19,7 @@ public class Application extends AbstractHandler{
 		base.setQueryEncoding("utf-8");
 		response.setContentType("text/html");
 		response.setCharacterEncoding("utf-8");
+		request.getSession();
 		
 		if(path.equals("/alive")){
 			base.setHandled(true);

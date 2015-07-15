@@ -51,12 +51,12 @@ summary.controller('Summarization', function ($scope, $http) {
 });
 
 isDatatype = function(value){
-	if(value.includes('datatype-property')) return 'DTP';
+	if(value.indexOf('datatype-property') > -1) return 'DTP';
 	return '';
 };
 
 isObject = function(value){
-	if(value.includes('object-property')) return 'OP';
+	if(value.indexOf('object-property') > -1) return 'OP';
 	return '';
 };
 

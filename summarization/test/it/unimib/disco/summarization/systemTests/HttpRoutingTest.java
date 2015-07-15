@@ -32,11 +32,11 @@ public class HttpRoutingTest {
 	
 	@Test
 	public void virtuosoAdminInterfaceShouldBeUp() throws Exception {
-		new HttpAssert("http://localhost:8885").body("/conductor", containsString("virtuoso"));
+		new HttpAssert("http://localhost:8881").body("/conductor", containsString("virtuoso"));
 	}
 	
 	@Test
-	public void solrShouldBeUp() throws Exception {
-		new HttpAssert("http://localhost").body("/solr/", containsString("Solr Admin"));
+	public void solrAdminInterfaceShouldBeUp() throws Exception {
+		new HttpAssert("http://localhost:8882").body("/solr/", containsString("Solr Admin"));
 	}
 }

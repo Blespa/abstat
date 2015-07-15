@@ -1,6 +1,7 @@
 package it.unimib.disco.summarization.systemTests;
 
 import static org.hamcrest.Matchers.containsString;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -38,5 +39,11 @@ public class HttpRoutingTest {
 	@Test
 	public void solrAdminInterfaceShouldBeUp() throws Exception {
 		new HttpAssert("http://localhost:8882").body("/solr/", containsString("Solr Admin"));
+	}
+	
+	@Test
+	public void solrAdminInterfaceShouldBeLockedUpForStandardUsage() throws Exception {
+		
+		new HttpAssert("http://localhost").statusOf("/solr", 404);
 	}
 }

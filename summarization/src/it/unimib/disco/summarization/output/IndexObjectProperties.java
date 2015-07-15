@@ -32,22 +32,26 @@ public class IndexObjectProperties
 	private static void objectPropertiesImport (HttpSolrServer client, String pathFile, String dataset) throws FileNotFoundException, IOException, SolrServerException
 	{
 		ArrayList <String> objectProperties = takeOnlyObjectProperties(pathFile);
+		ArrayList <String> subtypeOfObjectProperties = takeOnlySubtypeOfObjectProperties(pathFile);
 		
-		indexObjectProperties(client,objectProperties,dataset);
+		indexObjectProperties(client,objectProperties,subtypeOfObjectProperties,dataset);
 	}
 	
-	private static void indexObjectProperties(HttpSolrServer client, ArrayList<String> objectProperties, String dataset) throws IOException, SolrServerException
+	private static void indexObjectProperties(HttpSolrServer client, ArrayList<String> objectProperties, ArrayList <String> subtypeOfObjectProperties, String dataset) throws IOException, SolrServerException
 	{
 		int numberOfObjectProperties = objectProperties.size();
 		
 		for (int i = 0; i < numberOfObjectProperties; i++)
 		{
 			String objectProperty = objectProperties.get(i);
+			String subtypeOfObjectProperty = subtypeOfObjectProperties.get(i);
+			
 			SolrInputDocument doc = new SolrInputDocument();
 			doc.setField("idDocument", (i+1+20+11));
 			doc.setField("objectProperty", objectProperty);
 			doc.setField("type", "objectProperty");
 			doc.setField("dataset", dataset);
+			doc.setField("subtype", subtypeOfObjectProperty);
 			client.add(doc);
 		}
 		
@@ -113,5 +117,48 @@ public class IndexObjectProperties
     	reader.close();
     	
 		return objectProperties;
+	}
+	
+	private static ArrayList <String> takeOnlySubtypeOfObjectProperties (String pathFile) throws FileNotFoundException, IOException
+	{
+		String path = pathFile;
+		BufferedReader reader = new BufferedReader(new FileReader(path));
+		
+		ArrayList <String> subtypeOfObjectProperties = new ArrayList <String> ();
+		String subtypeOfObjectProperty = "";
+		int contatore = 0;
+    	
+    	String lineRead = reader.readLine();
+    	
+    	while ((lineRead != null) && (contatore < lineRead.length()))
+		{
+			for (int i = 0; i < lineRead.length(); i++)
+			{
+				if (lineRead.charAt(i) != '#')
+				{
+					//System.out.println("sono dentro il primo if");
+					subtypeOfObjectProperty += lineRead.charAt(i);
+				}
+				else
+				{
+					if (lineRead.charAt(i) == '#')
+					{
+						//System.out.println("sono dentro il secondo if");
+						subtypeOfObjectProperty = "";
+					}
+				}
+				contatore++;
+			}
+			
+			contatore = 0;
+			
+			subtypeOfObjectProperties.add(subtypeOfObjectProperty);
+			
+			lineRead = reader.readLine();
+		}
+    	
+    	reader.close();
+    	
+		return subtypeOfObjectProperties;
 	}
 }

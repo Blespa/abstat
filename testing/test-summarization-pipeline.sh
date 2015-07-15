@@ -50,6 +50,7 @@ cd ../pipeline
 ./run-summarization-pipeline.sh system-test
 assert_no_errors_on ../data/logs/summarization/log.txt
 assert_results_are_compliant $expected_results $results
+
 ./export-to-rdf.sh system-test
 cd ../testing
 

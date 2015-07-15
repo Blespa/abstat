@@ -1,6 +1,7 @@
 package it.unimib.disco.summarization.output;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,21 +32,26 @@ public class IndexDatatypeAkps
 	private static void datatypeAkpsImport (HttpSolrServer client, String pathFile, String dataset) throws IOException, SolrServerException
 	{
 		ArrayList <String> datatypeAkps = takeOnlyDatatypeAkps(pathFile);
-		indexDatatypeAkps(client,datatypeAkps,dataset);
+		ArrayList <String> subtypeOfDatatypeAkps = takeOnlySubtypeOfDatatypeAkps(pathFile);
+		
+		indexDatatypeAkps(client,datatypeAkps,subtypeOfDatatypeAkps,dataset);
 	}
 
-	private static void indexDatatypeAkps (HttpSolrServer client, ArrayList <String> datatypeAkps, String dataset) throws SolrServerException, IOException
+	private static void indexDatatypeAkps (HttpSolrServer client, ArrayList <String> datatypeAkps, ArrayList <String> subtypeOfDatatypeAkps, String dataset) throws SolrServerException, IOException
 	{
 		int numberOfDatatypeAkps = datatypeAkps.size();
 		
 		for (int i = 0; i < numberOfDatatypeAkps; i++)
 		{
 			String datatypeAkp = datatypeAkps.get(i);
+			String subtypeOfDatatypeAkp = subtypeOfDatatypeAkps.get(i);
+			
 			SolrInputDocument doc = new SolrInputDocument();
 			doc.setField("idDocument", (i+1+20+11+5));
 			doc.setField("datatypeAkp", datatypeAkp);
 			doc.setField("type", "datatypeAkp");
 			doc.setField("dataset", dataset);
+			doc.setField("subtype", subtypeOfDatatypeAkp);
 			client.add(doc);
 		}
 		
@@ -171,5 +177,48 @@ public class IndexDatatypeAkps
 		}
 		
 		return akps;
+	}
+	
+	private static ArrayList <String> takeOnlySubtypeOfDatatypeAkps(String pathFile) throws FileNotFoundException, IOException
+	{
+		String path = pathFile;
+		BufferedReader reader = new BufferedReader(new FileReader(path));
+		
+		ArrayList <String> subtypeOfDatatypeAkps = new ArrayList <String> ();
+		String subtypeOfDatatypeAkp = "";
+		int contatore = 0;
+    	
+    	String lineRead = reader.readLine();
+    	
+    	while ((lineRead != null) && (contatore < lineRead.length()))
+		{
+			for (int i = 0; i < lineRead.length(); i++)
+			{
+				if (lineRead.charAt(i) != '#')
+				{
+					//System.out.println("sono dentro il primo if");
+					subtypeOfDatatypeAkp += lineRead.charAt(i);
+				}
+				else
+				{
+					if (lineRead.charAt(i) == '#')
+					{
+						//System.out.println("sono dentro il secondo if");
+						subtypeOfDatatypeAkp = "";
+					}
+				}
+				contatore++;
+			}
+			
+			contatore = 0;
+			
+			subtypeOfDatatypeAkps.add(subtypeOfDatatypeAkp);
+			
+			lineRead = reader.readLine();
+		}
+    	
+    	reader.close();
+    	
+		return subtypeOfDatatypeAkps;
 	}
 }

@@ -1,6 +1,7 @@
 package it.unimib.disco.summarization.output;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,21 +32,26 @@ public class IndexObjectAkps
 	private static void objectAkpsImport (HttpSolrServer client, String pathFile, String dataset) throws SolrServerException, IOException
 	{
 		ArrayList <String> objectAkps = takeOnlyObjectAkps(pathFile);
-		indexObjectAkps(client,objectAkps,dataset);
+		ArrayList <String> subtypeOfObjectAkps = takeOnlySubtypeOfObjectAkps(pathFile);
+		
+		indexObjectAkps(client,objectAkps,subtypeOfObjectAkps,dataset);
 	}
 
-	private static void indexObjectAkps (HttpSolrServer client, ArrayList <String> objectAkps, String dataset) throws SolrServerException, IOException
+	private static void indexObjectAkps (HttpSolrServer client, ArrayList <String> objectAkps, ArrayList <String> subtypeOfObjectAkps, String dataset) throws SolrServerException, IOException
 	{
 		int numberOfObjectAkps = objectAkps.size();
 		
 		for (int i = 0; i < numberOfObjectAkps; i++)
 		{
 			String objectAkp = objectAkps.get(i);
+			String subtypeOfObjectAkp = subtypeOfObjectAkps.get(i);
+			
 			SolrInputDocument doc = new SolrInputDocument();
 			doc.setField("idDocument", (i+1+20+11+5+68));
 			doc.setField("objectAkp", objectAkp);
 			doc.setField("type", "objectAkp");
 			doc.setField("dataset", dataset);
+			doc.setField("subtype", subtypeOfObjectAkp);
 			client.add(doc);
 		}
 		
@@ -171,5 +177,48 @@ public class IndexObjectAkps
 		}
 		
 		return akps;
+	}
+	
+	private static ArrayList <String> takeOnlySubtypeOfObjectAkps(String pathFile) throws FileNotFoundException, IOException
+	{
+		String path = pathFile;
+		BufferedReader reader = new BufferedReader(new FileReader(path));
+		
+		ArrayList <String> subtypeOfObjectAkps = new ArrayList <String> ();
+		String subtypeOfObjectAkp = "";
+		int contatore = 0;
+    	
+    	String lineRead = reader.readLine();
+    	
+    	while ((lineRead != null) && (contatore < lineRead.length()))
+		{
+			for (int i = 0; i < lineRead.length(); i++)
+			{
+				if (lineRead.charAt(i) != '#')
+				{
+					//System.out.println("sono dentro il primo if");
+					subtypeOfObjectAkp += lineRead.charAt(i);
+				}
+				else
+				{
+					if (lineRead.charAt(i) == '#')
+					{
+						//System.out.println("sono dentro il secondo if");
+						subtypeOfObjectAkp = "";
+					}
+				}
+				contatore++;
+			}
+			
+			contatore = 0;
+			
+			subtypeOfObjectAkps.add(subtypeOfObjectAkp);
+			
+			lineRead = reader.readLine();
+		}
+    	
+    	reader.close();
+    	
+		return subtypeOfObjectAkps;
 	}
 }

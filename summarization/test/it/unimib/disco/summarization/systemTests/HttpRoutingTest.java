@@ -1,7 +1,6 @@
 package it.unimib.disco.summarization.systemTests;
 
 import static org.hamcrest.Matchers.containsString;
-import static org.junit.Assert.*;
 
 import org.junit.Test;
 

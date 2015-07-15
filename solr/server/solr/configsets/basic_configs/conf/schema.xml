@@ -8,6 +8,8 @@
 	<field name="objectProperty" type="text_general" indexed="true" stored="true" required="false" multiValued="false" />
 	<field name="datatypeAkp" type="text_general" indexed="true" stored="true" required="false" multiValued="false" />
 	<field name="objectAkp" type="text_general" indexed="true" stored="true" required="false" multiValued="false" />
+
+	<field name="dataset" type="text_general" indexed="true" stored="true" required="false" multiValued="false" />
 	
 	<!-- Ora posso fare query di qualsiasi tipo sui documenti indicizzati (grazie al campo 'text')-->
 	<field name="text" type="text_general" indexed="true" stored="false" multiValued="true"/>

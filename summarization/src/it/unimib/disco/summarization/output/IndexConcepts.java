@@ -19,6 +19,7 @@ public class IndexConcepts
 		String host = args[0];
 		String port = args[1];
 		String pathFile = args[2];
+		String dataset = args[3];
 		
 		/*Step: Concepts import.*/
 		
@@ -26,17 +27,17 @@ public class IndexConcepts
 		HttpSolrServer client = new HttpSolrServer(serverUrl);
 		
 		//client.deleteByQuery("*:*");
-		conceptsImport(client,pathFile);
+		conceptsImport(client,pathFile,dataset);
 	}
 	
-	private static void conceptsImport (HttpSolrServer client, String pathFile) throws FileNotFoundException, IOException, SolrServerException
+	private static void conceptsImport (HttpSolrServer client, String pathFile, String dataset) throws FileNotFoundException, IOException, SolrServerException
 	{
 		ArrayList <String> concepts = takeOnlyConcepts(pathFile);
 		
-		indexDocuments(client,concepts);
+		indexDocuments(client,concepts,dataset);
 	}
 	
-	private static void indexDocuments(HttpSolrServer client, ArrayList<String> concepts) throws IOException, SolrServerException
+	private static void indexDocuments(HttpSolrServer client, ArrayList<String> concepts, String dataset) throws IOException, SolrServerException
 	{
 		int numberOfConcepts = concepts.size();
 		
@@ -47,6 +48,7 @@ public class IndexConcepts
 			doc.setField("idDocument", i+1);
 			doc.setField("concept", concept);
 			doc.setField("type", "concept");
+			doc.setField("dataset", dataset);
 			client.add(doc);
 		}
 		

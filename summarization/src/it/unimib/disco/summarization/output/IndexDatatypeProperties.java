@@ -19,23 +19,24 @@ public class IndexDatatypeProperties
 		String host = args[0];
 		String port = args[1];
 		String pathFile = args[2];
+		String dataset = args[3];
 		
 		/*Step: Datatype-properties import.*/
 		
 		String serverUrl = "http://"+host+":"+port+"/solr/indexing";
 		HttpSolrServer client = new HttpSolrServer(serverUrl);
 		
-		datatypePropertiesImport(client,pathFile);
+		datatypePropertiesImport(client,pathFile,dataset);
 	}
 	
-	private static void datatypePropertiesImport (HttpSolrServer client, String pathFile) throws FileNotFoundException, IOException, SolrServerException
+	private static void datatypePropertiesImport (HttpSolrServer client, String pathFile, String dataset) throws FileNotFoundException, IOException, SolrServerException
 	{
 		ArrayList <String> datatypeProperties = takeOnlyDatatypeProperties(pathFile);
 		
-		indexDatatypeProperties(client,datatypeProperties);
+		indexDatatypeProperties(client,datatypeProperties,dataset);
 	}
 	
-	private static void indexDatatypeProperties(HttpSolrServer client, ArrayList<String> datatypeProperties) throws IOException, SolrServerException
+	private static void indexDatatypeProperties(HttpSolrServer client, ArrayList<String> datatypeProperties, String dataset) throws IOException, SolrServerException
 	{
 		int numberOfDatatypeProperties = datatypeProperties.size();
 		
@@ -46,6 +47,7 @@ public class IndexDatatypeProperties
 			doc.setField("idDocument", (i+1+20));
 			doc.setField("datatypeProperty", datatypeProperty);
 			doc.setField("type", "datatypeProperty");
+			doc.setField("dataset", dataset);
 			client.add(doc);
 		}
 		

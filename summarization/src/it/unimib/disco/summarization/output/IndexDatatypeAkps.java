@@ -18,22 +18,23 @@ public class IndexDatatypeAkps
 		String host = args[0];
 		String port = args[1];
 		String pathFile = args[2];
+		String dataset = args[3];
 		
 		/*Step: Datatype-akp import.*/
 		
 		String serverUrl = "http://"+host+":"+port+"/solr/indexing";
 		HttpSolrServer client = new HttpSolrServer(serverUrl);
 		
-		datatypeAkpsImport(client,pathFile);
+		datatypeAkpsImport(client,pathFile,dataset);
 	}
 
-	private static void datatypeAkpsImport (HttpSolrServer client, String pathFile) throws IOException, SolrServerException
+	private static void datatypeAkpsImport (HttpSolrServer client, String pathFile, String dataset) throws IOException, SolrServerException
 	{
 		ArrayList <String> datatypeAkps = takeOnlyDatatypeAkps(pathFile);
-		indexDatatypeAkps(client,datatypeAkps);
+		indexDatatypeAkps(client,datatypeAkps,dataset);
 	}
 
-	private static void indexDatatypeAkps (HttpSolrServer client, ArrayList <String> datatypeAkps) throws SolrServerException, IOException
+	private static void indexDatatypeAkps (HttpSolrServer client, ArrayList <String> datatypeAkps, String dataset) throws SolrServerException, IOException
 	{
 		int numberOfDatatypeAkps = datatypeAkps.size();
 		
@@ -44,6 +45,7 @@ public class IndexDatatypeAkps
 			doc.setField("idDocument", (i+1+20+11+5));
 			doc.setField("datatypeAkp", datatypeAkp);
 			doc.setField("type", "datatypeAkp");
+			doc.setField("dataset", dataset);
 			client.add(doc);
 		}
 		

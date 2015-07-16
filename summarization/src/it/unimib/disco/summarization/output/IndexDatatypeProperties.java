@@ -33,11 +33,12 @@ public class IndexDatatypeProperties
 	{
 		ArrayList <String> datatypeProperties = takeOnlyDatatypeProperties(pathFile);
 		ArrayList <String> subtypeOfDatatypeProperties = takeOnlySubtypeOfDatatypeProperties(pathFile);
+		ArrayList <String> localNamesOfDatatypeProperties = takeOnlyLocalNamesOfDatatypeProperties(datatypeProperties);
 		
-		indexDatatypeProperties(client,datatypeProperties,subtypeOfDatatypeProperties,dataset);
+		indexDatatypeProperties(client,datatypeProperties,subtypeOfDatatypeProperties,localNamesOfDatatypeProperties,dataset);
 	}
 	
-	private static void indexDatatypeProperties(HttpSolrServer client, ArrayList<String> datatypeProperties, ArrayList<String> subtypeOfDatatypeProperties, String dataset) throws IOException, SolrServerException
+	private static void indexDatatypeProperties(HttpSolrServer client, ArrayList<String> datatypeProperties, ArrayList<String> subtypeOfDatatypeProperties, ArrayList <String> localNamesOfDatatypeProperties, String dataset) throws IOException, SolrServerException
 	{
 		int numberOfDatatypeProperties = datatypeProperties.size();
 		
@@ -45,13 +46,15 @@ public class IndexDatatypeProperties
 		{
 			String datatypeProperty = datatypeProperties.get(i);
 			String subtypeOfDatatypeProperty = subtypeOfDatatypeProperties.get(i);
+			String localNameOfDatatypeProperty = localNamesOfDatatypeProperties.get(i);
 			
 			SolrInputDocument doc = new SolrInputDocument();
 			doc.setField("idDocument", (i+1+20));
-			doc.setField("datatypeProperty", datatypeProperty);
+			doc.setField("URI", datatypeProperty);
 			doc.setField("type", "datatypeProperty");
 			doc.setField("dataset", dataset);
 			doc.setField("subtype", subtypeOfDatatypeProperty);
+			doc.setField("fullTextSearchField", localNameOfDatatypeProperty);
 			client.add(doc);
 		}
 		
@@ -160,5 +163,35 @@ public class IndexDatatypeProperties
     	reader.close();
     	
 		return subtypeOfDatatypeProperties;
+	}
+	
+	private static ArrayList <String> takeOnlyLocalNamesOfDatatypeProperties (ArrayList <String> datatypeProperties)
+	{
+		String datatypeProperty = "";
+		String localNameOfDatatypeProperty = "";
+		ArrayList <String> localNamesOfDatatypeProperties = new ArrayList <String> ();
+		
+		for (int i = 0; i < datatypeProperties.size(); i++) 
+		{
+			datatypeProperty = datatypeProperties.get(i);
+					
+			for (int j = 0; j < datatypeProperty.length(); j++) 
+			{
+				if (datatypeProperty.charAt(j) != '/')
+				{
+					localNameOfDatatypeProperty += datatypeProperty.charAt(j);
+				}
+				else
+				{
+					if (datatypeProperty.charAt(j) == '/')
+					{
+						localNameOfDatatypeProperty = "";
+					}
+				}
+			}	
+			localNamesOfDatatypeProperties.add(localNameOfDatatypeProperty);
+		}
+		
+		return localNamesOfDatatypeProperties;
 	}
 }

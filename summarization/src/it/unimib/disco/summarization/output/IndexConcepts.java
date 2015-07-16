@@ -34,11 +34,12 @@ public class IndexConcepts
 	{
 		ArrayList <String> concepts = takeOnlyConcepts(pathFile);
 		ArrayList <String> subtypeOfConcepts = takeOnlySubtypeOfConcepts(pathFile);
+		ArrayList <String> localNamesOfConcepts = takeOnlyLocalNamesOfConcepts(concepts);
 		
-		indexDocuments(client,concepts,subtypeOfConcepts,dataset);
+		indexDocuments(client,concepts,subtypeOfConcepts,localNamesOfConcepts,dataset);
 	}
 	
-	private static void indexDocuments(HttpSolrServer client, ArrayList<String> concepts, ArrayList <String> subtypeOfConcepts, String dataset) throws IOException, SolrServerException
+	private static void indexDocuments(HttpSolrServer client, ArrayList<String> concepts, ArrayList <String> subtypeOfConcepts, ArrayList <String> localNamesOfConcepts, String dataset) throws IOException, SolrServerException
 	{
 		int numberOfConcepts = concepts.size();
 		
@@ -46,13 +47,15 @@ public class IndexConcepts
 		{
 			String concept = concepts.get(i);
 			String subtypeOfConcept = subtypeOfConcepts.get(i);
+			String localNameOfConcept = localNamesOfConcepts.get(i);
 			
 			SolrInputDocument doc = new SolrInputDocument();
 			doc.setField("idDocument", i+1);
-			doc.setField("concept", concept);
+			doc.setField("URI", concept);
 			doc.setField("type", "concept");
 			doc.setField("dataset", dataset);
 			doc.setField("subtype", subtypeOfConcept);
+			doc.setField("fullTextSearchField", localNameOfConcept);
 			client.add(doc);
 		}
 		
@@ -161,5 +164,35 @@ public class IndexConcepts
     	reader.close();
     	
 		return subtypeOfConcepts;
+	}
+	
+	private static ArrayList <String> takeOnlyLocalNamesOfConcepts (ArrayList <String> concepts)
+	{
+		String concept = "";
+		String localNameOfConcept = "";
+		ArrayList <String> localNamesOfConcepts = new ArrayList <String> ();
+		
+		for (int i = 0; i < concepts.size(); i++) 
+		{
+			concept = concepts.get(i);
+					
+			for (int j = 0; j < concept.length(); j++) 
+			{
+				if (concept.charAt(j) != '/')
+				{
+					localNameOfConcept += concept.charAt(j);
+				}
+				else
+				{
+					if (concept.charAt(j) == '/')
+					{
+						localNameOfConcept = "";
+					}
+				}
+			}	
+			localNamesOfConcepts.add(localNameOfConcept);
+		}
+		
+		return localNamesOfConcepts;
 	}
 }

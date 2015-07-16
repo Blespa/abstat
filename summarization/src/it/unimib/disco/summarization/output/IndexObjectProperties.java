@@ -33,11 +33,12 @@ public class IndexObjectProperties
 	{
 		ArrayList <String> objectProperties = takeOnlyObjectProperties(pathFile);
 		ArrayList <String> subtypeOfObjectProperties = takeOnlySubtypeOfObjectProperties(pathFile);
+		ArrayList <String> localNamesOfObjectProperties = takeOnlyLocalNamesOfObjectProperties(objectProperties);
 		
-		indexObjectProperties(client,objectProperties,subtypeOfObjectProperties,dataset);
+		indexObjectProperties(client,objectProperties,subtypeOfObjectProperties,localNamesOfObjectProperties,dataset);
 	}
 	
-	private static void indexObjectProperties(HttpSolrServer client, ArrayList<String> objectProperties, ArrayList <String> subtypeOfObjectProperties, String dataset) throws IOException, SolrServerException
+	private static void indexObjectProperties(HttpSolrServer client, ArrayList<String> objectProperties, ArrayList <String> subtypeOfObjectProperties, ArrayList <String> localNamesOfObjectProperties, String dataset) throws IOException, SolrServerException
 	{
 		int numberOfObjectProperties = objectProperties.size();
 		
@@ -45,13 +46,15 @@ public class IndexObjectProperties
 		{
 			String objectProperty = objectProperties.get(i);
 			String subtypeOfObjectProperty = subtypeOfObjectProperties.get(i);
+			String localNameOfObjectProperty = localNamesOfObjectProperties.get(i);
 			
 			SolrInputDocument doc = new SolrInputDocument();
 			doc.setField("idDocument", (i+1+20+11));
-			doc.setField("objectProperty", objectProperty);
+			doc.setField("URI", objectProperty);
 			doc.setField("type", "objectProperty");
 			doc.setField("dataset", dataset);
 			doc.setField("subtype", subtypeOfObjectProperty);
+			doc.setField("fullTextSearchField", localNameOfObjectProperty);
 			client.add(doc);
 		}
 		
@@ -160,5 +163,35 @@ public class IndexObjectProperties
     	reader.close();
     	
 		return subtypeOfObjectProperties;
+	}
+	
+	private static ArrayList <String> takeOnlyLocalNamesOfObjectProperties (ArrayList <String> objectProperties)
+	{
+		String objectProperty = "";
+		String localNameOfobjectProperty = "";
+		ArrayList <String> localNamesOfobjectProperties = new ArrayList <String> ();
+		
+		for (int i = 0; i < objectProperties.size(); i++) 
+		{
+			objectProperty = objectProperties.get(i);
+					
+			for (int j = 0; j < objectProperty.length(); j++) 
+			{
+				if (objectProperty.charAt(j) != '/')
+				{
+					localNameOfobjectProperty += objectProperty.charAt(j);
+				}
+				else
+				{
+					if (objectProperty.charAt(j) == '/')
+					{
+						localNameOfobjectProperty = "";
+					}
+				}
+			}	
+			localNamesOfobjectProperties.add(localNameOfobjectProperty);
+		}
+		
+		return localNamesOfobjectProperties;
 	}
 }

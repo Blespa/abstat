@@ -11,27 +11,21 @@ public class InternalExternalConcept
 {
 	public static void main(String[] args) throws FileNotFoundException, IOException
 	{
-		/*Receive two arguments from script (that are 'pathFile' and 'dataset').*/
-		
 		String pathFile = args[0];
 		String dataset = args[1];
+		String payLevelDomain = args[2];
 		
-		/*Step: Decide if a concept is internal or external.*/
-		
-		conceptsInternalExternal(pathFile,dataset);
+		conceptsInternalExternal(pathFile,dataset, payLevelDomain);
 	}
 	
-	private static void conceptsInternalExternal(String pathFile, String dataset) throws FileNotFoundException, IOException
+	private static void conceptsInternalExternal(String pathFile, String dataset, String payLevelDomain) throws FileNotFoundException, IOException
 	{
-		/*Per leggere da file .txt l'input.*/
 		String fileConceptsPath = pathFile;
 		BufferedReader brConcepts = new BufferedReader(new FileReader(fileConceptsPath));
 		
-		/*Per scrivere su file .txt l'output.*/
 		FileWriter fwConcepts = new FileWriter("../data/summaries/"+dataset+"/patterns/count-concepts-new.txt");
 		BufferedWriter bwConcepts = new BufferedWriter(fwConcepts);
 		
-		/*Cuore dell'Algoritmo.*/
 		boolean trovatoPrimoCancelletto = false;
 		String lineRead = null;
 		String concept = "";
@@ -74,7 +68,7 @@ public class InternalExternalConcept
 				}
 			}
 			
-			if (concept.contains(dataset))
+			if (concept.contains(payLevelDomain))
 			{
 				typeOfConcept = "internalConcept";
 			}
@@ -82,10 +76,6 @@ public class InternalExternalConcept
 			{
 				typeOfConcept = "externalConcept";
 			}
-			
-			//System.out.println("Concepts found: " + concept);
-			//System.out.println("Number of instances of the concept '" + concept + "': " + numberOfInstances);
-			//System.out.println("Type of the concept '" + concept + "': " + typeOfConcept + "\n");
 			
 			bwConcepts.write(concept);
 			bwConcepts.write("##");
@@ -102,7 +92,6 @@ public class InternalExternalConcept
 			lineRead = brConcepts.readLine();
 		}
 		
-		/*Chiudo le connessioni con i file.*/
 		brConcepts.close();
 		bwConcepts.close();
 		fwConcepts.close();

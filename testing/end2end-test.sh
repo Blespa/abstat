@@ -14,9 +14,8 @@ echo "SYSTEM TEST"
 ./test-java-summarization-module.sh
 ./test-summarization-pipeline.sh
 
-#dopo il processo di summarization e prima di fare l'indexing, inserisco la fase in cui decido se un oggetto è interno od esterno
-./test-internal-external-object.sh system-test
-
+./test-internal-external-object.sh system-test dbpedia.org
 ./test-indexing-pipeline.sh system-test
+
 ./system-tests.sh
 

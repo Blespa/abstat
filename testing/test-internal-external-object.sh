@@ -13,9 +13,10 @@ echo
 echo "producing the files .txt that are the input for indexing"
 
 dataset=$1
+payleveldomain=$2
 
 cd ../summarization
-java -Xms256m -Xmx4g -cp .:'ontology_summarization.jar' it.unimib.disco.summarization.output.InternalExternalConcept ../data/summaries/$dataset/patterns/count-concepts.txt $dataset
+java -Xms256m -Xmx4g -cp .:'ontology_summarization.jar' it.unimib.disco.summarization.output.InternalExternalConcept ../data/summaries/$dataset/patterns/count-concepts.txt $dataset $payleveldomain
 cd ../testing
 
 cd ../summarization

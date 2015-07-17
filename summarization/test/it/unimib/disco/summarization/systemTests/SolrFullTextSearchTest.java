@@ -3,7 +3,6 @@ package it.unimib.disco.summarization.systemTests;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.containsString;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class SolrFullTextSearchTest {
@@ -40,7 +39,6 @@ public class SolrFullTextSearchTest {
 	}
 	
 	@Test
-	@Ignore
 	public void conceptsFromDBpediaShouldBeMarkedAsInternal() throws Exception {
 		httpAssert().body("select?q=URI:%22http://dbpedia.org/ontology/Place%22", containsString("internal"));
 	}

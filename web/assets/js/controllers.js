@@ -14,19 +14,23 @@ summary.filter('isObject', function(){
 
 summary.controller('PropertySimilarity', function ($scope, $http){
 	
-	$scope.computeSimilarity = function(){
+	$scope.getDistributionForProperty1 = function(){
 		var dataset = $scope.query.dataset;
 		var p1 = $scope.query.property1;
-		var p2 = $scope.query.property2;
 		
-		var p1Distribution = typeDistribution(dataset, p1, $http);
-		var p2Distribution = typeDistribution(dataset, p2, $http);
+		$scope.p1Distribution = typeDistribution(dataset, p1, $http);
+	};
+	
+	$scope.getDistributionForProperty2 = function(){
+		var dataset = $scope.query.dataset;
+		var p2 = $scope.query.property1;
 		
+		$scope.p2Distribution = typeDistribution(dataset, p2, $http);
 	};
 });
 
 typeDistribution = function(dataset, property, http){
-	var distribution = {};
+	var distribution = [];
 	new Sparql(http)
 		.query('select ?type ?typeOcc sum(?occ) as ?akpOcc  where {' +
 			   '?lp rdfs:seeAlso <' + property + '> . ' + 
@@ -39,8 +43,8 @@ typeDistribution = function(dataset, property, http){
 		.onGraph(dataset)
 		.accumulate(function(results){
 			angular.forEach(results, function(key, value){
-				distribution[key.type.value] = key.akpOcc.value / key.typeOcc.value;
-	    	});
+				this.push([key.type.value, key.akpOcc.value / key.typeOcc.value]);
+	    	}, distribution);
 		});
 	return distribution;
 }

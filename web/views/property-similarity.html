@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	<link rel="shortcut icon" href="static/img/abstat.svg">
 	<script src="static/js/ui-bootstrap-tpls-0.12.1.min.js"></script>
+	<script src="static/js/controllers.js"></script>
 	<title>ABSTAT</title>
 </head>
 <body>
@@ -16,25 +17,27 @@
 		<div class="page-header" style="background: url('static/img/logo.jpg') right; background-repeat: no-repeat; background-size: contain">
 			<h1><img alt="" src="static/img/abstat.svg"> ABSTAT <small>linked data summaries</small></h1>
 		</div>
-		<div class="row">
-		<div class="col-md-12">
-		property similarity:
-		<form class="form-inline">
-		<div class="form-group">
-			<label for="dataset">dataset</label>
-    		<input type="text" class="form-control" id="dataset">
-		</div>
-		<div class="form-group">
-			<label for="property1">property 1</label>
-    		<input type="text" class="form-control" id="property1">
-		</div>
-		<div class="form-group">
-			<label for="property2">property 2</label>
-    		<input type="text" class="form-control" id="property2">
-		</div>
-		<button type="button" class="btn btn-primary">compute</button>
-		</form>
-		</div>
+		<div ng-controller="PropertySimilarity">
+			<div class="row">
+			<div class="col-md-12">
+			property similarity:
+			<form class="form-inline">
+			<div class="form-group">
+				<label for="dataset">dataset</label>
+	    		<input type="text" ng-model="query.dataset" class="form-control" id="dataset">
+			</div>
+			<div class="form-group">
+				<label for="property1">property 1</label>
+	    		<input type="text" ng-model="query.property1" class="form-control" id="property1">
+			</div>
+			<div class="form-group">
+				<label for="property2">property 2</label>
+	    		<input type="text" ng-model="query.property2" class="form-control" id="property2">
+			</div>
+			<button type="button" ng-click='computeSimilarity()' class="btn btn-primary">compute</button>
+			</form>
+			</div>
+			</div>
 		</div>
 	</div>
 </body>

@@ -12,6 +12,39 @@ summary.filter('isObject', function(){
 	return isObject;
 });
 
+summary.controller('PropertySimilarity', function ($scope, $http){
+	
+	$scope.computeSimilarity = function(){
+		var dataset = $scope.query.dataset;
+		var p1 = $scope.query.property1;
+		var p2 = $scope.query.property2;
+		
+		var p1Distribution = typeDistribution(dataset, p1, $http);
+		var p2Distribution = typeDistribution(dataset, p2, $http);
+		
+	};
+});
+
+typeDistribution = function(dataset, property, http){
+	var distribution = {};
+	new Sparql(http)
+		.query('select ?type ?typeOcc sum(?occ) as ?akpOcc  where {' +
+			   '?lp rdfs:seeAlso <' + property + '> . ' + 
+			   '?akp rdf:predicate ?lp . ' +
+			   '?akp rdf:subject ?ls . ' +
+			   '?ls rdfs:seeAlso ?type . ' +
+			   '?ls lds:occurrence ?typeOcc . ' +
+			   '?akp lds:occurrence ?occ . ' +
+			    '} group by ?type ?typeOcc order by ?type')
+		.onGraph(dataset)
+		.accumulate(function(results){
+			angular.forEach(results, function(key, value){
+				distribution[key.type.value] = key.akpOcc.value / key.typeOcc.value;
+	    	});
+		});
+	return distribution;
+}
+
 summary.controller('Summarization', function ($scope, $http) {
 	
 	var summaries = new Summary($scope, $http);

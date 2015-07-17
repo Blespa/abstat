@@ -29,5 +29,9 @@ public class Application extends AbstractHandler{
 			base.setHandled(true);
 			IOUtils.copy(FileUtils.openInputStream(new File("views/home.html")), response.getOutputStream());
 		}
+		if(path.equals("/property-similarity")){
+			base.setHandled(true);
+			IOUtils.copy(FileUtils.openInputStream(new File("views/property-similarity.html")), response.getOutputStream());
+		}
 	}
 }

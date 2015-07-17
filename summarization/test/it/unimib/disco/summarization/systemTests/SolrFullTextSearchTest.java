@@ -1,5 +1,6 @@
 package it.unimib.disco.summarization.systemTests;
 
+import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.containsString;
 
 import org.junit.Test;
@@ -22,6 +23,14 @@ public class SolrFullTextSearchTest {
 	public void shouldSupportQueriesOnAKPs() throws Exception {
 		
 		httpAssert().body("select?q=fullTextSearchField:place&fq=type:objectAkp", containsString("http://dbpedia.org/ontology/capital"));
+	}
+	
+	@Test
+	public void shouldSupportQueriesOnCrossTypologies() throws Exception {
+		
+		httpAssert().body("select?q=fullTextSearchField:place", allOf(containsString("concept"),
+																	  containsString("Property"),
+																	  containsString("Akp")));
 	}
 	
 	private HttpAssert httpAssert() {

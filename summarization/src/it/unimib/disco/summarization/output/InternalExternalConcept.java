@@ -74,7 +74,7 @@ public class InternalExternalConcept
 				}
 			}
 			
-			if (concept.contains("http://dbpedia.org"))
+			if (concept.contains(dataset))
 			{
 				typeOfConcept = "internalConcept";
 			}

@@ -74,7 +74,7 @@ public class InternalExternalObjectProperty
 				}
 			}
 			
-			if (objectProperty.contains("http://dbpedia.org"))
+			if (objectProperty.contains(dataset))
 			{
 				typeOfObjectProperty = "internalObjectProperty";
 			}

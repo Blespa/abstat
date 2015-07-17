@@ -74,7 +74,7 @@ public class InternalExternalDatatypeProperty
 				}
 			}
 			
-			if (datatypeProperty.contains("http://dbpedia.org"))
+			if (datatypeProperty.contains(dataset))
 			{
 				typeOfDatatypeProperty = "internalDatatypeProperty";
 			}

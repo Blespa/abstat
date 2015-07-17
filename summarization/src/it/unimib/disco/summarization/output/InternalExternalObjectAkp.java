@@ -122,7 +122,7 @@ public class InternalExternalObjectAkp
 			}
 			
 			/*Un akp è definito 'interno' se sia il soggetto sia l'oggetto dell'akp provengono da "http://dbpedia.org". Altrimenti è definito 'esterno'.*/
-			if ((subjectObjectAkp.contains("http://dbpedia.org")) && (objectObjectAkp.contains("http://dbpedia.org")))
+			if ((subjectObjectAkp.contains(dataset)) && (objectObjectAkp.contains(dataset)))
 			{
 				typeOfObjectAkp = "internalObjectAkp";
 			}

@@ -23,7 +23,7 @@ summary.controller('PropertySimilarity', function ($scope, $http){
 	
 	$scope.getDistributionForProperty2 = function(){
 		var dataset = $scope.query.dataset;
-		var p2 = $scope.query.property1;
+		var p2 = $scope.query.property2;
 		
 		$scope.p2Distribution = typeDistribution(dataset, p2, $http);
 	};
@@ -43,7 +43,7 @@ typeDistribution = function(dataset, property, http){
 		.onGraph(dataset)
 		.accumulate(function(results){
 			angular.forEach(results, function(key, value){
-				this.push([key.type.value, key.akpOcc.value / key.typeOcc.value]);
+				this.push([key.type.value, key.typeOcc.value, key.akpOcc.value, key.akpOcc.value / key.typeOcc.value]);
 	    	}, distribution);
 		});
 	return distribution;

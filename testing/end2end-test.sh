@@ -14,8 +14,8 @@ echo "SYSTEM TEST"
 ./test-java-summarization-module.sh
 ./test-summarization-pipeline.sh
 
-./test-internal-external-object.sh system-test dbpedia.org
-./test-indexing-pipeline.sh system-test
+../pipeline/test-internal-external-object.sh system-test dbpedia.org
+../pipeline/test-indexing-pipeline.sh system-test
 
 ./system-tests.sh
 

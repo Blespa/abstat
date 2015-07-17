@@ -2,8 +2,8 @@ package it.unimib.disco.summarization.systemTests;
 
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.containsString;
-import static org.junit.Assert.*;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class SolrFullTextSearchTest {
@@ -37,6 +37,17 @@ public class SolrFullTextSearchTest {
 	@Test
 	public void shouldSupportTheSelectionOfTheDataset() throws Exception {
 		httpAssert().body("select?q=*:*&fq=dataset:system-test", containsString("numFound=\"213\""));
+	}
+	
+	@Test
+	@Ignore
+	public void conceptsFromDBpediaShouldBeMarkedAsInternal() throws Exception {
+		httpAssert().body("select?q=URI:%22http://dbpedia.org/ontology/Place%22", containsString("internal"));
+	}
+	
+	@Test
+	public void conceptsFromSchemaOrgShouldBeMarkedAsInternal() throws Exception {
+		httpAssert().body("select?q=URI:%22http://schema.org/Place%22", containsString("external"));
 	}
 	
 	private HttpAssert httpAssert() {

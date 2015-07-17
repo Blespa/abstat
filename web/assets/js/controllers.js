@@ -43,7 +43,13 @@ typeDistribution = function(dataset, property, http){
 		.onGraph(dataset)
 		.accumulate(function(results){
 			angular.forEach(results, function(key, value){
-				this.push([key.type.value, key.typeOcc.value, key.akpOcc.value, key.akpOcc.value / key.typeOcc.value]);
+				var element = {};
+				element['type'] = key.type.value;
+				element['typeOcc'] = key.typeOcc.value;
+				element['akpOcc'] = key.akpOcc.value;
+				element['ratio'] = key.akpOcc.value / key.typeOcc.value;
+				
+				this.push(element);
 	    	}, distribution);
 		});
 	return distribution;

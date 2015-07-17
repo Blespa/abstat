@@ -13,12 +13,15 @@ public class DeleteAllDocumentsIntoIndex
 		
 		String host = args[0];
 		String port = args[1];
+		String datasetInput = args[2];
 		
 		/*Delete all the documents stored in the index.*/
 
 		String serverUrl = "http://"+host+":"+port+"/solr/indexing";
 		HttpSolrServer client = new HttpSolrServer(serverUrl);
 		
-		client.deleteByQuery("*:*");
+		client.deleteByQuery("dataset:" + datasetInput);
+		
+		client.commit();
 	}
 }

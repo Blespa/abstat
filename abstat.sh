@@ -8,9 +8,9 @@ function start(){
 	default_port=80:80
 	if [[ $1 == --backend ]]
 	then
-		default_port=8881:80
+		default_port=8885:80
 	fi
-	$docker_command -d -p $default_port -p 8885:8885 -p 8880:8880 --name abstat $hosts $abstat
+	$docker_command -d -p $default_port -p 8880:8880 -p 8881:8881 -p 8882:8882 --name abstat $hosts $abstat
 }
 
 function destroy(){

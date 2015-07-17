@@ -32,7 +32,4 @@ VOLUME /schema-summaries/
 WORKDIR startup
 CMD ["./run-all.sh"]
 
-EXPOSE 8885
-EXPOSE 8880
-EXPOSE 80
 

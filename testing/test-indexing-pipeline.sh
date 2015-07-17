@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function as_absolute(){
 	echo `cd $1; pwd`
 }
@@ -9,7 +11,6 @@ current_directory=$(as_absolute $relative_path)
 cd $current_directory
 cd ../pipeline
 
-./identify-internal-resources.sh system-test dbpedia.org
-./export-to-solr.sh system-test
+./export-to-solr.sh system-test dbpedia.org
 
 cd ../testing

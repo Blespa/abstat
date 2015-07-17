@@ -18,6 +18,12 @@ public class SolrFullTextSearchTest {
 		httpAssert().body("select?q=fullTextSearchField:place&fq=type:concept", containsString("http://dbpedia.org/ontology/PopulatedPlace"));
 	}
 	
+	@Test
+	public void shouldSupportQueriesOnAKPs() throws Exception {
+		
+		httpAssert().body("select?q=fullTextSearchField:place&fq=type:objectAkp", containsString("http://dbpedia.org/ontology/capital"));
+	}
+	
 	private HttpAssert httpAssert() {
 		return new HttpAssert("http://localhost/solr/indexing");
 	}

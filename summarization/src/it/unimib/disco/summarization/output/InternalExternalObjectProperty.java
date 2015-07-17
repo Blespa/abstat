@@ -11,27 +11,21 @@ public class InternalExternalObjectProperty
 {
 	public static void main(String[] args) throws FileNotFoundException, IOException
 	{
-		/*Receive two arguments from script (that are 'pathFile' and 'dataset').*/
-		
 		String pathFile = args[0];
 		String dataset = args[1];
+		String payLevelDomain = args[2];
 		
-		/*Step: Decide if an object property is internal or external.*/
-		
-		objectPropertiesInternalExternal(pathFile,dataset);
+		objectPropertiesInternalExternal(pathFile,dataset,payLevelDomain);
 	}
 	
-	private static void objectPropertiesInternalExternal(String pathFile, String dataset) throws FileNotFoundException, IOException
+	private static void objectPropertiesInternalExternal(String pathFile, String dataset, String payLevelDomain) throws FileNotFoundException, IOException
 	{
-		/*Per leggere da file .txt l'input.*/
 		String fileObjectPropertiesPath = pathFile;
 		BufferedReader brObjectProperties = new BufferedReader(new FileReader(fileObjectPropertiesPath));
 		
-		/*Per scrivere su file .txt l'output.*/
 		FileWriter fwObjectProperties = new FileWriter("../data/summaries/"+dataset+"/patterns/count-object-properties-new.txt");
 		BufferedWriter bwObjectProperties = new BufferedWriter(fwObjectProperties);
 		
-		/*Cuore dell'Algoritmo.*/
 		boolean trovatoPrimoCancelletto = false;
 		String lineRead = null;
 		String objectProperty = "";
@@ -74,7 +68,7 @@ public class InternalExternalObjectProperty
 				}
 			}
 			
-			if (objectProperty.contains(dataset))
+			if (objectProperty.contains(payLevelDomain))
 			{
 				typeOfObjectProperty = "internalObjectProperty";
 			}
@@ -82,10 +76,6 @@ public class InternalExternalObjectProperty
 			{
 				typeOfObjectProperty = "externalObjectProperty";
 			}
-			
-			//System.out.println("Object property found: " + objectProperty);
-			//System.out.println("Number of instances of the object property '" + objectProperty + "': " + numberOfInstances);
-			//System.out.println("Type of the object property '" + objectProperty + "': " + typeOfObjectProperty + "\n");
 			
 			bwObjectProperties.write(objectProperty);
 			bwObjectProperties.write("##");

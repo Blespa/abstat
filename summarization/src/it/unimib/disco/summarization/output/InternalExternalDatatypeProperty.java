@@ -11,27 +11,21 @@ public class InternalExternalDatatypeProperty
 {
 	public static void main(String[] args) throws FileNotFoundException, IOException
 	{
-		/*Receive two arguments from script (that are 'pathFile' and 'dataset').*/
-		
 		String pathFile = args[0];
 		String dataset = args[1];
+		String payLevelDomain = args[2];
 		
-		/*Step: Decide if a datatype property is internal or external.*/
-		
-		datatypePropertiesInternalExternal(pathFile,dataset);
+		datatypePropertiesInternalExternal(pathFile, dataset , payLevelDomain);
 	}
 	
-	private static void datatypePropertiesInternalExternal(String pathFile, String dataset) throws FileNotFoundException, IOException
+	private static void datatypePropertiesInternalExternal(String pathFile, String dataset, String payLevelDomain) throws FileNotFoundException, IOException
 	{
-		/*Per leggere da file .txt l'input.*/
 		String fileDatatypePropertiesPath = pathFile;
 		BufferedReader brDatatypeProperties = new BufferedReader(new FileReader(fileDatatypePropertiesPath));
 		
-		/*Per scrivere su file .txt l'output.*/
 		FileWriter fwDatatypeProperties = new FileWriter("../data/summaries/"+dataset+"/patterns/count-datatype-properties-new.txt");
 		BufferedWriter bwDatatypeProperties = new BufferedWriter(fwDatatypeProperties);
 		
-		/*Cuore dell'Algoritmo.*/
 		boolean trovatoPrimoCancelletto = false;
 		String lineRead = null;
 		String datatypeProperty = "";
@@ -74,7 +68,7 @@ public class InternalExternalDatatypeProperty
 				}
 			}
 			
-			if (datatypeProperty.contains(dataset))
+			if (datatypeProperty.contains(payLevelDomain))
 			{
 				typeOfDatatypeProperty = "internalDatatypeProperty";
 			}

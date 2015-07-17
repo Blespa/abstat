@@ -11,17 +11,14 @@ public class InternalExternalObjectAkp
 {
 	public static void main(String[] args) throws FileNotFoundException, IOException
 	{
-		/*Receive two arguments from script (that are 'pathFile' and 'dataset').*/
-		
 		String pathFile = args[0];
 		String dataset = args[1];
+		String payLevelDomain = args[2];
 		
-		/*Step: Decide if a object akp is internal or external.*/
-		
-		objectAkpInternalExternal(pathFile,dataset);
+		objectAkpInternalExternal(pathFile,dataset,payLevelDomain);
 	}
 	
-	private static void objectAkpInternalExternal(String pathFile, String dataset) throws FileNotFoundException, IOException
+	private static void objectAkpInternalExternal(String pathFile, String dataset, String payLevelDomain) throws FileNotFoundException, IOException
 	{
 		/*Per leggere da file .txt l'input.*/
 		String fileObjectAkpsPath = pathFile;
@@ -122,7 +119,7 @@ public class InternalExternalObjectAkp
 			}
 			
 			/*Un akp è definito 'interno' se sia il soggetto sia l'oggetto dell'akp provengono da "http://dbpedia.org". Altrimenti è definito 'esterno'.*/
-			if ((subjectObjectAkp.contains(dataset)) && (objectObjectAkp.contains(dataset)))
+			if ((subjectObjectAkp.contains(payLevelDomain)) && (objectObjectAkp.contains(payLevelDomain)))
 			{
 				typeOfObjectAkp = "internalObjectAkp";
 			}
@@ -130,11 +127,6 @@ public class InternalExternalObjectAkp
 			{
 				typeOfObjectAkp = "externalObjectAkp";
 			}
-			
-			//String akp = "<" + subjectObjectAkp +"> <" + propertyObjectAkp +"> <" + objectObjectAkp + ">";
-			//System.out.println("Object akp found:" + akp);
-			//System.out.println("Number of instances of the object akp '" + akp + "': " + numberOfInstances);
-			//System.out.println("Type of the object akp '" + akp + "': " + typeOfObjectAkp + "\n");
 			
 			bwObjectAkps.write(subjectObjectAkp);
 			bwObjectAkps.write("##");

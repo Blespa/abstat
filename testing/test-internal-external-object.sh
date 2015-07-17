@@ -20,17 +20,17 @@ java -Xms256m -Xmx4g -cp .:'ontology_summarization.jar' it.unimib.disco.summariz
 cd ../testing
 
 cd ../summarization
-java -Xms256m -Xmx4g -cp .:'ontology_summarization.jar' it.unimib.disco.summarization.output.InternalExternalDatatypeProperty ../data/summaries/$dataset/patterns/count-datatype-properties.txt $dataset
+java -Xms256m -Xmx4g -cp .:'ontology_summarization.jar' it.unimib.disco.summarization.output.InternalExternalDatatypeProperty ../data/summaries/$dataset/patterns/count-datatype-properties.txt $dataset $payleveldomain
 cd ../testing
 
 cd ../summarization
-java -Xms256m -Xmx4g -cp .:'ontology_summarization.jar' it.unimib.disco.summarization.output.InternalExternalObjectProperty ../data/summaries/$dataset/patterns/count-object-properties.txt $dataset
+java -Xms256m -Xmx4g -cp .:'ontology_summarization.jar' it.unimib.disco.summarization.output.InternalExternalObjectProperty ../data/summaries/$dataset/patterns/count-object-properties.txt $dataset $payleveldomain
 cd ../testing
 
 cd ../summarization
-java -Xms256m -Xmx4g -cp .:'ontology_summarization.jar' it.unimib.disco.summarization.output.InternalExternalDatatypeAkp ../data/summaries/$dataset/patterns/datatype-akp.txt $dataset
+java -Xms256m -Xmx4g -cp .:'ontology_summarization.jar' it.unimib.disco.summarization.output.InternalExternalDatatypeAkp ../data/summaries/$dataset/patterns/datatype-akp.txt $dataset $payleveldomain
 cd ../testing
 
 cd ../summarization
-java -Xms256m -Xmx4g -cp .:'ontology_summarization.jar' it.unimib.disco.summarization.output.InternalExternalObjectAkp ../data/summaries/$dataset/patterns/object-akp.txt $dataset
+java -Xms256m -Xmx4g -cp .:'ontology_summarization.jar' it.unimib.disco.summarization.output.InternalExternalObjectAkp ../data/summaries/$dataset/patterns/object-akp.txt $dataset $payleveldomain
 cd ../testing

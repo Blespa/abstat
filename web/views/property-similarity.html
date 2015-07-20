@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	<link rel="shortcut icon" href="static/img/abstat.svg">
 	<script src="static/js/ui-bootstrap-tpls-0.12.1.min.js"></script>
-	<script src="static/js/controllers.js"></script>
+	<script src="static/js/property-similarity.js"></script>
 	<title>ABSTAT</title>
 </head>
 <body>
@@ -19,11 +19,15 @@
 		</div>
 		<div ng-controller="PropertySimilarity">
 			<div class="row">
-				<div class="col-md-5">
-				<form class="form-inline">
+				<div class="col-md-12">
+				<form class="form-horizontal">
 				<div class="form-group">
+					<div class="col-md-2">
 					<label for="dataset"><h4>property similarity within dataset:</h4></label>
-	    			<input type="text" ng-model="query.dataset" class="form-control" id="dataset">
+	    			</div>
+	    			<div class="col-md-6">
+	    			<input type="text" style="width: 100%" ng-model="query.dataset" class="form-control" id="dataset">
+	    			</div>
 				</div>
 				</form>
 				</div>
@@ -34,12 +38,16 @@
 				</div>
 			</div>
 			<div style="margin-top:0.5cm" class="row">
-			<div class="col-md-6">
+				<div class="col-md-6">
 				<div class="well well-lg">
-				<form class="form-inline">
+				<form class="form-horizontal">
 				<div class="form-group">
+					<div class="col-md-10">
 	    			<input type="text" ng-model="query.property1" class="form-control" id="property1">
+	    			</div>
+	    			<div class="col-md-2">
 		    		<button type="button" ng-click='getDomainDistributionForProperty1()' class="btn btn-primary">get distribution</button>
+		    		</div>
 				</div>
 				</form>
 				</br>
@@ -56,13 +64,19 @@
 					</li>
 				</ul>
 				</div>
-			</div>
-			<div class="col-md-6">
+				</div>
+				
+				
+				<div class="col-md-6">
 				<div class="well well-lg">
-				<form class="form-inline">
+				<form class="form-horizontal">
 				<div class="form-group">
-		    		<input type="text" ng-model="query.property2" class="form-control" id="property2">
+					<div class="col-md-10">
+	    			<input type="text" ng-model="query.property2" class="form-control" id="property2">
+	    			</div>
+	    			<div class="col-md-2">
 		    		<button type="button" ng-click='getDomainDistributionForProperty2()' class="btn btn-primary">get distribution</button>
+		    		</div>
 				</div>
 				</form>
 				</br>
@@ -79,7 +93,7 @@
 					</li>
 				</ul>
 				</div>
-			</div>
+				</div>
 			</div>
 		</div>
 	</div>

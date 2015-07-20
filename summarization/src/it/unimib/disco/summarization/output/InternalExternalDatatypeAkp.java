@@ -20,15 +20,12 @@ public class InternalExternalDatatypeAkp
 	
 	private static void datatypeAkpInternalExternal(String pathFile, String dataset, String payLevelDomain) throws FileNotFoundException, IOException
 	{
-		/*Per leggere da file .txt l'input.*/
 		String fileDatatypeAkpsPath = pathFile;
 		BufferedReader brDatatypeAkps = new BufferedReader(new FileReader(fileDatatypeAkpsPath));
 		
-		/*Per scrivere su file .txt l'output.*/
 		FileWriter fwDatatypeAkps = new FileWriter("../data/summaries/"+dataset+"/patterns/datatype-akp-new.txt");
 		BufferedWriter bwDatatypeAkps = new BufferedWriter(fwDatatypeAkps);
 		
-		/*Cuore dell'Algoritmo.*/
 		boolean trovatoPrimoDoppioCancelletto = false;
 		boolean trovatoSecondoDoppioCancelletto = false;
 		boolean trovatoTerzoDoppioCancelletto = false;
@@ -61,6 +58,7 @@ public class InternalExternalDatatypeAkp
 					}
 					if ((lineRead.charAt(i) == '#') && (lineRead.charAt(i+1) == '#'))
 					{
+						subjectDatatypeAkp += "";
 						trovatoPrimoDoppioCancelletto = true;
 					}
 				}
@@ -83,6 +81,7 @@ public class InternalExternalDatatypeAkp
 						}
 						if ((lineRead.charAt(i+2) == '#') && (lineRead.charAt(i+3) == '#'))
 						{
+							propertyDatatypeAkp += "";
 							trovatoSecondoDoppioCancelletto = true;
 						}
 					}
@@ -104,6 +103,7 @@ public class InternalExternalDatatypeAkp
 							}
 							if ((lineRead.charAt(i+4) == '#') && (lineRead.charAt(i+5) == '#'))
 							{
+								objectDatatypeAkp += "";
 								trovatoTerzoDoppioCancelletto = true;
 							}
 						}
@@ -118,7 +118,6 @@ public class InternalExternalDatatypeAkp
 				}
 			}
 			
-			/*Un akp è definito 'interno' se sia il soggetto sia l'oggetto dell'akp provengono da "http://dbpedia.org". Altrimenti è definito 'esterno'.*/
 			if ((subjectDatatypeAkp.contains(payLevelDomain)) && (objectDatatypeAkp.contains(payLevelDomain)))
 			{
 				typeOfDatatypeAkp = "internalDatatypeAkp";
@@ -151,7 +150,6 @@ public class InternalExternalDatatypeAkp
 			lineRead = brDatatypeAkps.readLine();
 		}
 		
-		/*Chiudo le connessioni con i file.*/
 		brDatatypeAkps.close();
 		bwDatatypeAkps.close();
 		fwDatatypeAkps.close();

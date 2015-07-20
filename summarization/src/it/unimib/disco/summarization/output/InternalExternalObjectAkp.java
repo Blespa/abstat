@@ -20,15 +20,12 @@ public class InternalExternalObjectAkp
 	
 	private static void objectAkpInternalExternal(String pathFile, String dataset, String payLevelDomain) throws FileNotFoundException, IOException
 	{
-		/*Per leggere da file .txt l'input.*/
 		String fileObjectAkpsPath = pathFile;
 		BufferedReader brObjectAkps = new BufferedReader(new FileReader(fileObjectAkpsPath));
 		
-		/*Per scrivere su file .txt l'output.*/
 		FileWriter fwObjectAkps = new FileWriter("../data/summaries/"+dataset+"/patterns/object-akp-new.txt");
 		BufferedWriter bwObjectAkps = new BufferedWriter(fwObjectAkps);
 		
-		/*Cuore dell'Algoritmo.*/
 		boolean trovatoPrimoDoppioCancelletto = false;
 		boolean trovatoSecondoDoppioCancelletto = false;
 		boolean trovatoTerzoDoppioCancelletto = false;
@@ -61,6 +58,7 @@ public class InternalExternalObjectAkp
 					}
 					if ((lineRead.charAt(i) == '#') && (lineRead.charAt(i+1) == '#'))
 					{
+						subjectObjectAkp += "";
 						trovatoPrimoDoppioCancelletto = true;
 					}
 				}
@@ -83,6 +81,7 @@ public class InternalExternalObjectAkp
 						}
 						if ((lineRead.charAt(i+2) == '#') && (lineRead.charAt(i+3) == '#'))
 						{
+							propertyObjectAkp += "";
 							trovatoSecondoDoppioCancelletto = true;
 						}
 					}
@@ -104,6 +103,7 @@ public class InternalExternalObjectAkp
 							}
 							if ((lineRead.charAt(i+4) == '#') && (lineRead.charAt(i+5) == '#'))
 							{
+								objectObjectAkp += "";
 								trovatoTerzoDoppioCancelletto = true;
 							}
 						}
@@ -118,7 +118,6 @@ public class InternalExternalObjectAkp
 				}
 			}
 			
-			/*Un akp è definito 'interno' se sia il soggetto sia l'oggetto dell'akp provengono da "http://dbpedia.org". Altrimenti è definito 'esterno'.*/
 			if ((subjectObjectAkp.contains(payLevelDomain)) && (objectObjectAkp.contains(payLevelDomain)))
 			{
 				typeOfObjectAkp = "internalObjectAkp";
@@ -151,7 +150,6 @@ public class InternalExternalObjectAkp
 			lineRead = brObjectAkps.readLine();
 		}
 		
-		/*Chiudo le connessioni con i file.*/
 		brObjectAkps.close();
 		bwObjectAkps.close();
 		fwObjectAkps.close();

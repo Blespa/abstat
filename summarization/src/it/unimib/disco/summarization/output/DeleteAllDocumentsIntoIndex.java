@@ -9,14 +9,10 @@ public class DeleteAllDocumentsIntoIndex
 {
 	public static void main (String[] args) throws SolrServerException, IOException
 	{
-		/*Receive two arguments from script (that are 'host' and 'port').*/
-		
 		String host = args[0];
 		String port = args[1];
 		String datasetInput = args[2];
 		
-		/*Delete all the documents stored in the index.*/
-
 		String serverUrl = "http://"+host+":"+port+"/solr/indexing";
 		HttpSolrServer client = new HttpSolrServer(serverUrl);
 		

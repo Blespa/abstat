@@ -124,6 +124,14 @@
     	</arr>
   </requestHandler>
 
+   <updateRequestProcessorChain>
+   	<processor class="solr.UUIDUpdateProcessorFactory">
+		<str name="fieldName">idDocument</str>
+	</processor>
+	<processor class="solr.LogUpdateProcessorFactory" />
+	<processor class="solr.RunUpdateProcessorFactory" />
+   </updateRequestProcessorChain>
+
   <admin>
     <defaultQuery>*:*</defaultQuery>
   </admin>

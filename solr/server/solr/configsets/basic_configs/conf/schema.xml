@@ -2,7 +2,7 @@
 
 <schema name="schemaSolr" version="1.5">
    <fields>
-   	<field name="idDocument" type="int" indexed="true" stored="true" required="true" multiValued="false" /> 
+   	<field name="idDocument" type="text_general" indexed="true" stored="true" required="true" multiValued="false" /> 
 	<!--<field name="concept" type="text_general" indexed="true" stored="true" required="false" multiValued="false" />
 	<field name="datatypeProperty" type="text_general" indexed="true" stored="true" required="false" multiValued="false" />
 	<field name="objectProperty" type="text_general" indexed="true" stored="true" required="false" multiValued="false" />

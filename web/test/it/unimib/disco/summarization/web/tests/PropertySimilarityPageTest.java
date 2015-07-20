@@ -29,6 +29,6 @@ public class PropertySimilarityPageTest {
 	@Test
 	public void shouldRespondWithTheRightPage() throws Exception {
 		
-		application.httpAssert().body("property-similarity", containsString("property similarity:"));
+		application.httpAssert().body("property-similarity", containsString("property similarity"));
 	}
 }

@@ -14,14 +14,10 @@ public class IndexObjectProperties
 {
 	public static void main (String[] args) throws SolrServerException, IOException
 	{
-		/*Receive three arguments from script (that are 'host', 'port' and 'pathFile').*/
-		
 		String host = args[0];
 		String port = args[1];
 		String pathFile = args[2];
 		String dataset = args[3];
-		
-		/*Step: Object-properties import.*/
 		
 		String serverUrl = "http://"+host+":"+port+"/solr/indexing";
 		HttpSolrServer client = new HttpSolrServer(serverUrl);
@@ -49,7 +45,7 @@ public class IndexObjectProperties
 			String localNameOfObjectProperty = localNamesOfObjectProperties.get(i);
 			
 			SolrInputDocument doc = new SolrInputDocument();
-			doc.setField("idDocument", (i+1+20+11));
+			//doc.setField("idDocument", (i+1+20+11));
 			doc.setField("URI", objectProperty);
 			doc.setField("type", "objectProperty");
 			doc.setField("dataset", dataset);

@@ -14,11 +14,12 @@ public class IndexConcepts
 {
 	public static void main (String[] args) throws SolrServerException, IOException
 	{
-		/*Receive three arguments from script (that are 'host', 'port' and 'pathFile').*/
+		/*Receive four arguments from script (that are 'host', 'port' and 'pathFile').*/
 		
 		String host = args[0];
 		String port = args[1];
 		String pathFile = args[2];
+		String dataset = args[3];
 		
 		/*Step: Concepts import.*/
 		
@@ -26,27 +27,35 @@ public class IndexConcepts
 		HttpSolrServer client = new HttpSolrServer(serverUrl);
 		
 		//client.deleteByQuery("*:*");
-		conceptsImport(client,pathFile);
+		conceptsImport(client,pathFile,dataset);
 	}
 	
-	private static void conceptsImport (HttpSolrServer client, String pathFile) throws FileNotFoundException, IOException, SolrServerException
+	private static void conceptsImport (HttpSolrServer client, String pathFile, String dataset) throws FileNotFoundException, IOException, SolrServerException
 	{
 		ArrayList <String> concepts = takeOnlyConcepts(pathFile);
+		ArrayList <String> subtypeOfConcepts = takeOnlySubtypeOfConcepts(pathFile);
+		ArrayList <String> localNamesOfConcepts = takeOnlyLocalNamesOfConcepts(concepts);
 		
-		indexDocuments(client,concepts);
+		indexDocuments(client,concepts,subtypeOfConcepts,localNamesOfConcepts,dataset);
 	}
 	
-	private static void indexDocuments(HttpSolrServer client, ArrayList<String> concepts) throws IOException, SolrServerException
+	private static void indexDocuments(HttpSolrServer client, ArrayList<String> concepts, ArrayList <String> subtypeOfConcepts, ArrayList <String> localNamesOfConcepts, String dataset) throws IOException, SolrServerException
 	{
 		int numberOfConcepts = concepts.size();
 		
 		for (int i = 0; i < numberOfConcepts; i++)
 		{
 			String concept = concepts.get(i);
+			String subtypeOfConcept = subtypeOfConcepts.get(i);
+			String localNameOfConcept = localNamesOfConcepts.get(i);
+			
 			SolrInputDocument doc = new SolrInputDocument();
 			doc.setField("idDocument", i+1);
-			doc.setField("concept", concept);
+			doc.setField("URI", concept);
 			doc.setField("type", "concept");
+			doc.setField("dataset", dataset);
+			doc.setField("subtype", subtypeOfConcept);
+			doc.setField("fullTextSearchField", localNameOfConcept);
 			client.add(doc);
 		}
 		
@@ -112,5 +121,78 @@ public class IndexConcepts
     	reader.close();
     	
 		return concepts;
+	}
+	
+	private static ArrayList <String> takeOnlySubtypeOfConcepts(String pathFile) throws FileNotFoundException, IOException
+	{
+		String path = pathFile;
+		BufferedReader reader = new BufferedReader(new FileReader(path));
+		
+		ArrayList <String> subtypeOfConcepts = new ArrayList <String> ();
+		String subtypeOfConcept = "";
+		int contatore = 0;
+    	
+    	String lineRead = reader.readLine();
+    	
+    	while ((lineRead != null) && (contatore < lineRead.length()))
+		{
+			for (int i = 0; i < lineRead.length(); i++)
+			{
+				if (lineRead.charAt(i) != '#')
+				{
+					//System.out.println("sono dentro il primo if");
+					subtypeOfConcept += lineRead.charAt(i);
+				}
+				else
+				{
+					if (lineRead.charAt(i) == '#')
+					{
+						//System.out.println("sono dentro il secondo if");
+						subtypeOfConcept = "";
+					}
+				}
+				contatore++;
+			}
+			
+			contatore = 0;
+			
+			subtypeOfConcepts.add(subtypeOfConcept);
+			
+			lineRead = reader.readLine();
+		}
+    	
+    	reader.close();
+    	
+		return subtypeOfConcepts;
+	}
+	
+	private static ArrayList <String> takeOnlyLocalNamesOfConcepts (ArrayList <String> concepts)
+	{
+		String concept = "";
+		String localNameOfConcept = "";
+		ArrayList <String> localNamesOfConcepts = new ArrayList <String> ();
+		
+		for (int i = 0; i < concepts.size(); i++) 
+		{
+			concept = concepts.get(i);
+					
+			for (int j = 0; j < concept.length(); j++) 
+			{
+				if (concept.charAt(j) != '/')
+				{
+					localNameOfConcept += concept.charAt(j);
+				}
+				else
+				{
+					if (concept.charAt(j) == '/')
+					{
+						localNameOfConcept = "";
+					}
+				}
+			}	
+			localNamesOfConcepts.add(localNameOfConcept);
+		}
+		
+		return localNamesOfConcepts;
 	}
 }

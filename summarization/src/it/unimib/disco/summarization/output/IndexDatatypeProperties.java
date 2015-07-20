@@ -14,14 +14,10 @@ public class IndexDatatypeProperties
 {
 	public static void main (String[] args) throws SolrServerException, IOException
 	{
-		/*Receive three arguments from script (that are 'host', 'port' and 'pathFile').*/
-		
 		String host = args[0];
 		String port = args[1];
 		String pathFile = args[2];
 		String dataset = args[3];
-		
-		/*Step: Datatype-properties import.*/
 		
 		String serverUrl = "http://"+host+":"+port+"/solr/indexing";
 		HttpSolrServer client = new HttpSolrServer(serverUrl);
@@ -49,7 +45,7 @@ public class IndexDatatypeProperties
 			String localNameOfDatatypeProperty = localNamesOfDatatypeProperties.get(i);
 			
 			SolrInputDocument doc = new SolrInputDocument();
-			doc.setField("idDocument", (i+1+20));
+			//doc.setField("idDocument", (i+1+20));
 			doc.setField("URI", datatypeProperty);
 			doc.setField("type", "datatypeProperty");
 			doc.setField("dataset", dataset);
@@ -80,6 +76,7 @@ public class IndexDatatypeProperties
     		{
     			if ((line.charAt(i) == '#') && (line.charAt(i+1) == '#'))
     			{
+    				datatypeProperty += "";
     				trovatoDoppioCancelletto = true;
     			}
     			else
@@ -105,10 +102,10 @@ public class IndexDatatypeProperties
     			}
     		}
     		
-    		if (!(datatypeProperty.equalsIgnoreCase("")))
-    		{
-    			datatypeProperties.add(datatypeProperty);
-    		}
+    		//if (!(datatypeProperty.equalsIgnoreCase("")))
+    		//{
+    		datatypeProperties.add(datatypeProperty);
+    		//}
     		
     		datatypeProperty = "";
     		trovatoDoppioCancelletto = false;
@@ -139,14 +136,12 @@ public class IndexDatatypeProperties
 			{
 				if (lineRead.charAt(i) != '#')
 				{
-					//System.out.println("sono dentro il primo if");
 					subtypeOfDatatypeProperty += lineRead.charAt(i);
 				}
 				else
 				{
 					if (lineRead.charAt(i) == '#')
 					{
-						//System.out.println("sono dentro il secondo if");
 						subtypeOfDatatypeProperty = "";
 					}
 				}

@@ -29,6 +29,11 @@
 				</div>
 			</div>
 			<div style="margin-top:0.5cm" class="row">
+				<div class="col-md-12">
+					<button type="button" ng-click='computeCosineSimilarity()' class="btn btn-primary">similarity</button> Domain: {{domainSimilarity}} - Range: {{rangeSimilarity}}
+				</div>
+			</div>
+			<div style="margin-top:0.5cm" class="row">
 			<div class="col-md-6">
 				<div class="well well-lg">
 				<form class="form-inline">
@@ -38,8 +43,15 @@
 				</div>
 				</form>
 				</br>
+				<strong>Domains</strong>
 				<ul class="list-unstyled">
 					<li ng-repeat="element in p1DomainDistribution">
+					{{element}}
+					</li>
+				</ul>
+				<strong>Ranges</strong>
+				<ul class="list-unstyled">
+					<li ng-repeat="element in p1RangeDistribution">
 					{{element}}
 					</li>
 				</ul>
@@ -54,18 +66,20 @@
 				</div>
 				</form>
 				</br>
+				<strong>Domains</strong>
 				<ul class="list-unstyled">
 					<li ng-repeat="element in p2DomainDistribution">
 					{{element}}
 					</li>
 				</ul>
+				<strong>Ranges</strong>
+				<ul class="list-unstyled">
+					<li ng-repeat="element in p2RangeDistribution">
+					{{element}}
+					</li>
+				</ul>
 				</div>
 			</div>
-			</div>
-			<div style="margin-top:0.5cm" class="row">
-				<div class="col-md-12">
-					<button type="button" ng-click='computeCosineSimilarity()' class="btn btn-primary">similarity</button> {{domainSimilarity}} - {{rangeSimilarity}}
-				</div>
 			</div>
 		</div>
 	</div>

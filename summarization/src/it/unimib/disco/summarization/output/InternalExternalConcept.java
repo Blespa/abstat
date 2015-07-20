@@ -39,8 +39,6 @@ public class InternalExternalConcept
 			{
 				if (trovatoPrimoCancelletto == false)
 				{
-					//Sto trovando il concetto.
-					
 					if ((lineRead.charAt(i) != '#') && (lineRead.charAt(i+1) != '#'))
 					{
 						concept += lineRead.charAt(i);
@@ -55,6 +53,7 @@ public class InternalExternalConcept
 					}
 					if ((lineRead.charAt(i) == '#') && (lineRead.charAt(i+1) == '#'))
 					{
+						concept += "";
 						trovatoPrimoCancelletto = true;
 					}
 				}

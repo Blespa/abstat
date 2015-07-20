@@ -27,7 +27,7 @@ public class IndexDatatypeAkps
 
 	private static void datatypeAkpsImport (HttpSolrServer client, String pathFile, String dataset) throws IOException, SolrServerException
 	{
-		ArrayList <String> subjectsOfDatatypeAkps = takeOnlySubjectOfDatatypeAkps(pathFile);
+		ArrayList <String> subjectsOfDatatypeAkps = takeOnlySubjectsOfDatatypeAkps(pathFile);
 		ArrayList <String> propertiesOfDatatypeAkps = takeOnlyPropertiesOfDatatypeAkps(pathFile);
 		ArrayList <String> objectsOfDatatypeAkps = takeOnlyObjectsOfDatatypeAkps(pathFile);
 		
@@ -42,7 +42,7 @@ public class IndexDatatypeAkps
 
 	private static void indexDatatypeAkps (HttpSolrServer client, ArrayList <String> subjectsOfDatatypeAkps, ArrayList <String> propertiesOfDatatypeAkps, ArrayList <String> objectsOfDatatypeAkps, ArrayList <String> localNamesOfSubjectsOfDatatypeAkps, ArrayList <String> localNamesOfPropertiesOfDatatypeAkps, ArrayList <String> localNamesOfObjectsOfDatatypeAkps, ArrayList <String> subtypeOfDatatypeAkps, String dataset) throws SolrServerException, IOException
 	{
-		int numberOfDatatypeAkps = subjectsOfDatatypeAkps.size(); //i primi tre ArrayList passati hanno lunghezza uguale
+		int numberOfDatatypeAkps = subjectsOfDatatypeAkps.size();
 		
 		for (int i = 0; i < numberOfDatatypeAkps; i++)
 		{
@@ -87,7 +87,7 @@ public class IndexDatatypeAkps
 		client.commit(true,true);
 	}
 	
-	private static ArrayList <String> takeOnlySubjectOfDatatypeAkps (String pathFile) throws IOException
+	private static ArrayList <String> takeOnlySubjectsOfDatatypeAkps (String pathFile) throws IOException
 	{	
 		String akpSubject = "";
 		String akpProperty = "";
@@ -125,6 +125,7 @@ public class IndexDatatypeAkps
 					}
 					if ((line.charAt(i) == '#') && (line.charAt(i+1) == '#'))
 					{
+						akpSubject += "";
 						trovatoPrimoDoppioCancelletto = true;
 					}
 				}
@@ -147,6 +148,7 @@ public class IndexDatatypeAkps
 						}
 						if ((line.charAt(i+2) == '#') && (line.charAt(i+3) == '#'))
 						{
+							akpProperty += "";
 							trovatoSecondoDoppioCancelletto = true;
 						}
 					}
@@ -166,24 +168,25 @@ public class IndexDatatypeAkps
 						}
 						if ((line.charAt(i+4) == '#') && (line.charAt(i+5) == '#'))
 						{
+							akpObject += "";
 							trovatoTerzoDoppioCancelletto = true;
 						}
 					}
 				}
 			}
 			
-			if (!(akpSubject.equalsIgnoreCase("")))
-    		{
-    				subjectsAkps.add(akpSubject);
-    		}
-			if (!(akpProperty.equalsIgnoreCase("")))
-    		{
-    				propertiesAkps.add(akpProperty);
-    		}
-			if (!(akpObject.equalsIgnoreCase("")))
-    		{
-    				objectsAkps.add(akpObject);
-    		}
+			//if (!(akpSubject.equalsIgnoreCase("")))
+    		//{
+    		subjectsAkps.add(akpSubject);
+    		//}
+			//if (!(akpProperty.equalsIgnoreCase("")))
+    		//{
+    		propertiesAkps.add(akpProperty);
+    		//}
+			//if (!(akpObject.equalsIgnoreCase("")))
+    		//{
+    		objectsAkps.add(akpObject);
+    		//}
 			
 			akpSubject = "";
 			akpProperty = "";
@@ -197,17 +200,7 @@ public class IndexDatatypeAkps
 		
 		reader.close();
 		
-		return subjectsAkps;
-		
-		/*ArrayList <String> akps = new ArrayList <String> ();
-		
-		for (int i = 0; i < subjectsAkps.size(); i++)
-		{
-			String akp = subjectsAkps.get(i)+","+propertiesAkps.get(i)+","+objectsAkps.get(i);
-			akps.add(akp);
-		}
-		
-		return akps;*/
+		return subjectsAkps;		
 	}
 	
 	private static ArrayList <String> takeOnlyPropertiesOfDatatypeAkps (String pathFile) throws IOException
@@ -248,6 +241,7 @@ public class IndexDatatypeAkps
 					}
 					if ((line.charAt(i) == '#') && (line.charAt(i+1) == '#'))
 					{
+						akpSubject += "";
 						trovatoPrimoDoppioCancelletto = true;
 					}
 				}
@@ -270,6 +264,7 @@ public class IndexDatatypeAkps
 						}
 						if ((line.charAt(i+2) == '#') && (line.charAt(i+3) == '#'))
 						{
+							akpProperty += "";
 							trovatoSecondoDoppioCancelletto = true;
 						}
 					}
@@ -289,24 +284,25 @@ public class IndexDatatypeAkps
 						}
 						if ((line.charAt(i+4) == '#') && (line.charAt(i+5) == '#'))
 						{
+							akpObject += "";
 							trovatoTerzoDoppioCancelletto = true;
 						}
 					}
 				}
 			}
 			
-			if (!(akpSubject.equalsIgnoreCase("")))
-    		{
-    				subjectsAkps.add(akpSubject);
-    		}
-			if (!(akpProperty.equalsIgnoreCase("")))
-    		{
-    				propertiesAkps.add(akpProperty);
-    		}
-			if (!(akpObject.equalsIgnoreCase("")))
-    		{
-    				objectsAkps.add(akpObject);
-    		}
+			//if (!(akpSubject.equalsIgnoreCase("")))
+    		//{
+    		subjectsAkps.add(akpSubject);
+    		//}
+			//if (!(akpProperty.equalsIgnoreCase("")))
+    		//{
+    		propertiesAkps.add(akpProperty);
+    		//}
+    		//if (!(akpObject.equalsIgnoreCase("")))
+    		//{
+    		objectsAkps.add(akpObject);
+    		//}
 			
 			akpSubject = "";
 			akpProperty = "";
@@ -321,16 +317,6 @@ public class IndexDatatypeAkps
 		reader.close();
 		
 		return propertiesAkps;
-		
-		/*ArrayList <String> akps = new ArrayList <String> ();
-		
-		for (int i = 0; i < subjectsAkps.size(); i++)
-		{
-			String akp = subjectsAkps.get(i)+","+propertiesAkps.get(i)+","+objectsAkps.get(i);
-			akps.add(akp);
-		}
-		
-		return akps;*/
 	}
 	
 	private static ArrayList <String> takeOnlyObjectsOfDatatypeAkps (String pathFile) throws IOException
@@ -371,6 +357,7 @@ public class IndexDatatypeAkps
 					}
 					if ((line.charAt(i) == '#') && (line.charAt(i+1) == '#'))
 					{
+						akpSubject += "";
 						trovatoPrimoDoppioCancelletto = true;
 					}
 				}
@@ -393,6 +380,7 @@ public class IndexDatatypeAkps
 						}
 						if ((line.charAt(i+2) == '#') && (line.charAt(i+3) == '#'))
 						{
+							akpProperty += "";
 							trovatoSecondoDoppioCancelletto = true;
 						}
 					}
@@ -412,24 +400,25 @@ public class IndexDatatypeAkps
 						}
 						if ((line.charAt(i+4) == '#') && (line.charAt(i+5) == '#'))
 						{
+							akpObject += "";
 							trovatoTerzoDoppioCancelletto = true;
 						}
 					}
 				}
 			}
 			
-			if (!(akpSubject.equalsIgnoreCase("")))
-    		{
-    				subjectsAkps.add(akpSubject);
-    		}
-			if (!(akpProperty.equalsIgnoreCase("")))
-    		{
-    				propertiesAkps.add(akpProperty);
-    		}
-			if (!(akpObject.equalsIgnoreCase("")))
-    		{
-    				objectsAkps.add(akpObject);
-    		}
+			//if (!(akpSubject.equalsIgnoreCase("")))
+    		//{
+    		subjectsAkps.add(akpSubject);
+    		//}
+			//if (!(akpProperty.equalsIgnoreCase("")))
+    		//{
+    		propertiesAkps.add(akpProperty);
+    		//}
+			//if (!(akpObject.equalsIgnoreCase("")))
+    		//{
+    		objectsAkps.add(akpObject);
+    		//}
 			
 			akpSubject = "";
 			akpProperty = "";
@@ -444,16 +433,6 @@ public class IndexDatatypeAkps
 		reader.close();
 		
 		return objectsAkps;
-		
-		/*ArrayList <String> akps = new ArrayList <String> ();
-		
-		for (int i = 0; i < subjectsAkps.size(); i++)
-		{
-			String akp = subjectsAkps.get(i)+","+propertiesAkps.get(i)+","+objectsAkps.get(i);
-			akps.add(akp);
-		}
-		
-		return akps;*/
 	}
 	
 	private static ArrayList <String> takeOnlySubtypeOfDatatypeAkps(String pathFile) throws FileNotFoundException, IOException
@@ -473,14 +452,12 @@ public class IndexDatatypeAkps
 			{
 				if (lineRead.charAt(i) != '#')
 				{
-					//System.out.println("sono dentro il primo if");
 					subtypeOfDatatypeAkp += lineRead.charAt(i);
 				}
 				else
 				{
 					if (lineRead.charAt(i) == '#')
 					{
-						//System.out.println("sono dentro il secondo if");
 						subtypeOfDatatypeAkp = "";
 					}
 				}

@@ -38,9 +38,7 @@ public class InternalExternalDatatypeProperty
 			for (int i = 0; i < lineRead.length(); i++)
 			{
 				if (trovatoPrimoCancelletto == false)
-				{
-					//Sto trovando la datatype property.
-					
+				{					
 					if ((lineRead.charAt(i) != '#') && (lineRead.charAt(i+1) != '#'))
 					{
 						datatypeProperty += lineRead.charAt(i);
@@ -55,6 +53,7 @@ public class InternalExternalDatatypeProperty
 					}
 					if ((lineRead.charAt(i) == '#') && (lineRead.charAt(i+1) == '#'))
 					{
+						datatypeProperty += "";
 						trovatoPrimoCancelletto = true;
 					}
 				}
@@ -77,10 +76,6 @@ public class InternalExternalDatatypeProperty
 				typeOfDatatypeProperty = "externalDatatypeProperty";
 			}
 			
-			//System.out.println("Datatype property found: " + datatypeProperty);
-			//System.out.println("Number of instances of the datatype property '" + datatypeProperty + "': " + numberOfInstances);
-			//System.out.println("Type of the datatype property '" + datatypeProperty + "': " + typeOfDatatypeProperty + "\n");
-			
 			bwDatatypeProperties.write(datatypeProperty);
 			bwDatatypeProperties.write("##");
 			bwDatatypeProperties.write(numberOfInstances);
@@ -96,7 +91,6 @@ public class InternalExternalDatatypeProperty
 			lineRead = brDatatypeProperties.readLine();
 		}
 		
-		/*Chiudo le connessioni con i file.*/
 		brDatatypeProperties.close();
 		bwDatatypeProperties.close();
 		fwDatatypeProperties.close();

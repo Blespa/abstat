@@ -76,6 +76,7 @@ public class IndexConcepts
     		{
     			if ((line.charAt(i) == '#') && (line.charAt(i+1) == '#'))
     			{
+    				concept += "";
     				trovatoDoppioCancelletto = true;
     			}
     			else
@@ -101,10 +102,10 @@ public class IndexConcepts
     			}
     		}
     		
-    		if (!(concept.equalsIgnoreCase("")) && (!(concept.equalsIgnoreCase("Concept"))))
-    		{
-    				concepts.add(concept);
-    		}
+    		//if (!(concept.equalsIgnoreCase("")) && (!(concept.equalsIgnoreCase("Concept"))))
+    		//{
+    		concepts.add(concept);
+    		//}
     		
     		concept = "";
     		trovatoDoppioCancelletto = false;
@@ -135,14 +136,12 @@ public class IndexConcepts
 			{
 				if (lineRead.charAt(i) != '#')
 				{
-					//System.out.println("sono dentro il primo if");
 					subtypeOfConcept += lineRead.charAt(i);
 				}
 				else
 				{
 					if (lineRead.charAt(i) == '#')
 					{
-						//System.out.println("sono dentro il secondo if");
 						subtypeOfConcept = "";
 					}
 				}

@@ -39,8 +39,6 @@ public class InternalExternalObjectProperty
 			{
 				if (trovatoPrimoCancelletto == false)
 				{
-					//Sto trovando l'object property.
-					
 					if ((lineRead.charAt(i) != '#') && (lineRead.charAt(i+1) != '#'))
 					{
 						objectProperty += lineRead.charAt(i);
@@ -55,6 +53,7 @@ public class InternalExternalObjectProperty
 					}
 					if ((lineRead.charAt(i) == '#') && (lineRead.charAt(i+1) == '#'))
 					{
+						objectProperty += "";
 						trovatoPrimoCancelletto = true;
 					}
 				}
@@ -92,7 +91,6 @@ public class InternalExternalObjectProperty
 			lineRead = brObjectProperties.readLine();
 		}
 		
-		/*Chiudo le connessioni con i file.*/
 		brObjectProperties.close();
 		bwObjectProperties.close();
 		fwObjectProperties.close();

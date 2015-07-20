@@ -76,6 +76,7 @@ public class IndexObjectProperties
     		{
     			if ((line.charAt(i) == '#') && (line.charAt(i+1) == '#'))
     			{
+    				objectProperty += "";
     				trovatoDoppioCancelletto = true;
     			}
     			else
@@ -101,10 +102,10 @@ public class IndexObjectProperties
     			}
     		}
     		
-    		if (!(objectProperty.equalsIgnoreCase("")))
-    		{
-    				objectProperties.add(objectProperty);
-    		}
+    		//if (!(objectProperty.equalsIgnoreCase("")))
+    		//{
+    		objectProperties.add(objectProperty);
+    		//}
     		
     		objectProperty = "";
     		trovatoDoppioCancelletto = false;
@@ -135,14 +136,12 @@ public class IndexObjectProperties
 			{
 				if (lineRead.charAt(i) != '#')
 				{
-					//System.out.println("sono dentro il primo if");
 					subtypeOfObjectProperty += lineRead.charAt(i);
 				}
 				else
 				{
 					if (lineRead.charAt(i) == '#')
 					{
-						//System.out.println("sono dentro il secondo if");
 						subtypeOfObjectProperty = "";
 					}
 				}

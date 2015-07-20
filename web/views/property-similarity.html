@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html lang="en" ng-app="schemasummaries">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=2">
+	<link href="static/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="shortcut icon" href="static/img/abstat.svg">
+	<script src="static/js/ui-bootstrap-tpls-0.12.1.min.js"></script>
+	<script src="static/js/property-similarity.js"></script>
+	<title>ABSTAT</title>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="page-header" style="background: url('static/img/logo.jpg') right; background-repeat: no-repeat; background-size: contain">
+			<h1><img alt="" src="static/img/abstat.svg"> ABSTAT <small>linked data summaries</small></h1>
+		</div>
+		<div ng-controller="PropertySimilarity">
+			<div class="row">
+				<div class="col-md-12">
+				<form class="form-horizontal">
+				<div class="form-group">
+					<div class="col-md-2">
+					<label for="dataset"><h4>property similarity within dataset:</h4></label>
+	    			</div>
+	    			<div class="col-md-6">
+	    			<input type="text" style="width: 100%" ng-model="query.dataset" class="form-control" id="dataset">
+	    			</div>
+				</div>
+				</form>
+				</div>
+			</div>
+			<div style="margin-top:0.5cm" class="row">
+				<div class="col-md-12">
+					<button type="button" ng-click='computeCosineSimilarity()' class="btn btn-primary">similarity</button> Domain: {{domainSimilarity}} - Range: {{rangeSimilarity}}
+				</div>
+			</div>
+			<div style="margin-top:0.5cm" class="row">
+				<div class="col-md-6">
+				<div class="well well-lg">
+				<form class="form-horizontal">
+				<div class="form-group">
+					<div class="col-md-10">
+	    			<input type="text" ng-model="query.property1" class="form-control" id="property1">
+	    			</div>
+	    			<div class="col-md-2">
+		    		<button type="button" ng-click='getDomainDistributionForProperty1()' class="btn btn-primary">get distribution</button>
+		    		</div>
+				</div>
+				</form>
+				</br>
+				<strong>Domains</strong>
+				<ul class="list-unstyled">
+					<li ng-repeat="element in p1DomainDistribution">
+					{{element}}
+					</li>
+				</ul>
+				<strong>Ranges</strong>
+				<ul class="list-unstyled">
+					<li ng-repeat="element in p1RangeDistribution">
+					{{element}}
+					</li>
+				</ul>
+				</div>
+				</div>
+				
+				
+				<div class="col-md-6">
+				<div class="well well-lg">
+				<form class="form-horizontal">
+				<div class="form-group">
+					<div class="col-md-10">
+	    			<input type="text" ng-model="query.property2" class="form-control" id="property2">
+	    			</div>
+	    			<div class="col-md-2">
+		    		<button type="button" ng-click='getDomainDistributionForProperty2()' class="btn btn-primary">get distribution</button>
+		    		</div>
+				</div>
+				</form>
+				</br>
+				<strong>Domains</strong>
+				<ul class="list-unstyled">
+					<li ng-repeat="element in p2DomainDistribution">
+					{{element}}
+					</li>
+				</ul>
+				<strong>Ranges</strong>
+				<ul class="list-unstyled">
+					<li ng-repeat="element in p2RangeDistribution">
+					{{element}}
+					</li>
+				</ul>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

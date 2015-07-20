@@ -34,12 +34,12 @@
 				<form class="form-inline">
 				<div class="form-group">
 	    			<input type="text" ng-model="query.property1" class="form-control" id="property1">
-		    		<button type="button" ng-click='getDistributionForProperty1()' class="btn btn-primary">get distribution</button>
+		    		<button type="button" ng-click='getDomainDistributionForProperty1()' class="btn btn-primary">get distribution</button>
 				</div>
 				</form>
 				</br>
 				<ul class="list-unstyled">
-					<li ng-repeat="element in p1Distribution">
+					<li ng-repeat="element in p1DomainDistribution">
 					{{element}}
 					</li>
 				</ul>
@@ -50,17 +50,22 @@
 				<form class="form-inline">
 				<div class="form-group">
 		    		<input type="text" ng-model="query.property2" class="form-control" id="property2">
-		    		<button type="button" ng-click='getDistributionForProperty2()' class="btn btn-primary">get distribution</button>
+		    		<button type="button" ng-click='getDomainDistributionForProperty2()' class="btn btn-primary">get distribution</button>
 				</div>
 				</form>
 				</br>
 				<ul class="list-unstyled">
-					<li ng-repeat="element in p2Distribution">
+					<li ng-repeat="element in p2DomainDistribution">
 					{{element}}
 					</li>
 				</ul>
 				</div>
 			</div>
+			</div>
+			<div style="margin-top:0.5cm" class="row">
+				<div class="col-md-12">
+					<button type="button" ng-click='computeCosineSimilarity()' class="btn btn-primary">similarity</button> {{domainSimilarity}} - {{rangeSimilarity}}
+				</div>
 			</div>
 		</div>
 	</div>

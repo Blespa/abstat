@@ -29,7 +29,7 @@ public class ExportPropertyDomainVectors {
 		
 		final List<Resource> properties = allProperties(vocabulary);
 		
-		ExecutorService executor = Executors.newFixedThreadPool(50);
+		ExecutorService executor = Executors.newFixedThreadPool(10);
 		for(final Resource property : properties){
 			executor.execute(new Runnable() {
 				@Override

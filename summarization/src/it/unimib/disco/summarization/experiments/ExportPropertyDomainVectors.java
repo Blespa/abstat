@@ -43,11 +43,11 @@ public class ExportPropertyDomainVectors {
 			
 			BulkTextOutput out = new BulkTextOutput(new FileSystemConnector(new File(directory,
 																						property.toString()
-																						.replace("http://ld-summaries.org", "")
+																						.replace("http://ld-summaries.org/resource/", "")
 																						.replace(dataset, "")
 																						.replace("/datatype-property/", "")
 																						.replace("/object-property/", "")
-																						.replace("/", "-"))), 20);
+																						.replace("/", "_"))), 20);
 			while(v.hasNext()){
 				QuerySolution result = v.next();
 				Resource type = result.getResource("?type");

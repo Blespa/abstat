@@ -29,7 +29,7 @@ public class ExportPropertyDomainVectors {
 		
 		final List<Resource> properties = allProperties(vocabulary);
 		
-		ExecutorService executor = Executors.newFixedThreadPool(20);
+		ExecutorService executor = Executors.newFixedThreadPool(50);
 		for(final Resource property : properties){
 			executor.execute(new Runnable() {
 				@Override
@@ -68,6 +68,7 @@ public class ExportPropertyDomainVectors {
 																					.replace("/datatype-property/", "")
 																					.replace("/object-property/", "")
 																					.replace("/", "_"))), 20);
+		if(!v.hasNext()) return;
 		while(v.hasNext()){
 			QuerySolution result = v.next();
 			Resource type = result.getResource("?type");

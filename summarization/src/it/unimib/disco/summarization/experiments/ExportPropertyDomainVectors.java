@@ -31,7 +31,8 @@ public class ExportPropertyDomainVectors {
 		for(Resource property : properties){
 			count++;
 			System.out.println(property + " (" + count + " of " + properties.size() + ")");
-			String vector = "select ?type ?typeOcc (sum(?occ) as ?akpOcc) where {" +
+			String vector = "select ?type ?typeOcc ?propOcc (sum(?occ) as ?akpOcc) where {" +
+							   "<"+ property +"> <" + vocabulary.occurrence() + "> ?propOcc ." +
 							   "?akp <" + vocabulary.predicate() + "> <"+ property +"> . " +
 							   "?akp <" + subject + "> ?ls . " +
 							   "?ls <" + RDFS.seeAlso + "> ?type . " +
@@ -52,9 +53,10 @@ public class ExportPropertyDomainVectors {
 				QuerySolution result = v.next();
 				Resource type = result.getResource("?type");
 				Literal typeOcc = result.getLiteral("?typeOcc");
+				Literal propOcc = result.getLiteral("?propOcc");
 				Literal akpOcc = result.getLiteral("?akpOcc");
 				
-				out.writeLine(type + "|" + typeOcc.getLong() + "|" + akpOcc.getLong());
+				out.writeLine(type + "|" + typeOcc.getLong() + "|" + propOcc.getLong() + "|" + akpOcc.getLong());
 			}
 			out.close();
 		}

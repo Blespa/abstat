@@ -19,15 +19,18 @@ import com.hp.hpl.jena.vocabulary.RDFS;
 public class ExportPropertyDomainVectors {
 
 	public static void main(String[] args) throws Exception {
-		
-		String dataset = "labelling-dbpedia-3.9-infobox";
+		File directory = new File(args[0]);
+		String dataset = args[1];
 		
 		LDSummariesVocabulary vocabulary = new LDSummariesVocabulary(ModelFactory.createDefaultModel(), dataset);
 		Property subject = vocabulary.subject();
 		
 		List<Resource> properties = allProperties(vocabulary);
 		
+		int count = 0;
 		for(Resource property : properties){
+			count++;
+			System.out.println(property + " ( " + count + " of " + properties.size());
 			String vector = "select ?type ?typeOcc (sum(?occ) as ?akpOcc) where {" +
 							   "?akp <" + vocabulary.predicate() + "> <"+ property +"> . " +
 							   "?akp <" + subject + "> ?ls . " +
@@ -37,14 +40,21 @@ public class ExportPropertyDomainVectors {
 							    "} group by ?type ?typeOcc order by ?type";
 			
 			ResultSet v = SparqlEndpoint.abstatBackend().execute(vector);
-			BulkTextOutput out = new BulkTextOutput(new FileSystemConnector(new File(property.toString().replace("/", "-"))), 20);
+			
+			BulkTextOutput out = new BulkTextOutput(new FileSystemConnector(new File(directory,
+																						property.toString()
+																						.replace("http://ld-summaries.org", "")
+																						.replace(dataset, "")
+																						.replace("/datatype-property/", "")
+																						.replace("/object-property/", "")
+																						.replace("/", "-"))), 20);
 			while(v.hasNext()){
 				QuerySolution result = v.next();
 				Resource type = result.getResource("?type");
 				Literal typeOcc = result.getLiteral("?typeOcc");
 				Literal akpOcc = result.getLiteral("?akpOcc");
 				
-				out.writeLine(type + "|" + typeOcc + "|" + akpOcc);
+				out.writeLine(type + "|" + typeOcc.getLong() + "|" + akpOcc.getLong());
 			}
 			out.close();
 		}

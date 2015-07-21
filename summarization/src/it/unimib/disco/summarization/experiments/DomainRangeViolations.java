@@ -28,7 +28,7 @@ public class DomainRangeViolations {
 		String ontology = args[0];
 		String dataset = args[1];
 		
-		Ontology model = new Ontology(ontology);
+		BenchmarkOntology model = new BenchmarkOntology(ontology);
 		TypeGraph types = buildTypeGraph(model.get());
 		
 		HashSet<String> domainsViolations = new HashSet<String>();

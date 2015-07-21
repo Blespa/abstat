@@ -14,7 +14,7 @@ public class SparqlEndpoint{
 	}
 	
 	public static SparqlEndpoint abstat(){
-		return new SparqlEndpoint("http://abstat.disco.unimib.it:8890");
+		return new SparqlEndpoint("http://abstat.disco.unimib.it");
 	}
 	
 	public static SparqlEndpoint dataset(String dataset){

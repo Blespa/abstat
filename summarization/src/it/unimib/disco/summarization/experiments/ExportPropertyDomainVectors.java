@@ -38,7 +38,7 @@ public class ExportPropertyDomainVectors {
 							   "?ls <" + RDFS.seeAlso + "> ?type . " +
 							   "?ls <" + vocabulary.occurrence() + "> ?typeOcc . " +
 							   "?akp <" + vocabulary.occurrence() + "> ?occ . " +
-							    "} group by ?type ?typeOcc order by ?type";
+							    "} group by ?type ?typeOcc ?propOcc order by ?type";
 			
 			ResultSet v = SparqlEndpoint.abstatBackend().execute(vector);
 			

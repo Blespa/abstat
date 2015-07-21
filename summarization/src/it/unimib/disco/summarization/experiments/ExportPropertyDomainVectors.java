@@ -30,7 +30,7 @@ public class ExportPropertyDomainVectors {
 		int count = 0;
 		for(Resource property : properties){
 			count++;
-			System.out.println(property + " ( " + count + " of " + properties.size());
+			System.out.println(property + " (" + count + " of " + properties.size() + ")");
 			String vector = "select ?type ?typeOcc (sum(?occ) as ?akpOcc) where {" +
 							   "?akp <" + vocabulary.predicate() + "> <"+ property +"> . " +
 							   "?akp <" + subject + "> ?ls . " +

@@ -13,8 +13,12 @@ public class SparqlEndpoint{
 		return new SparqlEndpoint("http://localhost");
 	}
 	
+	public static SparqlEndpoint abstatBackend(){
+		return new SparqlEndpoint("http://193.204.59.21:8885/");
+	}
+	
 	public static SparqlEndpoint abstat(){
-		return new SparqlEndpoint("http://abstat.disco.unimib.it:8890");
+		return new SparqlEndpoint("http://abstat.disco.unimib.it");
 	}
 	
 	public static SparqlEndpoint dataset(String dataset){

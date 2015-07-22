@@ -9,11 +9,11 @@ import java.util.List;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntProperty;
 
-class Ontology{
+public class BenchmarkOntology{
 	
 	private OntModel ontology;
 
-	public Ontology(String path){
+	public BenchmarkOntology(String path){
 		String file = new File("../benchmark/experiments/" + path).getAbsolutePath().replace("summarization/../", "");
 		ontology = new Model(file, "RDF/XML").getOntologyModel();
 	}

@@ -9,7 +9,7 @@ import com.hp.hpl.jena.query.ResultSet;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.vocabulary.RDFS;
 
-class Inferred{
+public class Inferred{
 	
 	private String dataset;
 	private HashSet<String> domains;

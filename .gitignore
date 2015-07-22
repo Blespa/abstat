@@ -10,4 +10,5 @@ summarization-web.jar
 !solr/bin
 solr/server/solr/configsets/basic_configs/data/
 *.pid
+data/vectors*
 

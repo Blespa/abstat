@@ -19,7 +19,7 @@ public class UnderspecifiedProperties {
 		HashSet<String> underspecifiedPropertyDomains = new HashSet<String>();
 		HashSet<String> underspecifiedPropertyRanges = new HashSet<String>();
 		
-		for (OntProperty property : new Ontology(path).properties()) {
+		for (OntProperty property : new BenchmarkOntology(path).properties()) {
 			OntResource range = property.getRange();
 			OntResource domain = property.getDomain();
 			

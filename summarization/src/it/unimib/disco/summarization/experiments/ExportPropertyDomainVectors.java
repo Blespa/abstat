@@ -23,9 +23,14 @@ public class ExportPropertyDomainVectors {
 	public static void main(String[] args) throws Exception {
 		final File directory = new File(args[0]);
 		final String dataset = args[1];
+		String subjectOrObject = args[2];
 		
 		final LDSummariesVocabulary vocabulary = new LDSummariesVocabulary(ModelFactory.createDefaultModel(), dataset);
-		final Property subject = vocabulary.subject();
+		
+		final Property subject;
+		if(subjectOrObject.equals("subject")) subject = vocabulary.subject();
+		else subject = vocabulary.object();
+		
 		
 		final List<Resource> properties = allProperties(vocabulary);
 		

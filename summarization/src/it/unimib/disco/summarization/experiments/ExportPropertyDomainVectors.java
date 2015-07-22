@@ -59,7 +59,7 @@ public class ExportPropertyDomainVectors {
 						   "?akp <" + vocabulary.occurrence() + "> ?occ . " +
 						    "} group by ?type ?typeOcc ?propOcc order by ?type";
 		
-		ResultSet v = SparqlEndpoint.abstatBackend().execute(vector);
+		ResultSet v = SparqlEndpoint.local().execute(vector);
 		
 		BulkTextOutput out = new BulkTextOutput(new FileSystemConnector(new File(directory,
 																					property.toString()
@@ -86,7 +86,7 @@ public class ExportPropertyDomainVectors {
 								"where { " +
 								"?property a <" + vocabulary.property() + "> . " +
 								"}";
-		ResultSet allPropertiesResults = SparqlEndpoint.abstatBackend().execute(allProperties);
+		ResultSet allPropertiesResults = SparqlEndpoint.local().execute(allProperties);
 		List<Resource> properties = new ArrayList<Resource>();
 		while(allPropertiesResults.hasNext()){
 			properties.add(allPropertiesResults.next().getResource("?property"));

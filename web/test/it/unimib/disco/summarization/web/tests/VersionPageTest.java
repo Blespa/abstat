@@ -4,7 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class ApplicationTest {
+public class VersionPageTest {
 
 	private SummarizationTestApplication application = new SummarizationTestApplication();
 
@@ -19,14 +19,7 @@ public class ApplicationTest {
 	}
 	
 	@Test
-	public void shouldTrackTheSessions() throws Exception {
-		
-		application.httpAssert().cookie("/", "JSESSIONID");
-	}
-	
-	@Test
-	public void shouldAnswer404OnNotMappedRoutes() throws Exception {
-		
-		application.httpAssert().statusOf("/not-existing", 404);
+	public void shouldRespond200() throws Exception {
+		application.httpAssert().statusOf("version", 200);
 	}
 }

@@ -7,7 +7,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.io.IOUtils;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.AbstractHandler;
 
@@ -22,16 +21,15 @@ public class Application extends AbstractHandler{
 		
 		try{
 			DeployedVersion version = new DeployedVersion(new File(".."));
-			String message = version.branch() + "-" + version.commit();
+			String description = version.branch() + "-" + version.commit();
 			
-			Response r = new Routing()
-								.mapFile("/", "home.html")
-								.mapFile("/property-similarity", "property-similarity.html")
-								.mapText("/alive", "OK")
-								.mapText("/version", message)
-								.routeTo(path);
-			IOUtils.copy(r.stream(), response.getOutputStream());
-			base.setHandled(true);
+			new Routing()
+				.mapFile("/", "home.html")
+				.mapFile("/property-similarity", "property-similarity.html")
+				.mapText("/alive", "OK")
+				.mapText("/version", description)
+				.routeTo(path)
+			.sendResponse(base, response);
 		}catch(Exception e){
 			new Events().error("processing request: " + path, e);
 			response.setStatus(500);

@@ -1,9 +1,12 @@
 package it.unimib.disco.summarization.web;
 
 import java.io.File;
-import java.io.InputStream;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
+import org.eclipse.jetty.server.Request;
 
 public class FileResponse implements Response{
 	
@@ -13,7 +16,9 @@ public class FileResponse implements Response{
 		this.file = new File("views/" + file);
 	}
 	
-	public InputStream stream() throws Exception{
-		return FileUtils.openInputStream(file);
+	@Override
+	public void sendResponse(Request base, HttpServletResponse response) throws Exception {
+		IOUtils.copy(FileUtils.openInputStream(file), response.getOutputStream());
+		base.setHandled(true);
 	}
 }

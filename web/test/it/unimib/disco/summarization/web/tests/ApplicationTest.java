@@ -23,4 +23,10 @@ public class ApplicationTest {
 		
 		application.httpAssert().cookie("/", "JSESSIONID");
 	}
+	
+	@Test
+	public void shouldAnswer404OnNotMappedRoutes() throws Exception {
+		
+		application.httpAssert().statusOf("/not-existing", 404);
+	}
 }

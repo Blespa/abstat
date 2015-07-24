@@ -22,7 +22,7 @@ public class Routing{
 	
 	public Response routeTo(String path){
 		Response response = mappings.get(path);
-		if(response == null) response = new EmptyResponse();
+		if(response == null) response = new NotFound();
 		return response;
 	}
 

@@ -1,9 +1,10 @@
 package it.unimib.disco.summarization.web;
 
-import java.io.InputStream;
+import javax.servlet.http.HttpServletResponse;
+
+import org.eclipse.jetty.server.Request;
 
 public interface Response {
 
-	public InputStream stream() throws Exception;
-
+	public void sendResponse(Request base, HttpServletResponse response) throws Exception;
 }

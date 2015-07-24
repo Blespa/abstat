@@ -1,8 +1,9 @@
 package it.unimib.disco.summarization.web;
 
-import java.io.InputStream;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
+import org.eclipse.jetty.server.Request;
 
 public class TextualResponse implements Response{
 	
@@ -12,7 +13,9 @@ public class TextualResponse implements Response{
 		this.message = message;
 	}
 	
-	public InputStream stream() throws Exception{
-		return IOUtils.toInputStream(message);
+	@Override
+	public void sendResponse(Request base, HttpServletResponse response) throws Exception {
+		IOUtils.copy(IOUtils.toInputStream(message), response.getOutputStream());
+		base.setHandled(true);
 	}
 }

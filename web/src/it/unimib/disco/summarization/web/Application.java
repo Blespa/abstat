@@ -7,8 +7,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.AbstractHandler;
 
@@ -21,17 +19,20 @@ public class Application extends AbstractHandler{
 		response.setCharacterEncoding("utf-8");
 		request.getSession();
 		
-		if(path.equals("/alive")){
-			base.setHandled(true);
-			response.getWriter().write("OK");
-		}
-		if(path.equals("/")){
-			base.setHandled(true);
-			IOUtils.copy(FileUtils.openInputStream(new File("views/home.html")), response.getOutputStream());
-		}
-		if(path.equals("/property-similarity")){
-			base.setHandled(true);
-			IOUtils.copy(FileUtils.openInputStream(new File("views/property-similarity.html")), response.getOutputStream());
+		try{
+			DeployedVersion version = new DeployedVersion(new File(".."));
+			String description = version.branch() + "-" + version.commit();
+			
+			new Routing()
+				.mapFile("/", "home.html")
+				.mapFile("/property-similarity", "property-similarity.html")
+				.mapText("/alive", "OK")
+				.mapText("/version", description)
+				.routeTo(path)
+			.sendResponse(base, response);
+		}catch(Exception e){
+			new Events().error("processing request: " + path, e);
+			response.setStatus(500);
 		}
 	}
 }

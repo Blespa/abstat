@@ -19,6 +19,7 @@ for file in $(find ../../lib/* | grep .jar)
 do
 	jar xf $file
 done
+rm -rf META-INF
 jar cvfe ../../$jar -C . > /dev/null
 chmod 777 ../../$jar
 echo done

@@ -21,17 +21,27 @@ public class Application extends AbstractHandler{
 		response.setCharacterEncoding("utf-8");
 		request.getSession();
 		
-		if(path.equals("/alive")){
-			base.setHandled(true);
-			response.getWriter().write("OK");
-		}
-		if(path.equals("/")){
-			base.setHandled(true);
-			IOUtils.copy(FileUtils.openInputStream(new File("views/home.html")), response.getOutputStream());
-		}
-		if(path.equals("/property-similarity")){
-			base.setHandled(true);
-			IOUtils.copy(FileUtils.openInputStream(new File("views/property-similarity.html")), response.getOutputStream());
+		try{
+			if(path.equals("/alive")){
+				base.setHandled(true);
+				response.getWriter().write("OK");
+			}
+			if(path.equals("/")){
+				base.setHandled(true);
+				IOUtils.copy(FileUtils.openInputStream(new File("views/home.html")), response.getOutputStream());
+			}
+			if(path.equals("/property-similarity")){
+				base.setHandled(true);
+				IOUtils.copy(FileUtils.openInputStream(new File("views/property-similarity.html")), response.getOutputStream());
+			}
+			if(path.equals("/version")){
+				base.setHandled(true);
+				DeployedVersion version = new DeployedVersion(new File(".."));
+				response.getWriter().write(version.branch() + "-" + version.commit());
+			}
+		}catch(Exception e){
+			new Events().error("processing request: " + path, e);
+			response.setStatus(500);
 		}
 	}
 }

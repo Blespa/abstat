@@ -18,7 +18,7 @@ import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.vocabulary.RDFS;
 
-public class ExportPropertyDomainVectors {
+public class ExportPropertyVectors {
 
 	public static void main(String[] args) throws Exception {
 		final File directory = new File(args[0]);

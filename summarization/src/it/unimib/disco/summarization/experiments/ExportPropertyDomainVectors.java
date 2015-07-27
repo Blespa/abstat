@@ -6,13 +6,13 @@ import it.unimib.disco.summarization.utility.FileSystemConnector;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import com.hp.hpl.jena.query.QuerySolution;
 import com.hp.hpl.jena.query.ResultSet;
-import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Resource;
@@ -66,22 +66,32 @@ public class ExportPropertyDomainVectors {
 		
 		ResultSet v = SparqlEndpoint.local().execute(vector);
 		
-		BulkTextOutput out = new BulkTextOutput(new FileSystemConnector(new File(directory,
-																					property.toString()
-																					.replace("http://ld-summaries.org/resource/", "")
-																					.replace(dataset, "")
-																					.replace("/datatype-property/", "")
-																					.replace("/object-property/", "")
-																					.replace("/", "_"))), 20);
 		if(!v.hasNext()) return;
+		HashMap<String, List<QuerySolution>> solutions = new HashMap<String, List<QuerySolution>>();
 		while(v.hasNext()){
 			QuerySolution result = v.next();
 			Resource type = result.getResource("?type");
-			Literal typeOcc = result.getLiteral("?typeOcc");
-			Literal propOcc = result.getLiteral("?propOcc");
-			Literal akpOcc = result.getLiteral("?akpOcc");
 			
-			out.writeLine(type + "|" + typeOcc.getLong() + "|" + propOcc.getLong() + "|" + akpOcc.getLong());
+			if(!solutions.containsKey(type.toString())) solutions.put(type.toString(), new ArrayList<QuerySolution>());
+			solutions.get(type.toString()).add(result);
+		}
+		BulkTextOutput out = new BulkTextOutput(new FileSystemConnector(new File(directory,
+				property.toString()
+				.replace("http://ld-summaries.org/resource/", "")
+				.replace(dataset, "")
+				.replace("/datatype-property/", "")
+				.replace("/object-property/", "")
+				.replace("/", "_"))), 20);
+		for(String type : solutions.keySet()){
+			long typeOcc = 0;
+			long propOcc = 0;
+			long akpOcc = 0;
+			for(QuerySolution result : solutions.get(type)){
+				typeOcc = result.getLiteral("?typeOcc").getLong();
+				propOcc += result.getLiteral("?propOcc").getLong();
+				akpOcc += result.getLiteral("?akpOcc").getLong();
+			}
+			out.writeLine(type + "|" + typeOcc + "|" + propOcc + "|" + akpOcc);
 		}
 		out.close();
 	}

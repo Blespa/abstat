@@ -45,4 +45,10 @@ public class HttpRoutingTest {
 		
 		new HttpAssert("http://localhost").statusOf("/solr", 404);
 	}
+	
+	@Test
+	public void downloadRouteShouldBeAccessible() throws Exception {
+		
+		new HttpAssert("http://localhost").statusOf("downloads", 200);
+	}
 }

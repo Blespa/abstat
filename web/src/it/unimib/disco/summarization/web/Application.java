@@ -26,6 +26,7 @@ public class Application extends AbstractHandler{
 			new Routing()
 				.mapFile("/", "home.html")
 				.mapFile("/property-similarity", "property-similarity.html")
+				.mapFile("/full-text-search", "full-text-search.html")
 				.mapText("/alive", "OK")
 				.mapText("/version", description)
 				.routeTo(path)

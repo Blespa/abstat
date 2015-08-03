@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" ng-app="root">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"></link>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"/></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-resource.js"></script>
+    <script src="static/js/full-text-search.js"></script>
+    <link rel="stylesheet" href="static/css/full-text-search.css"></link>
+  </head>
+  <body>
+    <div ng-controller="index">
+      <h1 align="center">What do you want to search?</h1>
+      <input type="text" class="form-control" ng-model="srcStr" placeHolder="Enter your search string" style="text-align: center;"/>
+      <button type="button" ng-click="loadPatterns()" id="searchButton">Search</button>
+      <table class="table table-striped">
+        <thead style="font-weight: bold;">
+          <td>idDocument</td>
+          <td>URI</td>
+          <td>Type</td>
+          <td>Dataset</td>
+          <td>Subtype</td>
+          <td>FullTextSearchField</td>
+	      <td>Version</td>
+        </thead>
+        <tbody>
+          <tr ng-repeat="doc in allDocuments">
+            <td>{{doc.idDocument}}</td>
+            <td>{{doc.URI}}</td>
+            <td>{{doc.type}}</td>
+            <td>{{doc.dataset}}</td>
+            <td>{{doc.subtype}}</td>
+            <td>{{doc.fullTextSearchField}}</td>
+            <td>{{doc.version}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

@@ -7,7 +7,7 @@ application.controller("index", function ($scope, $http) {
 			method: 'GET',
 			params: {
 				wt: 'json',
-				q: 'URI : $scope.srcStr'
+				q: 'fullTextSearchField : $scope.srcStr'
 			}
 		}).success(function(results){
 			$scope.allDocuments = results;

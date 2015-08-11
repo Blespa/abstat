@@ -2,7 +2,7 @@
 
 <config>
 	<luceneMatchVersion>5.0.0</luceneMatchVersion>
-	<dataDir>${solr.data.dir:}</dataDir>
+	<dataDir>/schema-summaries/data/indexed-summaries</dataDir>
 	<directoryFactory name="DirectoryFactory" class="${solr.directoryFactory:solr.NRTCachingDirectoryFactory}"> </directoryFactory> 
 	<codecFactory class="solr.SchemaCodecFactory"/>
 	<schemaFactory class="ClassicIndexSchemaFactory"/>

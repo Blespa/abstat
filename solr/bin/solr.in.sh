@@ -37,7 +37,7 @@ GC_TUNE="-XX:NewRatio=3 \
 -XX:+ParallelRefProcEnabled"
 
 ENABLE_REMOTE_JMX_OPTS="false"
-SOLR_PID_DIR=../../data/logs/solr
 SOLR_HOME=.
+SOLR_PID_DIR=../../data/logs/solr
 LOG4J_PROPS=log4j.properties
 SOLR_LOGS_DIR=../../data/logs/solr

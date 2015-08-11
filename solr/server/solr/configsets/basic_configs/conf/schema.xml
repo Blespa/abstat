@@ -3,40 +3,19 @@
 <schema name="schemaSolr" version="1.5">
    <fields>
    	<field name="idDocument" type="text_general" indexed="true" stored="true" required="true" multiValued="false" /> 
-	<!--<field name="concept" type="text_general" indexed="true" stored="true" required="false" multiValued="false" />
-	<field name="datatypeProperty" type="text_general" indexed="true" stored="true" required="false" multiValued="false" />
-	<field name="objectProperty" type="text_general" indexed="true" stored="true" required="false" multiValued="false" />
-	<field name="datatypeAkp" type="text_general" indexed="true" stored="true" required="false" multiValued="false" />
-	<field name="objectAkp" type="text_general" indexed="true" stored="true" required="false" multiValued="false" />-->
-
-	<field name="URI" type="text_general" indexed="true" stored="true" required="false" multiValued="true" />
-
-	<field name="dataset" type="text_general" indexed="true" stored="true" required="false" multiValued="false" />
-
-	<field name="subtype" type="text_general" indexed="true" stored="true" required="false" multiValued="false" />
-	
-	<!-- Ora posso fare query di qualsiasi tipo sui documenti indicizzati (grazie al campo 'text')-->
-	<field name="text" type="text_general" indexed="true" stored="false" multiValued="true"/>
-
-	<!--Risolto il problema dell'UpdateLog in solrconfig.xml (mancava il campo '_version_')-->
 	<field name="_version_" type="long" indexed="true" stored="true" multiValued="false" />
 
-	<!-- Aggiungo questo campo in modo tale da avere un unico core chiamato 'indexing' in cui indicizzo tutto (concetti, proprietà, akp).
-	Questo campo può contenere solamente uno dei cinque valori seguenti: "concept" o "datatypeProperty" o "objectProperty" o "datatypeAkp" o 	"objectAkp", in modo tale da differenziare nel core se il documento inserito è un concetto oppure è una proprietà oppure è un akp.-->
+	<field name="URI" type="text_general" indexed="true" stored="true" required="false" multiValued="true" />
+	<field name="dataset" type="text_general" indexed="true" stored="true" required="false" multiValued="false" />
+	<field name="subtype" type="text_general" indexed="true" stored="true" required="false" multiValued="false" />
+	<field name="text" type="text_general" indexed="true" stored="false" multiValued="true"/>
 	<field name="type" type="text_general" indexed="true" stored="true" required="true" multiValued="false" />
-
-	<!--Campo che permette di fare full text search-->
 	<field name="fullTextSearchField" type="full_text" indexed="true" stored="true" required="false" multiValued="true" />
-
    </fields>
-
    <uniqueKey>idDocument</uniqueKey>
-
    <types>
 	<fieldType name="int" class="solr.TrieIntField" precisionStep="0" positionIncrementGap="0"/>
-	
 	<fieldType name="long" class="solr.TrieLongField" precisionStep="0" positionIncrementGap="0"/>
-
    	<fieldType name="text_general" class="solr.TextField" sortMissingLast="true" positionIncrementGap="100">
 		<analyzer type="index">
    			<tokenizer class="solr.StandardTokenizerFactory" />
@@ -47,7 +26,6 @@
 			<filter class="solr.LowerCaseFilterFactory" />
 		</analyzer>
 	</fieldType>
-
 	<fieldtype name="full_text" class="solr.TextField">
       	<analyzer type="query">
           <tokenizer class="solr.StandardTokenizerFactory"/>
@@ -60,8 +38,6 @@
                 preserveOriginal="1"
                 />
 	<filter class="solr.LowerCaseFilterFactory"/>
-          <!--<filter class="solr.StopFilterFactory"/>-->
-          <!--<filter class="solr.PorterStemFilterFactory"/>-->
       	</analyzer>
       	<analyzer type="index">
           <tokenizer class="solr.StandardTokenizerFactory"/>
@@ -74,11 +50,7 @@
                 preserveOriginal="1"
                 />
 	  <filter class="solr.LowerCaseFilterFactory"/>
-          <!--<filter class="solr.StopFilterFactory"/>-->
-          <!--<filter class="solr.PorterStemFilterFactory"/>-->
      	 </analyzer>
     	</fieldtype>	
-
    </types>
-
 </schema>

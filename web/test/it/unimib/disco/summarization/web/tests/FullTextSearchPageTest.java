@@ -22,11 +22,11 @@ public class FullTextSearchPageTest
 	
 	@Test
 	public void shouldBeAccessible() throws Exception{
-		application.httpAssert().statusOf("full-text-search", 200);
+		application.httpAssert().statusOf("search", 200);
 	}
 	
 	@Test
 	public void shouldResponseWithTheRightPage() throws Exception{
-		application.httpAssert().body("full-text-search", containsString("search"));
+		application.httpAssert().body("search", containsString("search"));
 	}
 }

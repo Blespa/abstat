@@ -7,10 +7,11 @@ application.controller("index", function ($scope, $http) {
 			method: 'GET',
 			params: {
 				wt: 'json',
-				q: 'fullTextSearchField : $scope.srcStr'
+				q: 'fullTextSearchField:' + $scope.srcStr
 			}
 		}).success(function(results){
-			$scope.allDocuments = results;
+			console.log(results);
+			$scope.allDocuments = results.response.docs;
 		});
 	};
 });

@@ -39,7 +39,7 @@ application.controller("search", function ($scope, $http) {
 			method: 'GET',
 			params: {
 				wt: 'json',
-				q: 'fullTextSearchField:' + escape($scope.srcStr),
+				q: 'fullTextSearchField:(' + escape($scope.srcStr) + ')',
 				rows: 100
 			}
 		}).success(function(results){

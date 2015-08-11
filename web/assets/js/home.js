@@ -12,7 +12,7 @@ summary.filter('isObject', function(){
 	return isObject;
 });
 
-summary.controller('Summarization', function ($scope, $http) {
+summary.controller('home', function ($scope, $http) {
 	
 	var summaries = new Summary($scope, $http);
 	

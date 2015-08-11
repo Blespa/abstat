@@ -8,7 +8,7 @@ RemoteSystemsTempFiles
 ontology_summarization.jar
 summarization-web.jar
 !solr/bin
-solr/server/solr/indexing/data/
+solr/server/indexing/data/
 *.pid
 data/vectors*
 

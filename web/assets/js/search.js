@@ -40,7 +40,7 @@ application.controller("search", function ($scope, $http) {
 			params: {
 				wt: 'json',
 				q: 'fullTextSearchField:' + escape($scope.srcStr),
-				rows: 10000
+				rows: 100
 			}
 		}).success(function(results){
 			$scope.allDocuments = results.response.docs;

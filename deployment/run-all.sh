@@ -5,6 +5,7 @@ set -e
 mkdir -p /schema-summaries/data/logs/webapp
 mkdir -p /schema-summaries/data/logs/reverse-proxy
 mkdir -p /schema-summaries/data/logs/summarization
+mkdir -p /schema-summaries/data/logs/solr
 
 ./java-ui.sh start 8892
 ./solr.sh start 8891

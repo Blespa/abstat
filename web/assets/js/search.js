@@ -30,7 +30,7 @@ application.filter('asIcon', function(){
 application.controller("search", function ($scope, $http) {
 	
 	escape = function(string){
-		return string.toLowerCase().replace(/([&+-^!:{}()|\[\]\/\\])/g, "").replace(/and/g, "").replace(/or/g, "");
+		return string.toLowerCase().replace(/([&+-^!:{}()|\[\]\/\\])/g, "").replace(/ and /g, " ").replace(/ or /g, " ");
 	};
 	
 	$scope.loadPatterns = function(){

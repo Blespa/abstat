@@ -33,7 +33,7 @@ application.controller("search", function ($scope, $http) {
 		return string.toLowerCase().replace(/([&+-^!:{}()|\[\]\/\\])/g, "").replace(/ and /g, " ").replace(/ or /g, " ");
 	};
 	
-	$scope.internalResources = function(){
+	$scope.onlyInternalResources = function(){
 		var searchUri = '/solr/indexing/select';		
 		$http.get(searchUri,{
 			method: 'GET',

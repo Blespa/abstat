@@ -118,7 +118,16 @@ public class InternalExternalDatatypeAkp
 				}
 			}
 			
-			if ((subjectDatatypeAkp.contains(payLevelDomain)) && (objectDatatypeAkp.contains(payLevelDomain)))
+			/*if ((subjectDatatypeAkp.contains(payLevelDomain)) && (objectDatatypeAkp.contains(payLevelDomain)))
+			{
+				typeOfDatatypeAkp = "internalDatatypeAkp";
+			}
+			else
+			{
+				typeOfDatatypeAkp = "externalDatatypeAkp";
+			}*/
+			
+			if (((!(subjectDatatypeAkp.contains("wikidata"))) && (subjectDatatypeAkp.contains(payLevelDomain))) && ((!(objectDatatypeAkp.contains("wikidata"))) && (objectDatatypeAkp.contains(payLevelDomain))))
 			{
 				typeOfDatatypeAkp = "internalDatatypeAkp";
 			}

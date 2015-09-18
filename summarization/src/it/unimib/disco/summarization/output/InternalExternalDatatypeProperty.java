@@ -67,13 +67,32 @@ public class InternalExternalDatatypeProperty
 				}
 			}
 			
-			if (datatypeProperty.contains(payLevelDomain))
+			/*if (datatypeProperty.contains(payLevelDomain))
 			{
 				typeOfDatatypeProperty = "internalDatatypeProperty";
 			}
 			else
 			{
 				typeOfDatatypeProperty = "externalDatatypeProperty";
+			}*/
+			
+			if ((datatypeProperty.contains("wikidata")) && (datatypeProperty.contains(payLevelDomain))) //la datatype property è definita esterna
+			{
+				typeOfDatatypeProperty = "externalDatatypeProperty";
+			}
+			else
+			{
+				if ((!(datatypeProperty.contains("wikidata"))) && (datatypeProperty.contains(payLevelDomain))) //la datatype property è definita interna
+				{
+					typeOfDatatypeProperty = "internalDatatypeProperty";
+				}
+				else
+				{
+					if (!(datatypeProperty.contains(payLevelDomain))) //la datatype property è definita esterna
+					{
+						typeOfDatatypeProperty = "externalDatatypeProperty";
+					}
+				}
 			}
 			
 			bwDatatypeProperties.write(datatypeProperty);

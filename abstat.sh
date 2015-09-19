@@ -55,7 +55,6 @@ set -e
 current_directory=$(as_absolute `dirname $0`)
 docker_command="docker run -v $current_directory:/schema-summaries"
 abstat=abstat
-hosts="--add-host backend:193.204.59.21 --add-host frontend:10.109.149.57"
 
 case "$1" in
         start)

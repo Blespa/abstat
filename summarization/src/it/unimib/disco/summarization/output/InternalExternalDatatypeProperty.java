@@ -66,29 +66,20 @@ public class InternalExternalDatatypeProperty
 					}
 				}
 			}
-			
-			/*if (datatypeProperty.contains(payLevelDomain))
-			{
-				typeOfDatatypeProperty = "internalDatatypeProperty";
-			}
-			else
-			{
-				typeOfDatatypeProperty = "externalDatatypeProperty";
-			}*/
-			
-			if ((datatypeProperty.contains("wikidata")) && (datatypeProperty.contains(payLevelDomain))) //la datatype property è definita esterna
+						
+			if ((datatypeProperty.contains("wikidata")) && (datatypeProperty.contains(payLevelDomain)))
 			{
 				typeOfDatatypeProperty = "externalDatatypeProperty";
 			}
 			else
 			{
-				if ((!(datatypeProperty.contains("wikidata"))) && (datatypeProperty.contains(payLevelDomain))) //la datatype property è definita interna
+				if ((!(datatypeProperty.contains("wikidata"))) && (datatypeProperty.contains(payLevelDomain)))
 				{
 					typeOfDatatypeProperty = "internalDatatypeProperty";
 				}
 				else
 				{
-					if (!(datatypeProperty.contains(payLevelDomain))) //la datatype property è definita esterna
+					if (!(datatypeProperty.contains(payLevelDomain)))
 					{
 						typeOfDatatypeProperty = "externalDatatypeProperty";
 					}

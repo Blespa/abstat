@@ -33,9 +33,25 @@ application.controller("search", function ($scope, $http) {
 		return string.toLowerCase().replace(/([&+-^!:{}()|\[\]\/\\])/g, "").replace(/ and /g, " ").replace(/ or /g, " ");
 	};
 	
-	$scope.onlyInternalResources = function(){
-		var searchUri = '/solr/indexing/select';		
-		$http.get(searchUri,{
+	$scope.loadPatterns = function(){
+		var searchUri = '/solr/indexing/select';
+
+		if (document.getElementById('checkboxExternalResources').checked)
+		{
+			$http.get(searchUri,{
+			method: 'GET',
+			params: {
+				wt: 'json',
+				q: 'fullTextSearchField:(' + escape($scope.srcStr) + ')',
+				rows: 100
+			}
+			}).success(function(results){
+				$scope.allDocuments = results.response.docs;
+			});
+		}
+		else
+		{
+			$http.get(searchUri,{
 			method: 'GET',
 			params: {
 				wt: 'json',
@@ -43,22 +59,9 @@ application.controller("search", function ($scope, $http) {
 				rows: 100,
 				fq: 'subtype: internalConcept<OR>internalDatatypeProperty<OR>internalObjectProperty<OR>internalDatatypeAKP<OR>internalObjectAKP'
 			}
-		}).success(function(results){
-			$scope.allDocuments = results.response.docs;
-		});
-	};
-
-	$scope.alsoExternalResources = function(){
-		var searchUri = '/solr/indexing/select';		
-		$http.get(searchUri,{
-			method: 'GET',
-			params: {
-				wt: 'json',
-				q: 'fullTextSearchField:(' + escape($scope.srcStr) + ')',
-				rows: 100
-			}
-		}).success(function(results){
-			$scope.allDocuments = results.response.docs;
-		});
+			}).success(function(results){
+				$scope.allDocuments = results.response.docs;
+			});
+		}	
 	};
 });

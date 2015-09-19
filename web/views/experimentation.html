@@ -22,15 +22,18 @@
 		    		<form class="form-horizontal">
 		    			<div class="form-group">
 		    				<div class="col-md-1"></div>
-			    			<div class="col-md-5">
+			    			<div class="col-md-7">
 						    	<input type="text" class="form-control" ng-model="srcStr" placeHolder="search for concepts and abstract knowledge patterns"/>
 						    </div>
-						    <div class="col-md-2">
-						    <button type="submit" class="btn btn-primary" ng-click="onlyInternalResources()">Search only in Internal Resources</button>
+						    <div class="col-md-1">
+						    <button type="submit" class="btn btn-primary" ng-click="loadPatterns()">Search</button>
 						    </div>
-						    <div class="col-sm-1 col-xs-1 col-md-1 col-lg-1"></div> 
 						    <div class="col-md-2">
-						    <button type="submit" class="btn btn-primary" ng-click="alsoExternalResources()">Search also in External Resources</button>
+						    <div class="checkbox">
+    							<label>
+      								<input type="checkbox" id="checkboxExternalResources" name="checkboxExternalResources">also in External Resources
+    							</label>
+ 						    </div>
 						    </div>
 						    <div class="col-md-1"></div>
 					    </div>

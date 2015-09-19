@@ -8,7 +8,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
 	<link rel="shortcut icon" href="static/img/abstat.svg">
 	<script src="static/js/ui-bootstrap-tpls-0.12.1.min.js"></script>
-    <script src="static/js/experimentation.js"></script>
+    <script src="static/js/search.js"></script>
     <title>ABSTAT</title>
   </head>
   <body>
@@ -26,12 +26,12 @@
 						    	<input type="text" class="form-control" ng-model="srcStr" placeHolder="search for concepts and abstract knowledge patterns"/>
 						    </div>
 						    <div class="col-md-1">
-						    <button type="submit" class="btn btn-primary" ng-click="loadPatterns()">Search</button>
+						    <button type="submit" class="btn btn-primary" ng-click="loadPatternsExperimentation()">Search</button>
 						    </div>
 						    <div class="col-md-2">
 						    <div class="checkbox">
     							<label>
-      								<input type="checkbox" id="checkboxExternalResources" name="checkboxExternalResources">also in External Resources
+      								<input type="checkbox" id="checkboxExternalResources" name="checkboxExternalResources" >also in External Resources
     							</label>
  						    </div>
 						    </div>

@@ -62,7 +62,7 @@
 
 ## 	EndPoint
 
-	conf:endpoint <http://abstat.disco.unimib.it/sparql>;
+	conf:endpoint <http://localhost/sparql>;
 
 ########## give it a try opening http://localhost:8080/lodview/Rome
 

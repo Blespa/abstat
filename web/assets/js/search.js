@@ -40,7 +40,7 @@ application.controller("search", function ($scope, $http) {
 				wt: 'json',
 				q: 'fullTextSearchField:(' + escape($scope.srcStr) + ')',
 				rows: 100,
-				fq: 'subtype: internalConcept<OR>internalDatatypeProperty<OR>internalObjectProperty<OR>internalDatatypeAKP<OR>internalObjectAKP'
+				fq: ['subtype: internalConcept<OR>internalDatatypeProperty<OR>internalObjectProperty<OR>internalDatatypeAKP<OR>internalObjectAKP']
 			}}
 	};
 	
@@ -54,7 +54,12 @@ application.controller("search", function ($scope, $http) {
 		var request = onlyInternalResources();
 		
 		if($scope.searchInExternalResources){
-			request.params['fq'] = '';
+			request.params['fq'] = [];
+		}
+		
+		var dataset = $scope.dataset;
+		if(dataset){
+			request.params['fq'].push("dataset:'" + dataset + "'")
 		}
 		
 		get(request);

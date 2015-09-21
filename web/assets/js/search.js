@@ -34,49 +34,34 @@ application.controller("search", function ($scope, $http) {
 	};
 	
 	onlyInternalResources = function(){
-		var searchUri = '/solr/indexing/select';
-
-		$http.get(searchUri,{
+			return {
 			method: 'GET',
 			params: {
 				wt: 'json',
 				q: 'fullTextSearchField:(' + escape($scope.srcStr) + ')',
 				rows: 100,
-				fq: 'subtype: internalConcept<OR>internalDatatypeProperty<OR>internalObjectProperty<OR>internalDatatypeAKP<OR>internalObjectAKP'
-			}
-			}).success(function(results){
-				$scope.allDocuments = results.response.docs;
-			});
+				fq: ['subtype: internalConcept<OR>internalDatatypeProperty<OR>internalObjectProperty<OR>internalDatatypeAKP<OR>internalObjectAKP']
+			}}
 	};
-
-	alsoExternalResources = function(){
-		var searchUri = '/solr/indexing/select';
-
-		$http.get(searchUri,{
-			method: 'GET',
-			params: {
-				wt: 'json',
-				q: 'fullTextSearchField:(' + escape($scope.srcStr) + ')',
-				rows: 100
-			}
-			}).success(function(results){
-				$scope.allDocuments = results.response.docs;
-			});
+	
+	get = function(request){
+		$http.get('/solr/indexing/select', request).success(function(results){
+			$scope.allDocuments = results.response.docs;
+		});
 	};
-
-	$scope.loadPatternsSearch = function(){
-		alsoExternalResources();
-	};
-
-	$scope.loadPatternsExperimentation = function(){
-
-		if (document.getElementById('checkboxExternalResources').checked)
-		{
-			alsoExternalResources();
+	
+	$scope.loadPatterns = function(){
+		var request = onlyInternalResources();
+		
+		if($scope.searchInExternalResources){
+			request.params['fq'] = [];
 		}
-		else
-		{
-			onlyInternalResources();
-		}	
+		
+		var dataset = $scope.dataset;
+		if(dataset){
+			request.params['fq'].push("dataset:'" + dataset + "'")
+		}
+		
+		get(request);
 	};
 });

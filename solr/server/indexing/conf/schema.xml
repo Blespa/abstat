@@ -6,7 +6,7 @@
 	<field name="_version_" type="long" indexed="true" stored="true" multiValued="false" />
 
 	<field name="URI" type="text_general" indexed="true" stored="true" required="false" multiValued="true" />
-	<field name="dataset" type="text_general" indexed="true" stored="true" required="false" multiValued="false" />
+	<field name="dataset" type="string" indexed="true" stored="true" required="false" multiValued="false" />
 	<field name="subtype" type="text_general" indexed="true" stored="true" required="false" multiValued="false" />
 	<field name="text" type="text_general" indexed="true" stored="false" multiValued="true"/>
 	<field name="type" type="text_general" indexed="true" stored="true" required="true" multiValued="false" />
@@ -16,6 +16,8 @@
    <types>
 	<fieldType name="int" class="solr.TrieIntField" precisionStep="0" positionIncrementGap="0"/>
 	<fieldType name="long" class="solr.TrieLongField" precisionStep="0" positionIncrementGap="0"/>
+	<fieldType name="string" class="solr.StrField"/>
+
    	<fieldType name="text_general" class="solr.TextField" sortMissingLast="true" positionIncrementGap="100">
 		<analyzer type="index">
    			<tokenizer class="solr.StandardTokenizerFactory" />

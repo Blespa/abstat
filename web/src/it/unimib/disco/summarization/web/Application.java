@@ -21,15 +21,15 @@ public class Application extends AbstractHandler{
 		
 		try{
 			DeployedVersion version = new DeployedVersion(new File(".."));
-			String description = version.branch() + "-" + version.commit();
+			String currentVersion = version.branch() + "-" + version.commit();
 			
 			new Routing()
-				.mapFile("/", "home.html")
-				.mapFile("/property-similarity", "property-similarity.html")
-				.mapFile("/search", "search.html")
-				.mapFile("/experimentation", "experimentation.html")
 				.mapText("/alive", "OK")
-				.mapText("/version", description)
+				.mapText("/version", currentVersion)
+				.mapFile("/", "home.html")
+				.mapFile("/search", "search.html")
+				.mapFile("/experiment", "experiment.html")
+				.mapFile("/property-similarity", "property-similarity.html")
 				.routeTo(path)
 			.sendResponse(base, response);
 		}catch(Exception e){

@@ -22,11 +22,11 @@ public class ExperimentationPageTest
 	
 	@Test
 	public void shouldBeAccessible() throws Exception{
-		application.httpAssert().statusOf("experimentation", 200);
+		application.httpAssert().statusOf("experiment", 200);
 	}
 	
 	@Test
 	public void shouldResponseWithTheRightPage() throws Exception{
-		application.httpAssert().body("experimentation", containsString("search"));
+		application.httpAssert().body("experiment", containsString("search"));
 	}
 }

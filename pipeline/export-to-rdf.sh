@@ -40,11 +40,13 @@ export_rdf WriteConceptGraphToRDF "$input_directory/../reports/tmp-data-for-comp
  
 cd $root
 
-echo "deleting graph ${graph}"
-./isql.sh "SPARQL CLEAR GRAPH <$graph>;"
+#echo "deleting graph ${graph}"
+#./isql.sh "SPARQL CLEAR GRAPH <$graph>;"
 
-echo "indexing the result of the analysis in ${output_directory} into graph ${graph}"
-./isql.sh "delete from DB.DBA.load_list;ld_dir ('${output_directory}', '*.nt', '${graph}');rdf_loader_run();checkpoint;"
-echo "done"
+#echo "indexing the result of the analysis in ${output_directory} into graph ${graph}"
+#./isql.sh "delete from DB.DBA.load_list;ld_dir ('${output_directory}', '*.nt', '${graph}');rdf_loader_run();checkpoint;"
+#echo "done"
 
+cat $output_directory/*.nt > ../$1.nt
+chmod 777 ../$1.nt
 rm -r $output_directory

@@ -27,7 +27,7 @@ rm $target_directory/triples/$dataset.nt
 
 cd ..
 
-./abstat.sh exec pipeline/run-summarization-pipeline.sh $dataset
-./abstat.sh exec pipeline/export-to-rdf.sh $dataset
+pipeline/run-summarization-pipeline.sh $dataset
+pipeline/export-to-rdf.sh $dataset
 
 

@@ -67,13 +67,23 @@ public class InternalExternalObjectProperty
 				}
 			}
 			
-			if (objectProperty.contains(payLevelDomain))
+			if ((objectProperty.contains("wikidata")) && (objectProperty.contains(payLevelDomain)))
 			{
-				typeOfObjectProperty = "internalObjectProperty";
+				typeOfObjectProperty = "externalObjectProperty";
 			}
 			else
 			{
-				typeOfObjectProperty = "externalObjectProperty";
+				if ((!(objectProperty.contains("wikidata"))) && (objectProperty.contains(payLevelDomain)))
+				{
+					typeOfObjectProperty = "internalObjectProperty";
+				}
+				else
+				{
+					if (!(objectProperty.contains(payLevelDomain)))
+					{
+						typeOfObjectProperty = "externalObjectProperty";
+					}
+				}
 			}
 			
 			bwObjectProperties.write(objectProperty);

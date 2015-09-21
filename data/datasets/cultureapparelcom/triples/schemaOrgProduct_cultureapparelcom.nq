@@ -1,0 +1,679 @@
+_:node22b8c51dccca40e9066aedd3459941 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Hair_Care-Indian_Hemp_Hair_Grease_4_oz.html> .
+_:node28da24a0124a2ed937e18cfc81228 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Hair_Care-Indian_Hemp_Hair_Grease_4_oz.html> .
+_:node28da24a0124a2ed937e18cfc81228 <http://schema.org/Product/sku> "M-P134" <http://www.cultureapparel.com/Hair_Care-Indian_Hemp_Hair_Grease_4_oz.html> .
+_:node28da24a0124a2ed937e18cfc81228 <http://schema.org/Product/offers> _:nodefeea7fb3ab588fbd81e37d82741f2e <http://www.cultureapparel.com/Hair_Care-Indian_Hemp_Hair_Grease_4_oz.html> .
+_:node28da24a0124a2ed937e18cfc81228 <http://schema.org/Product/name> "Indian Hemp Hair Grease : 4 oz" <http://www.cultureapparel.com/Hair_Care-Indian_Hemp_Hair_Grease_4_oz.html> .
+_:node28da24a0124a2ed937e18cfc81228 <http://schema.org/Product/description> "Indian Hemp Hair Grease : 4 oz" <http://www.cultureapparel.com/Hair_Care-Indian_Hemp_Hair_Grease_4_oz.html> .
+_:node28da24a0124a2ed937e18cfc81228 <http://schema.org/Product/image> <http://www.cultureapparel.com/Hair_Care-Indian_Hemp_Hair_Grease_4_oz.html/med-img-m-p134.jpg> <http://www.cultureapparel.com/Hair_Care-Indian_Hemp_Hair_Grease_4_oz.html> .
+_:node628730555245941704a3069396b4ae3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Hair_Care-Indian_Hemp_Hair_Grease_4_oz.html> .
+_:node4493c0f02d40124d8352cee5d6e9135d <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Store> <http://www.cultureapparel.com/Hair_Care-Indian_Hemp_Hair_Grease_4_oz.html> .
+_:node4493c0f02d40124d8352cee5d6e9135d <http://schema.org/Store/url> "http://www.cultureapparel.com/" <http://www.cultureapparel.com/Hair_Care-Indian_Hemp_Hair_Grease_4_oz.html> .
+_:node4493c0f02d40124d8352cee5d6e9135d <http://schema.org/Store/name> "CULTUREAPPAREL" <http://www.cultureapparel.com/Hair_Care-Indian_Hemp_Hair_Grease_4_oz.html> .
+_:node4493c0f02d40124d8352cee5d6e9135d <http://schema.org/Store/logo> <http://www.cultureapparel.com/Hair_Care-Indian_Hemp_Hair_Grease_4_oz.html/img-logo800.jpg> <http://www.cultureapparel.com/Hair_Care-Indian_Hemp_Hair_Grease_4_oz.html> .
+_:nodee0ea9ade1da16545ef2315cbfe8d934 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Hair_Care-Indian_Hemp_Hair_Grease_4_oz.html> .
+_:nodefeea7fb3ab588fbd81e37d82741f2e <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Hair_Care-Indian_Hemp_Hair_Grease_4_oz.html> .
+_:nodefeea7fb3ab588fbd81e37d82741f2e <http://schema.org/Offer/price> "$9.99" <http://www.cultureapparel.com/Hair_Care-Indian_Hemp_Hair_Grease_4_oz.html> .
+_:nodefeea7fb3ab588fbd81e37d82741f2e <http://schema.org/Offer/availability> <http://schema.org/InStock> <http://www.cultureapparel.com/Hair_Care-Indian_Hemp_Hair_Grease_4_oz.html> .
+_:nodefeea7fb3ab588fbd81e37d82741f2e <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Hair_Care-Indian_Hemp_Hair_Grease_4_oz.html> .
+_:nodef67c8beddad85fd6c2a32272233a679 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodef67c8beddad85fd6c2a32272233a679 <http://schema.org/Offer/price> "Now: $15.99" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodef67c8beddad85fd6c2a32272233a679 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodec53ea67c6e6cce3a78bc93b69347a9ff <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodec53ea67c6e6cce3a78bc93b69347a9ff <http://schema.org/Offer/price> "Now: $15.99" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodec53ea67c6e6cce3a78bc93b69347a9ff <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node3ecb99383de3ede816b92af1699b895 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node3ecb99383de3ede816b92af1699b895 <http://schema.org/Offer/price> "$28.99" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node3ecb99383de3ede816b92af1699b895 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node4e72331be4f35c92d86c90ed947b54ac <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node4e72331be4f35c92d86c90ed947b54ac <http://schema.org/Product/sku> "C-C930" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node4e72331be4f35c92d86c90ed947b54ac <http://schema.org/Product/offers> _:node3ecb99383de3ede816b92af1699b895 <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node4e72331be4f35c92d86c90ed947b54ac <http://schema.org/Product/name> "Kente Children's Pant Set" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node4e72331be4f35c92d86c90ed947b54ac <http://schema.org/Product/description> "Kente Children's Pant Set" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node4e72331be4f35c92d86c90ed947b54ac <http://schema.org/Product/image> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html/icon-img-c-c930.jpg> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node29ed9f8f38b2176175771927aa04375 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node29ed9f8f38b2176175771927aa04375 <http://schema.org/Offer/price> "$39.99" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node29ed9f8f38b2176175771927aa04375 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:noded6d24a6e20e90afb78711562bb8a43 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:noded6d24a6e20e90afb78711562bb8a43 <http://schema.org/Product/sku> "C-C077" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:noded6d24a6e20e90afb78711562bb8a43 <http://schema.org/Product/offers> _:node54f99e5c3306faf944df8291117091 <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:noded6d24a6e20e90afb78711562bb8a43 <http://schema.org/Product/name> "Girl's Brocade Top & Headwrap" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:noded6d24a6e20e90afb78711562bb8a43 <http://schema.org/Product/description> "Girl's Brocade Top & Headwrap" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:noded6d24a6e20e90afb78711562bb8a43 <http://schema.org/Product/image> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html/icon-img-c-c077.jpg> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node54f99e5c3306faf944df8291117091 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node54f99e5c3306faf944df8291117091 <http://schema.org/Offer/price> "$16.99" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node54f99e5c3306faf944df8291117091 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodeb8b0de8ace7d9f3d636ba633404d4f7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodeb8b0de8ace7d9f3d636ba633404d4f7 <http://schema.org/Product/sku> "C-C020" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodeb8b0de8ace7d9f3d636ba633404d4f7 <http://schema.org/Product/offers> _:nodee8ae64e99586991b8c27579f9133033 <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodeb8b0de8ace7d9f3d636ba633404d4f7 <http://schema.org/Product/name> "Girl's Pant Suit: Small (2/4)" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodeb8b0de8ace7d9f3d636ba633404d4f7 <http://schema.org/Product/description> "Girl's Pant Suit: Small (2/4)" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodeb8b0de8ace7d9f3d636ba633404d4f7 <http://schema.org/Product/image> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html/icon-img-c-c020.jpg> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodec9c7674487c4f29352bfc33f15b3ef0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodec9c7674487c4f29352bfc33f15b3ef0 <http://schema.org/Product/sku> "C-0939" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodec9c7674487c4f29352bfc33f15b3ef0 <http://schema.org/Product/offers> _:node3dd0d617ecee32b3cf198b55d313bda <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodec9c7674487c4f29352bfc33f15b3ef0 <http://schema.org/Product/name> "Girl's Embroidered African Skirt Set" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodec9c7674487c4f29352bfc33f15b3ef0 <http://schema.org/Product/description> "Girl's Embroidered African Skirt Set" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodec9c7674487c4f29352bfc33f15b3ef0 <http://schema.org/Product/image> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html/icon-img-c-c004.jpg> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodefb3e184f414212d1e6e1535c319d49c <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodefb3e184f414212d1e6e1535c319d49c <http://schema.org/Product/sku> "C-C919" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodefb3e184f414212d1e6e1535c319d49c <http://schema.org/Product/offers> _:node7e1bb14d98ea1bc14f1cda6f0a8c971 <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodefb3e184f414212d1e6e1535c319d49c <http://schema.org/Product/name> "Girls Traditional Dashiki Skirt Set" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodefb3e184f414212d1e6e1535c319d49c <http://schema.org/Product/description> "Girls Traditional Dashiki Skirt Set" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodefb3e184f414212d1e6e1535c319d49c <http://schema.org/Product/image> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html/icon-img-c919.jpg> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node96107ed8b61893575319ec2afe41135 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node96107ed8b61893575319ec2afe41135 <http://schema.org/Product/offers> _:node14976f0c1cb42c057b4675aba4adf20 <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node96107ed8b61893575319ec2afe41135 <http://schema.org/Product/name> "Girl's Embroidered Brocade Set" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node96107ed8b61893575319ec2afe41135 <http://schema.org/Product/image> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html/icon-img-c-c072.jpg> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodef34bf43c8787593382e97799f6ad46 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodef34bf43c8787593382e97799f6ad46 <http://schema.org/Product/sku> "C-C072" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodef34bf43c8787593382e97799f6ad46 <http://schema.org/Product/offers> _:node29ed9f8f38b2176175771927aa04375 <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodef34bf43c8787593382e97799f6ad46 <http://schema.org/Product/name> "Girl's Embroidered Brocade Set" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodef34bf43c8787593382e97799f6ad46 <http://schema.org/Product/description> "Girl's Embroidered Brocade Set" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodef34bf43c8787593382e97799f6ad46 <http://schema.org/Product/image> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html/icon-img-c-c072.jpg> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node259c6d78e2f18bd23b52636fa5b7362 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node259c6d78e2f18bd23b52636fa5b7362 <http://schema.org/Product/sku> "CAKP611" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node259c6d78e2f18bd23b52636fa5b7362 <http://schema.org/Product/offers> _:nodeff5758a459a3046a08bd647c3fcb235 <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node259c6d78e2f18bd23b52636fa5b7362 <http://schema.org/Product/name> "Girl's Embroidered African Set" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node259c6d78e2f18bd23b52636fa5b7362 <http://schema.org/Product/description> "Girl's Embroidered African Set" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node259c6d78e2f18bd23b52636fa5b7362 <http://schema.org/Product/image> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html/icon-img-girls611clothing.jpg> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodecef453edd49cba2520f1324ed9965ac6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodecef453edd49cba2520f1324ed9965ac6 <http://schema.org/Product/offers> _:nodef67c8beddad85fd6c2a32272233a679 <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodecef453edd49cba2520f1324ed9965ac6 <http://schema.org/Product/name> "Children's Dashiki & Shorts Set ONE SIZE ONLY AVAI" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodecef453edd49cba2520f1324ed9965ac6 <http://schema.org/Product/image> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html/icon-img-c-c917.jpg> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node70cc6413ae47419082396ed48bc484ff <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node70cc6413ae47419082396ed48bc484ff <http://schema.org/Offer/price> "$3.99" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node70cc6413ae47419082396ed48bc484ff <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node3dd0d617ecee32b3cf198b55d313bda <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node3dd0d617ecee32b3cf198b55d313bda <http://schema.org/Offer/price> "Now: $29.99" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node3dd0d617ecee32b3cf198b55d313bda <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node244e7fd4d3c49d80e587236f41f2e838 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node244e7fd4d3c49d80e587236f41f2e838 <http://schema.org/Offer/price> "Now: $24.99" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node244e7fd4d3c49d80e587236f41f2e838 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodedd1a4ca641cce9ddee788d47b64f8e3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Store> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodedd1a4ca641cce9ddee788d47b64f8e3 <http://schema.org/Store/url> "http://www.cultureapparel.com/" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodedd1a4ca641cce9ddee788d47b64f8e3 <http://schema.org/Store/name> "CULTUREAPPAREL" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodedd1a4ca641cce9ddee788d47b64f8e3 <http://schema.org/Store/logo> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html/img-logo800.jpg> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node7431b937f27413731a9cc2d5e0854dc6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node7431b937f27413731a9cc2d5e0854dc6 <http://schema.org/Product/sku> "C-C001" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node7431b937f27413731a9cc2d5e0854dc6 <http://schema.org/Product/offers> _:node882baf7b196e1564307dd5643260aeaa <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node7431b937f27413731a9cc2d5e0854dc6 <http://schema.org/Product/name> "Children's Traditional Print Dashiki" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node7431b937f27413731a9cc2d5e0854dc6 <http://schema.org/Product/description> "Children's Traditional Print Dashiki" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node7431b937f27413731a9cc2d5e0854dc6 <http://schema.org/Product/image> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html/icon-img-c-c001matrix.jpg> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node14976f0c1cb42c057b4675aba4adf20 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node14976f0c1cb42c057b4675aba4adf20 <http://schema.org/Offer/price> "$39.99" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node14976f0c1cb42c057b4675aba4adf20 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node689b8a78a85af6e71db6f0126d2172 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node689b8a78a85af6e71db6f0126d2172 <http://schema.org/Product/sku> "KIDSHORTS" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node689b8a78a85af6e71db6f0126d2172 <http://schema.org/Product/offers> _:node70cc6413ae47419082396ed48bc484ff <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node689b8a78a85af6e71db6f0126d2172 <http://schema.org/Product/name> "Unisex Kids Shorts" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node689b8a78a85af6e71db6f0126d2172 <http://schema.org/Product/description> "Unisex Kids Shorts" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node689b8a78a85af6e71db6f0126d2172 <http://schema.org/Product/image> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html/icon-img-boysdashikishort.jpg> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node10fa2e7426216b3e9af42b296e1f98c1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node10fa2e7426216b3e9af42b296e1f98c1 <http://schema.org/Product/sku> "CAKR711" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node10fa2e7426216b3e9af42b296e1f98c1 <http://schema.org/Product/offers> _:node244e7fd4d3c49d80e587236f41f2e838 <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node10fa2e7426216b3e9af42b296e1f98c1 <http://schema.org/Product/name> "George Fabric Girls African 3 Piece Skirt Set" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node10fa2e7426216b3e9af42b296e1f98c1 <http://schema.org/Product/description> "George Fabric Girls African 3 Piece Skirt Set" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node10fa2e7426216b3e9af42b296e1f98c1 <http://schema.org/Product/image> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html/icon-img-girlsafricancloting.jpg> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodea8603fd0a45ea71a5a1c7d029b0a2b <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodea8603fd0a45ea71a5a1c7d029b0a2b <http://schema.org/Product/sku> "C-C960" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodea8603fd0a45ea71a5a1c7d029b0a2b <http://schema.org/Product/offers> _:nodeb7340edeecacaa1fd4a76e0787c6f3e <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodea8603fd0a45ea71a5a1c7d029b0a2b <http://schema.org/Product/name> "Girls 3 piece  Kente Skirt Set" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodea8603fd0a45ea71a5a1c7d029b0a2b <http://schema.org/Product/description> "Girls 3 piece  Kente Skirt Set" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodea8603fd0a45ea71a5a1c7d029b0a2b <http://schema.org/Product/image> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html/icon-img-glc-c960matrix_.jpg> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodee8ae64e99586991b8c27579f9133033 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodee8ae64e99586991b8c27579f9133033 <http://schema.org/Offer/price> "$28.99" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodee8ae64e99586991b8c27579f9133033 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node882baf7b196e1564307dd5643260aeaa <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node882baf7b196e1564307dd5643260aeaa <http://schema.org/Offer/price> "Now: $9.99" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node882baf7b196e1564307dd5643260aeaa <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodef75498ae9f5eb9687f3141516a9cc6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/WebPage> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodef75498ae9f5eb9687f3141516a9cc6 <http://schema.org/WebPage/breadcrumb> "\n            African Wear\n                >>\n                    Kids African Clothing\n                >>\n                    Girls African Clothing\n                " <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node71ac2d4d281c1d39c3daff52b107e2e <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node71ac2d4d281c1d39c3daff52b107e2e <http://schema.org/Product/sku> "C-C917" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node71ac2d4d281c1d39c3daff52b107e2e <http://schema.org/Product/offers> _:nodec53ea67c6e6cce3a78bc93b69347a9ff <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node71ac2d4d281c1d39c3daff52b107e2e <http://schema.org/Product/name> "Children's Dashiki & Shorts Set ONE SIZE ONLY AVAI" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node71ac2d4d281c1d39c3daff52b107e2e <http://schema.org/Product/description> "Children's Dashiki & Shorts Set ONE SIZE ONLY AVAILABLE" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node71ac2d4d281c1d39c3daff52b107e2e <http://schema.org/Product/image> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html/icon-img-c-c917.jpg> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node7e1bb14d98ea1bc14f1cda6f0a8c971 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node7e1bb14d98ea1bc14f1cda6f0a8c971 <http://schema.org/Offer/price> "$24.99" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:node7e1bb14d98ea1bc14f1cda6f0a8c971 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodeff5758a459a3046a08bd647c3fcb235 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodeff5758a459a3046a08bd647c3fcb235 <http://schema.org/Offer/price> "Now: $14.99" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodeff5758a459a3046a08bd647c3fcb235 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodeb7340edeecacaa1fd4a76e0787c6f3e <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodeb7340edeecacaa1fd4a76e0787c6f3e <http://schema.org/Offer/price> "$29.99" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodeb7340edeecacaa1fd4a76e0787c6f3e <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Kids_African_Clothing-Girls_African_Clothing.html> .
+_:nodeb06e605274b62a4f9d673e4719225cc <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Rasta_Women_s_Clothing.html> .
+_:nodeb06e605274b62a4f9d673e4719225cc <http://schema.org/Product/offers> _:node2c4f3c69e03e5dc8dbf657bfce47c7 <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Rasta_Women_s_Clothing.html> .
+_:nodeb06e605274b62a4f9d673e4719225cc <http://schema.org/Product/name> "Rasta Ladies Top/Short Outfit" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Rasta_Women_s_Clothing.html> .
+_:nodeb06e605274b62a4f9d673e4719225cc <http://schema.org/Product/image> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Rasta_Women_s_Clothing.html/icon-img-3338822_dsc_0113.jpg> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Rasta_Women_s_Clothing.html> .
+_:node917c513d316ff1239f38a142c3dd8a9b <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/WebPage> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Rasta_Women_s_Clothing.html> .
+_:node917c513d316ff1239f38a142c3dd8a9b <http://schema.org/WebPage/breadcrumb> "\n            Rasta Wear\n                >>\n                    Rasta Women's Clothing\n                " <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Rasta_Women_s_Clothing.html> .
+_:node589569c48497b6c08392b34bb944a1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Store> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Rasta_Women_s_Clothing.html> .
+_:node589569c48497b6c08392b34bb944a1 <http://schema.org/Store/url> "http://www.cultureapparel.com/" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Rasta_Women_s_Clothing.html> .
+_:node589569c48497b6c08392b34bb944a1 <http://schema.org/Store/name> "CULTUREAPPAREL" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Rasta_Women_s_Clothing.html> .
+_:node589569c48497b6c08392b34bb944a1 <http://schema.org/Store/logo> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Rasta_Women_s_Clothing.html/img-logo800.jpg> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Rasta_Women_s_Clothing.html> .
+_:node1d1be7fc2deb80b337d1735967f86 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Rasta_Women_s_Clothing.html> .
+_:node1d1be7fc2deb80b337d1735967f86 <http://schema.org/Offer/price> "$26.99" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Rasta_Women_s_Clothing.html> .
+_:node1d1be7fc2deb80b337d1735967f86 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Rasta_Women_s_Clothing.html> .
+_:node2c4f3c69e03e5dc8dbf657bfce47c7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Rasta_Women_s_Clothing.html> .
+_:node2c4f3c69e03e5dc8dbf657bfce47c7 <http://schema.org/Offer/price> "$24.99" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Rasta_Women_s_Clothing.html> .
+_:node2c4f3c69e03e5dc8dbf657bfce47c7 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Rasta_Women_s_Clothing.html> .
+_:node2b23e79b3e7b4087c2db5a923c9c1b43 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Rasta_Women_s_Clothing.html> .
+_:node2b23e79b3e7b4087c2db5a923c9c1b43 <http://schema.org/Product/offers> _:node1d1be7fc2deb80b337d1735967f86 <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Rasta_Women_s_Clothing.html> .
+_:node2b23e79b3e7b4087c2db5a923c9c1b43 <http://schema.org/Product/name> "Hot New!!! Rasta Color Skirt" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Rasta_Women_s_Clothing.html> .
+_:node2b23e79b3e7b4087c2db5a923c9c1b43 <http://schema.org/Product/image> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Rasta_Women_s_Clothing.html/icon-img-3758_l.jpg> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Rasta_Women_s_Clothing.html> .
+_:node9c4f69d970db81e033b412b41abb823a <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node9c4f69d970db81e033b412b41abb823a <http://schema.org/Product/sku> "C-M071" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node9c4f69d970db81e033b412b41abb823a <http://schema.org/Product/offers> _:node266b9cdc2cc376a95fa2e1a5ed457 <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node9c4f69d970db81e033b412b41abb823a <http://schema.org/Product/name> "Ankh Design Pant Set" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node9c4f69d970db81e033b412b41abb823a <http://schema.org/Product/description> "Ankh Design Pant Set" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node9c4f69d970db81e033b412b41abb823a <http://schema.org/Product/image> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html/icon-img-c-m071.jpg> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node4b7891d18ccfcf8f60ed9dd5b02f2f <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node4b7891d18ccfcf8f60ed9dd5b02f2f <http://schema.org/Offer/price> "$49.99" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node4b7891d18ccfcf8f60ed9dd5b02f2f <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodecc5ac35818526d1df1321f3cfc2f36c <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Store> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodecc5ac35818526d1df1321f3cfc2f36c <http://schema.org/Store/url> "http://www.cultureapparel.com/" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodecc5ac35818526d1df1321f3cfc2f36c <http://schema.org/Store/name> "CULTUREAPPAREL" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodecc5ac35818526d1df1321f3cfc2f36c <http://schema.org/Store/logo> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html/img-logo800.jpg> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node266b9cdc2cc376a95fa2e1a5ed457 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node266b9cdc2cc376a95fa2e1a5ed457 <http://schema.org/Offer/price> "$49.99" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node266b9cdc2cc376a95fa2e1a5ed457 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node263af1927ea27e83a1a20d535d59b2d <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node263af1927ea27e83a1a20d535d59b2d <http://schema.org/Product/sku> "BP20036" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node263af1927ea27e83a1a20d535d59b2d <http://schema.org/Product/offers> _:node7fa9eba81722e1d7dbef86a9cb45866 <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node263af1927ea27e83a1a20d535d59b2d <http://schema.org/Product/name> "Men's 3pc. Pant Set One size" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node263af1927ea27e83a1a20d535d59b2d <http://schema.org/Product/description> "Men's 3pc. Pant Set One size" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node263af1927ea27e83a1a20d535d59b2d <http://schema.org/Product/image> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html/icon-img-20036m.jpg> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node3995f6b3dc6d85e394d1165953adb1e5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node3995f6b3dc6d85e394d1165953adb1e5 <http://schema.org/Product/sku> "C-M040" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node3995f6b3dc6d85e394d1165953adb1e5 <http://schema.org/Product/offers> _:node14c254c352ae149e0c672b593a953d7 <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node3995f6b3dc6d85e394d1165953adb1e5 <http://schema.org/Product/name> "Mud Cloth Dashiki" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node3995f6b3dc6d85e394d1165953adb1e5 <http://schema.org/Product/description> "Mud Cloth Dashiki" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node3995f6b3dc6d85e394d1165953adb1e5 <http://schema.org/Product/image> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html/icon-img-c-m040._969.jpg> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodece3c6f274ebb6c8b376c1af1764d227 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodece3c6f274ebb6c8b376c1af1764d227 <http://schema.org/Product/sku> "C-U917" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodece3c6f274ebb6c8b376c1af1764d227 <http://schema.org/Product/offers> _:node958efa6776a84d8c253219c97d8f963a <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodece3c6f274ebb6c8b376c1af1764d227 <http://schema.org/Product/name> "Traditional Dashiki & Shorts Set" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodece3c6f274ebb6c8b376c1af1764d227 <http://schema.org/Product/description> "Up Your \u00EF\u00BF\u00BDWow\u00EF\u00BF\u00BD FactorLife just got more exciting with \nthis tribal inspired 100% cotton dashiki shorts set. Easy to wear and hand wash. \nFits up to a 60\u00EF\u00BF\u00BD chest, 32\u00EF\u00BF\u00BD shirt length, 60\u00EF\u00BF\u00BD elastic waist, and 30\u00EF\u00BF\u00BD short \nlength. Made in Thailand. " <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodece3c6f274ebb6c8b376c1af1764d227 <http://schema.org/Product/image> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html/icon-img-c-u917.jpg> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node86587c4bd21ca8ac81bdea56fbdc4994 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/WebPage> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node86587c4bd21ca8ac81bdea56fbdc4994 <http://schema.org/WebPage/breadcrumb> "\n            African Wear\n                >>\n                    Men's Clothing\n                " <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node937544acb14f997b36ae376cecf02b <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node937544acb14f997b36ae376cecf02b <http://schema.org/Offer/price> "$69.99" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node937544acb14f997b36ae376cecf02b <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodebd801d62e153a1b498641abcf626c1b <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodebd801d62e153a1b498641abcf626c1b <http://schema.org/Product/offers> _:node44eed58a948908fdac48367725820 <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodebd801d62e153a1b498641abcf626c1b <http://schema.org/Product/name> "Gold Embroidered Dashiki" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodebd801d62e153a1b498641abcf626c1b <http://schema.org/Product/image> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html/icon-img-c-m0461.jpg> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node97926266fdb117951f12ac79231a870 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node97926266fdb117951f12ac79231a870 <http://schema.org/Offer/price> "$79.99" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node97926266fdb117951f12ac79231a870 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node864932166ad51b8710af538a50a4a1c4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node864932166ad51b8710af538a50a4a1c4 <http://schema.org/Offer/price> "$19.99" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node864932166ad51b8710af538a50a4a1c4 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node7fa9eba81722e1d7dbef86a9cb45866 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node7fa9eba81722e1d7dbef86a9cb45866 <http://schema.org/Offer/price> "$49.99" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node7fa9eba81722e1d7dbef86a9cb45866 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node44eed58a948908fdac48367725820 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node44eed58a948908fdac48367725820 <http://schema.org/Offer/price> "$31.99" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node44eed58a948908fdac48367725820 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node4123efe891fa0869de7d68c4fafc150 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node4123efe891fa0869de7d68c4fafc150 <http://schema.org/Offer/price> "$39.99" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node4123efe891fa0869de7d68c4fafc150 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node5bf02d1f40767c1c1b7d492a7373ff6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node5bf02d1f40767c1c1b7d492a7373ff6 <http://schema.org/Product/sku> "BB-1611" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node5bf02d1f40767c1c1b7d492a7373ff6 <http://schema.org/Product/offers> _:node97926266fdb117951f12ac79231a870 <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node5bf02d1f40767c1c1b7d492a7373ff6 <http://schema.org/Product/name> "Men's Black & Blue Brocade Pant Set" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node5bf02d1f40767c1c1b7d492a7373ff6 <http://schema.org/Product/description> "Men's Black & Blue Brocade Pant Set" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node5bf02d1f40767c1c1b7d492a7373ff6 <http://schema.org/Product/image> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html/icon-img-bb-161._775.jpg> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node2add143f7ca82f8b4fc7e9a551fa8fb1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node2add143f7ca82f8b4fc7e9a551fa8fb1 <http://schema.org/Product/sku> "C-U916" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node2add143f7ca82f8b4fc7e9a551fa8fb1 <http://schema.org/Product/offers> _:node4123efe891fa0869de7d68c4fafc150 <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node2add143f7ca82f8b4fc7e9a551fa8fb1 <http://schema.org/Product/name> "Kente Pant Set" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node2add143f7ca82f8b4fc7e9a551fa8fb1 <http://schema.org/Product/description> "Kente Pant Set" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node2add143f7ca82f8b4fc7e9a551fa8fb1 <http://schema.org/Product/image> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html/icon-img-c-u916.jpg> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodeac60a7e8a87759bdeaf3733f20ec6abe <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodeac60a7e8a87759bdeaf3733f20ec6abe <http://schema.org/Product/sku> "C-U932" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodeac60a7e8a87759bdeaf3733f20ec6abe <http://schema.org/Product/offers> _:node864932166ad51b8710af538a50a4a1c4 <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodeac60a7e8a87759bdeaf3733f20ec6abe <http://schema.org/Product/name> "King-Sized Traditional Dashiki" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodeac60a7e8a87759bdeaf3733f20ec6abe <http://schema.org/Product/description> "King-Sized Traditional Dashiki" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodeac60a7e8a87759bdeaf3733f20ec6abe <http://schema.org/Product/image> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html/icon-img-c-u932.jpg> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node601b6129ba428ec6e664b07af754cd3d <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node601b6129ba428ec6e664b07af754cd3d <http://schema.org/Offer/price> "$45.99" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node601b6129ba428ec6e664b07af754cd3d <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodeac9bf16a296a5ceeae445b26715a4f <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodeac9bf16a296a5ceeae445b26715a4f <http://schema.org/Product/sku> "C-M066" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodeac9bf16a296a5ceeae445b26715a4f <http://schema.org/Product/offers> _:node601b6129ba428ec6e664b07af754cd3d <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodeac9bf16a296a5ceeae445b26715a4f <http://schema.org/Product/name> "Gold Embroidered Dashiki/Pant Set" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodeac9bf16a296a5ceeae445b26715a4f <http://schema.org/Product/description> "Gold Embroidered Dashiki/Pant Set" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodeac9bf16a296a5ceeae445b26715a4f <http://schema.org/Product/image> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html/icon-img-c-m066matrix.jpg> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodeb6ce60559a58ce9b67be57bd9594 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodeb6ce60559a58ce9b67be57bd9594 <http://schema.org/Offer/price> "$59.99" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodeb6ce60559a58ce9b67be57bd9594 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node54b5a36eab8791d6dca8725d6ef24e7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node54b5a36eab8791d6dca8725d6ef24e7 <http://schema.org/Product/offers> _:nodeb6ce60559a58ce9b67be57bd9594 <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node54b5a36eab8791d6dca8725d6ef24e7 <http://schema.org/Product/name> "Mud Cloth Dashiki" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node54b5a36eab8791d6dca8725d6ef24e7 <http://schema.org/Product/image> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html/icon-img-c-m040._969.jpg> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node958efa6776a84d8c253219c97d8f963a <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node958efa6776a84d8c253219c97d8f963a <http://schema.org/Offer/price> "$29.99" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node958efa6776a84d8c253219c97d8f963a <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodee8ab3bbba3113d8f1154ed21512d687a <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodee8ab3bbba3113d8f1154ed21512d687a <http://schema.org/Product/sku> "C-M072" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodee8ab3bbba3113d8f1154ed21512d687a <http://schema.org/Product/offers> _:node4b7891d18ccfcf8f60ed9dd5b02f2f <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodee8ab3bbba3113d8f1154ed21512d687a <http://schema.org/Product/name> "Embroidered Dashiki/Pant Set" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodee8ab3bbba3113d8f1154ed21512d687a <http://schema.org/Product/description> "Embroidered Dashiki/Pant Set" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodee8ab3bbba3113d8f1154ed21512d687a <http://schema.org/Product/image> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html/icon-img-c-m072.jpg> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:noded76056a06c160d377ec6dc214e0114e <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:noded76056a06c160d377ec6dc214e0114e <http://schema.org/Product/sku> "C-M070" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:noded76056a06c160d377ec6dc214e0114e <http://schema.org/Product/offers> _:node20bea89ac680371320ff7be2487bf37 <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:noded76056a06c160d377ec6dc214e0114e <http://schema.org/Product/name> "Men's Brocade Dashiki & Pants" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:noded76056a06c160d377ec6dc214e0114e <http://schema.org/Product/description> "Men's Brocade Dashiki & Pants" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:noded76056a06c160d377ec6dc214e0114e <http://schema.org/Product/image> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html/icon-img-c-m070.jpg> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodef3ccbc56ab3096f249f069cfe0d35ea0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodef3ccbc56ab3096f249f069cfe0d35ea0 <http://schema.org/Product/sku> "C-M023" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodef3ccbc56ab3096f249f069cfe0d35ea0 <http://schema.org/Product/offers> _:node937544acb14f997b36ae376cecf02b <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodef3ccbc56ab3096f249f069cfe0d35ea0 <http://schema.org/Product/name> "Men's Dashiki Pant Set w/Cap" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodef3ccbc56ab3096f249f069cfe0d35ea0 <http://schema.org/Product/description> "Men's Dashiki Pant Set w/Cap" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodef3ccbc56ab3096f249f069cfe0d35ea0 <http://schema.org/Product/image> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html/icon-img-c-m023._284.jpg> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodecb22cf88742fff779c91aae2b3b0ef6d <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodecb22cf88742fff779c91aae2b3b0ef6d <http://schema.org/Offer/price> "Now: $17.99" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:nodecb22cf88742fff779c91aae2b3b0ef6d <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node20bea89ac680371320ff7be2487bf37 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node20bea89ac680371320ff7be2487bf37 <http://schema.org/Offer/price> "$67.99" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node20bea89ac680371320ff7be2487bf37 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node41567766235e2728dcab5acac1f52e90 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node41567766235e2728dcab5acac1f52e90 <http://schema.org/Product/sku> "C-M073" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node41567766235e2728dcab5acac1f52e90 <http://schema.org/Product/offers> _:nodecb22cf88742fff779c91aae2b3b0ef6d <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node41567766235e2728dcab5acac1f52e90 <http://schema.org/Product/name> "Raija Dashiki" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node41567766235e2728dcab5acac1f52e90 <http://schema.org/Product/description> "Raija Dashiki" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node41567766235e2728dcab5acac1f52e90 <http://schema.org/Product/image> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html/icon-img-c-m073.jpg> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node14c254c352ae149e0c672b593a953d7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node14c254c352ae149e0c672b593a953d7 <http://schema.org/Offer/price> "$59.99" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node14c254c352ae149e0c672b593a953d7 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/African_Clothing-Men_s_African_Clothing.html> .
+_:node9268caf72865ee592825dd7f044c081 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Oil_Burners-Large_Glass_Wood_Oil_Burner_-_Dark_Brown.html> .
+_:node9268caf72865ee592825dd7f044c081 <http://schema.org/Offer/price> "$31.99" <http://www.cultureapparel.com/Oil_Burners-Large_Glass_Wood_Oil_Burner_-_Dark_Brown.html> .
+_:node9268caf72865ee592825dd7f044c081 <http://schema.org/Offer/availability> <http://schema.org/InStock> <http://www.cultureapparel.com/Oil_Burners-Large_Glass_Wood_Oil_Burner_-_Dark_Brown.html> .
+_:node9268caf72865ee592825dd7f044c081 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Oil_Burners-Large_Glass_Wood_Oil_Burner_-_Dark_Brown.html> .
+_:node1314e2bb45539826f2a1f6b4d11e2d6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Oil_Burners-Large_Glass_Wood_Oil_Burner_-_Dark_Brown.html> .
+_:node1314e2bb45539826f2a1f6b4d11e2d6 <http://schema.org/Product/sku> "O-154" <http://www.cultureapparel.com/Oil_Burners-Large_Glass_Wood_Oil_Burner_-_Dark_Brown.html> .
+_:node1314e2bb45539826f2a1f6b4d11e2d6 <http://schema.org/Product/offers> _:node9268caf72865ee592825dd7f044c081 <http://www.cultureapparel.com/Oil_Burners-Large_Glass_Wood_Oil_Burner_-_Dark_Brown.html> .
+_:node1314e2bb45539826f2a1f6b4d11e2d6 <http://schema.org/Product/name> "Large Glass/Wood Oil Burner - Dark Brown" <http://www.cultureapparel.com/Oil_Burners-Large_Glass_Wood_Oil_Burner_-_Dark_Brown.html> .
+_:node1314e2bb45539826f2a1f6b4d11e2d6 <http://schema.org/Product/description> "Large Glass/Wood Oil Burner - Dark Brown" <http://www.cultureapparel.com/Oil_Burners-Large_Glass_Wood_Oil_Burner_-_Dark_Brown.html> .
+_:node1314e2bb45539826f2a1f6b4d11e2d6 <http://schema.org/Product/image> <http://www.cultureapparel.com/Oil_Burners-Large_Glass_Wood_Oil_Burner_-_Dark_Brown.html/med-img-o-154.jpg> <http://www.cultureapparel.com/Oil_Burners-Large_Glass_Wood_Oil_Burner_-_Dark_Brown.html> .
+_:nodec61c467daddf9846d269b886a370d01b <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Store> <http://www.cultureapparel.com/Oil_Burners-Large_Glass_Wood_Oil_Burner_-_Dark_Brown.html> .
+_:nodec61c467daddf9846d269b886a370d01b <http://schema.org/Store/url> "http://www.cultureapparel.com/" <http://www.cultureapparel.com/Oil_Burners-Large_Glass_Wood_Oil_Burner_-_Dark_Brown.html> .
+_:nodec61c467daddf9846d269b886a370d01b <http://schema.org/Store/name> "CULTUREAPPAREL" <http://www.cultureapparel.com/Oil_Burners-Large_Glass_Wood_Oil_Burner_-_Dark_Brown.html> .
+_:nodec61c467daddf9846d269b886a370d01b <http://schema.org/Store/logo> <http://www.cultureapparel.com/Oil_Burners-Large_Glass_Wood_Oil_Burner_-_Dark_Brown.html/img-logo800.jpg> <http://www.cultureapparel.com/Oil_Burners-Large_Glass_Wood_Oil_Burner_-_Dark_Brown.html> .
+_:node6fc54e263c57e2c5afbd32b138cd197f <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node6fc54e263c57e2c5afbd32b138cd197f <http://schema.org/Product/sku> "RASTA79" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node6fc54e263c57e2c5afbd32b138cd197f <http://schema.org/Product/offers> _:nodecf5f96bffedb35f9824938fa2888ebca <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node6fc54e263c57e2c5afbd32b138cd197f <http://schema.org/Product/name> "Mens Rasta Tshirt" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node6fc54e263c57e2c5afbd32b138cd197f <http://schema.org/Product/description> "Mens Rasta Tshirt" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node6fc54e263c57e2c5afbd32b138cd197f <http://schema.org/Product/image> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html/icon-img-rasta79.jpg> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node634df7584860af66375f54ee05df <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node634df7584860af66375f54ee05df <http://schema.org/Product/sku> "AFRICA2014" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node634df7584860af66375f54ee05df <http://schema.org/Product/offers> _:noded118b2726148a874fd333dc618a15bd <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node634df7584860af66375f54ee05df <http://schema.org/Product/name> "Africa Zip Up Hoodie Vest" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node634df7584860af66375f54ee05df <http://schema.org/Product/description> "Africa Zip Up Hoodie Vest" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node634df7584860af66375f54ee05df <http://schema.org/Product/image> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html/icon-img-africa_zip_up_hoodie_vest.jpg> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node5ea56bf866a6fa538cf0aa98bebb399 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node5ea56bf866a6fa538cf0aa98bebb399 <http://schema.org/Offer/price> "$29.99" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node5ea56bf866a6fa538cf0aa98bebb399 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node2eb194894f2a31f86ee1fa31736d68b <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node2eb194894f2a31f86ee1fa31736d68b <http://schema.org/Offer/price> "$12.99" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node2eb194894f2a31f86ee1fa31736d68b <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node5010bd768083c7224efcb52564cb <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node5010bd768083c7224efcb52564cb <http://schema.org/Offer/price> "$15.99" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node5010bd768083c7224efcb52564cb <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node2fa0ec2d1152f43392f1cb451a421a <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node2fa0ec2d1152f43392f1cb451a421a <http://schema.org/Product/sku> "LIONJUD2014" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node2fa0ec2d1152f43392f1cb451a421a <http://schema.org/Product/offers> _:node5010bd768083c7224efcb52564cb <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node2fa0ec2d1152f43392f1cb451a421a <http://schema.org/Product/name> "Lion of Judah Crown" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node2fa0ec2d1152f43392f1cb451a421a <http://schema.org/Product/description> "Lion of Judah Crown" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node2fa0ec2d1152f43392f1cb451a421a <http://schema.org/Product/image> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html/icon-img-lion_of_judah_crowned.jpg> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node2272de15b5986bbe95f7387abf086c9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node2272de15b5986bbe95f7387abf086c9 <http://schema.org/Product/sku> "LION2014" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node2272de15b5986bbe95f7387abf086c9 <http://schema.org/Product/offers> _:node3857d5ed581391c8817316ea5c82dbbe <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node2272de15b5986bbe95f7387abf086c9 <http://schema.org/Product/name> "Lion Africa Zip Up Hoodie Vest" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node2272de15b5986bbe95f7387abf086c9 <http://schema.org/Product/description> "Lion Africa Zip Up Hoodie Vest" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node2272de15b5986bbe95f7387abf086c9 <http://schema.org/Product/image> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html/icon-img-lion_africa_zip_up_hoodie_vest.jpg> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:nodecac1bf444189b98fbf14c0a5c3c48af3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:nodecac1bf444189b98fbf14c0a5c3c48af3 <http://schema.org/Product/sku> "CASEL2014" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:nodecac1bf444189b98fbf14c0a5c3c48af3 <http://schema.org/Product/offers> _:node5ea56bf866a6fa538cf0aa98bebb399 <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:nodecac1bf444189b98fbf14c0a5c3c48af3 <http://schema.org/Product/name> "Selassie Zip Up Hoodie Vest" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:nodecac1bf444189b98fbf14c0a5c3c48af3 <http://schema.org/Product/description> "Selassie Zip Up Hoodie Vest" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:nodecac1bf444189b98fbf14c0a5c3c48af3 <http://schema.org/Product/image> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html/icon-img-selassie_zip_up_hoodie_vest.jpg> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:nodec8145d12a2791a3c208d5cbd08d9b5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:nodec8145d12a2791a3c208d5cbd08d9b5 <http://schema.org/Product/offers> _:node15d5ce58a9ec6417a4102fbe528dcfed <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:nodec8145d12a2791a3c208d5cbd08d9b5 <http://schema.org/Product/name> "Rasta Man Hemp Leaf Boxer Shorts" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:nodec8145d12a2791a3c208d5cbd08d9b5 <http://schema.org/Product/image> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html/icon-img-cakgbs1.jpg> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node8cda38f5716a5484a9d6f1d66cf6336 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node8cda38f5716a5484a9d6f1d66cf6336 <http://schema.org/Product/sku> "ZR1751" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node8cda38f5716a5484a9d6f1d66cf6336 <http://schema.org/Product/offers> _:node5bd7a869b9283fab8ddf1afa21bd21a9 <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node8cda38f5716a5484a9d6f1d66cf6336 <http://schema.org/Product/name> "Rastafari Stand Firm Lion Frame Black T-Shirt" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node8cda38f5716a5484a9d6f1d66cf6336 <http://schema.org/Product/description> "This black core tee features the Rastafari Lion of Judah. The Lion of Judah is set in a frame with the printed words: Rastafari, Lion of Judah, JAH, H.I.M., Stand Firm, Give Thanks and Praises to the Most High" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node8cda38f5716a5484a9d6f1d66cf6336 <http://schema.org/Product/image> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html/icon-img-zr1751.jpg> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node9f3b162d070bd0e78dbb5b9423561 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node9f3b162d070bd0e78dbb5b9423561 <http://schema.org/Product/sku> "GANJA2014" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node9f3b162d070bd0e78dbb5b9423561 <http://schema.org/Product/offers> _:node9b72f42f9d8c6f2427513d9ada3a42 <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node9f3b162d070bd0e78dbb5b9423561 <http://schema.org/Product/name> "Ganja Garden T-shirts" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node9f3b162d070bd0e78dbb5b9423561 <http://schema.org/Product/description> "Ganja Garden T-shirts" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node9f3b162d070bd0e78dbb5b9423561 <http://schema.org/Product/image> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html/icon-img-ganja_garden_t-shirt.jpg> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node899817d7e5c06c2731b254c53bad5a47 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node899817d7e5c06c2731b254c53bad5a47 <http://schema.org/Offer/price> "$15.99" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node899817d7e5c06c2731b254c53bad5a47 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node3857d5ed581391c8817316ea5c82dbbe <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node3857d5ed581391c8817316ea5c82dbbe <http://schema.org/Offer/price> "$29.99" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node3857d5ed581391c8817316ea5c82dbbe <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:noded118b2726148a874fd333dc618a15bd <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:noded118b2726148a874fd333dc618a15bd <http://schema.org/Offer/price> "$29.99" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:noded118b2726148a874fd333dc618a15bd <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:nodecf5f96bffedb35f9824938fa2888ebca <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:nodecf5f96bffedb35f9824938fa2888ebca <http://schema.org/Offer/price> "$15.99" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:nodecf5f96bffedb35f9824938fa2888ebca <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:nodef2877eaf19cf9bfc6444fa165b6ae95 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:nodef2877eaf19cf9bfc6444fa165b6ae95 <http://schema.org/Product/sku> "JAH-AR-SHIRT" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:nodef2877eaf19cf9bfc6444fa165b6ae95 <http://schema.org/Product/offers> _:nodefc6bffd8510fa6a178e8074546c7623 <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:nodef2877eaf19cf9bfc6444fa165b6ae95 <http://schema.org/Product/name> "Rastafari Jah Army Shirt" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:nodef2877eaf19cf9bfc6444fa165b6ae95 <http://schema.org/Product/description> "Rastafari Jah Army Shirt" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:nodef2877eaf19cf9bfc6444fa165b6ae95 <http://schema.org/Product/image> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html/icon-img-shirt-jah-army_tan-lg.jpg> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:nodea4b1304aa8ac68edbaf1540c683319a <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Store> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:nodea4b1304aa8ac68edbaf1540c683319a <http://schema.org/Store/url> "http://www.cultureapparel.com/" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:nodea4b1304aa8ac68edbaf1540c683319a <http://schema.org/Store/name> "CULTUREAPPAREL" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:nodea4b1304aa8ac68edbaf1540c683319a <http://schema.org/Store/logo> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html/img-logo800.jpg> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:nodeb5f791e3b6cec26147e966867ea385fd <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:nodeb5f791e3b6cec26147e966867ea385fd <http://schema.org/Product/offers> _:node2eb194894f2a31f86ee1fa31736d68b <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:nodeb5f791e3b6cec26147e966867ea385fd <http://schema.org/Product/name> "Rainbow Boxer Shorts" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:nodeb5f791e3b6cec26147e966867ea385fd <http://schema.org/Product/image> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html/icon-img-shorts2259s.jpg> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node8d66eca9986ca606313439c6674a67 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node8d66eca9986ca606313439c6674a67 <http://schema.org/Offer/price> "$15.99" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node8d66eca9986ca606313439c6674a67 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node91e7c8988e7ad3cc61111e7163782148 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node91e7c8988e7ad3cc61111e7163782148 <http://schema.org/Product/sku> "RASTA78" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node91e7c8988e7ad3cc61111e7163782148 <http://schema.org/Product/offers> _:nodeb791f07e9a5548a9311d2fea9e0af <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node91e7c8988e7ad3cc61111e7163782148 <http://schema.org/Product/name> "Lion of Judah Tshirt" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node91e7c8988e7ad3cc61111e7163782148 <http://schema.org/Product/description> "Lion of Judah Tshirt" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node91e7c8988e7ad3cc61111e7163782148 <http://schema.org/Product/image> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html/icon-img-rasta-78.jpg> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node5bd7a869b9283fab8ddf1afa21bd21a9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node5bd7a869b9283fab8ddf1afa21bd21a9 <http://schema.org/Offer/price> "$15.99" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node5bd7a869b9283fab8ddf1afa21bd21a9 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node6151a08a61bc8109c6fc698397490cb <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/WebPage> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node6151a08a61bc8109c6fc698397490cb <http://schema.org/WebPage/breadcrumb> "\n            Rasta Wear\n                >>\n                    Men's Rasta Clothing\n                " <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node183934a1f56acef89becef6224552555 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node183934a1f56acef89becef6224552555 <http://schema.org/Product/sku> "Rasta2014" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node183934a1f56acef89becef6224552555 <http://schema.org/Product/offers> _:node8d66eca9986ca606313439c6674a67 <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node183934a1f56acef89becef6224552555 <http://schema.org/Product/name> "Rasta City T-shirt" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node183934a1f56acef89becef6224552555 <http://schema.org/Product/description> "Rasta City T-shirt" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node183934a1f56acef89becef6224552555 <http://schema.org/Product/image> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html/icon-img-rasta_city.jpg> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node7b1d46a356c78544b42660a16cd2b2bb <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node7b1d46a356c78544b42660a16cd2b2bb <http://schema.org/Product/sku> "RASTA76" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node7b1d46a356c78544b42660a16cd2b2bb <http://schema.org/Product/offers> _:node121dbda68ba5854b8b3e2ff3ce69cafe <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node7b1d46a356c78544b42660a16cd2b2bb <http://schema.org/Product/name> "One Love Jah Rasta" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node7b1d46a356c78544b42660a16cd2b2bb <http://schema.org/Product/description> "One Love Jah Rasta" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node7b1d46a356c78544b42660a16cd2b2bb <http://schema.org/Product/image> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html/icon-img-rasta76.jpg> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node15d5ce58a9ec6417a4102fbe528dcfed <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node15d5ce58a9ec6417a4102fbe528dcfed <http://schema.org/Offer/price> "$12.99" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node15d5ce58a9ec6417a4102fbe528dcfed <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node121dbda68ba5854b8b3e2ff3ce69cafe <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node121dbda68ba5854b8b3e2ff3ce69cafe <http://schema.org/Offer/price> "$15.99" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node121dbda68ba5854b8b3e2ff3ce69cafe <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node9b72f42f9d8c6f2427513d9ada3a42 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node9b72f42f9d8c6f2427513d9ada3a42 <http://schema.org/Offer/price> "$15.99" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:node9b72f42f9d8c6f2427513d9ada3a42 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:nodefc6bffd8510fa6a178e8074546c7623 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:nodefc6bffd8510fa6a178e8074546c7623 <http://schema.org/Offer/price> "$45.99" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:nodefc6bffd8510fa6a178e8074546c7623 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:noded012f5578731e1677f7de7456cea1ec <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:noded012f5578731e1677f7de7456cea1ec <http://schema.org/Product/sku> "ZR1749" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:noded012f5578731e1677f7de7456cea1ec <http://schema.org/Product/offers> _:node899817d7e5c06c2731b254c53bad5a47 <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:noded012f5578731e1677f7de7456cea1ec <http://schema.org/Product/name> "Rastafari Resisting The System White T-Shirt" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:noded012f5578731e1677f7de7456cea1ec <http://schema.org/Product/description> "This white tee features: Rastafari, Conquering Lion, Tribe of Judah, Jah h.i.m., Resisting the System, 1930, Guidance & Protection From The Most High. Pictured is the Conquering Lion of Judah with the rasta shield." <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:noded012f5578731e1677f7de7456cea1ec <http://schema.org/Product/image> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html/icon-img-zr1749.jpg> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:nodeb791f07e9a5548a9311d2fea9e0af <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:nodeb791f07e9a5548a9311d2fea9e0af <http://schema.org/Offer/price> "$15.99" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:nodeb791f07e9a5548a9311d2fea9e0af <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Rasta_Clothing_Accessori-Men_s_Rasta_Clothing.html> .
+_:nodeae5918adc3694284cdf2256f42dd1e <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:nodeae5918adc3694284cdf2256f42dd1e <http://schema.org/Product/sku> "RASHWRAP" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:nodeae5918adc3694284cdf2256f42dd1e <http://schema.org/Product/offers> _:node36217aea6d568721f94c8c42d722790 <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:nodeae5918adc3694284cdf2256f42dd1e <http://schema.org/Product/name> "Rasta Head Wraps" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:nodeae5918adc3694284cdf2256f42dd1e <http://schema.org/Product/description> "Rasta Head Wraps" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:nodeae5918adc3694284cdf2256f42dd1e <http://schema.org/Product/image> <http://www.cultureapparel.com/Products-Headwraps.html/icon-img-rasta_head_wraps.jpg> <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node32daea03a2ca25a3ddeea283ca3486e <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node32daea03a2ca25a3ddeea283ca3486e <http://schema.org/Offer/price> "$22.99" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node32daea03a2ca25a3ddeea283ca3486e <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:noded3bc1295e0f61e83cab35238e0331ff1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:noded3bc1295e0f61e83cab35238e0331ff1 <http://schema.org/Offer/price> "$15.99" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:noded3bc1295e0f61e83cab35238e0331ff1 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:nodeaa23b96afc8d3ee3fdd2646272f5172 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:nodeaa23b96afc8d3ee3fdd2646272f5172 <http://schema.org/Offer/price> "$9.99" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:nodeaa23b96afc8d3ee3fdd2646272f5172 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node36217aea6d568721f94c8c42d722790 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node36217aea6d568721f94c8c42d722790 <http://schema.org/Offer/price> "$14.99" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node36217aea6d568721f94c8c42d722790 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:nodeedc6c10c9e07f1b20a2359e8568a060 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:nodeedc6c10c9e07f1b20a2359e8568a060 <http://schema.org/Product/offers> _:noded9bfdbc7b0c524903b7b967c7d71470 <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:nodeedc6c10c9e07f1b20a2359e8568a060 <http://schema.org/Product/name> "Rasta Head Wraps" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:nodeedc6c10c9e07f1b20a2359e8568a060 <http://schema.org/Product/image> <http://www.cultureapparel.com/Products-Headwraps.html/icon-img-rasta_head_wraps.jpg> <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:nodeab85652d8ca118293bdcb41db47a64a9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/WebPage> <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:nodeab85652d8ca118293bdcb41db47a64a9 <http://schema.org/WebPage/breadcrumb> "\n            Headwraps/Scarfs/Scarves\n                " <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node805db5ca6fea36a23fdb56cc4b190e5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node805db5ca6fea36a23fdb56cc4b190e5 <http://schema.org/Product/sku> "CA80318" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node805db5ca6fea36a23fdb56cc4b190e5 <http://schema.org/Product/offers> _:noded6529ac33c53178b618a34a1c84d477 <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node805db5ca6fea36a23fdb56cc4b190e5 <http://schema.org/Product/name> "Rasta Headband" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node805db5ca6fea36a23fdb56cc4b190e5 <http://schema.org/Product/description> "Rasta Headband" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node805db5ca6fea36a23fdb56cc4b190e5 <http://schema.org/Product/image> <http://www.cultureapparel.com/Products-Headwraps.html/icon-img-80318hr.jpg> <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:nodeae6d2b5c83efd3f05d18482fc69435dd <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:nodeae6d2b5c83efd3f05d18482fc69435dd <http://schema.org/Product/sku> "CA80138" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:nodeae6d2b5c83efd3f05d18482fc69435dd <http://schema.org/Product/offers> _:nodeaa23b96afc8d3ee3fdd2646272f5172 <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:nodeae6d2b5c83efd3f05d18482fc69435dd <http://schema.org/Product/name> "Rasta headband w/lining" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:nodeae6d2b5c83efd3f05d18482fc69435dd <http://schema.org/Product/description> "Rasta headband w/lining" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:nodeae6d2b5c83efd3f05d18482fc69435dd <http://schema.org/Product/image> <http://www.cultureapparel.com/Products-Headwraps.html/icon-img-80138hr.jpg> <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:noded9afe24c25ae1af9fa18dced9de7bda0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:noded9afe24c25ae1af9fa18dced9de7bda0 <http://schema.org/Product/sku> "SCARF-2" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:noded9afe24c25ae1af9fa18dced9de7bda0 <http://schema.org/Product/offers> _:noded3bc1295e0f61e83cab35238e0331ff1 <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:noded9afe24c25ae1af9fa18dced9de7bda0 <http://schema.org/Product/name> "Rasta Jamaica Selassie Lion of Judah Reggae Scarf" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:noded9afe24c25ae1af9fa18dced9de7bda0 <http://schema.org/Product/description> "Rasta Jamaica Selassie Lion of Judah Reggae Scarf" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:noded9afe24c25ae1af9fa18dced9de7bda0 <http://schema.org/Product/image> <http://www.cultureapparel.com/Products-Headwraps.html/icon-img-scarf2.jpg> <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node59e023c599cb225edb925e9dc45d4d6d <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node59e023c599cb225edb925e9dc45d4d6d <http://schema.org/Product/sku> "ERHWRAPS" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node59e023c599cb225edb925e9dc45d4d6d <http://schema.org/Product/offers> _:node6ca42f195e10d7168ddb9566254e434 <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node59e023c599cb225edb925e9dc45d4d6d <http://schema.org/Product/name> "Ethiopian Headwrap (red gold green)" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node59e023c599cb225edb925e9dc45d4d6d <http://schema.org/Product/description> "Ethiopian Headwrap (red gold green)" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node59e023c599cb225edb925e9dc45d4d6d <http://schema.org/Product/image> <http://www.cultureapparel.com/Products-Headwraps.html/icon-img-sharmafoldweb.jpg> <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:noded6529ac33c53178b618a34a1c84d477 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:noded6529ac33c53178b618a34a1c84d477 <http://schema.org/Offer/price> "$9.99" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:noded6529ac33c53178b618a34a1c84d477 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node2918b3406fed7f2fd6c28a7b8993d883 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node2918b3406fed7f2fd6c28a7b8993d883 <http://schema.org/Product/offers> _:node32daea03a2ca25a3ddeea283ca3486e <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node2918b3406fed7f2fd6c28a7b8993d883 <http://schema.org/Product/name> "Ethiopian Headwrap (red gold green)" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node2918b3406fed7f2fd6c28a7b8993d883 <http://schema.org/Product/image> <http://www.cultureapparel.com/Products-Headwraps.html/icon-img-sharmafoldweb.jpg> <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:nodeb75130cd46b7df9f8eea44ba19d5dd0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Store> <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:nodeb75130cd46b7df9f8eea44ba19d5dd0 <http://schema.org/Store/url> "http://www.cultureapparel.com/" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:nodeb75130cd46b7df9f8eea44ba19d5dd0 <http://schema.org/Store/name> "CULTUREAPPAREL" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:nodeb75130cd46b7df9f8eea44ba19d5dd0 <http://schema.org/Store/logo> <http://www.cultureapparel.com/Products-Headwraps.html/img-logo800.jpg> <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node6ca42f195e10d7168ddb9566254e434 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node6ca42f195e10d7168ddb9566254e434 <http://schema.org/Offer/price> "$22.99" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node6ca42f195e10d7168ddb9566254e434 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:nodededc29ab2fdaaa56ffed92cbd54c926 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:nodededc29ab2fdaaa56ffed92cbd54c926 <http://schema.org/Product/sku> "AC28642" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:nodededc29ab2fdaaa56ffed92cbd54c926 <http://schema.org/Product/offers> _:node699d9ccd265c8b9170b627513836de <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:nodededc29ab2fdaaa56ffed92cbd54c926 <http://schema.org/Product/name> "Lion of Judah Scarf" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:nodededc29ab2fdaaa56ffed92cbd54c926 <http://schema.org/Product/description> "Lion of Judah Scarf" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:nodededc29ab2fdaaa56ffed92cbd54c926 <http://schema.org/Product/image> <http://www.cultureapparel.com/Products-Headwraps.html/icon-img-s31.jpg> <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:noded9bfdbc7b0c524903b7b967c7d71470 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:noded9bfdbc7b0c524903b7b967c7d71470 <http://schema.org/Offer/price> "$14.99" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:noded9bfdbc7b0c524903b7b967c7d71470 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node699d9ccd265c8b9170b627513836de <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node699d9ccd265c8b9170b627513836de <http://schema.org/Offer/price> "$15.99" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node699d9ccd265c8b9170b627513836de <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node2e7e2d644b14b77dd169c16e2911e53 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node2e7e2d644b14b77dd169c16e2911e53 <http://schema.org/Product/sku> "CANY-23" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node2e7e2d644b14b77dd169c16e2911e53 <http://schema.org/Product/offers> _:node464db9f1a49d3b97d581ea343a2baac <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node2e7e2d644b14b77dd169c16e2911e53 <http://schema.org/Product/name> "Head Wraps/Scarf - Variety Mix Of Colors" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node2e7e2d644b14b77dd169c16e2911e53 <http://schema.org/Product/description> "Head Wraps/Scarf - Variety Mix Of Colors" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node2e7e2d644b14b77dd169c16e2911e53 <http://schema.org/Product/image> <http://www.cultureapparel.com/Products-Headwraps.html/icon-img-ny-23_l._311.jpg> <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node464db9f1a49d3b97d581ea343a2baac <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node464db9f1a49d3b97d581ea343a2baac <http://schema.org/Offer/price> "$18.50" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node464db9f1a49d3b97d581ea343a2baac <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Products-Headwraps.html> .
+_:node716076f7f99568e4121202cf32854f <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Store> <http://www.cultureapparel.com/Products-Rasta_Clothing.html> .
+_:node716076f7f99568e4121202cf32854f <http://schema.org/Store/url> "http://www.cultureapparel.com/" <http://www.cultureapparel.com/Products-Rasta_Clothing.html> .
+_:node716076f7f99568e4121202cf32854f <http://schema.org/Store/name> "CULTUREAPPAREL" <http://www.cultureapparel.com/Products-Rasta_Clothing.html> .
+_:node716076f7f99568e4121202cf32854f <http://schema.org/Store/logo> <http://www.cultureapparel.com/Products-Rasta_Clothing.html/img-logo800.jpg> <http://www.cultureapparel.com/Products-Rasta_Clothing.html> .
+_:node5c1c57f9294dfb46e2d4813d2170c5cc <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/WebPage> <http://www.cultureapparel.com/Products-Rasta_Clothing.html> .
+_:node5c1c57f9294dfb46e2d4813d2170c5cc <http://schema.org/WebPage/breadcrumb> "\n            Rasta Wear\n                " <http://www.cultureapparel.com/Products-Rasta_Clothing.html> .
+_:nodec67e6be8f26db363f9824267c77faf3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Products-Rasta_Clothing.html> .
+_:nodec67e6be8f26db363f9824267c77faf3 <http://schema.org/Offer/price> "$9.99" <http://www.cultureapparel.com/Products-Rasta_Clothing.html> .
+_:nodec67e6be8f26db363f9824267c77faf3 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Products-Rasta_Clothing.html> .
+_:node7c754142d7776cd2b8856b5e87d25084 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Products-Rasta_Clothing.html> .
+_:node7c754142d7776cd2b8856b5e87d25084 <http://schema.org/Offer/price> "$15.99" <http://www.cultureapparel.com/Products-Rasta_Clothing.html> .
+_:node7c754142d7776cd2b8856b5e87d25084 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Products-Rasta_Clothing.html> .
+_:node6e1b4c32a5b79d8f0d446c5ec8df343 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Products-Rasta_Clothing.html> .
+_:node6e1b4c32a5b79d8f0d446c5ec8df343 <http://schema.org/Product/offers> _:node7c754142d7776cd2b8856b5e87d25084 <http://www.cultureapparel.com/Products-Rasta_Clothing.html> .
+_:node6e1b4c32a5b79d8f0d446c5ec8df343 <http://schema.org/Product/name> "Rasta Band Brim Headwear" <http://www.cultureapparel.com/Products-Rasta_Clothing.html> .
+_:node6e1b4c32a5b79d8f0d446c5ec8df343 <http://schema.org/Product/image> <http://www.cultureapparel.com/Products-Rasta_Clothing.html/icon-img-ny-12rgy_l.jpg> <http://www.cultureapparel.com/Products-Rasta_Clothing.html> .
+_:node33dfb7b46546da57c0ee1c1ce37473b <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Products-Rasta_Clothing.html> .
+_:node33dfb7b46546da57c0ee1c1ce37473b <http://schema.org/Product/offers> _:nodec67e6be8f26db363f9824267c77faf3 <http://www.cultureapparel.com/Products-Rasta_Clothing.html> .
+_:node33dfb7b46546da57c0ee1c1ce37473b <http://schema.org/Product/name> "Rasta Round Metal Earrings" <http://www.cultureapparel.com/Products-Rasta_Clothing.html> .
+_:node33dfb7b46546da57c0ee1c1ce37473b <http://schema.org/Product/image> <http://www.cultureapparel.com/Products-Rasta_Clothing.html/icon-img-caome03.jpg> <http://www.cultureapparel.com/Products-Rasta_Clothing.html> .
+_:node7171695f8c604d9fa52f8744534e9a7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Bob_Marley_Wear-Bob_Marley_Women_Clothes.html> .
+_:node7171695f8c604d9fa52f8744534e9a7 <http://schema.org/Product/offers> _:nodeb76e569e2b1edea4a9addecea0f010ff <http://www.cultureapparel.com/Bob_Marley_Wear-Bob_Marley_Women_Clothes.html> .
+_:node7171695f8c604d9fa52f8744534e9a7 <http://schema.org/Product/name> "Bob Marley One Love Stripes Black T-Shirt" <http://www.cultureapparel.com/Bob_Marley_Wear-Bob_Marley_Women_Clothes.html> .
+_:node7171695f8c604d9fa52f8744534e9a7 <http://schema.org/Product/image> <http://www.cultureapparel.com/Bob_Marley_Wear-Bob_Marley_Women_Clothes.html/icon-img-bm5596.jpg> <http://www.cultureapparel.com/Bob_Marley_Wear-Bob_Marley_Women_Clothes.html> .
+_:nodeb76e569e2b1edea4a9addecea0f010ff <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Bob_Marley_Wear-Bob_Marley_Women_Clothes.html> .
+_:nodeb76e569e2b1edea4a9addecea0f010ff <http://schema.org/Offer/price> "$17.50" <http://www.cultureapparel.com/Bob_Marley_Wear-Bob_Marley_Women_Clothes.html> .
+_:nodeb76e569e2b1edea4a9addecea0f010ff <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Bob_Marley_Wear-Bob_Marley_Women_Clothes.html> .
+_:node8f231335d6b559b7f43404b9d4d2cd0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/WebPage> <http://www.cultureapparel.com/Bob_Marley_Wear-Bob_Marley_Women_Clothes.html> .
+_:node8f231335d6b559b7f43404b9d4d2cd0 <http://schema.org/WebPage/breadcrumb> "\n            Bob Marley Wear\n                >>\n                    Bob Marley Women Clothes\n                " <http://www.cultureapparel.com/Bob_Marley_Wear-Bob_Marley_Women_Clothes.html> .
+_:node94e381c04fb6f018a1d8e53f6ee01998 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Bob_Marley_Wear-Bob_Marley_Women_Clothes.html> .
+_:node94e381c04fb6f018a1d8e53f6ee01998 <http://schema.org/Offer/price> "$18.75" <http://www.cultureapparel.com/Bob_Marley_Wear-Bob_Marley_Women_Clothes.html> .
+_:node94e381c04fb6f018a1d8e53f6ee01998 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Bob_Marley_Wear-Bob_Marley_Women_Clothes.html> .
+_:nodee1eb905be87d4a5c81d366974aaf333 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Store> <http://www.cultureapparel.com/Bob_Marley_Wear-Bob_Marley_Women_Clothes.html> .
+_:nodee1eb905be87d4a5c81d366974aaf333 <http://schema.org/Store/url> "http://www.cultureapparel.com/" <http://www.cultureapparel.com/Bob_Marley_Wear-Bob_Marley_Women_Clothes.html> .
+_:nodee1eb905be87d4a5c81d366974aaf333 <http://schema.org/Store/name> "CULTUREAPPAREL" <http://www.cultureapparel.com/Bob_Marley_Wear-Bob_Marley_Women_Clothes.html> .
+_:nodee1eb905be87d4a5c81d366974aaf333 <http://schema.org/Store/logo> <http://www.cultureapparel.com/Bob_Marley_Wear-Bob_Marley_Women_Clothes.html/img-logo800.jpg> <http://www.cultureapparel.com/Bob_Marley_Wear-Bob_Marley_Women_Clothes.html> .
+_:nodec512ee2c9940cb9f858623233422391 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Bob_Marley_Wear-Bob_Marley_Women_Clothes.html> .
+_:nodec512ee2c9940cb9f858623233422391 <http://schema.org/Product/offers> _:node94e381c04fb6f018a1d8e53f6ee01998 <http://www.cultureapparel.com/Bob_Marley_Wear-Bob_Marley_Women_Clothes.html> .
+_:nodec512ee2c9940cb9f858623233422391 <http://schema.org/Product/name> "Bob Marley Rasta Tam Asphalt V-Neck T-Shirt" <http://www.cultureapparel.com/Bob_Marley_Wear-Bob_Marley_Women_Clothes.html> .
+_:nodec512ee2c9940cb9f858623233422391 <http://schema.org/Product/image> <http://www.cultureapparel.com/Bob_Marley_Wear-Bob_Marley_Women_Clothes.html/icon-img-bm5581_600.jpg> <http://www.cultureapparel.com/Bob_Marley_Wear-Bob_Marley_Women_Clothes.html> .
+_:node1b343f978171b2ea7261eae69b4d70c0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Store> <http://www.cultureapparel.com/African_Clothing-Kids_African_Clothing.html> .
+_:node1b343f978171b2ea7261eae69b4d70c0 <http://schema.org/Store/url> "http://www.cultureapparel.com/" <http://www.cultureapparel.com/African_Clothing-Kids_African_Clothing.html> .
+_:node1b343f978171b2ea7261eae69b4d70c0 <http://schema.org/Store/name> "CULTUREAPPAREL" <http://www.cultureapparel.com/African_Clothing-Kids_African_Clothing.html> .
+_:node1b343f978171b2ea7261eae69b4d70c0 <http://schema.org/Store/logo> <http://www.cultureapparel.com/African_Clothing-Kids_African_Clothing.html/img-logo800.jpg> <http://www.cultureapparel.com/African_Clothing-Kids_African_Clothing.html> .
+_:node23e62a92abc2e8929d5217ae620b836 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/African_Clothing-Kids_African_Clothing.html> .
+_:node23e62a92abc2e8929d5217ae620b836 <http://schema.org/Product/offers> _:node1fb766168d34a99e77c5cd87f2116b71 <http://www.cultureapparel.com/African_Clothing-Kids_African_Clothing.html> .
+_:node23e62a92abc2e8929d5217ae620b836 <http://schema.org/Product/name> "Children's Traditional Print Dashiki" <http://www.cultureapparel.com/African_Clothing-Kids_African_Clothing.html> .
+_:node23e62a92abc2e8929d5217ae620b836 <http://schema.org/Product/image> <http://www.cultureapparel.com/African_Clothing-Kids_African_Clothing.html/icon-img-c-c001matrix.jpg> <http://www.cultureapparel.com/African_Clothing-Kids_African_Clothing.html> .
+_:node4c9527b4da39fe3356ac828393b3f8fc <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/WebPage> <http://www.cultureapparel.com/African_Clothing-Kids_African_Clothing.html> .
+_:node4c9527b4da39fe3356ac828393b3f8fc <http://schema.org/WebPage/breadcrumb> "\n            African Wear\n                >>\n                    Kids African Clothing\n                " <http://www.cultureapparel.com/African_Clothing-Kids_African_Clothing.html> .
+_:nodef3126e16221f62746f4dd259ed7427f <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/African_Clothing-Kids_African_Clothing.html> .
+_:nodef3126e16221f62746f4dd259ed7427f <http://schema.org/Product/offers> _:node12acc731e4e29a1b63dfefaeb9c2214f <http://www.cultureapparel.com/African_Clothing-Kids_African_Clothing.html> .
+_:nodef3126e16221f62746f4dd259ed7427f <http://schema.org/Product/name> "Children's Dashiki & Shorts Set ONE SIZE ONLY AVAI" <http://www.cultureapparel.com/African_Clothing-Kids_African_Clothing.html> .
+_:nodef3126e16221f62746f4dd259ed7427f <http://schema.org/Product/image> <http://www.cultureapparel.com/African_Clothing-Kids_African_Clothing.html/icon-img-c-c917.jpg> <http://www.cultureapparel.com/African_Clothing-Kids_African_Clothing.html> .
+_:node12acc731e4e29a1b63dfefaeb9c2214f <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/African_Clothing-Kids_African_Clothing.html> .
+_:node12acc731e4e29a1b63dfefaeb9c2214f <http://schema.org/Offer/price> "Now: $15.99" <http://www.cultureapparel.com/African_Clothing-Kids_African_Clothing.html> .
+_:node12acc731e4e29a1b63dfefaeb9c2214f <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/African_Clothing-Kids_African_Clothing.html> .
+_:node1fb766168d34a99e77c5cd87f2116b71 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/African_Clothing-Kids_African_Clothing.html> .
+_:node1fb766168d34a99e77c5cd87f2116b71 <http://schema.org/Offer/price> "Now: $9.99" <http://www.cultureapparel.com/African_Clothing-Kids_African_Clothing.html> .
+_:node1fb766168d34a99e77c5cd87f2116b71 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/African_Clothing-Kids_African_Clothing.html> .
+_:node1d54f9f76f8e10d920785cfe2910a05e <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node1d54f9f76f8e10d920785cfe2910a05e <http://schema.org/Offer/price> "$28.99" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node1d54f9f76f8e10d920785cfe2910a05e <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node6b7831c9d3576d1c383b4935e574e96c <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/WebPage> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node6b7831c9d3576d1c383b4935e574e96c <http://schema.org/WebPage/breadcrumb> "\n            African Wear\n                >>\n                    Kids African Clothing\n                >>\n                    Boys African Clothing\n                " <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node11a6be8852dfcbb455e44a80fe9e1ad2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Store> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node11a6be8852dfcbb455e44a80fe9e1ad2 <http://schema.org/Store/url> "http://www.cultureapparel.com/" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node11a6be8852dfcbb455e44a80fe9e1ad2 <http://schema.org/Store/name> "CULTUREAPPAREL" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node11a6be8852dfcbb455e44a80fe9e1ad2 <http://schema.org/Store/logo> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html/img-logo800.jpg> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodec1219b32d19b85a9f3cffdf2c38f5b0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodec1219b32d19b85a9f3cffdf2c38f5b0 <http://schema.org/Offer/price> "Now: $15.99" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodec1219b32d19b85a9f3cffdf2c38f5b0 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodeccd07df37492a7ccf283feff825fbf <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodeccd07df37492a7ccf283feff825fbf <http://schema.org/Offer/price> "Now: $9.99" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodeccd07df37492a7ccf283feff825fbf <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node8163d95e7d3f484c2da1b62a4a990 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node8163d95e7d3f484c2da1b62a4a990 <http://schema.org/Product/sku> "C-C930" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node8163d95e7d3f484c2da1b62a4a990 <http://schema.org/Product/offers> _:node1d54f9f76f8e10d920785cfe2910a05e <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node8163d95e7d3f484c2da1b62a4a990 <http://schema.org/Product/name> "Kente Children's Pant Set" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node8163d95e7d3f484c2da1b62a4a990 <http://schema.org/Product/description> "Kente Children's Pant Set" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node8163d95e7d3f484c2da1b62a4a990 <http://schema.org/Product/image> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html/icon-img-c-c930.jpg> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node742ef8ebfbab6d26fe951ecd1863a047 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node742ef8ebfbab6d26fe951ecd1863a047 <http://schema.org/Offer/price> "$12.99" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node742ef8ebfbab6d26fe951ecd1863a047 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodef6a594661f7942cde5ac32783f31b4e <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodef6a594661f7942cde5ac32783f31b4e <http://schema.org/Product/sku> "KIDSHORTS" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodef6a594661f7942cde5ac32783f31b4e <http://schema.org/Product/offers> _:nodea049b2113a7059532581603488719bf9 <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodef6a594661f7942cde5ac32783f31b4e <http://schema.org/Product/name> "Unisex Kids Shorts" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodef6a594661f7942cde5ac32783f31b4e <http://schema.org/Product/description> "Unisex Kids Shorts" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodef6a594661f7942cde5ac32783f31b4e <http://schema.org/Product/image> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html/icon-img-boysdashikishort.jpg> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodeafbb3194cbea6cd329874eae4a3e2a <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodeafbb3194cbea6cd329874eae4a3e2a <http://schema.org/Product/sku> "C-C917" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodeafbb3194cbea6cd329874eae4a3e2a <http://schema.org/Product/offers> _:node2d98a1a1155dd854301c43a6c964344f <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodeafbb3194cbea6cd329874eae4a3e2a <http://schema.org/Product/name> "Children's Dashiki & Shorts Set ONE SIZE ONLY AVAI" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodeafbb3194cbea6cd329874eae4a3e2a <http://schema.org/Product/description> "Children's Dashiki & Shorts Set ONE SIZE ONLY AVAILABLE" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodeafbb3194cbea6cd329874eae4a3e2a <http://schema.org/Product/image> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html/icon-img-c-c917.jpg> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node8d8b2dccffea329d7370d77abcc4508d <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node8d8b2dccffea329d7370d77abcc4508d <http://schema.org/Offer/price> "$17.99" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node8d8b2dccffea329d7370d77abcc4508d <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node6f27e9a78958f1a984caf52189ccd73 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node6f27e9a78958f1a984caf52189ccd73 <http://schema.org/Product/sku> "C-C071" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node6f27e9a78958f1a984caf52189ccd73 <http://schema.org/Product/offers> _:nodec2768cafc21cbc3c5e066e7bd8336b4 <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node6f27e9a78958f1a984caf52189ccd73 <http://schema.org/Product/name> "Boy's Embroidered Brocade Set" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node6f27e9a78958f1a984caf52189ccd73 <http://schema.org/Product/description> "Boy's Embroidered Brocade Set" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node6f27e9a78958f1a984caf52189ccd73 <http://schema.org/Product/image> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html/icon-img-c-c071.jpg> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodea66766f7f4cce050f88bc76a63702223 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodea66766f7f4cce050f88bc76a63702223 <http://schema.org/Offer/price> "Now: $9.99" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodea66766f7f4cce050f88bc76a63702223 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodea049b2113a7059532581603488719bf9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodea049b2113a7059532581603488719bf9 <http://schema.org/Offer/price> "$3.99" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodea049b2113a7059532581603488719bf9 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node16c180e830b1d34d3aa7871569d9ad54 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node16c180e830b1d34d3aa7871569d9ad54 <http://schema.org/Product/sku> "C-C001" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node16c180e830b1d34d3aa7871569d9ad54 <http://schema.org/Product/offers> _:nodeccd07df37492a7ccf283feff825fbf <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node16c180e830b1d34d3aa7871569d9ad54 <http://schema.org/Product/name> "Children's Traditional Print Dashiki" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node16c180e830b1d34d3aa7871569d9ad54 <http://schema.org/Product/description> "Children's Traditional Print Dashiki" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node16c180e830b1d34d3aa7871569d9ad54 <http://schema.org/Product/image> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html/icon-img-c-c001matrix.jpg> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodec2768cafc21cbc3c5e066e7bd8336b4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodec2768cafc21cbc3c5e066e7bd8336b4 <http://schema.org/Offer/price> "$39.99" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodec2768cafc21cbc3c5e066e7bd8336b4 <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node417715f6cb32ec7992cf88fe28fea94 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node417715f6cb32ec7992cf88fe28fea94 <http://schema.org/Product/sku> "C-C005" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node417715f6cb32ec7992cf88fe28fea94 <http://schema.org/Product/offers> _:node69c69feec960451b5d547628d9c3f0fc <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node417715f6cb32ec7992cf88fe28fea94 <http://schema.org/Product/name> "Children's Embroidered Formal Pant Set" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node417715f6cb32ec7992cf88fe28fea94 <http://schema.org/Product/description> "Children's Embroidered Formal Pant Set" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node417715f6cb32ec7992cf88fe28fea94 <http://schema.org/Product/image> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html/icon-img-c-c005.jpg> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodef885cb468f9c212044c2c3ad94ebf0fc <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodef885cb468f9c212044c2c3ad94ebf0fc <http://schema.org/Offer/price> "Now: $22.99" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodef885cb468f9c212044c2c3ad94ebf0fc <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodec5f11f854feead9aa02a87969944ed40 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodec5f11f854feead9aa02a87969944ed40 <http://schema.org/Product/offers> _:nodea66766f7f4cce050f88bc76a63702223 <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodec5f11f854feead9aa02a87969944ed40 <http://schema.org/Product/name> "Children's Traditional Print Dashiki" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodec5f11f854feead9aa02a87969944ed40 <http://schema.org/Product/image> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html/icon-img-c-c001matrix.jpg> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodeb98c1570bc81e27bb74f6faf2dc945e <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodeb98c1570bc81e27bb74f6faf2dc945e <http://schema.org/Product/sku> "CAMI2288" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodeb98c1570bc81e27bb74f6faf2dc945e <http://schema.org/Product/offers> _:nodef885cb468f9c212044c2c3ad94ebf0fc <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodeb98c1570bc81e27bb74f6faf2dc945e <http://schema.org/Product/name> "Boy's 3 Piece Embroidered Set" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodeb98c1570bc81e27bb74f6faf2dc945e <http://schema.org/Product/description> "Boy's 3 Piece Embroidered Set" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodeb98c1570bc81e27bb74f6faf2dc945e <http://schema.org/Product/image> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html/icon-img-kr2014.jpg> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node59bd4568e7679aced13ffa9cd4e4838 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node59bd4568e7679aced13ffa9cd4e4838 <http://schema.org/Product/offers> _:nodec1219b32d19b85a9f3cffdf2c38f5b0 <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node59bd4568e7679aced13ffa9cd4e4838 <http://schema.org/Product/name> "Children's Dashiki & Shorts Set ONE SIZE ONLY AVAI" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node59bd4568e7679aced13ffa9cd4e4838 <http://schema.org/Product/image> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html/icon-img-c-c917.jpg> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node69c69feec960451b5d547628d9c3f0fc <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node69c69feec960451b5d547628d9c3f0fc <http://schema.org/Offer/price> "Now: $29.99" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node69c69feec960451b5d547628d9c3f0fc <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodea786f62e6dc0c14be0f07c1a26d54c74 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodea786f62e6dc0c14be0f07c1a26d54c74 <http://schema.org/Product/sku> "C-C076" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodea786f62e6dc0c14be0f07c1a26d54c74 <http://schema.org/Product/offers> _:node742ef8ebfbab6d26fe951ecd1863a047 <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodea786f62e6dc0c14be0f07c1a26d54c74 <http://schema.org/Product/name> "Boy's Brocade Pants" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodea786f62e6dc0c14be0f07c1a26d54c74 <http://schema.org/Product/description> "Boy's Brocade Pants" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodea786f62e6dc0c14be0f07c1a26d54c74 <http://schema.org/Product/image> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html/icon-img-c-c076matrix.jpg> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node2d98a1a1155dd854301c43a6c964344f <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node2d98a1a1155dd854301c43a6c964344f <http://schema.org/Offer/price> "Now: $15.99" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:node2d98a1a1155dd854301c43a6c964344f <http://schema.org/Offer/priceCurrency> "USD" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodef1b493a89ec20834a3efcb39dd79b46 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodef1b493a89ec20834a3efcb39dd79b46 <http://schema.org/Product/sku> "C-C075" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodef1b493a89ec20834a3efcb39dd79b46 <http://schema.org/Product/offers> _:node8d8b2dccffea329d7370d77abcc4508d <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodef1b493a89ec20834a3efcb39dd79b46 <http://schema.org/Product/name> "Boy's Brocade Top & Cap" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodef1b493a89ec20834a3efcb39dd79b46 <http://schema.org/Product/description> "Boy's Brocade Top & Cap" <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .
+_:nodef1b493a89ec20834a3efcb39dd79b46 <http://schema.org/Product/image> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html/icon-img-c-c075matrix.jpg> <http://www.cultureapparel.com/Kids_African_Clothing-Boys_African_Clothing.html> .

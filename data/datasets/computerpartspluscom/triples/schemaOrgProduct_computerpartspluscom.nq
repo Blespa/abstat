@@ -1,0 +1,338 @@
+_:nodea81b415f8adc9340b3952acf2786839b <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:nodea81b415f8adc9340b3952acf2786839b <http://schema.org/Product/mpn> "T-8P8C-ST"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:nodea81b415f8adc9340b3952acf2786839b <http://schema.org/Product/offers> _:node1e1daad93df7951d861dd13bb2b2e <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:nodea81b415f8adc9340b3952acf2786839b <http://schema.org/Product/name> "One 8P8C Plug into Two 8P8C Jacks Adapter "@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:nodea81b415f8adc9340b3952acf2786839b <http://schema.org/Product/description> "One 8P8C Plug into Two 8P8C Jacks Phone or Network Adapter\n\nStraight-thru type connection \nTwo 8P8C Female sockets to one 8P8C Male plug"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:nodea81b415f8adc9340b3952acf2786839b <http://schema.org/Product/productID> "CT-8P8C-ST"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:nodea81b415f8adc9340b3952acf2786839b <http://schema.org/Product/image> "http://www.computerpartsplus.com/contents/media/T-8P8C-ST.gif"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:nodea81b415f8adc9340b3952acf2786839b <http://schema.org/Product/brand> "CPP"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node4bd55b1d21ddd9aa5215bcd74c49c122 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node4bd55b1d21ddd9aa5215bcd74c49c122 <http://schema.org/Product/mpn> "COUPLE-6-ST"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node4bd55b1d21ddd9aa5215bcd74c49c122 <http://schema.org/Product/offers> _:noded94bcd0498dc3f9afe3745768c5b35c <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node4bd55b1d21ddd9aa5215bcd74c49c122 <http://schema.org/Product/name> "Modular In-Line Coupler, 6p6c "@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node4bd55b1d21ddd9aa5215bcd74c49c122 <http://schema.org/Product/description> "Phone\u00A0inline Coupler for 6P6C Connections\nConnects two 6P6C (RJ11 and RJ12)\u00A0sockets \nPlugs into any standard 6P6C plug \nStraight-thru OR Reverse type connection \nExtends the existing length of two separate cables"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node4bd55b1d21ddd9aa5215bcd74c49c122 <http://schema.org/Product/productID> "CCOUPLE-6-ST"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node4bd55b1d21ddd9aa5215bcd74c49c122 <http://schema.org/Product/image> "http://www.computerpartsplus.com/contents/media/couple-6-xx.gif"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node4bd55b1d21ddd9aa5215bcd74c49c122 <http://schema.org/Product/brand> "CPP"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:noded94bcd0498dc3f9afe3745768c5b35c <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:noded94bcd0498dc3f9afe3745768c5b35c <http://schema.org/Offer/price> "0.59"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:noded94bcd0498dc3f9afe3745768c5b35c <http://schema.org/Offer/category> "Electronics > Electronics Accessories > Cables > Telephone Cables\n"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:noded94bcd0498dc3f9afe3745768c5b35c <http://schema.org/Offer/itemCondition> "new"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:noded94bcd0498dc3f9afe3745768c5b35c <http://schema.org/Offer/priceCurrency> "USD"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node1950d18945be9a339d97dd664fe4b3f <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node1950d18945be9a339d97dd664fe4b3f <http://schema.org/Offer/price> "1.10"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node1950d18945be9a339d97dd664fe4b3f <http://schema.org/Offer/category> "Electronics > Electronics Accessories > Cables > Telephone Cables\n"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node1950d18945be9a339d97dd664fe4b3f <http://schema.org/Offer/itemCondition> "new"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node1950d18945be9a339d97dd664fe4b3f <http://schema.org/Offer/priceCurrency> "USD"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node838f2a293b50c64af574b949de3c3b9f <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node838f2a293b50c64af574b949de3c3b9f <http://schema.org/Product/mpn> "T-6P4C-3S1P"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node838f2a293b50c64af574b949de3c3b9f <http://schema.org/Product/offers> _:nodead4d3c3b8de78054d2f470c261cc746b <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node838f2a293b50c64af574b949de3c3b9f <http://schema.org/Product/name> "One Phone Plug to Three Phone Jacks "@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node838f2a293b50c64af574b949de3c3b9f <http://schema.org/Product/description> "This convenient adapter converts any phone jack in your home to three separate jacks, ideal for homes or offices with more than one phone line. The three jacks are separated into Line 1, Line 2, and Line 1 + 2, which allows conference calls if needed.\nConnects three Female sockets to one Male plug \nPlugs into any standard phone line socket \nEasy to use with each individual socket labeled"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node838f2a293b50c64af574b949de3c3b9f <http://schema.org/Product/productID> "CT-6P4C-3S1P"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node838f2a293b50c64af574b949de3c3b9f <http://schema.org/Product/image> "http://www.computerpartsplus.com/contents/media/t_t-6p4c-3s1p-1.jpg"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node838f2a293b50c64af574b949de3c3b9f <http://schema.org/Product/brand> "CPP"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:nodec9ef23ba837ab34d372442070f09ca1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:nodec9ef23ba837ab34d372442070f09ca1 <http://schema.org/Offer/price> "1.69"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:nodec9ef23ba837ab34d372442070f09ca1 <http://schema.org/Offer/category> "Electronics > Electronics Accessories > Cables > Telephone Cables\n"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:nodec9ef23ba837ab34d372442070f09ca1 <http://schema.org/Offer/itemCondition> "new"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:nodec9ef23ba837ab34d372442070f09ca1 <http://schema.org/Offer/priceCurrency> "USD"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:nodeb3d2ac80f4a91ac63837b9d15136c3ff <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:nodeb3d2ac80f4a91ac63837b9d15136c3ff <http://schema.org/Offer/price> "1.09"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:nodeb3d2ac80f4a91ac63837b9d15136c3ff <http://schema.org/Offer/category> "Electronics > Electronics Accessories > Cables > Telephone Cables\n"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:nodeb3d2ac80f4a91ac63837b9d15136c3ff <http://schema.org/Offer/itemCondition> "new"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:nodeb3d2ac80f4a91ac63837b9d15136c3ff <http://schema.org/Offer/priceCurrency> "USD"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node1c4de2bda946915374be3f4ecba9bbab <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node1c4de2bda946915374be3f4ecba9bbab <http://schema.org/Offer/price> "0.88"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node1c4de2bda946915374be3f4ecba9bbab <http://schema.org/Offer/category> "Electronics > Electronics Accessories > Cables > Telephone Cables\n"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node1c4de2bda946915374be3f4ecba9bbab <http://schema.org/Offer/itemCondition> "new"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node1c4de2bda946915374be3f4ecba9bbab <http://schema.org/Offer/priceCurrency> "USD"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node1e803d9362e73bf0b694861ecfc3c8a <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node1e803d9362e73bf0b694861ecfc3c8a <http://schema.org/Product/mpn> "T-6P4C-3S"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node1e803d9362e73bf0b694861ecfc3c8a <http://schema.org/Product/offers> _:node1950d18945be9a339d97dd664fe4b3f <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node1e803d9362e73bf0b694861ecfc3c8a <http://schema.org/Product/name> "6P4C Three Way Adapter "@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node1e803d9362e73bf0b694861ecfc3c8a <http://schema.org/Product/description> "Three 6P4C Jacks Phone Adapter\nConnect\u00A0three male plugs together\u00A0 \nIdeal for places with more than one phone line"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node1e803d9362e73bf0b694861ecfc3c8a <http://schema.org/Product/productID> "CT-6P4C-3S"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node1e803d9362e73bf0b694861ecfc3c8a <http://schema.org/Product/image> "http://www.computerpartsplus.com/contents/media/T-6P4C-3S.gif"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node1e803d9362e73bf0b694861ecfc3c8a <http://schema.org/Product/brand> "CPP"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node7a11a33f4f3d644db02857538d9b265 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node7a11a33f4f3d644db02857538d9b265 <http://schema.org/Product/mpn> "T-8P8C-3S"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node7a11a33f4f3d644db02857538d9b265 <http://schema.org/Product/offers> _:nodec9ef23ba837ab34d372442070f09ca1 <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node7a11a33f4f3d644db02857538d9b265 <http://schema.org/Product/name> "8P8C Female Three Way Adapter "@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node7a11a33f4f3d644db02857538d9b265 <http://schema.org/Product/description> "One 8P8C\u00A0Jack into Two 8P8C Jacks Network Adapter\nThis convenient adapter converts any standard Network jack in your home or office into two separate jacks. \nConnect\u00A0three male plugs together\u00A0 \n\u00A0\n\u00A0"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node7a11a33f4f3d644db02857538d9b265 <http://schema.org/Product/productID> "CT-8P8C-3S"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node7a11a33f4f3d644db02857538d9b265 <http://schema.org/Product/image> "http://www.computerpartsplus.com/contents/media/T-8P8C-3S.gif"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node7a11a33f4f3d644db02857538d9b265 <http://schema.org/Product/brand> "CPP"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node1e1daad93df7951d861dd13bb2b2e <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node1e1daad93df7951d861dd13bb2b2e <http://schema.org/Offer/price> "1.56"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node1e1daad93df7951d861dd13bb2b2e <http://schema.org/Offer/category> "Electronics > Electronics Accessories > Cables > Telephone Cables\n"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node1e1daad93df7951d861dd13bb2b2e <http://schema.org/Offer/itemCondition> "new"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node1e1daad93df7951d861dd13bb2b2e <http://schema.org/Offer/priceCurrency> "USD"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:nodead4d3c3b8de78054d2f470c261cc746b <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:nodead4d3c3b8de78054d2f470c261cc746b <http://schema.org/Offer/price> "1.29"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:nodead4d3c3b8de78054d2f470c261cc746b <http://schema.org/Offer/category> "Electronics > Electronics Accessories > Cables > Telephone Cables\n"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:nodead4d3c3b8de78054d2f470c261cc746b <http://schema.org/Offer/itemCondition> "new"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:nodead4d3c3b8de78054d2f470c261cc746b <http://schema.org/Offer/priceCurrency> "USD"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node61ce3786197942aca7c814cce8ebe <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node61ce3786197942aca7c814cce8ebe <http://schema.org/Product/mpn> "COUPLE-8-ST"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node61ce3786197942aca7c814cce8ebe <http://schema.org/Product/offers> _:nodeb3d2ac80f4a91ac63837b9d15136c3ff <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node61ce3786197942aca7c814cce8ebe <http://schema.org/Product/name> "Modular In-Line Coupler, 8p8c "@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node61ce3786197942aca7c814cce8ebe <http://schema.org/Product/description> "Phone or Network Inline Coupler for\u00A08P8C Connections\nTwo\u00A08P8C sockets wired together \nPlugs into any standard 8P8C plug \nExtends the existing length of two separate cables \nStraight and Reverse Couplers Explained"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node61ce3786197942aca7c814cce8ebe <http://schema.org/Product/productID> "CCOUPLE-8-ST"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node61ce3786197942aca7c814cce8ebe <http://schema.org/Product/image> "http://www.computerpartsplus.com/contents/media/COUPLE-8-ST.gif"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node61ce3786197942aca7c814cce8ebe <http://schema.org/Product/brand> "CPP"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node3b95272f71af763a1909512cd2aeb6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node3b95272f71af763a1909512cd2aeb6 <http://schema.org/Product/mpn> "T-6P6C-ST"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node3b95272f71af763a1909512cd2aeb6 <http://schema.org/Product/offers> _:node1c4de2bda946915374be3f4ecba9bbab <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node3b95272f71af763a1909512cd2aeb6 <http://schema.org/Product/name> "One 6P6C Plug into Two 6P6C Jacks Adapter "@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node3b95272f71af763a1909512cd2aeb6 <http://schema.org/Product/description> "One 6P6C Plug\u00A0and Two 6P6C Jacks Phone\u00A0Adaptor\n\nPlugs into standard phone socket \nConverts any 6P6C socket into two separate jacks."@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node3b95272f71af763a1909512cd2aeb6 <http://schema.org/Product/productID> "CT-6P6C-ST"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node3b95272f71af763a1909512cd2aeb6 <http://schema.org/Product/image> "http://www.computerpartsplus.com/contents/media/T-6P6C-XX.gif"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:node3b95272f71af763a1909512cd2aeb6 <http://schema.org/Product/brand> "CPP"@en-us <http://www.computerpartsplus.com/contents/en-us/d116_Phone_Adapters_Junctions.html> .
+_:nodea748504811fea6697aafbb7525ac147c <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodea748504811fea6697aafbb7525ac147c <http://schema.org/Product/mpn> "PIPS-12416"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodea748504811fea6697aafbb7525ac147c <http://schema.org/Product/offers> _:nodefeaf19b05e9a84a99d14ac3f4da903c <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodea748504811fea6697aafbb7525ac147c <http://schema.org/Product/name> "12V DC Power Adapter 4A Output "@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodea748504811fea6697aafbb7525ac147c <http://schema.org/Product/description> "12V DC power \n4A output \n100-240V AC input \nInner Diameter: 2.1mm \nOuter Diameter: 5.5mm \nNote: Power cord not included - uses standard computer cord\nTo order: CCORD-1"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodea748504811fea6697aafbb7525ac147c <http://schema.org/Product/productID> "CPIPS-12416"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodea748504811fea6697aafbb7525ac147c <http://schema.org/Product/image> "http://www.computerpartsplus.com/contents/media/t_pips-12416-4.jpg"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodea748504811fea6697aafbb7525ac147c <http://schema.org/Product/brand> "CPP"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:noded2d62aa2606d64a662f448f54b32975a <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:noded2d62aa2606d64a662f448f54b32975a <http://schema.org/Product/mpn> "PIPS-5V2A-21"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:noded2d62aa2606d64a662f448f54b32975a <http://schema.org/Product/offers> _:node9a19befba7f1eb44d3b75a5040f1c <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:noded2d62aa2606d64a662f448f54b32975a <http://schema.org/Product/name> "5V DC Power Adapter 2 Amp "@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:noded2d62aa2606d64a662f448f54b32975a <http://schema.org/Product/description> "Input: AC 100 - 240V 50 / 60 Hz 0.3A \nOoutput: DC 5V 2A \n2 sizes of output connectors available: \n\n\nI/D: 2.1mm\u00A0\u00A0 O/D: 5.5mm \nI/D: 2.5mm\u00A0\u00A0 O/D: 5.5mm"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:noded2d62aa2606d64a662f448f54b32975a <http://schema.org/Product/productID> "CPIPS-5V2A-25"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:noded2d62aa2606d64a662f448f54b32975a <http://schema.org/Product/image> "http://www.computerpartsplus.com/contents/media/pips-5v2a-1.jpg"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:noded2d62aa2606d64a662f448f54b32975a <http://schema.org/Product/brand> "CPP"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node856945427ef3912b04be1b91d449876 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node856945427ef3912b04be1b91d449876 <http://schema.org/Product/mpn> "PIPS-18-500"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node856945427ef3912b04be1b91d449876 <http://schema.org/Product/offers> _:nodeabdb2b198b7ce2463c431b81f46c1c5 <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node856945427ef3912b04be1b91d449876 <http://schema.org/Product/name> "18V DC Power Adapter 500mA "@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node856945427ef3912b04be1b91d449876 <http://schema.org/Product/description> "18V DC power \n500mA output \n100-240V AC input \nInner Diameter: 2.1mm \nOuter Diameter: 5.5mm \nUL rated"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node856945427ef3912b04be1b91d449876 <http://schema.org/Product/productID> "CPIPS-18-500"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node856945427ef3912b04be1b91d449876 <http://schema.org/Product/image> "http://www.computerpartsplus.com/contents/media/t_pips-18-500-1.jpg"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node856945427ef3912b04be1b91d449876 <http://schema.org/Product/brand> "CPP"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node80533f29a7d4a872d3c3bb4555cd3fd <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node80533f29a7d4a872d3c3bb4555cd3fd <http://schema.org/Product/mpn> "USB-28101-KIT"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node80533f29a7d4a872d3c3bb4555cd3fd <http://schema.org/Product/offers> _:nodef1c18497c3aad2285b31bef5488d5 <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node80533f29a7d4a872d3c3bb4555cd3fd <http://schema.org/Product/name> "Universal Power Converter to USB "@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node80533f29a7d4a872d3c3bb4555cd3fd <http://schema.org/Product/description> "\nUSB charger for worldwide use \nConverts 100-240AC power to USB charger port\nCan charge any 5VDC 500mA to 5VCD 1000mA devices \n\u00A0USB female jack \nIncluded Adapter: Euro, USA, AUS, UL "@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node80533f29a7d4a872d3c3bb4555cd3fd <http://schema.org/Product/productID> "CUSB-28101-KIT"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node80533f29a7d4a872d3c3bb4555cd3fd <http://schema.org/Product/image> "http://www.computerpartsplus.com/contents/media/USB-28101-KIT.gif"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node80533f29a7d4a872d3c3bb4555cd3fd <http://schema.org/Product/brand> "CPP"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node252149f9b0897bf8f88a7ac963e0ba4c <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node252149f9b0897bf8f88a7ac963e0ba4c <http://schema.org/Offer/price> "8.23"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node252149f9b0897bf8f88a7ac963e0ba4c <http://schema.org/Offer/category> "Electronics > Electronics Accessories > Adapters > Power Adapters\n"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node252149f9b0897bf8f88a7ac963e0ba4c <http://schema.org/Offer/itemCondition> "new"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node252149f9b0897bf8f88a7ac963e0ba4c <http://schema.org/Offer/priceCurrency> "USD"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node7b7f231851afea6b293a3ba6581312e <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node7b7f231851afea6b293a3ba6581312e <http://schema.org/Offer/price> "10.95"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node7b7f231851afea6b293a3ba6581312e <http://schema.org/Offer/category> "Electronics > Electronics Accessories > Adapters > Power Adapters\n"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node7b7f231851afea6b293a3ba6581312e <http://schema.org/Offer/itemCondition> "new"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node7b7f231851afea6b293a3ba6581312e <http://schema.org/Offer/priceCurrency> "USD"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node875e14eaabc4404c2968f4367979a6f <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node875e14eaabc4404c2968f4367979a6f <http://schema.org/Offer/price> "5.61"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node875e14eaabc4404c2968f4367979a6f <http://schema.org/Offer/category> "Electronics > Electronics Accessories > Adapters > Power Adapters\n"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node875e14eaabc4404c2968f4367979a6f <http://schema.org/Offer/itemCondition> "new"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node875e14eaabc4404c2968f4367979a6f <http://schema.org/Offer/priceCurrency> "USD"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node3af71dbb87f4af32a783ed9b4e5e72b0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node3af71dbb87f4af32a783ed9b4e5e72b0 <http://schema.org/Offer/price> "11.97"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node3af71dbb87f4af32a783ed9b4e5e72b0 <http://schema.org/Offer/category> "Electronics > Electronics Accessories > Adapters > Power Adapters\n"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node3af71dbb87f4af32a783ed9b4e5e72b0 <http://schema.org/Offer/itemCondition> "new"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node3af71dbb87f4af32a783ed9b4e5e72b0 <http://schema.org/Offer/priceCurrency> "USD"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node5ddc153d768086d85097d34056f5943 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node5ddc153d768086d85097d34056f5943 <http://schema.org/Offer/price> "8.10"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node5ddc153d768086d85097d34056f5943 <http://schema.org/Offer/category> "Electronics > Electronics Accessories > Adapters > Power Adapters\n"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node5ddc153d768086d85097d34056f5943 <http://schema.org/Offer/itemCondition> "new"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node5ddc153d768086d85097d34056f5943 <http://schema.org/Offer/priceCurrency> "USD"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodef1c18497c3aad2285b31bef5488d5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodef1c18497c3aad2285b31bef5488d5 <http://schema.org/Offer/price> "14.93"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodef1c18497c3aad2285b31bef5488d5 <http://schema.org/Offer/category> "Electronics > Electronics Accessories > Adapters > Power Adapters\n"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodef1c18497c3aad2285b31bef5488d5 <http://schema.org/Offer/itemCondition> "new"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodef1c18497c3aad2285b31bef5488d5 <http://schema.org/Offer/priceCurrency> "USD"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodee0c8b3d3d86bdab823f8df63f97c3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodee0c8b3d3d86bdab823f8df63f97c3 <http://schema.org/Product/mpn> "PIPS-12400"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodee0c8b3d3d86bdab823f8df63f97c3 <http://schema.org/Product/offers> _:node875e14eaabc4404c2968f4367979a6f <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodee0c8b3d3d86bdab823f8df63f97c3 <http://schema.org/Product/name> "12V DC Power Adapter 400mA "@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodee0c8b3d3d86bdab823f8df63f97c3 <http://schema.org/Product/description> "12 volt DC Power Adapter\n\n400ma output \n100-240 vac input \nConnector: \n\n2.1mm ID \n5.5mm OD"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodee0c8b3d3d86bdab823f8df63f97c3 <http://schema.org/Product/productID> "CPIPS-12400"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodee0c8b3d3d86bdab823f8df63f97c3 <http://schema.org/Product/image> "http://www.computerpartsplus.com/contents/media/t_pips-12400-1.jpg"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodee0c8b3d3d86bdab823f8df63f97c3 <http://schema.org/Product/brand> "CPP"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node9a19befba7f1eb44d3b75a5040f1c <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node9a19befba7f1eb44d3b75a5040f1c <http://schema.org/Offer/price> "8.10"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node9a19befba7f1eb44d3b75a5040f1c <http://schema.org/Offer/category> "Electronics > Electronics Accessories > Adapters > Power Adapters\n"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node9a19befba7f1eb44d3b75a5040f1c <http://schema.org/Offer/itemCondition> "new"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node9a19befba7f1eb44d3b75a5040f1c <http://schema.org/Offer/priceCurrency> "USD"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodeb271b0e89e3aedff472047a6551713 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodeb271b0e89e3aedff472047a6551713 <http://schema.org/Product/mpn> "PIPS-5V2A"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodeb271b0e89e3aedff472047a6551713 <http://schema.org/Product/offers> _:node2034dff970351ae52b81721af30ea6b <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodeb271b0e89e3aedff472047a6551713 <http://schema.org/Product/name> "5V DC Power Adapter 2 Amp "@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodeb271b0e89e3aedff472047a6551713 <http://schema.org/Product/description> "Input: AC 100 - 240V 50 / 60 Hz 0.3A \nOutput: DC 5V 2A \nI/D: 1.1mm \nO/D: 3.5mm \nAWG :20\u00A0"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodeb271b0e89e3aedff472047a6551713 <http://schema.org/Product/productID> "CPIPS-5V2A"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodeb271b0e89e3aedff472047a6551713 <http://schema.org/Product/image> "http://www.computerpartsplus.com/contents/media/pips-5v2a-1a.jpg"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodeb271b0e89e3aedff472047a6551713 <http://schema.org/Product/brand> "CPP"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node6aaaa4c1b69d66dcb16a97887f93bb31 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node6aaaa4c1b69d66dcb16a97887f93bb31 <http://schema.org/Product/mpn> "PIPS-1823"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node6aaaa4c1b69d66dcb16a97887f93bb31 <http://schema.org/Product/offers> _:node1e7b4a28e1bc126449d984c72c6227e <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node6aaaa4c1b69d66dcb16a97887f93bb31 <http://schema.org/Product/name> "18V DC 2300mA Power Adapter "@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node6aaaa4c1b69d66dcb16a97887f93bb31 <http://schema.org/Product/description> "Output: 18VDC 2.3A, regulated \nInput: 100-240VAC, 50-60Hz \nIdeal for power/video balun \nPower cable sold separately: \u00A0CCORD-NOTE-1"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node6aaaa4c1b69d66dcb16a97887f93bb31 <http://schema.org/Product/productID> "CPIPS-1823"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node6aaaa4c1b69d66dcb16a97887f93bb31 <http://schema.org/Product/image> "http://www.computerpartsplus.com/contents/media/t_pips-1823a.jpg"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node6aaaa4c1b69d66dcb16a97887f93bb31 <http://schema.org/Product/brand> "CPP"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodeac4d768ea54378878911bda9114fc82 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodeac4d768ea54378878911bda9114fc82 <http://schema.org/Product/mpn> "AVC-PA18V"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodeac4d768ea54378878911bda9114fc82 <http://schema.org/Product/offers> _:nodea618622dbd9ad684e868204286a8e084 <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodeac4d768ea54378878911bda9114fc82 <http://schema.org/Product/name> "18VDC Power Adapter, 500mA, Regulated "@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodeac4d768ea54378878911bda9114fc82 <http://schema.org/Product/description> "AC 120V / DC 18V Regulated \n500mA \nGreat for security cameras \nUnregulated \nHighly Dependable!"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodeac4d768ea54378878911bda9114fc82 <http://schema.org/Product/productID> "CAVC-PA18V"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodeac4d768ea54378878911bda9114fc82 <http://schema.org/Product/image> "http://www.computerpartsplus.com/contents/media/t_avc-pa18v-1.jpg"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodeac4d768ea54378878911bda9114fc82 <http://schema.org/Product/brand> "CPP"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodefa2c4828bdfacf166ebe842fe2124e6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodefa2c4828bdfacf166ebe842fe2124e6 <http://schema.org/Product/mpn> "PIPS-1210A"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodefa2c4828bdfacf166ebe842fe2124e6 <http://schema.org/Product/offers> _:node7e1adf20419b389a78d38d2c2dc5d1 <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodefa2c4828bdfacf166ebe842fe2124e6 <http://schema.org/Product/name> "12V DC Power Adapter 1A Output "@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodefa2c4828bdfacf166ebe842fe2124e6 <http://schema.org/Product/description> "12V DC power \n1A output \n100-240V AC Input \nConnector: \n\n2.1mm ID \n5.5mm OD\nUL rated"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodefa2c4828bdfacf166ebe842fe2124e6 <http://schema.org/Product/productID> "CPIPS-1210A"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodefa2c4828bdfacf166ebe842fe2124e6 <http://schema.org/Product/image> "http://www.computerpartsplus.com/contents/media/t_pips-1210a-4.jpg"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodefa2c4828bdfacf166ebe842fe2124e6 <http://schema.org/Product/brand> "CPP"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodec773a19d4bf929f987478659ee8189 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodec773a19d4bf929f987478659ee8189 <http://schema.org/Product/mpn> "PIPS-241000"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodec773a19d4bf929f987478659ee8189 <http://schema.org/Product/offers> _:node17bdf033523c9016e6869b3e277b99e <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodec773a19d4bf929f987478659ee8189 <http://schema.org/Product/name> "24V DC Power Adapter 1A Output "@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodec773a19d4bf929f987478659ee8189 <http://schema.org/Product/description> "24 Volt DC power \n1A output \n120-240V AC input \nHighly dependable"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodec773a19d4bf929f987478659ee8189 <http://schema.org/Product/productID> "CPIPS-241000"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodec773a19d4bf929f987478659ee8189 <http://schema.org/Product/image> "http://www.computerpartsplus.com/contents/media/t_pips-241000-1.jpg"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodec773a19d4bf929f987478659ee8189 <http://schema.org/Product/brand> "CPP"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodeefc61ec5204745442c8865140ef8983 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodeefc61ec5204745442c8865140ef8983 <http://schema.org/Offer/price> "9.77"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodeefc61ec5204745442c8865140ef8983 <http://schema.org/Offer/category> "Electronics > Electronics Accessories > Adapters > Power Adapters\n"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodeefc61ec5204745442c8865140ef8983 <http://schema.org/Offer/itemCondition> "new"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodeefc61ec5204745442c8865140ef8983 <http://schema.org/Offer/priceCurrency> "USD"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node7f329c343daa6b212c34442778a38be4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node7f329c343daa6b212c34442778a38be4 <http://schema.org/Offer/price> "6.41"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node7f329c343daa6b212c34442778a38be4 <http://schema.org/Offer/category> "Electronics > Electronics Accessories > Adapters > Power Adapters\n"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node7f329c343daa6b212c34442778a38be4 <http://schema.org/Offer/itemCondition> "new"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node7f329c343daa6b212c34442778a38be4 <http://schema.org/Offer/priceCurrency> "USD"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:noded6c42ea3f71f30a215d4545d4bfd39b0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:noded6c42ea3f71f30a215d4545d4bfd39b0 <http://schema.org/Offer/price> "8.36"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:noded6c42ea3f71f30a215d4545d4bfd39b0 <http://schema.org/Offer/category> "Electronics > Electronics Accessories > Adapters > Power Adapters\n"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:noded6c42ea3f71f30a215d4545d4bfd39b0 <http://schema.org/Offer/itemCondition> "new"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:noded6c42ea3f71f30a215d4545d4bfd39b0 <http://schema.org/Offer/priceCurrency> "USD"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node17bdf033523c9016e6869b3e277b99e <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node17bdf033523c9016e6869b3e277b99e <http://schema.org/Offer/price> "11.70"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node17bdf033523c9016e6869b3e277b99e <http://schema.org/Offer/category> "Electronics > Electronics Accessories > Adapters > Power Adapters\n"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node17bdf033523c9016e6869b3e277b99e <http://schema.org/Offer/itemCondition> "new"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node17bdf033523c9016e6869b3e277b99e <http://schema.org/Offer/priceCurrency> "USD"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node684adee416dc181d2569cfdd33856 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node684adee416dc181d2569cfdd33856 <http://schema.org/Product/mpn> "USB-28011X2"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node684adee416dc181d2569cfdd33856 <http://schema.org/Product/offers> _:noded6c42ea3f71f30a215d4545d4bfd39b0 <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node684adee416dc181d2569cfdd33856 <http://schema.org/Product/name> "AC to USB Power Adapter "@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node684adee416dc181d2569cfdd33856 <http://schema.org/Product/description> "\n100-240v AC to 2 USB connectors \n5V DC 500mA-1000mA \nPowering portable devices using an AC power source. \nCharging and recharging portable devices using an AC power source"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node684adee416dc181d2569cfdd33856 <http://schema.org/Product/productID> "CUSB-28011X2"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node684adee416dc181d2569cfdd33856 <http://schema.org/Product/image> "http://www.computerpartsplus.com/contents/media/USB-28011X2.gif"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node684adee416dc181d2569cfdd33856 <http://schema.org/Product/brand> "CPP"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodeb7309668da3172a9d0ed98545786f06e <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodeb7309668da3172a9d0ed98545786f06e <http://schema.org/Product/mpn> "PIPS-12500"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodeb7309668da3172a9d0ed98545786f06e <http://schema.org/Product/offers> _:node7f329c343daa6b212c34442778a38be4 <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodeb7309668da3172a9d0ed98545786f06e <http://schema.org/Product/name> "12V DC Power Adapter 500mA "@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodeb7309668da3172a9d0ed98545786f06e <http://schema.org/Product/description> "12V DC power \n500mA output \nConnector Inner Diameter: 2.1mm \nConnector Outer Diameter: 5.5mm \nRegulated \nHighly dependable \nUL listed"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodeb7309668da3172a9d0ed98545786f06e <http://schema.org/Product/productID> "CPIPS-12500"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodeb7309668da3172a9d0ed98545786f06e <http://schema.org/Product/image> "http://www.computerpartsplus.com/contents/media/t_pips-12500-4.jpg"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodeb7309668da3172a9d0ed98545786f06e <http://schema.org/Product/brand> "CPP"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node947f366f77c7011e8d3116d31ca633 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node947f366f77c7011e8d3116d31ca633 <http://schema.org/Product/mpn> "PIPS-1223A"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node947f366f77c7011e8d3116d31ca633 <http://schema.org/Product/offers> _:node7b7f231851afea6b293a3ba6581312e <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node947f366f77c7011e8d3116d31ca633 <http://schema.org/Product/name> "12V DC Power Adapter 2300mA "@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node947f366f77c7011e8d3116d31ca633 <http://schema.org/Product/description> "12V DC power \n2.3A output \n100-240V AC input \nConnector Inner Diameter: 2.1mm \nConnector Outer Diameter: 5.5mm \nUL listed \nProtection: over current protection, over voltage protection, short circuit protection"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node947f366f77c7011e8d3116d31ca633 <http://schema.org/Product/productID> "CPIPS-1223A"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node947f366f77c7011e8d3116d31ca633 <http://schema.org/Product/image> "http://www.computerpartsplus.com/contents/media/pips-1223a-1.jpg"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node947f366f77c7011e8d3116d31ca633 <http://schema.org/Product/brand> "CPP"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node7e1adf20419b389a78d38d2c2dc5d1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node7e1adf20419b389a78d38d2c2dc5d1 <http://schema.org/Offer/price> "7.98"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node7e1adf20419b389a78d38d2c2dc5d1 <http://schema.org/Offer/category> "Electronics > Electronics Accessories > Adapters > Power Adapters\n"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node7e1adf20419b389a78d38d2c2dc5d1 <http://schema.org/Offer/itemCondition> "new"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node7e1adf20419b389a78d38d2c2dc5d1 <http://schema.org/Offer/priceCurrency> "USD"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodeabdb2b198b7ce2463c431b81f46c1c5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodeabdb2b198b7ce2463c431b81f46c1c5 <http://schema.org/Offer/price> "7.02"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodeabdb2b198b7ce2463c431b81f46c1c5 <http://schema.org/Offer/category> "Electronics > Electronics Accessories > Adapters > Power Adapters\n"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodeabdb2b198b7ce2463c431b81f46c1c5 <http://schema.org/Offer/itemCondition> "new"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodeabdb2b198b7ce2463c431b81f46c1c5 <http://schema.org/Offer/priceCurrency> "USD"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodea618622dbd9ad684e868204286a8e084 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodea618622dbd9ad684e868204286a8e084 <http://schema.org/Offer/price> "9.98"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodea618622dbd9ad684e868204286a8e084 <http://schema.org/Offer/category> "Electronics > Electronics Accessories > Adapters > Power Adapters\n"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodea618622dbd9ad684e868204286a8e084 <http://schema.org/Offer/itemCondition> "new"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodea618622dbd9ad684e868204286a8e084 <http://schema.org/Offer/priceCurrency> "USD"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node7ad3cbadc33f23b83698da8d30d31458 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node7ad3cbadc33f23b83698da8d30d31458 <http://schema.org/Product/mpn> "NB-PAB-90AL"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node7ad3cbadc33f23b83698da8d30d31458 <http://schema.org/Product/offers> _:nodedcc0187f4a17c2891a56b3c4ba14812 <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node7ad3cbadc33f23b83698da8d30d31458 <http://schema.org/Product/name> "Universal Notebook Laptop Power Adapter "@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node7ad3cbadc33f23b83698da8d30d31458 <http://schema.org/Product/description> "The power adapter is ultra portable, easy to carry and slim. It\u00A0fits a variety of different laptops and electronic devices.\u00A0The laptop power adapter also includes an extra USB port, allowing you to plug in your USB devices."@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node7ad3cbadc33f23b83698da8d30d31458 <http://schema.org/Product/productID> "CNB-PAB-90AL"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node7ad3cbadc33f23b83698da8d30d31458 <http://schema.org/Product/image> "http://www.computerpartsplus.com/contents/media/t_nb-pab-90al-1s.jpg"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node7ad3cbadc33f23b83698da8d30d31458 <http://schema.org/Product/brand> "CPP"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node69e3ff88b4858594a89c56d8fed19bff <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node69e3ff88b4858594a89c56d8fed19bff <http://schema.org/Product/mpn> "PIPS-9DC500-25"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node69e3ff88b4858594a89c56d8fed19bff <http://schema.org/Product/offers> _:nodee453969a31e3d442efc070126af0f3 <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node69e3ff88b4858594a89c56d8fed19bff <http://schema.org/Product/name> "9V DC Power Adapter 500mA "@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node69e3ff88b4858594a89c56d8fed19bff <http://schema.org/Product/description> "9 Volt DC power \n500mA output \n120V AC input \nInner Diameter: 2.5mm \nOuter Diameter: 5.5mm \nUnregulated \nHighly dependable \nUL listed"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node69e3ff88b4858594a89c56d8fed19bff <http://schema.org/Product/productID> "CPIPS-9DC500-25"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node69e3ff88b4858594a89c56d8fed19bff <http://schema.org/Product/image> "http://www.computerpartsplus.com/contents/media/t_pips-9dc500-25-1.jpg"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node69e3ff88b4858594a89c56d8fed19bff <http://schema.org/Product/brand> "CPP"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node390fec7c3aa53afb87a2144a5ab3e46 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node390fec7c3aa53afb87a2144a5ab3e46 <http://schema.org/Product/mpn> "PIAD-2420"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node390fec7c3aa53afb87a2144a5ab3e46 <http://schema.org/Product/offers> _:node252149f9b0897bf8f88a7ac963e0ba4c <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node390fec7c3aa53afb87a2144a5ab3e46 <http://schema.org/Product/name> "24V AC Transformer Power Adapter "@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node390fec7c3aa53afb87a2144a5ab3e46 <http://schema.org/Product/description> "24 Volt AC power \nOutput current: Select 0.83 amp or 1.67 amp \nUnregulated \nHighly Dependable!"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node390fec7c3aa53afb87a2144a5ab3e46 <http://schema.org/Product/productID> "CPIAD-2420"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node390fec7c3aa53afb87a2144a5ab3e46 <http://schema.org/Product/image> "http://www.computerpartsplus.com/contents/media/t_piad-2420-1.jpg"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node390fec7c3aa53afb87a2144a5ab3e46 <http://schema.org/Product/brand> "CPP"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node415a8eadc884f5b8284a3f669c917d67 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node415a8eadc884f5b8284a3f669c917d67 <http://schema.org/Product/mpn> "PIAD-2410-1"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node415a8eadc884f5b8284a3f669c917d67 <http://schema.org/Product/offers> _:nodeefc61ec5204745442c8865140ef8983 <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node415a8eadc884f5b8284a3f669c917d67 <http://schema.org/Product/name> "24V AC Transformer Power Adapter "@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node415a8eadc884f5b8284a3f669c917d67 <http://schema.org/Product/description> "24 Volt AC power \n10VA output, 0.42 Amp \n120V AC input \nInner Diameter: 2.1mm \nOuter Diameter: 5.5mm \nUnregulated \nHighly dependable \nUL listed"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node415a8eadc884f5b8284a3f669c917d67 <http://schema.org/Product/productID> "CPIAD-2410-1"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node415a8eadc884f5b8284a3f669c917d67 <http://schema.org/Product/image> "http://www.computerpartsplus.com/contents/media/t_piad-2410-1-4.jpg"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node415a8eadc884f5b8284a3f669c917d67 <http://schema.org/Product/brand> "CPP"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodee453969a31e3d442efc070126af0f3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodee453969a31e3d442efc070126af0f3 <http://schema.org/Offer/price> "7.90"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodee453969a31e3d442efc070126af0f3 <http://schema.org/Offer/category> "Electronics > Electronics Accessories > Adapters > Power Adapters\n"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodee453969a31e3d442efc070126af0f3 <http://schema.org/Offer/itemCondition> "new"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodee453969a31e3d442efc070126af0f3 <http://schema.org/Offer/priceCurrency> "USD"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node1e7b4a28e1bc126449d984c72c6227e <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node1e7b4a28e1bc126449d984c72c6227e <http://schema.org/Offer/price> "14.63"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node1e7b4a28e1bc126449d984c72c6227e <http://schema.org/Offer/category> "Electronics > Electronics Accessories > Adapters > Power Adapters\n"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node1e7b4a28e1bc126449d984c72c6227e <http://schema.org/Offer/itemCondition> "new"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node1e7b4a28e1bc126449d984c72c6227e <http://schema.org/Offer/priceCurrency> "USD"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node8611a4d1404415216724e1875fa72891 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node8611a4d1404415216724e1875fa72891 <http://schema.org/Product/mpn> "PIPS-24500"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node8611a4d1404415216724e1875fa72891 <http://schema.org/Product/offers> _:node5ddc153d768086d85097d34056f5943 <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node8611a4d1404415216724e1875fa72891 <http://schema.org/Product/name> "24V DC Power Adapter 500mA "@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node8611a4d1404415216724e1875fa72891 <http://schema.org/Product/description> "Output: DC24V 500mA \nInput: AC120V-240V, 50-60Hz\nConnector Inner Diameter: 2.1mm \nConnector Outer Diameter: 5.5mm "@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node8611a4d1404415216724e1875fa72891 <http://schema.org/Product/productID> "CPIPS-24500"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node8611a4d1404415216724e1875fa72891 <http://schema.org/Product/image> "http://www.computerpartsplus.com/contents/media/t_pips-24500-1.jpg"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node8611a4d1404415216724e1875fa72891 <http://schema.org/Product/brand> "CPP"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodefeaf19b05e9a84a99d14ac3f4da903c <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodefeaf19b05e9a84a99d14ac3f4da903c <http://schema.org/Offer/price> "17.55"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodefeaf19b05e9a84a99d14ac3f4da903c <http://schema.org/Offer/category> "Electronics > Electronics Accessories > Adapters > Power Adapters\n"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodefeaf19b05e9a84a99d14ac3f4da903c <http://schema.org/Offer/itemCondition> "new"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodefeaf19b05e9a84a99d14ac3f4da903c <http://schema.org/Offer/priceCurrency> "USD"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node2034dff970351ae52b81721af30ea6b <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node2034dff970351ae52b81721af30ea6b <http://schema.org/Offer/price> "8.10"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node2034dff970351ae52b81721af30ea6b <http://schema.org/Offer/category> "Electronics > Electronics Accessories > Adapters > Power Adapters\n"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node2034dff970351ae52b81721af30ea6b <http://schema.org/Offer/itemCondition> "new"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:node2034dff970351ae52b81721af30ea6b <http://schema.org/Offer/priceCurrency> "USD"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodec736a727c336a11fe61c4c4beedd6eb <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Product> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodec736a727c336a11fe61c4c4beedd6eb <http://schema.org/Product/mpn> "PIPS-18-1A"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodec736a727c336a11fe61c4c4beedd6eb <http://schema.org/Product/offers> _:node3af71dbb87f4af32a783ed9b4e5e72b0 <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodec736a727c336a11fe61c4c4beedd6eb <http://schema.org/Product/name> "18V DC Power Adapter 1A Output "@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodec736a727c336a11fe61c4c4beedd6eb <http://schema.org/Product/description> "18V DC power \n1A output \n100-240V AC input \nInner Diameter: 2.1mm \nOuter Diameter: 5.5mm \nUL rated"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodec736a727c336a11fe61c4c4beedd6eb <http://schema.org/Product/productID> "CPIPS-18-1A"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodec736a727c336a11fe61c4c4beedd6eb <http://schema.org/Product/image> "http://www.computerpartsplus.com/contents/media/t_pips-18-1a-1.jpg"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodec736a727c336a11fe61c4c4beedd6eb <http://schema.org/Product/brand> "CPP"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodedcc0187f4a17c2891a56b3c4ba14812 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Offer> <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodedcc0187f4a17c2891a56b3c4ba14812 <http://schema.org/Offer/price> "39.99"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodedcc0187f4a17c2891a56b3c4ba14812 <http://schema.org/Offer/category> "Electronics > Electronics Accessories > Adapters > Power Adapters\n"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodedcc0187f4a17c2891a56b3c4ba14812 <http://schema.org/Offer/itemCondition> "new"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .
+_:nodedcc0187f4a17c2891a56b3c4ba14812 <http://schema.org/Offer/priceCurrency> "USD"@en-us <http://www.computerpartsplus.com/contents/en-us/d25_Power_Adapters.html> .

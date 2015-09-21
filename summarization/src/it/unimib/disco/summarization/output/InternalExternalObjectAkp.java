@@ -120,11 +120,11 @@ public class InternalExternalObjectAkp
 			
 			if (((!(subjectObjectAkp.contains("wikidata"))) && (subjectObjectAkp.contains(payLevelDomain))) && ((!(objectObjectAkp.contains("wikidata"))) && (objectObjectAkp.contains(payLevelDomain))))
 			{
-				typeOfObjectAkp = "internalDatatypeAkp";
+				typeOfObjectAkp = "internalObjectAkp";
 			}
 			else
 			{
-				typeOfObjectAkp = "externalDatatypeAkp";
+				typeOfObjectAkp = "externalObjectAkp";
 			}
 			
 			bwObjectAkps.write(subjectObjectAkp);

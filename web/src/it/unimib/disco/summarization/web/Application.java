@@ -27,6 +27,7 @@ public class Application extends AbstractHandler{
 				.mapFile("/", "home.html")
 				.mapFile("/property-similarity", "property-similarity.html")
 				.mapFile("/search", "search.html")
+				.mapFile("/experimentation", "experimentation.html")
 				.mapText("/alive", "OK")
 				.mapText("/version", description)
 				.routeTo(path)

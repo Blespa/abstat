@@ -67,13 +67,23 @@ public class InternalExternalConcept
 				}
 			}
 			
-			if (concept.contains(payLevelDomain))
+			if ((concept.contains("wikidata")) && (concept.contains(payLevelDomain)))
 			{
-				typeOfConcept = "internalConcept";
+				typeOfConcept = "externalConcept";
 			}
 			else
 			{
-				typeOfConcept = "externalConcept";
+				if ((!(concept.contains("wikidata"))) && (concept.contains(payLevelDomain)))
+				{
+					typeOfConcept = "internalConcept";
+				}
+				else
+				{
+					if (!(concept.contains(payLevelDomain)))
+					{
+						typeOfConcept = "externalConcept";
+					}
+				}
 			}
 			
 			bwConcepts.write(concept);

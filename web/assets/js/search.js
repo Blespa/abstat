@@ -59,7 +59,7 @@ application.controller("search", function ($scope, $http) {
 		
 		var dataset = $scope.dataset;
 		if(dataset){
-			request.params['fq'].push("dataset:'" + dataset + "'")
+			request.params['fq'].push("dataset:" + dataset)
 		}
 		
 		get(request);

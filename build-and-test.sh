@@ -19,4 +19,4 @@ sleep 10
 ./abstat.sh exec testing/system-tests.sh
 ./abstat.sh destroy
 
-./abstat.sh run --dry "rm -rf /schema-summaries/data/logs"
+./abstat.sh run --dry "rm -rf data/logs"

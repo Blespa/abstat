@@ -2,44 +2,44 @@
 
 set -e
 
-function devtest(){
-	./abstat.sh build
-	./abstat.sh run --dry testing/test-java-ui-module.sh
-	./abstat.sh run --dry testing/test-java-summarization-module.sh
-	./abstat.sh run testing/end2end-test.sh
-
-	./install.sh
+function test_installation(){
+	echo 'testing installation'
+	$1 && $1
 	echo 'waiting all services to start up'
-	sleep 10
-	./abstat.sh exec testing/system-tests.sh
-	./abstat.sh destroy
-
-	./abstat.sh run --dry "rm -rf data/logs"
+	sleep 20
+	./abstat.sh status | tail | grep 'Up '
+	exit $?
 }
 
-function integrationtest(){
-	./abstat.sh build
-	testing/test-java-ui-module.sh 
-	testing/test-java-summarization-module.sh
+function mime_installation(){
+	./abstat.sh build 
+	./abstat.sh destroy 
+	sudo service docker restart 
+	sleep 5
+	./abstat.sh start
+	exit $?
+}
+
+function unit_tests(){
+	$@ testing/test-java-ui-module.sh
+	$@ testing/test-java-summarization-module.sh
 	./abstat.sh run testing/end2end-test.sh
-	
-	./abstat.sh build && ./abstat.sh destroy && ./abstat.sh run testing/system-tests.sh
-	./abstat.sh build && ./abstat.sh destroy && sudo service docker restart && sleep 5 && ./abstat.sh start && sleep 20 && ./abstat.sh status | tail | grep 'Up '
+	./abstat.sh run testing/system-tests.sh	
 }
 
 relative_path=`dirname $0`
 root=`cd $relative_path;pwd`
-
 cd $root
 
 case "$1" in
         development)
-		devtest
+		unittest_runner='./abstat.sh run --dry'
+		installation='./install.sh'
                 ;;
 	integration)
-		integrationtest
-		;;
-        *)
-                echo "Usage: build-and-test.sh development | integration"
+		installation='mime_installation'
 		;;
 esac
+
+./abstat.sh build && unit_tests $unittest_runner && ./abstat.sh destroy && test_installation $installation && ./abstat.sh run --dry "rm -rf data/logs" && ./abstat.sh destroy
+

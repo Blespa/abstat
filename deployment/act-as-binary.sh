@@ -3,7 +3,10 @@
 set -e
 
 virtuoso='/usr/bin/virtuoso-t +wait -c deployment/virtuoso.ini'
-
+if [[ $1 == --live-forever ]]
+then
+	foreground='+foreground'
+fi
 if [[ $1 != --dry ]]
 then
 	mkdir -p data/logs/webapp
@@ -19,10 +22,9 @@ then
 	deployment/solr.sh start 8891
 	nginx
 	$virtuoso && pipeline/isql.sh "vad_install ('/usr/share/virtuoso-opensource-7/vad/fct_dav.vad', 0);" && pipeline/isql.sh "SHUTDOWN;"
-	$virtuoso
+	$virtuoso $foreground
 	echo "all services started up"
 fi
-
 if [[ $1 == --dry ]]
 then
 	shift

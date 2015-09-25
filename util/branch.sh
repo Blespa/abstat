@@ -35,7 +35,6 @@ case $action in
 		git checkout $target_branch
 		git pull
 		git merge --no-ff $source_branch
-		./build-and-test.sh
 		git push
 		;;
 esac

@@ -9,5 +9,5 @@ before_install:
 script:
   - testing/test-java-ui-module.sh && testing/test-java-summarization-module.sh && ./abstat.sh run testing/end2end-test.sh
   - ./abstat.sh build && ./abstat.sh destroy && ./abstat.sh run testing/system-tests.sh
-  - ./abstat.sh build && ./abstat.sh destroy && sudo service docker restart && ./abstat.sh start && sleep 20 && ./abstat.sh status | tail | grep 'Up '
+  - ./abstat.sh build && ./abstat.sh destroy && sudo service docker restart && sleep 5 && ./abstat.sh start && sleep 20 && ./abstat.sh status | tail | grep 'Up '
 

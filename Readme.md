@@ -37,7 +37,7 @@ $ abstat.sh log # prints out all the available logging information for ABSTAT. U
 $ abstat.sh exec $SCRIPT # runs a script within an already running ABSTAT container.
 ```
 ```
-$ abstat.sh run $COMMAND # runs an arbitrary bash command on an ABSTAT container.
+$ abstat.sh run [--dry] $COMMAND # runs an arbitrary bash command on an ABSTAT container. If called without option ```--dry``` all the services within the docker container are started. If ```--dry``` is specified the services are not started
 ```
 
 ## Running the Summarization Pipeline
@@ -49,9 +49,16 @@ $ abstat.sh exec pipeline/run-summarization-pipeline.sh $DATASET
 The result of the summarization can be found in ```data/summaries/$DATASET```.
 
 
-## Indexing an RDF Summary
+## Indexing an RDF Summary in Virtuoso
 
 Once the summarization pipeline is run for a dataset ```$DATASET```, you can index the results into the embedded Virtuoso triple store. As for running the pipeline, first ensure that ABSTAT is running, then:
 ```
 $ abstat.sh exec pipeline/export-to-rdf.sh $DATASET
+```
+
+## Indexing a Summary in Solr
+
+To index the summary of a ```$DATASET``` in Solr, first ensure that ABSTAT is running, then:
+```
+$ abstat.sh exec pipeline/export-to-solr.sh $DATASET $PAYLEVELDOMAIN
 ```

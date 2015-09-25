@@ -19,20 +19,12 @@ RUN \
 	apt-get autoremove && \
 	apt-get clean
 
-ENV install_dir /startup
-COPY . $install_dir
-RUN \
-	mv $install_dir/nginx.conf /etc/nginx/ && \
-	cp $install_dir/virtuoso.ini /etc/virtuoso-opensource-7/ && \
-	mv $install_dir/fct_dav.vad /usr/share/virtuoso-opensource-7/vad/ && \
-	chmod 644 /usr/share/virtuoso-opensource-7/vad/fct_dav.vad && \
-	mkdir /schema-summaries/
+RUN mkdir /schema-summaries/
 
 VOLUME /schema-summaries/
+WORKDIR /schema-summaries
 
-WORKDIR startup
-
-ENTRYPOINT ["./act-as-binary.sh"]
+ENTRYPOINT ["deployment/act-as-binary.sh"]
 
 
 

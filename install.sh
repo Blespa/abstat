@@ -7,6 +7,7 @@ root=`cd $relative_path;pwd`
 
 cd $root
 
+
 ./abstat.sh build
 ./abstat.sh destroy
 ./abstat.sh start $1

@@ -23,9 +23,11 @@ function destroy(){
 
 function build(){
 	docker build --rm -t abstat deployment
-	run_command /schema-summaries/build/build-java-summarization-module.sh
-	run_command /schema-summaries/build/build-java-ui-module.sh
-	run_command chmod 775 -R /schema-summaries/data/
+	run_command --dry build/build-java-summarization-module.sh
+	run_command --dry build/build-java-ui-module.sh
+	run_command --dry chmod 775 -R data/
+	run_command --dry chmod 777 -R web/bin
+	run_command --dry chmod 777 -R summarization/bin
 }
 
 function run_command(){
@@ -35,7 +37,7 @@ function run_command(){
 function exec_command(){
 	command=$1
 	shift
-	docker exec abstat /schema-summaries/$command $@
+	docker exec abstat $command $@
 }
 
 function status(){
@@ -85,5 +87,4 @@ case "$1" in
                 echo "Usage: abstat start | destroy | build | exec | run | status | log"
 		;;
 esac
-exit $status
 

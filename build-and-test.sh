@@ -8,12 +8,15 @@ root=`cd $relative_path;pwd`
 cd $root
 
 ./abstat.sh build
-./abstat.sh run --dry /schema-summaries/testing/test-java-ui-module.sh
-./abstat.sh run --dry /schema-summaries/testing/test-java-summarization-module.sh
-./abstat.sh run /schema-summaries/testing/end2end-test.sh
+./abstat.sh run --dry testing/test-java-ui-module.sh
+./abstat.sh run --dry testing/test-java-summarization-module.sh
+./abstat.sh run testing/end2end-test.sh
 ./abstat.sh destroy
 
-./abstat.sh build
-./abstat.sh run /schema-summaries/testing/system-tests.sh
-./abstat.sh run --dry "rm -rf /schema-summaries/data/logs"
+./install.sh
+echo 'waiting all services to start up'
+sleep 10
+./abstat.sh exec testing/system-tests.sh
 ./abstat.sh destroy
+
+./abstat.sh run --dry "rm -rf /schema-summaries/data/logs"

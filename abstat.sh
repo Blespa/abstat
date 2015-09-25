@@ -10,7 +10,7 @@ function start(){
 	then
 		default_port=8885:80
 	fi
-	$docker_command -d -p $default_port -p 8880:8880 -p 8881:8881 -p 8882:8882 --name abstat $hosts $abstat
+	$docker_command -d -p $default_port -p 8880:8880 -p 8881:8881 -p 8882:8882 --name abstat $hosts $abstat --live-forever
 }
 
 function destroy(){

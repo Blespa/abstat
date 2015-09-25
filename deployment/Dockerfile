@@ -27,9 +27,12 @@ RUN \
 	mv $install_dir/fct_dav.vad /usr/share/virtuoso-opensource-7/vad/ && \
 	chmod 644 /usr/share/virtuoso-opensource-7/vad/fct_dav.vad && \
 	mkdir /schema-summaries/
+
 VOLUME /schema-summaries/
 
 WORKDIR startup
-CMD ["./run-all.sh"]
+
+ENTRYPOINT ["./act-as-binary.sh"]
+
 
 

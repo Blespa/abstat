@@ -1,4 +1,4 @@
-# ABSTAT
+# ABSTAT [![Build Status](https://travis-ci.org/rporrini/abstat.svg?branch=master)](https://travis-ci.org/rporrini/abstat)
 
 ## Prerequisites for running and developing ABSTAT
 
@@ -9,10 +9,10 @@ Tested on Linux Mint 17, Mac OS X, Ubuntu 14.04
 ## Checking out the repository and configuring your local machine
 ```
 #!bash
-$ git clone https://bitbucket.org/rporrini/schema-summaries.git
-$ cd schema-summaries
+$ git clone https://github.com/rporrini/abstat.git
+$ cd abstat
 $ git checkout development
-$ ./build-and-test.sh
+$ ./build-and-test.sh development
 ```
 
 ## Controlling ABSTAT

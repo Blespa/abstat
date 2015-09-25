@@ -4,11 +4,5 @@ services:
   - docker
 
 script:
-  - ./abstat.sh build
-  - testing/test-java-ui-module.sh
-  - testing/test-java-summarization-module.sh
-  - ./abstat.sh run testing/end2end-test.sh
-  - ./abstat.sh destroy
-  - ./abstat.sh build
-  - ./abstat.sh run testing/system-tests.sh
+  - ./build-and-test.sh integration
 

@@ -7,12 +7,13 @@ root=`cd $relative_path;pwd`
 
 cd $root
 
-./install.sh
-sleep 5
-./abstat.sh exec testing/end2end-test.sh
-./install.sh
-sleep 20
-./abstat.sh exec testing/system-tests.sh
-./abstat.sh run "rm -rf /schema-summaries/data/logs"
+./abstat.sh build
+./abstat.sh run --dry /schema-summaries/testing/test-java-ui-module.sh
+./abstat.sh run --dry /schema-summaries/testing/test-java-summarization-module.sh
+./abstat.sh run /schema-summaries/testing/end2end-test.sh
 ./abstat.sh destroy
 
+./abstat.sh build
+./abstat.sh run /schema-summaries/testing/system-tests.sh
+./abstat.sh run --dry "rm -rf /schema-summaries/data/logs"
+./abstat.sh destroy

@@ -46,48 +46,11 @@
 			<int name="rows">10</int>
 		</lst>
 	</requestHandler>
-	<requestHandler name="/query" class="solr.SearchHandler">
-		<lst name="defaults">
-			<str name="echoParams">explicit</str>
-			<str name="wt">json</str>
-			<str name="indent">true</str>
-			<str name="df">text</str>
-		</lst>
-	</requestHandler>
-	<requestHandler name="/export" class="solr.SearchHandler">
-		<lst name="invariants">
-			<str name="rq">{!xport}</str>
-			<str name="wt">xsort</str>
-			<str name="distrib">false</str>
-		</lst>
-		<arr name="components">
-			<str>query</str>
-		</arr>
-	</requestHandler>
-	<initParams path="/update/**,/query,/select,/tvrh,/elevate,/spell">
+	<initParams path="/update/**,/select">
 		<lst name="defaults">
 			<str name="df">text</str>
 		</lst>
 	</initParams>
-	<requestHandler name="/analysis/field" 
-		  startup="lazy"
-		  class="solr.FieldAnalysisRequestHandler" />
-	<requestHandler name="/debug/dump" class="solr.DumpRequestHandler" >
-		<lst name="defaults">
-			<str name="echoParams">explicit</str> 
-			<str name="echoHandler">true</str>
-		</lst>
-	</requestHandler>
-	<searchComponent name="terms" class="solr.TermsComponent"/>
-	<requestHandler name="/terms" class="solr.SearchHandler" startup="lazy">
-		<lst name="defaults">
-			<bool name="terms">true</bool>
-			<bool name="distrib">false</bool>
-		</lst>     
-			<arr name="components">
-			<str>terms</str>
-		</arr>
-	</requestHandler>
 	<updateRequestProcessorChain>
 		<processor class="solr.UUIDUpdateProcessorFactory">
 		<str name="fieldName">idDocument</str>

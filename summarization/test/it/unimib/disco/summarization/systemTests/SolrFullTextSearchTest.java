@@ -48,6 +48,12 @@ public class SolrFullTextSearchTest {
 		httpAssert().body("select?q=URI:%22http://schema.org/Place%22", containsString("external"));
 	}
 	
+	@Test
+	public void updateUrlShouldNotBeAccessible() throws Exception {
+		
+		httpAssert().statusOf("update", 404);
+	}
+	
 	private HttpAssert httpAssert() {
 		return new HttpAssert("http://localhost/solr/indexing");
 	}

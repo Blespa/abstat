@@ -8,11 +8,7 @@ public class APITest {
 
 	@Ignore
 	public void conceptsAPIShouldReturnUris() throws Exception {
-		new HttpAssert("http://localhost").body("/api/v1/concepts", containsString("URI"));
+		new HttpAssert("http://localhost").body("/api/v1/autocomplete/concepts?dataset=system-test&q=city", containsString("http://dbpedia.org/ontology/City"));
 	}
-	
-	@Ignore
-	public void conceptsAPIShouldBeAccessible() throws Exception {
-		new HttpAssert("http://localhost").statusOf("/api/v1/concepts", 200);
-	}
+
 }

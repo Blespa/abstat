@@ -61,6 +61,7 @@
 			<str name="df">URI_ngram</str>
 			<str name="fq">type:concept</str>
 			<str name="fl">URI</str>
+			<str name="indent">true</str>
 		</lst>
 	</requestHandler>
 	<updateRequestProcessorChain>

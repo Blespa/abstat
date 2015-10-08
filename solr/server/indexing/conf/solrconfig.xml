@@ -51,6 +51,18 @@
 			<str name="df">text</str>
 		</lst>
 	</initParams>
+	<requestHandler name="/concept-suggest" class="solr.SearchHandler">
+		<lst name="defaults">
+			<str name="echoParams">explicit</str>
+			<int name="rows">10</int>
+		</lst>
+		<lst name="appends">
+			<str name="wt">json</str>
+			<str name="df">URI_ngram</str>
+			<str name="fq">type:concept</str>
+			<str name="fl">URI</str>
+		</lst>
+	</requestHandler>
 	<updateRequestProcessorChain>
 		<processor class="solr.UUIDUpdateProcessorFactory">
 		<str name="fieldName">idDocument</str>

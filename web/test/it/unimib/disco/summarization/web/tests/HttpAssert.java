@@ -22,10 +22,6 @@ public class HttpAssert{
 		assertThat(new ClientCommunication(address).httpGet(path).getStatusLine().getStatusCode(), is(code));
 	}
 	
-	public void contentTypeOf(String path, Matcher<String> constraint) throws Exception {
-		assertThat(new ClientCommunication(address).httpGet(path).getFirstHeader("Content-type").getValue(), constraint);
-	}
-	
 	public void body(String path, Matcher<String> constraint) throws Exception {
 		assertThat(IOUtils.toString(new ClientCommunication(address).httpGet(path).getEntity().getContent()), constraint);
 	}

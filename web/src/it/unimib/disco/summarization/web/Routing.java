@@ -2,8 +2,6 @@ package it.unimib.disco.summarization.web;
 
 import java.util.HashMap;
 
-import javax.servlet.http.HttpServletRequest;
-
 public class Routing{
 	
 	private HashMap<String, Response> mappings;
@@ -22,8 +20,8 @@ public class Routing{
 		return this;
 	}
 	
-	public Routing mapJson(String route, HttpServletRequest request) {
-		map(route, new JsonResponse(request));
+	public Routing mapJson(String route, String path) {
+		map(route, new JsonResponse(path));
 		return this;
 	}
 	

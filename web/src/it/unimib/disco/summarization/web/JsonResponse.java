@@ -1,21 +1,20 @@
 package it.unimib.disco.summarization.web;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.io.IOUtils;
-import org.eclipse.jetty.server.Request;
 
 public class JsonResponse implements Response {
 
-	public JsonResponse(HttpServletRequest request) {
+	private String path;
+
+	public JsonResponse(String path) {
+		this.path = path;
 	}
 
 	@Override
-	public void sendResponse(Request base, HttpServletResponse response) throws Exception {
-		response.setContentType("application/json");
-		IOUtils.copy(IOUtils.toInputStream("work in progress"), response.getOutputStream());
-		base.setHandled(true);
+	public void sendResponse(Communication communication) throws Exception {
+		communication.setContentType("application/json");
+		communication.setOutputStream(communication.getAutocomplete(this.path));
+		communication.setHandled();
 	}
 
 }

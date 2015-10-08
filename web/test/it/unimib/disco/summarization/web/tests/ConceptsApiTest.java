@@ -1,31 +1,18 @@
 package it.unimib.disco.summarization.web.tests;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import static org.hamcrest.Matchers.containsString;
+import static org.junit.Assert.assertThat;
+import it.unimib.disco.summarization.web.JsonResponse;
+
+import org.junit.Test;
 
 public class ConceptsApiTest {
-
-	SummarizationTestApplication application = new SummarizationTestApplication();
-	
-	@Before
-	public void startServer() throws Exception{
-		application.start();
-	}
-	
-	@After
-	public void stopServer() throws Exception{
-		application.stop();
-	}
 	
 	@Test
-	public void jsonAsContentType() throws Exception {
-		application.httpAssert().contentTypeOf("/api/v1/autocomplete/concepts", containsString("application/json"));
-	}
-	
-	@Test
-	public void conceptsApiAccessible() throws Exception {
-		application.httpAssert().statusOf("/api/v1/autocomplete/concepts", 200);
+	public void getAutocompleteSuggestion() throws Exception {
+		CommunicationTestDouble communication = new CommunicationTestDouble();
+		new JsonResponse("any").sendResponse(communication);
+		
+		assertThat(communication.getResponse(), containsString("http://dbpedia.org/ontology/City"));
 	}
 }

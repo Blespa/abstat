@@ -10,5 +10,10 @@ public class APITest {
 	public void conceptsAPIShouldReturnUris() throws Exception {
 		new HttpAssert("http://localhost").body("/api/v1/autocomplete/concepts?dataset=system-test&q=ci", containsString("http://dbpedia.org/ontology/City"));
 	}
+	
+	@Test
+	public void shouldHandleWhiteSpaces() throws Exception {
+		new HttpAssert("http://localhost").body("/api/v1/autocomplete/concepts?dataset=system-test&q=city+of", containsString("http://dbpedia.org/ontology/City"));
+	}
 
 }

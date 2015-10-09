@@ -1,20 +1,25 @@
 package it.unimib.disco.summarization.web;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.io.IOUtils;
+import org.eclipse.jetty.server.Request;
+
 
 
 public class JsonResponse implements Response {
 
-	private Api api;
+	private ConceptsApi api;
 
-	public JsonResponse(Api api) {
+	public JsonResponse(ConceptsApi api) {
 		this.api = api;
 	}
 
 	@Override
-	public void sendResponse(Communication communication) throws Exception {
-		communication.setContentType("application/json");
-		communication.setOutputStream(this.api.getAutocomplete(communication));
-		communication.setHandled();
+	public void sendResponse(Request base, HttpServletResponse response, RequestParameters parameters) throws Exception {
+		response.setContentType("application/json");
+		IOUtils.copy(this.api.getResponseFromConnector(parameters), response.getOutputStream());
+		base.setHandled(true);
 	}
 
 }

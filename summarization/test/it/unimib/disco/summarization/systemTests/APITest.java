@@ -8,7 +8,7 @@ public class APITest {
 
 	@Test
 	public void conceptsAPIShouldReturnUris() throws Exception {
-		new HttpAssert("http://localhost").body("/api/v1/autocomplete/concepts?dataset=system-test&q=city", containsString("http://dbpedia.org/ontology/City"));
+		new HttpAssert("http://localhost").body("/api/v1/autocomplete/concepts?dataset=system-test&q=ci", containsString("http://dbpedia.org/ontology/City"));
 	}
 
 }

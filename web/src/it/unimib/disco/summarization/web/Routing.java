@@ -20,7 +20,7 @@ public class Routing{
 		return this;
 	}
 	
-	public Routing mapJson(String route, Api api) {
+	public Routing mapJson(String route, ConceptsApi api) {
 		map(route, new JsonResponse(api));
 		return this;
 	}

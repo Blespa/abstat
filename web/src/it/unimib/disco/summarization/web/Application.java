@@ -30,9 +30,9 @@ public class Application extends AbstractHandler{
 				.mapFile("/search", "search.html")
 				.mapFile("/experiment", "experiment.html")
 				.mapFile("/property-similarity", "property-similarity.html")
-				.mapJson("/api/v1/autocomplete/concepts", new ConceptsApi())
+				.mapJson("/api/v1/autocomplete/concepts", new ConceptsApi(new SolrConnector()))
 				.routeTo(path)
-			.sendResponse(new ServerCommunication(request, response, base));
+			.sendResponse(base, response, new HttpParameters(request));
 		}catch(Exception e){
 			new Events().error("processing request: " + path, e);
 			response.setStatus(500);

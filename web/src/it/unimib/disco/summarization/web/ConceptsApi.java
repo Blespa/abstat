@@ -9,26 +9,19 @@ import org.apache.commons.lang3.StringUtils;
 
 public class ConceptsApi implements Api {
 	
-	private final String path = "/solr/indexing/select";
+	private final String path = "/solr/indexing/concept-suggest";
+	private final String host = "http://localhost:8891";
 
 	@Override
 	public InputStream getAutocomplete(Communication communication) throws Exception {
-		return new ClientCommunication("http://localhost").httpGet(path + queryString(communication)).getEntity().getContent();
+		return new ClientCommunication(host).httpGet(path + queryString(communication)).getEntity().getContent();
 	}
 
 	private String queryString(Communication communication) {
 		ArrayList<String> parameters = new ArrayList<String>();
-		parameters.add(queryParameter("q", "URI", communication.getParameter("q")));
+		parameters.add(queryParameter("q", "URI_ngram", communication.getParameter("q")));
 		parameters.add(queryParameter("fq", "dataset", communication.getParameter("dataset")));
-		parameters.add(queryParameter("fq", "type", "concept"));
-		parameters.add(solrExtraParameter("wt", "json"));
-		parameters.add(solrExtraParameter("fl", "URI"));
-		parameters.add(solrExtraParameter("indent", "true"));
 		return "?" + StringUtils.join(parameters, "&");
-	}
-
-	private String solrExtraParameter(String name, String value) {
-		return name + "=" + value;
 	}
 
 	private String queryParameter(String queryParameter, String solrParameter, String solrValue) {

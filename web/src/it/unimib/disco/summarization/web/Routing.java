@@ -20,6 +20,11 @@ public class Routing{
 		return this;
 	}
 	
+	public Routing mapJson(String route, ConceptsApi api) {
+		map(route, new JsonResponse(api));
+		return this;
+	}
+	
 	public Response routeTo(String path){
 		Response response = mappings.get(path);
 		if(response == null) response = new NotFound();

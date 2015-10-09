@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <schema name="schemaSolr" version="1.5">
+   <copyField source="URI" dest="URI_ngram"/>
    <fields>
    	<field name="idDocument" type="text_general" indexed="true" stored="true" required="true" multiValued="false" /> 
 	<field name="_version_" type="long" indexed="true" stored="true" multiValued="false" />
@@ -11,6 +12,7 @@
 	<field name="text" type="text_general" indexed="true" stored="false" multiValued="true"/>
 	<field name="type" type="text_general" indexed="true" stored="true" required="true" multiValued="false" />
 	<field name="fullTextSearchField" type="full_text" indexed="true" stored="true" required="false" multiValued="true" />
+	<field name="URI_ngram" type="text_ngram" indexed="true" stored="true" multiValued="true"/>
    </fields>
    <uniqueKey>idDocument</uniqueKey>
    <types>
@@ -54,5 +56,15 @@
 	  <filter class="solr.LowerCaseFilterFactory"/>
      	 </analyzer>
     	</fieldtype>	
+    	<fieldType name="text_ngram" class="solr.TextField" positionIncrementGap="100">
+		<analyzer type="index">
+			<tokenizer class="solr.NGramTokenizerFactory" minGramSize="2" maxGramSize="10"/>
+			<filter class="solr.LowerCaseFilterFactory"/>
+		</analyzer>
+		<analyzer type="query">
+			<tokenizer class="solr.EdgeNGramTokenizerFactory" minGramSize="2" maxGramSize="10"/>
+			<filter class="solr.LowerCaseFilterFactory"/>
+		</analyzer>
+	</fieldType>
    </types>
 </schema>

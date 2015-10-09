@@ -14,7 +14,7 @@ then
 	exit 1
 fi
 
-git pull
+git fetch origin
 
 case $action in
 	new )
@@ -24,17 +24,15 @@ case $action in
 		git checkout -b $new_branch
 		git push --set-upstream origin $new_branch
 		;;
-	delete )
-		branch=$2
-		git branch -D $branch
-		git push origin --delete $branch
-		;;
-	merge )
-		target_branch=$2
-		source_branch=$3
-		git checkout $target_branch
+	promote )
+		git checkout master
 		git pull
-		git merge --no-ff $source_branch
+		git merge development
 		git push
 		;;
+	* )
+		echo "usage: branch.sh new original-branch new-branch | promote"
+		echo "new = creates a new branch"
+		echo "promote = pushes the current development branch to the master branch"
+	;;
 esac

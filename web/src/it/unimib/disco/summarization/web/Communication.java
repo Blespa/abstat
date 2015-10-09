@@ -11,6 +11,6 @@ public interface Communication {
 
 	void setHandled();
 
-	InputStream getAutocomplete(String path) throws Exception;
+	String getParameter(String string);
 
 }

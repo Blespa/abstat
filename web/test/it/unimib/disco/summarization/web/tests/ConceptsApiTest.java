@@ -11,7 +11,7 @@ public class ConceptsApiTest {
 	@Test
 	public void getAutocompleteSuggestion() throws Exception {
 		CommunicationTestDouble communication = new CommunicationTestDouble();
-		new JsonResponse("any").sendResponse(communication);
+		new JsonResponse(new TestDoubleApi()).sendResponse(communication);
 		
 		assertThat(communication.getResponse(), containsString("http://dbpedia.org/ontology/City"));
 	}

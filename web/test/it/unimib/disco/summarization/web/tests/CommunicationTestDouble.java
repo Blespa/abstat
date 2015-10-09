@@ -21,17 +21,13 @@ public class CommunicationTestDouble implements Communication{
 	}
 
 	@Override
-	public InputStream getAutocomplete(String path) {
-		return IOUtils.toInputStream("\"response\": {" + 
-											"\"docs\": [{" +
-													"\"URI\":[\"http://dbpedia.org/ontology/City\"]}" +
-											"]" + 
-									"}");
-	}
-	
-	@Override
 	public void setHandled() {}
 	
 	@Override
 	public void setContentType(String contentType) {}
+
+	@Override
+	public String getParameter(String string) {
+		return "";
+	}
 }

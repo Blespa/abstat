@@ -30,7 +30,7 @@ public class Application extends AbstractHandler{
 				.mapFile("/search", "search.html")
 				.mapFile("/experiment", "experiment.html")
 				.mapFile("/property-similarity", "property-similarity.html")
-				.mapJson("/api/v1/autocomplete/concepts", "/solr/indexing/select")
+				.mapJson("/api/v1/autocomplete/concepts", new ConceptsApi())
 				.routeTo(path)
 			.sendResponse(new ServerCommunication(request, response, base));
 		}catch(Exception e){

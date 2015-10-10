@@ -2,14 +2,15 @@ package it.unimib.disco.summarization.web;
 
 import java.io.InputStream;
 
-public class ConceptsApi {
+public class ConceptsApi implements Api{
 	
 	private Connector connector;
 
-	public ConceptsApi(Connector solrConnector) {
-		this.connector = solrConnector;
+	public ConceptsApi(Connector connector) {
+		this.connector = connector;
 	}
 
+	@Override
 	public InputStream getResponseFromConnector(RequestParameters request) throws Exception {
 		QueryString queryString = new QueryString()
 									.addParameter("q", "URI_ngram", request.getParameter("q"))

@@ -9,9 +9,9 @@ import org.eclipse.jetty.server.Request;
 
 public class JsonResponse implements Response {
 
-	private ConceptsApi api;
+	private Api api;
 
-	public JsonResponse(ConceptsApi api) {
+	public JsonResponse(Api api) {
 		this.api = api;
 	}
 

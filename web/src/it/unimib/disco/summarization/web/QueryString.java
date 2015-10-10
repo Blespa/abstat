@@ -14,8 +14,8 @@ public class QueryString {
 		this.parameters = new ArrayList<String>();
 	}
 	
-	public QueryString addParameter(String queryParameter, String solrParameter, String solrValue) throws UnsupportedEncodingException {
-		parameters.add(queryParameter + "=" + solrParameter + ":" + encode(solrValue));
+	public QueryString addParameter(String queryParameter, String solrParameter, String value) throws UnsupportedEncodingException {
+		parameters.add(queryParameter + "=" + solrParameter + ":" + encode(value));
 		return this;
 	}
 

@@ -31,6 +31,7 @@ public class Application extends AbstractHandler{
 				.mapFile("/experiment", "experiment.html")
 				.mapFile("/property-similarity", "property-similarity.html")
 				.mapJson("/api/v1/autocomplete/concepts", new ConceptsApi(new SolrConnector()))
+				.mapJson("/api/v1/autocomplete/properties", new PropertiesApi(new SolrConnector()))
 				.routeTo(path)
 			.sendResponse(base, response, new HttpParameters(request));
 		}catch(Exception e){

@@ -24,6 +24,7 @@ public class ConnectorTestDouble implements Connector {
 	private HashMap<String, String> suggestions() {
 		HashMap<String, String> suggestions = new HashMap<String, String>();
 		suggestions.put("/solr/indexing/concept-suggest", response("http://dbpedia.org/ontology/City"));
+		suggestions.put("/solr/indexing/property-suggest", response("http://dbpedia.org/ontology/birthDate"));
 		return suggestions;
 	}
 

@@ -64,6 +64,19 @@
 			<str name="indent">true</str>
 		</lst>
 	</requestHandler>
+	<requestHandler name="/property-suggest" class="solr.SearchHandler">
+		<lst name="defaults">
+			<str name="echoParams">explicit</str>
+			<int name="rows">20</int>
+		</lst>
+		<lst name="appends">
+			<str name="wt">json</str>
+			<str name="df">URI_ngram</str>
+			<str name="fq">type:*Property</str>
+			<str name="fl">URI,type</str>
+			<str name="indent">true</str>
+		</lst>
+	</requestHandler>
 	<updateRequestProcessorChain>
 		<processor class="solr.UUIDUpdateProcessorFactory">
 		<str name="fieldName">idDocument</str>

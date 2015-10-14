@@ -7,6 +7,6 @@ project=$root/../summarization
 
 echo running the system tests
 cd $project
-java -Xms256m -Xmx1g -cp .:'ontology_summarization.jar' org.junit.runner.JUnitCore it.unimib.disco.summarization.systemTests.TestSuite
+java -Xms256m -Xmx1g -cp .:'summarization.jar' org.junit.runner.JUnitCore it.unimib.disco.summarization.systemTests.TestSuite
 cd $root
 

@@ -2,14 +2,20 @@
 
 set -e
 
-directory=$1
-jar=$2
+relative_path=`dirname $0`
+root=`cd $relative_path;pwd`
+
+cd $root
+
+directory=summarization
+jar=summarization.jar
 
 project=../$directory
 build_directory=$project/bin
 classes_directory=$build_directory/classes
 
-echo building the content of $directory to $jar
+echo "Building the content of $directory to $jar"
+
 cd $project
 rm -rf $classes_directory
 mkdir -p $classes_directory
@@ -22,4 +28,4 @@ done
 rm -rf META-INF
 jar cvfe ../../$jar -C . > /dev/null
 chmod 777 ../../$jar
-echo done
+echo "Done"

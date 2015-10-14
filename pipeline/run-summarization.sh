@@ -87,7 +87,7 @@ echo "---Start: Ontology Report---"
 	export ReportDirectory
 	export TmpDatasetFileResult
 
-	eval ${dbgCmd}""$JAVA_HOME/bin/java -Xms256m -Xmx4000m -cp ontology_summarization.jar it.unimib.disco.summarization.output.ProcessOntology "$OntologyFile" "$TmpDatasetFileResult"
+	eval ${dbgCmd}""$JAVA_HOME/bin/java -Xms256m -Xmx4000m -cp summarization.jar it.unimib.disco.summarization.output.ProcessOntology "$OntologyFile" "$TmpDatasetFileResult"
 	if [ $? -ne 0 ]
 	then
 	    echo "App Failed during run"
@@ -311,7 +311,7 @@ echo "---Start: Counting---"
 	rm -rf $ResultsDirectory/patterns
 	mkdir -p $ResultsDirectory/patterns
 
-	eval ${dbgCmd}""$JAVA_HOME/bin/java -Xms256m -Xmx32000m -cp ontology_summarization.jar it.unimib.disco.summarization.output.CalculateMinimalTypes "$OntologyFile" "$orgDatasetFile" "$minTypeResult"
+	eval ${dbgCmd}""$JAVA_HOME/bin/java -Xms256m -Xmx32000m -cp summarization.jar it.unimib.disco.summarization.output.CalculateMinimalTypes "$OntologyFile" "$orgDatasetFile" "$minTypeResult"
 
 	if [ $? -ne 0 ]
 	then
@@ -319,7 +319,7 @@ echo "---Start: Counting---"
 	    exit 1
 	fi
 
-	eval ${dbgCmd}""$JAVA_HOME/bin/java -Xms256m -Xmx32000m -cp ontology_summarization.jar it.unimib.disco.summarization.output.AggregateConceptCounts "$minTypeResult" "$ResultsDirectory/patterns/"
+	eval ${dbgCmd}""$JAVA_HOME/bin/java -Xms256m -Xmx32000m -cp summarization.jar it.unimib.disco.summarization.output.AggregateConceptCounts "$minTypeResult" "$ResultsDirectory/patterns/"
 
 	if [ $? -ne 0 ]
 	then
@@ -327,7 +327,7 @@ echo "---Start: Counting---"
 	    exit 1
 	fi
 
-	eval ${dbgCmd}""$JAVA_HOME/bin/java -Xms256m -Xmx32000m -cp ontology_summarization.jar it.unimib.disco.summarization.output.ProcessDatatypeRelationAssertions "${orgDatasetFile}" "$minTypeResult" "$ResultsDirectory/patterns/"
+	eval ${dbgCmd}""$JAVA_HOME/bin/java -Xms256m -Xmx32000m -cp summarization.jar it.unimib.disco.summarization.output.ProcessDatatypeRelationAssertions "${orgDatasetFile}" "$minTypeResult" "$ResultsDirectory/patterns/"
 
 	if [ $? -ne 0 ]
 	then
@@ -335,7 +335,7 @@ echo "---Start: Counting---"
 	    exit 1
 	fi
 
-	eval ${dbgCmd}""$JAVA_HOME/bin/java -Xms256m -Xmx32000m -cp ontology_summarization.jar it.unimib.disco.summarization.output.ProcessObjectRelationAssertions "${orgDatasetFile}" "$minTypeResult" "$ResultsDirectory/patterns/"
+	eval ${dbgCmd}""$JAVA_HOME/bin/java -Xms256m -Xmx32000m -cp summarization.jar it.unimib.disco.summarization.output.ProcessObjectRelationAssertions "${orgDatasetFile}" "$minTypeResult" "$ResultsDirectory/patterns/"
 
 	if [ $? -ne 0 ]
 	then

@@ -16,12 +16,12 @@ results=$current_directory/../data/summaries/$dataset
 mkdir -p $results
 results=$(as_absolute $results)
 
-echo "running the summarization pipeline"
-echo "with data from $data"
-echo "saving results in $results"
+echo "Running the summarization pipeline"
+echo "With data from $data"
+echo "Saving results in $results"
 
 cd $current_directory
 ./run-summarization.sh $data $results
 
-echo "done"
+echo "Done"
 

@@ -11,9 +11,9 @@ function export_rdf(){
 	dataset=$4
 	type=$5
 
-	echo "exporting $from as $to"
-	java -Xms256m -Xmx16g -cp .:'ontology_summarization.jar' it.unimib.disco.summarization.output.$command $from $to $dataset $type
-	echo "done"
+	echo "Exporting $from as $to"
+	java -Xms256m -Xmx16g -cp .:'summarization.jar' it.unimib.disco.summarization.output.$command $from $to $dataset $type
+	echo "Done"
 }
 
 set -e
@@ -40,11 +40,11 @@ export_rdf WriteConceptGraphToRDF "$input_directory/../reports/tmp-data-for-comp
  
 cd $root
 
-echo "deleting graph ${graph}"
+echo "Deleting graph ${graph}"
 ./isql.sh "SPARQL CLEAR GRAPH <$graph>;"
 
-echo "indexing the result of the analysis in ${output_directory} into graph ${graph}"
+echo "Indexing the result of the analysis in ${output_directory} into graph ${graph}"
 ./isql.sh "delete from DB.DBA.load_list;ld_dir ('${output_directory}', '*.nt', '${graph}');rdf_loader_run();checkpoint;"
-echo "done"
+echo "Done"
 
 rm -r $output_directory

@@ -5,8 +5,7 @@ organized-splitted-deduplicated
 .metadata
 .recommenders
 RemoteSystemsTempFiles
-ontology_summarization.jar
-summarization-web.jar
+summarization.jar
 !solr/bin
 solr/server/indexing/data/
 *.pid

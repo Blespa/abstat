@@ -23,8 +23,7 @@ function destroy(){
 
 function build(){
 	docker build --rm -t abstat deployment
-	run_command --dry build/build-java-summarization-module.sh
-	run_command --dry build/build-java-ui-module.sh
+	run_command --dry build/build-java-module.sh
 	run_command --dry chmod 775 -R data/
 	run_command --dry chmod 777 -R summarization/bin
 }

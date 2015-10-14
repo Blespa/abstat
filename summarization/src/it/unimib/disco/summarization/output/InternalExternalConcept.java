@@ -2,14 +2,12 @@ package it.unimib.disco.summarization.output;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
 
 public class InternalExternalConcept
 {
-	public static void main(String[] args) throws FileNotFoundException, IOException
+	public static void main(String[] args) throws Exception
 	{
 		String pathFile = args[0];
 		String dataset = args[1];
@@ -18,12 +16,12 @@ public class InternalExternalConcept
 		conceptsInternalExternal(pathFile,dataset, payLevelDomain);
 	}
 	
-	private static void conceptsInternalExternal(String pathFile, String dataset, String payLevelDomain) throws FileNotFoundException, IOException
+	private static void conceptsInternalExternal(String pathFile, String dataset, String payLevelDomain) throws Exception
 	{
 		String fileConceptsPath = pathFile;
 		BufferedReader brConcepts = new BufferedReader(new FileReader(fileConceptsPath));
 		
-		FileWriter fwConcepts = new FileWriter("../data/summaries/"+dataset+"/patterns/count-concepts-new.txt");
+		FileWriter fwConcepts = new FileWriter(pathFile.replace(".txt", "-new.txt"));
 		BufferedWriter bwConcepts = new BufferedWriter(fwConcepts);
 		
 		boolean trovatoPrimoCancelletto = false;

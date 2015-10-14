@@ -12,7 +12,7 @@ import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrServer;
 import org.apache.solr.common.SolrInputDocument;
 
-public class IndexConcepts
+public class IndexDatatypes
 {
 	public static void main (String[] args) throws SolrServerException, IOException
 	{
@@ -48,7 +48,7 @@ public class IndexConcepts
 			
 			SolrInputDocument doc = new SolrInputDocument();
 			doc.setField("URI", concept);
-			doc.setField("type", "concept");
+			doc.setField("type", "datatype");
 			doc.setField("dataset", dataset);
 			doc.setField("subtype", subtypeOfConcept);
 			doc.setField("fullTextSearchField", localNameOfConcept);

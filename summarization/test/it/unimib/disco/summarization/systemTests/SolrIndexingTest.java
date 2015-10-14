@@ -2,7 +2,6 @@ package it.unimib.disco.summarization.systemTests;
 
 import static org.hamcrest.Matchers.containsString;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class SolrIndexingTest {
@@ -33,14 +32,13 @@ public class SolrIndexingTest {
 	}
 	
 	@Test
-	@Ignore
 	public void dataTypesShouldBeIndexed() throws Exception {
 		httpAssert().body("select?q=type:datatype", containsString("numFound=\"6\""));
 	}
 	
 	@Test
 	public void solrIndexingShouldBeOk() throws Exception {
-		httpAssert().body("select?q=*:*", containsString("numFound=\"213\""));
+		httpAssert().body("select?q=*:*", containsString("numFound=\"219\""));
 	}
 	
 	private HttpAssert httpAssert() {

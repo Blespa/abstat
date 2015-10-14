@@ -175,18 +175,9 @@ public class IndexObjectAkps
 				}
 			}
 			
-			//if (!(akpSubject.equalsIgnoreCase("")))
-    		//{
     		subjectsAkps.add(akpSubject);
-    		//}
-			//if (!(akpProperty.equalsIgnoreCase("")))
-    		//{
     		propertiesAkps.add(akpProperty);
-    		//}
-			//if (!(akpObject.equalsIgnoreCase("")))
-    		//{
     		objectsAkps.add(akpObject);
-    		//}
 			
 			akpSubject = "";
 			akpProperty = "";

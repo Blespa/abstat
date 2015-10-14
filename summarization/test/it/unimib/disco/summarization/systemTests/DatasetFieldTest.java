@@ -4,7 +4,7 @@ import static org.hamcrest.Matchers.containsString;
 
 import org.junit.Test;
 
-public class DatasetFieldOkTest {
+public class DatasetFieldTest {
 
 	@Test
 	public void shouldBeOkTheDatasetFieldOfSchemaSolrTest1() throws Exception
@@ -21,7 +21,7 @@ public class DatasetFieldOkTest {
 	@Test
 	public void shouldBeOkTheDatasetFieldOfSchemaSolrTest4() throws Exception
 	{
-		httpAssert().body("select?q=dataset:system-test", containsString("numFound=\"213\""));
+		httpAssert().body("select?q=dataset:system-test", containsString("numFound=\"219\""));
 	}
 	
 	private HttpAssert httpAssert() {

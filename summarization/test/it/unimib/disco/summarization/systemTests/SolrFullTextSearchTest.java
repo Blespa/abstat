@@ -34,11 +34,6 @@ public class SolrFullTextSearchTest {
 	}
 	
 	@Test
-	public void shouldSupportTheSelectionOfTheDataset() throws Exception {
-		httpAssert().body("select?q=*:*&fq=dataset:system-test", containsString("numFound=\"213\""));
-	}
-	
-	@Test
 	public void conceptsFromDBpediaShouldBeMarkedAsInternal() throws Exception {
 		httpAssert().body("select?q=URI:%22http://dbpedia.org/ontology/Place%22", containsString("internal"));
 	}

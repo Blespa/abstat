@@ -32,8 +32,13 @@ public class SolrIndexingTest {
 	}
 	
 	@Test
+	public void dataTypesShouldBeIndexed() throws Exception {
+		httpAssert().body("select?q=type:datatype", containsString("numFound=\"6\""));
+	}
+	
+	@Test
 	public void solrIndexingShouldBeOk() throws Exception {
-		httpAssert().body("select?q=*:*", containsString("numFound=\"213\""));
+		httpAssert().body("select?q=*:*", containsString("numFound=\"219\""));
 	}
 	
 	private HttpAssert httpAssert() {

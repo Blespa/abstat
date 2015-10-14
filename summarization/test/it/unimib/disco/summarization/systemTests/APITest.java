@@ -12,6 +12,16 @@ public class APITest {
 	}
 	
 	@Test
+	public void testconceptsAPIShouldReturnTypes() throws Exception {
+		new HttpAssert("http://localhost").body("/api/v1/autocomplete/concepts?dataset=system-test&q=ci", containsString("\"type\":\"concept\""));
+	}
+	
+	@Test
+	public void conceptsAPIShouldReturnAlsoDatatypes() throws Exception {
+		new HttpAssert("http://localhost").body("/api/v1/autocomplete/concepts?dataset=system-test&q=dat", containsString("http://www.w3.org/2001/XMLSchema#date"));
+	}
+	
+	@Test
 	public void shouldHandleWhiteSpaces() throws Exception {
 		new HttpAssert("http://localhost").body("/api/v1/autocomplete/concepts?dataset=system-test&q=city+of", containsString("http://dbpedia.org/ontology/City"));
 	}
@@ -23,7 +33,7 @@ public class APITest {
 	
 	@Test
 	public void propertiesAPIShouldReturnTypes() throws Exception {
-		new HttpAssert("http://localhost").body("/api/v1/autocomplete/properties?dataset=system-test&q=reatot", containsString("datatypeProperty"));
+		new HttpAssert("http://localhost").body("/api/v1/autocomplete/properties?dataset=system-test&q=reatot", containsString("\"type\":\"datatypeProperty\""));
 	}
 
 }

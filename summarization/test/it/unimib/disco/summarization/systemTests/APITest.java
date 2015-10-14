@@ -2,7 +2,6 @@ package it.unimib.disco.summarization.systemTests;
 
 import static org.hamcrest.Matchers.containsString;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class APITest {
@@ -13,7 +12,6 @@ public class APITest {
 	}
 	
 	@Test
-	@Ignore
 	public void testconceptsAPIShouldReturnTypes() throws Exception {
 		new HttpAssert("http://localhost").body("/api/v1/autocomplete/concepts?dataset=system-test&q=ci", containsString("\"type\":\"concept\""));
 	}

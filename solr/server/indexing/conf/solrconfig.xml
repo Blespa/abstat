@@ -60,7 +60,7 @@
 			<str name="wt">json</str>
 			<str name="df">URI_ngram</str>
 			<str name="fq">type:concept</str>
-			<str name="fl">URI</str>
+			<str name="fl">URI,type</str>
 			<str name="indent">true</str>
 		</lst>
 	</requestHandler>

@@ -38,9 +38,9 @@ case "$1" in
 		;;
 esac
 
-#./abstat.sh build
-#unit_tests $unittest_runner
-#./abstat.sh destroy
+./abstat.sh build
+unit_tests $unittest_runner
+./abstat.sh destroy
 test_installation $installation
 ./abstat.sh run --dry "rm -rf data/logs"
 ./abstat.sh destroy

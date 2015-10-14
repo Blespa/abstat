@@ -28,7 +28,7 @@ public class AKPDiscoveryEfficiency {
 			datasetGraph = "from <http://dbpedia.org>";
 		}
 		
-		new Events();
+		Events.summarization();
 		
 		LDSummariesVocabulary vocabulary = new LDSummariesVocabulary(ModelFactory.createDefaultModel(), dataset);
 		
@@ -56,7 +56,7 @@ public class AKPDiscoveryEfficiency {
 			Resource concept = result.next().getResource("?type");
 			totalConcepts++;
 			
-			new Events().info("processing " + concept);
+			Events.summarization().info("processing " + concept);
 			
 			try{
 				String abstatPatterns = "select ?predicate ?object ?occurrence "
@@ -80,7 +80,7 @@ public class AKPDiscoveryEfficiency {
 				abstatResponseTimes.addValue(duration);
 				
 			}catch(Exception e){
-				new Events().error(concept, e);
+				Events.summarization().error(concept, e);
 			}
 			
 			try{
@@ -101,7 +101,7 @@ public class AKPDiscoveryEfficiency {
 				datasetResponseTimes.addValue(duration);
 				
 			}catch(Exception e){
-				new Events().error(concept, e);
+				Events.summarization().error(concept, e);
 			}
 		}
 		

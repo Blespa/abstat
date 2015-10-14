@@ -1,5 +1,7 @@
 package it.unimib.disco.summarization.web;
 
+import it.unimib.disco.summarization.output.Events;
+
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.ContextHandler;
@@ -13,7 +15,7 @@ public class SummarizationBrowser {
 	private Server server;
 
 	public SummarizationBrowser on(int port) throws Exception {
-		new Events();
+		Events.web();
 		server = new Server(port);
 		HandlerList handlers = new HandlerList();
 		handlers.setHandlers(new Handler[]{trackSessions(), staticResources(), new Application()});

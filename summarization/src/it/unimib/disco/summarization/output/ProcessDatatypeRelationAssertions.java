@@ -8,7 +8,7 @@ public class ProcessDatatypeRelationAssertions {
 
 	public static void main(String[] args) throws Exception {
 		
-		new Events();
+		Events.summarization();
 		
 		File sourceDirectory = new File(args[0]);
 		File minimalTypesDirectory = new File(args[1]);

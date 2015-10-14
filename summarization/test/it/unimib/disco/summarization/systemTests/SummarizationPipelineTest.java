@@ -19,7 +19,7 @@ public class SummarizationPipelineTest {
 
 	@Test
 	public void shouldDistinguishBetweenDatatypeAndObjectProperties() {
-		new Events();
+		Events.summarization();
 		
 		LDSummariesVocabulary vocabulary = new LDSummariesVocabulary(ModelFactory.createDefaultModel(), "system-test");
 		
@@ -43,7 +43,7 @@ public class SummarizationPipelineTest {
 	
 	@Test
 	public void theSummaryShouldBeLoadedIntoIntoTheSparqlEndpoint() throws Exception {
-		new Events();
+		Events.summarization();
 		
 		LDSummariesVocabulary vocabulary = new LDSummariesVocabulary(ModelFactory.createDefaultModel(), "system-test");
 		

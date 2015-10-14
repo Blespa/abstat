@@ -41,7 +41,7 @@ public class WriteDatatypePropertyToRDF {
 				model.add(localProperty, vocabulary.occurrence(), occurrence);
 			}
 			catch(Exception e){
-				new Events().error("file" + csvFilePath + " row" + row, e);
+				Events.summarization().error("file" + csvFilePath + " row" + row, e);
 			}
 		}
 		OutputStream output = new FileOutputStream(outputFilePath);
@@ -66,7 +66,7 @@ public class WriteDatatypePropertyToRDF {
 				}
 			}
 			catch(Exception e){
-				new Events().error("file" + rsListFile + " line " + line, e);
+				Events.summarization().error("file" + rsListFile + " line " + line, e);
 			}
 		}
 		return allFacts;

@@ -34,7 +34,7 @@ public class WriteConceptToRDF {
 				model.add(localSubject, vocabulary.occurrence(), occurrences);
 			}
 			catch(Exception e){
-				new Events().error("file" + csvFilePath + " row" + row, e);
+				Events.summarization().error("file" + csvFilePath + " row" + row, e);
 			}
 		}
 		OutputStream output = new FileOutputStream(outputFilePath);
@@ -62,7 +62,7 @@ public class WriteConceptToRDF {
 				}
 			}
 			catch(Exception e){
-				new Events().error("file" + rsListFile + " line " + line, e);
+				Events.summarization().error("file" + rsListFile + " line " + line, e);
 			}
 		}
 		return allFacts;

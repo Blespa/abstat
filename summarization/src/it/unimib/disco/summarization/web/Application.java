@@ -1,5 +1,7 @@
 package it.unimib.disco.summarization.web;
 
+import it.unimib.disco.summarization.output.Events;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -35,7 +37,7 @@ public class Application extends AbstractHandler{
 				.routeTo(path)
 			.sendResponse(base, response, new HttpParameters(request));
 		}catch(Exception e){
-			new Events().error("processing request: " + path, e);
+			Events.web().error("processing request: " + path, e);
 			response.setStatus(500);
 		}
 	}

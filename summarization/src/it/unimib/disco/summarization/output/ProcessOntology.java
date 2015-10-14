@@ -22,7 +22,7 @@ import com.hp.hpl.jena.ontology.OntModel;
 public class ProcessOntology {
 
 	public static void main(String[] args) throws Exception {
-		new Events();
+		Events.summarization();
 		
 		String owlBaseFileArg = null;
 		String datasetSupportFileDirectory = null;

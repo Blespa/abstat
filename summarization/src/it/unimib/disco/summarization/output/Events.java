@@ -9,19 +9,29 @@ public class Events{
 		PropertyConfigurator.configureAndWatch("log4j.properties");
 	}
 	
+	public static Events summarization(){
+		return new Events(Logger.getLogger("summarization"));
+	}
+	
+	public static Events web(){
+		return new Events(Logger.getLogger("web"));
+	}
+	
+	private Logger logger;
+	
+	private Events(Logger logger){
+		this.logger = logger;
+	}
+	
 	public void error(Object message, Exception exception){
-		logger().error(message, exception);
+		logger.error(message, exception);
 	}
 
-	public void debug(Object message){
-		logger().debug(message);
+	public void debug(Object message) {
+		logger.debug(message);
 	}
-	
-	public void info(Object message){
-		logger().info(message);
-	}
-	
-	private Logger logger() {
-		return Logger.getLogger("");
+
+	public void info(Object message) {
+		logger.info(message);
 	}
 }

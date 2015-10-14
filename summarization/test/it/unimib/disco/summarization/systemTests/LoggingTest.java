@@ -19,7 +19,7 @@ public class LoggingTest {
 	@Test
 	public void reverseProxyShouldLogAllTheRequests() throws Exception {
 		
-		new Events();
+		Events.web();
 		
 		double random = new Random().nextDouble();
 		

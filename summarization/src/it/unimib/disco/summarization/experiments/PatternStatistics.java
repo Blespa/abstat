@@ -11,7 +11,7 @@ public class PatternStatistics {
 		
 		String dataset = args[0];
 		
-		new Events();
+		Events.summarization();
 		
 		LDSummariesVocabulary vocabulary = new LDSummariesVocabulary(ModelFactory.createDefaultModel(), dataset);
 		

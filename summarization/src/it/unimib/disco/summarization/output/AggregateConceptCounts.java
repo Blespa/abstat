@@ -9,7 +9,7 @@ public class AggregateConceptCounts {
 
 	public static void main(String[] args) throws Exception {
 		
-		new Events();
+		Events.summarization();
 		
 		File sourceDirectory = new File(args[0]);
 		File targetFile = new File(args[1], "count-concepts.txt");
@@ -19,7 +19,7 @@ public class AggregateConceptCounts {
 			try{
 				counts.process(file);
 			}catch(Exception e){
-				new Events().error("processing " + file, e);
+				Events.summarization().error("processing " + file, e);
 			}
 		}
 		counts.writeResultsTo(targetFile);

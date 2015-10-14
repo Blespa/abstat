@@ -23,7 +23,7 @@ public class DomainRangeViolations {
 	
 	public static void main(String[] args) throws Exception {
 
-		new Events();
+		Events.summarization();
 
 		String ontology = args[0];
 		String dataset = args[1];

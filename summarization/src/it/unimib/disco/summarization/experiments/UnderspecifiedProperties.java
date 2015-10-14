@@ -11,7 +11,7 @@ public class UnderspecifiedProperties {
 
 	public static void main(String[] args) {
 
-		new Events();
+		Events.summarization();
 
 		String path = args[0];
 		String dataset = args[1];

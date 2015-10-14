@@ -7,5 +7,5 @@ root=`cd $relative_path;pwd`
 
 cd $root
 
-./build.sh web summarization-web.jar
+./build.sh summarization summarization-web.jar
 

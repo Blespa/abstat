@@ -17,7 +17,7 @@ function stop(){
 	rm -f $pid
 }
 
-project=/schema-summaries/web
+project=/schema-summaries/summarization
 command=$1
 port=$2
 pid=/schema-summaries/data/logs/webapp/java-ui-$port.pid

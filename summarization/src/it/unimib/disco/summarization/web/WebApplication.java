@@ -1,5 +1,7 @@
 package it.unimib.disco.summarization.web;
 
+import it.unimib.disco.summarization.output.Events;
+
 public class WebApplication {
 
 	public static void main(String[] args) throws Exception {
@@ -7,7 +9,7 @@ public class WebApplication {
 			new SummarizationBrowser().on(Integer.parseInt(args[0])).start();
 		}
 		catch(Exception e){
-			new Events().error("application didn't start", e);
+			Events.web().error("application didn't start", e);
 			System.exit(1);
 		}
 	}

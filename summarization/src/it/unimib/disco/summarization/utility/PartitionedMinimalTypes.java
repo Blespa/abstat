@@ -36,7 +36,7 @@ public class PartitionedMinimalTypes implements MinimalTypes {
 				List<String> line = Arrays.asList(nextLine.replace("#-#", "##").split("##"));
 				minimalTypes.put(line.get(1), line.subList(2, line.size()));
 			}catch(Exception e){
-				new Events().error("processing line " + nextLine + " - " + types.name(), e);	
+				Events.summarization().error("processing line " + nextLine + " - " + types.name(), e);	
 			}
 		}
 		return minimalTypes;

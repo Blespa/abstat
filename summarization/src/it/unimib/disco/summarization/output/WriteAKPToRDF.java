@@ -60,7 +60,7 @@ public class WriteAKPToRDF {
 				model.add(akpInstance, vocabulary.occurrence(), statistic);
 			}
 			catch(Exception e){
-				new Events().error("file" + csvFilePath + " row" + row, e);
+				Events.summarization().error("file" + csvFilePath + " row" + row, e);
 			}
 
 		}
@@ -92,7 +92,7 @@ public class WriteAKPToRDF {
 				}
 			}
 			catch(Exception e){
-				new Events().error("file" + rsListFile + " line " + line, e);
+				Events.summarization().error("file" + rsListFile + " line " + line, e);
 			}
 		}
 		return allFacts;

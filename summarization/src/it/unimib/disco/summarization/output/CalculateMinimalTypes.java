@@ -15,7 +15,7 @@ public class CalculateMinimalTypes {
 
 	public static void main(String[] args) throws Exception {
 		
-		new Events();
+		Events.summarization();
 		
 		File folder = new File(args[0]);
 		Collection<File> listOfFiles = FileUtils.listFiles(folder, new String[]{"owl"}, false);

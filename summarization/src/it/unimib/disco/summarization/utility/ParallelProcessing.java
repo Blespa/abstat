@@ -25,7 +25,7 @@ public class ParallelProcessing{
 					try {
 						processing.process(new TextInput(new FileSystemConnector(file)));
 					} catch (Exception e) {
-						new Events().error(file, e);
+						Events.summarization().error(file, e);
 					}
 				}
 			});

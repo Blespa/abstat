@@ -46,7 +46,7 @@ public class NTripleFile {
 					analysis.track(triple);
 				}	
 			}catch(Exception e){
-				new Events().error("error processing " + line + " from " + file.name(), e);
+				Events.summarization().error("error processing " + line + " from " + file.name(), e);
 			}
 		}
 	}

@@ -26,7 +26,6 @@ function build(){
 	run_command --dry build/build-java-summarization-module.sh
 	run_command --dry build/build-java-ui-module.sh
 	run_command --dry chmod 775 -R data/
-	run_command --dry chmod 777 -R web/bin
 	run_command --dry chmod 777 -R summarization/bin
 }
 

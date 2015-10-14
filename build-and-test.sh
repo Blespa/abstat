@@ -3,12 +3,10 @@
 set -e
 
 function test_installation(){
-	echo 'testing installation'
 	$1 && $1
-	echo 'waiting all services to start up'
+	echo 'Waiting all services to start up'
 	sleep 20
 	./abstat.sh status | tail | grep 'Up '
-	exit $?
 }
 
 function mime_installation(){
@@ -17,7 +15,6 @@ function mime_installation(){
 	sudo service docker restart 
 	sleep 5
 	./abstat.sh start
-	exit $?
 }
 
 function unit_tests(){
@@ -41,5 +38,10 @@ case "$1" in
 		;;
 esac
 
-./abstat.sh build && unit_tests $unittest_runner && ./abstat.sh destroy && test_installation $installation && ./abstat.sh run --dry "rm -rf data/logs" && ./abstat.sh destroy
+#./abstat.sh build
+#unit_tests $unittest_runner
+#./abstat.sh destroy
+test_installation $installation
+./abstat.sh run --dry "rm -rf data/logs"
+./abstat.sh destroy
 

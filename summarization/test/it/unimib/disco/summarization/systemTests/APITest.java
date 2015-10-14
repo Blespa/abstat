@@ -2,7 +2,6 @@ package it.unimib.disco.summarization.systemTests;
 
 import static org.hamcrest.Matchers.containsString;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class APITest {
@@ -18,7 +17,6 @@ public class APITest {
 	}
 	
 	@Test
-	@Ignore
 	public void conceptsAPIShouldReturnAlsoDatatypes() throws Exception {
 		new HttpAssert("http://localhost").body("/api/v1/autocomplete/concepts?dataset=system-test&q=dat", containsString("http://www.w3.org/2001/XMLSchema#date"));
 	}

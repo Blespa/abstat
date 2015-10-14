@@ -6,17 +6,11 @@ application.filter('describe', function(){
 	};
 });
 
-application.filter('clean', function(){
-	return function(type){
-		return type.toLowerCase().replace(/object/g, "").replace(/datatype/g, "");
-	};
-});
-
 application.filter('asLabel', function(){
 	return function(type){
-		if(type == 'concept') return 'success';
-		if(type == 'property') return 'danger';
-		if(type == 'akp') return 'warning';
+		if(type == 'concept' || type == 'datatype') return 'success';
+		if(type.indexOf('Property') > -1) return 'danger';
+		if(type.indexOf('Akp')) return 'warning';
 	};
 });
 

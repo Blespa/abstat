@@ -14,7 +14,7 @@ import org.apache.solr.common.SolrInputDocument;
 
 public class IndexConcepts
 {
-	public static void main (String[] args) throws SolrServerException, IOException
+	public static void main (String[] args) throws Exception
 	{
 		String host = args[0];
 		String port = args[1];
@@ -27,7 +27,7 @@ public class IndexConcepts
 		conceptsImport(client,pathFile,dataset);
 	}
 	
-	private static void conceptsImport (HttpSolrServer client, String pathFile, String dataset) throws FileNotFoundException, IOException, SolrServerException
+	private static void conceptsImport (HttpSolrServer client, String pathFile, String dataset) throws Exception
 	{
 		ArrayList <String> concepts = takeOnlyConcepts(pathFile);
 		ArrayList <String> subtypeOfConcepts = takeOnlySubtypeOfConcepts(pathFile);
@@ -64,7 +64,7 @@ public class IndexConcepts
 		BufferedReader reader = new BufferedReader(new FileReader(path));
 		
 		int numberOfConcepts = 0;
-		ArrayList <String> concepts = new ArrayList <String> ();
+		ArrayList <String> concepts = new ArrayList<String>();
 		
     	boolean trovatoDoppioCancelletto = false;
     	String concept = "";
@@ -117,7 +117,7 @@ public class IndexConcepts
 		return concepts;
 	}
 	
-	private static ArrayList <String> takeOnlySubtypeOfConcepts(String pathFile) throws FileNotFoundException, IOException
+	private static ArrayList <String> takeOnlySubtypeOfConcepts(String pathFile) throws Exception
 	{
 		String path = pathFile;
 		BufferedReader reader = new BufferedReader(new FileReader(path));

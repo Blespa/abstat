@@ -1,6 +1,6 @@
 package it.unimib.disco.summarization.experiments;
 
-import it.unimib.disco.summarization.output.Events;
+import it.unimib.disco.summarization.export.Events;
 
 import java.util.HashSet;
 
@@ -11,7 +11,7 @@ public class UnderspecifiedProperties {
 
 	public static void main(String[] args) {
 
-		new Events();
+		Events.summarization();
 
 		String path = args[0];
 		String dataset = args[1];

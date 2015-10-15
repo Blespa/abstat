@@ -23,10 +23,8 @@ function destroy(){
 
 function build(){
 	docker build --rm -t abstat deployment
-	run_command --dry build/build-java-summarization-module.sh
-	run_command --dry build/build-java-ui-module.sh
+	run_command --dry ./build.sh
 	run_command --dry chmod 775 -R data/
-	run_command --dry chmod 777 -R web/bin
 	run_command --dry chmod 777 -R summarization/bin
 }
 
@@ -43,7 +41,6 @@ function exec_command(){
 function status(){
 	set +e
 	docker inspect abstat
-	echo Current Status:
 	docker ps -a | grep -B 1 abstat
 	set -e
 }

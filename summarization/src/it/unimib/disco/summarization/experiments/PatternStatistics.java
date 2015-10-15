@@ -1,7 +1,7 @@
 package it.unimib.disco.summarization.experiments;
 
-import it.unimib.disco.summarization.output.Events;
-import it.unimib.disco.summarization.output.LDSummariesVocabulary;
+import it.unimib.disco.summarization.export.Events;
+import it.unimib.disco.summarization.ontology.LDSummariesVocabulary;
 
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 
@@ -11,7 +11,7 @@ public class PatternStatistics {
 		
 		String dataset = args[0];
 		
-		new Events();
+		Events.summarization();
 		
 		LDSummariesVocabulary vocabulary = new LDSummariesVocabulary(ModelFactory.createDefaultModel(), dataset);
 		

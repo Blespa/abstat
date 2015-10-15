@@ -12,7 +12,7 @@ function assert_no_errors_on()
 		highlight_color='\e[0;31m'
 		message="KO. There were errors in log file ${file}"
 	fi
-	echo -e "checking that execution was successful: ${highlight_color}${message}\e[0m"
+	echo -e "Checking that execution was successful: ${highlight_color}${message}\e[0m"
 }
 
 function assert_results_are_compliant()
@@ -28,7 +28,7 @@ function assert_results_are_compliant()
 		highlight_color='\e[0;31m'
 		message="KO"
 	fi
-	echo -e "checking that execution produced the correct result: ${highlight_color}${message}"
+	echo -e "Checking that execution produced the correct result: ${highlight_color}${message}"
 	echo $(diff -qr $expected $actual)	
 	echo -e "\e[0m"
 }

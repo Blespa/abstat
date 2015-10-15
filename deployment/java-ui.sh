@@ -4,7 +4,7 @@ set -e
 
 function start(){
 	log_begin_msg "starting summarization-ui service on port $port"
-	start-stop-daemon --start --background --exec "/usr/bin/java" -m --pidfile "$pid" -d $project -- -cp .:"summarization-web.jar" it.unimib.disco.summarization.web.WebApplication $port
+	start-stop-daemon --start --background --exec "/usr/bin/java" -m --pidfile "$pid" -d $project -- -cp .:"summarization.jar" it.unimib.disco.summarization.web.WebApplication $port
 	status=$?
 	log_end_msg $status
 }
@@ -17,7 +17,7 @@ function stop(){
 	rm -f $pid
 }
 
-project=/schema-summaries/web
+project=/schema-summaries/summarization
 command=$1
 port=$2
 pid=/schema-summaries/data/logs/webapp/java-ui-$port.pid

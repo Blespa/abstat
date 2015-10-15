@@ -2,7 +2,7 @@ package it.unimib.disco.summarization.experiments;
 
 import it.unimib.disco.summarization.dataset.BulkTextOutput;
 import it.unimib.disco.summarization.dataset.FileSystemConnector;
-import it.unimib.disco.summarization.export.LDSummariesVocabulary;
+import it.unimib.disco.summarization.ontology.LDSummariesVocabulary;
 
 import java.io.File;
 import java.util.ArrayList;

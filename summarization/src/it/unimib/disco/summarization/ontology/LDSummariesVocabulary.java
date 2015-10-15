@@ -1,6 +1,4 @@
-package it.unimib.disco.summarization.export;
-
-import it.unimib.disco.summarization.ontology.RDFResource;
+package it.unimib.disco.summarization.ontology;
 
 import java.util.ArrayList;
 import java.util.List;

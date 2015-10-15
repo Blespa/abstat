@@ -1,7 +1,7 @@
 package it.unimib.disco.summarization.experiments;
 
 import it.unimib.disco.summarization.export.Events;
-import it.unimib.disco.summarization.export.LDSummariesVocabulary;
+import it.unimib.disco.summarization.ontology.LDSummariesVocabulary;
 
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 

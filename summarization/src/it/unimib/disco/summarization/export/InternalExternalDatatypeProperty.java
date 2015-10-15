@@ -69,19 +69,19 @@ public class InternalExternalDatatypeProperty
 						
 			if ((datatypeProperty.contains("wikidata")) && (datatypeProperty.contains(payLevelDomain)))
 			{
-				typeOfDatatypeProperty = "externalDatatypeProperty";
+				typeOfDatatypeProperty = "external";
 			}
 			else
 			{
 				if ((!(datatypeProperty.contains("wikidata"))) && (datatypeProperty.contains(payLevelDomain)))
 				{
-					typeOfDatatypeProperty = "internalDatatypeProperty";
+					typeOfDatatypeProperty = "internal";
 				}
 				else
 				{
 					if (!(datatypeProperty.contains(payLevelDomain)))
 					{
-						typeOfDatatypeProperty = "externalDatatypeProperty";
+						typeOfDatatypeProperty = "external";
 					}
 				}
 			}

@@ -1,4 +1,6 @@
 package it.unimib.disco.summarization.export;
+import it.unimib.disco.summarization.ontology.LDSummariesVocabulary;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;

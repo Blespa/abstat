@@ -67,19 +67,19 @@ public class InternalExternalConcept
 			
 			if ((concept.contains("wikidata")) && (concept.contains(payLevelDomain)))
 			{
-				typeOfConcept = "externalConcept";
+				typeOfConcept = "external";
 			}
 			else
 			{
 				if ((!(concept.contains("wikidata"))) && (concept.contains(payLevelDomain)))
 				{
-					typeOfConcept = "internalConcept";
+					typeOfConcept = "internal";
 				}
 				else
 				{
 					if (!(concept.contains(payLevelDomain)))
 					{
-						typeOfConcept = "externalConcept";
+						typeOfConcept = "external";
 					}
 				}
 			}

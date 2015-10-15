@@ -4,7 +4,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.*;
 import it.unimib.disco.summarization.experiments.SparqlEndpoint;
 import it.unimib.disco.summarization.export.Events;
-import it.unimib.disco.summarization.export.LDSummariesVocabulary;
+import it.unimib.disco.summarization.ontology.LDSummariesVocabulary;
 
 import java.util.HashMap;
 

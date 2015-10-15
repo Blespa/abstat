@@ -15,6 +15,6 @@ public class ConceptsApiTest {
 											.withParameter("q", "ci")
 											.withParameter("dataset", "system-test");
 		
-		assertThat(IOUtils.toString(new ConceptsApi(new ConnectorTestDouble()).getResponseFromConnector(request)), containsString("http://dbpedia.org/ontology/City"));
+		assertThat(IOUtils.toString(new ConceptsApi(new ConnectorTestDouble(), "concept-suggest").get(request)), containsString("http://dbpedia.org/ontology/City"));
 	}
 }

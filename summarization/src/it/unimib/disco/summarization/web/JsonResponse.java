@@ -19,7 +19,7 @@ public class JsonResponse implements Response {
 	public void sendResponse(Request base, HttpServletResponse response, RequestParameters parameters) throws Exception {
 		response.setContentType("application/json");
 		response.addHeader("Access-Control-Allow-Origin", "*");
-		IOUtils.copy(this.api.getResponseFromConnector(parameters), response.getOutputStream());
+		IOUtils.copy(this.api.get(parameters), response.getOutputStream());
 		base.setHandled(true);
 	}
 

@@ -11,7 +11,7 @@ public class PropertiesApi implements Api {
 	}
 
 	@Override
-	public InputStream getResponseFromConnector(RequestParameters request) throws Exception {
+	public InputStream get(RequestParameters request) throws Exception {
 		QueryString queryString = new QueryString()
 										.addParameter("q", "URI_ngram", request.getParameter("q"))
 										.addParameter("fq", "dataset", request.getParameter("dataset"));

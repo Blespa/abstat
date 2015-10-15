@@ -15,6 +15,6 @@ public class PropertiesApiTest {
 											.withParameter("q", "bir")
 											.withParameter("dataset", "system-test");
 		
-		assertThat(IOUtils.toString(new PropertiesApi(new ConnectorTestDouble()).getResponseFromConnector(request)), containsString("http://dbpedia.org/ontology/birthDate"));
+		assertThat(IOUtils.toString(new PropertiesApi(new ConnectorTestDouble()).get(request)), containsString("http://dbpedia.org/ontology/birthDate"));
 	}
 }

@@ -4,6 +4,6 @@ import java.io.InputStream;
 
 public interface Api {
 
-	public InputStream getResponseFromConnector(RequestParameters parameters) throws Exception;
+	public InputStream get(RequestParameters parameters) throws Exception;
 
 }

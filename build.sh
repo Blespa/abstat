@@ -7,11 +7,10 @@ root=`cd $relative_path;pwd`
 
 cd $root
 
-directory=summarization
 jar=summarization.jar
+project=summarization
 
-project=../$directory
-build_directory=$project/bin
+build_directory=bin
 classes_directory=$build_directory/classes
 
 echo "Building the content of $directory to $jar"

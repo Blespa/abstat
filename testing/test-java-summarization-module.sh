@@ -7,6 +7,6 @@ project=$root/../summarization
 
 echo "Unit testing the java summarization module"
 cd $project
-java -Xms256m -Xmx1g -cp .:'summarization.jar' org.junit.runner.JUnitCore it.unimib.disco.summarization.tests.TestSuite
+java -Xms256m -Xmx1g -cp .:'summarization.jar' org.junit.runner.JUnitCore it.unimib.disco.summarization.test.unit.UnitTests
 cd $root
 

@@ -1,6 +1,6 @@
 package it.unimib.disco.summarization.web;
 
-import it.unimib.disco.summarization.web.tests.ClientCommunication;
+import it.unimib.disco.summarization.test.web.ClientCommunication;
 
 import java.io.InputStream;
 

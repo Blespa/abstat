@@ -3,7 +3,7 @@
 set -e
 
 function test_installation(){
-	$1 && $1
+	$1
 	echo 'Waiting all services to start up'
 	sleep 20
 	./abstat.sh status | tail | grep 'Up '
@@ -15,7 +15,6 @@ function mime_installation(){
 	sudo service docker restart 
 	sleep 5
 	./abstat.sh start
-	exit $?
 }
 
 function unit_tests(){

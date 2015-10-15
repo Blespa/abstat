@@ -2,12 +2,12 @@ package it.unimib.disco.summarization.web;
 
 import java.io.InputStream;
 
-public class ConceptsApi implements Api{
+public class SolrAutocomplete implements Api{
 	
 	private Connector connector;
 	private String suggestionService;
 
-	public ConceptsApi(Connector connector, String service) {
+	public SolrAutocomplete(Connector connector, String service) {
 		this.connector = connector;
 		this.suggestionService = service;
 	}

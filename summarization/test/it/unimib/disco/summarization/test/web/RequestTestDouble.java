@@ -13,7 +13,7 @@ public class RequestTestDouble implements RequestParameters {
 	}
 	
 	@Override
-	public String getParameter(String name) {
+	public String get(String name) {
 		return parameters.get(name);
 	}
 

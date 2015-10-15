@@ -35,7 +35,7 @@ public class Application extends AbstractHandler{
 				.mapJson("/api/v1/autocomplete/concepts", new SolrAutocomplete(new SolrConnector(), "concept-suggest"))
 				.mapJson("/api/v1/autocomplete/properties", new SolrAutocomplete(new SolrConnector(), "property-suggest"))
 				.routeTo(path)
-			.sendResponse(base, response, new HttpParameters(request));
+			.sendTo(base, response, new HttpParameters(request));
 		}catch(Exception e){
 			Events.web().error("processing request: " + path, e);
 			response.setStatus(500);

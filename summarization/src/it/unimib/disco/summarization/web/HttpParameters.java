@@ -11,7 +11,7 @@ public class HttpParameters implements RequestParameters {
 	}
 
 	@Override
-	public String getParameter(String name) {
+	public String get(String name) {
 		return this.request.getParameter(name);
 	}
 

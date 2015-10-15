@@ -15,7 +15,7 @@ public class TextualResponse implements Response{
 	}
 
 	@Override
-	public void sendResponse(Request base, HttpServletResponse response, RequestParameters request) throws Exception {
+	public void sendTo(Request base, HttpServletResponse response, RequestParameters request) throws Exception {
 		IOUtils.copy(IOUtils.toInputStream(message), response.getOutputStream());
 		base.setHandled(true);
 	}

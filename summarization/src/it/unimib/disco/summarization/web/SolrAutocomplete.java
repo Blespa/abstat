@@ -15,8 +15,8 @@ public class SolrAutocomplete implements Api{
 	@Override
 	public InputStream get(RequestParameters request) throws Exception {
 		QueryString queryString = new QueryString()
-									.addParameter("q", "URI_ngram", request.getParameter("q"))
-									.addParameter("fq", "dataset", request.getParameter("dataset"));
+									.addParameter("q", "URI_ngram", request.get("q"))
+									.addParameter("fq", "dataset", request.get("dataset"));
 		
 		return connector.query("/solr/indexing/" + suggestionService, queryString);
 	}

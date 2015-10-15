@@ -17,7 +17,7 @@ public class FileResponse implements Response{
 	}
 
 	@Override
-	public void sendResponse(Request base, HttpServletResponse response, RequestParameters parameters) throws Exception {
+	public void sendTo(Request base, HttpServletResponse response, RequestParameters parameters) throws Exception {
 		IOUtils.copy(FileUtils.openInputStream(file), response.getOutputStream());
 		base.setHandled(true);
 	}

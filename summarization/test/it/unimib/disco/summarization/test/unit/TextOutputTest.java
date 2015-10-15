@@ -2,8 +2,8 @@ package it.unimib.disco.summarization.test.unit;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.junit.Assert.assertThat;
-import it.unimib.disco.summarization.utility.FileSystemConnector;
-import it.unimib.disco.summarization.utility.TextOutput;
+import it.unimib.disco.summarization.dataset.FileSystemConnector;
+import it.unimib.disco.summarization.dataset.TextOutput;
 
 import java.io.File;
 

@@ -2,7 +2,7 @@ package it.unimib.disco.summarization.test.unit;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.*;
-import it.unimib.disco.summarization.utility.AKPDatatypeCount;
+import it.unimib.disco.summarization.dataset.AKPDatatypeCount;
 
 import org.junit.Test;
 

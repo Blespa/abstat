@@ -2,7 +2,7 @@ package it.unimib.disco.summarization.test.unit;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
-import it.unimib.disco.summarization.output.WriteConceptToRDF;
+import it.unimib.disco.summarization.export.WriteConceptToRDF;
 
 import java.io.File;
 

@@ -1,6 +1,6 @@
 package it.unimib.disco.summarization.test.unit;
 
-import it.unimib.disco.summarization.output.WriteDatatypePropertyToRDF;
+import it.unimib.disco.summarization.export.WriteDatatypePropertyToRDF;
 
 import java.io.File;
 

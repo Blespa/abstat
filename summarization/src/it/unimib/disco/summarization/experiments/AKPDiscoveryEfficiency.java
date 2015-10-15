@@ -1,7 +1,7 @@
 package it.unimib.disco.summarization.experiments;
 
-import it.unimib.disco.summarization.output.Events;
-import it.unimib.disco.summarization.output.LDSummariesVocabulary;
+import it.unimib.disco.summarization.export.Events;
+import it.unimib.disco.summarization.export.LDSummariesVocabulary;
 
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 import org.joda.time.DateTime;

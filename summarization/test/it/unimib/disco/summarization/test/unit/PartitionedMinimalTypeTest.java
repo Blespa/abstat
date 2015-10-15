@@ -2,8 +2,8 @@ package it.unimib.disco.summarization.test.unit;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.*;
-import it.unimib.disco.summarization.utility.MinimalTypes;
-import it.unimib.disco.summarization.utility.PartitionedMinimalTypes;
+import it.unimib.disco.summarization.dataset.MinimalTypes;
+import it.unimib.disco.summarization.dataset.PartitionedMinimalTypes;
 
 import org.junit.Test;
 

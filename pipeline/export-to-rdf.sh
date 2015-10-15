@@ -12,7 +12,7 @@ function export_rdf(){
 	type=$5
 
 	echo "Exporting $from as $to"
-	java -Xms256m -Xmx16g -cp .:'summarization.jar' it.unimib.disco.summarization.output.$command $from $to $dataset $type
+	java -Xms256m -Xmx16g -cp .:'summarization.jar' it.unimib.disco.summarization.export.$command $from $to $dataset $type
 	echo "Done"
 }
 

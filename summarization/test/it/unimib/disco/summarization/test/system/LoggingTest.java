@@ -3,7 +3,7 @@ package it.unimib.disco.summarization.test.system;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.hasItem;
 import static org.junit.Assert.assertThat;
-import it.unimib.disco.summarization.output.Events;
+import it.unimib.disco.summarization.export.Events;
 
 import java.io.File;
 import java.io.IOException;

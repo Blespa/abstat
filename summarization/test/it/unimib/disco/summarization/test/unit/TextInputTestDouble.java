@@ -1,6 +1,6 @@
 package it.unimib.disco.summarization.test.unit;
 
-import it.unimib.disco.summarization.utility.InputFile;
+import it.unimib.disco.summarization.dataset.InputFile;
 
 import java.util.ArrayList;
 import java.util.Iterator;

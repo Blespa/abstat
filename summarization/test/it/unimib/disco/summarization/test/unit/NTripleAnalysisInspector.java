@@ -1,7 +1,7 @@
 package it.unimib.disco.summarization.test.unit;
 
-import it.unimib.disco.summarization.utility.NTriple;
-import it.unimib.disco.summarization.utility.NTripleAnalysis;
+import it.unimib.disco.summarization.dataset.NTriple;
+import it.unimib.disco.summarization.dataset.NTripleAnalysis;
 
 import java.util.ArrayList;
 import java.util.HashMap;

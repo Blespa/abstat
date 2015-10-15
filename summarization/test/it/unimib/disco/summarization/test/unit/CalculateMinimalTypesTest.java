@@ -2,7 +2,7 @@ package it.unimib.disco.summarization.test.unit;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
-import it.unimib.disco.summarization.output.CalculateMinimalTypes;
+import it.unimib.disco.summarization.export.CalculateMinimalTypes;
 
 import org.junit.Test;
 

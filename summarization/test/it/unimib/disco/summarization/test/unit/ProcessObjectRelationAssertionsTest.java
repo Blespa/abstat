@@ -2,7 +2,7 @@ package it.unimib.disco.summarization.test.unit;
 
 import static org.hamcrest.Matchers.hasItem;
 import static org.junit.Assert.assertThat;
-import it.unimib.disco.summarization.output.ProcessObjectRelationAssertions;
+import it.unimib.disco.summarization.export.ProcessObjectRelationAssertions;
 
 import java.io.File;
 import java.util.List;

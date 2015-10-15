@@ -1,7 +1,7 @@
 package it.unimib.disco.summarization.experiments;
 
+import it.unimib.disco.summarization.ontology.Model;
 import it.unimib.disco.summarization.ontology.PropertyExtractor;
-import it.unimib.disco.summarization.utility.Model;
 
 import java.io.File;
 import java.util.List;

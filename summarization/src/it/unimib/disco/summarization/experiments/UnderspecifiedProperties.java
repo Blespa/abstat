@@ -1,6 +1,6 @@
 package it.unimib.disco.summarization.experiments;
 
-import it.unimib.disco.summarization.output.Events;
+import it.unimib.disco.summarization.export.Events;
 
 import java.util.HashSet;
 

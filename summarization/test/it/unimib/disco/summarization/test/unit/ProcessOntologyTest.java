@@ -1,6 +1,6 @@
 package it.unimib.disco.summarization.test.unit;
 
-import it.unimib.disco.summarization.output.ProcessOntology;
+import it.unimib.disco.summarization.export.ProcessOntology;
 
 import java.io.File;
 

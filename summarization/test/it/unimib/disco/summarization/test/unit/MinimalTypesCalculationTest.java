@@ -5,8 +5,8 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
-import it.unimib.disco.summarization.utility.MinimalTypesCalculation;
-import it.unimib.disco.summarization.utility.TextInput;
+import it.unimib.disco.summarization.dataset.MinimalTypesCalculation;
+import it.unimib.disco.summarization.dataset.TextInput;
 
 import java.io.File;
 import java.io.IOException;

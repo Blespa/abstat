@@ -2,7 +2,7 @@ package it.unimib.disco.summarization.test.unit;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
-import it.unimib.disco.summarization.utility.DatatypeCount;
+import it.unimib.disco.summarization.dataset.DatatypeCount;
 
 import org.junit.Test;
 

@@ -1,6 +1,6 @@
 package it.unimib.disco.summarization.experiments;
 
-import it.unimib.disco.summarization.output.LDSummariesVocabulary;
+import it.unimib.disco.summarization.export.LDSummariesVocabulary;
 
 import java.util.HashSet;
 

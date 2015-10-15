@@ -4,7 +4,7 @@ import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.*;
-import it.unimib.disco.summarization.output.LDSummariesVocabulary;
+import it.unimib.disco.summarization.export.LDSummariesVocabulary;
 
 import org.junit.Before;
 import org.junit.Test;

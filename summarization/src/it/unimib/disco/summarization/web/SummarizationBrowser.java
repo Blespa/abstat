@@ -1,6 +1,6 @@
 package it.unimib.disco.summarization.web;
 
-import it.unimib.disco.summarization.output.Events;
+import it.unimib.disco.summarization.export.Events;
 
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;

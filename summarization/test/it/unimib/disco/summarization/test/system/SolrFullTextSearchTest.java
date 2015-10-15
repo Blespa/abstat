@@ -2,6 +2,7 @@ package it.unimib.disco.summarization.test.system;
 
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.containsString;
+import it.unimib.disco.summarization.test.web.HttpAssert;
 
 import org.junit.Test;
 

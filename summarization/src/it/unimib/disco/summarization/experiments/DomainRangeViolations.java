@@ -1,13 +1,13 @@
 package it.unimib.disco.summarization.experiments;
 
+import it.unimib.disco.summarization.export.Events;
 import it.unimib.disco.summarization.ontology.ConceptExtractor;
 import it.unimib.disco.summarization.ontology.Concepts;
 import it.unimib.disco.summarization.ontology.OntologyDomainRangeExtractor;
 import it.unimib.disco.summarization.ontology.OntologySubclassOfExtractor;
 import it.unimib.disco.summarization.ontology.Properties;
 import it.unimib.disco.summarization.ontology.PropertyExtractor;
-import it.unimib.disco.summarization.output.Events;
-import it.unimib.disco.summarization.utility.TypeGraph;
+import it.unimib.disco.summarization.ontology.TypeGraph;
 
 import java.util.ArrayList;
 import java.util.HashSet;

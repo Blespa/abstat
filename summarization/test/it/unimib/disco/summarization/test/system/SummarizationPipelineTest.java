@@ -3,8 +3,8 @@ package it.unimib.disco.summarization.test.system;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.*;
 import it.unimib.disco.summarization.experiments.SparqlEndpoint;
-import it.unimib.disco.summarization.output.Events;
-import it.unimib.disco.summarization.output.LDSummariesVocabulary;
+import it.unimib.disco.summarization.export.Events;
+import it.unimib.disco.summarization.export.LDSummariesVocabulary;
 
 import java.util.HashMap;
 

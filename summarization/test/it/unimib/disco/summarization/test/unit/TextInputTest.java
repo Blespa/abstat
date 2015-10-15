@@ -3,10 +3,10 @@ package it.unimib.disco.summarization.test.unit;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
-import it.unimib.disco.summarization.utility.FileSystemConnector;
-import it.unimib.disco.summarization.utility.InputFile;
-import it.unimib.disco.summarization.utility.TextInput;
-import it.unimib.disco.summarization.utility.TextOutput;
+import it.unimib.disco.summarization.dataset.FileSystemConnector;
+import it.unimib.disco.summarization.dataset.InputFile;
+import it.unimib.disco.summarization.dataset.TextInput;
+import it.unimib.disco.summarization.dataset.TextOutput;
 
 import java.io.File;
 

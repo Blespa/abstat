@@ -1,6 +1,6 @@
 package it.unimib.disco.summarization.test.unit;
 
-import it.unimib.disco.summarization.utility.NTriple;
+import it.unimib.disco.summarization.dataset.NTriple;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;

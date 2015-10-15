@@ -1,9 +1,9 @@
 package it.unimib.disco.summarization.test.unit;
 
-import it.unimib.disco.summarization.utility.FileSystemConnector;
-import it.unimib.disco.summarization.utility.Files;
-import it.unimib.disco.summarization.utility.InputFile;
-import it.unimib.disco.summarization.utility.TextInput;
+import it.unimib.disco.summarization.dataset.FileSystemConnector;
+import it.unimib.disco.summarization.dataset.Files;
+import it.unimib.disco.summarization.dataset.InputFile;
+import it.unimib.disco.summarization.dataset.TextInput;
 
 import java.io.File;
 import java.io.IOException;

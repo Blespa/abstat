@@ -5,59 +5,70 @@ summary.filter('escape', function(){
 });
 
 summary.filter('isDatatype', function(){
-	return isDatatype;
+	return function(value){
+		if(value.indexOf('datatype-property') > -1) return 'DTP';
+		return '';
+	};
 });
 
 summary.filter('isObject', function(){
-	return isObject;
+	return function(value){
+		if(value.indexOf('object-property') > -1) return 'OP';
+		return '';
+	};
 });
 
 summary.controller('home', function ($scope, $http) {
-	
 	var summaries = new Summary($scope, $http);
 	
-	$scope.loadPatterns = function(){
+	bootstrapControllerFor($scope, $http, 'select a dataset', summaries);
+	
+	summary.startLoading();
+	new Sparql(http)
+			.query("select distinct ?uri where {GRAPH ?uri {?s ?p ?o} . FILTER regex(?uri, 'ld-summaries')}")
+			.accumulate(function(results){
+				scope.graphs=results;
+				summary.endLoading();
+	});
+});
+
+summary.controller('experiment', function ($scope, $http) {
+	var summaries = new Summary($scope, $http);
+	
+	bootstrapControllerFor($scope, $http, 'http://ld-summaries.org/dbpedia-3.9-infobox', summaries);
+	
+	$scope.loadPatterns();
+});
+
+bootstrapControllerFor = function(scope, http, graph, summaries){
+	
+	scope.loadPatterns = function(){
 		
-		$scope.subject = undefined;
-		$scope.object = undefined;
-		$scope.predicate = undefined;
+		scope.subject = undefined;
+		scope.object = undefined;
+		scope.predicate = undefined;
 		
-		$scope.summaries = [];
+		scope.summaries = [];
 		summaries.reset();
 		summaries.load();
 		
-		$scope.autocomplete = {};
+		scope.autocomplete = {};
 		
-		fill('subject', $scope.selected_graph, $scope.autocomplete, $http)
-		fill('predicate', $scope.selected_graph, $scope.autocomplete, $http)
-		fill('object', $scope.selected_graph, $scope.autocomplete, $http)
+		fill('subject', scope.selected_graph, scope.autocomplete, http)
+		fill('predicate', scope.selected_graph, scope.autocomplete, http)
+		fill('object', scope.selected_graph, scope.autocomplete, http)
 	};
-	
-	$scope.filterPatterns = function(){
+	scope.filterPatterns = function(){
 		
-		$scope.summaries = [];
+		scope.summaries = [];
 		summaries.reset();
 		summaries.load();
 	}
-	
-	$scope.loadMore = function(){
+	scope.loadMore = function(){
 		summaries.load();
 	};
-
-	$scope.selected_graph = 'select a dataset';
-	$scope.describe_uri = '/describe/?uri=';
-	
-	getGraphs($scope, $http, summaries);
-});
-
-isDatatype = function(value){
-	if(value.indexOf('datatype-property') > -1) return 'DTP';
-	return '';
-};
-
-isObject = function(value){
-	if(value.indexOf('object-property') > -1) return 'OP';
-	return '';
+	scope.selected_graph = graph;
+	scope.describe_uri = '/describe/?uri=';
 };
 
 fill = function(type, graph, result, http){
@@ -81,16 +92,6 @@ fill = function(type, graph, result, http){
     		 this.push(result)
     	 }, result[type]);
      });
-};
-
-getGraphs = function(scope, http, summary){
-	summary.startLoading();
-	new Sparql(http)
-			.query("select distinct ?uri where {GRAPH ?uri {?s ?p ?o} . FILTER regex(?uri, 'ld-summaries')}")
-			.accumulate(function(results){
-				scope.graphs=results;
-				summary.endLoading();
-	});
 };
 
 Summary = function(scope_service, http_service){

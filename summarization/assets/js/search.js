@@ -34,7 +34,7 @@ application.controller("search", function ($scope, $http) {
 				wt: 'json',
 				q: 'fullTextSearchField:(' + escape($scope.srcStr) + ')',
 				rows: 100,
-				fq: ['subtype: internalConcept<OR>internalDatatypeProperty<OR>internalObjectProperty<OR>internalDatatypeAKP<OR>internalObjectAKP']
+				fq: ['subtype: internal']
 			}}
 	};
 	

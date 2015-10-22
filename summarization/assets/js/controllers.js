@@ -23,12 +23,12 @@ summary.controller('home', function ($scope, $http) {
 	
 	bootstrapControllerFor($scope, $http, 'select a dataset', summaries);
 	
-	summary.startLoading();
-	new Sparql(http)
+	summaries.startLoading();
+	new Sparql($http)
 			.query("select distinct ?uri where {GRAPH ?uri {?s ?p ?o} . FILTER regex(?uri, 'ld-summaries')}")
 			.accumulate(function(results){
-				scope.graphs=results;
-				summary.endLoading();
+				$scope.graphs=results;
+				summaries.endLoading();
 	});
 });
 

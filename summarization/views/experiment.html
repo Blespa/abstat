@@ -60,7 +60,7 @@
 				<li ng-repeat="doc in allDocuments" style="margin:0.5cm">
 					<h5>
 						<span class="label label-default">{{doc.dataset}}</span>
-						<span class="label label-{{doc.type | clean | asLabel}}">{{doc.type | clean}}</span>
+						<span class="label label-{{doc.type | asLabel}}">{{doc.type}}</span>
 						<span class="glyphicon glyphicon-resize-{{doc.subtype | asIcon}}" aria-hidden="true"></span>
 					 	<span style="margin-left:0.2cm">{{doc.URI | describe}}</span>
 					</h5>

@@ -25,6 +25,8 @@ case $action in
 		git push --set-upstream origin $new_branch
 		;;
 	promote )
+		git checkout development
+		git pull
 		git checkout master
 		git pull
 		git merge development

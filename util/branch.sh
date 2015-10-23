@@ -21,6 +21,7 @@ case $action in
 		source_branch=$2
 		new_branch=$3
 		git checkout $source_branch
+		git pull
 		git checkout -b $new_branch
 		git push --set-upstream origin $new_branch
 		;;

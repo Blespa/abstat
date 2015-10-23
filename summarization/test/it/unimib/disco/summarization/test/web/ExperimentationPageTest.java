@@ -27,6 +27,6 @@ public class ExperimentationPageTest
 	
 	@Test
 	public void shouldResponseWithTheRightPage() throws Exception{
-		application.httpAssert().body("experiment", containsString("search"));
+		application.httpAssert().body("experiment", containsString("get more"));
 	}
 }

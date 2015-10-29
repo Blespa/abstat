@@ -39,7 +39,7 @@ summary.filter('asIcon', function(){
 	};
 });
 
-summary.controller('home', function ($scope, $http) {
+summary.controller('browse', function ($scope, $http) {
 	var summaries = new Summary($scope, $http);
 	
 	bootstrapControllerFor($scope, $http, 'select a dataset', summaries);
@@ -53,17 +53,17 @@ summary.controller('home', function ($scope, $http) {
 	});
 });
 
-summary.controller('experiment', function ($scope, $http) {
+summary.controller("search", function ($scope, $http) {
+	
+	bootstrapSearchController($scope, $http, '');
+});
+
+summary.controller('experiment-browse', function ($scope, $http) {
 	var summaries = new Summary($scope, $http);
 	
 	bootstrapControllerFor($scope, $http, 'http://ld-summaries.org/dbpedia-3.9-infobox', summaries);
 	
 	$scope.loadPatterns();
-});
-
-summary.controller("search", function ($scope, $http) {
-	
-	bootstrapSearchController($scope, $http, '');
 });
 
 summary.controller("experiment-search", function ($scope, $http) {

@@ -28,7 +28,7 @@ public class Application extends AbstractHandler{
 			new Routing()
 				.mapText("/alive", "OK")
 				.mapText("/version", currentVersion)
-				.mapFile("/", "home.html")
+				.mapFile("/", "browse.html")
 				.mapFile("/search", "search.html")
 				.mapFile("/experiment/browse", "experiment-browse.html")
 				.mapFile("/experiment/search", "experiment-search.html")

@@ -18,7 +18,28 @@ summary.filter('isObject', function(){
 	};
 });
 
-summary.controller('home', function ($scope, $http) {
+summary.filter('describe', function(){
+	return function(objectToDescribe){
+		return objectToDescribe.join(' - ');
+	};
+});
+
+summary.filter('asLabel', function(){
+	return function(type){
+		if(type == 'concept' || type == 'datatype') return 'success';
+		if(type.indexOf('Property') > -1) return 'danger';
+		if(type.indexOf('Akp')) return 'warning';
+	};
+});
+
+summary.filter('asIcon', function(){
+	return function(subtype){
+		if(subtype.indexOf('external') > -1) return 'full';
+		return 'small'
+	};
+});
+
+summary.controller('browse', function ($scope, $http) {
 	var summaries = new Summary($scope, $http);
 	
 	bootstrapControllerFor($scope, $http, 'select a dataset', summaries);
@@ -32,13 +53,62 @@ summary.controller('home', function ($scope, $http) {
 	});
 });
 
-summary.controller('experiment', function ($scope, $http) {
+summary.controller("search", function ($scope, $http) {
+	
+	bootstrapSearchController($scope, $http, '');
+});
+
+summary.controller('experiment-browse', function ($scope, $http) {
 	var summaries = new Summary($scope, $http);
 	
 	bootstrapControllerFor($scope, $http, 'http://ld-summaries.org/dbpedia-3.9-infobox', summaries);
 	
 	$scope.loadPatterns();
 });
+
+summary.controller("experiment-search", function ($scope, $http) {
+	
+	bootstrapSearchController($scope, $http, 'dbpedia-3.9-infobox');
+});
+
+bootstrapSearchController = function(scope, http, dataset){
+	
+	scope.loadPatterns = function(){
+		
+		escape = function(string){
+			return string.toLowerCase().replace(/([&+-^!:{}()|\[\]\/\\])/g, "").replace(/ and /g, " ").replace(/ or /g, " ");
+		};
+		
+		get = function(request){
+			http.get('/solr/indexing/select', request).success(function(results){
+				scope.allDocuments = results.response.docs;
+			});
+		};
+		
+		onlyInternalResources = function(){
+			return {
+			method: 'GET',
+			params: {
+				wt: 'json',
+				q: 'fullTextSearchField:(' + escape(scope.srcStr) + ')',
+				rows: 100,
+				fq: ['subtype: internal']
+			}}
+		};
+		
+		var request = onlyInternalResources();
+		
+		if(scope.searchInExternalResources){
+			request.params['fq'] = [];
+		}
+		
+		if(dataset){
+			request.params['fq'].push("dataset:" + dataset)
+		}
+		
+		get(request);
+	};
+}
 
 bootstrapControllerFor = function(scope, http, graph, summaries){
 	

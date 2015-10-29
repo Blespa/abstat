@@ -22,23 +22,48 @@ public class Application extends AbstractHandler{
 		request.getSession();
 		
 		try{
-			DeployedVersion version = new DeployedVersion(new File(".."));
-			String currentVersion = version.branch() + "-" + version.commit();
+			Routing routes = new Routing();
 			
-			new Routing()
-				.mapText("/alive", "OK")
-				.mapText("/version", currentVersion)
-				.mapFile("/", "home.html")
-				.mapFile("/search", "search.html")
-				.mapFile("/experiment", "experiment.html")
-				.mapFile("/property-similarity", "property-similarity.html")
-				.mapJson("/api/v1/autocomplete/concepts", new SolrAutocomplete(new SolrConnector(), "concept-suggest"))
-				.mapJson("/api/v1/autocomplete/properties", new SolrAutocomplete(new SolrConnector(), "property-suggest"))
-				.routeTo(path)
-			.sendTo(base, response, new HttpParameters(request));
+			serviceAPI(routes);
+			mainUI(routes);
+			autocompleteAPI(routes);
+			experiment(routes);
+			experimentalFeatures(routes);
+			
+			routes.routeTo(path).sendTo(base, response, new HttpParameters(request));
+			
 		}catch(Exception e){
 			Events.web().error("processing request: " + path, e);
 			response.setStatus(500);
 		}
+	}
+
+	private void experimentalFeatures(Routing routes) {
+		routes.mapFile("/property-similarity", "property-similarity.html");
+	}
+
+	private void autocompleteAPI(Routing routes) {
+		routes
+			.mapJson("/api/v1/autocomplete/concepts", new SolrAutocomplete(new SolrConnector(), "concept-suggest"))
+			.mapJson("/api/v1/autocomplete/properties", new SolrAutocomplete(new SolrConnector(), "property-suggest"));
+	}
+
+	private void experiment(Routing routes) {
+		routes
+			.mapFile("/experiment/browse", "experiment-browse.html")
+			.mapFile("/experiment/search", "experiment-search.html");
+	}
+
+	private void mainUI(Routing routes) {
+		routes
+			.mapFile("/", "browse.html")
+			.mapFile("/search", "search.html");
+	}
+
+	private void serviceAPI(Routing routes) throws Exception {
+		DeployedVersion version = new DeployedVersion(new File(".."));
+		String currentVersion = version.branch() + "-" + version.commit();
+		routes.mapText("/alive", "OK")
+			  .mapText("/version", currentVersion);
 	}
 }

@@ -21,12 +21,22 @@ public class ExperimentationPageTest
 	}
 	
 	@Test
-	public void shouldBeAccessible() throws Exception{
-		application.httpAssert().statusOf("experiment", 200);
+	public void browsingInterfaceShouldBeAccessible() throws Exception{
+		application.httpAssert().statusOf("experiment/browse", 200);
 	}
 	
 	@Test
-	public void shouldResponseWithTheRightPage() throws Exception{
-		application.httpAssert().body("experiment", containsString("get more"));
+	public void searchInterfaceShouldBeAccessible() throws Exception{
+		application.httpAssert().statusOf("experiment/search", 200);
+	}
+	
+	@Test
+	public void browsingInterfaceShouldRespondWithTheRightPage() throws Exception{
+		application.httpAssert().body("experiment/browse", containsString("get more"));
+	}
+	
+	@Test
+	public void searchInterfaceShouldRespondWithTheRightPage() throws Exception{
+		application.httpAssert().body("experiment/search", containsString("search"));
 	}
 }

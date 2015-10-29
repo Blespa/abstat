@@ -17,7 +17,34 @@
 		<div class="page-header" style="background: url('static/img/logo.jpg') right; background-repeat: no-repeat; background-size: contain">
 			<h1><img alt="" src="static/img/abstat.svg"> ABSTAT <small>linked data summaries</small></h1>
 		</div>
-		<div ng-controller="experiment">
+		<div ng-controller="browse">
+			<div class="row">
+			<div class="col-md-6">
+			<form class="form-inline">
+			<div class="form-group">
+				browse the <strong>abstract knowledge patterns</strong> found into 
+				<select id="dataset" ng-model="selected_graph" class="form-control">
+					<option>select a dataset</option>
+				    <option ng-repeat="graph in graphs">{{graph.uri.value}}</option>
+				</select>
+				<button type="button" ng-click='loadPatterns()' ng-disabled="loadingSummary" class="btn btn-primary">
+					<span ng-hide="loadingSummary">view</span>
+        			<span ng-show="loadingSummary">view  <i class="fa fa-spinner fa-spin"></i></span>
+        		</button>
+			</div>
+			</form>
+			</div>
+			<div class="col-md-6 text-right">
+				<a target="_blank" href="/downloads" class="btn btn-default">downloads</a>
+				<a target="_blank" href="/sparql" class="btn btn-default">sparql endpoint</a>
+				<a href="static/ld-summaries.owl" class="btn btn-default" download>ld-summaries ontology</a>
+				<a target="_blank" href="http://uptime.statuscake.com/?TestID=TCI9iWyOqa" title="ABSTAT Status"><img src="https://www.statuscake.com/App/button/index.php?Track=vdfVIiUz74&Days=1000&Design=4" /></a>
+			</div>
+			</div>
+			
+			<br><br>
+			
+			<div ng-show="graph_was_selected">
 			<div style="margin-top:0.5cm" class="row">
 			<div class="col-md-12">
 			<table class="table table-hover">
@@ -72,6 +99,8 @@
         	</button>
 			</div>
 			</div>
+			</div>
+			
 			<br><br>
 		</div>
 	</div>

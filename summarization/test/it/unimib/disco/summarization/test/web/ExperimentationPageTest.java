@@ -34,4 +34,9 @@ public class ExperimentationPageTest
 	public void browsingInterfaceShouldRespondWithTheRightPage() throws Exception{
 		application.httpAssert().body("experiment/browse", containsString("get more"));
 	}
+	
+	@Test
+	public void searchInterfaceShouldRespondWithTheRightPage() throws Exception{
+		application.httpAssert().body("experiment/search", containsString("search"));
+	}
 }

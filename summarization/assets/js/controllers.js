@@ -63,15 +63,25 @@ summary.controller('experiment', function ($scope, $http) {
 
 summary.controller("search", function ($scope, $http) {
 	
-	$scope.loadPatterns = function(){
+	bootstrapSearchController($scope, $http, '');
+});
+
+summary.controller("experiment-search", function ($scope, $http) {
+	
+	bootstrapSearchController($scope, $http, 'dbpedia-3.9-infobox');
+});
+
+bootstrapSearchController = function(scope, http, dataset){
+	
+	scope.loadPatterns = function(){
 		
 		escape = function(string){
 			return string.toLowerCase().replace(/([&+-^!:{}()|\[\]\/\\])/g, "").replace(/ and /g, " ").replace(/ or /g, " ");
 		};
 		
 		get = function(request){
-			$http.get('/solr/indexing/select', request).success(function(results){
-				$scope.allDocuments = results.response.docs;
+			http.get('/solr/indexing/select', request).success(function(results){
+				scope.allDocuments = results.response.docs;
 			});
 		};
 		
@@ -80,7 +90,7 @@ summary.controller("search", function ($scope, $http) {
 			method: 'GET',
 			params: {
 				wt: 'json',
-				q: 'fullTextSearchField:(' + escape($scope.srcStr) + ')',
+				q: 'fullTextSearchField:(' + escape(scope.srcStr) + ')',
 				rows: 100,
 				fq: ['subtype: internal']
 			}}
@@ -88,18 +98,17 @@ summary.controller("search", function ($scope, $http) {
 		
 		var request = onlyInternalResources();
 		
-		if($scope.searchInExternalResources){
+		if(scope.searchInExternalResources){
 			request.params['fq'] = [];
 		}
 		
-		var dataset = $scope.dataset;
 		if(dataset){
 			request.params['fq'].push("dataset:" + dataset)
 		}
 		
 		get(request);
 	};
-});
+}
 
 bootstrapControllerFor = function(scope, http, graph, summaries){
 	

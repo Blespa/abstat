@@ -51,7 +51,8 @@ public class Application extends AbstractHandler{
 	private void experiment(Routing routes) {
 		routes
 			.mapFile("/experiment/browse", "experiment-browse.html")
-			.mapFile("/experiment/search", "experiment-search.html");
+			.mapFile("/experiment/search", "experiment-search.html")
+			.mapFile("/experiment/query", "experiment-sparql.html");
 	}
 
 	private void mainUI(Routing routes) {

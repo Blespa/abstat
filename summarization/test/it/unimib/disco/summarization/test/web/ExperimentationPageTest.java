@@ -31,6 +31,11 @@ public class ExperimentationPageTest
 	}
 	
 	@Test
+	public void searchSparqlShouldBeAccessible() throws Exception{
+		application.httpAssert().statusOf("experiment/query", 200);
+	}
+	
+	@Test
 	public void browsingInterfaceShouldRespondWithTheRightPage() throws Exception{
 		application.httpAssert().body("experiment/browse", containsString("get more"));
 	}
@@ -38,5 +43,10 @@ public class ExperimentationPageTest
 	@Test
 	public void searchInterfaceShouldRespondWithTheRightPage() throws Exception{
 		application.httpAssert().body("experiment/search", containsString("search"));
+	}
+	
+	@Test
+	public void sparqlInterfaceShouldBeAYASGUIInstance() throws Exception{
+		application.httpAssert().body("experiment/query", containsString("yasgui.min.js"));
 	}
 }

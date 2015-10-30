@@ -33,9 +33,7 @@ function run_command(){
 }
 
 function exec_command(){
-	command=$1
-	shift
-	docker exec abstat $command $@
+	docker exec -it abstat $@
 }
 
 function status(){

@@ -20,7 +20,7 @@ summary.filter('isObject', function(){
 
 summary.filter('describe', function(){
 	return function(objectToDescribe){
-		return objectToDescribe.join(' - ');
+		return objectToDescribe.URI.join(' - ') + " (" + objectToDescribe.occurrence + ")";
 	};
 });
 

@@ -40,7 +40,7 @@ public class SolrFullTextSearchTest {
 	}
 	
 	@Test
-	public void conceptsFromSchemaOrgShouldBeMarkedAsInternal() throws Exception {
+	public void conceptsFromSchemaOrgShouldBeMarkedAsExternal() throws Exception {
 		httpAssert().body("select?q=URI:%22http://schema.org/Place%22", containsString("external"));
 	}
 	

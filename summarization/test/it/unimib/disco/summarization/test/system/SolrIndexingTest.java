@@ -43,8 +43,13 @@ public class SolrIndexingTest {
 	}
 	
 	@Test
-	public void shouldIndexFrequenciesOfConcepts() throws Exception {
+	public void shouldIndexFrequencies() throws Exception {
 		httpAssert().body("select?q=*:*", containsString("occurrence"));
+	}
+	
+	@Test
+	public void shouldIndexConceptFrequencies() throws Exception {
+		httpAssert().body("select?q=type:concept", containsString("occurrence\">1"));
 	}
 	
 	private HttpAssert httpAssert() {

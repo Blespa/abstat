@@ -3,18 +3,17 @@ package it.unimib.disco.summarization.export;
 import it.unimib.disco.summarization.ontology.RDFResource;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
+import java.io.File;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 
-import org.apache.solr.client.solrj.SolrServerException;
+import org.apache.commons.io.FileUtils;
 import org.apache.solr.client.solrj.impl.HttpSolrServer;
 import org.apache.solr.common.SolrInputDocument;
 
 public class IndexDatatypes
 {
-	public static void main (String[] args) throws SolrServerException, IOException
+	public static void main (String[] args) throws Exception
 	{
 		String host = args[0];
 		String port = args[1];
@@ -24,19 +23,28 @@ public class IndexDatatypes
 		String serverUrl = "http://"+host+":"+port+"/solr/indexing";
 		HttpSolrServer client = new HttpSolrServer(serverUrl);
 		
-		conceptsImport(client,pathFile,dataset);
+		conceptsImport(client, pathFile, dataset);
 	}
 	
-	private static void conceptsImport (HttpSolrServer client, String pathFile, String dataset) throws FileNotFoundException, IOException, SolrServerException
+	private static void conceptsImport (HttpSolrServer client, String pathFile, String dataset) throws Exception
 	{
-		ArrayList <String> concepts = takeOnlyConcepts(pathFile);
-		ArrayList <String> subtypeOfConcepts = takeOnlySubtypeOfConcepts(pathFile);
-		ArrayList <String> localNamesOfConcepts = takeOnlyLocalNamesOfConcepts(concepts);
+		ArrayList<String> concepts = takeOnlyConcepts(pathFile);
+		ArrayList<String> subtypeOfConcepts = takeOnlySubtypeOfConcepts(pathFile);
+		ArrayList<String> localNamesOfConcepts = takeOnlyLocalNamesOfConcepts(concepts);
+		ArrayList<Long> occurrences = selectOccurrences(pathFile);
 		
-		indexDocuments(client,concepts,subtypeOfConcepts,localNamesOfConcepts,dataset);
+		indexDocuments(client,concepts,subtypeOfConcepts,localNamesOfConcepts,dataset, occurrences);
 	}
 	
-	private static void indexDocuments(HttpSolrServer client, ArrayList<String> concepts, ArrayList <String> subtypeOfConcepts, ArrayList <String> localNamesOfConcepts, String dataset) throws IOException, SolrServerException
+	private static ArrayList<Long> selectOccurrences(String pathFile) throws Exception {
+		ArrayList<Long> result = new ArrayList<Long>();
+		for(String line : FileUtils.readLines(new File(pathFile))){
+			result.add(Long.parseLong(line.split("##")[1]));
+		}
+		return result;
+	}
+
+	private static void indexDocuments(HttpSolrServer client, ArrayList<String> concepts, ArrayList <String> subtypeOfConcepts, ArrayList <String> localNamesOfConcepts, String dataset, ArrayList<Long> occurrences) throws Exception
 	{
 		int numberOfConcepts = concepts.size();
 		
@@ -45,6 +53,7 @@ public class IndexDatatypes
 			String concept = concepts.get(i);
 			String subtypeOfConcept = subtypeOfConcepts.get(i);
 			String localNameOfConcept = localNamesOfConcepts.get(i);
+			Long occurrence = occurrences.get(i);
 			
 			SolrInputDocument doc = new SolrInputDocument();
 			doc.setField("URI", concept);
@@ -52,21 +61,20 @@ public class IndexDatatypes
 			doc.setField("dataset", dataset);
 			doc.setField("subtype", subtypeOfConcept);
 			doc.setField("fullTextSearchField", localNameOfConcept);
-			doc.setField("occurrence", 0);
-			
+			doc.setField("occurrence", occurrence);
 			client.add(doc);
 		}
 		
 		client.commit(true,true);
 	}
 
-	private static ArrayList<String> takeOnlyConcepts(String pathFile) throws FileNotFoundException, IOException
+	private static ArrayList<String> takeOnlyConcepts(String pathFile) throws Exception
 	{
 		String path = pathFile;
 		BufferedReader reader = new BufferedReader(new FileReader(path));
 		
 		int numberOfConcepts = 0;
-		ArrayList <String> concepts = new ArrayList <String> ();
+		ArrayList <String> concepts = new ArrayList<String>();
 		
     	boolean trovatoDoppioCancelletto = false;
     	String concept = "";
@@ -119,7 +127,7 @@ public class IndexDatatypes
 		return concepts;
 	}
 	
-	private static ArrayList <String> takeOnlySubtypeOfConcepts(String pathFile) throws FileNotFoundException, IOException
+	private static ArrayList <String> takeOnlySubtypeOfConcepts(String pathFile) throws Exception
 	{
 		String path = pathFile;
 		BufferedReader reader = new BufferedReader(new FileReader(path));

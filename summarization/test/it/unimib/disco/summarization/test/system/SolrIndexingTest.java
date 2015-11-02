@@ -42,6 +42,41 @@ public class SolrIndexingTest {
 		httpAssert().body("select?q=*:*", containsString("numFound=\"219\""));
 	}
 	
+	@Test
+	public void shouldIndexFrequencies() throws Exception {
+		httpAssert().body("select?q=*:*", containsString("occurrence"));
+	}
+	
+	@Test
+	public void shouldIndexConceptFrequencies() throws Exception {
+		httpAssert().body("select?q=type:concept", containsString("occurrence\">1"));
+	}
+	
+	@Test
+	public void shouldIndexDatatypesFrequencies() throws Exception {
+		httpAssert().body("select?q=type:datatype", containsString("occurrence\">2"));
+	}
+	
+	@Test
+	public void shouldIndexObjectPropertiesFrequencies() throws Exception {
+		httpAssert().body("select?q=type:objectProperty", containsString("occurrence\">1"));
+	}
+	
+	@Test
+	public void shouldIndexDatatypePropertiesFrequencies() throws Exception {
+		httpAssert().body("select?q=type:datatypeProperty", containsString("occurrence\">1"));
+	}
+	
+	@Test
+	public void shouldIndexDataTypeAKPFrequencies() throws Exception {
+		httpAssert().body("select?q=type:datatypeAkp", containsString("occurrence\">1"));
+	}
+	
+	@Test
+	public void shouldIndexObjectAKPFrequencies() throws Exception {
+		httpAssert().body("select?q=type:objectAkp", containsString("occurrence\">1"));
+	}
+	
 	private HttpAssert httpAssert() {
 		return new HttpAssert("http://localhost/solr/indexing");
 	}

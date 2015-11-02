@@ -5,7 +5,7 @@
    <fields>
    	<field name="idDocument" type="text_general" indexed="true" stored="true" required="true" multiValued="false" /> 
 	<field name="_version_" type="long" indexed="true" stored="true" multiValued="false" />
-
+	<field name="occurrence" type="long" indexed="false" stored="true" multiValued="false" />
 	<field name="URI" type="text_general" indexed="true" stored="true" required="false" multiValued="true" />
 	<field name="dataset" type="string" indexed="true" stored="true" required="false" multiValued="false" />
 	<field name="subtype" type="text_general" indexed="true" stored="true" required="false" multiValued="false" />

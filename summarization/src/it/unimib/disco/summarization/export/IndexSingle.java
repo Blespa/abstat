@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.util.ArrayList;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.LineIterator;
 import org.apache.solr.client.solrj.impl.HttpSolrServer;
 import org.apache.solr.common.SolrInputDocument;
 
@@ -39,7 +40,9 @@ public class IndexSingle
 	
 	private static ArrayList<Long> selectOccurrences(String pathFile) throws Exception {
 		ArrayList<Long> result = new ArrayList<Long>();
-		for(String line : FileUtils.readLines(new File(pathFile))){
+		LineIterator lines = FileUtils.lineIterator(new File(pathFile));
+		while(lines.hasNext()){
+			String line = lines.next();
 			result.add(Long.parseLong(line.split("##")[1]));
 		}
 		return result;

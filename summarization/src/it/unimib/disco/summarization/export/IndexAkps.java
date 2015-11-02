@@ -12,7 +12,7 @@ import org.apache.commons.io.LineIterator;
 import org.apache.solr.client.solrj.impl.HttpSolrServer;
 import org.apache.solr.common.SolrInputDocument;
 
-public class IndexDatatypeAkps
+public class IndexAkps
 {
 	public static void main(String[] args) throws Exception
 	{
@@ -20,14 +20,15 @@ public class IndexDatatypeAkps
 		String port = args[1];
 		String pathFile = args[2];
 		String dataset = args[3];
+		String type = args[4];
 		
 		String serverUrl = "http://"+host+":"+port+"/solr/indexing";
 		HttpSolrServer client = new HttpSolrServer(serverUrl);
 		
-		datatypeAkpsImport(client,pathFile,dataset);
+		datatypeAkpsImport(client,pathFile,dataset,type);
 	}
 
-	private static void datatypeAkpsImport (HttpSolrServer client, String pathFile, String dataset) throws Exception
+	private static void datatypeAkpsImport (HttpSolrServer client, String pathFile, String dataset, String type) throws Exception
 	{
 		ArrayList <String> subjects = subjects(pathFile);
 		ArrayList <String> properties = properties(pathFile);
@@ -41,7 +42,7 @@ public class IndexDatatypeAkps
 		
 		ArrayList<Long> occurrences = selectOccurrences(pathFile);
 		
-		index(client,subjects,properties,objects,subjectsLocalNames,propertiesLocalNames,objectsLocalNames,subtypes,dataset, occurrences);
+		index(client,subjects,properties,objects,subjectsLocalNames,propertiesLocalNames,objectsLocalNames,subtypes,dataset, occurrences, type);
 	}
 	
 	private static ArrayList<Long> selectOccurrences(String pathFile) throws Exception {
@@ -54,7 +55,7 @@ public class IndexDatatypeAkps
 		return result;
 	}
 
-	private static void index (HttpSolrServer client, ArrayList <String> subjectsOfDatatypeAkps, ArrayList <String> propertiesOfDatatypeAkps, ArrayList <String> objectsOfDatatypeAkps, ArrayList <String> localNamesOfSubjectsOfDatatypeAkps, ArrayList <String> localNamesOfPropertiesOfDatatypeAkps, ArrayList <String> localNamesOfObjectsOfDatatypeAkps, ArrayList <String> subtypeOfDatatypeAkps, String dataset, ArrayList<Long> occurrences) throws Exception
+	private static void index (HttpSolrServer client, ArrayList <String> subjectsOfDatatypeAkps, ArrayList <String> propertiesOfDatatypeAkps, ArrayList <String> objectsOfDatatypeAkps, ArrayList <String> localNamesOfSubjectsOfDatatypeAkps, ArrayList <String> localNamesOfPropertiesOfDatatypeAkps, ArrayList <String> localNamesOfObjectsOfDatatypeAkps, ArrayList <String> subtypeOfDatatypeAkps, String dataset, ArrayList<Long> occurrences, String type) throws Exception
 	{
 		int numberOfDatatypeAkps = subjectsOfDatatypeAkps.size();
 		
@@ -83,7 +84,7 @@ public class IndexDatatypeAkps
 			SolrInputDocument doc = new SolrInputDocument();
 			
 			doc.setField("URI", akp);
-			doc.setField("type", "datatypeAkp");
+			doc.setField("type", type);
 			doc.setField("dataset", dataset);
 			doc.setField("subtype", subtypeOfDatatypeAkp);
 			doc.setField("fullTextSearchField", localNameAkp);

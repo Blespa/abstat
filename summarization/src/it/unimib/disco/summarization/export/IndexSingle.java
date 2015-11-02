@@ -11,7 +11,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.solr.client.solrj.impl.HttpSolrServer;
 import org.apache.solr.common.SolrInputDocument;
 
-public class IndexObjectProperties
+public class IndexSingle
 {
 	public static void main (String[] args) throws Exception
 	{
@@ -19,21 +19,22 @@ public class IndexObjectProperties
 		String port = args[1];
 		String pathFile = args[2];
 		String dataset = args[3];
+		String type = args[4];
 		
 		String serverUrl = "http://"+host+":"+port+"/solr/indexing";
 		HttpSolrServer client = new HttpSolrServer(serverUrl);
 		
-		conceptsImport(client, pathFile, dataset);
+		conceptsImport(client, pathFile, dataset, type);
 	}
 	
-	private static void conceptsImport (HttpSolrServer client, String pathFile, String dataset) throws Exception
+	private static void conceptsImport (HttpSolrServer client, String pathFile, String dataset, String type) throws Exception
 	{
 		ArrayList<String> concepts = takeOnlyConcepts(pathFile);
 		ArrayList<String> subtypeOfConcepts = takeOnlySubtypeOfConcepts(pathFile);
 		ArrayList<String> localNamesOfConcepts = takeOnlyLocalNamesOfConcepts(concepts);
 		ArrayList<Long> occurrences = selectOccurrences(pathFile);
 		
-		indexDocuments(client,concepts,subtypeOfConcepts,localNamesOfConcepts,dataset, occurrences);
+		indexDocuments(client,concepts,subtypeOfConcepts,localNamesOfConcepts,dataset, occurrences, type);
 	}
 	
 	private static ArrayList<Long> selectOccurrences(String pathFile) throws Exception {
@@ -44,7 +45,7 @@ public class IndexObjectProperties
 		return result;
 	}
 
-	private static void indexDocuments(HttpSolrServer client, ArrayList<String> concepts, ArrayList <String> subtypeOfConcepts, ArrayList <String> localNamesOfConcepts, String dataset, ArrayList<Long> occurrences) throws Exception
+	private static void indexDocuments(HttpSolrServer client, ArrayList<String> concepts, ArrayList <String> subtypeOfConcepts, ArrayList <String> localNamesOfConcepts, String dataset, ArrayList<Long> occurrences, String type) throws Exception
 	{
 		int numberOfConcepts = concepts.size();
 		
@@ -57,7 +58,7 @@ public class IndexObjectProperties
 			
 			SolrInputDocument doc = new SolrInputDocument();
 			doc.setField("URI", concept);
-			doc.setField("type", "objectProperty");
+			doc.setField("type", type);
 			doc.setField("dataset", dataset);
 			doc.setField("subtype", subtypeOfConcept);
 			doc.setField("fullTextSearchField", localNameOfConcept);
@@ -65,7 +66,7 @@ public class IndexObjectProperties
 			client.add(doc);
 		}
 		
-		client.commit(true,true);
+		client.commit(true, true);
 	}
 
 	private static ArrayList<String> takeOnlyConcepts(String pathFile) throws Exception

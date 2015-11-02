@@ -31,14 +31,14 @@ run InternalExternalDatatypeProperty ../data/summaries/$dataset/patterns/count-d
 run InternalExternalObjectProperty ../data/summaries/$dataset/patterns/count-object-properties.txt $dataset $payleveldomain
 run InternalExternalDatatypeAkp ../data/summaries/$dataset/patterns/datatype-akp.txt $dataset $payleveldomain
 run InternalExternalObjectAkp ../data/summaries/$dataset/patterns/object-akp.txt $dataset $payleveldomain
-run DeleteAllDocumentsIntoIndex localhost $solr_port $dataset
+run DeleteAllDocumentsFromIndex localhost $solr_port $dataset
 
 sleep 1
 
-run IndexConcepts localhost $solr_port ../data/summaries/$dataset/patterns/count-concepts-new.txt $dataset
-run IndexDatatypes localhost $solr_port ../data/summaries/$dataset/patterns/count-datatype-new.txt $dataset
-run IndexDatatypeProperties localhost $solr_port ../data/summaries/$dataset/patterns/count-datatype-properties-new.txt $dataset
-run IndexObjectProperties localhost $solr_port ../data/summaries/$dataset/patterns/count-object-properties-new.txt $dataset
+run IndexSingle localhost $solr_port ../data/summaries/$dataset/patterns/count-concepts-new.txt $dataset concept
+run IndexSingle localhost $solr_port ../data/summaries/$dataset/patterns/count-datatype-new.txt $dataset datatype
+run IndexSingle localhost $solr_port ../data/summaries/$dataset/patterns/count-datatype-properties-new.txt $dataset datatypeProperty
+run IndexSingle localhost $solr_port ../data/summaries/$dataset/patterns/count-object-properties-new.txt $dataset objectProperty
 run IndexDatatypeAkps localhost $solr_port ../data/summaries/$dataset/patterns/datatype-akp-new.txt $dataset
 run IndexObjectAkps localhost $solr_port ../data/summaries/$dataset/patterns/object-akp-new.txt $dataset
 

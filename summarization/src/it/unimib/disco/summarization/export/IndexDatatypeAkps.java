@@ -1,18 +1,20 @@
 package it.unimib.disco.summarization.export;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import org.apache.solr.client.solrj.SolrServerException;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.LineIterator;
 import org.apache.solr.client.solrj.impl.HttpSolrServer;
 import org.apache.solr.common.SolrInputDocument;
 
 public class IndexDatatypeAkps
 {
-	public static void main(String[] args) throws IOException, SolrServerException
+	public static void main(String[] args) throws Exception
 	{
 		String host = args[0];
 		String port = args[1];
@@ -25,22 +27,34 @@ public class IndexDatatypeAkps
 		datatypeAkpsImport(client,pathFile,dataset);
 	}
 
-	private static void datatypeAkpsImport (HttpSolrServer client, String pathFile, String dataset) throws IOException, SolrServerException
+	private static void datatypeAkpsImport (HttpSolrServer client, String pathFile, String dataset) throws Exception
 	{
-		ArrayList <String> subjectsOfDatatypeAkps = takeOnlySubjectsOfDatatypeAkps(pathFile);
-		ArrayList <String> propertiesOfDatatypeAkps = takeOnlyPropertiesOfDatatypeAkps(pathFile);
-		ArrayList <String> objectsOfDatatypeAkps = takeOnlyObjectsOfDatatypeAkps(pathFile);
+		ArrayList <String> subjects = subjects(pathFile);
+		ArrayList <String> properties = properties(pathFile);
+		ArrayList <String> objects = objects(pathFile);
 		
-		ArrayList <String> localNamesOfSubjectsOfDatatypeAkps = takeOnlyLocalNamesOfSubjectsOfDatatypeAkps(subjectsOfDatatypeAkps);
-		ArrayList <String> localNamesOfPropertiesOfDatatypeAkps = takeOnlyLocalNamesOfPropertiesOfDatatypeAkps(propertiesOfDatatypeAkps);
-		ArrayList <String> localNamesOfObjectsOfDatatypeAkps = takeOnlyLocalNamesOfObjectsOfDatatypeAkps(objectsOfDatatypeAkps);
+		ArrayList <String> subtypes = subtypes(pathFile);
 		
-		ArrayList <String> subtypeOfDatatypeAkps = takeOnlySubtypeOfDatatypeAkps(pathFile);
+		ArrayList <String> subjectsLocalNames = takeOnlyLocalNamesOnly(subjects);
+		ArrayList <String> propertiesLocalNames = takeOnlyLocalNamesOnly(properties);
+		ArrayList <String> objectsLocalNames = takeOnlyLocalNamesOnly(objects);
 		
-		indexDatatypeAkps(client,subjectsOfDatatypeAkps,propertiesOfDatatypeAkps,objectsOfDatatypeAkps,localNamesOfSubjectsOfDatatypeAkps,localNamesOfPropertiesOfDatatypeAkps,localNamesOfObjectsOfDatatypeAkps,subtypeOfDatatypeAkps,dataset);
+		ArrayList<Long> occurrences = selectOccurrences(pathFile);
+		
+		index(client,subjects,properties,objects,subjectsLocalNames,propertiesLocalNames,objectsLocalNames,subtypes,dataset, occurrences);
+	}
+	
+	private static ArrayList<Long> selectOccurrences(String pathFile) throws Exception {
+		ArrayList<Long> result = new ArrayList<Long>();
+		LineIterator lines = FileUtils.lineIterator(new File(pathFile));
+		while(lines.hasNext()){
+			String line = lines.next();
+			result.add(Long.parseLong(line.split("##")[3]));
+		}
+		return result;
 	}
 
-	private static void indexDatatypeAkps (HttpSolrServer client, ArrayList <String> subjectsOfDatatypeAkps, ArrayList <String> propertiesOfDatatypeAkps, ArrayList <String> objectsOfDatatypeAkps, ArrayList <String> localNamesOfSubjectsOfDatatypeAkps, ArrayList <String> localNamesOfPropertiesOfDatatypeAkps, ArrayList <String> localNamesOfObjectsOfDatatypeAkps, ArrayList <String> subtypeOfDatatypeAkps, String dataset) throws SolrServerException, IOException
+	private static void index (HttpSolrServer client, ArrayList <String> subjectsOfDatatypeAkps, ArrayList <String> propertiesOfDatatypeAkps, ArrayList <String> objectsOfDatatypeAkps, ArrayList <String> localNamesOfSubjectsOfDatatypeAkps, ArrayList <String> localNamesOfPropertiesOfDatatypeAkps, ArrayList <String> localNamesOfObjectsOfDatatypeAkps, ArrayList <String> subtypeOfDatatypeAkps, String dataset, ArrayList<Long> occurrences) throws Exception
 	{
 		int numberOfDatatypeAkps = subjectsOfDatatypeAkps.size();
 		
@@ -67,13 +81,13 @@ public class IndexDatatypeAkps
 			localNameAkp[2] = localNameOfObjectOfDatatypeAkp;
 			
 			SolrInputDocument doc = new SolrInputDocument();
-			//doc.setField("idDocument", (i+1+20+11+5));
+			
 			doc.setField("URI", akp);
 			doc.setField("type", "datatypeAkp");
 			doc.setField("dataset", dataset);
 			doc.setField("subtype", subtypeOfDatatypeAkp);
 			doc.setField("fullTextSearchField", localNameAkp);
-			doc.setField("occurrence", 0);
+			doc.setField("occurrence", occurrences.get(i));
 			
 			client.add(doc);
 			
@@ -89,7 +103,7 @@ public class IndexDatatypeAkps
 		client.commit(true,true);
 	}
 	
-	private static ArrayList <String> takeOnlySubjectsOfDatatypeAkps (String pathFile) throws IOException
+	private static ArrayList <String> subjects (String pathFile) throws IOException
 	{	
 		String akpSubject = "";
 		String akpProperty = "";
@@ -177,18 +191,9 @@ public class IndexDatatypeAkps
 				}
 			}
 			
-			//if (!(akpSubject.equalsIgnoreCase("")))
-    		//{
     		subjectsAkps.add(akpSubject);
-    		//}
-			//if (!(akpProperty.equalsIgnoreCase("")))
-    		//{
     		propertiesAkps.add(akpProperty);
-    		//}
-			//if (!(akpObject.equalsIgnoreCase("")))
-    		//{
     		objectsAkps.add(akpObject);
-    		//}
 			
 			akpSubject = "";
 			akpProperty = "";
@@ -199,13 +204,12 @@ public class IndexDatatypeAkps
 			
 			line = reader.readLine();
 		}
-		
 		reader.close();
 		
 		return subjectsAkps;		
 	}
 	
-	private static ArrayList <String> takeOnlyPropertiesOfDatatypeAkps (String pathFile) throws IOException
+	private static ArrayList <String> properties (String pathFile) throws IOException
 	{	
 		String akpSubject = "";
 		String akpProperty = "";
@@ -293,18 +297,9 @@ public class IndexDatatypeAkps
 				}
 			}
 			
-			//if (!(akpSubject.equalsIgnoreCase("")))
-    		//{
     		subjectsAkps.add(akpSubject);
-    		//}
-			//if (!(akpProperty.equalsIgnoreCase("")))
-    		//{
     		propertiesAkps.add(akpProperty);
-    		//}
-    		//if (!(akpObject.equalsIgnoreCase("")))
-    		//{
     		objectsAkps.add(akpObject);
-    		//}
 			
 			akpSubject = "";
 			akpProperty = "";
@@ -321,7 +316,7 @@ public class IndexDatatypeAkps
 		return propertiesAkps;
 	}
 	
-	private static ArrayList <String> takeOnlyObjectsOfDatatypeAkps (String pathFile) throws IOException
+	private static ArrayList <String> objects (String pathFile) throws IOException
 	{	
 		String akpSubject = "";
 		String akpProperty = "";
@@ -409,18 +404,9 @@ public class IndexDatatypeAkps
 				}
 			}
 			
-			//if (!(akpSubject.equalsIgnoreCase("")))
-    		//{
     		subjectsAkps.add(akpSubject);
-    		//}
-			//if (!(akpProperty.equalsIgnoreCase("")))
-    		//{
     		propertiesAkps.add(akpProperty);
-    		//}
-			//if (!(akpObject.equalsIgnoreCase("")))
-    		//{
     		objectsAkps.add(akpObject);
-    		//}
 			
 			akpSubject = "";
 			akpProperty = "";
@@ -437,7 +423,7 @@ public class IndexDatatypeAkps
 		return objectsAkps;
 	}
 	
-	private static ArrayList <String> takeOnlySubtypeOfDatatypeAkps(String pathFile) throws FileNotFoundException, IOException
+	private static ArrayList <String> subtypes(String pathFile) throws FileNotFoundException, IOException
 	{
 		String path = pathFile;
 		BufferedReader reader = new BufferedReader(new FileReader(path));
@@ -478,7 +464,7 @@ public class IndexDatatypeAkps
 		return subtypeOfDatatypeAkps;
 	}
 	
-	private static ArrayList <String> takeOnlyLocalNamesOfSubjectsOfDatatypeAkps (ArrayList <String> subjectsOfDatatypeAkps)
+	private static ArrayList <String> takeOnlyLocalNamesOnly(ArrayList <String> subjectsOfDatatypeAkps)
 	{
 		String subjectOfDatatypeAkp = "";
 		String localNameOfSubjectOfDatatypeAkp = "";
@@ -506,65 +492,5 @@ public class IndexDatatypeAkps
 		}
 		
 		return localNamesOfSubjectsOfDatatypeAkps;
-	}
-	
-	private static ArrayList <String> takeOnlyLocalNamesOfPropertiesOfDatatypeAkps (ArrayList <String> propertiesOfDatatypeAkps)
-	{
-		String propertyOfDatatypeAkp = "";
-		String localNameOfPropertyOfDatatypeAkp = "";
-		ArrayList <String> localNamesOfPropertiesOfDatatypeAkps = new ArrayList <String> ();
-		
-		for (int i = 0; i < propertiesOfDatatypeAkps.size(); i++) 
-		{
-			propertyOfDatatypeAkp = propertiesOfDatatypeAkps.get(i);
-					
-			for (int j = 0; j < propertyOfDatatypeAkp.length(); j++) 
-			{
-				if (propertyOfDatatypeAkp.charAt(j) != '/')
-				{
-					localNameOfPropertyOfDatatypeAkp += propertyOfDatatypeAkp.charAt(j);
-				}
-				else
-				{
-					if (propertyOfDatatypeAkp.charAt(j) == '/')
-					{
-						localNameOfPropertyOfDatatypeAkp = "";
-					}
-				}
-			}	
-			localNamesOfPropertiesOfDatatypeAkps.add(localNameOfPropertyOfDatatypeAkp);
-		}
-		
-		return localNamesOfPropertiesOfDatatypeAkps;
-	}
-	
-	private static ArrayList <String> takeOnlyLocalNamesOfObjectsOfDatatypeAkps (ArrayList <String> objectsOfDatatypeAkps)
-	{
-		String objectOfDatatypeAkp = "";
-		String localNameOfObjectOfDatatypeAkp = "";
-		ArrayList <String> localNamesOfObjectsOfDatatypeAkps = new ArrayList <String> ();
-		
-		for (int i = 0; i < objectsOfDatatypeAkps.size(); i++) 
-		{
-			objectOfDatatypeAkp = objectsOfDatatypeAkps.get(i);
-					
-			for (int j = 0; j < objectOfDatatypeAkp.length(); j++) 
-			{
-				if (objectOfDatatypeAkp.charAt(j) != '/')
-				{
-					localNameOfObjectOfDatatypeAkp += objectOfDatatypeAkp.charAt(j);
-				}
-				else
-				{
-					if (objectOfDatatypeAkp.charAt(j) == '/')
-					{
-						localNameOfObjectOfDatatypeAkp = "";
-					}
-				}
-			}	
-			localNamesOfObjectsOfDatatypeAkps.add(localNameOfObjectOfDatatypeAkp);
-		}
-		
-		return localNamesOfObjectsOfDatatypeAkps;
 	}
 }

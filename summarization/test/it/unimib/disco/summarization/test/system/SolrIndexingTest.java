@@ -67,6 +67,11 @@ public class SolrIndexingTest {
 		httpAssert().body("select?q=type:datatypeProperty", containsString("occurrence\">1"));
 	}
 	
+	@Test
+	public void shouldIndexDataTypeAKPFrequencies() throws Exception {
+		httpAssert().body("select?q=type:datatypeAkp", containsString("occurrence\">1"));
+	}
+	
 	private HttpAssert httpAssert() {
 		return new HttpAssert("http://localhost/solr/indexing");
 	}

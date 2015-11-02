@@ -62,6 +62,11 @@ public class SolrIndexingTest {
 		httpAssert().body("select?q=type:objectProperty", containsString("occurrence\">1"));
 	}
 	
+	@Test
+	public void shouldIndexDatatypePropertiesFrequencies() throws Exception {
+		httpAssert().body("select?q=type:datatypeProperty", containsString("occurrence\">1"));
+	}
+	
 	private HttpAssert httpAssert() {
 		return new HttpAssert("http://localhost/solr/indexing");
 	}

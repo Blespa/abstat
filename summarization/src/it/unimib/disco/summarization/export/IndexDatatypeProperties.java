@@ -103,10 +103,7 @@ public class IndexDatatypeProperties
     			}
     		}
     		
-    		//if (!(datatypeProperty.equalsIgnoreCase("")))
-    		//{
     		datatypeProperties.add(datatypeProperty);
-    		//}
     		
     		datatypeProperty = "";
     		trovatoDoppioCancelletto = false;

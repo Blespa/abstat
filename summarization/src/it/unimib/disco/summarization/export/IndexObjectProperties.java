@@ -1,18 +1,19 @@
 package it.unimib.disco.summarization.export;
 
+import it.unimib.disco.summarization.ontology.RDFResource;
+
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
+import java.io.File;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 
-import org.apache.solr.client.solrj.SolrServerException;
+import org.apache.commons.io.FileUtils;
 import org.apache.solr.client.solrj.impl.HttpSolrServer;
 import org.apache.solr.common.SolrInputDocument;
 
 public class IndexObjectProperties
 {
-	public static void main (String[] args) throws SolrServerException, IOException
+	public static void main (String[] args) throws Exception
 	{
 		String host = args[0];
 		String port = args[1];
@@ -22,52 +23,61 @@ public class IndexObjectProperties
 		String serverUrl = "http://"+host+":"+port+"/solr/indexing";
 		HttpSolrServer client = new HttpSolrServer(serverUrl);
 		
-		objectPropertiesImport(client,pathFile,dataset);
+		conceptsImport(client, pathFile, dataset);
 	}
 	
-	private static void objectPropertiesImport (HttpSolrServer client, String pathFile, String dataset) throws FileNotFoundException, IOException, SolrServerException
+	private static void conceptsImport (HttpSolrServer client, String pathFile, String dataset) throws Exception
 	{
-		ArrayList <String> objectProperties = takeOnlyObjectProperties(pathFile);
-		ArrayList <String> subtypeOfObjectProperties = takeOnlySubtypeOfObjectProperties(pathFile);
-		ArrayList <String> localNamesOfObjectProperties = takeOnlyLocalNamesOfObjectProperties(objectProperties);
+		ArrayList<String> concepts = takeOnlyConcepts(pathFile);
+		ArrayList<String> subtypeOfConcepts = takeOnlySubtypeOfConcepts(pathFile);
+		ArrayList<String> localNamesOfConcepts = takeOnlyLocalNamesOfConcepts(concepts);
+		ArrayList<Long> occurrences = selectOccurrences(pathFile);
 		
-		indexObjectProperties(client,objectProperties,subtypeOfObjectProperties,localNamesOfObjectProperties,dataset);
+		indexDocuments(client,concepts,subtypeOfConcepts,localNamesOfConcepts,dataset, occurrences);
 	}
 	
-	private static void indexObjectProperties(HttpSolrServer client, ArrayList<String> objectProperties, ArrayList <String> subtypeOfObjectProperties, ArrayList <String> localNamesOfObjectProperties, String dataset) throws IOException, SolrServerException
+	private static ArrayList<Long> selectOccurrences(String pathFile) throws Exception {
+		ArrayList<Long> result = new ArrayList<Long>();
+		for(String line : FileUtils.readLines(new File(pathFile))){
+			result.add(Long.parseLong(line.split("##")[1]));
+		}
+		return result;
+	}
+
+	private static void indexDocuments(HttpSolrServer client, ArrayList<String> concepts, ArrayList <String> subtypeOfConcepts, ArrayList <String> localNamesOfConcepts, String dataset, ArrayList<Long> occurrences) throws Exception
 	{
-		int numberOfObjectProperties = objectProperties.size();
+		int numberOfConcepts = concepts.size();
 		
-		for (int i = 0; i < numberOfObjectProperties; i++)
+		for (int i = 0; i < numberOfConcepts; i++)
 		{
-			String objectProperty = objectProperties.get(i);
-			String subtypeOfObjectProperty = subtypeOfObjectProperties.get(i);
-			String localNameOfObjectProperty = localNamesOfObjectProperties.get(i);
+			String concept = concepts.get(i);
+			String subtypeOfConcept = subtypeOfConcepts.get(i);
+			String localNameOfConcept = localNamesOfConcepts.get(i);
+			Long occurrence = occurrences.get(i);
 			
 			SolrInputDocument doc = new SolrInputDocument();
-			doc.setField("URI", objectProperty);
+			doc.setField("URI", concept);
 			doc.setField("type", "objectProperty");
 			doc.setField("dataset", dataset);
-			doc.setField("subtype", subtypeOfObjectProperty);
-			doc.setField("fullTextSearchField", localNameOfObjectProperty);
-			doc.setField("occurrence", 0);
-			
+			doc.setField("subtype", subtypeOfConcept);
+			doc.setField("fullTextSearchField", localNameOfConcept);
+			doc.setField("occurrence", occurrence);
 			client.add(doc);
 		}
 		
 		client.commit(true,true);
 	}
 
-	private static ArrayList<String> takeOnlyObjectProperties (String pathFile) throws FileNotFoundException, IOException
+	private static ArrayList<String> takeOnlyConcepts(String pathFile) throws Exception
 	{
 		String path = pathFile;
 		BufferedReader reader = new BufferedReader(new FileReader(path));
 		
-		int numberOfObjectProperties = 0;
-		ArrayList <String> objectProperties = new ArrayList <String> ();
+		int numberOfConcepts = 0;
+		ArrayList <String> concepts = new ArrayList<String>();
 		
     	boolean trovatoDoppioCancelletto = false;
-    	String objectProperty = "";
+    	String concept = "";
     	
     	String line = reader.readLine();
     	
@@ -77,53 +87,53 @@ public class IndexObjectProperties
     		{
     			if ((line.charAt(i) == '#') && (line.charAt(i+1) == '#'))
     			{
-    				objectProperty += "";
+    				concept += "";
     				trovatoDoppioCancelletto = true;
     			}
     			else
     			{
     				if ((line.charAt(i) != '#') && (line.charAt(i+1) != '#'))
     				{
-    					objectProperty += line.charAt(i);
+    					concept += line.charAt(i);
     				}
     				else
     				{
     					if ((line.charAt(i) != '#') && (line.charAt(i+1) == '#'))
     					{
-    						objectProperty += line.charAt(i);
+    						concept += line.charAt(i);
     					}
     					else
     					{
     						if ((line.charAt(i) == '#') && (line.charAt(i+1) != '#'))
     						{
-    							objectProperty += line.charAt(i);
+    							concept += line.charAt(i);
     						}
     					}
     				}
     			}
     		}
     		
-    		objectProperties.add(objectProperty);
+    		concepts.add(concept);
     		
-    		objectProperty = "";
+    		concept = "";
     		trovatoDoppioCancelletto = false;
     		line = reader.readLine();
-    		numberOfObjectProperties = (numberOfObjectProperties + 1);
+    		numberOfConcepts = (numberOfConcepts + 1);
     		
     	}
     	
     	reader.close();
     	
-		return objectProperties;
+		return concepts;
 	}
 	
-	private static ArrayList <String> takeOnlySubtypeOfObjectProperties (String pathFile) throws FileNotFoundException, IOException
+	private static ArrayList <String> takeOnlySubtypeOfConcepts(String pathFile) throws Exception
 	{
 		String path = pathFile;
 		BufferedReader reader = new BufferedReader(new FileReader(path));
 		
-		ArrayList <String> subtypeOfObjectProperties = new ArrayList <String> ();
-		String subtypeOfObjectProperty = "";
+		ArrayList <String> subtypeOfConcepts = new ArrayList <String> ();
+		String subtypeOfConcept = "";
 		int contatore = 0;
     	
     	String lineRead = reader.readLine();
@@ -134,13 +144,13 @@ public class IndexObjectProperties
 			{
 				if (lineRead.charAt(i) != '#')
 				{
-					subtypeOfObjectProperty += lineRead.charAt(i);
+					subtypeOfConcept += lineRead.charAt(i);
 				}
 				else
 				{
 					if (lineRead.charAt(i) == '#')
 					{
-						subtypeOfObjectProperty = "";
+						subtypeOfConcept = "";
 					}
 				}
 				contatore++;
@@ -148,43 +158,25 @@ public class IndexObjectProperties
 			
 			contatore = 0;
 			
-			subtypeOfObjectProperties.add(subtypeOfObjectProperty);
+			subtypeOfConcepts.add(subtypeOfConcept);
 			
 			lineRead = reader.readLine();
 		}
     	
     	reader.close();
     	
-		return subtypeOfObjectProperties;
+		return subtypeOfConcepts;
 	}
 	
-	private static ArrayList <String> takeOnlyLocalNamesOfObjectProperties (ArrayList <String> objectProperties)
+	private static ArrayList <String> takeOnlyLocalNamesOfConcepts (ArrayList <String> concepts)
 	{
-		String objectProperty = "";
-		String localNameOfobjectProperty = "";
-		ArrayList <String> localNamesOfobjectProperties = new ArrayList <String> ();
+		ArrayList <String> localNamesOfConcepts = new ArrayList <String> ();
 		
-		for (int i = 0; i < objectProperties.size(); i++) 
+		for (int i = 0; i < concepts.size(); i++) 
 		{
-			objectProperty = objectProperties.get(i);
-					
-			for (int j = 0; j < objectProperty.length(); j++) 
-			{
-				if (objectProperty.charAt(j) != '/')
-				{
-					localNameOfobjectProperty += objectProperty.charAt(j);
-				}
-				else
-				{
-					if (objectProperty.charAt(j) == '/')
-					{
-						localNameOfobjectProperty = "";
-					}
-				}
-			}	
-			localNamesOfobjectProperties.add(localNameOfobjectProperty);
+			localNamesOfConcepts.add(new RDFResource(concepts.get(i)).localName());
 		}
 		
-		return localNamesOfobjectProperties;
+		return localNamesOfConcepts;
 	}
 }

@@ -73,6 +73,8 @@ public class IndexObjectAkps
 			doc.setField("dataset", dataset);
 			doc.setField("subtype", subtypeOfObjectAkp);
 			doc.setField("fullTextSearchField", localNameAkp);
+			doc.setField("occurrence", 0);
+			
 			client.add(doc);
 			
 			akp[0] = "";

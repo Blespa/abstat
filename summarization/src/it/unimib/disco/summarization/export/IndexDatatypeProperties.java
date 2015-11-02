@@ -45,12 +45,13 @@ public class IndexDatatypeProperties
 			String localNameOfDatatypeProperty = localNamesOfDatatypeProperties.get(i);
 			
 			SolrInputDocument doc = new SolrInputDocument();
-			//doc.setField("idDocument", (i+1+20));
 			doc.setField("URI", datatypeProperty);
 			doc.setField("type", "datatypeProperty");
 			doc.setField("dataset", dataset);
 			doc.setField("subtype", subtypeOfDatatypeProperty);
 			doc.setField("fullTextSearchField", localNameOfDatatypeProperty);
+			doc.setField("occurrence", 0);
+			
 			client.add(doc);
 		}
 		

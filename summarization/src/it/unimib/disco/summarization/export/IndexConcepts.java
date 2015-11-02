@@ -3,7 +3,6 @@ package it.unimib.disco.summarization.export;
 import it.unimib.disco.summarization.ontology.RDFResource;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,7 +23,7 @@ public class IndexConcepts
 		String serverUrl = "http://"+host+":"+port+"/solr/indexing";
 		HttpSolrServer client = new HttpSolrServer(serverUrl);
 		
-		conceptsImport(client,pathFile,dataset);
+		conceptsImport(client, pathFile, dataset);
 	}
 	
 	private static void conceptsImport (HttpSolrServer client, String pathFile, String dataset) throws Exception
@@ -52,13 +51,14 @@ public class IndexConcepts
 			doc.setField("dataset", dataset);
 			doc.setField("subtype", subtypeOfConcept);
 			doc.setField("fullTextSearchField", localNameOfConcept);
+			doc.setField("occurrence", 0);
 			client.add(doc);
 		}
 		
 		client.commit(true,true);
 	}
 
-	private static ArrayList<String> takeOnlyConcepts(String pathFile) throws FileNotFoundException, IOException
+	private static ArrayList<String> takeOnlyConcepts(String pathFile) throws Exception
 	{
 		String path = pathFile;
 		BufferedReader reader = new BufferedReader(new FileReader(path));

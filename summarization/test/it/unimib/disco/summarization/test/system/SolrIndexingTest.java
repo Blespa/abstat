@@ -42,6 +42,11 @@ public class SolrIndexingTest {
 		httpAssert().body("select?q=*:*", containsString("numFound=\"219\""));
 	}
 	
+	@Test
+	public void shouldIndexFrequenciesOfConcepts() throws Exception {
+		httpAssert().body("select?q=*:*", containsString("occurrence"));
+	}
+	
 	private HttpAssert httpAssert() {
 		return new HttpAssert("http://localhost/solr/indexing");
 	}

@@ -45,12 +45,13 @@ public class IndexObjectProperties
 			String localNameOfObjectProperty = localNamesOfObjectProperties.get(i);
 			
 			SolrInputDocument doc = new SolrInputDocument();
-			//doc.setField("idDocument", (i+1+20+11));
 			doc.setField("URI", objectProperty);
 			doc.setField("type", "objectProperty");
 			doc.setField("dataset", dataset);
 			doc.setField("subtype", subtypeOfObjectProperty);
 			doc.setField("fullTextSearchField", localNameOfObjectProperty);
+			doc.setField("occurrence", 0);
+			
 			client.add(doc);
 		}
 		
@@ -102,10 +103,7 @@ public class IndexObjectProperties
     			}
     		}
     		
-    		//if (!(objectProperty.equalsIgnoreCase("")))
-    		//{
     		objectProperties.add(objectProperty);
-    		//}
     		
     		objectProperty = "";
     		trovatoDoppioCancelletto = false;

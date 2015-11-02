@@ -52,6 +52,8 @@ public class IndexDatatypes
 			doc.setField("dataset", dataset);
 			doc.setField("subtype", subtypeOfConcept);
 			doc.setField("fullTextSearchField", localNameOfConcept);
+			doc.setField("occurrence", 0);
+			
 			client.add(doc);
 		}
 		

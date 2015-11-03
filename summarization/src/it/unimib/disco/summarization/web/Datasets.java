@@ -8,7 +8,7 @@ import java.io.InputStream;
 
 import org.apache.commons.io.IOUtils;
 
-public class Datasets {
+public class Datasets implements Api {
 
 	private Folders folder;
 

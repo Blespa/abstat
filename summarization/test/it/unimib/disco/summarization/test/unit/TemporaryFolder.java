@@ -69,4 +69,9 @@ public class TemporaryFolder{
 	private File createRandomFileWithExtension(String extension) {
 		return new File(directory(), Math.random() + "." + extension);
 	}
+
+	public TemporaryFolder add(String folder) {
+		new File(directory(), folder).mkdir();
+		return this;
+	}
 }

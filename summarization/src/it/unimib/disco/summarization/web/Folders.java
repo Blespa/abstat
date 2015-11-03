@@ -1,7 +1,7 @@
 package it.unimib.disco.summarization.web;
 
 import java.io.File;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Folders {
@@ -13,6 +13,10 @@ public class Folders {
 	}
 
 	public List<String> children() {
-		return Arrays.asList(root.list());
+		ArrayList<String> filtered = new ArrayList<String>();
+		for(File file : root.listFiles()){
+			if(file.isDirectory()) filtered.add(file.getName());
+		}
+		return filtered;
 	}
 }

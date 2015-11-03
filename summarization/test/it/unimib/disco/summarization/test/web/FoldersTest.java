@@ -2,7 +2,7 @@ package it.unimib.disco.summarization.test.web;
 
 import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 import it.unimib.disco.summarization.test.unit.TemporaryFolder;
 import it.unimib.disco.summarization.web.Folders;
 
@@ -40,5 +40,15 @@ public class FoldersTest {
 		Folders folder = new Folders(temp.directory());
 		
 		assertThat(folder.children(), hasSize(2));
+	}
+	
+	@Test
+	public void shouldSkipFilesAndKeepDirectoriesOnly() throws Exception {
+		
+		temp.file();
+		
+		Folders folder = new Folders(temp.directory());
+		
+		assertThat(folder.children(), empty());
 	}
 }

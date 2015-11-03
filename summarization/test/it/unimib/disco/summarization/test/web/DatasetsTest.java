@@ -1,7 +1,7 @@
 package it.unimib.disco.summarization.test.web;
 
 import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 import it.unimib.disco.summarization.test.unit.TemporaryFolder;
 import it.unimib.disco.summarization.web.Datasets;
 
@@ -35,5 +35,15 @@ public class DatasetsTest {
 		List<String> lines = IOUtils.readLines(response);
 		
 		assertThat(lines.get(0), equalTo("{\"datasets\":[]}"));
+	}
+	
+	@Test
+	public void shouldContainTheDatasetAsURI() throws Exception {
+		
+		InputStream response = new Datasets(temp.add("dbpedia").directory()).get(new RequestTestDouble());
+		
+		List<String> lines = IOUtils.readLines(response);
+		
+		assertThat(lines.get(0), equalTo("{\"datasets\":[{\"URI\":\"http://ld-summaries.org/dbpedia\"}]}"));
 	}
 }

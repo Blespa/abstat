@@ -148,6 +148,7 @@ fill = function(type, graph, result, http){
 	.query('select distinct(?' + type + ') ?g' + type + ' ' + 
 			'where { '+
 				'?pattern a lds:AbstractKnowledgePattern . ' +
+				'?pattern a lds:Internal . ' +
 	         	'?pattern rdf:' + type + ' ?' + type + ' . ' +
 	         	'?' + type + ' rdfs:seeAlso' + ' ?g' + type + ' . ' +
          	'} ')
@@ -201,6 +202,7 @@ Summary = function(scope_service, http_service){
 			.query('select ' + subject + ' as ?subject ' + predicate + ' as ?predicate ' + object + ' as ?object ?frequency ?pattern ?gSubject ?gPredicate ?gObject ?subjectOcc ?predicateOcc ?objectOcc ' +
 				   ' where { ' +
 						'?pattern a lds:AbstractKnowledgePattern . ' +
+						'?pattern a lds:Internal . ' +
 						'?pattern rdf:subject ' + subject + ' . ' +
 						'?pattern rdf:predicate ' + predicate + ' . ' + 
 			         	'?pattern rdf:object ' + object + ' . ' +

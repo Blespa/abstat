@@ -40,9 +40,9 @@ summary.filter('asIcon', function(){
 });
 
 summary.controller('browse', function ($scope, $http) {
-	var summaries = new Summary($scope, $http);
+	var summaries = new Summary($scope, $http, '');
 	
-	bootstrapControllerFor($scope, $http, 'select a dataset', summaries);
+	bootstrapControllerFor($scope, $http, 'select a dataset', summaries, '');
 	
 	summaries.startLoading();
 	$http.get('/api/v1/datasets', {method: 'GET', params:{}})
@@ -58,9 +58,9 @@ summary.controller("search", function ($scope, $http) {
 });
 
 summary.controller('experiment-browse', function ($scope, $http) {
-	var summaries = new Summary($scope, $http);
+	var summaries = new Summary($scope, $http, '?pattern a lds:Internal . ');
 	
-	bootstrapControllerFor($scope, $http, 'http://ld-summaries.org/dbpedia-3.9-infobox', summaries);
+	bootstrapControllerFor($scope, $http, 'http://ld-summaries.org/dbpedia-3.9-infobox', summaries, '?pattern a lds:Internal . ');
 	
 	$scope.loadPatterns();
 });
@@ -109,7 +109,7 @@ bootstrapSearchController = function(scope, http, dataset){
 	};
 }
 
-bootstrapControllerFor = function(scope, http, graph, summaries){
+bootstrapControllerFor = function(scope, http, graph, summaries, filter){
 	
 	scope.loadPatterns = function(){
 		
@@ -123,9 +123,9 @@ bootstrapControllerFor = function(scope, http, graph, summaries){
 		
 		scope.autocomplete = {};
 		
-		fill('subject', scope.selected_graph, scope.autocomplete, http)
-		fill('predicate', scope.selected_graph, scope.autocomplete, http)
-		fill('object', scope.selected_graph, scope.autocomplete, http)
+		fill('subject', scope.selected_graph, scope.autocomplete, http, filter)
+		fill('predicate', scope.selected_graph, scope.autocomplete, http, filter)
+		fill('object', scope.selected_graph, scope.autocomplete, http, filter)
 	};
 	scope.filterPatterns = function(){
 		
@@ -140,7 +140,7 @@ bootstrapControllerFor = function(scope, http, graph, summaries){
 	scope.describe_uri = '/describe/?uri=';
 };
 
-fill = function(type, graph, result, http){
+fill = function(type, graph, result, http, filter){
 	
 	result[type] = [];
 	
@@ -148,7 +148,7 @@ fill = function(type, graph, result, http){
 	.query('select distinct(?' + type + ') ?g' + type + ' ' + 
 			'where { '+
 				'?pattern a lds:AbstractKnowledgePattern . ' +
-				'?pattern a lds:Internal . ' +
+				 filter +
 	         	'?pattern rdf:' + type + ' ?' + type + ' . ' +
 	         	'?' + type + ' rdfs:seeAlso' + ' ?g' + type + ' . ' +
          	'} ')
@@ -164,12 +164,13 @@ fill = function(type, graph, result, http){
      });
 };
 
-Summary = function(scope_service, http_service){
+Summary = function(scope_service, http_service, filter){
 	
 	var offset = 0;
 	var limit = 20;
 	var scope = scope_service;
 	var http = http_service;
+	var internalConstraint = filter;
 	
 	this.reset = function(){
 		offset = 0;
@@ -202,7 +203,7 @@ Summary = function(scope_service, http_service){
 			.query('select ' + subject + ' as ?subject ' + predicate + ' as ?predicate ' + object + ' as ?object ?frequency ?pattern ?gSubject ?gPredicate ?gObject ?subjectOcc ?predicateOcc ?objectOcc ' +
 				   ' where { ' +
 						'?pattern a lds:AbstractKnowledgePattern . ' +
-						'?pattern a lds:Internal . ' +
+						internalConstraint +
 						'?pattern rdf:subject ' + subject + ' . ' +
 						'?pattern rdf:predicate ' + predicate + ' . ' + 
 			         	'?pattern rdf:object ' + object + ' . ' +

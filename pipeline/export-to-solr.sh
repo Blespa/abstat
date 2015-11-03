@@ -29,8 +29,8 @@ run InternalExternalResources ../data/summaries/$dataset/patterns/count-concepts
 run InternalExternalResources ../data/summaries/$dataset/patterns/count-datatype.txt $dataset $payleveldomain
 run InternalExternalResources ../data/summaries/$dataset/patterns/count-datatype-properties.txt $dataset $payleveldomain
 run InternalExternalResources ../data/summaries/$dataset/patterns/count-object-properties.txt $dataset $payleveldomain
-run InternalExternalDatatypeAkp ../data/summaries/$dataset/patterns/datatype-akp.txt $dataset $payleveldomain
-run InternalExternalObjectAkp ../data/summaries/$dataset/patterns/object-akp.txt $dataset $payleveldomain
+run InternalExternalAKP ../data/summaries/$dataset/patterns/datatype-akp.txt $dataset $payleveldomain
+run InternalExternalAKP ../data/summaries/$dataset/patterns/object-akp.txt $dataset $payleveldomain
 run DeleteAllDocumentsFromIndex localhost $solr_port $dataset
 
 sleep 1

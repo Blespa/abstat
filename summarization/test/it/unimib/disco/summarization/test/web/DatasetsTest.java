@@ -46,4 +46,14 @@ public class DatasetsTest {
 		
 		assertThat(lines.get(0), equalTo("{\"datasets\":[{\"URI\":\"http://ld-summaries.org/dbpedia\"}]}"));
 	}
+	
+	@Test
+	public void shouldGetMultipleDatasets() throws Exception {
+		
+		InputStream response = new Datasets(temp.add("dbpedia").add("yago").directory()).get(new RequestTestDouble());
+		
+		List<String> lines = IOUtils.readLines(response);
+		
+		assertThat(lines.get(0), equalTo("{\"datasets\":[{\"URI\":\"http://ld-summaries.org/dbpedia\"},{\"URI\":\"http://ld-summaries.org/yago\"}]}"));
+	}
 }

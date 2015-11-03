@@ -5,8 +5,10 @@ import it.unimib.disco.summarization.ontology.LDSummariesVocabulary;
 
 import java.io.File;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
 
 public class Datasets implements Api {
 
@@ -17,11 +19,10 @@ public class Datasets implements Api {
 	}
 
 	public InputStream get(RequestParameters request) {
-		String result = "{\"datasets\":[";
+		ArrayList<String> datasets = new ArrayList<String>();
 		for(String dataset : folder.children()){
-			result+="{\"URI\":\"" + new LDSummariesVocabulary(null, dataset).graph() + "\"}";
+			datasets.add("{\"URI\":\"" + new LDSummariesVocabulary(null, dataset).graph() + "\"}");
 		}
-		result+="]}";
-		return IOUtils.toInputStream(result);
+		return IOUtils.toInputStream("{\"datasets\":[" + StringUtils.join(datasets, ",") + "]}");
 	}
 }

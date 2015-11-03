@@ -39,7 +39,7 @@ run IndexResources localhost $solr_port ../data/summaries/$dataset/patterns/coun
 run IndexResources localhost $solr_port ../data/summaries/$dataset/patterns/count-datatype-new.txt $dataset datatype
 run IndexResources localhost $solr_port ../data/summaries/$dataset/patterns/count-datatype-properties-new.txt $dataset datatypeProperty
 run IndexResources localhost $solr_port ../data/summaries/$dataset/patterns/count-object-properties-new.txt $dataset objectProperty
-run IndexAkps localhost $solr_port ../data/summaries/$dataset/patterns/datatype-akp-new.txt $dataset datatypeAkp
-run IndexAkps localhost $solr_port ../data/summaries/$dataset/patterns/object-akp-new.txt $dataset objectAkp
+run IndexAKP localhost $solr_port ../data/summaries/$dataset/patterns/datatype-akp-new.txt $dataset datatypeAkp
+run IndexAKP localhost $solr_port ../data/summaries/$dataset/patterns/object-akp-new.txt $dataset objectAkp
 
 cd ../pipeline

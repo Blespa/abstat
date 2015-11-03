@@ -5,7 +5,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 
-public class InternalExternalDatatypeAkp 
+public class InternalExternalAKP
 {
 	public static void main(String[] args) throws Exception
 	{
@@ -25,23 +25,23 @@ public class InternalExternalDatatypeAkp
 	
 	private static void decide(String pathFile, String dataset, String payLevelDomain) throws Exception
 	{
-		String fileDatatypeAkpsPath = pathFile;
-		BufferedReader brDatatypeAkps = new BufferedReader(new FileReader(fileDatatypeAkpsPath));
+		String fileAkpsPath = pathFile;
+		BufferedReader brAkps = new BufferedReader(new FileReader(fileAkpsPath));
 		
-		FileWriter fwDatatypeAkps = new FileWriter("../data/summaries/"+dataset+"/patterns/datatype-akp-new.txt");
-		BufferedWriter bwDatatypeAkps = new BufferedWriter(fwDatatypeAkps);
+		FileWriter fwAkps = new FileWriter(pathFile.replace(".txt", "-new.txt"));
+		BufferedWriter bwAkps = new BufferedWriter(fwAkps);
 		
 		boolean trovatoPrimoDoppioCancelletto = false;
 		boolean trovatoSecondoDoppioCancelletto = false;
 		boolean trovatoTerzoDoppioCancelletto = false;
 		String lineRead = null;
-		String subjectDatatypeAkp = "";
-		String propertyDatatypeAkp = "";
-		String objectDatatypeAkp = "";
+		String subjectAkp = "";
+		String propertyAkp = "";
+		String objectAkp = "";
 		String numberOfInstances = "";
-		String typeOfDatatypeAkp = "";
+		String typeOfAkp = "";
 		
-		lineRead = brDatatypeAkps.readLine();
+		lineRead = brAkps.readLine();
 		
 		while (lineRead != null)
 		{
@@ -51,19 +51,19 @@ public class InternalExternalDatatypeAkp
 				{
 					if ((lineRead.charAt(i) != '#') && (lineRead.charAt(i+1) != '#'))
 					{
-						subjectDatatypeAkp += lineRead.charAt(i);
+						subjectAkp += lineRead.charAt(i);
 					}
 					if ((lineRead.charAt(i) != '#') && (lineRead.charAt(i+1) == '#'))
 					{
-						subjectDatatypeAkp += lineRead.charAt(i);
+						subjectAkp += lineRead.charAt(i);
 					}
 					if ((lineRead.charAt(i) == '#') && (lineRead.charAt(i+1) != '#'))
 					{
-						subjectDatatypeAkp += lineRead.charAt(i);
+						subjectAkp += lineRead.charAt(i);
 					}
 					if ((lineRead.charAt(i) == '#') && (lineRead.charAt(i+1) == '#'))
 					{
-						subjectDatatypeAkp += "";
+						subjectAkp += "";
 						trovatoPrimoDoppioCancelletto = true;
 					}
 				}
@@ -74,19 +74,19 @@ public class InternalExternalDatatypeAkp
 					{
 						if ((lineRead.charAt(i+2) != '#') && (lineRead.charAt(i+3) != '#'))
 						{
-							propertyDatatypeAkp += lineRead.charAt(i+2);
+							propertyAkp += lineRead.charAt(i+2);
 						}
 						if ((lineRead.charAt(i+2) != '#') && (lineRead.charAt(i+3) == '#'))
 						{
-							propertyDatatypeAkp += lineRead.charAt(i+2);
+							propertyAkp += lineRead.charAt(i+2);
 						}
 						if ((lineRead.charAt(i+2) == '#') && (lineRead.charAt(i+3) != '#'))
 						{
-							propertyDatatypeAkp += lineRead.charAt(i+2);
+							propertyAkp += lineRead.charAt(i+2);
 						}
 						if ((lineRead.charAt(i+2) == '#') && (lineRead.charAt(i+3) == '#'))
 						{
-							propertyDatatypeAkp += "";
+							propertyAkp += "";
 							trovatoSecondoDoppioCancelletto = true;
 						}
 					}
@@ -96,19 +96,19 @@ public class InternalExternalDatatypeAkp
 						{
 							if ((lineRead.charAt(i+4) != '#') && (lineRead.charAt(i+5) != '#'))
 							{
-								objectDatatypeAkp += lineRead.charAt(i+4);
+								objectAkp += lineRead.charAt(i+4);
 							}
 							if ((lineRead.charAt(i+4) != '#') && (lineRead.charAt(i+5) == '#'))
 							{
-								objectDatatypeAkp += lineRead.charAt(i+4);
+								objectAkp += lineRead.charAt(i+4);
 							}
 							if ((lineRead.charAt(i+4) == '#') && (lineRead.charAt(i+5) != '#'))
 							{
-								objectDatatypeAkp += lineRead.charAt(i+4);
+								objectAkp += lineRead.charAt(i+4);
 							}
 							if ((lineRead.charAt(i+4) == '#') && (lineRead.charAt(i+5) == '#'))
 							{
-								objectDatatypeAkp += "";
+								objectAkp += "";
 								trovatoTerzoDoppioCancelletto = true;
 							}
 						}
@@ -123,40 +123,40 @@ public class InternalExternalDatatypeAkp
 				}
 			}
 			
-			if (((!(subjectDatatypeAkp.contains("wikidata"))) && (subjectDatatypeAkp.contains(payLevelDomain))) && ((!(objectDatatypeAkp.contains("wikidata"))) && (objectDatatypeAkp.contains(payLevelDomain))))
+			if (((!(subjectAkp.contains("wikidata"))) && (subjectAkp.contains(payLevelDomain))) && ((!(objectAkp.contains("wikidata"))) && (objectAkp.contains(payLevelDomain))))
 			{
-				typeOfDatatypeAkp = "internal";
+				typeOfAkp = "internal";
 			}
 			else
 			{
-				typeOfDatatypeAkp = "external";
+				typeOfAkp = "external";
 			}
 			
-			bwDatatypeAkps.write(subjectDatatypeAkp);
-			bwDatatypeAkps.write("##");
-			bwDatatypeAkps.write(propertyDatatypeAkp);
-			bwDatatypeAkps.write("##");
-			bwDatatypeAkps.write(objectDatatypeAkp);
-			bwDatatypeAkps.write("##");
-			bwDatatypeAkps.write(numberOfInstances);
-			bwDatatypeAkps.write("##");
-			bwDatatypeAkps.write(typeOfDatatypeAkp);
-			bwDatatypeAkps.write("\n");
+			bwAkps.write(subjectAkp);
+			bwAkps.write("##");
+			bwAkps.write(propertyAkp);
+			bwAkps.write("##");
+			bwAkps.write(objectAkp);
+			bwAkps.write("##");
+			bwAkps.write(numberOfInstances);
+			bwAkps.write("##");
+			bwAkps.write(typeOfAkp);
+			bwAkps.write("\n");
 			
-			subjectDatatypeAkp = "";
-			propertyDatatypeAkp = "";
-			objectDatatypeAkp = "";
+			subjectAkp = "";
+			propertyAkp = "";
+			objectAkp = "";
 			numberOfInstances = "";
-			typeOfDatatypeAkp = "";
+			typeOfAkp = "";
 			trovatoPrimoDoppioCancelletto = false;
 			trovatoSecondoDoppioCancelletto = false;
 			trovatoTerzoDoppioCancelletto = false;
 			
-			lineRead = brDatatypeAkps.readLine();
+			lineRead = brAkps.readLine();
 		}
 		
-		brDatatypeAkps.close();
-		bwDatatypeAkps.close();
-		fwDatatypeAkps.close();
+		brAkps.close();
+		bwAkps.close();
+		fwAkps.close();
 	}
 }

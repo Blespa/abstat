@@ -1,10 +1,10 @@
 package it.unimib.disco.summarization.export;
 
+import it.unimib.disco.summarization.ontology.RDFResource;
+
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import org.apache.commons.io.FileUtils;
@@ -14,7 +14,7 @@ import org.apache.solr.common.SolrInputDocument;
 
 public class IndexResources
 {
-	public static void main(String[] args) throws Exception
+	public static void main (String[] args) throws Exception
 	{
 		Events.summarization();
 		
@@ -28,28 +28,21 @@ public class IndexResources
 			String serverUrl = "http://"+host+":"+port+"/solr/indexing";
 			HttpSolrServer client = new HttpSolrServer(serverUrl);
 			
-			datatypeAkpsImport(client,pathFile,dataset,type);
+			conceptsImport(client, pathFile, dataset, type);
 		}
 		catch(Exception e){
 			Events.summarization().error("", e);
 		}
 	}
-
-	private static void datatypeAkpsImport (HttpSolrServer client, String pathFile, String dataset, String type) throws Exception
+	
+	private static void conceptsImport (HttpSolrServer client, String pathFile, String dataset, String type) throws Exception
 	{
-		ArrayList <String> subjects = subjects(pathFile);
-		ArrayList <String> properties = properties(pathFile);
-		ArrayList <String> objects = objects(pathFile);
-		
-		ArrayList <String> subtypes = subtypes(pathFile);
-		
-		ArrayList <String> subjectsLocalNames = takeOnlyLocalNamesOnly(subjects);
-		ArrayList <String> propertiesLocalNames = takeOnlyLocalNamesOnly(properties);
-		ArrayList <String> objectsLocalNames = takeOnlyLocalNamesOnly(objects);
-		
+		ArrayList<String> concepts = takeOnlyConcepts(pathFile);
+		ArrayList<String> subtypeOfConcepts = takeOnlySubtypeOfConcepts(pathFile);
+		ArrayList<String> localNamesOfConcepts = takeOnlyLocalNamesOfConcepts(concepts);
 		ArrayList<Long> occurrences = selectOccurrences(pathFile);
 		
-		index(client,subjects,properties,objects,subjectsLocalNames,propertiesLocalNames,objectsLocalNames,subtypes,dataset, occurrences, type);
+		indexDocuments(client,concepts,subtypeOfConcepts,localNamesOfConcepts,dataset, occurrences, type);
 	}
 	
 	private static ArrayList<Long> selectOccurrences(String pathFile) throws Exception {
@@ -57,387 +50,58 @@ public class IndexResources
 		LineIterator lines = FileUtils.lineIterator(new File(pathFile));
 		while(lines.hasNext()){
 			String line = lines.next();
-			result.add(Long.parseLong(line.split("##")[3]));
+			result.add(Long.parseLong(line.split("##")[1]));
 		}
 		return result;
 	}
 
-	private static void index (HttpSolrServer client, ArrayList <String> subjectsOfDatatypeAkps, ArrayList <String> propertiesOfDatatypeAkps, ArrayList <String> objectsOfDatatypeAkps, ArrayList <String> localNamesOfSubjectsOfDatatypeAkps, ArrayList <String> localNamesOfPropertiesOfDatatypeAkps, ArrayList <String> localNamesOfObjectsOfDatatypeAkps, ArrayList <String> subtypeOfDatatypeAkps, String dataset, ArrayList<Long> occurrences, String type) throws Exception
+	private static void indexDocuments(HttpSolrServer client, ArrayList<String> concepts, ArrayList <String> subtypeOfConcepts, ArrayList <String> localNamesOfConcepts, String dataset, ArrayList<Long> occurrences, String type) throws Exception
 	{
-		int numberOfDatatypeAkps = subjectsOfDatatypeAkps.size();
+		int numberOfConcepts = concepts.size();
 		
-		for (int i = 0; i < numberOfDatatypeAkps; i++)
+		for (int i = 0; i < numberOfConcepts; i++)
 		{
-			String subjectOfDatatypeAkp = subjectsOfDatatypeAkps.get(i);
-			String propertyOfDatatypeAkp = propertiesOfDatatypeAkps.get(i);
-			String objectOfDatatypeAkp = objectsOfDatatypeAkps.get(i);
-			
-			String localNameOfSubjectOfDatatypeAkp = localNamesOfSubjectsOfDatatypeAkps.get(i);
-			String localNameOfPropertyOfDatatypeAkp = localNamesOfPropertiesOfDatatypeAkps.get(i);
-			String localNameOfObjectOfDatatypeAkp = localNamesOfObjectsOfDatatypeAkps.get(i);
-			
-			String subtypeOfDatatypeAkp = subtypeOfDatatypeAkps.get(i);
-			
-			String[] akp = new String[3];
-			akp[0] = subjectOfDatatypeAkp;
-			akp[1] = propertyOfDatatypeAkp;
-			akp[2] = objectOfDatatypeAkp;
-			
-			String[] localNameAkp = new String[3];
-			localNameAkp[0] = localNameOfSubjectOfDatatypeAkp;
-			localNameAkp[1] = localNameOfPropertyOfDatatypeAkp;
-			localNameAkp[2] = localNameOfObjectOfDatatypeAkp;
+			String concept = concepts.get(i);
+			String subtypeOfConcept = subtypeOfConcepts.get(i);
+			String localNameOfConcept = localNamesOfConcepts.get(i);
+			Long occurrence = occurrences.get(i);
 			
 			SolrInputDocument doc = new SolrInputDocument();
-			
-			doc.setField("URI", akp);
+			doc.setField("URI", concept);
 			doc.setField("type", type);
 			doc.setField("dataset", dataset);
-			doc.setField("subtype", subtypeOfDatatypeAkp);
-			doc.setField("fullTextSearchField", localNameAkp);
-			doc.setField("occurrence", occurrences.get(i));
-			
+			doc.setField("subtype", subtypeOfConcept);
+			doc.setField("fullTextSearchField", localNameOfConcept);
+			doc.setField("occurrence", occurrence);
 			client.add(doc);
-			
-			akp[0] = "";
-			akp[1] = "";
-			akp[2] = "";
-			
-			localNameAkp[0] = "";
-			localNameAkp[1] = "";
-			localNameAkp[2] = "";
 		}
 		
-		client.commit(true,true);
+		client.commit(true, true);
+	}
+
+	private static ArrayList<String> takeOnlyConcepts(String pathFile) throws Exception
+	{
+		ArrayList <String> concepts = new ArrayList<String>();
+    	
+		BufferedReader reader = new BufferedReader(new FileReader(pathFile));
+    	String line = reader.readLine();
+    	while (line != null)
+    	{
+    		concepts.add(line.split("##")[0]);
+    		line = reader.readLine();
+    	}
+    	reader.close();
+    	
+		return concepts;
 	}
 	
-	private static ArrayList <String> subjects (String pathFile) throws IOException
-	{	
-		String akpSubject = "";
-		String akpProperty = "";
-		String akpObject = "";
-		boolean trovatoPrimoDoppioCancelletto = false;
-		boolean trovatoSecondoDoppioCancelletto = false;
-		boolean trovatoTerzoDoppioCancelletto = false;
-		
-		ArrayList <String> subjectsAkps = new ArrayList <String> ();
-		ArrayList <String> propertiesAkps = new ArrayList <String> ();
-		ArrayList <String> objectsAkps = new ArrayList <String> (); 
-		
-		String path = pathFile;
-		BufferedReader reader = new BufferedReader(new FileReader(path));
-		
-		String line = reader.readLine();
-		
-		while (line != null)
-		{
-			for (int i = 0; i < line.length() && trovatoTerzoDoppioCancelletto == false; i++)
-			{
-				if (trovatoPrimoDoppioCancelletto == false) 
-				{
-					if ((line.charAt(i) != '#') && (line.charAt(i+1) != '#'))
-					{
-						akpSubject += line.charAt(i);
-					}
-					if ((line.charAt(i) != '#') && (line.charAt(i+1) == '#'))
-					{
-						akpSubject += line.charAt(i);
-					}
-					if ((line.charAt(i) == '#') && (line.charAt(i+1) != '#'))
-					{
-						akpSubject += line.charAt(i);
-					}
-					if ((line.charAt(i) == '#') && (line.charAt(i+1) == '#'))
-					{
-						akpSubject += "";
-						trovatoPrimoDoppioCancelletto = true;
-					}
-				}
-				
-				if (trovatoPrimoDoppioCancelletto == true)
-				{
-					if (trovatoSecondoDoppioCancelletto == false)
-					{
-						if ((line.charAt(i+2) != '#') && (line.charAt(i+3) != '#'))
-						{
-							akpProperty += line.charAt(i+2);
-						}
-						if ((line.charAt(i+2) != '#') && (line.charAt(i+3) == '#'))
-						{
-							akpProperty += line.charAt(i+2);
-						}
-						if ((line.charAt(i+2) == '#') && (line.charAt(i+3) != '#'))
-						{
-							akpProperty += line.charAt(i+2);
-						}
-						if ((line.charAt(i+2) == '#') && (line.charAt(i+3) == '#'))
-						{
-							akpProperty += "";
-							trovatoSecondoDoppioCancelletto = true;
-						}
-					}
-					if (trovatoSecondoDoppioCancelletto == true)
-					{
-						if ((line.charAt(i+4) != '#') && (line.charAt(i+5) != '#'))
-						{
-							akpObject += line.charAt(i+4);
-						}
-						if ((line.charAt(i+4) != '#') && (line.charAt(i+5) == '#'))
-						{
-							akpObject += line.charAt(i+4);
-						}
-						if ((line.charAt(i+4) == '#') && (line.charAt(i+5) != '#'))
-						{
-							akpObject += line.charAt(i+4);
-						}
-						if ((line.charAt(i+4) == '#') && (line.charAt(i+5) == '#'))
-						{
-							akpObject += "";
-							trovatoTerzoDoppioCancelletto = true;
-						}
-					}
-				}
-			}
-			
-    		subjectsAkps.add(akpSubject);
-    		propertiesAkps.add(akpProperty);
-    		objectsAkps.add(akpObject);
-			
-			akpSubject = "";
-			akpProperty = "";
-			akpObject = "";
-			trovatoPrimoDoppioCancelletto = false;
-			trovatoSecondoDoppioCancelletto = false;
-			trovatoTerzoDoppioCancelletto = false;
-			
-			line = reader.readLine();
-		}
-		reader.close();
-		
-		return subjectsAkps;		
-	}
-	
-	private static ArrayList <String> properties (String pathFile) throws IOException
-	{	
-		String akpSubject = "";
-		String akpProperty = "";
-		String akpObject = "";
-		boolean trovatoPrimoDoppioCancelletto = false;
-		boolean trovatoSecondoDoppioCancelletto = false;
-		boolean trovatoTerzoDoppioCancelletto = false;
-		
-		ArrayList <String> subjectsAkps = new ArrayList <String> ();
-		ArrayList <String> propertiesAkps = new ArrayList <String> ();
-		ArrayList <String> objectsAkps = new ArrayList <String> (); 
-		
-		String path = pathFile;
-		BufferedReader reader = new BufferedReader(new FileReader(path));
-		
-		String line = reader.readLine();
-		
-		while (line != null)
-		{
-			for (int i = 0; i < line.length() && trovatoTerzoDoppioCancelletto == false; i++)
-			{
-				if (trovatoPrimoDoppioCancelletto == false) 
-				{
-					if ((line.charAt(i) != '#') && (line.charAt(i+1) != '#'))
-					{
-						akpSubject += line.charAt(i);
-					}
-					if ((line.charAt(i) != '#') && (line.charAt(i+1) == '#'))
-					{
-						akpSubject += line.charAt(i);
-					}
-					if ((line.charAt(i) == '#') && (line.charAt(i+1) != '#'))
-					{
-						akpSubject += line.charAt(i);
-					}
-					if ((line.charAt(i) == '#') && (line.charAt(i+1) == '#'))
-					{
-						akpSubject += "";
-						trovatoPrimoDoppioCancelletto = true;
-					}
-				}
-				
-				if (trovatoPrimoDoppioCancelletto == true)
-				{
-					if (trovatoSecondoDoppioCancelletto == false)
-					{
-						if ((line.charAt(i+2) != '#') && (line.charAt(i+3) != '#'))
-						{
-							akpProperty += line.charAt(i+2);
-						}
-						if ((line.charAt(i+2) != '#') && (line.charAt(i+3) == '#'))
-						{
-							akpProperty += line.charAt(i+2);
-						}
-						if ((line.charAt(i+2) == '#') && (line.charAt(i+3) != '#'))
-						{
-							akpProperty += line.charAt(i+2);
-						}
-						if ((line.charAt(i+2) == '#') && (line.charAt(i+3) == '#'))
-						{
-							akpProperty += "";
-							trovatoSecondoDoppioCancelletto = true;
-						}
-					}
-					if (trovatoSecondoDoppioCancelletto == true)
-					{
-						if ((line.charAt(i+4) != '#') && (line.charAt(i+5) != '#'))
-						{
-							akpObject += line.charAt(i+4);
-						}
-						if ((line.charAt(i+4) != '#') && (line.charAt(i+5) == '#'))
-						{
-							akpObject += line.charAt(i+4);
-						}
-						if ((line.charAt(i+4) == '#') && (line.charAt(i+5) != '#'))
-						{
-							akpObject += line.charAt(i+4);
-						}
-						if ((line.charAt(i+4) == '#') && (line.charAt(i+5) == '#'))
-						{
-							akpObject += "";
-							trovatoTerzoDoppioCancelletto = true;
-						}
-					}
-				}
-			}
-			
-    		subjectsAkps.add(akpSubject);
-    		propertiesAkps.add(akpProperty);
-    		objectsAkps.add(akpObject);
-			
-			akpSubject = "";
-			akpProperty = "";
-			akpObject = "";
-			trovatoPrimoDoppioCancelletto = false;
-			trovatoSecondoDoppioCancelletto = false;
-			trovatoTerzoDoppioCancelletto = false;
-			
-			line = reader.readLine();
-		}
-		
-		reader.close();
-		
-		return propertiesAkps;
-	}
-	
-	private static ArrayList <String> objects (String pathFile) throws IOException
-	{	
-		String akpSubject = "";
-		String akpProperty = "";
-		String akpObject = "";
-		boolean trovatoPrimoDoppioCancelletto = false;
-		boolean trovatoSecondoDoppioCancelletto = false;
-		boolean trovatoTerzoDoppioCancelletto = false;
-		
-		ArrayList <String> subjectsAkps = new ArrayList <String> ();
-		ArrayList <String> propertiesAkps = new ArrayList <String> ();
-		ArrayList <String> objectsAkps = new ArrayList <String> (); 
-		
-		String path = pathFile;
-		BufferedReader reader = new BufferedReader(new FileReader(path));
-		
-		String line = reader.readLine();
-		
-		while (line != null)
-		{
-			for (int i = 0; i < line.length() && trovatoTerzoDoppioCancelletto == false; i++)
-			{
-				if (trovatoPrimoDoppioCancelletto == false) 
-				{
-					if ((line.charAt(i) != '#') && (line.charAt(i+1) != '#'))
-					{
-						akpSubject += line.charAt(i);
-					}
-					if ((line.charAt(i) != '#') && (line.charAt(i+1) == '#'))
-					{
-						akpSubject += line.charAt(i);
-					}
-					if ((line.charAt(i) == '#') && (line.charAt(i+1) != '#'))
-					{
-						akpSubject += line.charAt(i);
-					}
-					if ((line.charAt(i) == '#') && (line.charAt(i+1) == '#'))
-					{
-						akpSubject += "";
-						trovatoPrimoDoppioCancelletto = true;
-					}
-				}
-				
-				if (trovatoPrimoDoppioCancelletto == true)
-				{
-					if (trovatoSecondoDoppioCancelletto == false)
-					{
-						if ((line.charAt(i+2) != '#') && (line.charAt(i+3) != '#'))
-						{
-							akpProperty += line.charAt(i+2);
-						}
-						if ((line.charAt(i+2) != '#') && (line.charAt(i+3) == '#'))
-						{
-							akpProperty += line.charAt(i+2);
-						}
-						if ((line.charAt(i+2) == '#') && (line.charAt(i+3) != '#'))
-						{
-							akpProperty += line.charAt(i+2);
-						}
-						if ((line.charAt(i+2) == '#') && (line.charAt(i+3) == '#'))
-						{
-							akpProperty += "";
-							trovatoSecondoDoppioCancelletto = true;
-						}
-					}
-					if (trovatoSecondoDoppioCancelletto == true)
-					{
-						if ((line.charAt(i+4) != '#') && (line.charAt(i+5) != '#'))
-						{
-							akpObject += line.charAt(i+4);
-						}
-						if ((line.charAt(i+4) != '#') && (line.charAt(i+5) == '#'))
-						{
-							akpObject += line.charAt(i+4);
-						}
-						if ((line.charAt(i+4) == '#') && (line.charAt(i+5) != '#'))
-						{
-							akpObject += line.charAt(i+4);
-						}
-						if ((line.charAt(i+4) == '#') && (line.charAt(i+5) == '#'))
-						{
-							akpObject += "";
-							trovatoTerzoDoppioCancelletto = true;
-						}
-					}
-				}
-			}
-			
-    		subjectsAkps.add(akpSubject);
-    		propertiesAkps.add(akpProperty);
-    		objectsAkps.add(akpObject);
-			
-			akpSubject = "";
-			akpProperty = "";
-			akpObject = "";
-			trovatoPrimoDoppioCancelletto = false;
-			trovatoSecondoDoppioCancelletto = false;
-			trovatoTerzoDoppioCancelletto = false;
-			
-			line = reader.readLine();
-		}
-		
-		reader.close();
-		
-		return objectsAkps;
-	}
-	
-	private static ArrayList <String> subtypes(String pathFile) throws FileNotFoundException, IOException
+	private static ArrayList <String> takeOnlySubtypeOfConcepts(String pathFile) throws Exception
 	{
 		String path = pathFile;
 		BufferedReader reader = new BufferedReader(new FileReader(path));
 		
-		ArrayList <String> subtypeOfDatatypeAkps = new ArrayList <String> ();
-		String subtypeOfDatatypeAkp = "";
+		ArrayList <String> subtypeOfConcepts = new ArrayList <String> ();
+		String subtypeOfConcept = "";
 		int contatore = 0;
     	
     	String lineRead = reader.readLine();
@@ -448,13 +112,13 @@ public class IndexResources
 			{
 				if (lineRead.charAt(i) != '#')
 				{
-					subtypeOfDatatypeAkp += lineRead.charAt(i);
+					subtypeOfConcept += lineRead.charAt(i);
 				}
 				else
 				{
 					if (lineRead.charAt(i) == '#')
 					{
-						subtypeOfDatatypeAkp = "";
+						subtypeOfConcept = "";
 					}
 				}
 				contatore++;
@@ -462,43 +126,25 @@ public class IndexResources
 			
 			contatore = 0;
 			
-			subtypeOfDatatypeAkps.add(subtypeOfDatatypeAkp);
+			subtypeOfConcepts.add(subtypeOfConcept);
 			
 			lineRead = reader.readLine();
 		}
     	
     	reader.close();
     	
-		return subtypeOfDatatypeAkps;
+		return subtypeOfConcepts;
 	}
 	
-	private static ArrayList <String> takeOnlyLocalNamesOnly(ArrayList <String> subjectsOfDatatypeAkps)
+	private static ArrayList <String> takeOnlyLocalNamesOfConcepts (ArrayList <String> concepts)
 	{
-		String subjectOfDatatypeAkp = "";
-		String localNameOfSubjectOfDatatypeAkp = "";
-		ArrayList <String> localNamesOfSubjectsOfDatatypeAkps = new ArrayList <String> ();
+		ArrayList <String> localNamesOfConcepts = new ArrayList <String> ();
 		
-		for (int i = 0; i < subjectsOfDatatypeAkps.size(); i++) 
+		for (int i = 0; i < concepts.size(); i++) 
 		{
-			subjectOfDatatypeAkp = subjectsOfDatatypeAkps.get(i);
-					
-			for (int j = 0; j < subjectOfDatatypeAkp.length(); j++) 
-			{
-				if (subjectOfDatatypeAkp.charAt(j) != '/')
-				{
-					localNameOfSubjectOfDatatypeAkp += subjectOfDatatypeAkp.charAt(j);
-				}
-				else
-				{
-					if (subjectOfDatatypeAkp.charAt(j) == '/')
-					{
-						localNameOfSubjectOfDatatypeAkp = "";
-					}
-				}
-			}	
-			localNamesOfSubjectsOfDatatypeAkps.add(localNameOfSubjectOfDatatypeAkp);
+			localNamesOfConcepts.add(new RDFResource(concepts.get(i)).localName());
 		}
 		
-		return localNamesOfSubjectsOfDatatypeAkps;
+		return localNamesOfConcepts;
 	}
 }

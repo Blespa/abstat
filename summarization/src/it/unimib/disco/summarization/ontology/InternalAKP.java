@@ -8,7 +8,7 @@ public class InternalAKP{
 		this.domain = new InternalResources(domain);
 	}
 
-	public String typeOf(String subject, String object) {
+	public String typeOfObjectAKP(String subject, String object) {
 		if (isInternal(subject) && isInternal(object))
 		{
 			return "internal";
@@ -18,5 +18,9 @@ public class InternalAKP{
 
 	private boolean isInternal(String subject) {
 		return domain.typeOf(subject).equals("internal");
+	}
+
+	public String typeOfDatatypeAKP(String subject) {
+		return domain.typeOf(subject);
 	}
 }

@@ -11,7 +11,7 @@ public class InternalAKPTest {
 	@Test
 	public void anObjectAKPIsInternalIfBothTheSubjectAndTheObjectAreInternal() {
 		
-		String type = new InternalAKP("dbpedia.org").typeOf("http://dbpedia.org/Person", "http://dbpedia.org/City");
+		String type = new InternalAKP("dbpedia.org").typeOfObjectAKP("http://dbpedia.org/Person", "http://dbpedia.org/City");
 		
 		assertThat(type, equalTo("internal"));
 	}
@@ -19,7 +19,7 @@ public class InternalAKPTest {
 	@Test
 	public void anObjectAKPIsExternalIfTheSubjectIsExternal() {
 		
-		String type = new InternalAKP("dbpedia.org").typeOf("http://schema.org/Person", "http://dbpedia.org/City");
+		String type = new InternalAKP("dbpedia.org").typeOfObjectAKP("http://schema.org/Person", "http://dbpedia.org/City");
 		
 		assertThat(type, equalTo("external"));
 	}
@@ -27,7 +27,7 @@ public class InternalAKPTest {
 	@Test
 	public void anObjectAKPIsExternalIfTheObjectIsExternal() {
 		
-		String type = new InternalAKP("dbpedia.org").typeOf("http://dbpedia.org/Person", "http://schema.org/City");
+		String type = new InternalAKP("dbpedia.org").typeOfObjectAKP("http://dbpedia.org/Person", "http://schema.org/City");
 		
 		assertThat(type, equalTo("external"));
 	}
@@ -35,15 +35,23 @@ public class InternalAKPTest {
 	@Test
 	public void dbpediaWikidataSpecialCaseForSubject() {
 		
-		String type = new InternalAKP("dbpedia.org").typeOf("http://dbpedia.org/wikidata/Person", "http://dbpedia.org/City");
+		String type = new InternalAKP("dbpedia.org").typeOfObjectAKP("http://dbpedia.org/wikidata/Person", "http://dbpedia.org/City");
 		
 		assertThat(type, equalTo("external"));
 	}
 	
 	@Test
-	public void dbpediaWikidataSpecialCaseForObject() {
+	public void aDatatypeAKPIsInternalIfTheSubjectIsInternal() {
 		
-		String type = new InternalAKP("dbpedia.org").typeOf("http://dbpedia.org/Person", "http://dbpedia.org/wikidata/City");
+		String type = new InternalAKP("dbpedia.org").typeOfDatatypeAKP("http://dbpedia.org/Person");
+		
+		assertThat(type, equalTo("internal"));
+	}
+	
+	@Test
+	public void aDatatypeAKPIsExternalIfTheSubjectIsExternal() {
+		
+		String type = new InternalAKP("dbpedia.org").typeOfDatatypeAKP("http://schema.org/Person");
 		
 		assertThat(type, equalTo("external"));
 	}

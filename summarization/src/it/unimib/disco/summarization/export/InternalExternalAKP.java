@@ -132,7 +132,7 @@ public class InternalExternalAKP
 			bwAkps.write("##");
 			bwAkps.write(numberOfInstances);
 			bwAkps.write("##");
-			bwAkps.write(internalAKP.typeOf(subjectAkp, objectAkp));
+			bwAkps.write(internalAKP.typeOfObjectAKP(subjectAkp, objectAkp));
 			bwAkps.write("\n");
 			
 			subjectAkp = "";

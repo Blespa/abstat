@@ -1,5 +1,7 @@
 package it.unimib.disco.summarization.export;
 
+import it.unimib.disco.summarization.ontology.InternalAKP;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -38,7 +40,7 @@ public class InternalExternalAKP
 		String propertyAkp = "";
 		String objectAkp = "";
 		String numberOfInstances = "";
-		String typeOfAkp = "";
+		InternalAKP internalAKP = new InternalAKP(payLevelDomain);
 		
 		lineRead = brAkps.readLine();
 		
@@ -122,15 +124,6 @@ public class InternalExternalAKP
 				}
 			}
 			
-			if (((!(subjectAkp.contains("wikidata"))) && (subjectAkp.contains(payLevelDomain))) && ((!(objectAkp.contains("wikidata"))) && (objectAkp.contains(payLevelDomain))))
-			{
-				typeOfAkp = "internal";
-			}
-			else
-			{
-				typeOfAkp = "external";
-			}
-			
 			bwAkps.write(subjectAkp);
 			bwAkps.write("##");
 			bwAkps.write(propertyAkp);
@@ -139,14 +132,13 @@ public class InternalExternalAKP
 			bwAkps.write("##");
 			bwAkps.write(numberOfInstances);
 			bwAkps.write("##");
-			bwAkps.write(typeOfAkp);
+			bwAkps.write(internalAKP.typeOf(subjectAkp, objectAkp));
 			bwAkps.write("\n");
 			
 			subjectAkp = "";
 			propertyAkp = "";
 			objectAkp = "";
 			numberOfInstances = "";
-			typeOfAkp = "";
 			trovatoPrimoDoppioCancelletto = false;
 			trovatoSecondoDoppioCancelletto = false;
 			trovatoTerzoDoppioCancelletto = false;

@@ -27,7 +27,7 @@ public class TypeOfTest {
 	@Test
 	public void dbpediaWikidataSpecialCase() {
 		
-		String type = new TypeOf("domain.org").resource("http://domain.org/wikidata/Class");
+		String type = new TypeOf("domain.org").resource("http://domain.org/Wikidata/Class");
 		
 		assertThat(type, equalTo("external"));
 	}
@@ -59,7 +59,7 @@ public class TypeOfTest {
 	@Test
 	public void dbpediaWikidataSpecialCaseForSubject() {
 		
-		String type = new TypeOf("dbpedia.org").objectAKP("http://dbpedia.org/wikidata/Person", "http://dbpedia.org/City");
+		String type = new TypeOf("dbpedia.org").objectAKP("http://dbpedia.org/Wikidata/Person", "http://dbpedia.org/City");
 		
 		assertThat(type, equalTo("external"));
 	}

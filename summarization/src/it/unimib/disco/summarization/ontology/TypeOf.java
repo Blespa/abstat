@@ -9,26 +9,27 @@ public class TypeOf{
 	}
 
 	public String resource(String resource) {
-		String typeOfConcept = "";
-		if ((resource.contains("wikidata")) && (resource.contains(domain)))
+		String aaa = resource.toLowerCase();
+		String type = "";
+		if ((aaa.contains("wikidata")) && (aaa.contains(domain)))
 		{
-			typeOfConcept = "external";
+			type = "external";
 		}
 		else
 		{
-			if ((!(resource.contains("wikidata"))) && (resource.contains(domain)))
+			if ((!(aaa.contains("wikidata"))) && (aaa.contains(domain)))
 			{
-				typeOfConcept = "internal";
+				type = "internal";
 			}
 			else
 			{
-				if (!(resource.contains(domain)))
+				if (!(aaa.contains(domain)))
 				{
-					typeOfConcept = "external";
+					type = "external";
 				}
 			}
 		}
-		return typeOfConcept;
+		return type;
 	}
 	
 	public String objectAKP(String subject, String object) {

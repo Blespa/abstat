@@ -197,4 +197,20 @@ public class LDSummariesVocabularyTest {
 		
 		assertThat(property.getURI(), containsString("object-property/dbpedia.org/property/name"));
 	}
+	
+	@Test
+	public void shouldExposeExternalResourcesType() throws Exception {
+		
+		Resource type = vocabulary.external();
+		
+		assertThat(type.getURI(), containsString("External"));
+	}
+	
+	@Test
+	public void shouldExposeInternalResourcesType() throws Exception {
+		
+		Resource type = vocabulary.internal();
+		
+		assertThat(type.getURI(), containsString("Internal"));
+	}
 }

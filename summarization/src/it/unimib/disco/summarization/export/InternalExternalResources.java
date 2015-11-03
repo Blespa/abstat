@@ -5,7 +5,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 
-public class InternalExternalConcept
+public class InternalExternalResources
 {
 	public static void main(String[] args) throws Exception
 	{
@@ -15,14 +15,14 @@ public class InternalExternalConcept
 			String pathFile = args[0];
 			String dataset = args[1];
 			String payLevelDomain = args[2];
-			conceptsInternalExternal(pathFile,dataset, payLevelDomain);
+			decide(pathFile,dataset, payLevelDomain);
 		}
 		catch(Exception e){
 			Events.summarization().error("", e);
 		}
 	}
 	
-	private static void conceptsInternalExternal(String pathFile, String dataset, String payLevelDomain) throws Exception
+	private static void decide(String pathFile, String dataset, String payLevelDomain) throws Exception
 	{
 		String fileConceptsPath = pathFile;
 		BufferedReader brConcepts = new BufferedReader(new FileReader(fileConceptsPath));

@@ -12,7 +12,7 @@ import org.apache.commons.io.LineIterator;
 import org.apache.solr.client.solrj.impl.HttpSolrServer;
 import org.apache.solr.common.SolrInputDocument;
 
-public class IndexAkps
+public class IndexResources
 {
 	public static void main(String[] args) throws Exception
 	{

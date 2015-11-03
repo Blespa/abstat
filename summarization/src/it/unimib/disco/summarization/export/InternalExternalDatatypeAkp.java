@@ -16,14 +16,14 @@ public class InternalExternalDatatypeAkp
 			String dataset = args[1];
 			String payLevelDomain = args[2];
 			
-			datatypeAkpInternalExternal(pathFile,dataset,payLevelDomain);
+			decide(pathFile,dataset,payLevelDomain);
 		}
 		catch(Exception e){
 			Events.summarization().error("", e);
 		}
 	}
 	
-	private static void datatypeAkpInternalExternal(String pathFile, String dataset, String payLevelDomain) throws Exception
+	private static void decide(String pathFile, String dataset, String payLevelDomain) throws Exception
 	{
 		String fileDatatypeAkpsPath = pathFile;
 		BufferedReader brDatatypeAkps = new BufferedReader(new FileReader(fileDatatypeAkpsPath));

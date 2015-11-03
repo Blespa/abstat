@@ -26,7 +26,7 @@ public class Application extends AbstractHandler{
 			
 			serviceAPI(routes);
 			mainUI(routes);
-			autocompleteAPI(routes);
+			API(routes);
 			experiment(routes);
 			experimentalFeatures(routes);
 			
@@ -42,10 +42,11 @@ public class Application extends AbstractHandler{
 		routes.mapFile("/property-similarity", "property-similarity.html");
 	}
 
-	private void autocompleteAPI(Routing routes) {
+	private void API(Routing routes) {
 		routes
 			.mapJson("/api/v1/autocomplete/concepts", new SolrAutocomplete(new SolrConnector(), "concept-suggest"))
-			.mapJson("/api/v1/autocomplete/properties", new SolrAutocomplete(new SolrConnector(), "property-suggest"));
+			.mapJson("/api/v1/autocomplete/properties", new SolrAutocomplete(new SolrConnector(), "property-suggest"))
+			.mapJson("/api/v1/datasets", new Datasets(new File("../data/summaries")));
 	}
 
 	private void experiment(Routing routes) {

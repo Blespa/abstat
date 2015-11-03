@@ -3,6 +3,7 @@ package it.unimib.disco.summarization.test.web;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
+import it.unimib.disco.summarization.test.unit.TemporaryFolder;
 import it.unimib.disco.summarization.web.DeployedVersion;
 
 import java.io.File;

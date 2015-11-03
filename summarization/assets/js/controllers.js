@@ -45,12 +45,11 @@ summary.controller('browse', function ($scope, $http) {
 	bootstrapControllerFor($scope, $http, 'select a dataset', summaries);
 	
 	summaries.startLoading();
-	new Sparql($http)
-			.query("select distinct ?uri where {GRAPH ?uri {?s ?p ?o} . FILTER regex(?uri, 'ld-summaries')}")
-			.accumulate(function(results){
-				$scope.graphs=results;
-				summaries.endLoading();
-	});
+	$http.get('/api/v1/datasets', {method: 'GET', params:{}})
+		 .success(function(results){
+			$scope.graphs = results['datasets'];
+			summaries.endLoading();
+		 });
 });
 
 summary.controller("search", function ($scope, $http) {

@@ -25,7 +25,7 @@
 				browse the <strong>abstract knowledge patterns</strong> found into 
 				<select id="dataset" ng-model="selected_graph" class="form-control">
 					<option>select a dataset</option>
-				    <option ng-repeat="graph in graphs">{{graph.uri.value}}</option>
+				    <option ng-repeat="graph in graphs">{{graph.URI}}</option>
 				</select>
 				<button type="button" ng-click='loadPatterns()' ng-disabled="loadingSummary" class="btn btn-primary">
 					<span ng-hide="loadingSummary">view</span>

@@ -6,7 +6,7 @@ function as_absolute()
 }
 
 function run(){
-	echo "Exporting $@"
+	echo "$@"
 	java -Xms256m -Xmx16g -cp .:'summarization.jar' it.unimib.disco.summarization.export.$@
 	echo "Done"
 }

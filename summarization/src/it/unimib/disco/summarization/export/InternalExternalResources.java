@@ -22,20 +22,17 @@ public class InternalExternalResources
 		}
 	}
 	
-	private static void decide(String pathFile, String dataset, String payLevelDomain) throws Exception
+	private static void decide(String path, String dataset, String domain) throws Exception
 	{
-		String fileConceptsPath = pathFile;
-		BufferedReader brConcepts = new BufferedReader(new FileReader(fileConceptsPath));
-		
-		FileWriter fwConcepts = new FileWriter(pathFile.replace(".txt", "-new.txt"));
+		BufferedReader brConcepts = new BufferedReader(new FileReader(path));
+		FileWriter fwConcepts = new FileWriter(path.replace(".txt", "-new.txt"));
 		BufferedWriter bwConcepts = new BufferedWriter(fwConcepts);
 		
 		boolean trovatoPrimoCancelletto = false;
-		String lineRead = null;
 		String concept = "";
 		String numberOfInstances = "";
-		String typeOfConcept = "";
-		lineRead = brConcepts.readLine();
+		String lineRead = brConcepts.readLine();
+		InternalResources internalResources = new InternalResources(domain);
 		
 		while (lineRead != null)
 		{
@@ -71,35 +68,15 @@ public class InternalExternalResources
 				}
 			}
 			
-			if ((concept.contains("wikidata")) && (concept.contains(payLevelDomain)))
-			{
-				typeOfConcept = "external";
-			}
-			else
-			{
-				if ((!(concept.contains("wikidata"))) && (concept.contains(payLevelDomain)))
-				{
-					typeOfConcept = "internal";
-				}
-				else
-				{
-					if (!(concept.contains(payLevelDomain)))
-					{
-						typeOfConcept = "external";
-					}
-				}
-			}
-			
 			bwConcepts.write(concept);
 			bwConcepts.write("##");
 			bwConcepts.write(numberOfInstances);
 			bwConcepts.write("##");
-			bwConcepts.write(typeOfConcept);
+			bwConcepts.write(internalResources.typeOf(concept));
 			bwConcepts.write("\n");
 			
 			concept = "";
 			numberOfInstances = "";
-			typeOfConcept = "";
 			trovatoPrimoCancelletto = false;
 			
 			lineRead = brConcepts.readLine();

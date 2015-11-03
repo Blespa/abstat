@@ -15,7 +15,6 @@ public class InternalExternalAKP
 			String pathFile = args[0];
 			String dataset = args[1];
 			String payLevelDomain = args[2];
-			
 			decide(pathFile,dataset,payLevelDomain);
 		}
 		catch(Exception e){

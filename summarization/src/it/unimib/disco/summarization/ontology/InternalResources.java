@@ -1,4 +1,4 @@
-package it.unimib.disco.summarization.export;
+package it.unimib.disco.summarization.ontology;
 
 public class InternalResources{
 	

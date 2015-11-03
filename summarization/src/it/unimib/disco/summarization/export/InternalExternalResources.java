@@ -1,5 +1,7 @@
 package it.unimib.disco.summarization.export;
 
+import it.unimib.disco.summarization.ontology.InternalResources;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;

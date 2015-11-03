@@ -16,16 +16,23 @@ public class IndexSingle
 {
 	public static void main (String[] args) throws Exception
 	{
-		String host = args[0];
-		String port = args[1];
-		String pathFile = args[2];
-		String dataset = args[3];
-		String type = args[4];
+		Events.summarization();
 		
-		String serverUrl = "http://"+host+":"+port+"/solr/indexing";
-		HttpSolrServer client = new HttpSolrServer(serverUrl);
-		
-		conceptsImport(client, pathFile, dataset, type);
+		try{
+			String host = args[0];
+			String port = args[1];
+			String pathFile = args[2];
+			String dataset = args[3];
+			String type = args[4];
+			
+			String serverUrl = "http://"+host+":"+port+"/solr/indexing";
+			HttpSolrServer client = new HttpSolrServer(serverUrl);
+			
+			conceptsImport(client, pathFile, dataset, type);
+		}
+		catch(Exception e){
+			Events.summarization().error("", e);
+		}
 	}
 	
 	private static void conceptsImport (HttpSolrServer client, String pathFile, String dataset, String type) throws Exception

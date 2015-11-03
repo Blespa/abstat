@@ -17,14 +17,16 @@ public class InternalExternalAKP
 			String pathFile = args[0];
 			String dataset = args[1];
 			String payLevelDomain = args[2];
-			decide(pathFile,dataset,payLevelDomain);
+			String type = args[3];
+			
+			decide(pathFile,dataset,payLevelDomain,type);
 		}
 		catch(Exception e){
 			Events.summarization().error("", e);
 		}
 	}
 	
-	private static void decide(String pathFile, String dataset, String payLevelDomain) throws Exception
+	private static void decide(String pathFile, String dataset, String payLevelDomain, String type) throws Exception
 	{
 		String fileAkpsPath = pathFile;
 		BufferedReader brAkps = new BufferedReader(new FileReader(fileAkpsPath));
@@ -132,7 +134,7 @@ public class InternalExternalAKP
 			bwAkps.write("##");
 			bwAkps.write(numberOfInstances);
 			bwAkps.write("##");
-			bwAkps.write(internalAKP.objectAKP(subjectAkp, objectAkp));
+			bwAkps.write(typeOf(subjectAkp, objectAkp, internalAKP, type));
 			bwAkps.write("\n");
 			
 			subjectAkp = "";
@@ -149,5 +151,10 @@ public class InternalExternalAKP
 		brAkps.close();
 		bwAkps.close();
 		fwAkps.close();
+	}
+
+	private static String typeOf(String subject, String object, TypeOf typeof, String type) {
+		if(type.equals("datatype")) return typeof.datatypeAKP(subject);
+		return typeof.objectAKP(subject, object);
 	}
 }

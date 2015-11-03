@@ -1,5 +1,6 @@
 package it.unimib.disco.summarization.export;
 import it.unimib.disco.summarization.ontology.LDSummariesVocabulary;
+import it.unimib.disco.summarization.ontology.RDFTypeOf;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -25,10 +26,11 @@ public class WriteObjectPropertyToRDF {
 		String csvFilePath = args[0];
 		String outputFilePath = args[1];
 		String dataset = args[2];
+		String domain = args[3];
 		
 		LDSummariesVocabulary vocabulary = new LDSummariesVocabulary(model, dataset);
+		RDFTypeOf typeOf = new RDFTypeOf(domain);
 
-		//Get all of the rows
 		for (Row row : readCSV(csvFilePath)){
 
 			try{
@@ -37,9 +39,9 @@ public class WriteObjectPropertyToRDF {
 				
 				Literal occurrence = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
 				
-				//add statements to model
 				model.add(localSubject, RDFS.seeAlso, globalSubject);
 				model.add(localSubject, RDF.type, vocabulary.property());
+				model.add(localSubject, RDF.type, typeOf.resource(globalSubject.getURI()));
 				model.add(localSubject, vocabulary.occurrence(), occurrence);
 			}
 			catch(Exception e){
@@ -47,7 +49,7 @@ public class WriteObjectPropertyToRDF {
 			}
 		}
 		OutputStream output = new FileOutputStream(outputFilePath);
-		model.write( output, "N-Triples", null ); // or "", etc.
+		model.write( output, "N-Triples", null );
 		output.close();
 	}
 

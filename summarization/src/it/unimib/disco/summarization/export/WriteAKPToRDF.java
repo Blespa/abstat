@@ -1,6 +1,7 @@
 package it.unimib.disco.summarization.export;
 
 import it.unimib.disco.summarization.ontology.LDSummariesVocabulary;
+import it.unimib.disco.summarization.ontology.RDFTypeOf;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -26,10 +27,12 @@ public class WriteAKPToRDF {
 		String csvFilePath = args[0];
 		String outputFilePath = args[1];
 		String dataset = args[2];
-		String type = args[3];
+		String domain = args[3];
+		String type = args[4];
 		
 		Model model = ModelFactory.createDefaultModel();
 		LDSummariesVocabulary vocabulary = new LDSummariesVocabulary(model, dataset);
+		RDFTypeOf typeOf = new RDFTypeOf(domain);
 		
 		for (Row row : readCSV(csvFilePath)){
 
@@ -42,8 +45,15 @@ public class WriteAKPToRDF {
 				Resource localSubject = vocabulary.asLocalResource(globalSubject.getURI());
 				
 				Resource localPredicate = null;
-				if(type.equals("object")) localPredicate = vocabulary.asLocalObjectProperty(globalPredicate.getURI());
-				if(type.equals("datatype")) localPredicate = vocabulary.asLocalDatatypeProperty(globalPredicate.getURI());
+				Resource internal = null;
+				if(type.equals("object")) {
+					localPredicate = vocabulary.asLocalObjectProperty(globalPredicate.getURI());
+					internal = typeOf.objectAKP(globalSubject.getURI(), globalObject.getURI());
+				}
+				if(type.equals("datatype")) {
+					localPredicate = vocabulary.asLocalDatatypeProperty(globalPredicate.getURI());
+					internal = typeOf.datatypeAKP(globalSubject.getURI());
+				}
 				
 				Resource localObject = vocabulary.asLocalResource(globalObject.getURI());
 				
@@ -59,6 +69,7 @@ public class WriteAKPToRDF {
 				model.add(akpInstance, vocabulary.predicate(), localPredicate);
 				model.add(akpInstance, vocabulary.object(), localObject);
 				model.add(akpInstance, RDF.type, vocabulary.abstractKnowledgePattern());
+				model.add(akpInstance, RDF.type, internal);
 				model.add(akpInstance, vocabulary.occurrence(), statistic);
 			}
 			catch(Exception e){

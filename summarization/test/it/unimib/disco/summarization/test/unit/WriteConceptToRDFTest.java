@@ -19,7 +19,8 @@ public class WriteConceptToRDFTest extends TestWithTemporaryData{
 		WriteConceptToRDF.main(new String[]{
 				inputFile.getAbsolutePath(),
 				outputFile.getAbsolutePath(),
-				"dataset"
+				"dataset",
+				"dbpedia.org"
 		});
 		
 		assertThat(outputFile.exists(), is(true));

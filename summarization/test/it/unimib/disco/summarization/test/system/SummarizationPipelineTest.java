@@ -50,6 +50,6 @@ public class SummarizationPipelineTest {
 		String allTriples = "select (count(*) as ?res) from <" + vocabulary.graph() + "> where {?s ?p ?o}";
 		int numberOfTriples = SparqlEndpoint.local().execute(allTriples).nextSolution().get("res").asLiteral().getInt();
 		
-		assertThat(numberOfTriples, equalTo(3904));
+		assertThat(numberOfTriples, equalTo(4123));
 	}
 }

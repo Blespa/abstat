@@ -1,6 +1,7 @@
 package it.unimib.disco.summarization.export;
 
 import it.unimib.disco.summarization.ontology.LDSummariesVocabulary;
+import it.unimib.disco.summarization.ontology.RDFTypeOf;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -15,6 +16,7 @@ import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.vocabulary.RDF;
 
 public class WriteConceptToRDF {
 	public static void main (String args []) throws IOException{
@@ -23,16 +25,19 @@ public class WriteConceptToRDF {
 		String csvFilePath = args[0];
 		String outputFilePath = args[1];
 		String dataset = args[2];
+		String domain = args[3];
 		
 		LDSummariesVocabulary vocabulary = new LDSummariesVocabulary(model, dataset);
+		RDFTypeOf typeOf = new RDFTypeOf(domain);
 		
-		//Get all of the rows
 		for (Row row : readCSV(csvFilePath)){
 
 			try{
-				Resource localSubject = vocabulary.addConcept(row.get(Row.Entry.SUBJECT));
+				String globalSubject = row.get(Row.Entry.SUBJECT);
+				Resource localSubject = vocabulary.addConcept(globalSubject);
 				Literal occurrences = model.createTypedLiteral(Integer.parseInt(row.get(Row.Entry.SCORE1)));
 				
+				model.add(localSubject, RDF.type, typeOf.resource(globalSubject));
 				model.add(localSubject, vocabulary.occurrence(), occurrences);
 			}
 			catch(Exception e){
@@ -40,7 +45,7 @@ public class WriteConceptToRDF {
 			}
 		}
 		OutputStream output = new FileOutputStream(outputFilePath);
-		model.write(output, "N-Triples", null ); // or "RDF/XML", etc.
+		model.write(output, "N-Triples", null );
 		output.close();
 
 

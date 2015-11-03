@@ -5,8 +5,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.io.IOUtils;
 import org.eclipse.jetty.server.Request;
 
-
-
 public class JsonResponse implements Response {
 
 	private Api api;

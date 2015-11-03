@@ -1,14 +1,14 @@
 package it.unimib.disco.summarization.ontology;
 
-public class InternalResources{
+public class TypeOf{
 	
 	private String domain;
 
-	public InternalResources(String domain) {
+	public TypeOf(String domain) {
 		this.domain = domain;
 	}
 
-	public String typeOf(String resource) {
+	public String resource(String resource) {
 		String typeOfConcept = "";
 		if ((resource.contains("wikidata")) && (resource.contains(domain)))
 		{
@@ -29,5 +29,21 @@ public class InternalResources{
 			}
 		}
 		return typeOfConcept;
+	}
+	
+	public String objectAKP(String subject, String object) {
+		if (isInternal(subject) && isInternal(object))
+		{
+			return "internal";
+		}
+		return "external";
+	}
+	
+	public String datatypeAKP(String subject) {
+		return resource(subject);
+	}
+
+	private boolean isInternal(String subject) {
+		return resource(subject).equals("internal");
 	}
 }

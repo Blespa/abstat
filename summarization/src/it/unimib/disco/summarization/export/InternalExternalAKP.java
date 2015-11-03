@@ -1,6 +1,6 @@
 package it.unimib.disco.summarization.export;
 
-import it.unimib.disco.summarization.ontology.InternalAKP;
+import it.unimib.disco.summarization.ontology.TypeOf;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -40,7 +40,7 @@ public class InternalExternalAKP
 		String propertyAkp = "";
 		String objectAkp = "";
 		String numberOfInstances = "";
-		InternalAKP internalAKP = new InternalAKP(payLevelDomain);
+		TypeOf internalAKP = new TypeOf(payLevelDomain);
 		
 		lineRead = brAkps.readLine();
 		
@@ -132,7 +132,7 @@ public class InternalExternalAKP
 			bwAkps.write("##");
 			bwAkps.write(numberOfInstances);
 			bwAkps.write("##");
-			bwAkps.write(internalAKP.typeOfObjectAKP(subjectAkp, objectAkp));
+			bwAkps.write(internalAKP.objectAKP(subjectAkp, objectAkp));
 			bwAkps.write("\n");
 			
 			subjectAkp = "";

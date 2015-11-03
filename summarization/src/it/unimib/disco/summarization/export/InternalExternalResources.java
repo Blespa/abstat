@@ -1,6 +1,6 @@
 package it.unimib.disco.summarization.export;
 
-import it.unimib.disco.summarization.ontology.InternalResources;
+import it.unimib.disco.summarization.ontology.TypeOf;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -34,7 +34,7 @@ public class InternalExternalResources
 		String concept = "";
 		String numberOfInstances = "";
 		String lineRead = brConcepts.readLine();
-		InternalResources internalResources = new InternalResources(domain);
+		TypeOf internalResources = new TypeOf(domain);
 		
 		while (lineRead != null)
 		{
@@ -74,7 +74,7 @@ public class InternalExternalResources
 			bwConcepts.write("##");
 			bwConcepts.write(numberOfInstances);
 			bwConcepts.write("##");
-			bwConcepts.write(internalResources.typeOf(concept));
+			bwConcepts.write(internalResources.resource(concept));
 			bwConcepts.write("\n");
 			
 			concept = "";

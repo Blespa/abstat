@@ -2,22 +2,21 @@ package it.unimib.disco.summarization.ontology;
 
 public class InternalAKP{
 	
-	private String domain;
+	private InternalResources domain;
 
 	public InternalAKP(String domain) {
-		this.domain = domain;
+		this.domain = new InternalResources(domain);
 	}
 
 	public String typeOf(String subject, String object) {
-		String type;
-		if (((!(subject.contains("wikidata"))) && (subject.contains(domain))) && ((!(object.contains("wikidata"))) && (object.contains(domain))))
+		if (isInternal(subject) && isInternal(object))
 		{
-			type = "internal";
+			return "internal";
 		}
-		else
-		{
-			type = "external";
-		}
-		return type;
+		return "external";
+	}
+
+	private boolean isInternal(String subject) {
+		return domain.typeOf(subject).equals("internal");
 	}
 }

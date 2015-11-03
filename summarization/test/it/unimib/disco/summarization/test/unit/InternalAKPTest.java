@@ -35,7 +35,7 @@ public class InternalAKPTest {
 	@Test
 	public void dbpediaWikidataSpecialCaseForSubject() {
 		
-		String type = new InternalAKP("dbpedia.org").typeOf("http://dbpedia.org//wikidata/Person", "http://dbpedia.org/City");
+		String type = new InternalAKP("dbpedia.org").typeOf("http://dbpedia.org/wikidata/Person", "http://dbpedia.org/City");
 		
 		assertThat(type, equalTo("external"));
 	}

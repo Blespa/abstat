@@ -9,11 +9,17 @@ public class InternalExternalConcept
 {
 	public static void main(String[] args) throws Exception
 	{
-		String pathFile = args[0];
-		String dataset = args[1];
-		String payLevelDomain = args[2];
+		Events.summarization();
 		
-		conceptsInternalExternal(pathFile,dataset, payLevelDomain);
+		try{
+			String pathFile = args[0];
+			String dataset = args[1];
+			String payLevelDomain = args[2];
+			conceptsInternalExternal(pathFile,dataset, payLevelDomain);
+		}
+		catch(Exception e){
+			Events.summarization().error("", e);
+		}
 	}
 	
 	private static void conceptsInternalExternal(String pathFile, String dataset, String payLevelDomain) throws Exception

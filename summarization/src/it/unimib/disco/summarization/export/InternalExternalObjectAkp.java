@@ -2,23 +2,28 @@ package it.unimib.disco.summarization.export;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
 
 public class InternalExternalObjectAkp
 {
-	public static void main(String[] args) throws FileNotFoundException, IOException
+	public static void main(String[] args) throws Exception
 	{
-		String pathFile = args[0];
-		String dataset = args[1];
-		String payLevelDomain = args[2];
+		Events.summarization();
 		
-		objectAkpInternalExternal(pathFile,dataset,payLevelDomain);
+		try{
+			String pathFile = args[0];
+			String dataset = args[1];
+			String payLevelDomain = args[2];
+			
+			objectAkpInternalExternal(pathFile,dataset,payLevelDomain);
+		}
+		catch(Exception e){
+			Events.summarization().error("", e);
+		}
 	}
 	
-	private static void objectAkpInternalExternal(String pathFile, String dataset, String payLevelDomain) throws FileNotFoundException, IOException
+	private static void objectAkpInternalExternal(String pathFile, String dataset, String payLevelDomain) throws Exception
 	{
 		String fileObjectAkpsPath = pathFile;
 		BufferedReader brObjectAkps = new BufferedReader(new FileReader(fileObjectAkpsPath));

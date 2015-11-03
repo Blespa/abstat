@@ -2,23 +2,27 @@ package it.unimib.disco.summarization.export;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
 
 public class InternalExternalDatatypeProperty
 {
-	public static void main(String[] args) throws FileNotFoundException, IOException
+	public static void main(String[] args) throws Exception
 	{
-		String pathFile = args[0];
-		String dataset = args[1];
-		String payLevelDomain = args[2];
-		
-		datatypePropertiesInternalExternal(pathFile, dataset , payLevelDomain);
+		Events.summarization();
+				
+		try{
+			String pathFile = args[0];
+			String dataset = args[1];
+			String payLevelDomain = args[2];
+			datatypePropertiesInternalExternal(pathFile, dataset , payLevelDomain);
+		}
+		catch(Exception e){
+			Events.summarization().error("", e);
+		}
 	}
 	
-	private static void datatypePropertiesInternalExternal(String pathFile, String dataset, String payLevelDomain) throws FileNotFoundException, IOException
+	private static void datatypePropertiesInternalExternal(String pathFile, String dataset, String payLevelDomain) throws Exception
 	{
 		String fileDatatypePropertiesPath = pathFile;
 		BufferedReader brDatatypeProperties = new BufferedReader(new FileReader(fileDatatypePropertiesPath));

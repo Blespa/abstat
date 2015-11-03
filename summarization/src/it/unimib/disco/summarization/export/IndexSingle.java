@@ -16,16 +16,23 @@ public class IndexSingle
 {
 	public static void main (String[] args) throws Exception
 	{
-		String host = args[0];
-		String port = args[1];
-		String pathFile = args[2];
-		String dataset = args[3];
-		String type = args[4];
+		Events.summarization();
 		
-		String serverUrl = "http://"+host+":"+port+"/solr/indexing";
-		HttpSolrServer client = new HttpSolrServer(serverUrl);
-		
-		conceptsImport(client, pathFile, dataset, type);
+		try{
+			String host = args[0];
+			String port = args[1];
+			String pathFile = args[2];
+			String dataset = args[3];
+			String type = args[4];
+			
+			String serverUrl = "http://"+host+":"+port+"/solr/indexing";
+			HttpSolrServer client = new HttpSolrServer(serverUrl);
+			
+			conceptsImport(client, pathFile, dataset, type);
+		}
+		catch(Exception e){
+			Events.summarization().error("", e);
+		}
 	}
 	
 	private static void conceptsImport (HttpSolrServer client, String pathFile, String dataset, String type) throws Exception
@@ -74,58 +81,15 @@ public class IndexSingle
 
 	private static ArrayList<String> takeOnlyConcepts(String pathFile) throws Exception
 	{
-		String path = pathFile;
-		BufferedReader reader = new BufferedReader(new FileReader(path));
-		
-		int numberOfConcepts = 0;
 		ArrayList <String> concepts = new ArrayList<String>();
-		
-    	boolean trovatoDoppioCancelletto = false;
-    	String concept = "";
     	
+		BufferedReader reader = new BufferedReader(new FileReader(pathFile));
     	String line = reader.readLine();
-    	
     	while (line != null)
     	{
-    		for (int i = 0; i < line.length() && trovatoDoppioCancelletto == false; i++)
-    		{
-    			if ((line.charAt(i) == '#') && (line.charAt(i+1) == '#'))
-    			{
-    				concept += "";
-    				trovatoDoppioCancelletto = true;
-    			}
-    			else
-    			{
-    				if ((line.charAt(i) != '#') && (line.charAt(i+1) != '#'))
-    				{
-    					concept += line.charAt(i);
-    				}
-    				else
-    				{
-    					if ((line.charAt(i) != '#') && (line.charAt(i+1) == '#'))
-    					{
-    						concept += line.charAt(i);
-    					}
-    					else
-    					{
-    						if ((line.charAt(i) == '#') && (line.charAt(i+1) != '#'))
-    						{
-    							concept += line.charAt(i);
-    						}
-    					}
-    				}
-    			}
-    		}
-    		
-    		concepts.add(concept);
-    		
-    		concept = "";
-    		trovatoDoppioCancelletto = false;
+    		concepts.add(line.split("##")[0]);
     		line = reader.readLine();
-    		numberOfConcepts = (numberOfConcepts + 1);
-    		
     	}
-    	
     	reader.close();
     	
 		return concepts;

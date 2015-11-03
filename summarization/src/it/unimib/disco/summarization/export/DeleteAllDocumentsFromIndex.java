@@ -1,13 +1,10 @@
 package it.unimib.disco.summarization.export;
 
-import java.io.IOException;
-
-import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrServer;
 
 public class DeleteAllDocumentsFromIndex
 {
-	public static void main (String[] args) throws SolrServerException, IOException
+	public static void main (String[] args) throws Exception
 	{
 		String host = args[0];
 		String port = args[1];

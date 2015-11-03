@@ -81,58 +81,15 @@ public class IndexSingle
 
 	private static ArrayList<String> takeOnlyConcepts(String pathFile) throws Exception
 	{
-		String path = pathFile;
-		BufferedReader reader = new BufferedReader(new FileReader(path));
-		
-		int numberOfConcepts = 0;
 		ArrayList <String> concepts = new ArrayList<String>();
-		
-    	boolean trovatoDoppioCancelletto = false;
-    	String concept = "";
     	
+		BufferedReader reader = new BufferedReader(new FileReader(pathFile));
     	String line = reader.readLine();
-    	
     	while (line != null)
     	{
-    		for (int i = 0; i < line.length() && trovatoDoppioCancelletto == false; i++)
-    		{
-    			if ((line.charAt(i) == '#') && (line.charAt(i+1) == '#'))
-    			{
-    				concept += "";
-    				trovatoDoppioCancelletto = true;
-    			}
-    			else
-    			{
-    				if ((line.charAt(i) != '#') && (line.charAt(i+1) != '#'))
-    				{
-    					concept += line.charAt(i);
-    				}
-    				else
-    				{
-    					if ((line.charAt(i) != '#') && (line.charAt(i+1) == '#'))
-    					{
-    						concept += line.charAt(i);
-    					}
-    					else
-    					{
-    						if ((line.charAt(i) == '#') && (line.charAt(i+1) != '#'))
-    						{
-    							concept += line.charAt(i);
-    						}
-    					}
-    				}
-    			}
-    		}
-    		
-    		concepts.add(concept);
-    		
-    		concept = "";
-    		trovatoDoppioCancelletto = false;
+    		concepts.add(line.split("##")[0]);
     		line = reader.readLine();
-    		numberOfConcepts = (numberOfConcepts + 1);
-    		
     	}
-    	
     	reader.close();
     	
 		return concepts;

@@ -77,6 +77,11 @@ public class SolrIndexingTest {
 		httpAssert().body("select?q=type:objectAkp", containsString("occurrence\">1"));
 	}
 	
+	@Test
+	public void elementsShouldBeSortableByOccurrence() throws Exception {
+		httpAssert().body("select?q=*:*&sort=occurrence+desc", containsString("numFound=\"219\""));
+	}
+	
 	private HttpAssert httpAssert() {
 		return new HttpAssert("http://localhost/solr/indexing");
 	}

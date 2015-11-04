@@ -24,8 +24,7 @@ public class IndexResources
 			String type = args[4];
 			String domain = args[5];
 			
-			String serverUrl = "http://"+host+":"+port+"/solr/indexing";
-			HttpSolrServer client = new HttpSolrServer(serverUrl);
+			HttpSolrServer client = new HttpSolrServer("http://"+host+":"+port+"/solr/indexing");
 			TypeOf typeOf = new TypeOf(domain);
 			
 			TextInput input = new TextInput(new FileSystemConnector(new File(file)));

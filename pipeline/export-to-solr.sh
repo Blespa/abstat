@@ -33,7 +33,7 @@ run IndexResources localhost $solr_port ../data/summaries/$dataset/patterns/coun
 run IndexResources localhost $solr_port ../data/summaries/$dataset/patterns/count-datatype.txt $dataset datatype $payleveldomain
 run IndexResources localhost $solr_port ../data/summaries/$dataset/patterns/count-datatype-properties.txt $dataset datatypeProperty $payleveldomain
 run IndexResources localhost $solr_port ../data/summaries/$dataset/patterns/count-object-properties.txt $dataset objectProperty $payleveldomain
-run IndexAKP localhost $solr_port ../data/summaries/$dataset/patterns/datatype-akp.txt $dataset datatypeAkp $payleveldomain
-run IndexAKP localhost $solr_port ../data/summaries/$dataset/patterns/object-akp.txt $dataset objectAkp $payleveldomain
+run RunAKPIndexing ../data/summaries/$dataset/patterns/datatype-akp.txt $dataset datatypeAkp $payleveldomain
+run RunAKPIndexing ../data/summaries/$dataset/patterns/object-akp.txt $dataset objectAkp $payleveldomain
 
 cd ../pipeline

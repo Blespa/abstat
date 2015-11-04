@@ -3,6 +3,7 @@ package it.unimib.disco.summarization.export;
 import it.unimib.disco.summarization.dataset.FileSystemConnector;
 import it.unimib.disco.summarization.dataset.TextInput;
 import it.unimib.disco.summarization.ontology.RDFResource;
+import it.unimib.disco.summarization.ontology.TypeOf;
 
 import java.io.File;
 
@@ -21,9 +22,11 @@ public class IndexAKP
 			String pathFile = args[2];
 			String dataset = args[3];
 			String type = args[4];
+			String domain = args[5];
 			
 			String serverUrl = "http://"+host+":"+port+"/solr/indexing";
 			HttpSolrServer client = new HttpSolrServer(serverUrl);
+			TypeOf typeOf = new TypeOf(domain);
 			
 			TextInput input = new TextInput(new FileSystemConnector(new File(pathFile)));
 			
@@ -36,7 +39,7 @@ public class IndexAKP
 				String object = line[2];
 				String objectLocalName = new RDFResource(object).localName();
 				Long occurrences = Long.parseLong(line[3]);
-				String subtype = line[4];
+				String subtype = typeOf(subject, object, typeOf, type);
 				
 				SolrInputDocument doc = new SolrInputDocument();
 				doc.setField("URI", new String[]{
@@ -57,5 +60,10 @@ public class IndexAKP
 		catch(Exception e){
 			Events.summarization().error("", e);
 		}
+	}
+	
+	private static String typeOf(String subject, String object, TypeOf typeof, String type) {
+		if(type.equals("datatype")) return typeof.datatypeAKP(subject);
+		return typeof.objectAKP(subject, object);
 	}
 }

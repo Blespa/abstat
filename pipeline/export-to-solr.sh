@@ -25,21 +25,15 @@ payleveldomain=$2
 
 cd ../summarization
 
-run InternalExternalResources ../data/summaries/$dataset/patterns/count-concepts.txt $dataset $payleveldomain
-run InternalExternalResources ../data/summaries/$dataset/patterns/count-datatype.txt $dataset $payleveldomain
-run InternalExternalResources ../data/summaries/$dataset/patterns/count-datatype-properties.txt $dataset $payleveldomain
-run InternalExternalResources ../data/summaries/$dataset/patterns/count-object-properties.txt $dataset $payleveldomain
-run InternalExternalAKP ../data/summaries/$dataset/patterns/datatype-akp.txt $dataset $payleveldomain datatype
-run InternalExternalAKP ../data/summaries/$dataset/patterns/object-akp.txt $dataset $payleveldomain object
 run DeleteAllDocumentsFromIndex localhost $solr_port $dataset
 
 sleep 1
 
-run IndexResources localhost $solr_port ../data/summaries/$dataset/patterns/count-concepts-new.txt $dataset concept
-run IndexResources localhost $solr_port ../data/summaries/$dataset/patterns/count-datatype-new.txt $dataset datatype
-run IndexResources localhost $solr_port ../data/summaries/$dataset/patterns/count-datatype-properties-new.txt $dataset datatypeProperty
-run IndexResources localhost $solr_port ../data/summaries/$dataset/patterns/count-object-properties-new.txt $dataset objectProperty
-run IndexAKP localhost $solr_port ../data/summaries/$dataset/patterns/datatype-akp-new.txt $dataset datatypeAkp
-run IndexAKP localhost $solr_port ../data/summaries/$dataset/patterns/object-akp-new.txt $dataset objectAkp
+run IndexResources localhost $solr_port ../data/summaries/$dataset/patterns/count-concepts.txt $dataset concept $payleveldomain
+run IndexResources localhost $solr_port ../data/summaries/$dataset/patterns/count-datatype.txt $dataset datatype $payleveldomain
+run IndexResources localhost $solr_port ../data/summaries/$dataset/patterns/count-datatype-properties.txt $dataset datatypeProperty $payleveldomain
+run IndexResources localhost $solr_port ../data/summaries/$dataset/patterns/count-object-properties.txt $dataset objectProperty $payleveldomain
+run IndexAKP localhost $solr_port ../data/summaries/$dataset/patterns/datatype-akp.txt $dataset datatypeAkp $payleveldomain
+run IndexAKP localhost $solr_port ../data/summaries/$dataset/patterns/object-akp.txt $dataset objectAkp $payleveldomain
 
 cd ../pipeline

@@ -20,6 +20,7 @@ public class WriteAKPToRDFTest extends TestWithTemporaryData{
 				inputFile.getAbsolutePath(),
 				outputFile.getAbsolutePath(),
 				"http://schemasummaries.org/dataset",
+				"dbpedia.org",
 				"object"
 		});
 		

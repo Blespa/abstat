@@ -12,7 +12,7 @@ import org.apache.commons.io.LineIterator;
 import org.apache.solr.client.solrj.impl.HttpSolrServer;
 import org.apache.solr.common.SolrInputDocument;
 
-public class IndexAkps
+public class IndexAKP
 {
 	public static void main(String[] args) throws Exception
 	{
@@ -43,9 +43,9 @@ public class IndexAkps
 		
 		ArrayList <String> subtypes = subtypes(pathFile);
 		
-		ArrayList <String> subjectsLocalNames = takeOnlyLocalNamesOnly(subjects);
-		ArrayList <String> propertiesLocalNames = takeOnlyLocalNamesOnly(properties);
-		ArrayList <String> objectsLocalNames = takeOnlyLocalNamesOnly(objects);
+		ArrayList <String> subjectsLocalNames = takeLocalNamesOnly(subjects);
+		ArrayList <String> propertiesLocalNames = takeLocalNamesOnly(properties);
+		ArrayList <String> objectsLocalNames = takeLocalNamesOnly(objects);
 		
 		ArrayList<Long> occurrences = selectOccurrences(pathFile);
 		
@@ -472,7 +472,7 @@ public class IndexAkps
 		return subtypeOfDatatypeAkps;
 	}
 	
-	private static ArrayList <String> takeOnlyLocalNamesOnly(ArrayList <String> subjectsOfDatatypeAkps)
+	private static ArrayList <String> takeLocalNamesOnly(ArrayList <String> subjectsOfDatatypeAkps)
 	{
 		String subjectOfDatatypeAkp = "";
 		String localNameOfSubjectOfDatatypeAkp = "";

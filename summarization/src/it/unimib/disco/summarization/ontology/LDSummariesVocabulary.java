@@ -49,6 +49,14 @@ public class LDSummariesVocabulary {
 		return model.createResource(ontologyNamespace() + "Datatype");
 	}
 	
+	public Resource external() {
+		return model.createResource(ontologyNamespace() + "External");
+	}
+	
+	public Resource internal() {
+		return model.createResource(ontologyNamespace() + "Internal");
+	}
+	
 	public Resource concept() {
 		return model.createResource(skos() + "Concept");
 	}

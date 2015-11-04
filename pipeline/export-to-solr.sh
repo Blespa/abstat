@@ -6,7 +6,7 @@ function as_absolute()
 }
 
 function run(){
-	echo "Exporting $@"
+	echo "$@"
 	java -Xms256m -Xmx16g -cp .:'summarization.jar' it.unimib.disco.summarization.export.$@
 	echo "Done"
 }
@@ -25,21 +25,21 @@ payleveldomain=$2
 
 cd ../summarization
 
-run InternalExternalConcept ../data/summaries/$dataset/patterns/count-concepts.txt $dataset $payleveldomain
-run InternalExternalConcept ../data/summaries/$dataset/patterns/count-datatype.txt $dataset $payleveldomain
-run InternalExternalDatatypeProperty ../data/summaries/$dataset/patterns/count-datatype-properties.txt $dataset $payleveldomain
-run InternalExternalObjectProperty ../data/summaries/$dataset/patterns/count-object-properties.txt $dataset $payleveldomain
-run InternalExternalDatatypeAkp ../data/summaries/$dataset/patterns/datatype-akp.txt $dataset $payleveldomain
-run InternalExternalObjectAkp ../data/summaries/$dataset/patterns/object-akp.txt $dataset $payleveldomain
+run InternalExternalResources ../data/summaries/$dataset/patterns/count-concepts.txt $dataset $payleveldomain
+run InternalExternalResources ../data/summaries/$dataset/patterns/count-datatype.txt $dataset $payleveldomain
+run InternalExternalResources ../data/summaries/$dataset/patterns/count-datatype-properties.txt $dataset $payleveldomain
+run InternalExternalResources ../data/summaries/$dataset/patterns/count-object-properties.txt $dataset $payleveldomain
+run InternalExternalAKP ../data/summaries/$dataset/patterns/datatype-akp.txt $dataset $payleveldomain datatype
+run InternalExternalAKP ../data/summaries/$dataset/patterns/object-akp.txt $dataset $payleveldomain object
 run DeleteAllDocumentsFromIndex localhost $solr_port $dataset
 
 sleep 1
 
-run IndexSingle localhost $solr_port ../data/summaries/$dataset/patterns/count-concepts-new.txt $dataset concept
-run IndexSingle localhost $solr_port ../data/summaries/$dataset/patterns/count-datatype-new.txt $dataset datatype
-run IndexSingle localhost $solr_port ../data/summaries/$dataset/patterns/count-datatype-properties-new.txt $dataset datatypeProperty
-run IndexSingle localhost $solr_port ../data/summaries/$dataset/patterns/count-object-properties-new.txt $dataset objectProperty
-run IndexAkps localhost $solr_port ../data/summaries/$dataset/patterns/datatype-akp-new.txt $dataset datatypeAkp
-run IndexAkps localhost $solr_port ../data/summaries/$dataset/patterns/object-akp-new.txt $dataset objectAkp
+run IndexResources localhost $solr_port ../data/summaries/$dataset/patterns/count-concepts-new.txt $dataset concept
+run IndexResources localhost $solr_port ../data/summaries/$dataset/patterns/count-datatype-new.txt $dataset datatype
+run IndexResources localhost $solr_port ../data/summaries/$dataset/patterns/count-datatype-properties-new.txt $dataset datatypeProperty
+run IndexResources localhost $solr_port ../data/summaries/$dataset/patterns/count-object-properties-new.txt $dataset objectProperty
+run IndexAKP localhost $solr_port ../data/summaries/$dataset/patterns/datatype-akp-new.txt $dataset datatypeAkp
+run IndexAKP localhost $solr_port ../data/summaries/$dataset/patterns/object-akp-new.txt $dataset objectAkp
 
 cd ../pipeline

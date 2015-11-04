@@ -13,7 +13,7 @@ public class WritePropertiesToRDFTest extends TestWithTemporaryData{
 		File input = temporary.file("http://dbpedia.org/ontology/operatingSystem##2##0##0##0##0##0##0");
 		File output = temporary.file();
 		
-		WriteDatatypePropertyToRDF.main(new String[]{input.getAbsolutePath(), output.getAbsolutePath(), "dataset"});
+		WriteDatatypePropertyToRDF.main(new String[]{input.getAbsolutePath(), output.getAbsolutePath(), "dataset", "dbpedia.org",});
 	}
 
 	@Test
@@ -21,6 +21,6 @@ public class WritePropertiesToRDFTest extends TestWithTemporaryData{
 		File input = temporary.file("http://dbpedia.org/ontology/operatingSystem##2##0##0##0##0");
 		File output = temporary.file();
 		
-		WriteDatatypePropertyToRDF.main(new String[]{input.getAbsolutePath(), output.getAbsolutePath(), "dataset"});
+		WriteDatatypePropertyToRDF.main(new String[]{input.getAbsolutePath(), output.getAbsolutePath(), "dataset", "dbpedia.org",});
 	}
 }

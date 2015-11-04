@@ -53,7 +53,7 @@ The result of the summarization can be found in ```data/summaries/$DATASET```.
 
 Once the summarization pipeline is run for a dataset ```$DATASET```, you can index the results into the embedded Virtuoso triple store. As for running the pipeline, first ensure that ABSTAT is running, then:
 ```
-$ abstat.sh exec pipeline/export-to-rdf.sh $DATASET
+$ abstat.sh exec pipeline/export-to-rdf.sh $DATASET $PAYLEVEDOMAIN
 ```
 
 ## Indexing a Summary in Solr

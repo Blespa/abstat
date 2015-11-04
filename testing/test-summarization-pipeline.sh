@@ -51,7 +51,7 @@ cd ../pipeline
 assert_no_errors_on ../data/logs/summarization/log.txt
 assert_results_are_compliant $expected_results $results
 
-./export-to-rdf.sh system-test
+./export-to-rdf.sh system-test dbpedia.org
 cd ../testing
 
 

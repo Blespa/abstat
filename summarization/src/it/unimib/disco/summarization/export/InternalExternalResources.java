@@ -1,11 +1,13 @@
 package it.unimib.disco.summarization.export;
 
+import it.unimib.disco.summarization.ontology.TypeOf;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 
-public class InternalExternalConcept
+public class InternalExternalResources
 {
 	public static void main(String[] args) throws Exception
 	{
@@ -15,27 +17,24 @@ public class InternalExternalConcept
 			String pathFile = args[0];
 			String dataset = args[1];
 			String payLevelDomain = args[2];
-			conceptsInternalExternal(pathFile,dataset, payLevelDomain);
+			decide(pathFile,dataset, payLevelDomain);
 		}
 		catch(Exception e){
 			Events.summarization().error("", e);
 		}
 	}
 	
-	private static void conceptsInternalExternal(String pathFile, String dataset, String payLevelDomain) throws Exception
+	private static void decide(String path, String dataset, String domain) throws Exception
 	{
-		String fileConceptsPath = pathFile;
-		BufferedReader brConcepts = new BufferedReader(new FileReader(fileConceptsPath));
-		
-		FileWriter fwConcepts = new FileWriter(pathFile.replace(".txt", "-new.txt"));
+		BufferedReader brConcepts = new BufferedReader(new FileReader(path));
+		FileWriter fwConcepts = new FileWriter(path.replace(".txt", "-new.txt"));
 		BufferedWriter bwConcepts = new BufferedWriter(fwConcepts);
 		
 		boolean trovatoPrimoCancelletto = false;
-		String lineRead = null;
 		String concept = "";
 		String numberOfInstances = "";
-		String typeOfConcept = "";
-		lineRead = brConcepts.readLine();
+		String lineRead = brConcepts.readLine();
+		TypeOf internalResources = new TypeOf(domain);
 		
 		while (lineRead != null)
 		{
@@ -71,35 +70,15 @@ public class InternalExternalConcept
 				}
 			}
 			
-			if ((concept.contains("wikidata")) && (concept.contains(payLevelDomain)))
-			{
-				typeOfConcept = "external";
-			}
-			else
-			{
-				if ((!(concept.contains("wikidata"))) && (concept.contains(payLevelDomain)))
-				{
-					typeOfConcept = "internal";
-				}
-				else
-				{
-					if (!(concept.contains(payLevelDomain)))
-					{
-						typeOfConcept = "external";
-					}
-				}
-			}
-			
 			bwConcepts.write(concept);
 			bwConcepts.write("##");
 			bwConcepts.write(numberOfInstances);
 			bwConcepts.write("##");
-			bwConcepts.write(typeOfConcept);
+			bwConcepts.write(internalResources.resource(concept));
 			bwConcepts.write("\n");
 			
 			concept = "";
 			numberOfInstances = "";
-			typeOfConcept = "";
 			trovatoPrimoCancelletto = false;
 			
 			lineRead = brConcepts.readLine();

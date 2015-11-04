@@ -276,6 +276,16 @@
         </rdfs:subClassOf>
     </owl:Class>
     
+	<!-- http://ld-summaries.org/ontology/Internal -->
+
+    <owl:Class rdf:about="http://ld-summaries.org/ontology/Internal"/>
+
+
+
+	<!-- http://ld-summaries.org/ontology/External -->
+
+    <owl:Class rdf:about="http://ld-summaries.org/ontology/External"/>
+
 
 
     <!-- http://ld-summaries.org/ontology/Datatype -->

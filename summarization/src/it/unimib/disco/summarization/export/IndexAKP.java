@@ -6,6 +6,7 @@ import it.unimib.disco.summarization.ontology.TypeOf;
 import it.unimib.disco.summarization.web.SolrConnector;
 
 import org.apache.solr.client.solrj.impl.HttpSolrServer;
+import org.apache.solr.client.solrj.request.UpdateRequest;
 import org.apache.solr.common.SolrInputDocument;
 
 public class IndexAKP{
@@ -24,6 +25,8 @@ public class IndexAKP{
 	}
 	
 	public void process(InputFile input) throws Exception{
+		UpdateRequest request = new UpdateRequest();
+		int processed = 0;
 		
 		while(input.hasNextLine()){
 			String[] line = input.nextLine().split("##");
@@ -36,19 +39,29 @@ public class IndexAKP{
 			Long occurrences = Long.parseLong(line[3]);
 			String subtype = typeOf(subject, object);
 			
-			SolrInputDocument doc = new SolrInputDocument();
-			doc.setField("URI", new String[]{
+			SolrInputDocument document = new SolrInputDocument();
+			document.setField("URI", new String[]{
 					subject, property, object
 			});
-			doc.setField("type", type);
-			doc.setField("dataset", dataset);
-			doc.setField("subtype", subtype);
-			doc.setField("fullTextSearchField", new String[]{
+			document.setField("type", type);
+			document.setField("dataset", dataset);
+			document.setField("subtype", subtype);
+			document.setField("fullTextSearchField", new String[]{
 					subjectLocalName, propertyLocalName, objectLocalName
 			});
-			doc.setField("occurrence", occurrences);
-			client.add(doc);
+			document.setField("occurrence", occurrences);
+			
+			request.add(document);
+			processed++;
+			
+			if(processed >= 1000){
+				request.process(client);
+		        request.clear();
+		        processed = 0;
+			}
 		}
+		request.process(client);
+        request.clear();
 	}
 	
 	public void endProcessing() throws Exception{

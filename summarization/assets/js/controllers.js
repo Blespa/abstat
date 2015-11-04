@@ -75,7 +75,7 @@ bootstrapSearchController = function(scope, http, dataset){
 	scope.loadPatterns = function(){
 		
 		escape = function(string){
-			return string.toLowerCase().replace(/([&+-^!:{}()|\[\]\/\\])/g, "").replace(/ and /g, " ").replace(/ or /g, " ");
+			return string.toLowerCase().replace(/([&+-^!:{}()|\[\]\/\\])/g, "").replace(/ and /g, " ").replace(/ or /g, " ").replace(/ /g, " AND ");
 		};
 		
 		get = function(request){
@@ -102,8 +102,9 @@ bootstrapSearchController = function(scope, http, dataset){
 		}
 		
 		if(dataset){
-			request.params['fq'].push("dataset:" + dataset)
+			request.params['fq'].push("dataset:" + dataset);
 		}
+		request.params['sort'] = "occurrence desc";
 		
 		get(request);
 	};

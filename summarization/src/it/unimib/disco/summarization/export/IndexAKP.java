@@ -15,11 +15,12 @@ public class IndexAKP{
 	private String type;
 	private String dataset;
 
-	public IndexAKP(SolrConnector connector, String type, String dataset, String domain){
+	public IndexAKP(SolrConnector connector, String dataset, String type, String domain){
 		
 		this.client = connector.asUpdateClient();
 		this.type = type;
 		this.dataset = dataset;
+		this.domain = domain;
 	}
 	
 	public void process(InputFile input) throws Exception{

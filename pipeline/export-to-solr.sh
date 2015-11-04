@@ -19,20 +19,19 @@ cd $current_directory
 echo
 echo "Indexing the produced summary"
 
-solr_port=8891
 dataset=$1
 payleveldomain=$2
 
 cd ../summarization
 
-run DeleteAllDocumentsFromIndex localhost $solr_port $dataset
+run DeleteAllDocumentsFromIndex $dataset
 
 sleep 1
 
-run IndexResources localhost $solr_port ../data/summaries/$dataset/patterns/count-concepts.txt $dataset concept $payleveldomain
-run IndexResources localhost $solr_port ../data/summaries/$dataset/patterns/count-datatype.txt $dataset datatype $payleveldomain
-run IndexResources localhost $solr_port ../data/summaries/$dataset/patterns/count-datatype-properties.txt $dataset datatypeProperty $payleveldomain
-run IndexResources localhost $solr_port ../data/summaries/$dataset/patterns/count-object-properties.txt $dataset objectProperty $payleveldomain
+run RunResourcesIndexing ../data/summaries/$dataset/patterns/count-concepts.txt $dataset concept $payleveldomain
+run RunResourcesIndexing ../data/summaries/$dataset/patterns/count-datatype.txt $dataset datatype $payleveldomain
+run RunResourcesIndexing ../data/summaries/$dataset/patterns/count-datatype-properties.txt $dataset datatypeProperty $payleveldomain
+run RunResourcesIndexing ../data/summaries/$dataset/patterns/count-object-properties.txt $dataset objectProperty $payleveldomain
 run RunAKPIndexing ../data/summaries/$dataset/patterns/datatype-akp.txt $dataset datatypeAkp $payleveldomain
 run RunAKPIndexing ../data/summaries/$dataset/patterns/object-akp.txt $dataset objectAkp $payleveldomain
 

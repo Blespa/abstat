@@ -18,14 +18,14 @@ public class IndexResources
 		try{
 			String host = args[0];
 			String port = args[1];
-			String pathFile = args[2];
+			String file = args[2];
 			String dataset = args[3];
 			String type = args[4];
 			
 			String serverUrl = "http://"+host+":"+port+"/solr/indexing";
 			HttpSolrServer client = new HttpSolrServer(serverUrl);
 			
-			TextInput input = new TextInput(new FileSystemConnector(new File(pathFile)));
+			TextInput input = new TextInput(new FileSystemConnector(new File(file)));
 			
 			while(input.hasNextLine()){
 				String[] line = input.nextLine().split("##");
@@ -36,8 +36,8 @@ public class IndexResources
 				
 				SolrInputDocument doc = new SolrInputDocument();
 				doc.setField("URI", resource);
-				doc.setField("type", dataset);
-				doc.setField("dataset", type);
+				doc.setField("type", type);
+				doc.setField("dataset", dataset);
 				doc.setField("subtype", subtype);
 				doc.setField("fullTextSearchField", localName);
 				doc.setField("occurrence", occurrences);

@@ -53,8 +53,9 @@ summary.controller('browse', function ($scope, $http) {
 });
 
 summary.controller("search", function ($scope, $http) {
+	var solr = new Solr($http);
 	
-	bootstrapSearchController($scope, $http, '');
+	bootstrapSearchController($scope, solr, '');
 });
 
 summary.controller('experiment-browse', function ($scope, $http) {
@@ -66,47 +67,42 @@ summary.controller('experiment-browse', function ($scope, $http) {
 });
 
 summary.controller("experiment-search", function ($scope, $http) {
+	var solr = new Solr($http);
 	
-	bootstrapSearchController($scope, $http, 'dbpedia-3.9-infobox');
+	bootstrapSearchController($scope, solr, 'dbpedia-3.9-infobox');
 });
 
-bootstrapSearchController = function(scope, http, dataset){
+bootstrapSearchController = function(scope, solr, dataset){
+	
+	var prepare = function(scope, solr, dataset){
+		solr.noFilters();
+		if(!scope.searchInExternalResources){
+			solr.withFilter('subtype: internal');
+		}
+		if(dataset){
+			solr.withFilter('dataset:' + dataset);
+		}
+		solr.search(scope.srcStr);
+	};
 	
 	scope.loadPatterns = function(){
-		
-		escape = function(string){
-			return string.toLowerCase().replace(/([&+-^!:{}()|\[\]\/\\])/g, "").replace(/ and /g, " ").replace(/ or /g, " ");
-		};
-		
-		get = function(request){
-			http.get('/solr/indexing/select', request).success(function(results){
-				scope.allDocuments = results.response.docs;
-			});
-		};
-		
-		onlyInternalResources = function(){
-			return {
-			method: 'GET',
-			params: {
-				wt: 'json',
-				q: 'fullTextSearchField:(' + escape(scope.srcStr) + ')',
-				rows: 100,
-				fq: ['subtype: internal']
-			}}
-		};
-		
-		var request = onlyInternalResources();
-		
-		if(scope.searchInExternalResources){
-			request.params['fq'] = [];
-		}
-		
-		if(dataset){
-			request.params['fq'].push("dataset:" + dataset)
-		}
-		
-		get(request);
+		solr.startFrom(0);
+		prepare(scope, solr, dataset);
+		solr.accumulate(function(results){
+					scope.allDocuments = results.response.docs;
+				});
 	};
+	
+	var offset = 0;
+	scope.loadMore = function(){
+		offset+=10;
+		solr.startFrom(offset);
+		solr.accumulate(function(results){
+					for (var i = 0; i < results.response.docs.length; i++) {
+						scope.allDocuments.push(results.response.docs[i]);
+				    }
+				});
+	};	
 }
 
 bootstrapControllerFor = function(scope, http, graph, summaries, filter){
@@ -269,4 +265,52 @@ Sparql = function(http_service){
 	    	onSuccess(res.results.bindings);
 	    });
 	};
+};
+
+Solr = function(connector){
+	
+	var http = connector;
+	var textToSearch;
+	var filters = [];
+	var startIndex = 0;
+	
+	var escape = function(string){
+		return string.toLowerCase()
+					 .replace(/([&+-^!:{}()|\[\]\/\\])/g, "")
+					 .replace(/ and /g, " ")
+					 .replace(/ or /g, " ")
+					 .replace(/ /g, " AND ");
+	};
+	
+	this.search = function(text){
+		textToSearch = text;
+		return this;
+	}
+	
+	this.withFilter = function(filter_to_add){
+		filters.push(filter_to_add);
+		return this;
+	};
+	
+	this.noFilters = function(){
+		filters = [];
+	};
+	
+	this.startFrom = function(index){
+		startIndex = index;
+	};
+	
+	this.accumulate = function(callback){
+		http.get('/solr/indexing/select', {
+			method: 'GET',
+			params: {
+				wt: 'json',
+				q: 'fullTextSearchField:(' + escape(textToSearch) + ')',
+				rows: 20,
+				start: startIndex,
+				fq: filters,
+				sort: 'occurrence desc'
+			}})
+		.success(callback);
+	}
 };

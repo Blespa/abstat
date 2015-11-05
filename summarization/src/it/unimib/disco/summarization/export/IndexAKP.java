@@ -70,7 +70,7 @@ public class IndexAKP{
 	
 	private String typeOf(String subject, String object) {
 		TypeOf typeOf = new TypeOf(domain);
-		if(type.equals("datatype")) return typeOf.datatypeAKP(subject);
+		if(type.equals("datatypeAkp")) return typeOf.datatypeAKP(subject);
 		return typeOf.objectAKP(subject, object);
 	}
 }

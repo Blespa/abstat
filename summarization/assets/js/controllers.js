@@ -97,7 +97,6 @@ bootstrapSearchController = function(scope, solr, dataset){
 	scope.loadMore = function(){
 		offset+=10;
 		solr.startFrom(offset);
-		prepare(scope, solr, dataset);
 		solr.accumulate(function(results){
 					for (var i = 0; i < results.response.docs.length; i++) {
 						scope.allDocuments.push(results.response.docs[i]);

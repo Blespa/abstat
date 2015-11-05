@@ -73,37 +73,17 @@ summary.controller("experiment-search", function ($scope, $http) {
 bootstrapSearchController = function(scope, http, dataset){
 	
 	scope.loadPatterns = function(){
-		escape = function(string){
-			return string.toLowerCase()
-						 .replace(/([&+-^!:{}()|\[\]\/\\])/g, "")
-						 .replace(/ and /g, " ")
-						 .replace(/ or /g, " ")
-						 .replace(/ /g, " AND ");
-		};
-		get = function(request){
-			http.get('/solr/indexing/select', request).success(function(results){
-				scope.allDocuments = results.response.docs;
-			});
-		};
-		onlyInternalResources = function(){
-			return {
-			method: 'GET',
-			params: {
-				wt: 'json',
-				q: 'fullTextSearchField:(' + escape(scope.srcStr) + ')',
-				rows: 100,
-				fq: ['subtype: internal']
-			}}
-		};
-		var request = onlyInternalResources();
-		if(scope.searchInExternalResources){
-			request.params['fq'] = [];
+		var solr = new Solr(http);
+		if(!scope.searchInExternalResources){
+			solr.withFilter('subtype: internal');
 		}
 		if(dataset){
-			request.params['fq'].push("dataset:" + dataset);
+			solr.withFilter('dataset:' + dataset);
 		}
-		request.params['sort'] = "occurrence desc";
-		get(request);
+		solr.search(scope.srcStr)
+			.accumulate(function(results){
+					scope.allDocuments = results.response.docs;
+				});
 	};
 }
 
@@ -267,4 +247,42 @@ Sparql = function(http_service){
 	    	onSuccess(res.results.bindings);
 	    });
 	};
+};
+
+Solr = function(connector){
+	
+	var http = connector;
+	var textToSearch;
+	var filters = [];
+	
+	var escape = function(string){
+		return string.toLowerCase()
+					 .replace(/([&+-^!:{}()|\[\]\/\\])/g, "")
+					 .replace(/ and /g, " ")
+					 .replace(/ or /g, " ")
+					 .replace(/ /g, " AND ");
+	};
+	
+	this.search = function(text){
+		textToSearch = text;
+		return this;
+	}
+	
+	this.withFilter = function(filter_to_add){
+		filters.push(filter_to_add);
+		return this;
+	};
+	
+	this.accumulate = function(callback){
+		http.get('/solr/indexing/select', {
+			method: 'GET',
+			params: {
+				wt: 'json',
+				q: 'fullTextSearchField:(' + escape(textToSearch) + ')',
+				rows: 100,
+				fq: filters,
+				sort: 'occurrence desc'
+			}})
+		.success(callback);
+	}
 };

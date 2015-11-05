@@ -3,8 +3,13 @@ var summary = angular.module('schemasummaries', ['ui.bootstrap']);
 summary.filter('prefixed', function(){
 	return function(value){
 		var namespace = value.match(/http:\/\/.*[/#]/g)[0];
-		var localname = value.replace(namespace, ":")
-		return prefixes[namespace] + localname;
+		var localname = ":" + value.replace(namespace, "");
+		var prefix = prefixes[namespace];
+		if(!prefix){
+			prefix = value;
+			localname = '';
+		}
+		return prefix + localname;
 	}
 });
 

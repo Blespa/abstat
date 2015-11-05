@@ -40,7 +40,7 @@
 						<script type="text/ng-template" id="autocomplete-template.html">
 						<a>
 							{{match.model.local | isDatatype}}{{match.model.local | isObject}}
-      						<span bind-html-unsafe="match.label | prefixed | typeaheadHighlight:query"></span>
+      						<span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
   						</a>
 						</script>
 						<td><input type="text" typeahead="subject as subject.global for subject in autocomplete.subject | filter:$viewValue | limitTo:7" typeahead-template-url="autocomplete-template.html" ng-model="subject" class="form-control" placeholder="subject"></td>

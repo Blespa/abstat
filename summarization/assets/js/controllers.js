@@ -31,12 +31,6 @@ summary.filter('isObject', function(){
 	};
 });
 
-summary.filter('describe', function(){
-	return function(objectToDescribe){
-		return objectToDescribe.URI.join(' - ') + " (" + objectToDescribe.occurrence + ")";
-	};
-});
-
 summary.filter('asLabel', function(){
 	return function(type){
 		if(type == 'concept' || type == 'datatype') return 'success';
@@ -383,7 +377,6 @@ var prefixes = {
 		"http://www.rdfabout.com/rdf/schema/usbill/": "bill",
 		"http://purl.org/vocab/relationship/": "rel",
 		"http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#": "d2rq",
-		"http://this.invalid/test2#": "test2",
 		"http://purl.org/NET/c4dm/event.owl#": "event",
 		"http://purl.org/vocab/bio/0.1/": "bio",
 		"http://schemas.talis.com/2005/address/schema#": "ad",

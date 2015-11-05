@@ -73,17 +73,18 @@ summary.controller("experiment-search", function ($scope, $http) {
 bootstrapSearchController = function(scope, http, dataset){
 	
 	scope.loadPatterns = function(){
-		
 		escape = function(string){
-			return string.toLowerCase().replace(/([&+-^!:{}()|\[\]\/\\])/g, "").replace(/ and /g, " ").replace(/ or /g, " ").replace(/ /g, " AND ");
+			return string.toLowerCase()
+						 .replace(/([&+-^!:{}()|\[\]\/\\])/g, "")
+						 .replace(/ and /g, " ")
+						 .replace(/ or /g, " ")
+						 .replace(/ /g, " AND ");
 		};
-		
 		get = function(request){
 			http.get('/solr/indexing/select', request).success(function(results){
 				scope.allDocuments = results.response.docs;
 			});
 		};
-		
 		onlyInternalResources = function(){
 			return {
 			method: 'GET',
@@ -94,18 +95,14 @@ bootstrapSearchController = function(scope, http, dataset){
 				fq: ['subtype: internal']
 			}}
 		};
-		
 		var request = onlyInternalResources();
-		
 		if(scope.searchInExternalResources){
 			request.params['fq'] = [];
 		}
-		
 		if(dataset){
 			request.params['fq'].push("dataset:" + dataset);
 		}
 		request.params['sort'] = "occurrence desc";
-		
 		get(request);
 	};
 }

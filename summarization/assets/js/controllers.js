@@ -53,8 +53,9 @@ summary.controller('browse', function ($scope, $http) {
 });
 
 summary.controller("search", function ($scope, $http) {
+	var solr = new Solr($http);
 	
-	bootstrapSearchController($scope, $http, '');
+	bootstrapSearchController($scope, solr, '');
 });
 
 summary.controller('experiment-browse', function ($scope, $http) {
@@ -66,25 +67,43 @@ summary.controller('experiment-browse', function ($scope, $http) {
 });
 
 summary.controller("experiment-search", function ($scope, $http) {
+	var solr = new Solr($http);
 	
-	bootstrapSearchController($scope, $http, 'dbpedia-3.9-infobox');
+	bootstrapSearchController($scope, solr, 'dbpedia-3.9-infobox');
 });
 
-bootstrapSearchController = function(scope, http, dataset){
+bootstrapSearchController = function(scope, solr, dataset){
 	
-	scope.loadPatterns = function(){
-		var solr = new Solr(http);
+	var prepare = function(scope, solr, dataset){
+		solr.noFilters();
 		if(!scope.searchInExternalResources){
 			solr.withFilter('subtype: internal');
 		}
 		if(dataset){
 			solr.withFilter('dataset:' + dataset);
 		}
-		solr.search(scope.srcStr)
-			.accumulate(function(results){
+		solr.search(scope.srcStr);
+	};
+	
+	scope.loadPatterns = function(){
+		solr.startFrom(0);
+		prepare(scope, solr, dataset);
+		solr.accumulate(function(results){
 					scope.allDocuments = results.response.docs;
 				});
 	};
+	
+	var offset = 0;
+	scope.loadMore = function(){
+		offset+=10;
+		solr.startFrom(offset);
+		prepare(scope, solr, dataset);
+		solr.accumulate(function(results){
+					for (var i = 0; i < results.response.docs.length; i++) {
+						scope.allDocuments.push(results.response.docs[i]);
+				    }
+				});
+	};	
 }
 
 bootstrapControllerFor = function(scope, http, graph, summaries, filter){
@@ -254,6 +273,7 @@ Solr = function(connector){
 	var http = connector;
 	var textToSearch;
 	var filters = [];
+	var startIndex = 0;
 	
 	var escape = function(string){
 		return string.toLowerCase()
@@ -273,13 +293,22 @@ Solr = function(connector){
 		return this;
 	};
 	
+	this.noFilters = function(){
+		filters = [];
+	};
+	
+	this.startFrom = function(index){
+		startIndex = index;
+	};
+	
 	this.accumulate = function(callback){
 		http.get('/solr/indexing/select', {
 			method: 'GET',
 			params: {
 				wt: 'json',
 				q: 'fullTextSearchField:(' + escape(textToSearch) + ')',
-				rows: 100,
+				rows: 10,
+				start: startIndex,
 				fq: filters,
 				sort: 'occurrence desc'
 			}})

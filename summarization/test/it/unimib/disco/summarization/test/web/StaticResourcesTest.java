@@ -1,6 +1,5 @@
 package it.unimib.disco.summarization.test.web;
 
-import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 
 import java.io.File;
@@ -31,11 +30,5 @@ public class StaticResourcesTest {
 	public void aStaticResourceShouldBeUnderAssetsDirectoryOnTheServer() throws Exception {
 		
 		application.httpAssert().body("/static/a-file", equalTo("content"));
-	}
-	
-	@Test
-	public void shouldExposePrefixesFile() throws Exception {
-		
-		application.httpAssert().body("/static/js/prefixes.json", containsString("foaf"));
 	}
 }

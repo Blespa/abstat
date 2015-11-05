@@ -60,7 +60,7 @@
 			 		<li><span class="label label-default">{{doc.dataset}}</span></li>
 					<li><span class="label label-{{doc.type | asLabel}}">{{doc.type}}</span></li>
 					<li><span class="glyphicon glyphicon-resize-{{doc.subtype | asIcon}}" aria-hidden="true"></span></li>
-			 		<li ng-repeat="uri in doc.URI"><h4>{{uri | prefixed}}</h4></li>
+			 		<li ng-repeat="uri in doc.URI track by $index"><h4>{{uri | prefixed}}</h4></li>
 			 		<li>({{doc.occurrence}})</li>
 			 	</ul>
 			</div>

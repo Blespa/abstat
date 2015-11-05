@@ -307,7 +307,7 @@ Solr = function(connector){
 			params: {
 				wt: 'json',
 				q: 'fullTextSearchField:(' + escape(textToSearch) + ')',
-				rows: 10,
+				rows: 20,
 				start: startIndex,
 				fq: filters,
 				sort: 'occurrence desc'

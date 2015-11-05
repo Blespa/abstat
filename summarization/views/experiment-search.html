@@ -31,7 +31,7 @@
 						    <div class="col-md-2">
 						    <div class="checkbox">
     							<label>
-      								<input type="checkbox" ng-model="searchInExternalResources" >include external resources
+      								<input type="checkbox" ng-model="searchInExternalResources" >include external resources</input>
     							</label>
  						    </div>
 						    </div>
@@ -42,7 +42,7 @@
       		</div>
       		<div class="row" style="margin-top:1cm" ng-show="allDocuments">
       		<div class="col-md-12">
-      			<ul class="list-unstyled" style="margin:0.5cm">
+      			<ul class="list-unstyled">
 				  <li><span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span> <small><strong>external</strong> concept / property / akp</small></li>
 				  <li><span class="glyphicon glyphicon-resize-small" aria-hidden="true"></span> <small><strong>internal</strong> concept / property / akp</small></li>
 				</ul>
@@ -50,21 +50,20 @@
       		</div>
       		<div class="row" ng-show="allDocuments.length == 0">
       		<div class="col-md-12">
-      			<h4 style="margin:0.5cm">Nothing found!</h4>
+      			<h4>Nothing found!</h4>
 			</div>
 			</div>
       		<div class="row">
       		<div class="col-md-12">
-			<ul class="list-unstyled">
-				<li ng-repeat="doc in allDocuments" style="margin:0.5cm">
-					<h5>
-						<span class="label label-default">{{doc.dataset}}</span>
-						<span class="label label-{{doc.type | asLabel}}">{{doc.type}}</span>
-						<span class="glyphicon glyphicon-resize-{{doc.subtype | asIcon}}" aria-hidden="true"></span>
-					 	<span style="margin-left:0.2cm">{{doc | describe}}</span>
-					</h5>
-				</li>
-			</ul>
+			<div ng-repeat="doc in allDocuments">
+			 	<ul class="list-inline">
+			 		<li><span class="label label-default">{{doc.dataset}}</span></li>
+					<li><span class="label label-{{doc.type | asLabel}}">{{doc.type}}</span></li>
+					<li><span class="glyphicon glyphicon-resize-{{doc.subtype | asIcon}}" aria-hidden="true"></span></li>
+			 		<li ng-repeat="uri in doc.URI"><h4>{{uri | prefixed}}</h4></li>
+			 		<li>({{doc.occurrence}})</li>
+			 	</ul>
+			</div>
 			<button ng-show="allDocuments" ng-click="loadMore()" type="button" class="btn btn-deafult btn-block">
 				<span><strong>{{allDocuments.length}}</strong> results - get more</span>
         	</button>

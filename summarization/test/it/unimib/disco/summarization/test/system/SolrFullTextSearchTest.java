@@ -45,6 +45,16 @@ public class SolrFullTextSearchTest {
 	}
 	
 	@Test
+	public void datatypeAKPsReferringToExternalSubkectsShouldBeMarkedAsExternal() throws Exception {
+		httpAssert().body("select?q=*:*&fq=type:datatypeAkp&fq=subtype:external", containsString("schema.org"));
+	}
+	
+	@Test
+	public void datatypeAKPsReferringToInternalSubkectsShouldBeMarkedAsInternal() throws Exception {
+		httpAssert().body("select?q=*:*&fq=type:datatypeAkp&fq=subtype:internal", containsString("dbpedia.org/ontology/OfficeHolder"));
+	}
+	
+	@Test
 	public void updateUrlShouldNotBeAccessible() throws Exception {
 		
 		httpAssert().statusOf("update", 404);

@@ -1,5 +1,39 @@
 var summary = angular.module('schemasummaries', ['ui.bootstrap']);
 
+summary.filter('patternInstances', function(){
+	return function(pattern){
+		return 'select ?s <' + pattern.gPredicate.value + '> as ?p ?o ' +
+			   'where{' + 
+			   		'?s a <' + pattern.gSubject.value + '> . ' +
+			   		'?o a <' + pattern.gObject.value + '> . ' +
+			   		'?s <' + pattern.gPredicate.value + '> ?o .' +
+			   '} limit 1000';
+	}
+});
+
+summary.filter('patternInstancesFromSearchResults', function(){
+	return function(resource){
+		if(resource.type.indexOf('Akp') > -1){
+			return 'select ?s <' + resource.URI[1] + '> as ?p ?o ' +
+			   'where{' + 
+			   		'?s a <' + resource.URI[0] + '> . ' +
+			   		'?o a <' + resource.URI[2] + '> . ' +
+			   		'?s <' + resource.URI[1] + '> ?o .' +
+			   '} limit 1000';
+		}
+		if(resource.type.indexOf('Property') > -1){
+			return 'select ?s <' + resource.URI[0] + '> as ?p ?o ' +
+			   'where{' + 
+			   		'?s <' + resource.URI[0] + '> ?o .' +
+			   '} limit 1000';
+		}
+		return 'select ?s ' +
+		   'where{' + 
+		   		'?s a <' + resource.URI[0] + '> .' +
+		   '} limit 1000';
+	}
+});
+
 summary.filter('prefixed', function(){
 	return function(value){
 		var namespace = value.match(/http:\/\/.*[/#]/g)[0];

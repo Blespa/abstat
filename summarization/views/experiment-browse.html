@@ -27,7 +27,8 @@
 						<th>subject type <small>(occurrences)</small></th>
 						<th>predicate <small>(occurrences)</small></th>
 						<th>object type <small>(occurrences)</small></th>
-						<th>frequency</th>
+						<th class="text-right">frequency</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -48,7 +49,9 @@
 						<td><input type="text" typeahead="object as object.global for object in autocomplete.object | filter:$viewValue | limitTo:7" typeahead-template-url="autocomplete-template.html" ng-model="object" class="form-control" placeholder="object"></td>
 					</tr>
 					<tr ng-repeat="summary in summaries">
-						<td class="text-center"><a target="_blank" href="{{describe_uri}}{{summary.pattern.value | escape}}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a></td>
+						<td class="text-center">
+							<a target="_blank" href="{{describe_uri}}{{summary.pattern.value | escape}}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+						</td>
 						<td>
 							<a target="_blank" href="{{describe_uri}}{{summary.subject.value | escape}}">{{summary.gSubject.value | prefixed}}</a>
 							<small ng-show="summary.subjectOcc">({{summary.subjectOcc.value}})</small>
@@ -62,7 +65,10 @@
 							<a target="_blank" href="{{describe_uri}}{{summary.object.value | escape}}">{{summary.gObject.value | prefixed}}</a>
 							<small ng-show="summary.objectOcc">({{summary.objectOcc.value}})</small>
 						</td>
-						<td>{{summary.frequency.value}}</td>
+						<td class="text-right">{{summary.frequency.value}}</td>
+						<td class="text-center">
+							<a target="_blank" href="/sparql?default-graph-uri=http://dbpedia.org&query={{summary | patternInstances | escape}}">sample <span class="glyphicon glyphicon-play" aria-hidden="true"></span></a>
+						</td>
 					</tr>
 				</tbody>
 			</table>

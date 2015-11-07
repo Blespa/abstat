@@ -1,5 +1,16 @@
 var summary = angular.module('schemasummaries', ['ui.bootstrap']);
 
+summary.filter('patternInstances', function(){
+	return function(pattern){
+		return 'select ?s <' + pattern.gPredicate.value + '> as ?p ?o ' +
+			   'where{' + 
+			   		'?s a <' + pattern.gSubject.value + '> . ' +
+			   		'?o a <' + pattern.gObject.value + '> . ' +
+			   		'?s <' + pattern.gPredicate.value + '> ?o .' +
+			   '}';
+	}
+});
+
 summary.filter('prefixed', function(){
 	return function(value){
 		var namespace = value.match(/http:\/\/.*[/#]/g)[0];

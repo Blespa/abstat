@@ -2,35 +2,92 @@ var summary = angular.module('schemasummaries', ['ui.bootstrap']);
 
 summary.filter('patternInstances', function(){
 	return function(pattern){
-		return 'select ?s <' + pattern.gPredicate.value + '> as ?p ?o ' +
+		var p = pattern.gPredicate.value;
+		var query = '';
+		if(isDatatype(pattern.predicate.value).indexOf('DTP') > -1){
+			query = 'select ?s <' + p + '> as ?p ?o ' +
+			   'where{' + 
+			   '?s a <' + pattern.gSubject.value + '> . ' +
+			   '?s <' + p + '> ?o .' +
+		   		'filter(datatype(?o) = <' + pattern.gObject.value + '>)' +
+		   '} limit 100';
+		}
+		if(isDatatype(pattern.predicate.value).indexOf('DTP') > -1 && pattern.gObject.value.indexOf('rdf-schema#Literal') > -1){
+			query = 'select ?s <' + p + '> as ?p ?o ' +
+			   'where{' + 
+			   '?s a <' + pattern.gSubject.value + '> . ' +
+			   '?s <' + p + '> ?o .' +
+		   		'filter(isLiteral(?o) && lang(?o) != "")' +
+		   '} limit 100';
+		}
+		if(isObject(pattern.predicate.value).indexOf('OP') > -1){
+			query = 'select ?s <' + p + '> as ?p ?o ' +
 			   'where{' + 
 			   		'?s a <' + pattern.gSubject.value + '> . ' +
 			   		'?o a <' + pattern.gObject.value + '> . ' +
-			   		'?s <' + pattern.gPredicate.value + '> ?o .' +
-			   '} limit 1000';
+			   		'?s <' + p + '> ?o .' +
+			   '} limit 100';
+		}
+		console.log(query);
+		return query;
 	}
+	
 });
 
 summary.filter('patternInstancesFromSearchResults', function(){
 	return function(resource){
-		if(resource.type.indexOf('Akp') > -1){
-			return 'select ?s <' + resource.URI[1] + '> as ?p ?o ' +
+		if(resource.type.indexOf('datatype') > -1){
+			query= 'select ?o ' +
+			   'where{' +
+			   		'?s ?p ?o ' +
+			   		'filter(datatype(?o) = <' + resource.URI[0] + '>)' +
+			   '} limit 100';
+		}
+		if(resource.URI[0].indexOf('rdf-schema#Literal') > -1){
+			query= 'select ?o ' +
+			   'where{' + 
+			   '?s ?p ?o . ' +
+		   	   'filter(isLiteral(?o) && lang(?o) != "")' +
+		   '} limit 100';
+		}
+		if(resource.type.indexOf('datatypeAkp') > -1){
+			query= 'select ?s <' + resource.URI[1] + '> as ?p ?o ' +
+			   'where{' + 
+			   '?s a <' + resource.URI[0] + '> . ' +
+			   '?s <' + resource.URI[1] + '> ?o .' +
+		   		'filter(datatype(?o) = <' + resource.URI[2] + '>)' +
+		   '} limit 100';
+		}
+		if(resource.type.indexOf('datatypeAkp') > -1 && resource.URI[2].indexOf('rdf-schema#Literal') > -1){
+			query= 'select ?s <' + resource.URI[1] + '> as ?p ?o ' +
+			   'where{' + 
+			   '?s a <' + resource.URI[0] + '> . ' +
+			   '?s <' + resource.URI[1] + '> ?o .' +
+		   		'filter(isLiteral(?o) && lang(?o) != "")' +
+		   '} limit 100';
+		}
+		if(resource.type.indexOf('objectAkp') > -1){
+			query= 'select ?s <' + resource.URI[1] + '> as ?p ?o ' +
 			   'where{' + 
 			   		'?s a <' + resource.URI[0] + '> . ' +
 			   		'?o a <' + resource.URI[2] + '> . ' +
 			   		'?s <' + resource.URI[1] + '> ?o .' +
-			   '} limit 1000';
+			   '} limit 100';
 		}
 		if(resource.type.indexOf('Property') > -1){
-			return 'select ?s <' + resource.URI[0] + '> as ?p ?o ' +
+			query= 'select ?s <' + resource.URI[0] + '> as ?p ?o ' +
 			   'where{' + 
 			   		'?s <' + resource.URI[0] + '> ?o .' +
-			   '} limit 1000';
+			   '} limit 100';
 		}
-		return 'select ?s ' +
-		   'where{' + 
-		   		'?s a <' + resource.URI[0] + '> .' +
-		   '} limit 1000';
+		if(resource.type.indexOf('concept') > -1){
+			query= 'select ?s ' +
+			   'where{' + 
+			   		'?s a <' + resource.URI[0] + '> .' +
+			   '} limit 100';
+		}
+		console.log(query);
+		return query;
 	}
 });
 
@@ -52,18 +109,22 @@ summary.filter('escape', function(){
 });
 
 summary.filter('isDatatype', function(){
-	return function(value){
-		if(value.indexOf('datatype-property') > -1) return 'DTP';
-		return '';
-	};
+	return isDatatype;
 });
 
+isDatatype = function(value){
+	if(value.indexOf('datatype-property') > -1) return 'DTP';
+	return '';
+};
+
 summary.filter('isObject', function(){
-	return function(value){
-		if(value.indexOf('object-property') > -1) return 'OP';
-		return '';
-	};
+	return isObject;
 });
+
+isObject = function(value){
+	if(value.indexOf('object-property') > -1) return 'OP';
+	return '';
+};
 
 summary.filter('asLabel', function(){
 	return function(type){

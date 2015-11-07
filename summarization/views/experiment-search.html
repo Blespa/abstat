@@ -62,6 +62,7 @@
 					<li><span class="glyphicon glyphicon-resize-{{doc.subtype | asIcon}}" aria-hidden="true"></span></li>
 			 		<li ng-repeat="uri in doc.URI track by $index"><h4>{{uri | prefixed}}</h4></li>
 			 		<li>({{doc.occurrence}})</li>
+			 		<a target="_blank" href="/sparql?default-graph-uri=http://dbpedia.org&query={{doc | patternInstancesFromSearchResults | escape}}">sample <span class="glyphicon glyphicon-play" aria-hidden="true"></span></a>
 			 	</ul>
 			</div>
 			<button ng-show="allDocuments" ng-click="loadMore()" type="button" class="btn btn-deafult btn-block">

@@ -36,8 +36,38 @@ summary.filter('patternInstances', function(){
 
 summary.filter('patternInstancesFromSearchResults', function(){
 	return function(resource){
-		if(resource.type.indexOf('Akp') > -1){
-			return 'select ?s <' + resource.URI[1] + '> as ?p ?o ' +
+		if(resource.type.indexOf('datatype') > -1){
+			query= 'select ?o ' +
+			   'where{' +
+			   		'?s ?p ?o ' +
+			   		'filter(datatype(?o) = <' + resource.URI[0] + '>)' +
+			   '} limit 100';
+		}
+		if(resource.URI[0].indexOf('rdf-schema#Literal') > -1){
+			query= 'select ?o ' +
+			   'where{' + 
+			   '?s ?p ?o . ' +
+		   	   'filter(isLiteral(?o) && lang(?o) != "")' +
+		   '} limit 100';
+		}
+		if(resource.type.indexOf('datatypeAkp') > -1){
+			query= 'select ?s <' + resource.URI[1] + '> as ?p ?o ' +
+			   'where{' + 
+			   '?s a <' + resource.URI[0] + '> . ' +
+			   '?s <' + resource.URI[1] + '> ?o .' +
+		   		'filter(datatype(?o) = <' + resource.URI[2] + '>)' +
+		   '} limit 100';
+		}
+		if(resource.type.indexOf('datatypeAkp') > -1 && resource.URI[2].indexOf('rdf-schema#Literal') > -1){
+			query= 'select ?s <' + resource.URI[1] + '> as ?p ?o ' +
+			   'where{' + 
+			   '?s a <' + resource.URI[0] + '> . ' +
+			   '?s <' + resource.URI[1] + '> ?o .' +
+		   		'filter(isLiteral(?o) && lang(?o) != "")' +
+		   '} limit 100';
+		}
+		if(resource.type.indexOf('objectAkp') > -1){
+			query= 'select ?s <' + resource.URI[1] + '> as ?p ?o ' +
 			   'where{' + 
 			   		'?s a <' + resource.URI[0] + '> . ' +
 			   		'?o a <' + resource.URI[2] + '> . ' +
@@ -45,15 +75,19 @@ summary.filter('patternInstancesFromSearchResults', function(){
 			   '} limit 100';
 		}
 		if(resource.type.indexOf('Property') > -1){
-			return 'select ?s <' + resource.URI[0] + '> as ?p ?o ' +
+			query= 'select ?s <' + resource.URI[0] + '> as ?p ?o ' +
 			   'where{' + 
 			   		'?s <' + resource.URI[0] + '> ?o .' +
 			   '} limit 100';
 		}
-		return 'select ?s ' +
-		   'where{' + 
-		   		'?s a <' + resource.URI[0] + '> .' +
-		   '} limit 100';
+		if(resource.type.indexOf('concept') > -1){
+			query= 'select ?s ' +
+			   'where{' + 
+			   		'?s a <' + resource.URI[0] + '> .' +
+			   '} limit 100';
+		}
+		console.log(query);
+		return query;
 	}
 });
 

@@ -172,7 +172,7 @@ summary.controller("search", function ($scope, $http) {
 summary.controller('experiment-browse', function ($scope, $http) {
 	var summaries = new Summary($scope, $http, '?pattern a lds:Internal . ');
 	
-	bootstrapControllerFor($scope, $http, 'http://ld-summaries.org/system-test', summaries, '?pattern a lds:Internal . ');
+	bootstrapControllerFor($scope, $http, 'http://ld-summaries.org/dbpedia-3.9-infobox', summaries, '?pattern a lds:Internal . ');
 	
 	$scope.loadPatterns();
 });

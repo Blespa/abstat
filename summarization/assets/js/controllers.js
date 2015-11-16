@@ -3,16 +3,25 @@ var summary = angular.module('schemasummaries', ['ui.bootstrap']);
 summary.filter('patternInstances', function(){
 	return function(pattern){
 		var p = pattern.gPredicate.value;
+		var o = pattern.gObject.value;
 		var query = '';
 		if(isDatatype(pattern.predicate.value).indexOf('DTP') > -1){
 			query = 'select ?s <' + p + '> as ?p ?o ' +
 			   'where{' + 
 			   '?s a <' + pattern.gSubject.value + '> . ' +
 			   '?s <' + p + '> ?o .' +
-		   		'filter(datatype(?o) = <' + pattern.gObject.value + '>)' +
+		   		'filter(datatype(?o) = <' + o + '>)' +
 		   '} limit 100';
 		}
-		if(isDatatype(pattern.predicate.value).indexOf('DTP') > -1 && pattern.gObject.value.indexOf('rdf-schema#Literal') > -1){
+		if(isDatatype(pattern.predicate.value).indexOf('DTP') > -1 && o.indexOf('XMLSchema#nonNegativeInteger') > -1){
+			query = 'select ?s <' + p + '> as ?p ?o ' +
+			   'where{' + 
+			   '?s a <' + pattern.gSubject.value + '> . ' +
+			   '?s <' + p + '> ?o .' +
+		   		'filter(datatype(?o) = <http://www.w3.org/2001/XMLSchema#integer>)' +
+		   '} limit 100';
+		}
+		if(isDatatype(pattern.predicate.value).indexOf('DTP') > -1 && o.indexOf('rdf-schema#Literal') > -1){
 			query = 'select ?s <' + p + '> as ?p ?o ' +
 			   'where{' + 
 			   '?s a <' + pattern.gSubject.value + '> . ' +
@@ -24,7 +33,7 @@ summary.filter('patternInstances', function(){
 			query = 'select ?s <' + p + '> as ?p ?o ' +
 			   'where{' + 
 			   		'?s a <' + pattern.gSubject.value + '> . ' +
-			   		'?o a <' + pattern.gObject.value + '> . ' +
+			   		'?o a <' + o + '> . ' +
 			   		'?s <' + p + '> ?o .' +
 			   '} limit 100';
 		}
@@ -163,7 +172,7 @@ summary.controller("search", function ($scope, $http) {
 summary.controller('experiment-browse', function ($scope, $http) {
 	var summaries = new Summary($scope, $http, '?pattern a lds:Internal . ');
 	
-	bootstrapControllerFor($scope, $http, 'http://ld-summaries.org/dbpedia-3.9-infobox', summaries, '?pattern a lds:Internal . ');
+	bootstrapControllerFor($scope, $http, 'http://ld-summaries.org/system-test', summaries, '?pattern a lds:Internal . ');
 	
 	$scope.loadPatterns();
 });

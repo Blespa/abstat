@@ -3,16 +3,25 @@ var summary = angular.module('schemasummaries', ['ui.bootstrap']);
 summary.filter('patternInstances', function(){
 	return function(pattern){
 		var p = pattern.gPredicate.value;
+		var o = pattern.gObject.value;
 		var query = '';
 		if(isDatatype(pattern.predicate.value).indexOf('DTP') > -1){
 			query = 'select ?s <' + p + '> as ?p ?o ' +
 			   'where{' + 
 			   '?s a <' + pattern.gSubject.value + '> . ' +
 			   '?s <' + p + '> ?o .' +
-		   		'filter(datatype(?o) = <' + pattern.gObject.value + '>)' +
+		   		'filter(datatype(?o) = <' + o + '>)' +
 		   '} limit 100';
 		}
-		if(isDatatype(pattern.predicate.value).indexOf('DTP') > -1 && pattern.gObject.value.indexOf('rdf-schema#Literal') > -1){
+		if(isDatatype(pattern.predicate.value).indexOf('DTP') > -1 && o.indexOf('XMLSchema#nonNegativeInteger') > -1){
+			query = 'select ?s <' + p + '> as ?p ?o ' +
+			   'where{' + 
+			   '?s a <' + pattern.gSubject.value + '> . ' +
+			   '?s <' + p + '> ?o .' +
+		   		'filter(datatype(?o) = <http://www.w3.org/2001/XMLSchema#integer>)' +
+		   '} limit 100';
+		}
+		if(isDatatype(pattern.predicate.value).indexOf('DTP') > -1 && o.indexOf('rdf-schema#Literal') > -1){
 			query = 'select ?s <' + p + '> as ?p ?o ' +
 			   'where{' + 
 			   '?s a <' + pattern.gSubject.value + '> . ' +
@@ -24,7 +33,7 @@ summary.filter('patternInstances', function(){
 			query = 'select ?s <' + p + '> as ?p ?o ' +
 			   'where{' + 
 			   		'?s a <' + pattern.gSubject.value + '> . ' +
-			   		'?o a <' + pattern.gObject.value + '> . ' +
+			   		'?o a <' + o + '> . ' +
 			   		'?s <' + p + '> ?o .' +
 			   '} limit 100';
 		}
@@ -42,6 +51,13 @@ summary.filter('patternInstancesFromSearchResults', function(){
 			   		'filter(datatype(?o) = <' + resource.URI[0] + '>)' +
 			   '} limit 100';
 		}
+		if(resource.type.indexOf('datatype') > -1 && resource.URI[0].indexOf('XMLSchema#nonNegativeInteger') > -1){
+			query= 'select ?o ' +
+			   'where{' +
+			   		'?s ?p ?o ' +
+			   		'filter(datatype(?o) = <http://www.w3.org/2001/XMLSchema#integer>)' +
+			   '} limit 100';
+		}
 		if(resource.URI[0].indexOf('rdf-schema#Literal') > -1){
 			query= 'select ?o ' +
 			   'where{' + 
@@ -55,6 +71,14 @@ summary.filter('patternInstancesFromSearchResults', function(){
 			   '?s a <' + resource.URI[0] + '> . ' +
 			   '?s <' + resource.URI[1] + '> ?o .' +
 		   		'filter(datatype(?o) = <' + resource.URI[2] + '>)' +
+		   '} limit 100';
+		}
+		if(resource.type.indexOf('datatypeAkp') > -1 && resource.URI[2].indexOf('XMLSchema#nonNegativeInteger') > -1){
+			query= 'select ?s <' + resource.URI[1] + '> as ?p ?o ' +
+			   'where{' + 
+			   '?s a <' + resource.URI[0] + '> . ' +
+			   '?s <' + resource.URI[1] + '> ?o .' +
+		   		'filter(datatype(?o) = <http://www.w3.org/2001/XMLSchema#integer>)' +
 		   '} limit 100';
 		}
 		if(resource.type.indexOf('datatypeAkp') > -1 && resource.URI[2].indexOf('rdf-schema#Literal') > -1){

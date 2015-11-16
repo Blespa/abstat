@@ -28,7 +28,6 @@ summary.filter('patternInstances', function(){
 			   		'?s <' + p + '> ?o .' +
 			   '} limit 100';
 		}
-		console.log(query);
 		return query;
 	}
 	
@@ -86,23 +85,24 @@ summary.filter('patternInstancesFromSearchResults', function(){
 			   		'?s a <' + resource.URI[0] + '> .' +
 			   '} limit 100';
 		}
-		console.log(query);
 		return query;
 	}
 });
 
 summary.filter('prefixed', function(){
-	return function(value){
-		var namespace = value.match(/http:\/\/.*[/#]/g)[0];
-		var localname = ":" + value.replace(namespace, "");
-		var prefix = prefixes[namespace];
-		if(!prefix){
-			prefix = value;
-			localname = '';
-		}
-		return prefix + localname;
-	}
+	return prefixed;
 });
+
+prefixed = function(value){
+	var namespace = value.match(/http:\/\/.*[/#]/g)[0];
+	var localname = ":" + value.replace(namespace, "");
+	var prefix = prefixes[namespace];
+	if(!prefix){
+		prefix = value;
+		localname = '';
+	}
+	return prefix + localname;
+}
 
 summary.filter('escape', function(){
 	return window.encodeURIComponent;
@@ -255,7 +255,7 @@ fill = function(type, graph, result, http, filter){
     	 angular.forEach(results, function(key, value){
     		 var result = {};
     		 result['local'] = key[type].value;
-    		 result['global'] = key['g' + type].value;
+    		 result['global'] = prefixed(key['g' + type].value);
     		 
     		 this.push(result)
     	 }, result[type]);

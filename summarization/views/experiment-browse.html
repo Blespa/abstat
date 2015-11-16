@@ -44,9 +44,9 @@
       						<span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
   						</a>
 						</script>
-						<td><input type="text" typeahead="subject as subject.global for subject in autocomplete.subject | filter:$viewValue | limitTo:7" typeahead-template-url="autocomplete-template.html" ng-model="subject" class="form-control" placeholder="subject"></td>
-						<td><input type="text" typeahead="predicate as predicate.global for predicate in autocomplete.predicate | filter:$viewValue | limitTo:7" typeahead-template-url="autocomplete-template.html" ng-model="predicate" class="form-control" placeholder="predicate"></td>
-						<td><input type="text" typeahead="object as object.global for object in autocomplete.object | filter:$viewValue | limitTo:7" typeahead-template-url="autocomplete-template.html" ng-model="object" class="form-control" placeholder="object"></td>
+						<td><input type="text" typeahead="subject as subject.global for subject in autocomplete.subject | filter:$viewValue | limitTo:10" typeahead-template-url="autocomplete-template.html" ng-model="subject" class="form-control" placeholder="subject"></td>
+						<td><input type="text" typeahead="predicate as predicate.global for predicate in autocomplete.predicate | filter:$viewValue | limitTo:10" typeahead-template-url="autocomplete-template.html" ng-model="predicate" class="form-control" placeholder="predicate"></td>
+						<td><input type="text" typeahead="object as object.global for object in autocomplete.object | filter:$viewValue | limitTo:10" typeahead-template-url="autocomplete-template.html" ng-model="object" class="form-control" placeholder="object"></td>
 					</tr>
 					<tr ng-repeat="summary in summaries">
 						<td class="text-center">

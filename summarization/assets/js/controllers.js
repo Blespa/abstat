@@ -51,6 +51,13 @@ summary.filter('patternInstancesFromSearchResults', function(){
 			   		'filter(datatype(?o) = <' + resource.URI[0] + '>)' +
 			   '} limit 100';
 		}
+		if(resource.type.indexOf('datatype') > -1 && resource.URI[0].indexOf('XMLSchema#nonNegativeInteger') > -1){
+			query= 'select ?o ' +
+			   'where{' +
+			   		'?s ?p ?o ' +
+			   		'filter(datatype(?o) = <http://www.w3.org/2001/XMLSchema#integer>)' +
+			   '} limit 100';
+		}
 		if(resource.URI[0].indexOf('rdf-schema#Literal') > -1){
 			query= 'select ?o ' +
 			   'where{' + 
@@ -64,6 +71,14 @@ summary.filter('patternInstancesFromSearchResults', function(){
 			   '?s a <' + resource.URI[0] + '> . ' +
 			   '?s <' + resource.URI[1] + '> ?o .' +
 		   		'filter(datatype(?o) = <' + resource.URI[2] + '>)' +
+		   '} limit 100';
+		}
+		if(resource.type.indexOf('datatypeAkp') > -1 && resource.URI[2].indexOf('XMLSchema#nonNegativeInteger') > -1){
+			query= 'select ?s <' + resource.URI[1] + '> as ?p ?o ' +
+			   'where{' + 
+			   '?s a <' + resource.URI[0] + '> . ' +
+			   '?s <' + resource.URI[1] + '> ?o .' +
+		   		'filter(datatype(?o) = <http://www.w3.org/2001/XMLSchema#integer>)' +
 		   '} limit 100';
 		}
 		if(resource.type.indexOf('datatypeAkp') > -1 && resource.URI[2].indexOf('rdf-schema#Literal') > -1){

@@ -45,16 +45,18 @@ public class DomainsAndRanges {
 					escaped(type),
 					escaped(domainsOf(ontProperty)),
 					escaped(rangesOf(ontProperty)),
-					escaped(joinAndCount(inferred.domains())),
-					escaped(joinAndCount(inferred.ranges())),
+					escaped(join(inferred.domains())),
+					escaped(inferred.domains().size() + ""),
+					escaped(join(inferred.ranges())),
+					escaped(inferred.ranges().size() + ""),
 			};
 			
 			System.out.println(StringUtils.join(line, "\t"));
 		}
 	}
 
-	private static String joinAndCount(HashSet<String> types){
-		return StringUtils.join(types, ", ") + " (" + types.size() + ")";
+	private static String join(HashSet<String> types){
+		return StringUtils.join(types, ", ");
 	}
 	
 	private static String domainsOf(OntProperty property){

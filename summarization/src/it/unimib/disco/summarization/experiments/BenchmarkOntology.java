@@ -14,7 +14,7 @@ public class BenchmarkOntology{
 	private OntModel ontology;
 
 	public BenchmarkOntology(String path){
-		String file = new File("../benchmark/experiments/" + path).getAbsolutePath().replace("summarization/../", "");
+		String file = new File("../" + path).getAbsolutePath().replace("summarization/../", "");
 		ontology = new Model(file, "RDF/XML").getOntologyModel();
 	}
 	

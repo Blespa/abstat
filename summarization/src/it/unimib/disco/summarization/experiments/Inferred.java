@@ -40,12 +40,8 @@ public class Inferred{
 			QuerySolution solution = patterns.nextSolution();
 			String subject = solution.get("subject").toString();
 			String object = solution.get("object").toString();
-			if(!isExternal(subject)){
-				domains.add(subject);
-			}
-			if(!isExternal(object)){
-				ranges.add(object);
-			}
+			domains.add(subject);
+			ranges.add(object);
 		}
 		return this;
 	}
@@ -56,15 +52,5 @@ public class Inferred{
 	
 	public HashSet<String> ranges(){
 		return new HashSet<String>(ranges);
-	}
-	
-	private boolean isExternal(String resource) {
-		return resource.contains("wikidata.dbpedia.org") || 
-			   resource.contains("ontologydesignpatterns") || 
-			   resource.contains("schema.org") ||
-			   resource.contains("xmlns.com/foaf/") ||
-			   resource.contains("Wikidata:") ||
-			   resource.contains("www.opengis.net") ||
-			   resource.contains("/ontology/bibo/");
 	}
 }

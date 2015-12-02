@@ -18,13 +18,13 @@ public class DomainsAndRanges {
 	public static void main(String[] args) {
 		Events.summarization();
 		
-		String dataset = "linked-brainz";
-		String domain = "purl.org/mo";
-		String ontologyPath = "music-ontology/mo.owl";
+//		String dataset = "linked-brainz";
+//		String domain = "purl.org/mo";
+//		String ontologyPath = "music-ontology/mo.owl";
 		
-//		String dataset = "dbpedia-2014";
-//		String domain = "dbpedia.org/ontology";
-//		String ontologyPath = "dbpedia/dbpedia_2014.owl";
+		String dataset = "dbpedia-2014";
+		String domain = "dbpedia.org/ontology";
+		String ontologyPath = "dbpedia/dbpedia_2014.owl";
 		
 		LDSummariesVocabulary vocabulary = new LDSummariesVocabulary(ModelFactory.createDefaultModel(), dataset);
 		SparqlEndpoint endpoint = SparqlEndpoint.abstat();
@@ -45,7 +45,8 @@ public class DomainsAndRanges {
 			String[] line = new String[]{
 					escaped(uri),
 					escaped(type),
-					escaped(domainsOf(ontProperty))
+					escaped(domainsOf(ontProperty)),
+					escaped(rangesOf(ontProperty))
 			};
 			
 			System.out.println(StringUtils.join(line, "\t"));
@@ -55,6 +56,11 @@ public class DomainsAndRanges {
 	private static String domainsOf(OntProperty property){
 		if(property == null) return null;
 		return "" + property.getDomain();
+	}
+	
+	private static String rangesOf(OntProperty property){
+		if(property == null) return null;
+		return "" + property.getRange();
 	}
 	
 	private static String escaped(String uri) {

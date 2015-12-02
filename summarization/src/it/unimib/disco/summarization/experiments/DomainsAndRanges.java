@@ -24,7 +24,7 @@ public class DomainsAndRanges {
 		String ontologyPath = args[2];
 		
 		LDSummariesVocabulary vocabulary = new LDSummariesVocabulary(ModelFactory.createDefaultModel(), dataset);
-		SparqlEndpoint endpoint = SparqlEndpoint.abstat();
+		SparqlEndpoint endpoint = SparqlEndpoint.withinBackend();
 		TypeOf classifier = new TypeOf(domain);
 		BenchmarkOntology ontology = new BenchmarkOntology(ontologyPath);
 		
@@ -35,8 +35,6 @@ public class DomainsAndRanges {
 		}
 		
 		for(Resource[] property : allProperties){
-			Thread.sleep(100);
-			
 			String uri = property[1].toString();
 			String type = classifier.resource(property[0].toString());
 			OntProperty ontProperty = properties.get(uri.toString());

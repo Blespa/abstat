@@ -16,8 +16,8 @@ project=$root/../summarization
 cd $project
 
 run_experiment PatternStatistics linked-brainz
-run_experiment UnderspecifiedProperties music-ontology/mo.owl linked-brainz
+run_experiment UnderspecifiedProperties benchmark/experiments/music-ontology/mo.owl linked-brainz
 
 run_experiment PatternStatistics dbpedia2014
-run_experiment UnderspecifiedProperties dbpedia/dbpedia_2014.owl dbpedia2014
+run_experiment UnderspecifiedProperties benchmark/experiments/dbpedia/dbpedia_2014.owl dbpedia2014
 

@@ -15,4 +15,4 @@ project=$root/../summarization
 
 cd $project
 
-run_experiment DomainAndRanges $@
+run_experiment DomainsAndRanges $@

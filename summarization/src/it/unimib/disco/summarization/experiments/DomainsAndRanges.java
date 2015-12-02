@@ -5,6 +5,7 @@ import it.unimib.disco.summarization.ontology.LDSummariesVocabulary;
 import it.unimib.disco.summarization.ontology.TypeOf;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -18,13 +19,13 @@ public class DomainsAndRanges {
 	public static void main(String[] args) {
 		Events.summarization();
 		
-//		String dataset = "linked-brainz";
-//		String domain = "purl.org/mo";
-//		String ontologyPath = "music-ontology/mo.owl";
+		String dataset = "linked-brainz";
+		String domain = "ontology/mo";
+		String ontologyPath = "music-ontology/mo.owl";
 		
-		String dataset = "dbpedia-2014";
-		String domain = "dbpedia.org/ontology";
-		String ontologyPath = "dbpedia/dbpedia_2014.owl";
+//		String dataset = "dbpedia-2014";
+//		String domain = "dbpedia.org/ontology";
+//		String ontologyPath = "dbpedia/dbpedia_2014.owl";
 		
 		LDSummariesVocabulary vocabulary = new LDSummariesVocabulary(ModelFactory.createDefaultModel(), dataset);
 		SparqlEndpoint endpoint = SparqlEndpoint.abstat();
@@ -41,18 +42,25 @@ public class DomainsAndRanges {
 			String uri = property[1].toString();
 			String type = classifier.resource(property[0].toString());
 			OntProperty ontProperty = properties.get(uri.toString());
+			Inferred inferred = new Inferred(dataset).of(uri);
 			
 			String[] line = new String[]{
 					escaped(uri),
 					escaped(type),
 					escaped(domainsOf(ontProperty)),
-					escaped(rangesOf(ontProperty))
+					escaped(rangesOf(ontProperty)),
+					escaped(joinAndCount(inferred.domains())),
+					escaped(joinAndCount(inferred.ranges())),
 			};
 			
 			System.out.println(StringUtils.join(line, "\t"));
 		}
 	}
 
+	private static String joinAndCount(HashSet<String> types){
+		return StringUtils.join(types, ", ") + " (" + types.size() + ")";
+	}
+	
 	private static String domainsOf(OntProperty property){
 		if(property == null) return null;
 		return "" + property.getDomain();

@@ -64,7 +64,7 @@ public class ExportPropertyVectors {
 						   "?akp <" + vocabulary.occurrence() + "> ?occ . " +
 						    "} group by ?type ?typeOcc ?propOcc order by ?type";
 		
-		ResultSet v = SparqlEndpoint.local().execute(vector);
+		ResultSet v = SparqlEndpoint.abstat().execute(vector);
 		
 		if(!v.hasNext()) return;
 		HashMap<String, List<QuerySolution>> solutions = new HashMap<String, List<QuerySolution>>();
@@ -101,7 +101,7 @@ public class ExportPropertyVectors {
 								"where { " +
 								"?property a <" + vocabulary.property() + "> . " +
 								"}";
-		ResultSet allPropertiesResults = SparqlEndpoint.local().execute(allProperties);
+		ResultSet allPropertiesResults = SparqlEndpoint.abstat().execute(allProperties);
 		List<Resource> properties = new ArrayList<Resource>();
 		while(allPropertiesResults.hasNext()){
 			properties.add(allPropertiesResults.next().getResource("?property"));

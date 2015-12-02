@@ -6,23 +6,23 @@ import java.util.HashSet;
 
 import com.hp.hpl.jena.query.QuerySolution;
 import com.hp.hpl.jena.query.ResultSet;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.vocabulary.RDFS;
 
 public class Inferred{
 	
-	private String dataset;
 	private HashSet<String> domains;
 	private HashSet<String> ranges;
+	private LDSummariesVocabulary vocabulary;
+	private SparqlEndpoint endpoint;
 
-	public Inferred(String dataset){
-		this.dataset = dataset;
+	public Inferred(LDSummariesVocabulary vocabulary, SparqlEndpoint endpoint){
+		this.vocabulary = vocabulary;
+		this.endpoint = endpoint;
 		this.domains = new HashSet<String>();
 		this.ranges = new HashSet<String>();
 	}
 	
 	public Inferred of(String property){
-		LDSummariesVocabulary vocabulary = new LDSummariesVocabulary(ModelFactory.createDefaultModel(), dataset);
 		String query = "select ?subject ?object "
 					 + "from <" + vocabulary.graph() + "> "
 			 		 + "where {"
@@ -35,7 +35,7 @@ public class Inferred{
 			 		 	+ "?localObject <"+ RDFS.seeAlso + "> ?object ."
 			 		 + "} order by ?subject";
 
-		ResultSet patterns = SparqlEndpoint.abstat().execute(query);
+		ResultSet patterns = endpoint.execute(query);
 		while(patterns.hasNext()){
 			QuerySolution solution = patterns.nextSolution();
 			String subject = solution.get("subject").toString();

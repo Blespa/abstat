@@ -17,10 +17,6 @@ public class SparqlEndpoint{
 		return new SparqlEndpoint("http://abstat.disco.unimib.it");
 	}
 	
-	public static SparqlEndpoint withinBackend(){
-		return new SparqlEndpoint("http://localhost:8885/");
-	}
-	
 	private String host;
 
 	private SparqlEndpoint(String host){

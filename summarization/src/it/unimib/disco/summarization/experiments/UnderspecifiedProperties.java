@@ -1,11 +1,13 @@
 package it.unimib.disco.summarization.experiments;
 
 import it.unimib.disco.summarization.export.Events;
+import it.unimib.disco.summarization.ontology.LDSummariesVocabulary;
 
 import java.util.HashSet;
 
 import com.hp.hpl.jena.ontology.OntProperty;
 import com.hp.hpl.jena.ontology.OntResource;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
 
 public class UnderspecifiedProperties {
 
@@ -15,6 +17,9 @@ public class UnderspecifiedProperties {
 
 		String path = args[0];
 		String dataset = args[1];
+		
+		LDSummariesVocabulary vocabulary = new LDSummariesVocabulary(ModelFactory.createDefaultModel(), dataset);
+		SparqlEndpoint endpoint = SparqlEndpoint.abstat();
 		
 		HashSet<String> underspecifiedPropertyDomains = new HashSet<String>();
 		HashSet<String> underspecifiedPropertyRanges = new HashSet<String>();
@@ -30,7 +35,7 @@ public class UnderspecifiedProperties {
 			if(domain == null ) underspecifiedPropertyDomains.add(property.toString());
 			if(range == null ) underspecifiedPropertyRanges.add(property.toString());
 			
-			Inferred inferred = new Inferred(dataset).of(property.toString());
+			Inferred inferred = new Inferred(vocabulary, endpoint).of(property.toString());
 			
 			HashSet<String> domains = inferred.domains();
 			HashSet<String> ranges = inferred.ranges();

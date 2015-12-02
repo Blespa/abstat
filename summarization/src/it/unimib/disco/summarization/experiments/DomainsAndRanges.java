@@ -16,16 +16,12 @@ import com.hp.hpl.jena.rdf.model.Resource;
 
 public class DomainsAndRanges {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		Events.summarization();
 		
-		String dataset = "linked-brainz";
-		String domain = "ontology/mo";
-		String ontologyPath = "music-ontology/mo.owl";
-		
-//		String dataset = "dbpedia-2014";
-//		String domain = "dbpedia.org/ontology";
-//		String ontologyPath = "dbpedia/dbpedia_2014.owl";
+		String dataset = args[0];
+		String domain = args[1];
+		String ontologyPath = args[2];
 		
 		LDSummariesVocabulary vocabulary = new LDSummariesVocabulary(ModelFactory.createDefaultModel(), dataset);
 		SparqlEndpoint endpoint = SparqlEndpoint.abstat();
@@ -39,6 +35,8 @@ public class DomainsAndRanges {
 		}
 		
 		for(Resource[] property : allProperties){
+			Thread.sleep(100);
+			
 			String uri = property[1].toString();
 			String type = classifier.resource(property[0].toString());
 			OntProperty ontProperty = properties.get(uri.toString());

@@ -26,21 +26,23 @@ public class ExportPropertyVectors {
 		String subjectOrObject = args[2];
 		
 		final LDSummariesVocabulary vocabulary = new LDSummariesVocabulary(ModelFactory.createDefaultModel(), dataset);
+		final SparqlEndpoint abstat = SparqlEndpoint.abstat();
+
 		
 		final Property subject;
 		if(subjectOrObject.equals("subject")) subject = vocabulary.subject();
 		else subject = vocabulary.object();
 		
 		
-		final List<Resource> properties = allProperties(vocabulary);
+		final List<Resource[]> properties = new SummarizedProperties(vocabulary, abstat).all();
 		
 		ExecutorService executor = Executors.newFixedThreadPool(10);
-		for(final Resource property : properties){
+		for(final Resource[] property : properties){
 			executor.execute(new Runnable() {
 				@Override
 				public void run() {
 					try {
-						exportProperty(directory, dataset, vocabulary, subject, property);
+						exportProperty(abstat, directory, dataset, vocabulary, subject, property[0]);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -52,9 +54,7 @@ public class ExportPropertyVectors {
 	    while(!executor.isTerminated()){}
 	}
 
-	private static void exportProperty(File directory, String dataset,
-			LDSummariesVocabulary vocabulary, Property subject,
-			Resource property) throws Exception {
+	private static void exportProperty(SparqlEndpoint endpoint, File directory, String dataset, LDSummariesVocabulary vocabulary, Property subject, Resource property) throws Exception {
 		String vector = "select ?type ?typeOcc ?propOcc (sum(?occ) as ?akpOcc) where {" +
 						   "<"+ property +"> <" + vocabulary.occurrence() + "> ?propOcc ." +
 						   "?akp <" + vocabulary.predicate() + "> <"+ property +"> . " +
@@ -64,7 +64,7 @@ public class ExportPropertyVectors {
 						   "?akp <" + vocabulary.occurrence() + "> ?occ . " +
 						    "} group by ?type ?typeOcc ?propOcc order by ?type";
 		
-		ResultSet v = SparqlEndpoint.abstat().execute(vector);
+		ResultSet v = endpoint.execute(vector);
 		
 		if(!v.hasNext()) return;
 		HashMap<String, List<QuerySolution>> solutions = new HashMap<String, List<QuerySolution>>();
@@ -94,18 +94,5 @@ public class ExportPropertyVectors {
 			out.writeLine(type + "|" + typeOcc + "|" + propOcc + "|" + akpOcc);
 		}
 		out.close();
-	}
-
-	private static List<Resource> allProperties(LDSummariesVocabulary vocabulary) {
-		String allProperties = "select distinct ?property from <" + vocabulary.graph() + "> " + 
-								"where { " +
-								"?property a <" + vocabulary.property() + "> . " +
-								"}";
-		ResultSet allPropertiesResults = SparqlEndpoint.abstat().execute(allProperties);
-		List<Resource> properties = new ArrayList<Resource>();
-		while(allPropertiesResults.hasNext()){
-			properties.add(allPropertiesResults.next().getResource("?property"));
-		}
-		return properties;
 	}
 }

@@ -13,11 +13,11 @@
         <div class="page-header" style="background: url('static/img/logo.jpg') right; background-repeat: no-repeat; background-size: contain">
 	    <h1><img alt="" src="static/img/abstat.svg"> ABSTAT <small>linked data summaries</small></h1>
     </div>
-	<p>ABSTAT is a framework, that aims at providing a better understanding of big and complex linked data sets and help users to make more aware choices.</p>
-	<p>A user who wants to know wich data set better fits his needs should be able to answer to questions such as: what types of resources are described in each data set? What properties are used to describe the resources? What types of resources are linked and by means of what properties? How many resources have a certain type and how frequent is the use of a given property?</p>
-	<p>Considering the size and the number of available linked data sets  and that they make use of ontologies(they too maight be large) to describe the semantics of their data, answering the above questions by only looking at ontologies  or by using explorative queries could be too hard. Therefore it's more efficient to explore a data set using ABSTAT.</p>
-	<p>The proposed model produces a summary that is correct and complete with respect to the assertions of the data set and whose size scales well with respect to ontologies and data set size.</p>
-	<p>The key feature of a summary is the use of minimal type patterns to represent an abstraction of the data set. A minimal type pattern is a triple (C, P, D) that represents the occurrence of assertions <a,P,b> in the RDF data, such that C is a minimal type of the subject a and D is a minimal type of the object b according to a terminology graph, which is introduced to represent the data ontology. By considering patterns that are based on minimal types we are able to exclude several redundant patterns from the summary. As a consequence, summaries based on our model are rich enough to represent adequately the whole data set, and small enough to avoid redundant information.</p>
+	<p>ABSTAT is a framework that provides a better understanding of big and complex linked data sets.</p>
+	<p>A user who wants to know which data set better fits his needs should be able to answer to questions such as: what types of resources are described in each data set? What properties are used to describe the resources? What types of resources are linked and by means of what properties? How many resources have a certain type and how frequent is the use of a given property?</p>
+	<p>Considering the size and the number of available linked data sets  and that they make use of ontologies (they too might be large) to describe the semantics of their data, answering the above questions by only looking at ontologies  or by using explorative queries could be too hard. Therefore it's more efficient to explore a data set using ABSTAT.</p>
+	<p>The ABSTAT produces a summary of linked data sets that is correct and complete with respect to the assertions of the data set and whose size scales well with respect to ontologies and data set size.</p>
+	<p>The key feature of a summary is the use of minimal type patterns to represent an abstraction of the data set. A minimal type pattern is a triple (C, P, D) that represents the occurrence of assertions <code>&lt;a,P,b&gt;</code> in the RDF data, such that C is a minimal type of the subject a and D is a minimal type of the object b according to a terminology graph, which is introduced to represent the data ontology. By considering patterns that are based on minimal types we are able to exclude several redundant patterns from the summary. As a consequence, summaries based on our model are rich enough to represent adequately the whole data set, and small enough to avoid redundant information.</p>
 	<p>Finally, a summary also includes statistics about the occurrence of minimal type patterns and types in the data.</p>
 	<h3>Team</h3>
 	<ul class="unstyled">
@@ -28,6 +28,8 @@
 		<li><b>Andrea Maurino:</b> <a href="mailto:maurino@disco.unimib.it">maurino@disco.unimib.it</a></li>
 	</ul>
     <h3>Publications</h3>
+    <div>
+    Matteo Palmonari, Anisa Rula, Riccardo Porrini, Andrea Maurino, Blerina Spahiu, Vincenzo Ferme: <a target="_blank" href="http://dx.doi.org/10.1007/978-3-319-25639-9_25">ABSTAT: Linked Data Summaries with ABstraction and STATistics.</a> ESWC (Satellite Events) 2015: 128-132
     </div>
   </body>
 </html>

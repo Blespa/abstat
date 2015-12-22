@@ -59,7 +59,8 @@ public class Application extends AbstractHandler{
 	private void mainUI(Routing routes) {
 		routes
 			.mapFile("/", "browse.html")
-			.mapFile("/search", "search.html");
+			.mapFile("/search", "search.html")
+			.mapFile("/about", "about.html");
 	}
 
 	private void serviceAPI(Routing routes) throws Exception {

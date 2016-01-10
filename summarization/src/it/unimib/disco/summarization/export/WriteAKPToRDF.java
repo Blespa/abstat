@@ -34,6 +34,14 @@ public class WriteAKPToRDF {
 		LDSummariesVocabulary vocabulary = new LDSummariesVocabulary(model, dataset);
 		RDFTypeOf typeOf = new RDFTypeOf(domain);
 		
+		File doc;
+		FileOutputStream fos;
+		if(type.equals("object"))
+			doc = new File("URI-object-akp.txt");
+		else
+			doc = new File("URI-datatype-akp.txt");
+		fos= new FileOutputStream(doc, true);
+		
 		for (Row row : readCSV(csvFilePath)){
 
 			try{
@@ -71,12 +79,18 @@ public class WriteAKPToRDF {
 				model.add(akpInstance, RDF.type, vocabulary.abstractKnowledgePattern());
 				model.add(akpInstance, RDF.type, internal);
 				model.add(akpInstance, vocabulary.occurrence(), statistic);
+				
+				String content = akpInstance.getURI()+"$"+row.get(Row.Entry.SUBJECT)+"$"+row.get(Row.Entry.PREDICATE)+"$"+row.get(Row.Entry.OBJECT)+"\n";
+				byte[] stringa = content.getBytes();
+				fos.write(stringa);
 			}
 			catch(Exception e){
 				Events.summarization().error("file" + csvFilePath + " row" + row, e);
 			}
 
 		}
+		fos.close();
+		
 		OutputStream output = new FileOutputStream(outputFilePath);
 		model.write( output, "N-Triples", null ); // or "RDF/XML", etc.
 

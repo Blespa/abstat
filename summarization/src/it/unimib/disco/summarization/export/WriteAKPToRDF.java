@@ -77,6 +77,7 @@ public class WriteAKPToRDF {
 			}
 
 		}
+		
 		OutputStream output = new FileOutputStream(outputFilePath);
 		model.write( output, "N-Triples", null ); // or "RDF/XML", etc.
 
